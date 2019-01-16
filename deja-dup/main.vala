@@ -178,6 +178,9 @@ public class DejaDupApp : Gtk.Application
       header.pack_end(menu_button);
 
       var auto_switch = new DejaDup.PreferencesPeriodicSwitch();
+      var accessible = auto_switch.get_accessible();
+      if (accessible != null)
+        accessible.set_name(_("Automatic backup"));
       auto_switch.valign = Gtk.Align.CENTER;
       header.pack_end(auto_switch);
 

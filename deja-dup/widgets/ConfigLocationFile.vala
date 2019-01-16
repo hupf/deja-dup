@@ -46,11 +46,10 @@ public class ConfigLocationFile : ConfigLocationTable
 
   void browse_clicked()
   {
-    var dlg = new Gtk.FileChooserDialog(_("Choose Folder"),
+    var dlg = new Gtk.FileChooserNative(_("Choose Folder"),
                                         get_ancestor(typeof(Gtk.Window)) as Gtk.Window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
-                                        _("_Cancel"), Gtk.ResponseType.CANCEL,
-                                        _("_OK"), Gtk.ResponseType.ACCEPT);
+                                        _("_OK"), null);
     var home = File.new_for_path(Environment.get_home_dir());
     try {
       var dir = home.get_child_for_display_name(entry.get_text());
@@ -66,8 +65,6 @@ public class ConfigLocationFile : ConfigLocationTable
         path = file.get_path();
       settings.set_string(DejaDup.LOCAL_FOLDER_KEY, path);
     }
-
-    destroy_widget(dlg);
   }
 }
 

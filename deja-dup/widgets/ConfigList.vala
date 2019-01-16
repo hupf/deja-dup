@@ -249,20 +249,17 @@ public class ConfigList : ConfigWidget
   
   void handle_add()
   {
-    var dlg = new Gtk.FileChooserDialog(_("Choose folders"),
+    var dlg = new Gtk.FileChooserNative(_("Choose folders"),
                                         get_ancestor(typeof(Gtk.Window)) as Gtk.Window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
-                                        _("_Cancel"), Gtk.ResponseType.CANCEL,
-                                        _("_Add"), Gtk.ResponseType.ACCEPT);
+                                        _("_Add"), null);
     dlg.select_multiple = true;
     
     if (dlg.run() != Gtk.ResponseType.ACCEPT) {
-      destroy_widget(dlg);
       return;
     }
     
     SList<string> files = dlg.get_filenames();
-    destroy_widget(dlg);
 
     add_files(files);
   }

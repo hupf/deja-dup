@@ -31,7 +31,7 @@ distconfigure:
 check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
-dist: clean distconfigure screenshots pot
+dist: pot
 	rm -f builddir/meson-dist/*
 	ninja -C builddir dist
 	gpg --armor --sign --detach-sig builddir/meson-dist/deja-dup-*.tar.xz
