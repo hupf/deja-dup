@@ -74,11 +74,9 @@ public abstract class ToolJob : Object
     }
     set {
       // Deep copy
-      foreach (File f in this._restore_files)
-        f.unref();
-      this._restore_files = value.copy();
-      foreach (File f in this._restore_files)
-        f.ref();
+      this._restore_files = null;
+      foreach (File f in value)
+        this._restore_files.append(f);
     }
   }
 

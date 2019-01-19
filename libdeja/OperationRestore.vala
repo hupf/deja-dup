@@ -31,11 +31,8 @@ public class OperationRestore : Operation
       return this._restore_files;
     }
     construct {
-      foreach (File f in this._restore_files)
-        f.unref();
-      this._restore_files = value.copy();
-      foreach (File f in this._restore_files)
-        f.ref();
+      foreach (File f in value)
+        this._restore_files.append(f);
     }
   }
   
