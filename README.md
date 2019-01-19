@@ -1,5 +1,4 @@
-Déjà Dup Backup Tool
-====================
+# Déjà Dup Backup Tool
 
 Déjà Dup is a simple backup tool. It hides the complexity of backing up the
 Right Way (encrypted, off-site, and regular) and uses
@@ -12,10 +11,10 @@ Features:
  * Schedules regular backups
  * Integrates well into your GNOME desktop
 
-Links
------
+## Links
 
- * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
- * [Getting involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
+ * [Wiki](https://wiki.gnome.org/Apps/DejaDup)
+ * [Download](https://wiki.gnome.org/Apps/DejaDup/Download)
+ * [Get involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
  * [Mailing list](https://mail.gnome.org/mailman/listinfo/deja-dup-list)
 

@@ -25,9 +25,6 @@ all: configure
 configure:
 	@[ -f builddir/build.ninja ] || meson -Dprofile=Devel builddir
 
-distconfigure:
-	@[ -f builddir/build.ninja ] || meson builddir
-
 check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
@@ -72,11 +69,12 @@ screenshots: all
 pot: configure
 	ninja -C builddir deja-dup-pot help-org.gnome.DejaDup-pot
 
-# call like 'make copy-po TD=path-to-translation-dir'
 copy-po:
-	test -d $(TD)
-	cp -a $(TD)/po/*.po po
-	for po in $(TD)/deja-dup/help/*.po; do \
+	mkdir -p builddir
+	rm -r builddir/translations
+	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
+	cp -a builddir/translations/po/*.po po
+	for po in builddir/translations/deja-dup/help/*.po; do \
 		mkdir -p deja-dup/help/$$(basename $$po .po); \
 		cp -a $$po deja-dup/help/$$(basename $$po .po)/; \
 	done
@@ -91,4 +89,4 @@ flatpak:
 	                flatpak/org.gnome.DejaDupDevel.yaml
 	flatpak update --user -y org.gnome.DejaDupDevel
 
-.PHONY: configure distconfigure clean dist all copy-po check screenshots flatpak
+.PHONY: configure clean dist all copy-po check screenshots flatpak
