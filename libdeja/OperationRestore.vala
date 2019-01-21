@@ -31,8 +31,7 @@ public class OperationRestore : Operation
       return this._restore_files;
     }
     construct {
-      foreach (File f in value)
-        this._restore_files.append(f);
+      this._restore_files = value.copy_deep ((CopyFunc) Object.ref);
     }
   }
   

@@ -207,9 +207,7 @@ public class AssistantRestoreMissing : AssistantRestore {
   {
     if (page == confirm_page) {
       scan_queue = false;
-      restore_files_remaining = null;
-      foreach (File f in restore_files)
-        restore_files_remaining.append(f);
+      restore_files_remaining = restore_files.copy_deep ((CopyFunc) Object.ref);
     }
     else if (page == listfiles_page) {
       list_dir_label.label = display_directory.get_parse_name();

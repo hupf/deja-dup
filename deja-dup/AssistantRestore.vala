@@ -29,9 +29,7 @@ public class AssistantRestore : AssistantOperation
       return this._restore_files;
     }
     set {
-      this._restore_files = null;
-      foreach (File f in value)
-        this._restore_files.append(f);
+      this._restore_files = value.copy_deep ((CopyFunc) Object.ref);
     }
   }
   
