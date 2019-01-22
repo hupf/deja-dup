@@ -50,8 +50,9 @@ public string? parse_keywords(string dir)
     for (int i = 0; i < dirs.length; i++) {
       if (result.has_prefix(dirs[i])) {
         var replacement = Environment.get_user_special_dir(enums[i]);
-        if (replacement != null)
-          result = result.replace(dirs[i], replacement);
+        if (replacement == null)
+          return null;
+        result = result.replace(dirs[i], replacement);
         break;
       }
     }

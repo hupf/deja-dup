@@ -133,49 +133,49 @@
 - Translation updates
 
 # 32.0
-Features:
+## Features
 - Drop support for Ubuntu One cloud storage, since it has shut down
-Packaging:
+## Packaging
 - Fix some compile issues and warnings
-Translations:
+## Translations
 - New French (Canadian) translation
 - Updated Basque, Brazilian Portuguese, Dutch, French, German, Hungarian, and
    Polish translation
 
 # 30.0
-Packaging:
+## Packaging
 - Fix build with CMake 2.8.12
-Translations:
+## Translations
 - Updated Japanese translation
 
 # 29.5
-Bug Fixes:
+## Bug Fixes
 - Re-enable libunity support after it was accidentally dropped in 29.1
-Packaging:
+## Packaging
 - Require duplicity 0.6.23
-Translations:
+## Translations
 - Updated Dutch and Spanish translations
 
 # 29.4
-Bug Fixes:
+## Bug Fixes
 - Add missing icon in help documentation
-Packaging:
+## Packaging
 - Add ENABLE_UNITY_CCPANEL argument for unity-control-center support
 - Fix some compile problems with valac, parallel building, and rpath support
-Translations:
+## Translations
 - Updated Basque, Chinese (Traditional), Finnish, French, Polish, and Spanish
    translations
 
 # 29.1
-Bug Fixes:
+## Bug Fixes
 - Detect encryption on existing backups by paying attention to what Duplicity
    tells us, rather than trying to figure it out by scanning ourselves.
    This removes a possible source of error.
-Polish:
+## Polish
 - Rename to Backups (instead of Backup)
 - Update look and feel of preferences a bit
 - Add screenshots to appdata file
-Packaging:
+## Packaging
 - Require GTK+ 3.6 and GLib 2.34
 - Convert from autotools to cmake:
     --with-ccpanel is now -DENABLE_CCPANEL
@@ -185,254 +185,254 @@ Packaging:
 - Add some autopilot tests, runnable by 'autopilot' and 'autopilot-system'
    targets (which test against the local built executables or the installed
    system ones respectively)
-Translations:
+## Translations
 - Updated Basque, Chinese (Traditional), Dutch, Finnish, and Polish
    translations
 
 # 28.0 (GNOME 3.10)
-Polish:
+## Polish
 - Clean up help documentation a tad
 - When using the System Settings panel, have F1 pull up the help documentation
 - Ship an AppData file
 - Be more verbose about errors when restoring files
-Translations:
+## Translations
 - New Northern Sami translation
 - Updated Hungarian and Polish translations
 
 # 27.3 (GNOME 3.9.3)
-Bug Fixes:
+## Bug Fixes
 - Fix optional System Settings panel to work with GNOME 3.8 and above
-Translations:
+## Translations
 - Updated Galician, Italian, and Turkish translations
 
 # 26.0 (GNOME 3.8.0)
-Bug Fixes:
+## Bug Fixes
 - Only use the GNOME Shell interface when actually in GNOME Shell, not something that is merely similar, like the Cinnamon shell
 - When testing a restore, also use a temporary directory that is on the same partition as the include files
-Polish:
+## Polish
 - Spread default backup time around a bit, from always starting at midnight UTC to starting between 2 and 4 AM local time
 - Use more-aggressively-idle modes for ionice and nice if available
-Translations:
+## Translations
 - Updated Ukrainian translation
 
 # 25.5 (GNOME 3.7.5)
-Features:
+## Features
 - Support replacing $USER in gsettings file backup location too (in addition to previous support for include and exclude folders)
-Polish:
+## Polish
 - Tell duplicity to use a temporary directory that is on the same partition as the include files, to avoid problems with tiny /tmp directories (as can happen with tmpfs)
 - Tell GNOME 3 about our notifications, so the user can disable them
 - Always exclude /run (in case user includes /)
-Packaging:
+## Packaging
 - Require duplicity 0.6.21 for its data corruption fixes
-Translations:
+## Translations
 - Updated Bulgarian and Ukrainian translations
 
 # 25.3 (GNOME 3.7.3)
-Features:
+## Features
 - Support replacing $USER in gsettings default paths for system administrators
-Bug Fixes:
+## Bug Fixes
 - Fix Ubuntu One support for duplicity 0.6.20 and above
-Polish:
+## Polish
 - Ignore ~/Steam due to its large and cache-oriented content
-Translations:
+## Translations
 - Updated Basque, Dutch, and Slovenian translations
 
 # 25.1.1
-Bug Fixes:
+## Bug Fixes
 - Fix notifications from deja-dup-monitor not being translated
-Packaging:
+## Packaging
 - Fix libsecret build error with last tarball
 - Tests now require python3 instead of python2
 - Run 'make -C tests check-system' to test against installed deja-dup
 
 # 25.1 (GNOME 3.7.1)
-Packaging:
+## Packaging
 - Switch from libgnome-keyring to libsecret
-Translations:
+## Translations
 - Updated Arabic, Basque, Burmese, Catalan, Dutch, Esperanto, Estonian, Finnish, French, Galician, German, Greek, Hebrew, Hungarian, Italian, Japanese, Occitan (post 1500), Polish, Russian, Slovenian, Spanish, and Uyghur translations
 
 # 24.0 (GNOME 3.6.0)
-Translations:
+## Translations
 - Updated Czech, Croatian, and Dutch translations
 
 # 23.92 (GNOME 3.5.92)
-Bug Fixes:
+## Bug Fixes
 - Only allow one deja-dup-monitor process at a time
-Translations:
+## Translations
 - Updated Basque, Chinese (Traditional), Dutch, Finnish, Lithuanian, and Polish translations
 
 # 23.90 (GNOME 3.5.90)
-Features:
+## Features
 - At the end of every backup, verify that we can correctly restore a file
 - Every two months, additionally verify that the user could correctly restore a file from a new computer by prompting for password and not using cached duplicity files
-Translations:
+## Translations
 - Updated Asturian, Belarusian, Polish, and Slovenian translations
 
 # 23.4 (GNOME 3.5.4)
-Polish:
+## Polish
 - Always makes a fresh backup every three months now, regardless of how often automatic backups happen
 - Don't prompt for root password when restoring from Ubuntu One, as it won't work anyway (U1 needs to talk to your session bus, which root can't do)
 - Use pkexec instead of gksu
-Translations:
+## Translations
 - Updated Arabic, Basque, Bengali, Bosnian, Brazilian Portuguese, Bulgarian, Chinese (Simplified), Danish, Esperanto, Finnish, French, Galician, German, Hebrew, Indonesian, Khmer, Lithuanian, Norwegian Bokmal, Russian, Sinhalese, Slovenian, and Turkish translations
 
 # 23.2 (GNOME 3.5.2)
-Packaging:
+## Packaging
 - Require glib >= 2.32
 - Require valac >= 0.16
 - Require libpeas
-Translations:
+## Translations
 - New Sinhalese translation
 - Updated Albanian, Asturian, Basque, Bosnian, Bulgarian, Catalan, Catalan (Valencian), Danish, English (Australia), Esperanto, Finnish, French, German, Greek, Hungarian, Japanese, Lithuanian, Malay, Occitan (post 1500), Polish, Romanian, Serbian, Slovak, Slovenian, Spanish, Uyghur, and Welsh translations
 
 # 22.1 (GNOME 3.4.1)
-Bug Fixes:
+## Bug Fixes
 - Allow resuming an encrypted but incomplete backup
-Translations:
+## Translations
 - Updated Chinese (Simplified), Croatian, Danish, Dutch, and Esperanto translations
 
 # 22.0 (GNOME 3.4.0)
-Bug Fixes:
+## Bug Fixes
 - When restoring files outside of $HOME from a non-cloud remote server, don't run under sudo since it will fail anyway
 - Tell user when a file could not be restored due to permission problems
-Translations:
+## Translations
 - New Frisian, Punjabi, and Uzbek translations
 - Updated Brazilian Portuguese, Czech, English (Australia), Finnish, French, Galician, Japanese, and Turkish translations
 
 # 21.90 (GNOME 3.3.90)
-Bug Fixes:
+## Bug Fixes
 - Work around bug in GTK+ that caused text to be white-on-white
-Polish:
+## Polish
 - Won't try to backup if online but target server is not available
-Packaging:
+## Packaging
 - Support building with valac-0.16 (in addition to valac-0.14)
-Translations:
+## Translations
 - New Kazakh translation
 - Updated Chinese (Traditional), Dutch, English (UK), Esperanto, Faroese, Finnish, Galician, Greek, Italian, Lithuanian, Serbian, Swedish, Turkish, and Uyghur translations
 
 # 21.4 (GNOME 3.3.4)
-Polish:
+## Polish
 - Warn user if we couldn't back up a file because we couldn't read it
-Packaging:
+## Packaging
 - Fix -j2 build
 - Add auto tests that are run during 'make check', suitable for build servers
-Translations:
+## Translations
 - Updated Chinese (Traditional), Croatian, Dutch, Finnish, French, German, Hungarian, Polish, Russian, Slovenian, Tamil, and Turkish translations
 
 # 21.2 (GNOME 3.3.2)
-Bug Fixes:
+## Bug Fixes
 - Use smarter test for detecting whether existing backups are encrypted, which will work even if duplicity uses translations
 - Fix a bug that in some situations could lead to a full backup being created more frequently than once a month
-Polish:
+## Polish
 - Drop "After a week" from "Keep backups" option, since internally, we always wait a month anyway
 - Treat any AssertionError by duplicity as an internal duplicity error by wiping the cache and trying again; this will let us be more pro-active about fixing some odd duplicity situations
-Packaging:
+## Packaging
 - Start of a unit test for our internal library; compile and run it with 'make check'
-Translations:
+## Translations
 - Updated Basque, Brazilian Portuguese, English (UK), Estonian, Finnish, German, Norwegian Bokmal, Norwegian Nynorsk, Serbian, Slovak, Slovenian, Swedish, Telugu, Turkish, and Vietnamese translations
 
 # 21.1 (GNOME 3.3.1)
-Bug Fixes:
+## Bug Fixes
 - Allow passwords that contain only whitespaces (while continuing to strip whitespace from normal passwords)
-Polish:
+## Polish
 - Switch to notebook tabs for preferences instead of side list
-Packaging:
+## Packaging
 - Use valac 0.14 instead of 0.12
 - Tarballs now only include the vala code, so you'll need valac to compile
 - Tarballs now use xz compression instead of bz2
 - No longer require libdbusmenu-gtk3 for Unity support
-Translations:
+## Translations
 - New Bengali and Estonian translations
 - Updated Albanian, Asturian, Basque, Brazilian Portuguese, Bulgarian, Catalan, Dutch, Hebrew, Hungarian, Japanese, Korean, Latvian, Lithuanian, Norwegian Bokmal, Occitan, Polish, Serbian, and Slovenian translations
 
 # 20.1 (GNOME 3.2.1)
-Bug Fixes:
+## Bug Fixes
 - Correctly backup or exclude folders with [, ], ?, and * in their names
 - Fix translation of some strings when used in control center panel mode
 - Fix a nautilus crash if the gsettings schema isn't installed correctly
 - Allow LUKS encrypted volumes to appear in backup location list
-Translations:
+## Translations
 - New Catalan (Valencian), Ido, Tamil, and Uyghur translations
 - Updated Croatian, Danish, Esperanto, French, German, and Indonesian translations
 
 # 20.0 (GNOME 3.2.0)
-Polish:
+## Polish
 - Backed out ubuntuone-installer support; it wasn't perfect and Ubuntu 11.10 won't use it after all
 - In Unity, go back to using minimized automatic backup windows
-Translations:
+## Translations
 - Updated Croatian, Dutch, French, Italian, Japanese, Russian, and Ukrainian translations
 
 # 19.92 (GNOME 3.1.92)
-Bug Fixes:
+## Bug Fixes
 - In Unity, work around bug with minimized windows and the launcher by just not minimizing windows but instead showing them without stealing focus
 - If a user manually enters a volume (e.g. USB drive) path as a local folder, correct that internally on the first backup
-Polish:
+## Polish
 - If Ubuntu One support is not available but the ubuntuone-installer is, use that
 - Never clean up files in the backup location during a restore
 - Fix spacing and layout with latest versions of GTK+
-Translations:
+## Translations
 - New Chinese (Hong Kong) and Welsh translations
 - Updated Basque, Brazilian Portuguese, Chinese (Traditional), Czech, English (UK), Faroese, Finnish, German, Hungarian, Italian, Occitan, Persian, Slovenian, Telugu, and Thai translations
 
 # 19.91 (GNOME 3.1.91)
-Bug Fixes:
+## Bug Fixes
 - Fix incorrectly resuming encrypted backups as non-encrypted ones
 - Fix help not opening
 - Fix removing multiple folders at once from the include/exclude lists
-Polish:
+## Polish
 - When newer versions of duplicity warn that a file has been corrupted upon upload, Déjà Dup will intelligently retry the backup
-Packaging:
+## Packaging
 - Require Duplicity >= 0.6.14, for its data corruption fixes
-Translations:
+## Translations
 - New Bosnian and Latvian translations
 - Updated Brazilian Portuguese, Chinese (Traditional), Czech, English (UK), Finnish, French, Italian, and Russian translations
 
 # 19.90 (GNOME 3.1.90)
-Polish:
+## Polish
 - Allow showing the progress dialog in GNOME Shell
-Packaging:
+## Packaging
 - Drop optional support for libappindicator, libunity plus legacy GtkStatusIcon support is enough
-Translations:
+## Translations
 - New Occitan and Serbian translations
 - Updated Basque, Croatian, Dutch, English (UK), French, German, Hungarian, Lithuanian, Polish, Serbian, Spanish, and Vietnamese translations
 
 # 19.5 (GNOME 3.1.5)
-Bug Fixes:
+## Bug Fixes
 - Fix crash if using nautilus plugin as root
 - Fix crash if restore-missing dialog gives us unexpected non-path files
 - Fix incorrect order of old/new hostnames in error dialog about new hostname
 - Fix pressing Delete key in include/exclude lists being ignored
-Polish:
+## Polish
 - Lots of UI and label tweaks
 - Don't show optical media in backup location dropdown
 - Update backup location dropdown as external drives come and go
 - Allow drag and drop of folders into include/exclude lists
 - Make it clear that the default home folder include is only your user's home folder
 - Don't keep notifying about delayed backups between setting up your preferences and your first backup
-Translations:
+## Translations
 - New Malay translation
 - Updated Basque, Croatian, Dutch, Finnish, Galician, German, Hungarian, Italian, Polish, Slovenian, Spanish, Swedish, Turkish, and Vietnamese translations
 
 # 19.4 (GNOME 3.1.4)
-Bug Fixes:
+## Bug Fixes
 - Fix crash with accessibility turned on
 - Revert change in 19.3 that sometimes caused bogus "unknown error" dialogs after a successful backup
 - Watch for changes in automatic backup settings again
 - Check for Ubuntu One support more robustly, preventing it being shown as an option when it isn't available
 - Workaround some NetworkManager oddities by waiting two minutes to make sure we are really connected
 - When duplicity gives us an error we don't understand, try operation again without a cache to try and workaround whatever the problem is
-Polish:
+## Polish
 - Drop encryption preference and either ask during first backup or detect from existing backup
 - More layout fixups to work better with latest GTK+
 - Where the Autostart-Delay key is supported, delay monitor start by two minutes
-Packaging:
+## Packaging
 - Require Duplicity >= 0.6.8
-Translations:
+## Translations
 - New Albanian, Asturian, and English (Australia) translations
 - Updated Basque, Brazilian Portuguese, Bulgarian, Chinese (Traditional), Croatian, Dutch, Faroese, Finnish, French, German, Hungarian, Italian, Lithuanian, Norwegian Bokmal, Polish, Slovenian, Spanish, Swedish, Turkish, and Vietnamese translations
 
 # 19.3 (GNOME 3.1.3)
-Bug Fixes:
+## Bug Fixes
 - Fix crash on first launch
 - Fix crash when cancelling an operation
 - Only prompt about backing up every month, not every login after the first
@@ -442,215 +442,215 @@ Bug Fixes:
 - Workaround "CRC check failed" bug by clearing the cache if we hit it
 - Don't restore all files when trying to just restore one
 - Ask gpg1 to not use agent, working around some gpg-agent problems
-Polish:
+## Polish
 - Fix some layout issues with latest GTK+
 - Don't show location preferences when restoring single files, just on full restore
 - Show launcher icon in Unity during automatic backup again
-Translations:
+## Translations
 - New Persian translation
 - Updated Basque, Croatian, Danish, Dutch, Finnish, French, German, Lithuanian, Polish, Russian, and Spanish translations
 
 # 19.2.2
-Bug Fixes:
+## Bug Fixes
 - Fix a compilation issue with gio-unix-2.0
 - Update mailing list links
 
 # 19.2.1
-Bug Fixes:
+## Bug Fixes
 - Fix compilation issue for nautilus plugin
 
 # 19.2 (GNOME 3.1.2)
-Features:
+## Features
 - Turn on Ubuntu One support when using a newer duplicity
 - Added monthly notification about backing up if user never used deja-dup
-Bug Fixes:
+## Bug Fixes
 - Don't ignore user's chosen external drive in preferences when it is plugged in
 - Don't crash if file path setting is empty
-Polish:
+## Polish
 - Better support for GNOME Shell and its notification system
 - Run Déjà Dup itself under ionice and nice instead of just duplicity
 - Make volume chunk sizes larger, to reduce the number of files created
-Packaging:
+## Packaging
 - Bring back man pages and a separate deja-dup-preferences executable
 - Make libgnome-control-center an optional dependency
 - Make python-boto and python-rackspace-cloudfiles optional dependencies
-Translations:
+## Translations
 - New Croatian, Greek, and Telugu translations
 - Updated Basque, Brazilian Portuguese, Bulgarian, Catalan, Chinese (Traditional), Czech, Dutch, English (UK), Finnish, French, Galician, German, Hebrew, Hungarian, Italian, Norwegian Bokmal, Polish, Russian, Spanish, Ukrainian, and Vietnamese translations
 
 # 19.1 (GNOME 3.1.1)
-Features:
+## Features
 - Reworked interface to be a control center plugin
 - Added overview page where last and next backup dates can be seen
-Polish:
+## Polish
 - Fleshed out and updated help documenation
 - When restoring from a location that isn't your normal backup location, your location isn't changed
 - When encryption password is bad, ask for it again
 - Only show nautilus context menu item if file is in backup
-Packaging:
+## Packaging
 - Require gtk+-3.0
 - Require libgnome-control-center
 - Drop libunique
 - Interface shipped as a control center plugin now, not a launchable application
 - Drop man pages, as all commands are in libexec now
-Translations:
+## Translations
 - Updated Basque, Bulgarian, Dutch, Finnish, French, Galician, German, Hungarian, Italian, Polish, Russian, and Spanish translations
 
 # 18.1.1
-Bug Fixes:
+## Bug Fixes
 - Actually work with NetworkManager 0.9
-Translations:
+## Translations
 - Updated Basque translation
 
 # 18.1 (GNOME 3.0.1)
-Bug Fixes:
+## Bug Fixes
 - Work with NetworkManager 0.9
 
 # 18.0 (GNOME 3.0)
-Bug Fixes:
+## Bug Fixes
 - If using an older duplicity and it gives a certain bogus "time not moving forward" error, handle it instead of passing the error along
 - Create backup location folder if it doesn't exist
 - Don't show duplicate external hard drives
-Translations:
+## Translations
 - Updated Dutch and German translations
 
 # 17.92 (GNOME 2.91.92)
-Features:
+## Features
 - Re-enabled support for resuming a backup, if using the unreleased duplicity 0.6.13
-Polish:
+## Polish
 - New icon by Lapo Calamandrei
-Translations:
+## Translations
 - Updated Czech and German translations
 
 # 17.91 (GNOME 2.91.91)
-Bug Fixes:
+## Bug Fixes
 - Fix a couple issues with Unity integration (like not showing in launcher)
 - Fix some broken label mnemonics in the preferences
-Polish:
+## Polish
 - Rename Quit to Close
-Translations:
+## Translations
 - Updated Brazilian Portuguese, Chinese (Simplified), English (UK), Italian, Norwegian Bokmal, Spanish, and Ukrainian translations
 
 # 17.90 (GNOME 2.91.90)
-Bug Fixes:
+## Bug Fixes
 - Fixed bug with remote locations that made it impossible to set a remote folder
 - Fix a couple rare crashers
-Polish:
+## Polish
 - When entering an encryption password for the first time, it now needs to be confirmed to avoid typo mistakes
 - First pass at optional Unity integration (instead of a status icon)
-Packaging:
+## Packaging
 - Require the stable release of GTK+ 3.0 (if compiling against 3.0)
 - If libunity is available, it will be used; control further with --with-unity or --without-unity
-Translations:
+## Translations
 - New Bulgarian translation
 - Updated Catalan, Chinese (Traditional), Czech, French, German, Hebrew, Russian, Spanish, Turkish, and Ukranian translations
 
 # 17.6 (GNOME 2.91.6)
-Bug Fixes:
+## Bug Fixes
 - Don't show error if both Déjà Dup and nautilus are trying to mount a volume at the same time
 - Allow removing multiple folders from the preferences at the same time
 - Handle more odd symlink-in-include-path situations
 - Fix odd behavior (possibly a crash) when cancelling a backup or restore
-Polish:
+## Polish
 - Exclude Adobe flash cache directory by default
 - Add documentation for how to get your data back even if Déjà Dup isn't working
-Packaging:
+## Packaging
 - Have 'make check' run some tests inside of Xvfb.  This may not work 100% yet, if it doesn't, just don't run tests as part of the build
 - If building in maintainer mode (and thus using valac), the minimum valac version is now 0.11.4
 - Support libnautilus-extension-3.0
 
 # 17.5 (GNOME 2.91.5)
-Features:
+## Features
 - Add support for the Rackspace Cloud Files service
-Bug Fixes:
+## Bug Fixes
 - Fix crash when changing backup location on first startup
 - When browsing for a local folder, start the dialog in the current folder setting
-Polish:
+## Polish
 - Use hostname in default Amazon S3 folder name
 - Add Downloads folder to default exclude list
-Packaging:
+## Packaging
 - Re-enable GTK+ 3.0 support using --with-gtk3, will use it by default if installed at build time
 - Will need python-cloudfiles installed at run time to enable new Rackspace Cloud Files support
-Translations:
+## Translations
 - New Ukrainian translation
 - Updated Basque, Czech, Danish, Dutch, English (UK), French, German, Japanese, Polish, Russian, Spanish, and Swedish translations
 
 # 17.4 (GNOME 2.91.4)
-Polish:
+## Polish
 - Reorganize the backup location preferences to be more intuitive
-Translations:
+## Translations
 - New Chinese (Simplified) translation
 - Updated Arabic, Brazilian Portuguese, Chinese (Traditional), Czech, Dutch, French, Indonesian, Norwegian Bokmal, Spanish, and Turkish translations
 
 # 17.3 (GNOME 2.91.3)
-Bug Fixes:
+## Bug Fixes
 - Fix crash when changing backup location
 - Fix date formats when restoring to be more consistent
-Packaging:
+## Packaging
 - Drop accidental resurgence of gconf-2.0 dependency
 - Require libnotify 0.7
-Translations:
+## Translations
 - New Basque and Norwegian Nynorsk translations
 - Updated Arabic, Brazilian Portuguese, Catalan, Czech, Dutch, English (UK), Faroese, French, German, Hebrew, Italian, Japanese, Lithuanian, Norwegian Bokmal, Polish, Russian, Spanish, Swedish, and Turkish translations
 
 # 17.2 (GNOME 2.91.2)
-Features:
+## Features
 - Add a "Restore Missing Files" interface, accessed via nautilus
 - Support GNOME Shell persistent notifications
-Polish:
+## Polish
 - Only calculate progress bar if a fresh backup is being made
 - Adjust gsettings path, so previous 17.x settings changes may be lost
-Bug Fixes:
+## Bug Fixes
 - If Duplicity looks like it's hitting a common bad-metadata bug, clear cache and try again
 
 # 17.1 (GNOME 2.91.1)
-Bug Fixes:
+## Bug Fixes
 - If backup destination does not report free size, just continue anyway
 - Fix bug preventing sudo and encryption getting along
 - Don't ask for root password when restoring into the user's home folder
 
 # 17.0 (GNOME 2.91.0)
-Features:
+## Features
 - Use gsettings and dconf instead of gconf
-Packaging:
+## Packaging
 - Drop gconf-2.0
-Translations:
+## Translations
 - Updated Czech, French, German, Italian, and Japanese translations
 
 # 16.0 (GNOME 2.32.0)
-Translations:
+## Translations
 - Updated Czech, Dutch, Finnish, French, Lithuanian, Polish, and Russian translations
 
 # 15.92 (GNOME 2.31.92)
-Features:
+## Features
 - Support ConnMan as well as NetworkManager
-Bug Fixes:
+## Bug Fixes
 - Disable explicit resume support as there are still bugs in duplicity's implementation
 - Don't add excluded symlink targets to the include list
 - If NetworkManager isn't running, assume connection is valid
-Packaging:
+## Packaging
 - Drop libdbus-glib
 - Require glib 2.25/2.26
-Translations:
+## Translations
 - Updated Brazilian Portuguese, Chinese (Traditional), Dutch, Finnish, French, German, Italian, Japanese, Lithuanian, Polish, and Russian translations
 
 # 15.5 (GNOME 2.31.5)
-Bug Fixes:
+## Bug Fixes
 - Always leave at least one full backup, even if space seems too low for another
 - Don't cancel operation when the window close button is pressed, just hide
-Polish:
+## Polish
 - Adjust symbolic panel icon to work with new GTK+ 3.0 symbolic color support
 - Escape printed duplicity command lines to avoid errors when entering them manually
-Packaging:
+## Packaging
 - Support gtk3 via --with-gtk3 configure argument that defaults to 'check'
-Translations:
+## Translations
 - New Brazilian Portuguese and Thai translations
 - Updated Arabic, Dutch, English (UK), French, Galician, Italian, Japanese, Malayalam, Polish, Russian and Spanish translations
 
 # 15.3 (GNOME 2.31.3)
-Features:
+## Features
 - When the backup location is out of space, delete the oldest backup
-Bug Fixes:
+## Bug Fixes
 - Don't delete backups after 6 months if they are supposed to be kept forever
 - Don't crash nautilus when trying to restore files twice
 - Don't cause false-negative permission denied errors when entering password
@@ -658,165 +658,165 @@ Bug Fixes:
 - Don't duplicate the files-to-restore list in the restore confirmation dialog
 - When a symlink is in the include/exclude list, also include/exclude its target
 - Support better error messages for when the backup location is missing or full
-Polish:
+## Polish
 - Rearrange preferences dialog to use tabs
-Translations:
+## Translations
 - New Faroese translation
 - Updated Dutch, English (UK), Hungarian, Polish, Slovenian, and Spanish translations
  
 # 15.2 (GNOME 2.31.2)
-Polish:
+## Polish
 - Fix some spacing issues with dialog layouts
 - When restoring, don't show time when there's only one backup on that day
-Translations:
+## Translations
 - New Catalan translation
 - Updated Dutch, English (UK), Finnish, German, Russian, and Turkish translations
 
 # 15.1 (GNOME 2.31.1)
-Polish:
+## Polish
 - Reorganize help documentation to use new mallard format
 - Change terminology for 'backup' verb to 'back up'
-Translations:
+## Translations
 - New Bulgarian, Polish, and Romanian translations
 - Updated English (UK), Finnish, Galacian, German, Italian, Japanese, Lithuanian, Russian, Slovak, Spanish, and Turkish translations
 
 # 14.2 (GNOME 2.30.2)
-Bug Fixes:
+## Bug Fixes
 - Don't delete backups after 6 months if they are supposed to be kept forever
 - Don't crash nautilus when trying to restore files twice
 - Don't cause false-negative permission denied errors when entering password
 - Allow going back at the restore confirmation dialog
 - Don't duplicate the files-to-restore list in the restore confirmation dialog
-Translations:
+## Translations
 - New Catalan and Faroese translations
 - Updated Dutch and Turkish translations
 
 # 14.1 (GNOME 2.30.1)
-Bug Fixes:
+## Bug Fixes
 - Fix backing up to an external drive (broken since a glib update)
 - Fix restoring a single directory that already exists
 - Fix a deja-dup-monitor crash if there is an error reading the configuration
-Translations:
+## Translations
 - New Romanian translation
 - Updated Dutch, German, Hungarian, Italian, Polish, and Turkish translations
 
 # 14.0.3
-Bug Fixes:
+## Bug Fixes
 - Fix restoring to a non-empty directory (including to original locations).
 
 # 14.0.2
-Bug Fixes:
+## Bug Fixes
 - Allow switching backup location away from an external drive
 
 # 14.0.1
-Bug Fixes:
+## Bug Fixes
 - Do not use 100% CPU when backing up
 
 # 14.0 (GNOME 2.30.0)
-Polish:
+## Polish
 - Make panel icon smaller to fit better
 - Make main window non-resizable
-Bug Fixes:
+## Bug Fixes
 - Workaround crash bug in duplicity 0.6.08 and 0.6.08a
-Packaging:
+## Packaging
 - Make nautilus extension optional (--without-nautilus)
-Translations:
+## Translations
 - New Polish translation
 - Updated Finnish, German, Hungarian, and Turkish translations
 
 # 13.92 (GNOME 2.29.92)
-Polish:
+## Polish
 - Don't try to run automated backups immediately after logging in.  Instead, wait 2 minutes to give NetworkManager a chance to connect.  (If it's still not ready, we will give normal warning about waiting for connection.)
-Bug Fixes:
+## Bug Fixes
 - Do the right thing if user asks us to include folder A/B but exclude A and vice versa.
-Translations:
+## Translations
 - Updated Dutch, English (UK), German, Hungarian, Japanese, Russian, Slovak, Slovenian, and Swedish translations
 
 # 13.91 (GNOME 2.29.91)
-Polish:
+## Polish
 - Add a 'Show password' checkbox to password prompts, so you can see what you type
-Bug Fixes:
+## Bug Fixes
 - Fix a typo and some missing keys in gconf documentation
 - Don't flash window on and off when canceling a backup
-Translations:
+## Translations
 - Updated English (UK), German, Japanese, Russian, Slovak, and Swedish translations
 
 # 13.7 (GNOME 2.29.90)
-Polish:
+## Polish
 - Simplify applet menu (left-click and right-click are same, show/hide progress is now a check box, show percent done in menu itself)
-Bug Fixes:
+## Bug Fixes
 - Fix crash when backing up with SSH by compiling with latest valac
 - Fix line endings in error messages
 - If user hid progress dialog of a manual backup, pop up success screen when done
-Translations:
+## Translations
 - New Slovenian translation
 - Updated Dutch, English (UK), Finnish, and Russian translations
 
 # 13.6 (GNOME 2.29.6)
-Features:
+## Features
 - Ask for root password when restoring into system folders
-Packaging:
+## Packaging
 - Require gio-unix
-Translations:
+## Translations
 - Updated Arabic, Czech, Dutch, French, German, Hungarian, Japanese, Russian, Slovak, and Spanish translations
 
 # 13.5 (GNOME 2.29.5)
-Features:
+## Features
 - Supports libappindicator if available
-Bug Fixes:
+## Bug Fixes
 - If using duplicity 0.6.07, some issues with /tmp space when restoring are fixed
-Packaging:
+## Packaging
 - New --with-appindicator configure option, defaults to on if libappindicator is installed
-Translations:
+## Translations
 - New Japanese translation
 - Updated Arabic, English (UK), French, Russian, and Spanish translations
 
 # 13.4 (GNOME 2.29.4)
-Bug Fixes:
+## Bug Fixes
 - Don't crash if user didn't install the gconf schema
-Translations:
+## Translations
 - New Hungarian translation
 - Updated Dutch, English (UK), German, Indonesian, Russian, and Spanish
    translations
 
 # 13.3 (GNOME 2.29.3)
-Features:
+## Features
 - If a removable drive is not connected, notify the user and wait for it
-Bug Fixes:
+## Bug Fixes
 - Don't try to run a scheduled backup if a manual backup/restore is running
-Translations:
+## Translations
 - Updated Dutch, German, Italian, Russian, and Spanish translations
-Packaging:
+## Packaging
 - Bumped required glib version to 2.20
 - Add back libnotify dependency
 
 # 11.1 (2009-11-16)
-Bug Fixes:
+## Bug Fixes
 - Don't download all backup files when restoring a single file
 - Correctly restore files in read-only directories
-Translations:
+## Translations
 - Updated German translation
 
 # 11.0 (2009-10-29)
-Features:
+## Features
 - Allow deleting old backups past a certain date (e.g. 3 months ago)
 - Will create fresh full backups occasionally to avoid backup corruption
 - Support resuming an unfinished backup
-Bug Fixes:
+## Bug Fixes
 - Support duplicity's native gio handling, fixing some remote connection bugs
 - Don't start an automatic backup if no network connection
 - Don't ask for encryption passphrase twice during restore
 - If a hostname mismatch occurs, allow the user to decide what to do
-Polish:
+## Polish
 - Allow turning on automatic backups after a successful manual backup
 - Make backup chunk sizes much larger, as fewer files are easier to deal with
 - Allow hiding progress window while backing up by clicking on the applet
 - Ask for passwords in-window rather than popping up a new dialog
 - Provide feedback about when we're uploading vs backing up
-Translations:
+## Translations
 - New Czech, Esperanto, Italian, Kurdish, Portuguese, Slovak, and Traditional Chinese translations
 - Updated Dutch, French, Galacian, German, Norwegian Bokmal, Russian, Spanish, and Swedish translations
-Packaging Changes:
+## Packaging
 - Bumped required gtk+ version to 2.14
 - Bumped required glib version to 2.18
 - Dropped libgnomeui dependency

@@ -28,16 +28,8 @@ configure:
 check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
-dist: pot
-	rm -f builddir/meson-dist/*
-	ninja -C builddir dist
-	gpg --armor --sign --detach-sig builddir/meson-dist/deja-dup-*.tar.xz
-
 clean distclean:
 	rm -rf builddir
-
-deb:
-	DEB_BUILD_OPTIONS=nocheck debuild
 
 screenshots: all
 	@gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
@@ -69,7 +61,7 @@ screenshots: all
 pot: configure
 	ninja -C builddir deja-dup-pot help-org.gnome.DejaDup-pot
 
-copy-po:
+copy-po: pot
 	mkdir -p builddir
 	rm -r builddir/translations
 	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
@@ -81,6 +73,9 @@ copy-po:
 	git add po/*.po
 	git add deja-dup/help/*/*.po
 
+deb:
+	DEB_BUILD_OPTIONS=nocheck debuild
+
 flatpak:
 	flatpak-builder --repo=$(HOME)/repo \
 	                --force-clean \
@@ -89,4 +84,4 @@ flatpak:
 	                flatpak/org.gnome.DejaDupDevel.yaml
 	flatpak update --user -y org.gnome.DejaDupDevel
 
-.PHONY: configure clean dist all copy-po check screenshots flatpak
+.PHONY: configure clean all copy-po check screenshots flatpak

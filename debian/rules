@@ -20,4 +20,4 @@ override_dh_auto_install:
 	DESTDIR=$(CURDIR)/debian/tmp ninja -v -C builddir install
 
 override_dh_installchangelogs:
-	dh_installchangelogs NEWS
+	dh_installchangelogs NEWS.md

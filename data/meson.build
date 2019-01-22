@@ -59,6 +59,7 @@ test('validate-monitor-desktop', desktop_file_validate,
 
 conf_data = configuration_data()
 conf_data.set('icon', application_id)
+conf_data.set('name_suffix', name_suffix)
 vars = configure_file(input: 'org.gnome.DejaDup.desktop.in',
     output: 'org.gnome.DejaDup.vars.desktop.in',
     configuration: conf_data)
