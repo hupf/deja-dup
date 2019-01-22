@@ -17,7 +17,7 @@
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
 project('deja-dup', ['vala', 'c'],
-    version: '38.3',
+    version: '38.4',
     license: 'GPLv3+',
     default_options: [
         'warning_level=1',
@@ -43,7 +43,6 @@ localedir = join_paths(prefix, get_option('localedir'))
 pkgdatadir = join_paths(datadir, meson.project_name())
 pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
-toolsdir = join_paths(pkglibexecdir, 'tools')
 
 # Dependencies
 gio_dep = dependency('gio-2.0', version: '>= 2.46')

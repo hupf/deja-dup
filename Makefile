@@ -29,7 +29,7 @@ check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
 clean distclean:
-	rm -rf builddir
+	rm -rf builddir parts stage prime *.snap
 
 screenshots: all
 	@gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
@@ -84,4 +84,9 @@ flatpak:
 	                flatpak/org.gnome.DejaDupDevel.yaml
 	flatpak update --user -y org.gnome.DejaDupDevel
 
-.PHONY: configure clean all copy-po check screenshots flatpak
+snap:
+	rm -f *.snap
+	snapcraft snap
+	snap install ./*.snap --dangerous --classic
+
+.PHONY: configure clean all copy-po check screenshots flatpak snap

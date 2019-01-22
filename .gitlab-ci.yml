@@ -1,26 +1,35 @@
-include: "https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml"
+# -*- Mode: YAML; indent-tabs-mode: nil; tab-width: 2 -*-
+---
+include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml
 
 variables:
-  BUNDLE: "deja-dup-dev.flatpak"
+  BUNDLE: deja-dup-dev.flatpak
 
 flatpak:
-    extends: .flatpak
-    image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:3.30
-    variables:
-        MANIFEST_PATH: "flatpak/org.gnome.DejaDupDevel.yaml"
-        MESON_ARGS: "-Dprofile=Devel"
-        FLATPAK_MODULE: "deja-dup"
-        RUNTIME_REPO: "https://sdk.gnome.org/gnome.flatpakrepo"
-        APP_ID: "org.gnome.DejaDupDevel"
-        FLATPAK_VALIDATE_ICON: /usr/bin/true
+  extends: .flatpak
+  image: registry.gitlab.gnome.org/gnome/gnome-runtime-images/gnome:3.30
+  variables:
+    MANIFEST_PATH: flatpak/org.gnome.DejaDupDevel.yaml
+    MESON_ARGS: -Dprofile=Devel
+    FLATPAK_MODULE: deja-dup
+    RUNTIME_REPO: https://sdk.gnome.org/gnome.flatpakrepo
+    APP_ID: org.gnome.DejaDupDevel
+    FLATPAK_VALIDATE_ICON: /usr/bin/true
 
 review:
-    extends: .review
-    stage: deploy
-    dependencies:
-        - flatpak
+  extends: .review
 
 stop_review:
-    extends: .stop_review
-    stage: deploy
+  extends: .stop_review
 
+# Disabled for now until snapcore/snapcraft is updated with snapcraft 3:
+# https://bugs.launchpad.net/snapcraft/+bug/1814024
+#snap:
+#  stage: deploy
+#  image: snapcore/snapcraft
+#  script:
+#    - snapcraft snap -o deja-dup-dev.snap
+#  artifacts:
+#    paths:
+#      - deja-dup-dev.snap
+#    expire_in: 30 days
