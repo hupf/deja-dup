@@ -46,4 +46,3 @@ deja_dup = executable('deja-dup',
 
 subdir('monitor')
 subdir('nautilus')
-subdir('tests')

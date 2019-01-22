@@ -31,6 +31,10 @@ configure:
 check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
+.PHONY: dogtail-snap
+dogtail-snap:
+	./acceptance/run-ui-tests --snap ./acceptance
+
 .PHONY: clean
 clean:
 	rm -rf builddir

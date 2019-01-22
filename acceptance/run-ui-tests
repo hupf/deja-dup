@@ -1,0 +1,23 @@
+#!/bin/sh
+# -*- Mode: sh; indent-tabs-mode: nil; tab-width: 2 -*-
+
+# Dogtail requires this
+gsettings set org.gnome.desktop.interface toolkit-accessibility true
+
+EXISTING=$(ps x -o pid,cmd | grep deja-dup | sed 's/^ *\([0-9]\+\).*/\1/')
+if [ -n "$EXISTING" ]; then
+  kill -9 $EXISTING 2>/dev/null
+fi
+
+export DEJA_DUP_TEST_FAST_FAIL=1
+
+if [ "$1" = "--snap" ]; then
+  shift
+  export XDG_DATA_DIRS=$HOME/snap/deja-dup/current/.local/share:$XDG_DATA_DIRS
+  export DEJA_DUP_MONITOR_EXEC=deja-dup.monitor
+else
+  echo "Must provide a mode"
+  exit 1
+fi
+
+exec pytest-3 $*
