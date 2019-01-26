@@ -80,15 +80,8 @@ public abstract class ToolJob : Object
   public string time {get; set;} // RESTORE
 }
 
-public abstract class ToolPlugin : Peas.ExtensionBase, Peas.Activatable
+public abstract class ToolPlugin : Object
 {
-  // Peas methods
-  public Object object {owned get; construct;}
-  public virtual void activate () {}
-  public virtual void deactivate () {}
-  public virtual void update_state () {}
-
-  // Deja Dup methods
   public string name {get; protected set;}
   public virtual string[] get_dependencies() {return {};} // list of what-provides hints
   public abstract ToolJob create_job () throws Error;

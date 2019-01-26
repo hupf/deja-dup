@@ -401,45 +401,12 @@ public ToolPlugin get_tool()
   return tool;
 }
 
-void initialize_tool_plugin() throws Error
-{
-  var engine = new Peas.Engine ();
-
-  // For testing, we'll often point to in-tree tools
-  string search_path = Environment.get_variable("DEJA_DUP_TOOLS_PATH");
-  if (search_path == null || search_path == "")
-    search_path = Path.build_filename(Config.PKG_LIBEXEC_DIR, "tools");
-  engine.add_search_path(search_path, null);
-
-  var info = engine.get_plugin_info("libduplicity.so");
-  if (info == null)
-    throw new SpawnError.FAILED(_("Could not find backup tool in %s.  Your installation is incomplete.").printf(search_path));
-  if (!engine.try_load_plugin(info))
-    throw new SpawnError.FAILED(_("Could not load backup tool.  Your installation is incomplete."));
-
-  var extset = new Peas.ExtensionSet(engine, typeof(Peas.Activatable));
-  var ext = extset.get_extension(info);
-  tool = ext as ToolPlugin;
-  if (tool == null)
-    throw new SpawnError.FAILED(_("Backup tool is broken.  Your installation is incomplete."));
-
-  tool.activate();
-}
-
 public bool initialize(out string header, out string msg)
 {
   header = null;
   msg = null;
 
-  // Get tool plugin to use
-  try {
-    initialize_tool_plugin();
-  }
-  catch (Error e) {
-    header = _("Could not start backup tool");
-    msg = e.message;
-    return false;
-  }
+  tool = new DuplicityPlugin();
 
   migrate_settings();
 

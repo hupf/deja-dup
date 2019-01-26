@@ -21,14 +21,6 @@ using GLib;
 
 bool system_mode = false;
 
-string get_top_builddir()
-{
-  var builddir = Environment.get_variable("top_builddir");
-  if (builddir == null)
-    builddir = "../../builddir";
-  return builddir;
-}
-
 string get_top_srcdir()
 {
   var srcdir = Environment.get_variable("top_srcdir");
@@ -72,9 +64,6 @@ void backup_setup()
   // on us not doing so.
 
   var dir = Environment.get_variable("DEJA_DUP_TEST_HOME");
-
-  if (!system_mode)
-    Environment.set_variable("DEJA_DUP_TOOLS_PATH", "%s/libdeja/tools/duplicity".printf(get_top_builddir()), true);
 
   Environment.set_variable("DEJA_DUP_TEST_MOCKSCRIPT", Path.build_filename(dir, "mockscript"), true);
   Environment.set_variable("XDG_CACHE_HOME", Path.build_filename(dir, "cache"), true);

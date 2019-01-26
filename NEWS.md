@@ -1,3 +1,6 @@
+# Next
+- Drop libpeas dependency
+
 # 38.3
 - Allow restoring from paths with symlinks in more situations (including a fix
   for a backup error when ~/.cache is a symlink)

@@ -43,14 +43,23 @@ libdeja = shared_library('deja',
      'RecursiveMove.vala',
      'RecursiveOp.vala',
      'ToolPlugin.vala',
-     'uriutils.c'],
+     'uriutils.c',
+     'tools/duplicity/DuplicityInstance.vala',
+     'tools/duplicity/DuplicityJob.vala',
+     'tools/duplicity/DuplicityPlugin.vala',
+    ],
     vala_args: common_vflags + ['--pkg=secret', '--pkg=uriutils'],
     c_args: common_cflags,
-    dependencies: [gio_dep, gio_unix_dep, goa_dep, goabackend_dep, packagekit_dep, peas_dep, secret_dep],
+    dependencies: [gio_dep, gio_unix_dep, goa_dep, goabackend_dep, gpgerror_dep, packagekit_dep, secret_dep],
     install: true,
     install_dir: pkglibdir)
 
 libdeja_inc = include_directories('.')
 
+# This is used when running duplicity as root.
+# See data/org.gnome.DejaDup.policy.in and DuplicityInstance.vala for more details.
+install_data('tools/duplicity/duplicity',
+    install_dir: pkglibexecdir,
+    install_mode: 'rwxr-xr-x')
+
 subdir('tests')
-subdir('tools')

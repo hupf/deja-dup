@@ -187,14 +187,6 @@ void migrate_file_local()
   assert(local.get_string(DejaDup.LOCAL_FOLDER_KEY) == "/test/path");
 }
 
-string get_top_builddir()
-{
-  var builddir = Environment.get_variable("top_builddir");
-  if (builddir == null)
-    builddir = Path.build_filename(get_top_srcdir(), "builddir");
-  return builddir;
-}
-
 string get_top_srcdir()
 {
   var srcdir = Environment.get_variable("top_srcdir");
@@ -241,7 +233,6 @@ int main(string[] args)
                              Environment.get_variable("PATH"),
                            true);
   Environment.set_variable("DEJA_DUP_LANGUAGE", "en", true);
-  Environment.set_variable("DEJA_DUP_TOOLS_PATH", Path.build_filename(get_top_builddir(), "libdeja/tools/duplicity"), true);
   Environment.set_variable("GSETTINGS_BACKEND", "memory", true);
   Test.bug_base("https://launchpad.net/bugs/%s");
 

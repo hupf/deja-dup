@@ -54,12 +54,11 @@ goabackend_dep = dependency('goa-backend-1.0')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 nautilus_dep = dependency('libnautilus-extension', required: false)
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
-peas_dep = dependency('libpeas-1.0')
 secret_dep = dependency('libsecret-1')
 
 # libgpg-error doesn't ship a pkg-config file
 gpgerror_libs = run_command('gpg-error-config', '--libs').stdout().strip()
-gpgerror_dep = declare_dependency(link_args: gpgerror_libs)
+gpgerror_dep = declare_dependency(link_args: gpgerror_libs.split())
 
 # Programs
 appstream_util = find_program('appstream-util')
