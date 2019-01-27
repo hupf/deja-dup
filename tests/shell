@@ -59,6 +59,9 @@ run_shell()
   fi
   if sh -c "$CMD"; then
     rm -rf "${ROOTDIR}" # Cleanup on clean exit
+    exit 0
+  else
+    exit $?
   fi
 }
 
@@ -72,7 +75,6 @@ if [ "$SHNAME" = "shell" ]; then
   export PATH="${BUILDDIR}/deja-dup/monitor:${BUILDDIR}/deja-dup:${PATH}"
 
   run_shell "sh $ROOTDIR/runscript.sh"
-  exit
 fi
 
 
