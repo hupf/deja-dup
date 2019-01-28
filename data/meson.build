@@ -76,7 +76,6 @@ test('validate-desktop', desktop_file_validate,
 
 conf_data = configuration_data()
 conf_data.set('appid', application_id)
-conf_data.set('series', series)
 conf_data.set('version', meson.project_version())
 vars = configure_file(input: 'org.gnome.DejaDup.appdata.xml.in',
     output: 'org.gnome.DejaDup.vars.appdata.xml.in',

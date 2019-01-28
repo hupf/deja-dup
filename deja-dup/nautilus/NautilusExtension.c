@@ -171,7 +171,7 @@ deja_dup_nautilus_extension_get_background_items(NautilusMenuProvider *provider,
   item = nautilus_menu_item_new("DejaDupNautilusExtension::restore_missing_item",
                                 dgettext(GETTEXT_PACKAGE, "Restore Missing Files…"),
                                 dgettext(GETTEXT_PACKAGE, "Restore deleted files from backup"),
-                                "deja-dup");
+                                ICON_NAME);
 
   g_signal_connect(item, "activate", G_CALLBACK(restore_missing_files_callback), NULL);
   g_object_set_data_full (G_OBJECT(item), "deja_dup_extension_file",
@@ -219,7 +219,7 @@ deja_dup_nautilus_extension_get_file_items(NautilusMenuProvider *provider,
                                           "Restore file from backup",
                                           "Restore files from backup",
                                           length),
-                                "deja-dup");
+                                ICON_NAME);
 
   g_signal_connect(item, "activate", G_CALLBACK(restore_files_callback), NULL);
   g_object_set_data_full (G_OBJECT(item), "deja_dup_extension_files", 

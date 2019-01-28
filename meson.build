@@ -24,7 +24,6 @@ project('deja-dup', ['vala', 'c'],
         'buildtype=debugoptimized',
     ],
     meson_version: '>= 0.38')
-series = '38'
 
 gnome = import('gnome')
 i18n = import('i18n')
