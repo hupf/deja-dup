@@ -272,8 +272,9 @@ public abstract class Operation : Object
       // This can happen when the packagekit daemon isn't installed or can't start(?)
       return null;
     } catch (Error e) {
-      raise_error("%s".printf(e.message), null);
-      done(false, false, null);
+      // For any other reason I can't foresee, we should just continue and
+      // hope for the best, rather than bother the user with it.
+      warning("%s\n".printf(e.message));
       return null;
     }
 
