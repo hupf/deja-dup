@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Without this line we don't seem to properly watch dconf changes.
+# The snap default is this dir, plus a "snap.deja-dup" directory.
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+
+exec "$SNAP/libexec/deja-dup/deja-dup-monitor" "$@"

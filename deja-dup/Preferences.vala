@@ -24,9 +24,10 @@ namespace DejaDup {
 // Convenience class for adding automatic backup switch to pref shells
 public class PreferencesPeriodicSwitch : Gtk.Switch
 {
+  DejaDup.FilteredSettings settings;
   construct
   {
-    var settings = DejaDup.get_settings();
+    settings = DejaDup.get_settings();
     settings.bind(DejaDup.PERIODIC_KEY, this, "active", SettingsBindFlags.DEFAULT);
   }
 }

@@ -135,17 +135,21 @@ public string nice_prefix(string command)
   return cmd;
 }
 
-public void run_deja_dup(string args, AppLaunchContext? ctx = null,
-                         List<File>? files = null)
+public void run_deja_dup(string[] args = {}, string exec = "deja-dup")
 {
-  var cmd = nice_prefix("deja-dup %s".printf(args));
-  var flags = AppInfoCreateFlags.SUPPORTS_STARTUP_NOTIFICATION |
-              AppInfoCreateFlags.SUPPORTS_URIS;
-  try {
-    var app = AppInfo.create_from_commandline(cmd, _("Déjà Dup Backup Tool"), flags);
-    app.launch(files, ctx);
+  var command = nice_prefix(exec);
+  string[] argv = command.split(" ");
+  foreach (string arg in args) {
+    argv += arg;
   }
-  catch (Error e) {
+
+  try {
+    Process.spawn_async(null, argv, null,
+                        SpawnFlags.SEARCH_PATH/* |
+                        SpawnFlags.STDOUT_TO_DEV_NULL |
+                        SpawnFlags.STDERR_TO_DEV_NULL*/,
+                        null, null);
+  } catch (Error e) {
     warning("%s\n", e.message);
   }
 }
@@ -304,7 +308,7 @@ public bool make_prompt_check()
 
   var now = new DateTime.now_local();
   if (last_run.compare(now) <= 0) {
-    run_deja_dup("--prompt");
+    run_deja_dup({"--prompt"});
     return true;
   }
   else

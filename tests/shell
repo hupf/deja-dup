@@ -72,6 +72,7 @@ if [ "$SHNAME" = "shell" ]; then
   glib-compile-schemas "${ROOTDIR}/share/glib-2.0/schemas"
   export XDG_DATA_DIRS="${ROOTDIR}/share:${XDG_DATA_DIRS}"
 
+  export DEJA_DUP_MONITOR_EXEC="${BUILDDIR}/deja-dup/monitor/deja-dup-monitor"
   export PATH="${BUILDDIR}/deja-dup/monitor:${BUILDDIR}/deja-dup:${PATH}"
 
   run_shell "sh $ROOTDIR/runscript.sh"
@@ -117,6 +118,7 @@ if [ "$SHNAME" = "shell-local" ]; then
 
   mkdir -p "${XDG_DATA_HOME}/Trash"
 
+  export DEJA_DUP_MONITOR_EXEC="${BUILDDIR}/deja-dup/monitor/deja-dup-monitor"
   export PATH="${BUILDDIR}/deja-dup/monitor:${BUILDDIR}/deja-dup:${PATH}"
 else
   export DEJA_DUP_TEST_SYSTEM=1

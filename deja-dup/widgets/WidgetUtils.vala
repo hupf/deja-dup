@@ -67,13 +67,37 @@ public void destroy_widget(Gtk.Widget w)
   Idle.add(() => {w.destroy(); return false;});
 }
 
+bool start_monitor_if_needed(FilteredSettings settings)
+{
+  if (settings.get_boolean(PERIODIC_KEY)) {
+    var monitor_exec = Environment.get_variable("DEJA_DUP_MONITOR_EXEC");
+    if (monitor_exec == null || monitor_exec.length == 0) {
+        monitor_exec = Path.build_filename(Config.PKG_LIBEXEC_DIR, "deja-dup-monitor");
+    }
+    // Will quickly and harmlessly bail if it can't claim the bus name
+    run_deja_dup({}, monitor_exec);
+  }
+  // Don't need to worry about else condition: the monitor will shut itself off
+  // when periodic is disabled.
+  return Source.CONTINUE;
+}
+
 public bool gui_initialize(Gtk.Window? parent, bool show_error = true)
 {
   string header;
   string msg;
   var rv = DejaDup.initialize(out header, out msg);
 
-  if (!rv && show_error) {
+  if (rv) {
+    var settings = get_settings();
+    Signal.connect(settings, "changed::" + PERIODIC_KEY, (Callback)start_monitor_if_needed, null);
+    start_monitor_if_needed(settings);
+    // FIXME: ideally we'd do something more elegant than adding a ref and
+    // leaking this settings, but we want it to stay around for the lifetime
+    // of the app.
+    settings.ref();
+  }
+  else if (show_error) {
     Gtk.MessageDialog dlg = new Gtk.MessageDialog (parent,
         Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
         Gtk.MessageType.ERROR,

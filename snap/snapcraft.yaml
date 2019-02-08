@@ -9,22 +9,33 @@ description: |
 
   https://wiki.gnome.org/Apps/DejaDup
 icon: data/icons/org.gnome.DejaDup.svg
+license: GPL-3.0+
 
-grade: devel
+grade: stable
 confinement: classic
 
 base: core18
 
 apps:
   deja-dup:
-    command: bin/deja-dup
+    command: bin/wrapper
     desktop: share/applications/org.gnome.DejaDup.desktop
     environment:
-      PATH: $SNAP/bin:$PATH
       PYTHONPATH: $SNAP/lib/python2.7/site-packages
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+  monitor:
+    command: bin/monitor.wrapper
+    environment:
+      PATH: /snap/bin:$PATH
+      XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+    passthrough:
+      autostart: org.gnome.DejaDup.Monitor.desktop
 
 parts:
+  dump:
+    plugin: dump
+    source: ./snap/local
+
   duplicity:
     plugin: python
     python-version: python2
@@ -34,7 +45,10 @@ parts:
       - librsync-dev
     stage-packages:
       - librsync1
+      - python-boto
+      - python-cloudfiles
       - python-gi
+      - python-swiftclient
 
   deja-dup:
     plugin: meson

@@ -21,6 +21,7 @@ using GLib;
 
 class Monitor : Object {
 
+static MainLoop loop;
 static uint timeout_id;
 static uint netcheck_id;
 static bool reactive_check;
@@ -105,30 +106,6 @@ static TimeSpan time_until(DateTime date)
   return date.difference(new DateTime.now_local());
 }
 
-static async void call_remote(string action, string[] args = {})
-{
-  var vargs = new VariantBuilder(new VariantType("av"));
-  foreach (string arg in args) {
-    vargs.add("v", new Variant.string(arg));
-  }
-  var platform_args = new VariantBuilder(new VariantType("a{sv}"));
-  try {
-    var deja = yield new DBusProxy.for_bus(BusType.SESSION,
-                                           DBusProxyFlags.NONE,
-                                           null,
-                                           Config.APPLICATION_ID,
-                                           "/org/gnome/DejaDup" + Config.PROFILE,
-                                           "org.freedesktop.Application",
-                                           null);
-    yield deja.call("ActivateAction",
-                    new Variant("(sava{sv})", action, vargs, platform_args),
-                    DBusCallFlags.NONE, -1, null);
-  }
-  catch (Error e) {
-    warning("%s", e.message);
-  }
-}
-
 static async void kickoff()
 {
   TimeSpan wait_time;
@@ -156,7 +133,7 @@ static async void kickoff()
   if (!ready) {
     debug("Postponing the backup.");
     if (!was_reactive && when != null)
-      yield call_remote("delay", {when});
+      DejaDup.run_deja_dup({"--delay", when});
     return;
   }
 
@@ -167,7 +144,7 @@ static async void kickoff()
     DejaDup.update_last_run_timestamp(DejaDup.TimestampType.BACKUP);
   }
   else {
-    yield call_remote("backup-auto");
+    DejaDup.run_deja_dup({"--backup", "--auto"});
   }
 }
 
@@ -177,7 +154,7 @@ static bool time_until_next_run(out TimeSpan time)
 
   var next_date = DejaDup.next_run_date();
   if (next_date == null) {
-    debug("Automatic backups disabled.  Not scheduling a backup.");
+    debug("Automatic backups disabled. Stopping monitor.");
     return false;
   }
   
@@ -222,8 +199,11 @@ static void prepare_next_run()
     return;
 
   TimeSpan wait_time;
-  if (!time_until_next_run(out wait_time))
+  if (!time_until_next_run(out wait_time)) {
+    // automatic backups are disabled - just quit for now
+    loop.quit();
     return;
+  }
   
   prepare_run(wait_time);
 }
@@ -241,11 +221,6 @@ static void make_first_check()
   first_check = true;
 
   DejaDup.make_prompt_check();
-  Timeout.add_seconds(DejaDup.get_prompt_delay(), () => {
-    DejaDup.make_prompt_check();
-    return true;
-  });
-
   prepare_next_run();
 }
 
@@ -298,10 +273,10 @@ static int main(string[] args)
   if (!DejaDup.initialize(null, null))
     return 1;
 
-  var loop = new MainLoop(null, false);
+  loop = new MainLoop(null, false);
   Idle.add(() => {
     // quit if we can't get the bus name or become disconnected
-    Bus.own_name(BusType.SESSION, Config.APPLICATION_ID + ".Monitor",
+    Bus.own_name(BusType.SESSION, "org.gnome.DejaDup.Monitor",
                  BusNameOwnerFlags.NONE, ()=>{},
                  ()=>{begin_monitoring();},
                  ()=>{loop.quit();});
