@@ -21,6 +21,7 @@ apps:
     command: bin/wrapper
     desktop: share/applications/org.gnome.DejaDup.desktop
     environment:
+      PATH: $SNAP/bin:$PATH
       PYTHONPATH: $SNAP/lib/python2.7/site-packages
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
   monitor:
