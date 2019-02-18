@@ -16,21 +16,26 @@
 # You should have received a copy of the GNU General Public License
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
+.PHONY: all
 all: configure
 	ninja -C builddir
 
 %:
 	@[ "$@" = "Makefile" ] || ninja -C builddir $@
 
+.PHONY: configure
 configure:
 	@[ -f builddir/build.ninja ] || meson -Dprofile=Devel builddir
 
+.PHONY: check
 check: all
 	LC_ALL=C.UTF-8 meson test -C builddir
 
-clean distclean:
+.PHONY: clean
+clean:
 	rm -rf builddir parts stage prime *.snap
 
+.PHONY: screenshots
 screenshots: all
 	@gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
 	@gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
@@ -58,10 +63,12 @@ screenshots: all
 	
 	@eog data/appdata
 
+.PHONY: pot
 pot: configure
-	ninja -C builddir deja-dup-pot help-org.gnome.DejaDup-pot
+	ninja -C builddir deja-dup-pot help-deja-dup-pot
 
-copy-po: pot
+.PHONY: translations
+translations: pot
 	mkdir -p builddir
 	rm -r builddir/translations
 	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
@@ -73,9 +80,11 @@ copy-po: pot
 	git add po/*.po
 	git add deja-dup/help/*/*.po
 
+.PHONY: deb
 deb:
 	DEB_BUILD_OPTIONS=nocheck debuild
 
+.PHONY: flatpak
 flatpak:
 	flatpak-builder --repo=$(HOME)/repo \
 	                --force-clean \
@@ -84,9 +93,8 @@ flatpak:
 	                flatpak/org.gnome.DejaDupDevel.yaml
 	flatpak update --user -y org.gnome.DejaDupDevel
 
+.PHONY: snap
 snap:
 	rm -f *.snap
 	snapcraft snap
-	snap install ./*.snap --dangerous --classic
-
-.PHONY: configure clean all copy-po check screenshots flatpak snap
+	snap install ./*.snap --classic --dangerous

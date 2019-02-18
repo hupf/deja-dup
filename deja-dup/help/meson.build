@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
-gnome.yelp(application_id,
+gnome.yelp(meson.project_name(),
     sources: ['backup-auto.page',
               'backup-first.page',
               'contribute.page',

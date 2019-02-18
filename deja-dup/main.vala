@@ -278,7 +278,7 @@ public class DejaDupApp : Gtk.Application
   {
     unowned List<Gtk.Window> list = get_windows();
     DejaDup.show_uri(list == null ? null : list.data,
-                     "help:" + Config.APPLICATION_ID);
+                     "help:" + Config.PACKAGE);
   }
 
   void about()
