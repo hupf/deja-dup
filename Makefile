@@ -73,12 +73,12 @@ translations: pot
 	rm -r builddir/translations
 	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
 	cp -a builddir/translations/po/*.po po
-	for po in builddir/translations/deja-dup/help/*.po; do \
-		mkdir -p deja-dup/help/$$(basename $$po .po); \
-		cp -a $$po deja-dup/help/$$(basename $$po .po)/; \
+	for po in builddir/translations/help/*.po; do \
+		mkdir -p help/$$(basename $$po .po); \
+		cp -a $$po help/$$(basename $$po .po)/; \
 	done
 	git add po/*.po
-	git add deja-dup/help/*/*.po
+	git add help/*/*.po
 
 .PHONY: deb
 deb:

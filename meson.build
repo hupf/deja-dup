@@ -107,6 +107,7 @@ common_vflags += ['--define=HAS_PACKAGEKIT']
 endif
 
 subdir('data')
+subdir('help')
 subdir('libdeja')
 subdir('deja-dup')
 subdir('po')

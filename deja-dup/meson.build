@@ -38,7 +38,6 @@ deja_dup = executable('deja-dup',
     install: true,
     install_rpath: pkglibdir)
 
-subdir('help')
 subdir('monitor')
 subdir('nautilus')
 subdir('tests')
