@@ -70,15 +70,12 @@ pot: configure
 .PHONY: translations
 translations: pot
 	mkdir -p builddir
-	rm -r builddir/translations
+	rm -rf builddir/translations
 	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
 	cp -a builddir/translations/po/*.po po
-	for po in builddir/translations/help/*.po; do \
-		mkdir -p help/$$(basename $$po .po); \
-		cp -a $$po help/$$(basename $$po .po)/; \
-	done
+	cp -a builddir/translations/help/*.po help
 	git add po/*.po
-	git add help/*/*.po
+	git add help/*.po
 
 .PHONY: deb
 deb:
