@@ -1,5 +1,10 @@
 # Next
+- Update app icon
+- Don't run monitor when automatic backups are disabled
 - Drop libpeas dependency
+- Fix compilation with valac 0.43
+- Be more forgiving if packagekit is unresponsive
+- Update translations
 
 # 38.3
 - Allow restoring from paths with symlinks in more situations (including a fix
