@@ -50,7 +50,7 @@ public class OperationVerify : Operation
   {
     if (nag) {
       var fake_state = new State();
-      fake_state.backend = backend.clone();
+      fake_state.backend = backend;//.ref() as DejaDup.Backend;
       set_state(fake_state);
     }
     action_desc_changed(_("Verifying backup…"));

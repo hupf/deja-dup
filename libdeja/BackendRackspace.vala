@@ -33,10 +33,6 @@ public class BackendRackspace : Backend
     Object(settings: (settings != null ? settings : get_settings(RACKSPACE_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendRackspace(settings);
-  }
-
   public override string[] get_dependencies()
   {
     return Config.CLOUDFILES_PACKAGES.split(",");

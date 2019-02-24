@@ -21,7 +21,8 @@ using GLib;
 
 [CCode (cheader_filename = "gpgrt.h", cname = "gpg_err_code_t", cprefix = "GPG_ERR_", has_type_id = false)]
 public enum GPGError {
-	BAD_KEY = 19,
+  NO_SECKEY = 17,
+  BAD_KEY = 19,
 }
 
 [CCode (cheader_filename = "gpgrt.h")]
@@ -80,6 +81,8 @@ internal class DuplicityJob : DejaDup.ToolJob
     public TimeVal time;
   }
   List<DateInfo?> collection_info = null;
+
+  bool reported_full_backups = false;
   
   bool checked_backup_space = false;
 
@@ -196,9 +199,11 @@ internal class DuplicityJob : DejaDup.ToolJob
       return 0;
   }
 
-  string get_remote ()
+  string get_remote(DejaDup.Backend? backend_override = null)
   {
-    return backend.get_location(ref needs_root);
+    if (backend_override == null)
+      backend_override = backend;
+    return backend_override.get_location(ref needs_root);
   }
 
   void expand_links_in_file(File file, ref List<File> all, bool include, List<File>? seen = null)
@@ -399,6 +404,10 @@ internal class DuplicityJob : DejaDup.ToolJob
         state = State.STATUS;
         action_desc = _("Preparing…");
       }
+      else if (!reported_full_backups && got_collection_info) {
+        report_full_backups.begin();
+        return true;
+      }
       // If we're backing up, and the version of duplicity supports it, we should
       // first run using --dry-run to get the total size of the backup, to make
       // accurate progress bars.
@@ -514,6 +523,40 @@ internal class DuplicityJob : DejaDup.ToolJob
     return local.resolve_relative_path(rel_file_path);
   }
   
+  async void report_full_backups()
+  {
+    Date full_backup = Date();
+    foreach (DateInfo info in collection_info) {
+      if (info.full)
+        full_backup.set_time_val(info.time);
+    }
+    var first_backup = !full_backup.valid();
+
+    var do_restart = true;
+    reported_full_backups = true; // don't do this a second time
+
+    // Notify the backend if we have full backups. This is a special check
+    // to help migration for the Google backend. If it returns a backend,
+    // we should delete all but one full backup from it.
+    var delete_backend = yield backend.report_full_backups(first_backup);
+    if (delete_backend != null) {
+      delete_excess(1, delete_backend);
+      first_backup = false; // has another backend, so don't report this as the first backup
+      do_restart = false;
+    }
+
+    // Set full backup threshold and determine whether we should trigger
+    // a full backup.
+    Date threshold = DejaDup.get_full_backup_threshold_date();
+    if (!full_backup.valid() || threshold.compare(full_backup) > 0) {
+      is_full_backup = true;
+      is_full(first_backup);
+    }
+
+    if (do_restart && !restart())
+      done(false, false, null);
+  }
+
   async void check_backup_space()
   {
     checked_backup_space = true;
@@ -547,6 +590,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           if (info.full)
             ++full_dates;
         }
+
         if (full_dates > 1) {
           delete_excess(full_dates - 1);
           // don't set checked_backup_space, we want to be able to do this again if needed
@@ -584,13 +628,13 @@ internal class DuplicityJob : DejaDup.ToolJob
     return true;
   }
   
-  void delete_excess(int cutoff) {
+  void delete_excess(int cutoff, DejaDup.Backend? backend_override = null) {
     state = State.DELETE;
     var argv = new List<string>();
     argv.append("remove-all-but-n-full");
     argv.append("%d".printf(cutoff));
     argv.append("--force");
-    argv.append(get_remote());
+    argv.append(get_remote(backend_override));
     
     set_status(_("Cleaning up…"));
     connect_and_start(null, null, argv);
@@ -644,21 +688,6 @@ internal class DuplicityJob : DejaDup.ToolJob
         checked_collection_info = true;
         var should_restart = mode != original_mode;
         mode = original_mode;
-
-        /* Set full backup threshold and determine whether we should trigger
-           a full backup. */
-        if (mode == DejaDup.ToolJob.Mode.BACKUP && got_collection_info) {
-          Date threshold = DejaDup.get_full_backup_threshold_date();
-          Date full_backup = Date();
-          foreach (DateInfo info in collection_info) {
-            if (info.full)
-              full_backup.set_time_val(info.time);
-          }
-          if (!full_backup.valid() || threshold.compare(full_backup) > 0) {
-            is_full_backup = true;
-            is_full(!full_backup.valid());
-          }
-        }
 
         if (should_restart) {
           if (restart())
@@ -958,8 +987,9 @@ internal class DuplicityJob : DejaDup.ToolJob
         // "bad session key" error message that is given if the password was incorrect.
         // Any other error should be presented to the user so they can maybe fix it
         // (bad configuration files or something).
+        var no_seckey_msg = gpg_strerror(GPGError.NO_SECKEY);
         var bad_key_msg = gpg_strerror(GPGError.BAD_KEY);
-        if (text_in.contains(bad_key_msg)) {
+        if (text_in.contains(no_seckey_msg) || text_in.contains(bad_key_msg)) {
           bad_encryption_password(); // notify upper layers, if they want to do anything
           text = _("Bad encryption password.");
         }

@@ -412,7 +412,8 @@ public bool initialize(out string header, out string msg)
 
   tool = new DuplicityPlugin();
 
-  migrate_settings();
+  migrate_file_settings();
+  migrate_goa_settings();
 
   /* We do a little trick here.  BackendAuto -- which is the default
      backend on a fresh install of deja-dup -- will do some work to
@@ -428,7 +429,7 @@ public bool initialize(out string header, out string msg)
   return true;
 }
 
-void migrate_settings()
+void migrate_file_settings()
 {
   // The old "File" schema has been split in three: local, remote, and drive
 
@@ -473,6 +474,56 @@ void migrate_settings()
   file.set_boolean("migrated", true);
 }
 
+void migrate_goa_settings()
+{
+  // The old "Goa" backend has been deprecated.
+  //   google => google backend
+  //   owncloud => remote backend
+
+  var settings = get_settings();
+  if (settings.get_string(BACKEND_KEY) != "goa")
+    return;
+
+  var goa = get_settings("GOA");
+  var type = goa.get_string("type");
+
+  if (type == "google") {
+    var google = get_settings(GOOGLE_ROOT);
+
+    // Folder
+    if (goa.get_user_value("folder") != null)
+      google.set_string(GOOGLE_FOLDER_KEY, goa.get_string("folder"));
+
+    settings.set_string(BACKEND_KEY, "google");
+  }
+  else if (type == "owncloud") {
+    var remote = get_settings(REMOTE_ROOT);
+
+    // Folder
+    if (goa.get_user_value("folder") != null)
+      remote.set_string(REMOTE_FOLDER_KEY, goa.get_string("folder"));
+
+    try {
+      // URI
+      var uri = ""; // if we can't lookup goa, clear out the current URI with ""
+      var id = goa.get_string("id");
+      var goa_client = new Goa.Client.sync(null);
+      var goa_object = goa_client.lookup_by_id(id);
+      if (goa_object != null) {
+        var files = goa_object.get_files();
+        if (files != null)
+          uri = files.uri;
+      }
+      remote.set_string(REMOTE_URI_KEY, uri);
+    }
+    catch (Error e) {
+      // ignore - maybe GOA just isn't installed
+    }
+
+    settings.set_string(BACKEND_KEY, "remote");
+  }
+}
+
 public void i18n_setup()
 {
   var localedir = Environment.get_variable("DEJA_DUP_LOCALEDIR");
@@ -485,6 +536,24 @@ public void i18n_setup()
   Intl.textdomain(Config.GETTEXT_PACKAGE);
   Intl.bindtextdomain(Config.GETTEXT_PACKAGE, localedir);
   Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
+}
+
+public string get_access_granted_html()
+{
+  try {
+    // Grabs the html from resources and fills in some strings with calculated content
+    var prefix = "/org/gnome/DejaDup%s/".printf(Config.PROFILE);
+    var html_path = prefix + "access-granted.html";
+    var html_bytes = resources_lookup_data(html_path, ResourceLookupFlags.NONE);
+    var html = (string)html_bytes.get_data();
+
+    html = html.replace("$TITLE", _("Access Granted"));
+    html = html.replace("$TEXT", _("Déjà Dup Backup Tool will now continue. You can close this page."));
+    return html;
+  }
+  catch (Error e) {
+    return "";
+  }
 }
 
 public string get_file_desc(File file)

@@ -17,7 +17,7 @@
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
 project('deja-dup', ['vala', 'c'],
-    version: '38.5',
+    version: '39.0',
     license: 'GPLv3+',
     default_options: [
         'warning_level=1',
@@ -48,11 +48,12 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 gio_dep = dependency('gio-2.0', version: '>= 2.46')
 gio_unix_dep = dependency('gio-unix-2.0')
 goa_dep = dependency('goa-1.0', version: '>= 3.8.0')
-goabackend_dep = dependency('goa-backend-1.0')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
+json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 nautilus_dep = dependency('libnautilus-extension', required: false)
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
+soup_dep = dependency('libsoup-2.4', version: '>= 2.48')
 
 # libgpg-error doesn't ship a pkg-config file
 gpgerror_libs = run_command('gpg-error-config', '--libs').stdout().strip()
@@ -80,7 +81,8 @@ common_vflags = [
     '--pkg=config',
     '--pkg=posix',
     '--target-glib=2.46',
-    '--vapidir', vapidir]
+    '--vapidir', vapidir,
+]
 common_cflags = [
     '-w',
     '-DGOA_API_IS_SUBJECT_TO_CHANGE',
@@ -90,7 +92,9 @@ common_cflags = [
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
     '-DBOTO_PACKAGES="@0@"'.format(get_option('boto_pkgs')),
     '-DCLOUDFILES_PACKAGES="@0@"'.format(get_option('cloudfiles_pkgs')),
+    '-DPYDRIVE_PACKAGES="@0@"'.format(get_option('pydrive_pkgs')),
     '-DSWIFTCLIENT_PACKAGES="@0@"'.format(get_option('swiftclient_pkgs')),
+    '-DGOOGLE_CLIENT_ID="@0@"'.format(get_option('google_client_id')),
     '-DPACKAGE="@0@"'.format(meson.project_name()),
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     '-DVERSION="@0@"'.format(meson.project_version()),

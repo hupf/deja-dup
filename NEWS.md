@@ -1,5 +1,17 @@
-# 38.5
-...
+# 39.0
+- Switch away from GNOME Online Accounts to our own cloud keys
+    - It was brought to our attention that we shouldn't be using GNOME's keys,
+      as they are intended for GNOME only.
+    - Google accounts will have to be re-authenticated with our keys.
+    - Nextcloud accounts will now appear as webdav network server accounts.
+    - Adds new `pydrive_pkgs` option to list the package names needed for the
+      pydrive duplicity backend (for now, the system package that provides the
+      `pydrive` python2 package should suffice).
+    - Adds new `google_client_id` option if you want to override our default
+      account key and use your own. You likely won't want to do this.
+    - Adds new dependencies on `libjson-glib` and `libsoup`.
+    - Drops `libgoa-backend` dependency. The `libgoa` dependency will stay
+      during a transition period from the old keys to the new keys.
 
 # 38.4
 - Update app icon

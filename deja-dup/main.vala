@@ -310,7 +310,8 @@ public class DejaDupApp : Gtk.Application
 
   void backup_full(bool automatic)
   {
-    assign_op(new AssistantBackup(automatic));
+    var backop = new AssistantBackup(automatic);
+    assign_op(backop);
     // showing or not is handled by AssistantBackup
   }
 

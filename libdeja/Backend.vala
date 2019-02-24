@@ -28,6 +28,10 @@ public abstract class Backend : Object
   public signal void envp_ready(bool success, List<string>? envp, string? error = null);
   public signal void pause_op(string? header, string? msg);
 
+  // This signal might be too specific to the one backend that uses it (Google).
+  // Subject to change as we experiment with more oauth backends.
+  public signal void show_oauth_consent_page(string? message, string? url);
+
   public MountOperation mount_op {get; set;}
 
   public abstract bool is_native(); // must be callable when nothing is mounted, nothing is prepared
@@ -45,14 +49,16 @@ public abstract class Backend : Object
     envp_ready(true, new List<string>());
   }
 
+  // This call is designed to help with the GOA -> Google migration - can be deleted when done with that
+  public virtual async Backend? report_full_backups(bool first_backup) {return null;}
+
+  // Only called during backup
   public static uint64 INFINITE_SPACE = uint64.MAX;
   public virtual async uint64 get_space(bool free = true) {return INFINITE_SPACE;}
   
   // Arguments needed only when the particular mode is active
   // If mode == INVALID, arguments needed any time the backup is referenced.
   public virtual void add_argv(ToolJob.Mode mode, ref List<string> argv) {}
-  
-  public abstract Backend clone();
 
   public static Backend get_for_type(string backend_name, Settings? settings = null)
   {
@@ -60,8 +66,8 @@ public abstract class Backend : Object
       return new BackendS3(settings);
     else if (backend_name == "gcs")
       return new BackendGCS(settings);
-    else if (backend_name == "goa")
-      return new BackendGOA(settings);
+    else if (backend_name == "google")
+      return new BackendGoogle(settings);
     else if (backend_name == "u1")
       return new BackendU1();
     else if (backend_name == "rackspace")
@@ -85,7 +91,7 @@ public abstract class Backend : Object
     if (backend != "auto" &&
         backend != "s3" &&
         backend != "gcs" &&
-        backend != "goa" &&
+        backend != "google" &&
         backend != "u1" &&
         backend != "rackspace" &&
         backend != "openstack" &&

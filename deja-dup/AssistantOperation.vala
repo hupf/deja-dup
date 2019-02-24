@@ -61,6 +61,10 @@ public abstract class AssistantOperation : Assistant
   List<Gtk.Widget> first_password_widgets;
   MainLoop password_ask_loop;
 
+  Gtk.Label consent_label;
+  string consent_url;
+  protected Gtk.Grid consent_page {get; private set;}
+
   Gtk.Label question_label;
   protected Gtk.Widget question_page {get; private set;}
 
@@ -100,6 +104,7 @@ public abstract class AssistantOperation : Assistant
     add_confirm_page();
     add_password_page();
     add_nag_page();
+    add_consent_page();
     add_question_page();
     add_progress_page();
     add_summary_page();
@@ -481,6 +486,33 @@ public abstract class AssistantOperation : Assistant
     return page;
   }
 
+  protected Gtk.Grid make_consent_page()
+  {
+    int rows = 0;
+
+    var page = new Gtk.Grid();
+    page.row_spacing = 36;
+    page.column_spacing = 6;
+    page.border_width = 12;
+
+    var l = new Gtk.Label("");
+    l.xalign = 0.0f;
+    l.max_width_chars = 50;
+    l.wrap = true;
+    page.attach(l, 0, rows, 3, 1);
+    ++rows;
+    consent_label = l;
+
+    var b = new Gtk.Button.with_mnemonic(_("_Grant Access"));
+    b.clicked.connect(() => {
+      DejaDup.show_uri(get_toplevel() as Gtk.Window, consent_url);
+    });
+    page.attach(b, 1, rows, 1, 1);
+    ++rows;
+
+    return page;
+  }
+
   protected Gtk.Widget make_question_page()
   {
     int rows = 0;
@@ -575,6 +607,13 @@ public abstract class AssistantOperation : Assistant
     nag_page = page;
   }
 
+  void add_consent_page()
+  {
+    consent_page = make_consent_page();
+    append_page(consent_page, Type.INTERRUPT);
+    set_page_title(consent_page, _("Grant Access"));
+  }
+
   void add_question_page()
   {
     var page = make_question_page();
@@ -632,6 +671,17 @@ public abstract class AssistantOperation : Assistant
     }
   }
 
+  protected void show_oauth_consent_page(string? message, string? url)
+  {
+    consent_label.label = message;
+    consent_url = url;
+    if (url == null) {
+      go_forward();
+    } else {
+      interrupt(consent_page, false);
+    }
+  }
+
   protected async void do_apply()
   {
     /*
@@ -659,6 +709,7 @@ public abstract class AssistantOperation : Assistant
 #endif
     op.backend.mount_op = new MountOperationAssistant(this);
     op.backend.pause_op.connect(pause_op);
+    op.backend.show_oauth_consent_page.connect(show_oauth_consent_page);
 
     ensure_status_icon(op);
 

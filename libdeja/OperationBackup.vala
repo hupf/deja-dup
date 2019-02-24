@@ -28,7 +28,7 @@ public class OperationBackup : Operation
   public OperationBackup(Backend backend) {
     Object(mode: ToolJob.Mode.BACKUP, backend: backend);
   }
-  
+
   internal async override void operation_finished(bool success, bool cancelled, string? detail)
   {
     /* If successfully completed, update time of last backup and run base operation_finished */

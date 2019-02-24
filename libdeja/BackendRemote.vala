@@ -31,17 +31,13 @@ public class BackendRemote : BackendFile
     Object(settings: (settings != null ? settings : get_settings(REMOTE_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendRemote(settings);
-  }
-
-  protected virtual string get_folder()
+  public virtual string get_folder()
   {
     return get_folder_key(settings, REMOTE_FOLDER_KEY, true);
   }
 
   // Get mountable root
-  protected override File? get_root_from_settings()
+  public override File? get_root_from_settings()
   {
     var uri = settings.get_string(REMOTE_URI_KEY);
     return File.parse_name(uri);
@@ -151,7 +147,7 @@ public class BackendRemote : BackendFile
     }
   }
 
-  protected override async void mount() throws Error
+  public override async void mount() throws Error
   {
     if (!Network.get().connected) {
       pause_op(_("Storage location not available"),

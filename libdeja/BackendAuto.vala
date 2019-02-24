@@ -23,10 +23,6 @@ namespace DejaDup {
 
 public class BackendAuto : Backend
 {
-  public override Backend clone() {
-    return new BackendAuto();
-  }
-
   public override bool is_native() {
     return false;
   }
@@ -49,16 +45,17 @@ public class BackendAuto : Backend
   }
 
   construct {
-    // We used to check various backends to see if we had the right installed
-    // files for them and pick a best one.  But now that we support GOA, we
-    // just set that.  We should consider getting rid of this class.  The
-    // intent was that changing gsettings defaults wouldn't change the user's
-    // backup (i.e. ensuring that the storage location gsettings would be
-    // actively set, not relying on the gschema default).
+    // The intent here is that changing gsettings defaults won't
+    // change the user's backup (i.e. ensuring that the storage location
+    // gsettings would be actively set, not relying on the gschema default).
+    //
+    // Here is a brief history of defaults:
+    // 1) Amazon S3
+    // 2) We checked various dependencies to see which backend to use
+    // 3) Google Drive via GNOME Online Accounts
+    // 4) Google Drive (relying on packagekit support to install dependencies)
     var settings = get_settings();
-    var goa_settings = get_settings(GOA_ROOT);
-    goa_settings.set_string(GOA_TYPE_KEY, "google");
-    settings.set_string(BACKEND_KEY, "goa");
+    settings.set_string(BACKEND_KEY, "google");
   }
 }
 

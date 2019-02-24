@@ -34,10 +34,6 @@ public class BackendGCS : Backend
     Object(settings: (settings != null ? settings : get_settings(GCS_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendGCS(settings);
-  }
-
   public override string[] get_dependencies()
   {
     return Config.BOTO_PACKAGES.split(",");

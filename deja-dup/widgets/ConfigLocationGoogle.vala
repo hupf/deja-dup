@@ -21,31 +21,17 @@ using GLib;
 
 namespace DejaDup {
 
-public class BackendU1 : Backend
+public class ConfigLocationGoogle : ConfigLocationTable
 {
-  public override bool is_native() {
-    return false;
+  public ConfigLocationGoogle(Gtk.SizeGroup sg, FilteredSettings settings) {
+    Object(label_sizes: sg, settings: settings);
   }
 
-  public override Icon? get_icon() {
-    return new ThemedIcon.from_names({"ubuntuone", "ubuntuone-installer", "deja-dup-cloud"});
-  }
-
-  public override string get_location(ref bool as_root)
-  {
-    return "";
-  }
-
-  public override string get_location_pretty()
-  {
-    return _("Ubuntu One");
-  }
-
-  public override async void get_envp() throws Error
-  {
-    throw new BackupError.BAD_CONFIG(_("Ubuntu One has shut down.  Please choose another storage location."));
+  construct {
+    add_widget(_("_Folder"),
+               new ConfigFolder(DejaDup.GOOGLE_FOLDER_KEY, DejaDup.GOOGLE_ROOT, settings));
   }
 }
 
-} // end namespace
+}
 

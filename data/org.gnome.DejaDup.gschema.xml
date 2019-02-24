@@ -77,6 +77,7 @@
         <choice value='drive'/>
         <choice value='gcs'/>
         <choice value='goa'/>
+        <choice value='google'/>
         <choice value='rackspace'/>
         <choice value='openstack'/>
         <choice value='s3'/>
@@ -93,6 +94,7 @@
     <child name="s3" schema="org.gnome.DejaDup.S3"/>
     <child name="gcs" schema="org.gnome.DejaDup.GCS"/>
     <child name='goa' schema="org.gnome.DejaDup.GOA"/>
+    <child name='google' schema="org.gnome.DejaDup.Google"/>
     <child name='remote' schema="org.gnome.DejaDup.Remote"/>
     <child name='local' schema="org.gnome.DejaDup.Local"/>
     <child name='drive' schema="org.gnome.DejaDup.Drive"/>
@@ -179,6 +181,14 @@
     </key>
   </schema>
 
+  <schema id="org.gnome.DejaDup.Google" path="/org/gnome/deja-dup/google/">
+    <key name="folder" type="s">
+      <default>'$HOSTNAME'</default>
+      <summary>The folder where backups are stored</summary>
+      <description>The folder path where backups are stored. Paths can be absolute or relative to the host.</description>
+    </key>
+  </schema>
+
   <schema id="org.gnome.DejaDup.Rackspace" path="/org/gnome/deja-dup/rackspace/">
     <key name="container" type="s">
       <default>'$HOSTNAME'</default>
@@ -189,24 +199,6 @@
       <default>''</default>
       <summary>Your Rackspace username</summary>
       <description>This is your username for the Rackspace Cloud Files service.</description>
-    </key>
-  </schema>
-
-  <schema id="org.gnome.DejaDup.GOA" path="/org/gnome/deja-dup/goa/">
-    <key name="id" type="s">
-      <default>''</default>
-      <summary>Account ID</summary>
-      <description>The unique ID for the GNOME Online Account.</description>
-    </key>
-    <key name="type" type="s">
-      <default>''</default>
-      <summary>The type of account</summary>
-      <description>The cached type of account that ID represents.</description>
-    </key>
-    <key name="folder" type="s">
-      <default>'$HOSTNAME'</default>
-      <summary>The folder where backups are stored</summary>
-      <description>The folder hierarchy where backups are stored. Paths can be absolute or relative to the host.</description>
     </key>
   </schema>
 
@@ -233,7 +225,7 @@
     </key>
   </schema>
 
-  <!-- deprecated schema -->
+  <!-- deprecated schemas -->
   <schema id="org.gnome.DejaDup.File" path="/org/gnome/deja-dup/file/">
     <key name="path" type="s">
       <default>''</default>
@@ -259,6 +251,21 @@
     </key>
     <key name="icon" type="s">
       <default>''</default>
+    </key>
+    <key name="migrated" type="b">
+      <default>false</default>
+    </key>
+  </schema>
+
+  <schema id="org.gnome.DejaDup.GOA" path="/org/gnome/deja-dup/goa/">
+    <key name="id" type="s">
+      <default>''</default>
+    </key>
+    <key name="type" type="s">
+      <default>''</default>
+    </key>
+    <key name="folder" type="s">
+      <default>'$HOSTNAME'</default>
     </key>
     <key name="migrated" type="b">
       <default>false</default>

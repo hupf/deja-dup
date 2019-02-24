@@ -44,10 +44,6 @@ public class BackendDrive : BackendFile
     Object(settings: (settings != null ? settings : get_settings(DRIVE_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendDrive(settings);
-  }
-
   string get_folder()
   {
     return get_folder_key(settings, DRIVE_FOLDER_KEY);

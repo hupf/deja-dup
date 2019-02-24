@@ -247,6 +247,7 @@ class BackupRunner : Object
   public string path = null;
   public string script = null;
   public string? init_error = null;
+  public string init_script = null;
   public bool success = true;
   public bool cancelled = false;
   public string? detail = null;
@@ -276,6 +277,12 @@ class BackupRunner : Object
     }
     if (init_error != null)
       warning("Init error '%s' was expected", init_error);
+
+    if (init_script != null)
+      run_script(init_script);
+
+    if (op == null)
+      return;
 
     var loop = new MainLoop(null);
     op.done.connect((op, s, c, d) => {
@@ -390,6 +397,7 @@ string replace_keywords(string in)
             replace("@MOCK_DIR@", mockdir).
             replace("@PATH@", path).
             replace("@USER@", user).
+            replace("@APPID@", Config.APPLICATION_ID).
             replace("@XDG_CACHE_HOME@", cachedir).
             replace("@TEST_HOME@", test_home);
 }
@@ -438,6 +446,8 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     Environment.set_variable("DEJA_DUP_TEST_SPACE_FREE", keyfile.get_string(group, "DiskFree"), true);
   if (keyfile.has_key(group, "InitError"))
     br.init_error = keyfile.get_string(group, "InitError");
+  if (keyfile.has_key(group, "InitScript"))
+    br.init_script = replace_keywords(keyfile.get_string(group, "InitScript"));
   if (keyfile.has_key(group, "Error"))
     br.error_str = keyfile.get_string(group, "Error");
   if (keyfile.has_key(group, "ErrorRegex"))
@@ -452,11 +462,12 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     br.script = replace_keywords(keyfile.get_string(group, "Script"));
   if (keyfile.has_key(group, "Settings")) {
     var settings_list = keyfile.get_string_list(group, "Settings");
-    var settings = DejaDup.get_settings();
     foreach (var setting in settings_list) {
       try {
         var tokens = replace_keywords(setting).split("=");
-        var key = tokens[0];
+        var key_tokens = tokens[0].split(".");
+        var settings = DejaDup.get_settings(key_tokens.length > 1 ? key_tokens[0] : null);
+        var key = key_tokens[key_tokens.length - 1];
         var val = Variant.parse(null, tokens[1]);
         settings.set_value(key, val);
       }
@@ -471,6 +482,8 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     br.op = new DejaDup.OperationBackup(DejaDup.Backend.get_default());
   else if (type == "restore")
     br.op = new DejaDup.OperationRestore(DejaDup.Backend.get_default(), restoredir, br.restore_date, br.restore_files);
+  else if (type == "noop")
+    br.op = null;
   else
     assert_not_reached();
 }

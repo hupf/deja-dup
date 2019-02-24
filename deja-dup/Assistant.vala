@@ -240,6 +240,11 @@ public abstract class Assistant : Gtk.Window
   {
     var title = Markup.printf_escaped("<span size=\"xx-large\" weight=\"ultrabold\">%s</span>", info.title);
     header_title.set_markup(title);
+
+    if (info.title == "")
+      header_title.hide();
+    else
+      header_title.show();
   }
 
   void page_changed()

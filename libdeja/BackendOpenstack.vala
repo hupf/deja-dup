@@ -33,10 +33,6 @@ public class BackendOpenstack : Backend
     Object(settings: (settings != null ? settings : get_settings(OPENSTACK_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendOpenstack(settings);
-  }
-
   public override string[] get_dependencies()
   {
     return Config.SWIFTCLIENT_PACKAGES.split(",");

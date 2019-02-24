@@ -34,10 +34,6 @@ public class BackendS3 : Backend
     Object(settings: (settings != null ? settings : get_settings(S3_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendS3(settings);
-  }
-
   public override string[] get_dependencies()
   {
     return Config.BOTO_PACKAGES.split(",");

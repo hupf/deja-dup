@@ -29,7 +29,7 @@ public abstract class BackendFile : Backend
   }
 
   // Get mountable root
-  protected abstract File? get_root_from_settings();
+  public abstract File? get_root_from_settings();
 
   // Get full URI to backup folder
   protected abstract File? get_file_from_settings();
@@ -160,7 +160,7 @@ public abstract class BackendFile : Backend
     envp_ready(true, new List<string>());
   }
 
-  protected virtual async void mount() throws Error {}
+  public virtual async void mount() throws Error {}
 
   public override async uint64 get_space(bool free = true)
   {
@@ -194,4 +194,3 @@ public abstract class BackendFile : Backend
 }
 
 } // end namespace
-

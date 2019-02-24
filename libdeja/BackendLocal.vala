@@ -30,10 +30,6 @@ public class BackendLocal : BackendFile
     Object(settings: (settings != null ? settings : get_settings(LOCAL_ROOT)));
   }
 
-  public override Backend clone() {
-    return new BackendLocal(settings);
-  }
-
   // Get mountable root
   protected override File? get_root_from_settings()
   {

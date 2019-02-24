@@ -35,7 +35,7 @@ set -e
 
 while read line; do
   case "$line" in
-    PASSPHRASE=*|AWS_*=*|CLOUDFILES_*=*|GS_*=*|SWIFT_*=*)
+    PASSPHRASE=*|AWS_*=*|CLOUDFILES_*=*|GS_*=*|SWIFT_*=*|GOOGLE_*=*)
       export "$line"
       ;;
     *)

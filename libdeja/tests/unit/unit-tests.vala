@@ -187,6 +187,39 @@ void migrate_file_local()
   assert(local.get_string(DejaDup.LOCAL_FOLDER_KEY) == "/test/path");
 }
 
+void migrate_goa_google()
+{
+  var settings = DejaDup.get_settings();
+  var goa = DejaDup.get_settings("GOA");
+  var google = DejaDup.get_settings(DejaDup.GOOGLE_ROOT);
+
+  settings.set_string(DejaDup.BACKEND_KEY, "goa");
+  goa.set_string("type", "google");
+  goa.set_string("folder", "test/folder");
+
+  DejaDup.initialize(null, null);
+
+  assert(settings.get_string(DejaDup.BACKEND_KEY) == "google");
+  assert(google.get_string(DejaDup.GOOGLE_FOLDER_KEY) == "test/folder");
+}
+
+void migrate_goa_owncloud()
+{
+  var settings = DejaDup.get_settings();
+  var goa = DejaDup.get_settings("GOA");
+  var remote = DejaDup.get_settings(DejaDup.REMOTE_ROOT);
+
+  settings.set_string(DejaDup.BACKEND_KEY, "goa");
+  goa.set_string("type", "owncloud");
+  goa.set_string("folder", "test/folder");
+  // don't bother testing the id -> url conversion, too hard to mock
+
+  DejaDup.initialize(null, null);
+
+  assert(settings.get_string(DejaDup.BACKEND_KEY) == "remote");
+  assert(remote.get_string(DejaDup.REMOTE_FOLDER_KEY) == "test/folder");
+}
+
 string get_top_srcdir()
 {
   var srcdir = Environment.get_variable("top_srcdir");
@@ -261,6 +294,8 @@ int main(string[] args)
   unit.add(new TestCase("migrate-file-local", setup, migrate_file_local, teardown));
   unit.add(new TestCase("migrate-file-remote", setup, migrate_file_remote, teardown));
   unit.add(new TestCase("migrate-file-s3", setup, migrate_file_s3, teardown));
+  unit.add(new TestCase("migrate-goa-google", setup, migrate_goa_google, teardown));
+  unit.add(new TestCase("migrate-goa-owncloud", setup, migrate_goa_owncloud, teardown));
   unit.add(new TestCase("parse-dir", setup, parse_dir, teardown));
   unit.add(new TestCase("parse-version", setup, parse_version, teardown));
   unit.add(new TestCase("prompt", setup, prompt, teardown));
