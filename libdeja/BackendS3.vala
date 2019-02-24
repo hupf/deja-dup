@@ -142,7 +142,8 @@ public class BackendS3 : Backend
     if (id != "") {
       // First, try user's keyring
       try {
-        secret_key = yield Secret.password_lookup(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        secret_key = yield Secret.password_lookup(schema,
                                                   null, 
                                                   "user", id,
                                                   "server", S3_SERVER,
@@ -177,7 +178,8 @@ public class BackendS3 : Backend
       string where = (remember == PasswordSave.FOR_SESSION) ?
                      Secret.COLLECTION_SESSION : Secret.COLLECTION_DEFAULT;
       try {
-        yield Secret.password_store(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        yield Secret.password_store(schema,
                                     where,
                                     "%s@%s".printf(id, S3_SERVER),
                                     secret_key,

@@ -95,7 +95,8 @@ public class BackendOpenstack : Backend
     if (id != "") {
       // First, try user's keyring
       try {
-        secret_key = yield Secret.password_lookup(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        secret_key = yield Secret.password_lookup(schema,
                                                   null,
                                                   "user", id,
                                                   "server", authurl,
@@ -134,7 +135,8 @@ public class BackendOpenstack : Backend
       var tenant = get_folder_key(settings, OPENSTACK_TENANT_KEY);
 
       try {
-        yield Secret.password_store(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        yield Secret.password_store(schema,
                                     where,
                                     "%s:%s@%s".printf(tenant, id, authurl),
                                     secret_key,

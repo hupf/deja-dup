@@ -52,7 +52,7 @@ goabackend_dep = dependency('goa-backend-1.0')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 nautilus_dep = dependency('libnautilus-extension', required: false)
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
-secret_dep = dependency('libsecret-1')
+secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
 
 # libgpg-error doesn't ship a pkg-config file
 gpgerror_libs = run_command('gpg-error-config', '--libs').stdout().strip()

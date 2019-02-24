@@ -92,7 +92,8 @@ public class BackendGCS : Backend
     if (id != "") {
       // First, try user's keyring
       try {
-        secret_key = yield Secret.password_lookup(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        secret_key = yield Secret.password_lookup(schema,
                                                   null, 
                                                   "user", id,
                                                   "server", GCS_SERVER,
@@ -127,7 +128,8 @@ public class BackendGCS : Backend
       string where = (remember == PasswordSave.FOR_SESSION) ?
                      Secret.COLLECTION_SESSION : Secret.COLLECTION_DEFAULT;
       try {
-        yield Secret.password_store(Secret.SCHEMA_COMPAT_NETWORK,
+        var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
+        yield Secret.password_store(schema,
                                     where,
                                     "%s@%s".printf(id, GCS_SERVER),
                                     secret_key,
