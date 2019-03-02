@@ -43,6 +43,7 @@ parts:
     source: https://launchpad.net/duplicity/0.7-series/0.7.18.2/+download/duplicity-0.7.18.2.tar.gz
     source-type: tar
     build-packages:
+      - ieee-data  # python-netaddr links to this, but does not depend on it
       - librsync-dev
     stage-packages:
       - librsync1

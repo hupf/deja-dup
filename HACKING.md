@@ -1,25 +1,28 @@
-= New to deja-dup? =
+# New to deja-dup?
 
 When making a non-trivial change, remember to add yourself to AUTHORS and help/C/credits.page
 
 deja-dup uses meson, but for most development purposes, you can simply use the convenience top-level Makefile:
- * To build: make
- * To test: make check
- * To install: make install DESTDIR=/tmp/deja-dup
+ * To build: `make`
+ * To test: `make check`
+ * To install: `make install DESTDIR=/tmp/deja-dup`
 
-When testing a change, it is helpful to run ./tests/shell (or shell-local if you want a silo'd dbus environment too)
+When testing a change, it is helpful to run `./tests/shell` (or `shell-local` if you want a silo'd dbus environment too)
 That will give you a full shell pointing at all your built executables.
 
-== Folder Layout ==
+## Folder Layout
  * libdeja: non-GUI library that wraps policy and hides complexity of duplicity
  * deja-dup: GNOME UI for libdeja, including integration points with nautilus and control-center
  * data: shared schemas, icons, etc
  * vapi: some helper APIs for vala
 
-== Flatpak ==
+## Flatpak
 
-To build a local flatpak, run 'make flatpak'. You'll want an up-to-date flatpak-builder though.
+To build a local flatpak, run `make flatpak`. You'll want an up-to-date flatpak-builder though.
 
 If you're on Ubuntu:
+
+```
 sudo add-apt-repository ppa:alexlarsson/flatpak
 sudo apt update
+```
