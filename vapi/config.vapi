@@ -1,5 +1,6 @@
 /* 
-    Copyright (C) 2007,2008 Jaap Haitsma <jaap@haitsma.org>
+    This file is part of Déjà Dup.
+    For copyright information, see AUTHORS.
 
     Déjà Dup is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
