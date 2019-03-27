@@ -18,14 +18,14 @@ base: core18
 
 apps:
   deja-dup:
-    command: bin/wrapper
+    command: desktop-launch $SNAP/bin/wrapper
     desktop: share/applications/org.gnome.DejaDup.desktop
     environment:
       PATH: $SNAP/bin:$PATH
       PYTHONPATH: $SNAP/lib/python2.7/site-packages:$SNAP/usr/lib/python2.7/dist-packages
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
   monitor:
-    command: bin/monitor.wrapper
+    command: desktop-launch $SNAP/bin/monitor.wrapper
     environment:
       PATH: /snap/bin:$PATH
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
@@ -85,3 +85,29 @@ parts:
       snapcraftctl prime
       sed -i 's|Icon=.*|Icon=/share/icons/hicolor/scalable/apps/org.gnome.DejaDup.svg|' share/applications/org.gnome.DejaDup.desktop
       glib-compile-schemas share/glib-2.0/schemas
+
+  desktop-gtk3:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: gtk
+    plugin: make
+    make-parameters: ["FLAVOR=gtk3"]
+    build-packages:
+      - libgtk-3-dev
+    stage-packages:
+      - libxkbcommon0  # XKB_CONFIG_ROOT
+      - ttf-ubuntu-font-family
+      - dmz-cursor-theme
+      - light-themes
+      - adwaita-icon-theme
+      - gnome-themes-standard
+      - shared-mime-info
+      - libgtk-3-0
+      - libgdk-pixbuf2.0-0
+      - libglib2.0-bin
+      - libgtk-3-bin
+      - unity-gtk3-module
+      - libappindicator3-1
+      - locales-all
+      - xdg-user-dirs
+      - ibus-gtk3
+      - libibus-1.0-5
