@@ -12,6 +12,8 @@
     - Adds new dependencies on `libjson-glib` and `libsoup`.
     - Drops `libgoa-backend` dependency. The `libgoa` dependency will stay
       during a transition period from the old keys to the new keys.
+- Unmount a remote backup location when we are done with it, if we originally
+  mounted it.
 
 # 38.4
 - Update app icon
