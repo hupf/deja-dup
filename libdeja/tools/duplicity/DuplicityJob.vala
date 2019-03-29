@@ -315,12 +315,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     includes.sort((CompareFunc)cmp_prefix);
     excludes.sort((CompareFunc)cmp_prefix);
 
-    // TODO: Figure out a more reasonable way to order regexps and files.
-    // For now, just stick them in the front.
-    foreach (string r in exclude_regexps) {
-      saved_argv.append("--exclude=" + r);
-    }
-
     foreach (File i in includes) {
       var excludes2 = excludes.copy();
       foreach (File e in excludes2) {
@@ -335,6 +329,12 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
     foreach (File e in excludes) {
       saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
+    }
+
+    // TODO: Figure out a more reasonable way to order regexps and files.
+    // For now, just stick regexps in the end, as they are more general.
+    foreach (string r in exclude_regexps) {
+      saved_argv.append("--exclude=" + r);
     }
 
     saved_argv.append("--exclude=**");
