@@ -31,6 +31,10 @@ apps:
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
     passthrough:
       autostart: org.gnome.DejaDup.Monitor.desktop
+  duplicity:
+    command: bin/duplicity
+    environment:
+      PYTHONPATH: $SNAP/lib/python2.7/site-packages:$SNAP/usr/lib/python2.7/dist-packages
 
 parts:
   dump:
