@@ -1,3 +1,5 @@
+# 39.0+
+
 # 39.0
 - Switch away from GNOME Online Accounts to our own cloud keys
     - It was brought to our attention that we shouldn't be using GNOME's keys,
