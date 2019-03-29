@@ -23,6 +23,24 @@ namespace DejaDup {
 
 public abstract class BackendFile : Backend
 {
+  bool will_unmount = false;
+
+  public override async void cleanup() {
+    // unmount if we originally mounted the backup location
+    if (will_unmount) {
+      var root = get_root_from_settings();
+      try {
+        var mount = yield root.find_enclosing_mount_async();
+        if (mount != null && mount.can_unmount())
+          yield mount.unmount_with_operation(MountUnmountFlags.NONE, null);
+      }
+      catch (Error e) {
+        // ignore
+      }
+      will_unmount = false;
+    }
+  }
+
   public override string[] get_dependencies()
   {
     return Config.GVFS_PACKAGES.split(",");
@@ -139,7 +157,7 @@ public abstract class BackendFile : Backend
 
   async void do_mount() throws Error
   {
-    yield mount();
+    will_unmount = (yield mount()) || will_unmount;
 
     var gfile = get_file_from_settings();
 
@@ -160,7 +178,8 @@ public abstract class BackendFile : Backend
     envp_ready(true, new List<string>());
   }
 
-  public virtual async void mount() throws Error {}
+  // Returns true if it needed to be mounted, false if already mounted
+  public virtual async bool mount() throws Error {return false;}
 
   public override async uint64 get_space(bool free = true)
   {

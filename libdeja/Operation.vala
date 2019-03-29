@@ -197,6 +197,7 @@ public abstract class Operation : Object
   {
     finished = true;
 
+    yield backend.cleanup();
     yield DejaDup.clean_tempdirs();
 
     done(success, cancelled, detail);

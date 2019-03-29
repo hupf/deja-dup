@@ -294,10 +294,10 @@ public abstract class Assistant : Gtk.Window
     return btn;
   }
 
-  void make_button_default(Gtk.Widget button)
+  protected void make_button_default(Gtk.Widget button)
   {
-      button.grab_default();
-      button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+    button.grab_default();
+    button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
   }
 
   void set_buttons()

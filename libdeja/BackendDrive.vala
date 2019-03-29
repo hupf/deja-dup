@@ -144,32 +144,35 @@ public class BackendDrive : BackendFile
     loop.run();
   }
 
-  async void mount_internal(Volume vol, bool recurse=true) throws Error
+  async bool mount_internal(Volume vol, bool recurse=true) throws Error
   {
     // Volumes sometimes return a generic error message instead of
     // IOError.ALREADY_MOUNTED, So let's check manually whether we're mounted.
     if (vol.get_mount() != null)
-      return;
+      return false;
 
     try {
       yield vol.mount(MountMountFlags.NONE, mount_op, null);
     } catch (IOError.ALREADY_MOUNTED e) {
-      return;
+      return false;
     } catch (IOError.DBUS_ERROR e) {
       // This is not very descriptive, but IOError.DBUS_ERROR is the
       // error given when someone else is mounting at the same time.  Sometimes
       // happens when a USB stick is inserted and nautilus is fighting us.
       yield delay(1); // Try again in a second
       if (recurse)
-        yield mount_internal(vol, false);
+        return yield mount_internal(vol, false);
     }
+
+    return true;
   }
 
-  protected override async void mount() throws Error
+  protected override async bool mount() throws Error
   {
     var vol = yield wait_for_volume();
-    yield mount_internal(vol);
+    var rv = yield mount_internal(vol);
     update_volume_info(vol, settings);
+    return rv;
   }
 
   async Volume wait_for_volume() throws Error

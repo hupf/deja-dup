@@ -1048,6 +1048,7 @@ public abstract class AssistantOperation : Assistant
     interrupt(backend_install_page, false);
     set_header_icon("system-software-install");
     var install_button = add_button(C_("verb", "_Install"), CUSTOM_RESPONSE);
+    make_button_default(install_button);
     var loop = new MainLoop(null);
     install_button.clicked.connect(() => {start_install.begin(ids, loop);});
     forward_button = install_button;

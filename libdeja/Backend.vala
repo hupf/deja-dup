@@ -49,6 +49,8 @@ public abstract class Backend : Object
     envp_ready(true, new List<string>());
   }
 
+  public virtual async void cleanup() {}
+
   // This call is designed to help with the GOA -> Google migration - can be deleted when done with that
   public virtual async Backend? report_full_backups(bool first_backup) {return null;}
 

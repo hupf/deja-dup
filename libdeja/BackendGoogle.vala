@@ -50,11 +50,16 @@ public class BackendGoogle : Backend
     session.user_agent = "%s/%s ".printf(Config.PACKAGE, Config.VERSION);
   }
 
-  ~BackendGoogle() {
+  public override async void cleanup() {
+    clean_credentials_dir();
+  }
+
+  void clean_credentials_dir() {
     if (credentials_dir != null) {
       FileUtils.remove("%s/settings.yaml".printf(credentials_dir));
       FileUtils.remove("%s/credentials.json".printf(credentials_dir));
       FileUtils.remove(credentials_dir);
+      credentials_dir = null;
     }
   }
 
@@ -525,6 +530,9 @@ public class BackendGoogle : Backend
     // directory and put our settings file and credentials both in there.
     // Make sure it's all readable only by the user, and we should delete them
     // when we're done.
+
+    // Clear any existing credentials dir from a previous op
+    clean_credentials_dir();
 
     try {
       credentials_dir = DirUtils.make_tmp("deja-dup-XXXXXX");

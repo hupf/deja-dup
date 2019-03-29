@@ -147,7 +147,7 @@ public class BackendRemote : BackendFile
     }
   }
 
-  public override async void mount() throws Error
+  public override async bool mount() throws Error
   {
     if (!Network.get().connected) {
       pause_op(_("Storage location not available"),
@@ -174,7 +174,7 @@ public class BackendRemote : BackendFile
     try {
       yield root.mount_enclosing_volume(MountMountFlags.NONE, mount_op, null);
     } catch (IOError.ALREADY_MOUNTED e) {
-      return;
+      return false;
     } catch (Error e) {
       // try once more with same response in case we timed out while waiting for user
       mount_op.@set("retry_mode", true);
@@ -182,6 +182,8 @@ public class BackendRemote : BackendFile
     } finally {
       mount_op.@set("retry_mode", false);
     }
+
+    return true;
   }
 }
 
