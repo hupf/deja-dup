@@ -536,7 +536,7 @@ public int get_full_backup_threshold()
 
 public DateTime get_full_backup_threshold_date()
 {
-  var date = new DateTime.now_local();
+  var date = new DateTime.now_utc();
   var days = get_full_backup_threshold();
   return date.add_days(-days);
 }

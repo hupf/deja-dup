@@ -397,6 +397,8 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     switch (original_mode) {
     case DejaDup.ToolJob.Mode.BACKUP:
+      tag = "now"; // set a tag for later chained operations to grab this same backup
+
       // We need to first check the backup status to see if we need to start
       // a full backup and to see if we should use encryption.
       if (!checked_collection_info) {
@@ -1232,7 +1234,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (mode != DejaDup.ToolJob.Mode.STATUS || got_collection_info)
       return;
 
-    var dates = new List<string>();
+    var dates = new Tree<DateTime, string>((a, b) => {return a.compare(b);});
     var infos = new List<DateInfo?>();
     bool in_chain = false;
     foreach (string line in lines) {
@@ -1247,11 +1249,11 @@ internal class DuplicityJob : DejaDup.ToolJob
         if (tokens.length <= 2)
           continue;
 
-        var datetime = new DateTime.from_iso8601(tokens[2], null);
+        var datetime = new DateTime.from_iso8601(tokens[2], new TimeZone.utc());
         if (datetime == null)
           continue;
 
-        dates.append(tokens[2]);
+        dates.insert(datetime, tokens[2]);
 
         var info = DateInfo();
         info.time = datetime;
@@ -1441,8 +1443,8 @@ internal class DuplicityJob : DejaDup.ToolJob
         break;
       case DejaDup.ToolJob.Mode.RESTORE:
         argv.prepend("restore");
-        if (time != null)
-          argv.append("--time=%s".printf(time));
+        if (tag != null && tag != "now")
+          argv.append("--time=%s".printf(tag));
         argv.append("--force");
         argv.append(get_remote());
         argv.append(local_arg.get_path());
@@ -1453,8 +1455,8 @@ internal class DuplicityJob : DejaDup.ToolJob
         break;
       case DejaDup.ToolJob.Mode.LIST:
         argv.prepend("list-current-files");
-        if (time != null)
-          argv.append("--time=%s".printf(time));
+        if (tag != null && tag != "now")
+          argv.append("--time=%s".printf(tag));
         argv.append(get_remote());
         break;
       default:

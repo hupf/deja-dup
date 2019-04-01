@@ -11,12 +11,13 @@ using GLib;
 
 public class DejaDup.OperationVerify : Operation
 {
+  public string tag {get; construct;}
   File metadir;
   File destdir;
   bool nag;
 
-  public OperationVerify(Backend backend) {
-    Object(mode: ToolJob.Mode.RESTORE, backend: backend);
+  public OperationVerify(Backend backend, string tag) {
+    Object(mode: ToolJob.Mode.RESTORE, backend: backend, tag: tag);
   }
 
   construct {
@@ -52,6 +53,8 @@ public class DejaDup.OperationVerify : Operation
 
     destdir = File.new_for_path("/");
     job.local = destdir;
+
+    job.tag = tag;
 
     base.connect_to_job();
   }

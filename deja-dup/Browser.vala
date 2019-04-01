@@ -343,8 +343,7 @@ class Browser : Gtk.Grid
     files_filled = false;
 
     var backend = application.get_restore_backend();
-    var datetime = new DateTime.from_iso8601(timecombo.when, new TimeZone.utc());
-    operation = new DejaDup.OperationFiles(backend, datetime);
+    operation = new DejaDup.OperationFiles(backend, timecombo.when);
     operation.done.connect((op, success, cancelled, detail) => {
       if (op != operation)
         return;

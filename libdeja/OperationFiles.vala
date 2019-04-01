@@ -10,25 +10,17 @@ public class DejaDup.OperationFiles : Operation
 {
   public signal void listed_current_files(FileTree tree);
   public File? source {get; construct;}
+  public string tag {get; construct;}
 
-  private DateTime time = null;
   private FileTree tree = null;
 
-  public OperationFiles(Backend backend,
-                        DateTime? time_in = null,
-                        File? source = null) {
-    Object(mode: ToolJob.Mode.LIST, source: source, backend: backend);
-    if (time_in != null)
-        time = time_in;
+  public OperationFiles(Backend backend, string tag, File? source = null)
+  {
+    Object(mode: ToolJob.Mode.LIST, source: source, backend: backend, tag: tag);
   }
 
   construct {
     tree = new FileTree();
-  }
-
-  public DateTime get_time()
-  {
-    return time;
   }
 
   protected override void connect_to_job()
@@ -53,10 +45,7 @@ public class DejaDup.OperationFiles : Operation
 
   protected override List<string>? make_argv()
   {
-    if (time != null)
-      job.time = time.format("%s");
-    else
-      job.time = null;
+    job.tag = tag;
     job.local = source;
     return null;
   }

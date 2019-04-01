@@ -42,7 +42,7 @@ public class TimeCombo : Gtk.Box
   }
 
   public class Item : Object {
-    public string label {get; construct;}
+    public string label {get; internal set;}
     public string tag {get; construct;}
 
     public Item(string label, string tag) {
@@ -61,38 +61,33 @@ public class TimeCombo : Gtk.Box
            one.get_day_of_year() == two.get_day_of_year();
   }
 
-  void fill_combo_with_dates(DejaDup.OperationStatus op, List<string>? dates)
+  void fill_combo_with_dates(DejaDup.OperationStatus op, Tree<DateTime, string> dates)
   {
     clear();
-    if (dates.length() == 0)
+    if (dates.nnodes() == 0)
       return;
 
-    var datetimes = new List<DateTime?>();
-    foreach (var date in dates) {
-      var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
-      if (datetime != null) {
-        datetimes.append(datetime);
-      }
-    }
-    if (datetimes.length() == 0)
-      return;
-
-    for (unowned List<DateTime?>? i = datetimes; i != null; i = i.next) {
-      var datetime = i.data;
+    DateTime prev_datetime = null;
+    dates.foreach((datetime_utc, tag) => {
+      var datetime = datetime_utc.to_local();
 
       var format = "%x";
-      if ((i.prev != null && is_same_day(i.prev.data, datetime)) ||
-          (i.next != null && is_same_day(i.next.data, datetime))) {
+      if (prev_datetime != null && is_same_day(prev_datetime, datetime)) {
         // Translators: %x is the current date, %X is the current time.
         // This will be in a list with other strings that just have %x (the
         // current date).  So make sure if you change this, it still makes
         // sense in that context.
         format = _("%x %X");
+
+        // Replace previous item's label too (in case it was the first on this day)
+        ((Item)store.get_item(0)).label = prev_datetime.format(format);
       }
 
-      var user_str = datetime.to_local().format(format);
-      store.insert(0, new Item(user_str, datetime.format_iso8601()));
-    }
+      prev_datetime = datetime;
+      var user_str = datetime.format(format);
+      store.insert(0, new Item(user_str, tag));
+      return false;
+    });
 
     combo.selected = 0;
     visible = true;

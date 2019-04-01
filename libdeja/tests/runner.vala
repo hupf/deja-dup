@@ -244,7 +244,7 @@ class BackupRunner : Object
   public string? error_str = null;
   public string? error_regex = null;
   public string? error_detail = null;
-  public string? restore_date = null;
+  public string restore_date = "now";
   public List<File> restore_files = null;
   public OpCallback? callback = null;
   public bool is_full = false; // we don't often give INFO 3 which triggers is_full()

@@ -324,18 +324,18 @@ public class AssistantRestore : AssistantOperation
     append_page(files_progress_page, Type.PROGRESS);
   }
 
+  string get_tag()
+  {
+    if (when != null)
+      return when;
+    return date_combo.when;
+  }
+
   protected override async DejaDup.Operation? create_op()
   {
-    string date = null;
-    if (when != null) {
-      date = when;
-    } else {
-      date = date_combo.when;
-    }
-
     var backend = DejaDupApp.get_instance().get_restore_backend();
-    var rest_op = new DejaDup.OperationRestore(backend,
-                                               restore_location, tree, date,
+    var rest_op = new DejaDup.OperationRestore(backend, restore_location,
+                                               tree, get_tag(),
                                                restore_files);
     if (this.op_state != null)
       rest_op.set_state(this.op_state);
@@ -407,7 +407,7 @@ public class AssistantRestore : AssistantOperation
 
   protected async void do_files_query()
   {
-    var files_op = new DejaDup.OperationFiles(get_backend());
+    var files_op = new DejaDup.OperationFiles(get_backend(), get_tag());
     if (this.op_state != null)
       files_op.set_state(this.op_state);
     op = files_op;

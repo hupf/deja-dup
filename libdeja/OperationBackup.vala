@@ -29,10 +29,12 @@ public class DejaDup.OperationBackup : Operation
     if (metadir != null)
       new RecursiveDelete(metadir).start();
 
-    if (success && !cancelled)
-      yield chain_op(new OperationVerify(backend), _("Verifying backup…"), detail);
-    else
+    if (success && !cancelled) {
+      var verify = new OperationVerify(backend, job.tag);
+      yield chain_op(verify, _("Verifying backup…"), detail);
+    } else {
       yield base.operation_finished(success, cancelled, detail);
+    }
   }
 
   protected override void send_action_file_changed(File file, bool actual)

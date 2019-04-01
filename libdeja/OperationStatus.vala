@@ -8,7 +8,7 @@ using GLib;
 
 public class DejaDup.OperationStatus : Operation
 {
-  public signal void collection_dates(List<string>? dates);
+  public signal void collection_dates(Tree<DateTime, string> dates);
 
   public OperationStatus(Backend backend) {
     Object(mode: ToolJob.Mode.STATUS, backend: backend);

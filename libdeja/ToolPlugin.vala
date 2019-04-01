@@ -25,7 +25,7 @@ public abstract class ToolJob : Object
   public signal void question(string title, string msg);
 
   // type-specific signals
-  public signal void collection_dates(List<string>? dates); // STATUS
+  public signal void collection_dates(Tree<DateTime, string> dates); // STATUS (date, label), oldest first
   public signal void listed_current_files(string date, string file, string type); // LIST
 
   // life cycle control
@@ -65,7 +65,7 @@ public abstract class ToolJob : Object
     }
   }
   public FileTree tree {get; set;} // RESTORE
-  public string time {get; set;} // RESTORE
+  public string tag {get; set;} // RESTORE
 }
 
 public abstract class ToolPlugin : Object
