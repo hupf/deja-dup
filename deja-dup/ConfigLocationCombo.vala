@@ -9,14 +9,29 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationCombo.ui")]
 public class ConfigLocationCombo : Gtk.Box
 {
-  public Gtk.Stack stack {get; construct;}
+  public Item selected_item {get; protected set;}
   public DejaDup.FilteredSettings settings {get; construct;}
   public DejaDup.FilteredSettings drive_settings {get; construct;}
 
-  public ConfigLocationCombo(Gtk.Stack stack,
-                             DejaDup.FilteredSettings settings,
+  public ConfigLocationCombo(DejaDup.FilteredSettings settings,
                              DejaDup.FilteredSettings drive_settings) {
-    Object(stack: stack, settings: settings, drive_settings: drive_settings);
+    Object(settings: settings, drive_settings: drive_settings);
+  }
+
+  public class Item : Object {
+    public Icon icon {get; set;}
+    public string text {get; set;}
+    public string sort_key {get; construct;}
+    public string id {get; construct;}
+    public string page {get; construct;}
+    public DejaDup.Backend.Kind backend_kind {get; construct;}
+
+    public Item(Icon? icon, string text, string sort_key, string id,
+                string page, DejaDup.Backend.Kind backend_kind)
+    {
+      Object(icon: icon, text: text, sort_key: sort_key, id: id, page: page,
+             backend_kind: backend_kind);
+    }
   }
 
   enum Group {
@@ -24,22 +39,6 @@ public class ConfigLocationCombo : Gtk.Box
     REMOTE,
     VOLUMES,
     LOCAL,
-  }
-
-  class Item : Object {
-    public Icon icon {get; set;}
-    public string text {get; set;}
-    public string sort_key {get; construct;}
-    public string id {get; construct;}
-    public string page {get; construct;}
-    public Group group {get; construct;}
-
-    public Item(Icon? icon, string text, string sort_key, string id,
-                string page, Group group)
-    {
-      Object(icon: icon, text: text, sort_key: sort_key, id: id, page: page,
-             group: group);
-    }
   }
 
   [GtkChild]
@@ -53,11 +52,27 @@ public class ConfigLocationCombo : Gtk.Box
     store = new ListStore(typeof(Item));
     combo.model = store;
 
+    combo.bind_property("selected-item", this, "selected-item", BindingFlags.SYNC_CREATE);
+
     // *** Basic entries ***
 
-    add_entry("google", "deja-dup-google-drive", _("Google Drive"), Group.CLOUD);
-    add_entry("local", "folder", _("Local Folder"), Group.LOCAL);
-    add_entry("remote", "network-server", _("Network Server"), Group.REMOTE);
+    add_entry("google", "deja-dup-google-drive", _("Google Drive"), Group.CLOUD,
+              DejaDup.Backend.Kind.GOOGLE);
+    add_entry("local", "folder", _("Local Folder"), Group.LOCAL,
+              DejaDup.Backend.Kind.LOCAL);
+    add_entry("remote", "network-server", _("Network Server"), Group.REMOTE,
+              DejaDup.Backend.Kind.GVFS);
+
+    // *** Old deprecated cloud entries, kept just for a kinder migration ***
+
+    add_entry("gcs", null, _("Google Cloud Storage"), Group.CLOUD,
+              DejaDup.Backend.Kind.UNKNOWN);
+    add_entry("openstack", null, _("OpenStack Swift"), Group.CLOUD,
+              DejaDup.Backend.Kind.UNKNOWN);
+    add_entry("rackspace", null, _("Rackspace Cloud Files"), Group.CLOUD,
+              DejaDup.Backend.Kind.UNKNOWN);
+    add_entry("s3", null, _("Amazon S3"), Group.CLOUD,
+              DejaDup.Backend.Kind.UNKNOWN);
 
     // *** Removable drives ***
 
@@ -78,9 +93,6 @@ public class ConfigLocationCombo : Gtk.Box
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                this.ref(), Object.unref);
-
-    combo.notify["selected-item"].connect(update_stack);
-    update_stack();
   }
 
   [GtkCallback]
@@ -130,17 +142,22 @@ public class ConfigLocationCombo : Gtk.Box
     return false;
   }
 
-  void add_entry(string id, string? icon, string label, Group category)
+  void add_entry(string id, string? icon, string label, Group group, DejaDup.Backend.Kind kind)
   {
-    add_entry_full(id, new ThemedIcon(icon), label, category, null);
+    // If this backend is unsupported, only add it to the combo if it's currently selected
+    var backend_key = DejaDup.Backend.get_key_name(settings);
+    if (backend_key != id && !DejaDup.get_tool().supports_backend(kind, null))
+      return;
+
+    add_entry_full(id, icon == null ? null : new ThemedIcon(icon), label, group, null, kind);
   }
 
   uint add_entry_full(string id, Icon? icon, string label, Group group,
-                      string? page)
+                      string? page, DejaDup.Backend.Kind backend_kind)
   {
     var calculated_page = page == null ? id : page;
     var sort_key = "%d%s".printf((int)group, label.casefold().collate_key());
-    var item = new Item(icon, label, sort_key, id, calculated_page, group);
+    var item = new Item(icon, label, sort_key, id, calculated_page, backend_kind);
     return store.insert_sorted(item, (CompareDataFunc)itemcmp);
   }
 
@@ -179,7 +196,8 @@ public class ConfigLocationCombo : Gtk.Box
     if (position != uint.MAX)
       return position;
 
-    return add_entry_full("drive:" + uuid, icon, name, Group.VOLUMES, "drive");
+    return add_entry_full("drive:" + uuid, icon, name, Group.VOLUMES, "drive",
+                          DejaDup.Backend.Kind.LOCAL);
   }
 
   void update_volume(VolumeMonitor monitor, Volume v)
@@ -252,22 +270,8 @@ public class ConfigLocationCombo : Gtk.Box
     if (id == "drive") {
       position = self.add_saved_volume();
     }
-    else if (self.lookup_id(null, id, out position) == null) {
-      var label = id;
-      if (id == "gcs")
-        label = _("Google Cloud Storage");
-      else if (id == "google")
-        label = _("Google Drive");
-      else if (id == "openstack")
-        label = _("OpenStack Swift");
-      else if (id == "rackspace")
-        label = _("Rackspace Cloud Files");
-      else if (id == "s3")
-        label = _("Amazon S3");
-
-      // Assume that we should group with clouds, but not enough to assign
-      // a cloud icon.
-      position = self.add_entry_full(id, null, label, Group.CLOUD, "unsupported");
+    else {
+      self.lookup_id(null, id, out position);
     }
 
     if (position == uint.MAX)
@@ -292,12 +296,6 @@ public class ConfigLocationCombo : Gtk.Box
     }
 
     return new Variant.string(id);
-  }
-
-  void update_stack()
-  {
-    if (combo.selected_item != null)
-      stack.visible_child_name = ((Item)combo.selected_item).page;
   }
 
   void handle_drive_uuid_change()

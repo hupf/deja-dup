@@ -10,25 +10,18 @@ namespace DejaDup {
 
 public class BackendUnsupported : Backend
 {
+  public string key {get; construct;}
+  public BackendUnsupported(string key) {
+    Object(key: key);
+  }
+
   public override bool is_native() {
     return true;
   }
 
-  public override string get_location()
-  {
-    return "invalid://";
-  }
-
   public override string get_location_pretty()
   {
-    return "";
-  }
-
-  public override async void get_envp() throws Error {
-    throw new IOError.FAILED("%s", _(
-      "This storage location is no longer supported. You can still use " +
-      "duplicity directly to back up or restore your files."
-    ));
+    return key; // it's not much, but it's something
   }
 }
 

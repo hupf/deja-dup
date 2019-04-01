@@ -29,7 +29,7 @@ public class DejaDup.OperationFiles : Operation
     base.connect_to_job();
   }
 
-  void handle_list_file(ToolJob job, string date, string file, string type)
+  void handle_list_file(ToolJob job, string file, FileType type)
   {
     tree.add(file, type);
   }

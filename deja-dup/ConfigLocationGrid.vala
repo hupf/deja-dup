@@ -22,7 +22,7 @@ public class ConfigLocationGrid : Gtk.Grid
 
   public DejaDup.Backend get_backend()
   {
-    string name = DejaDup.Backend.get_type_name(settings);
+    string name = DejaDup.Backend.get_key_name(settings);
 
     Settings sub_settings = null;
     if (name == "drive")
@@ -34,7 +34,7 @@ public class ConfigLocationGrid : Gtk.Grid
     else if (name == "remote")
       sub_settings = remote_settings;
 
-    return DejaDup.Backend.get_for_type(name, sub_settings);
+    return DejaDup.Backend.get_for_key(name, sub_settings);
   }
 
   [GtkChild]
@@ -60,11 +60,15 @@ public class ConfigLocationGrid : Gtk.Grid
   [GtkChild]
   FolderChooserButton local_browse;
 
+  [GtkChild]
+  Gtk.Label unsupported_label;
+
   DejaDup.FilteredSettings settings;
   DejaDup.FilteredSettings drive_settings;
   DejaDup.FilteredSettings google_settings;
   DejaDup.FilteredSettings local_settings;
   DejaDup.FilteredSettings remote_settings;
+  ConfigLocationCombo combo;
   construct {
     settings = new DejaDup.FilteredSettings(null, read_only);
 
@@ -83,10 +87,30 @@ public class ConfigLocationGrid : Gtk.Grid
     remote_settings.bind(DejaDup.REMOTE_URI_KEY, remote_address,
                          "text", SettingsBindFlags.DEFAULT);
 
-    var combo = new ConfigLocationCombo(location_stack, settings, drive_settings);
+    combo = new ConfigLocationCombo(settings, drive_settings);
     combo.hexpand = true;
     attach(combo, 1, 0);
     location_label.mnemonic_widget = combo;
+
+    combo.notify["selected-item"].connect(update_stack);
+    update_stack();
+  }
+
+  void update_stack()
+  {
+    var item = combo.selected_item;
+    if (item == null)
+      return;
+
+    var page = item.page;
+    string support_explanation = null;
+    if (!DejaDup.get_tool().supports_backend(item.backend_kind, out support_explanation))
+      page = "unsupported";
+
+    if (page == "unsupported")
+      unsupported_label.label = support_explanation;
+
+    location_stack.visible_child_name = page;
   }
 
   void bind_folder(Settings settings, string key, Gtk.Entry entry, bool allow_abs)

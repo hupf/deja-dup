@@ -98,6 +98,13 @@ public abstract class Operation : Object
       job = null;
     }
 
+    string support_explanation;
+    if (!DejaDup.get_tool().supports_backend(backend.kind, out support_explanation)) {
+      raise_error(support_explanation, null);
+      done(false, false, null);
+      return;
+    }
+
     try {
       job = DejaDup.get_tool().create_job();
     }
@@ -124,7 +131,7 @@ public abstract class Operation : Object
       job.encrypt_password = passphrase;
 
     if (!finished)
-      job.start();
+      job.start.begin();
 
     unref();
   }

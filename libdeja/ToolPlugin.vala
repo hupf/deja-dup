@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public abstract class ToolJob : Object
+public abstract class DejaDup.ToolJob : Object
 {
   // life cycle signals
   public signal void done(bool success, bool cancelled, string? detail);
@@ -26,17 +24,17 @@ public abstract class ToolJob : Object
 
   // type-specific signals
   public signal void collection_dates(Tree<DateTime, string> dates); // STATUS (date, label), oldest first
-  public signal void listed_current_files(string date, string file, string type); // LIST
+  public signal void listed_current_files(string file, FileType type); // LIST, as full file path (/home/me/file.txt)
 
   // life cycle control
-  public abstract void start ();
+  public abstract async void start ();
   public abstract void cancel (); // destroy progress so far
   public abstract void stop (); // just abruptly stop
   public abstract void pause (string? reason);
   public abstract void resume ();
 
   public enum Mode {
-    INVALID, BACKUP, RESTORE, STATUS, LIST,
+    INVALID, BACKUP, RESTORE, STATUS, LIST, LAST_MODE,
   }
   public Mode mode {get; set; default = Mode.INVALID;}
 
@@ -49,6 +47,7 @@ public abstract class ToolJob : Object
   public File local {get; set;}
   public Backend backend {get; set;}
   public string encrypt_password {get; set;}
+  public string tag {get; set;}
 
   public List<File> includes; // BACKUP
   public List<File> includes_priority; // BACKUP
@@ -65,16 +64,13 @@ public abstract class ToolJob : Object
     }
   }
   public FileTree tree {get; set;} // RESTORE
-  public string tag {get; set;} // RESTORE
 }
 
-public abstract class ToolPlugin : Object
+public abstract class DejaDup.ToolPlugin : Object
 {
   public string name {get; protected set;}
   public abstract string get_version() throws Error;
   public virtual string[] get_dependencies() {return {};} // list of what-provides hints
-  public abstract ToolJob create_job () throws Error;
+  public abstract DejaDup.ToolJob create_job() throws Error;
+  public abstract bool supports_backend(Backend.Kind kind, out string explanation);
 }
-
-} // end namespace
-

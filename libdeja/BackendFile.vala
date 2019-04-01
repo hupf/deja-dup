@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public abstract class BackendFile : Backend
+public abstract class DejaDup.BackendFile : Backend
 {
   bool will_unmount = false;
 
@@ -26,20 +24,10 @@ public abstract class BackendFile : Backend
   }
 
   // Get mountable root
-  public abstract File? get_root_from_settings();
+  protected abstract File? get_root_from_settings();
 
   // Get full URI to backup folder
-  protected abstract File? get_file_from_settings();
-
-  // Location will be mounted by this time
-  public override string get_location()
-  {
-    var file = get_file_from_settings();
-    if (file == null)
-      return "invalid://"; // shouldn't happen!
-
-    return "gio+" + file.get_uri();
-  }
+  internal abstract File? get_file_from_settings();
 
   public override string get_location_pretty()
   {
@@ -159,5 +147,3 @@ public abstract class BackendFile : Backend
     }
   }
 }
-
-} // end namespace

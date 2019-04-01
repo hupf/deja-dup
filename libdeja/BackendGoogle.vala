@@ -32,7 +32,8 @@ public class BackendGoogle : Backend
   string refresh_token;
 
   public BackendGoogle(Settings? settings) {
-    Object(settings: (settings != null ? settings : get_settings(GOOGLE_ROOT)));
+    Object(kind: Kind.GOOGLE,
+           settings: (settings != null ? settings : get_settings(GOOGLE_ROOT)));
   }
 
   construct {
@@ -71,17 +72,14 @@ public class BackendGoogle : Backend
     return yield Network.get().can_reach("https://%s/".printf(GOOGLE_SERVER));
   }
 
-  public override string get_location()
+  internal string get_folder()
   {
-    var folder = get_folder_key(settings, GOOGLE_FOLDER_KEY);
-
-    // The hostname is unused
-    return "pydrive://google/%s".printf(folder);
+    return get_folder_key(settings, GOOGLE_FOLDER_KEY);
   }
 
   public override string get_location_pretty()
   {
-    var folder = get_folder_key(settings, GOOGLE_FOLDER_KEY);
+    var folder = get_folder();
     if (folder == "")
       return _("Google Drive");
     else

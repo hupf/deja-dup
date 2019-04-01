@@ -17,7 +17,8 @@ public const string DRIVE_FOLDER_KEY = "folder";
 public class BackendDrive : BackendFile
 {
   public BackendDrive(Settings? settings) {
-    Object(settings: (settings != null ? settings : get_settings(DRIVE_ROOT)));
+    Object(kind: Kind.LOCAL,
+           settings: (settings != null ? settings : get_settings(DRIVE_ROOT)));
   }
 
   public override async void cleanup()
@@ -49,7 +50,7 @@ public class BackendDrive : BackendFile
     return mount.get_root();
   }
 
-  protected override File? get_file_from_settings()
+  internal override File? get_file_from_settings()
   {
     var root = get_root_from_settings();
     if (root == null)

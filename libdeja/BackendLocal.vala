@@ -17,7 +17,8 @@ public const string LOCAL_FOLDER_KEY = "folder";
 public class BackendLocal : BackendFile
 {
   public BackendLocal(Settings? settings) {
-    Object(settings: (settings != null ? settings : get_settings(LOCAL_ROOT)));
+    Object(kind: Kind.LOCAL,
+           settings: (settings != null ? settings : get_settings(LOCAL_ROOT)));
   }
 
   // path may be relative to home or absolute
@@ -59,7 +60,7 @@ public class BackendLocal : BackendFile
   }
 
   // Get full URI to backup folder
-  protected override File? get_file_from_settings()
+  internal override File? get_file_from_settings()
   {
     var folder = get_folder_key(settings, LOCAL_FOLDER_KEY, true);
     return get_file_for_path(folder);

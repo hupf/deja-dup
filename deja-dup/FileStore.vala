@@ -29,7 +29,7 @@ public class FileStore : Object, ListModel
   public bool go_down(uint position)
   {
     var child = items.get(position).node;
-    if (child.kind != "dir")
+    if (child.kind != FileType.DIRECTORY)
       return false;
 
     set_current(child);
@@ -177,16 +177,16 @@ public class FileStore : Object, ListModel
 
   void insert_file(DejaDup.FileTree.Node node)
   {
-    var prefix = node.kind == "dir" ? "0:" : "1:";
+    var prefix = node.kind == FileType.DIRECTORY ? "0:" : "1:";
     var key = node.filename.casefold().collate_key_for_filename();
     var collate_key = prefix + key;
 
     // icon
-    var content_type = node.kind == "dir" ?
+    var content_type = node.kind == FileType.DIRECTORY ?
                        ContentType.from_mime_type("inode/directory") :
                        ContentType.guess(node.filename, null, null);
     var icon = ContentType.get_icon(content_type);
-    if (node.kind == "sym") { // symbolic link
+    if (node.kind == FileType.SYMBOLIC_LINK) {
       var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
       icon = new EmblemedIcon(icon, emblem);
     }

@@ -16,7 +16,8 @@ public const string REMOTE_FOLDER_KEY = "folder";
 public class BackendRemote : BackendFile
 {
   public BackendRemote(Settings? settings) {
-    Object(settings: (settings != null ? settings : get_settings(REMOTE_ROOT)));
+    Object(kind: Kind.GVFS,
+           settings: (settings != null ? settings : get_settings(REMOTE_ROOT)));
   }
 
   public virtual string get_folder()
@@ -25,14 +26,14 @@ public class BackendRemote : BackendFile
   }
 
   // Get mountable root
-  public override File? get_root_from_settings()
+  protected override File? get_root_from_settings()
   {
     var uri = settings.get_string(REMOTE_URI_KEY);
     return File.parse_name(uri);
   }
 
   // Get full URI to backup folder
-  protected override File? get_file_from_settings()
+  internal override File? get_file_from_settings()
   {
     var root = get_root_from_settings();
     var folder = get_folder();

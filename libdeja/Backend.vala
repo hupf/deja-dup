@@ -6,10 +6,16 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public abstract class Backend : Object
+public abstract class DejaDup.Backend : Object
 {
+  public enum Kind {
+    UNKNOWN,
+    LOCAL,
+    GVFS,
+    GOOGLE,
+  }
+  public Kind kind {get; construct; default=Kind.UNKNOWN;}
+
   public Settings settings {get; construct;}
 
   public signal void envp_ready(bool success, List<string>? envp, string? error = null);
@@ -25,7 +31,6 @@ public abstract class Backend : Object
   public abstract bool is_native(); // must be callable when nothing is mounted, nothing is prepared
   public virtual Icon? get_icon() {return null;}
 
-  public abstract string get_location(); // URI for duplicity
   public abstract string get_location_pretty(); // short description for user
 
   // list of what-provides hints
@@ -45,53 +50,34 @@ public abstract class Backend : Object
 
   public virtual void add_excludes(ref List<File> exludes) {}
 
-  public static Backend get_for_type(string backend_name, Settings? settings = null)
+  public static Backend get_for_key(string key, Settings? settings = null)
   {
-    if (backend_name == "auto")
+    if (key == "auto")
       return new BackendAuto();
-    else if (backend_name == "google")
+    else if (key == "google")
       return new BackendGoogle(settings);
-    else if (backend_name == "drive")
+    else if (key == "drive")
       return new BackendDrive(settings);
-    else if (backend_name == "remote")
+    else if (key == "remote")
       return new BackendRemote(settings);
-    else if (backend_name == "local")
+    else if (key == "local")
       return new BackendLocal(settings);
     else
-      return new BackendUnsupported();
+      return new BackendUnsupported(key);
   }
 
-  public static string get_type_name(Settings settings)
+  public static string get_key_name(Settings settings)
   {
-    var backend = settings.get_string(BACKEND_KEY);
-
-    if (backend != "auto" &&
-        backend != "drive" &&
-        backend != "file" &&
-        backend != "gcs" &&
-        backend != "goa" &&
-        backend != "google" &&
-        backend != "local" &&
-        backend != "openstack" &&
-        backend != "rackspace" &&
-        backend != "remote" &&
-        backend != "s3" &&
-        backend != "u1")
-      backend = "auto"; // default to auto if string is not known
-
-    return backend;
+    return settings.get_string(BACKEND_KEY);
   }
 
   public static Backend get_default()
   {
-    return get_for_type(get_default_type());
+    return get_for_key(get_default_key());
   }
 
-  public static string get_default_type()
+  public static string get_default_key()
   {
-    return get_type_name(get_settings());
+    return get_key_name(get_settings());
   }
 }
-
-} // end namespace
-

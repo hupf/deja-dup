@@ -40,7 +40,7 @@ public class RestoreFileTester : Object
     bool exists;
     if (!can_restore(resolved, out exists))
       bad_paths.append(resolved);
-    else if (node.kind != "dir")
+    else if (node.kind != FileType.DIRECTORY)
       all_bad = false;
     if (!exists) // no use recursing if the files aren't local
       return;

@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public class BackendAuto : Backend
+public class DejaDup.BackendAuto : Backend
 {
   public override bool is_native() {
     return false;
@@ -21,10 +19,6 @@ public class BackendAuto : Backend
   public override async bool is_ready(out string when) {
     when = null;
     return false;
-  }
-
-  public override string get_location() {
-    return "invalid://";
   }
 
   public override string get_location_pretty() {
@@ -45,6 +39,3 @@ public class BackendAuto : Backend
     settings.set_string(BACKEND_KEY, "google");
   }
 }
-
-} // end namespace
-

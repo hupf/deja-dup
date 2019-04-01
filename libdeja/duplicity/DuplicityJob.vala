@@ -88,7 +88,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     DejaDup.Network.get().notify["connected"].disconnect(network_changed);
   }
 
-  public override void start()
+  public override async void start()
   {
     // save arguments for calling duplicity again later
     if (original_mode == DejaDup.ToolJob.Mode.INVALID)
@@ -100,11 +100,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     var settings = DejaDup.get_settings();
     delete_age = settings.get_int(DejaDup.DELETE_AFTER_KEY);
 
-    async_setup.begin();
-  }
-
-  async void async_setup()
-  {
     /* Fake cache dir if we need to */
     if ((flags & DejaDup.ToolJob.Flags.NO_CACHE) != 0) {
       /* Look like a duplicity tempdir so that clean_tempdirs will clean this for us */
@@ -177,11 +172,22 @@ internal class DuplicityJob : DejaDup.ToolJob
       return 0;
   }
 
-  string get_remote(DejaDup.Backend? backend_override = null)
+  string get_remote()
   {
-    if (backend_override == null)
-      backend_override = backend;
-    return backend_override.get_location();
+    var file_backend = backend as DejaDup.BackendFile;
+    if (file_backend != null) {
+      var file = file_backend.get_file_from_settings();
+      if (file != null)
+        return "gio+" + file.get_uri();
+    }
+
+    var google_backend = backend as DejaDup.BackendGoogle;
+    if (google_backend != null) {
+      // The hostname is unused
+      return "pydrive://google/%s".printf(google_backend.get_folder());
+    }
+
+    return "invalid://"; // shouldn't happen! We should probably complain louder...
   }
 
   void expand_links_in_file(File file, ref List<File> all, bool include, List<File>? seen = null)
@@ -613,13 +619,13 @@ internal class DuplicityJob : DejaDup.ToolJob
     return true;
   }
 
-  void delete_excess(int cutoff, DejaDup.Backend? backend_override = null) {
+  void delete_excess(int cutoff) {
     state = State.DELETE;
     var argv = new List<string>();
     argv.append("remove-all-but-n-full");
     argv.append("%d".printf(cutoff));
     argv.append("--force");
-    argv.append(get_remote(backend_override));
+    argv.append(get_remote());
 
     set_status(_("Cleaning up…"));
     connect_and_start(null, null, argv);
@@ -1161,13 +1167,22 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
   }
 
-  void process_file_stat(string date, string file, string type, List<string> data, string text)
+  void process_file_stat(string date, string file, string dup_type, List<string> data, string text)
   {
     if (mode != DejaDup.ToolJob.Mode.LIST)
       return;
     if (file == ".")
       return;
-    listed_current_files(date, file, type);
+
+    var file_type = FileType.UNKNOWN;
+    if (dup_type == "reg")
+      file_type = FileType.REGULAR;
+    else if (dup_type == "dir")
+      file_type = FileType.DIRECTORY;
+    else if (dup_type == "sym")
+      file_type = FileType.SYMBOLIC_LINK;
+
+    listed_current_files("/" + file, file_type);
   }
 
   void process_diff_file(string file) {

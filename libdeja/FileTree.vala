@@ -15,11 +15,11 @@ public class DejaDup.FileTree : Object
   public class Node : Object {
     public weak Node parent {get; internal set;}
     public string filename {get; internal set;}
-    public string kind {get; construct;}
+    public FileType kind {get; construct;}
     public HashTable<string, Node> children {get; internal set;}
     public string[] search_tokens; // empty, but can be filled in by consumers
 
-    public Node(Node? parent, string filename, string kind) {
+    public Node(Node? parent, string filename, FileType kind) {
       Object(parent: parent, filename: filename, kind: kind);
     }
 
@@ -29,7 +29,7 @@ public class DejaDup.FileTree : Object
   }
 
   construct {
-    root = new DejaDup.FileTree.Node(null, "", "dir");
+    root = new DejaDup.FileTree.Node(null, "", FileType.DIRECTORY);
   }
 
   // Undoes any translations we performed on path (like switching homes)
@@ -87,7 +87,7 @@ public class DejaDup.FileTree : Object
     return node;
   }
 
-  public Node add(string file, string kind, out bool created = null)
+  public Node add(string file, FileType kind, out bool created = null)
   {
     created = false;
 
@@ -96,10 +96,13 @@ public class DejaDup.FileTree : Object
     var parent = iter;
 
     for (int i = 0; i < parts.length; i++) {
+      if (parts[i] == "")
+        continue; // skip leading empty part from root '/' or doubled slashes
+
       parent = iter;
       iter = parent.children.lookup(parts[i]);
       if (iter == null) {
-        var part_kind = (i == parts.length - 1) ? kind : "dir";
+        var part_kind = (i == parts.length - 1) ? kind : FileType.DIRECTORY;
         iter = new Node(parent, parts[i], part_kind);
         parent.children.insert(parts[i], iter);
         created = true;
@@ -123,7 +126,7 @@ public class DejaDup.FileTree : Object
     // Set root based on first folder with more than one child
     while (root.children.length == 1) {
       var child = root.children.get_values().data;
-      if (child.kind != "dir")
+      if (child.kind != FileType.DIRECTORY)
         break;
       root = child;
     }
@@ -177,7 +180,7 @@ public class DejaDup.FileTree : Object
       return;
 
     bool created;
-    var my_home_node = add(my_home_file.get_path(), "dir", out created);
+    var my_home_node = add(my_home_file.get_path(), FileType.DIRECTORY, out created);
     if (!created)
       return;
 

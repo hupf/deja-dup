@@ -62,10 +62,29 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     return this.version;
   }
 
-  public override DejaDup.ToolJob create_job () throws Error
+  public override DejaDup.ToolJob create_job() throws Error
   {
     do_initial_setup();
     return new DuplicityJob();
+  }
+
+  public override bool supports_backend(DejaDup.Backend.Kind kind, out string explanation)
+  {
+    explanation = null;
+
+    switch(kind) {
+      case DejaDup.Backend.Kind.LOCAL:
+      case DejaDup.Backend.Kind.GVFS:
+      case DejaDup.Backend.Kind.GOOGLE:
+        return true;
+
+      default:
+        explanation = _(
+            "This storage location is no longer supported. You can still use " +
+            "duplicity directly to back up or restore your files."
+        );
+        return false;
+    }
   }
 
   public static string duplicity_command()
