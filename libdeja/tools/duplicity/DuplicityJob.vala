@@ -958,6 +958,29 @@ internal class DuplicityJob : DejaDup.ToolJob
       return file.substring(next);
   }
 
+  void report_encryption_error()
+  {
+    bad_encryption_password(); // notify upper layers, if they want to do anything
+    show_error(_("Bad encryption password."));
+  }
+
+  bool check_encryption_error(string text)
+  {
+    // GPG does not expose the true reason in a machine-readable way for duplicity
+    // to pass on.  So we try to find out why it failed by looking for the
+    // "bad session key" error message that is given if the password was incorrect.
+    // Any other error should be presented to the user so they can maybe fix it
+    // (bad configuration files or something).
+    var no_seckey_msg = gpg_strerror(GPGError.NO_SECKEY);
+    var bad_key_msg = gpg_strerror(GPGError.BAD_KEY);
+    if (text.contains(no_seckey_msg) || text.contains(bad_key_msg)) {
+      report_encryption_error();
+      return true;
+    }
+
+    return false;
+  }
+
   protected virtual void process_error(string[] firstline, List<string>? data,
                                        string text_in)
   {
@@ -968,6 +991,12 @@ internal class DuplicityJob : DejaDup.ToolJob
     
     if (firstline.length > 1) {
       switch (int.parse(firstline[1])) {
+
+      case ERROR_GENERIC:
+        if (check_encryption_error(text_in))
+          return;
+        break;
+
       case ERROR_EXCEPTION: // exception
         process_exception(firstline.length > 2 ? firstline[2] : "", text);
         return;
@@ -982,17 +1011,8 @@ internal class DuplicityJob : DejaDup.ToolJob
         break;
 
       case ERROR_GPG:
-        // GPG does not expose the true reason in a machine-readable way for duplicity
-        // to pass on.  So we try to find out why it failed by looking for the
-        // "bad session key" error message that is given if the password was incorrect.
-        // Any other error should be presented to the user so they can maybe fix it
-        // (bad configuration files or something).
-        var no_seckey_msg = gpg_strerror(GPGError.NO_SECKEY);
-        var bad_key_msg = gpg_strerror(GPGError.BAD_KEY);
-        if (text_in.contains(no_seckey_msg) || text_in.contains(bad_key_msg)) {
-          bad_encryption_password(); // notify upper layers, if they want to do anything
-          text = _("Bad encryption password.");
-        }
+        if (check_encryption_error(text_in))
+          return;
         break;
 
       case ERROR_HOSTNAME_CHANGED:
@@ -1089,12 +1109,11 @@ internal class DuplicityJob : DejaDup.ToolJob
       break;
     case "EOFError":
       // Duplicity tried to ask the user what the encryption password is.
-      bad_encryption_password(); // notify upper layers, if they want to do anything
-      show_error(_("Bad encryption password."));
+      report_encryption_error();
       break;
     case "IOError":
       if (text.contains("GnuPG"))
-        show_error(_("Bad encryption password."));
+        report_encryption_error();
       else if (text.contains("[Errno 5]") && // I/O Error
                last_touched_file != null) {
         if (mode == DejaDup.ToolJob.Mode.BACKUP)
