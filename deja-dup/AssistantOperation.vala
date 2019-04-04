@@ -970,22 +970,28 @@ public abstract class AssistantOperation : Assistant
           passphrase = encrypt_entry.get_text();
       }
 
-      if (passphrase != "") {
-        // Save it
-        if (encrypt_remember.active) {
-          try {
-            yield Secret.password_store(DejaDup.get_passphrase_schema(),
-                                        Secret.COLLECTION_DEFAULT,
-                                        _("Backup encryption password"),
-                                        passphrase,
-                                        null,
-                                        "owner", Config.PACKAGE,
-                                        "type", "passphrase");
-          }
-          catch (Error e) {
-            warning("%s\n", e.message);
-          }
+      try {
+        if (passphrase != "" && encrypt_remember.active) {
+          // Save passphrase long term
+          yield Secret.password_store(DejaDup.get_passphrase_schema(),
+                                      Secret.COLLECTION_DEFAULT,
+                                      _("Backup encryption password"),
+                                      passphrase,
+                                      null,
+                                      "owner", Config.PACKAGE,
+                                      "type", "passphrase");
         }
+        else {
+          // If we weren't asked to save a password, clear it out. This
+          // prevents any attempt to accidentally use an old password.
+          yield Secret.password_clear(DejaDup.get_passphrase_schema(),
+                                      null,
+                                      "owner", Config.PACKAGE,
+                                      "type", "passphrase");
+        }
+      }
+      catch (Error e) {
+        warning("%s\n", e.message);
       }
     }
     else {
