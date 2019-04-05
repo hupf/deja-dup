@@ -204,7 +204,7 @@ public class ConfigList : ConfigWidget
     
     key_press_event.connect(on_key_press_event);
     
-    set_from_config.begin();
+    key_changed.begin();
     handle_selection_change(selection);
     selection.changed.connect(handle_selection_change);
   }
@@ -231,7 +231,7 @@ public class ConfigList : ConfigWidget
     model.row_deleted.disconnect(write_to_config);
     model.clear();
     model.row_deleted.connect(write_to_config);
-    
+
     int i = 0;
     foreach (File f in list) {
       string s = yield DejaDup.get_nickname(f);
