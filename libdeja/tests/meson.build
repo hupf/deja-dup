@@ -67,7 +67,6 @@ tests = [
     'symlink-trickshot',
     'threshold-full',
     'threshold-inc',
-    'u1',
     'verify',
     'write-error'
 ]

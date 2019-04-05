@@ -70,8 +70,6 @@ public abstract class Backend : Object
       return new BackendGCS(settings);
     else if (backend_name == "google")
       return new BackendGoogle(settings);
-    else if (backend_name == "u1")
-      return new BackendU1();
     else if (backend_name == "rackspace")
       return new BackendRackspace(settings);
     else if (backend_name == "openstack")
@@ -94,7 +92,6 @@ public abstract class Backend : Object
         backend != "s3" &&
         backend != "gcs" &&
         backend != "google" &&
-        backend != "u1" &&
         backend != "rackspace" &&
         backend != "openstack" &&
         backend != "drive" &&

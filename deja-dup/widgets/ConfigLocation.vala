@@ -194,8 +194,6 @@ public class ConfigLocation : ConfigWidget
                      new ConfigLocationGCS(label_sizes, all_settings[GCS_ROOT])) |
         insert_cloud("google", _("Google Drive"), true, "deja-dup-google-drive",
                      new ConfigLocationGoogle(label_sizes, all_settings[GOOGLE_ROOT])) |
-        insert_cloud("u1", _("Ubuntu One"), false, "deja-dup-cloud",
-                     new ConfigLocationU1(label_sizes)) |
         insert_cloud("rackspace", _("Rackspace Cloud Files"), show_deprecated, "deja-dup-cloud",
                      new ConfigLocationRackspace(label_sizes, all_settings[RACKSPACE_ROOT])) |
         insert_cloud("openstack", _("OpenStack Swift"), show_deprecated, "deja-dup-cloud",
@@ -415,8 +413,7 @@ public class ConfigLocation : ConfigWidget
         backend == "google" ||
         backend == "openstack" ||
         backend == "rackspace" ||
-        backend == "s3" ||
-        backend == "u1") {
+        backend == "s3") {
       group = Group.CLOUD;
       id = backend;
     }
