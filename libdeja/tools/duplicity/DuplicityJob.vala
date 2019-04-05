@@ -993,7 +993,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       switch (int.parse(firstline[1])) {
 
       case ERROR_GENERIC:
-        if (check_encryption_error(text_in))
+        if (text.contains("GnuPG") && check_encryption_error(text))
           return;
         break;
 

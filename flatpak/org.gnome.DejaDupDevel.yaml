@@ -173,11 +173,51 @@ modules:
         tag: 3.6.0
 
 
-  - name: python-pydrive
+  - name: pyyaml
     buildsystem: simple
     build-commands:
       - python2 setup.py build
       - python2 setup.py install --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/yaml/pyyaml
+        tag: '5.1'
+
+  - name: pyasn1
+    buildsystem: simple
+    build-commands:
+      - python2 setup.py build
+      - python2 setup.py install --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/etingof/pyasn1
+        tag: v0.4.5
+
+  - name: rsa
+    buildsystem: simple
+    build-commands:
+      - python2 setup.py build
+      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/sybrenstuvel/python-rsa
+        tag: version-4.0
+
+  - name: oauth2client
+    buildsystem: simple
+    build-commands:
+      - python2 setup.py build
+      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/googleapis/oauth2client
+        tag: v4.1.3
+
+  - name: pydrive
+    buildsystem: simple
+    build-commands:
+      - python2 setup.py build
+      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/gsuitedevs/PyDrive
