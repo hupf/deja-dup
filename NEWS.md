@@ -1,4 +1,13 @@
-# 39.0+
+# 39.1
+- Fix a bug that could have caused backups to be encrypted with two different
+  passwords in some cases. This would result in difficulty backing up or
+  restoring by not accepting the password you expected it to.
+- Fix a bug that caused duplicate save or exclude folders to appear in the
+  preferences.
+- Delete a canary file that duplicity's pydrive puts in your Drive.
+- If you don't ask for your password to be saved, we now clear out any older
+  saved password.
+- Finally delete the ancient Ubuntu One backend code.
 
 # 39.0
 - Switch away from GNOME Online Accounts to our own cloud keys
