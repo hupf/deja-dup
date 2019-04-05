@@ -51,6 +51,15 @@ public class BackendGoogle : Backend
   }
 
   public override async void cleanup() {
+    // Duplicity up to 0.7.18.2 has a bug in its pydrive backend where it makes
+    // a file called i_am_in_root in the root dir of your Google Drive. They do
+    // this to find the root id. I think because the author of the backend
+    // didn't know you can use 'root' as an identifier alias for root. Anyway,
+    // to keep the user's Drive clean, we'll delete it for the user. This
+    // should eventually be removed, once we depend on a version of duplicity
+    // higher than 0.7.18.2.
+    yield delete_root_finder();
+
     clean_credentials_dir();
   }
 
@@ -131,6 +140,33 @@ public class BackendGoogle : Backend
     }
 
     return answers;
+  }
+
+  async void delete_root_finder()
+  {
+    var message = Soup.Form.request_new(
+      "GET",
+      "https://www.googleapis.com/drive/v3/files",
+      "access_token", access_token,
+      "q", "name = 'i_am_in_root' and 'root' in parents",
+      "fields", "files(id)"
+    );
+    Json.Reader reader;
+
+    try {
+      reader = yield send_message(message);
+    }
+    catch (Error e) {
+      return;
+    }
+
+    reader.read_member("files");
+    for (int i = 0; i < reader.count_elements(); ++i) {
+      reader.read_element(i);
+      reader.read_member("id");
+      yield delete_id(reader.get_string_value(), access_token);
+      return;
+    }
   }
 
   async GenericSet<string?> find_duplicity_ids(string token, List<File> parents) throws Error
