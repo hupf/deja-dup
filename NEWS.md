@@ -1,3 +1,5 @@
+# 39.1+
+
 # 39.1
 - Fix a bug that could have caused backups to be encrypted with two different
   passwords in some cases. This would result in difficulty backing up or
