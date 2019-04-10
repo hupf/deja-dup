@@ -627,8 +627,11 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
   else if (!encrypted) // when not encrypted, we always expect empty string
     dupscript += "\n" + "PASSPHRASE:";
 
-  if (outputscript != null && outputscript != "")
-    dupscript += "\n\n" + outputscript + "\n";
+  if (outputscript != null && outputscript != "") {
+    // GLib prior to 2.59 added an extra \n to outputscript, but we need \n\n
+    // here, so we add them ourselves.
+    dupscript += "\n\n" + outputscript.chomp() + "\n\n";
+  }
 
   add_to_mockscript(dupscript);
 }
