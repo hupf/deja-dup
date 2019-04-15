@@ -1,6 +1,9 @@
-# 39.1+
+# 40.0
+- Fix tests when run under glib 2.60
 
 # 39.1
+This is a development release leading up to 40.0.
+
 - Fix a bug that could have caused backups to be encrypted with two different
   passwords in some cases. This would result in difficulty backing up or
   restoring by not accepting the password you expected it to.
@@ -12,6 +15,8 @@
 - Finally delete the ancient Ubuntu One backend code.
 
 # 39.0
+This is a development release leading up to 40.0.
+
 - Switch away from GNOME Online Accounts to our own cloud keys
     - It was brought to our attention that we shouldn't be using GNOME's keys,
       as they are intended for GNOME only.

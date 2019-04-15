@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-03-28 22:31-0400\n"
+"POT-Creation-Date: 2019-04-04 21:26-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Pavel Borecki <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2019-03-30 06:37+0000\n"
-"X-Generator: Launchpad (build 18910)\n"
+"X-Launchpad-Export-Date: 2019-04-06 05:53+0000\n"
+"X-Generator: Launchpad (build 18920)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
@@ -743,7 +743,7 @@ msgstr ""
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:696
 #: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1141
+#: libdeja/tools/duplicity/DuplicityJob.vala:1160
 msgid "Failed with an unknown error."
 msgstr "Ukončeno s neznámou chybou."
 
@@ -755,11 +755,11 @@ msgstr "Vyžadovat heslo?"
 msgid "Encryption Password Needed"
 msgstr "Je zapotřebí šifrovací heslo"
 
-#: deja-dup/AssistantOperation.vala:979
+#: deja-dup/AssistantOperation.vala:978
 msgid "Backup encryption password"
 msgstr "Heslo pro šifrování zálohy"
 
-#: deja-dup/AssistantOperation.vala:1050
+#: deja-dup/AssistantOperation.vala:1056
 msgctxt "verb"
 msgid "_Install"
 msgstr "Na_instalovat"
@@ -1145,7 +1145,7 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Spouští se naplánované zálohování"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:80
+#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
 #: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
 #: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
@@ -1316,19 +1316,15 @@ msgstr "Amazon S3"
 msgid "Google Cloud Storage"
 msgstr "Google cloudové úložiště"
 
-#: deja-dup/widgets/ConfigLocation.vala:195 libdeja/BackendGoogle.vala:96
+#: deja-dup/widgets/ConfigLocation.vala:195 libdeja/BackendGoogle.vala:105
 msgid "Google Drive"
 msgstr "Google disk"
 
-#: deja-dup/widgets/ConfigLocation.vala:197 libdeja/BackendU1.vala:41
-msgid "Ubuntu One"
-msgstr "Ubuntu One"
-
-#: deja-dup/widgets/ConfigLocation.vala:199 libdeja/BackendRackspace.vala:68
+#: deja-dup/widgets/ConfigLocation.vala:197 libdeja/BackendRackspace.vala:68
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: deja-dup/widgets/ConfigLocation.vala:201
+#: deja-dup/widgets/ConfigLocation.vala:199
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
@@ -1339,6 +1335,7 @@ msgstr "Umístě_ní v síti"
 #: deja-dup/widgets/ConfigLocationCustom.vala:44
 #: deja-dup/widgets/ConfigLocationFile.vala:44
 #: deja-dup/widgets/ConfigLocationGCS.vala:38
+#: deja-dup/widgets/ConfigLocationGoogle.vala:31
 #: deja-dup/widgets/ConfigLocationS3.vala:33
 #: deja-dup/widgets/ConfigLocationVolume.vala:33
 msgid "_Folder"
@@ -1374,10 +1371,6 @@ msgstr "_Kontejner"
 #: deja-dup/widgets/ConfigLocationS3.vala:31
 msgid "S3 Access Key I_D"
 msgstr "Identifikátor S3 přístupového klíče"
-
-#: deja-dup/widgets/ConfigLocationU1.vala:32 libdeja/BackendU1.vala:46
-msgid "Ubuntu One has shut down.  Please choose another storage location."
-msgstr "Ubuntu One bylo vypnuto. Vyberte prosím jiné umístění."
 
 #: deja-dup/widgets/ConfigPeriod.vala:36
 msgid "Day"
@@ -1422,20 +1415,20 @@ msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Čeká se, až bude „%s“ připojeno…"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:99
+#: libdeja/BackendGoogle.vala:108
 #, c-format
 msgid "%s on Google Drive"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:326
+#: libdeja/BackendGoogle.vala:362
 msgid "Could not log into Google servers."
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:402
+#: libdeja/BackendGoogle.vala:438
 msgid "Google credentials for Déjà Dup"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:509
+#: libdeja/BackendGoogle.vala:545
 msgid ""
 "You first need to allow Déjà Dup Backup Tool to access your Google account."
 msgstr ""
@@ -1632,28 +1625,24 @@ msgstr ""
 "Nepodařilo se obnovit následující soubory. Ověřte, že do nich máte právo "
 "zapisovat."
 
+#. notify upper layers, if they want to do anything
+#: libdeja/tools/duplicity/DuplicityJob.vala:964
+msgid "Bad encryption password."
+msgstr "Chybné šifrovací heslo."
+
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:980
+#: libdeja/tools/duplicity/DuplicityJob.vala:1009
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Nepodařilo se obnovit „%s“: Soubor nebyl nenalezen v záloze"
 
-#. notify upper layers, if they want to do anything
-#. Duplicity tried to ask the user what the encryption password is.
-#. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:994
-#: libdeja/tools/duplicity/DuplicityJob.vala:1093
-#: libdeja/tools/duplicity/DuplicityJob.vala:1097
-msgid "Bad encryption password."
-msgstr "Chybné šifrovací heslo."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1020
 msgid "Computer name changed"
 msgstr "Název počítače byl změněn"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1020
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1663,69 +1652,69 @@ msgstr ""
 "Existující záloha pochází z počítače nazvaného %s, ale současný název je %s. "
 "Pokud jste toto neočekávali, měli byste zálohovat do jiného umístění."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1035
+#: libdeja/tools/duplicity/DuplicityJob.vala:1055
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Při pokusu o vytvoření „%s“ byl odepřen přístup."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1039
-#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/tools/duplicity/DuplicityJob.vala:1059
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Při pokusu o čtení z „%s“ byl odepřen přístup."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1047
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Při pokusu smazání „%s“ byl odepřen přístup."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/tools/duplicity/DuplicityJob.vala:1074
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Umístění zálohy „%s“ neexistuje."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1060
-#: libdeja/tools/duplicity/DuplicityJob.vala:1112
+#: libdeja/tools/duplicity/DuplicityJob.vala:1080
+#: libdeja/tools/duplicity/DuplicityJob.vala:1131
 msgid "No space left."
 msgstr "Nezbývá volné místo."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
+#: libdeja/tools/duplicity/DuplicityJob.vala:1094
 msgid "Invalid ID."
 msgstr "Neplatný identifikátor."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1076
+#: libdeja/tools/duplicity/DuplicityJob.vala:1096
 msgid "Invalid secret key."
 msgstr "Neplatný tajný klíč."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1078
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "Váš účet Amazon Web Services není zaregistrován pro službu S3."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1087
+#: libdeja/tools/duplicity/DuplicityJob.vala:1107
 msgid "S3 bucket name is not available."
 msgstr "Název S3 kontejneru (bucket) není dostupný."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
+#: libdeja/tools/duplicity/DuplicityJob.vala:1120
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Chyba při čtení souboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1103
+#: libdeja/tools/duplicity/DuplicityJob.vala:1122
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Chyba při zapisování souboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Žádné volné místo v „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#: libdeja/tools/duplicity/DuplicityJob.vala:1141
 msgid "No backup files found"
 msgstr "Nenalezeny žádné soubory se zálohou"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1172
+#: libdeja/tools/duplicity/DuplicityJob.vala:1191
 msgid "Uploading…"
 msgstr "Nahrávání…"
 
@@ -1747,11 +1736,17 @@ msgstr ""
 "Zálohovací nástroj Déjà Dup vyžaduje duplicity ve verzi alespoň %d.%d.%.2d, "
 "nalezena byla však pouze verze %d.%d.%.2d"
 
+#~ msgid "Ubuntu One"
+#~ msgstr "Ubuntu One"
+
 #~ msgid "Backup location does not have enough free space."
 #~ msgstr "Zálohovací umístění nemá dostatek volného prostoru."
 
 #~ msgid "The type of account"
 #~ msgstr "Typ účtu"
+
+#~ msgid "Ubuntu One has shut down.  Please choose another storage location."
+#~ msgstr "Ubuntu One bylo vypnuto. Vyberte prosím jiné umístění."
 
 #~ msgid "Backup tool is broken.  Your installation is incomplete."
 #~ msgstr "Zálohovací nástroj je poškozený. Vaše instalace není kompletní."

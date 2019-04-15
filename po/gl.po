@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-03-28 22:31-0400\n"
+"POT-Creation-Date: 2019-04-04 21:26-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2019-03-30 06:38+0000\n"
-"X-Generator: Launchpad (build 18910)\n"
+"X-Launchpad-Export-Date: 2019-04-06 05:53+0000\n"
+"X-Generator: Launchpad (build 18920)\n"
 "Language: gl\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
@@ -743,7 +743,7 @@ msgstr ""
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:696
 #: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1141
+#: libdeja/tools/duplicity/DuplicityJob.vala:1160
 msgid "Failed with an unknown error."
 msgstr "Produciuse un erro descoñecido."
 
@@ -755,11 +755,11 @@ msgstr "Requirir un contrasinal?"
 msgid "Encryption Password Needed"
 msgstr "Precisase o contrasinal de cifrado"
 
-#: deja-dup/AssistantOperation.vala:979
+#: deja-dup/AssistantOperation.vala:978
 msgid "Backup encryption password"
 msgstr "Contrasinal de cifrado da copia de seguranza"
 
-#: deja-dup/AssistantOperation.vala:1050
+#: deja-dup/AssistantOperation.vala:1056
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalar"
@@ -1135,7 +1135,7 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Iniciando a copia de seguranza programada"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:80
+#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
 #: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
 #: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
@@ -1303,19 +1303,15 @@ msgstr "Amazon S3"
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: deja-dup/widgets/ConfigLocation.vala:195 libdeja/BackendGoogle.vala:96
+#: deja-dup/widgets/ConfigLocation.vala:195 libdeja/BackendGoogle.vala:105
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: deja-dup/widgets/ConfigLocation.vala:197 libdeja/BackendU1.vala:41
-msgid "Ubuntu One"
-msgstr "Ubuntu One"
-
-#: deja-dup/widgets/ConfigLocation.vala:199 libdeja/BackendRackspace.vala:68
+#: deja-dup/widgets/ConfigLocation.vala:197 libdeja/BackendRackspace.vala:68
 msgid "Rackspace Cloud Files"
 msgstr "Ficheiros na nube de Rackspace"
 
-#: deja-dup/widgets/ConfigLocation.vala:201
+#: deja-dup/widgets/ConfigLocation.vala:199
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
@@ -1326,6 +1322,7 @@ msgstr ""
 #: deja-dup/widgets/ConfigLocationCustom.vala:44
 #: deja-dup/widgets/ConfigLocationFile.vala:44
 #: deja-dup/widgets/ConfigLocationGCS.vala:38
+#: deja-dup/widgets/ConfigLocationGoogle.vala:31
 #: deja-dup/widgets/ConfigLocationS3.vala:33
 #: deja-dup/widgets/ConfigLocationVolume.vala:33
 msgid "_Folder"
@@ -1361,10 +1358,6 @@ msgstr "_Contedor"
 #: deja-dup/widgets/ConfigLocationS3.vala:31
 msgid "S3 Access Key I_D"
 msgstr "I_D da chave de acceso S3"
-
-#: deja-dup/widgets/ConfigLocationU1.vala:32 libdeja/BackendU1.vala:46
-msgid "Ubuntu One has shut down.  Please choose another storage location."
-msgstr "Ubuntu One pechou. Seleccione outra localización onde almacenar."
 
 #: deja-dup/widgets/ConfigPeriod.vala:36
 msgid "Day"
@@ -1408,20 +1401,20 @@ msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Agardando a que «%s» se conecte..."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:99
+#: libdeja/BackendGoogle.vala:108
 #, c-format
 msgid "%s on Google Drive"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:326
+#: libdeja/BackendGoogle.vala:362
 msgid "Could not log into Google servers."
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:402
+#: libdeja/BackendGoogle.vala:438
 msgid "Google credentials for Déjà Dup"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:509
+#: libdeja/BackendGoogle.vala:545
 msgid ""
 "You first need to allow Déjà Dup Backup Tool to access your Google account."
 msgstr ""
@@ -1619,30 +1612,26 @@ msgstr ""
 "Non foi posíbel restaurar os seguintes ficheiros. Asegúrese de que se pode "
 "escribir neles."
 
+#. notify upper layers, if they want to do anything
+#: libdeja/tools/duplicity/DuplicityJob.vala:964
+msgid "Bad encryption password."
+msgstr "O contrasinal de cifrado é incorrecto."
+
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:980
+#: libdeja/tools/duplicity/DuplicityJob.vala:1009
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "Non foi posíbel restaurar «%s»: Non se atopou o ficheiro na copia de "
 "seguranza."
 
-#. notify upper layers, if they want to do anything
-#. Duplicity tried to ask the user what the encryption password is.
-#. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:994
-#: libdeja/tools/duplicity/DuplicityJob.vala:1093
-#: libdeja/tools/duplicity/DuplicityJob.vala:1097
-msgid "Bad encryption password."
-msgstr "O contrasinal de cifrado é incorrecto."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1020
 msgid "Computer name changed"
 msgstr "Cambiou o nome do computador"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1020
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1653,69 +1642,69 @@ msgstr ""
 "computador actual é %s. Se non esperaba isto, debería facer a copia de "
 "seguranza noutro sitio."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1035
+#: libdeja/tools/duplicity/DuplicityJob.vala:1055
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Denegouse o permiso ao crear «%s»."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1039
-#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/tools/duplicity/DuplicityJob.vala:1059
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Denegouse o permiso ao ler «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1047
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Denegouse o permiso ao eliminar «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/tools/duplicity/DuplicityJob.vala:1074
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "O lugar da copia de seguranza «%s» non existe."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1060
-#: libdeja/tools/duplicity/DuplicityJob.vala:1112
+#: libdeja/tools/duplicity/DuplicityJob.vala:1080
+#: libdeja/tools/duplicity/DuplicityJob.vala:1131
 msgid "No space left."
 msgstr "Non hai espazo abondo."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
+#: libdeja/tools/duplicity/DuplicityJob.vala:1094
 msgid "Invalid ID."
 msgstr "O identificador non é válido."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1076
+#: libdeja/tools/duplicity/DuplicityJob.vala:1096
 msgid "Invalid secret key."
 msgstr "A chave secreta non é válida."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1078
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "A súa conta Amazon Web Services non ten rexistrado o servizo S3."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1087
+#: libdeja/tools/duplicity/DuplicityJob.vala:1107
 msgid "S3 bucket name is not available."
 msgstr "O nome do contedor S3 non está dispoñíbel."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
+#: libdeja/tools/duplicity/DuplicityJob.vala:1120
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Produciuse un erro ao ler o ficheiro «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1103
+#: libdeja/tools/duplicity/DuplicityJob.vala:1122
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Produciuse un erro ao escribir o ficheiro «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Non queda espazo libre en «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#: libdeja/tools/duplicity/DuplicityJob.vala:1141
 msgid "No backup files found"
 msgstr "Non se atopou ningún ficheiro de copia de seguranza"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1172
+#: libdeja/tools/duplicity/DuplicityJob.vala:1191
 msgid "Uploading…"
 msgstr "Enviando..."
 
@@ -1736,6 +1725,9 @@ msgid ""
 msgstr ""
 "A ferramenta de copias de seguranza Déjà Dup require como mínimo da versión "
 "%d.%d.%.2d de duplicity, pero só se atopou versión %d.%d.%.2d"
+
+#~ msgid "Ubuntu One"
+#~ msgstr "Ubuntu One"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr ""
@@ -1784,6 +1776,9 @@ msgstr ""
 
 #~ msgid "_Open Online Account Settings"
 #~ msgstr "Abrir os axustes das C_ontas en liña"
+
+#~ msgid "Ubuntu One has shut down.  Please choose another storage location."
+#~ msgstr "Ubuntu One pechou. Seleccione outra localización onde almacenar."
 
 #~ msgid "Backup will begin when a storage location is configured"
 #~ msgstr ""
