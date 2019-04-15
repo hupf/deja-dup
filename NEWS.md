@@ -1,3 +1,6 @@
+# 40.1
+- Fix versioning to be correct
+
 # 40.0
 - Fix tests when run under glib 2.60
 
