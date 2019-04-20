@@ -10,5 +10,8 @@ cp --update "$AUTOSTART_FILE" "$AUTOSTART_DIR"
 # The snap default is this dir, plus a "snap.deja-dup" directory.
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
+# To make gvfs-backend and its GVFS url parsing work, we need this next line
+export LD_LIBRARY_PATH="$SNAP/usr/lib/$SNAP_LAUNCHER_ARCH_TRIPLET/gvfs:$LD_LIBRARY_PATH"
+
 export DEJA_DUP_MONITOR_EXEC="/snap/bin/deja-dup.monitor"
 exec "$SNAP/bin/deja-dup" "$@"

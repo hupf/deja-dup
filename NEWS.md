@@ -1,5 +1,3 @@
-# 40.1+
-
 # 40.1
 - Fix versioning to be correct
 
