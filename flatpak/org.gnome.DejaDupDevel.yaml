@@ -59,11 +59,41 @@ modules:
         url: https://github.com/librsync/librsync
         tag: v2.0.2
 
+  - name: setuptools-scm
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/pypa/setuptools_scm
+        tag: v3.2.0
+
+  - name: pytest
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/pytest-dev/pytest
+        tag: 3.9.1
+
+  - name: pytest-runner
+    buildsystem: simple
+    build-commands:
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
+    sources:
+      - type: git
+        url: https://github.com/pytest-dev/pytest-runner
+        tag: '5.1'
+
   - name: python-six
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/benjaminp/six
@@ -72,8 +102,8 @@ modules:
   - name: python-monotonic
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/atdt/monotonic
@@ -82,8 +112,8 @@ modules:
   - name: python-fasteners
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/harlowja/fasteners
@@ -92,19 +122,19 @@ modules:
   - name: duplicity
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: archive
-        url: https://launchpad.net/duplicity/0.7-series/0.7.19/+download/duplicity-0.7.19.tar.gz
-        md5: b4decdb60275c87b4fafab55c31dc5ce
+        url: https://launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz
+        md5: e6a48e847e1778548133bc3723548723
 
 
   - name: pycairo
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/pygobject/pycairo
@@ -113,8 +143,8 @@ modules:
   - name: pygobject
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/pygobject/
@@ -124,8 +154,8 @@ modules:
   - name: python-boto
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/boto/boto
@@ -135,8 +165,8 @@ modules:
   - name: python-pbr
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: git
         url: https://github.com/openstack-dev/pbr
@@ -145,8 +175,8 @@ modules:
   - name: python-certifi
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/certifi/python-certifi
@@ -155,8 +185,8 @@ modules:
   - name: python-requests
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: archive
         url: https://pypi.python.org/packages/b0/e1/eab4fc3752e3d240468a8c0b284607899d2fbfb236a56b7377a329aa8d09/requests-2.18.4.tar.gz
@@ -165,8 +195,8 @@ modules:
   - name: python-swiftclient
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: git
         url: https://github.com/openstack/python-swiftclient
@@ -176,8 +206,8 @@ modules:
   - name: pyyaml
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: git
         url: https://github.com/yaml/pyyaml
@@ -186,8 +216,8 @@ modules:
   - name: pyasn1
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: git
         url: https://github.com/etingof/pyasn1
@@ -196,8 +226,8 @@ modules:
   - name: rsa
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/sybrenstuvel/python-rsa
@@ -206,8 +236,8 @@ modules:
   - name: oauth2client
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/googleapis/oauth2client
@@ -216,29 +246,19 @@ modules:
   - name: pydrive
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/gsuitedevs/PyDrive
         tag: 1.3.1
 
 
-  - name: setuptools-scm
-    buildsystem: simple
-    build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
-    sources:
-      - type: git
-        url: https://github.com/pypa/setuptools_scm
-        tag: v3.2.0
-
   - name: mock
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --prefix /app
     sources:
       - type: git
         url: https://github.com/testing-cabal/mock
@@ -247,8 +267,8 @@ modules:
   - name: keyring
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/jaraco/keyring
@@ -257,8 +277,8 @@ modules:
   - name: pyrax
     buildsystem: simple
     build-commands:
-      - python2 setup.py build
-      - python2 setup.py install --single-version-externally-managed --root=/ --prefix /app
+      - python3 setup.py build
+      - python3 setup.py install --single-version-externally-managed --root=/ --prefix /app
     sources:
       - type: git
         url: https://github.com/pycontribs/pyrax

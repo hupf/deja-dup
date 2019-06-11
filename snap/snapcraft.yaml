@@ -22,7 +22,7 @@ apps:
     desktop: share/applications/org.gnome.DejaDup.desktop
     environment:
       PATH: $SNAP/bin:$PATH
-      PYTHONPATH: $SNAP/lib/python2.7/site-packages:$SNAP/usr/lib/python2.7/dist-packages
+      PYTHONPATH: $SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3/dist-packages
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
   monitor:
     command: desktop-launch $SNAP/bin/monitor.wrapper
@@ -34,29 +34,33 @@ apps:
   duplicity:
     command: bin/duplicity
     environment:
-      PYTHONPATH: $SNAP/lib/python2.7/site-packages:$SNAP/usr/lib/python2.7/dist-packages
+      PYTHONPATH: $SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3/dist-packages
 
 parts:
   dump:
     plugin: dump
-    source: ./snap/local
+    source: ./snap/local/dump
 
   duplicity:
     plugin: python
-    python-version: python2
-    source: https://launchpad.net/duplicity/0.7-series/0.7.19/+download/duplicity-0.7.19.tar.gz
+    python-version: python3
+    source: https://launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz
     source-type: tar
     python-packages:
+      - pyrax  # not packaged in Ubuntu
       - PyDrive  # not packaged in Ubuntu
     build-packages:
       - ieee-data  # python-netaddr links to this, but does not depend on it
       - librsync-dev
     stage-packages:
       - librsync1
-      - python-boto
-      - python-cloudfiles
-      - python-gi
-      - python-swiftclient
+      - python3-boto
+      - python3-gi
+      - python3-swiftclient
+    override-prime: |
+      snapcraftctl prime
+      patch -d lib/python3.6/site-packages -p0 < ../project/snap/local/fsdecode.patch
+      patch -d lib/python3.6/site-packages -p0 < ../project/snap/local/uexc.patch
 
   deja-dup:
     plugin: meson
