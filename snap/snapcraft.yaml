@@ -53,8 +53,8 @@ parts:
       - PyDrive  # not packaged in Ubuntu
     build-packages:
       - ieee-data  # python-netaddr links to this, but does not depend on it
-      - libffi-dev
       - librsync-dev
+      - python3-cffi  # to avoid building cffi in pip, which fails on non-amd64
     stage-packages:
       - librsync1
       - python3-boto
