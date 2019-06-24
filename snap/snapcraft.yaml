@@ -63,7 +63,8 @@ parts:
       snapcraftctl prime
       patch -d lib/python3.6/site-packages -p0 < fsdecode.patch
       patch -d lib/python3.6/site-packages -p0 < uexc.patch
-      rm fsdecode.patch uexc.patch
+      patch -d lib/python3.6/site-packages -p0 < boto.patch
+      rm fsdecode.patch uexc.patch boto.patch
 
   deja-dup:
     plugin: meson

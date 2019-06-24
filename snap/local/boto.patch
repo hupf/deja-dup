@@ -1,0 +1,26 @@
+=== modified file 'duplicity/backends/_boto_multi.py'
+--- duplicity/backends/_boto_multi.py	2019-06-17 15:10:58 +0000
++++ duplicity/backends/_boto_multi.py	2019-06-24 22:27:26 +0000
+@@ -113,6 +113,8 @@
+         self._pool.join()
+ 
+     def upload(self, filename, key, headers=None):
++        import boto
++
+         chunk_size = globals.s3_multipart_chunk_size
+ 
+         # Check minimum chunk size for S3
+
+=== modified file 'duplicity/backends/_boto_single.py'
+--- duplicity/backends/_boto_single.py	2019-06-17 15:10:58 +0000
++++ duplicity/backends/_boto_single.py	2019-06-24 22:27:26 +0000
+@@ -182,6 +182,8 @@
+         del self.storage_uri
+ 
+     def resetConnection(self):
++        import boto
++
+         if getattr(self, u'conn', False):
+             self.conn.close()
+         self.bucket = None
+
