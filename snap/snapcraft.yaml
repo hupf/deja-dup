@@ -49,13 +49,13 @@ parts:
     source: https://launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz
     source-type: tar
     python-packages:
+      - cffi==1.11.5  # gets pulled in by pyrax, and we need to lock to same version as Ubuntu ships
       - pyrax  # not packaged in Ubuntu
       - PyDrive  # not packaged in Ubuntu
     build-packages:
       - ieee-data  # python-netaddr links to this, but does not depend on it
       - libffi-dev
       - librsync-dev
-      - python3-cffi
     stage-packages:
       - librsync1
       - python3-boto
