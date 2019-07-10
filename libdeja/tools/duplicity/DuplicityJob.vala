@@ -20,13 +20,13 @@
 using GLib;
 
 [CCode (cheader_filename = "gpgrt.h", cname = "gpg_err_code_t", cprefix = "GPG_ERR_", has_type_id = false)]
-public enum GPGError {
+extern enum GPGError {
   NO_SECKEY = 17,
   BAD_KEY = 19,
 }
 
 [CCode (cheader_filename = "gpgrt.h")]
-public extern unowned string gpg_strerror(GPGError code);
+extern unowned string gpg_strerror(GPGError code);
 
 internal class DuplicityJob : DejaDup.ToolJob
 {
