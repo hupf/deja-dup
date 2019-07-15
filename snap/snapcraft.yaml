@@ -46,7 +46,7 @@ parts:
       - dump
     plugin: python
     python-version: python3
-    source: https://launchpad.net/duplicity/0.8-series/0.8.00/+download/duplicity-0.8.00.tar.gz
+    source: https://launchpad.net/duplicity/0.8-series/0.8.01/+download/duplicity-0.8.01.tar.gz
     source-type: tar
     python-packages:
       - cffi==1.11.5  # gets pulled in by pyrax, and we need to lock to same version as Ubuntu ships
@@ -63,11 +63,8 @@ parts:
       - python3-swiftclient
     override-prime: |
       snapcraftctl prime
-      patch -d lib/python3.6/site-packages -p0 < fsdecode.patch
-      patch -d lib/python3.6/site-packages -p0 < uexc.patch
-      patch -d lib/python3.6/site-packages -p0 < boto.patch
-      patch -d lib/python3.6/site-packages -p0 < s3fsdecode.patch
-      rm fsdecode.patch uexc.patch boto.patch s3fsdecode.patch
+      patch -p0 < python3.patch
+      rm python3.patch
 
   deja-dup:
     plugin: meson
