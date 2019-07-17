@@ -7,4 +7,3 @@ build lacks the following features:
 - Nautilus extension
 - Help documentation (yelp)
 - Using policykit to restore files you can't normally write to
-

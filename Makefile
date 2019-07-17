@@ -90,6 +90,13 @@ flatpak:
 	                flatpak/org.gnome.DejaDupDevel.yaml
 	flatpak update --user -y org.gnome.DejaDupDevel
 
+.PHONY: flatpak-update
+flatpak-update:
+	for p in 2to3 fasteners future pydrive pygobject; do \
+		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p.json $$p; \
+	done
+	sed -i 's/^[][]//g' flatpak/*.json
+
 .PHONY: snap
 snap:
 	rm -f *.snap
