@@ -9,7 +9,7 @@ command: deja-dup
 finish-args:
   - --socket=wayland
 
-  - --socket=x11
+  - --socket=fallback-x11
   - --share=ipc
 
   - --filesystem=host
@@ -72,8 +72,8 @@ modules:
       - python3 setup.py install --prefix /app
     sources:
       - type: archive
-        url: https://launchpad.net/duplicity/0.8-series/0.8.02/+download/duplicity-0.8.02.tar.gz
-        md5: e5b14b7a9617a5231348003179109d12
+        url: https://launchpad.net/duplicity/0.8-series/0.8.05/+download/duplicity-0.8.05.tar.gz
+        md5: 9e265feb8bb67ea6565f4d0f3101de22
       - type: patch
         path: ./python3.patch
         strip-components: 0
