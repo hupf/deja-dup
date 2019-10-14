@@ -169,6 +169,19 @@ public class BackendGoogle : Backend
     }
   }
 
+  async void delete_id(string id, string token)
+  {
+    var message = new Soup.Message(
+      "DELETE",
+      "https://www.googleapis.com/drive/v3/files/%s?access_token=%s".printf(id, token)
+    );
+    try {
+      yield send_message(message);
+    }
+    catch (Error e) {} // ignore
+  }
+
+#if HAS_GOA
   async GenericSet<string?> find_duplicity_ids(string token, List<File> parents) throws Error
   {
     string[] parent_ids = {};
@@ -216,18 +229,6 @@ public class BackendGoogle : Backend
       warning("%s\n", e.message);
       return new GenericSet<string>(str_hash, str_equal);
     }
-  }
-
-  async void delete_id(string id, string token)
-  {
-    var message = new Soup.Message(
-      "DELETE",
-      "https://www.googleapis.com/drive/v3/files/%s?access_token=%s".printf(id, token)
-    );
-    try {
-      yield send_message(message);
-    }
-    catch (Error e) {} // ignore
   }
 
   async void delete_old_ids(BackendGOA goa_backend, List<File> parents)
@@ -319,6 +320,7 @@ public class BackendGoogle : Backend
 
     return null;
   }
+#endif
 
   public override async uint64 get_space(bool free = true)
   {

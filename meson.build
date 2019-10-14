@@ -47,7 +47,7 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 # Dependencies
 gio_dep = dependency('gio-2.0', version: '>= 2.46')
 gio_unix_dep = dependency('gio-unix-2.0')
-goa_dep = dependency('goa-1.0', version: '>= 3.8.0')
+goa_dep = dependency('goa-1.0', version: '>= 3.8.0', required: false)
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 nautilus_dep = dependency('libnautilus-extension', required: false)
@@ -99,8 +99,11 @@ common_cflags = [
     '-DAPPLICATION_ID="@0@"'.format(application_id),
     '-DICON_NAME="@0@"'.format(application_id),
     '-DLOCALE_DIR="@0@"'.format(localedir),
-    '-DTHEME_DIR="@0@"'.format(join_paths(datadir, 'icons')),
     '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)]
+
+if goa_dep.found()
+common_vflags += ['--define=HAS_GOA']
+endif
 
 if packagekit_dep.found()
 common_vflags += ['--define=HAS_PACKAGEKIT']

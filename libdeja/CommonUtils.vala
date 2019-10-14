@@ -503,9 +503,10 @@ void migrate_goa_settings()
     if (goa.get_user_value("folder") != null)
       remote.set_string(REMOTE_FOLDER_KEY, goa.get_string("folder"));
 
+    // URI
+    var uri = ""; // if we can't lookup goa, clear out the current URI with ""
+#if HAS_GOA
     try {
-      // URI
-      var uri = ""; // if we can't lookup goa, clear out the current URI with ""
       var id = goa.get_string("id");
       var goa_client = new Goa.Client.sync(null);
       var goa_object = goa_client.lookup_by_id(id);
@@ -514,11 +515,12 @@ void migrate_goa_settings()
         if (files != null)
           uri = files.uri;
       }
-      remote.set_string(REMOTE_URI_KEY, uri);
     }
     catch (Error e) {
       // ignore - maybe GOA just isn't installed
     }
+#endif
+    remote.set_string(REMOTE_URI_KEY, uri);
 
     settings.set_string(BACKEND_KEY, "remote");
   }

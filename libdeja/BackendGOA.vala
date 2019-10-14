@@ -27,6 +27,7 @@ public const string GOA_FOLDER_KEY = "folder";
 public const string GOA_TYPE_KEY = "type";
 public const string GOA_MIGRATED_KEY = "migrated";
 
+#if HAS_GOA
 public class BackendGOA : BackendRemote
 {
   static Goa.Client _client;
@@ -90,4 +91,5 @@ public class BackendGOA : BackendRemote
     return File.new_for_uri(files.uri);
   }
 }
+#endif
 } // end namespace

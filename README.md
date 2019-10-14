@@ -5,7 +5,7 @@ Right Way (encrypted, off-site, and regular) and uses
 [duplicity](http://duplicity.nongnu.org/) as the backend.
 
 Features:
- * Support for local, remote, or cloud backup locations such as Google Drive and Nextcloud
+ * Support for local, remote, or cloud backup locations such as Google Drive
  * Securely encrypts and compresses your data
  * Incrementally backs up, letting you restore from any particular backup
  * Schedules regular backups

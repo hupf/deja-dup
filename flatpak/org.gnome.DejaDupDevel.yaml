@@ -17,20 +17,6 @@ finish-args:
   - --talk-name=org.gtk.vfs.*
 
 modules:
-  - name: librest
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/librest.git
-        tag: 0.8.1
-
-  - name: gnome-online-accounts
-    buildsystem: meson
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/gnome-online-accounts.git
-        tag: 3.32.0
-
-
   - name: libgpg-error
     config-opts:
       - --disable-doc

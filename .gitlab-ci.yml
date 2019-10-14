@@ -11,12 +11,14 @@ flatpak:
     MANIFEST_PATH: flatpak/org.gnome.DejaDupDevel.yaml
     MESON_ARGS: -Dprofile=Devel
     FLATPAK_MODULE: deja-dup
-    RUNTIME_REPO: https://sdk.gnome.org/gnome.flatpakrepo
+    RUNTIME_REPO: https://nightly.gnome.org/gnome-nightly.flatpakrepo
     APP_ID: org.gnome.DejaDupDevel
     FLATPAK_VALIDATE_ICON: /usr/bin/true
 
 review:
   extends: .review
+  dependencies:
+    - 'flatpak'
 
 stop_review:
   extends: .stop_review
