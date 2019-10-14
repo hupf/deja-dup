@@ -2,25 +2,19 @@
 ---
 app-id: org.gnome.DejaDupDevel
 runtime: org.gnome.Platform
-runtime-version: 'master'
+runtime-version: master
 sdk: org.gnome.Sdk
 command: deja-dup
 
 finish-args:
-  - --socket=wayland
-
-  - --socket=fallback-x11
-  - --share=ipc
-
   - --filesystem=host
-
+  - --share=ipc
   - --share=network
-
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --talk-name=org.freedesktop.secrets
   - --talk-name=org.gtk.vfs
   - --talk-name=org.gtk.vfs.*
-
-  - --talk-name=org.freedesktop.secrets
-  - --talk-name=org.gnome.OnlineAccounts
 
 modules:
   - name: librest
