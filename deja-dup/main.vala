@@ -163,7 +163,7 @@ public class DejaDupApp : Gtk.Application
       main_window.destroy.connect(() => {this.main_window = null;});
 
       // Translators: "Backups" is a noun
-      main_window.title = _("Backups") + Config.NAME_SUFFIX;
+      main_window.title = _("Backups");
       main_window.resizable = false;
 
       var header = new Gtk.HeaderBar();
@@ -359,7 +359,7 @@ int main(string[] args)
   // context is itself a reference to both the underlying command line tool
   // "duplicity" and the act of duplicating data for backup.  As a whole, the
   // phrase "Déjà Dup" may not be very translatable.
-  var appname = _("Déjà Dup Backup Tool") + Config.NAME_SUFFIX;
+  var appname = _("Déjà Dup Backup Tool");
 
   Environment.set_application_name(appname);
   Environment.set_prgname(Config.APPLICATION_ID);

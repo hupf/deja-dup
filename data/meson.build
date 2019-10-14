@@ -16,9 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
-configure_file(input: join_paths('icons', 'org.gnome.DejaDup.svg'),
-    output: '@0@.svg'.format(application_id),
-    configuration: configuration_data(),
+install_data(join_paths('icons', '@0@.svg'.format(application_id)),
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'))
 
 configure_file(input: join_paths('icons', 'org.gnome.DejaDup-symbolic.svg'),
@@ -59,7 +57,6 @@ test('validate-monitor-desktop', desktop_file_validate,
 
 conf_data = configuration_data()
 conf_data.set('icon', application_id)
-conf_data.set('name_suffix', name_suffix)
 vars = configure_file(input: 'org.gnome.DejaDup.desktop.in',
     output: 'org.gnome.DejaDup.vars.desktop.in',
     configuration: conf_data)

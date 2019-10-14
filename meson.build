@@ -71,10 +71,8 @@ profile = get_option('profile')
 application_id = 'org.gnome.DejaDup@0@'.format(profile)
 if profile != ''
     message('Using profile @0@.'.format(profile))
-    name_suffix = ' (@0@)'.format(profile)
 else
     message('Using default profile.')
-    name_suffix = ''
 endif
 
 common_vflags = [
@@ -98,7 +96,6 @@ common_cflags = [
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
     '-DVERSION="@0@"'.format(meson.project_version()),
     '-DPROFILE="@0@"'.format(profile),
-    '-DNAME_SUFFIX="@0@"'.format(name_suffix),
     '-DAPPLICATION_ID="@0@"'.format(application_id),
     '-DICON_NAME="@0@"'.format(application_id),
     '-DLOCALE_DIR="@0@"'.format(localedir),

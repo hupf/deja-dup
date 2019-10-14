@@ -29,7 +29,6 @@ namespace Config {
 	public const string PROFILE;
 	public const string APPLICATION_ID;
 	public const string ICON_NAME;
-	public const string NAME_SUFFIX;
 
 	public const string DUPLICITY_PACKAGES;
 	public const string GVFS_PACKAGES;
