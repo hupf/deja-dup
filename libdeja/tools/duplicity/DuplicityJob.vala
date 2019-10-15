@@ -78,7 +78,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   bool got_collection_info = false;
   struct DateInfo {
     public bool full;
-    public TimeVal time;
+    public DateTime time;
   }
   List<DateInfo?> collection_info = null;
 
@@ -525,12 +525,12 @@ internal class DuplicityJob : DejaDup.ToolJob
   
   async void report_full_backups()
   {
-    Date full_backup = Date();
+    DateTime full_backup = null;
     foreach (DateInfo info in collection_info) {
       if (info.full)
-        full_backup.set_time_val(info.time);
+        full_backup = info.time;
     }
-    var first_backup = !full_backup.valid();
+    var first_backup = full_backup == null;
 
     var do_restart = true;
     reported_full_backups = true; // don't do this a second time
@@ -547,8 +547,8 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     // Set full backup threshold and determine whether we should trigger
     // a full backup.
-    Date threshold = DejaDup.get_full_backup_threshold_date();
-    if (!full_backup.valid() || threshold.compare(full_backup) > 0) {
+    var threshold = DejaDup.get_full_backup_threshold_date();
+    if (full_backup == null || threshold.compare(full_backup) > 0) {
       is_full_backup = true;
       is_full(first_backup);
     }
@@ -800,30 +800,21 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (got_collection_info && !deleted_files) {
       // Alright, let's look at collection data
       int full_dates = 0;
-      TimeVal prev_time = TimeVal();
-      Date prev_date = Date();
       int too_old = 0;
-      TimeVal now = TimeVal();
-      now.get_current_time();
+      DateTime today = new DateTime.now_local();
+      DateTime prev_time = null;
 
-      Date today = Date();
-      today.set_time_val(now);
-      
       foreach (DateInfo info in collection_info) {
         if (info.full) {
-          if (full_dates > 0) { // Wait until we have a prev_time
-            prev_date.set_time_val(prev_time); // compare last incremental backup
-            if (prev_date.days_between(today) > delete_age)
-              ++too_old;
-          }
+          if (prev_time != null && today.difference(prev_time) / TimeSpan.DAY > delete_age)
+            ++too_old;
           ++full_dates;
         }
         prev_time = info.time;
       }
-      prev_date.set_time_val(prev_time); // compare last incremental backup
-      if (prev_date.days_between(today) > delete_age)
+      if (prev_time != null && today.difference(prev_time) / TimeSpan.DAY > delete_age)
         ++too_old;
-      
+
       // Did we just finished a successful full backup?
       // Collection info won't have our recent backup, because it is done at
       // beginning of backup.
@@ -1272,7 +1263,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (mode != DejaDup.ToolJob.Mode.STATUS || got_collection_info)
       return;
     
-    var timeval = TimeVal();
     var dates = new List<string>();
     var infos = new List<DateInfo?>();
     bool in_chain = false;
@@ -1285,21 +1275,25 @@ internal class DuplicityJob : DejaDup.ToolJob
         // Since there's a space at the beginning, when we tokenize it, we
         // should expect an extra token at the front.
         string[] tokens = line.split(" ");
-        if (tokens.length > 2 && timeval.from_iso8601(tokens[2])) {
-          dates.append(tokens[2]);
-          
-          var info = DateInfo();
-          info.time = timeval;
-          info.full = tokens[1] == "full";
-          infos.append(info);
+        if (tokens.length <= 2)
+          continue;
 
-          if (!detected_encryption &&
-              tokens.length > 4) {
-            // Just use the encryption status of the first one we see;
-            // mixed-encryption backups is not supported.
-            detected_encryption = true;
-            existing_encrypted = tokens[4] == "enc";
-          }
+        var datetime = new DateTime.from_iso8601(tokens[2], null);
+        if (datetime == null)
+          continue;
+
+        dates.append(tokens[2]);
+
+        var info = DateInfo();
+        info.time = datetime;
+        info.full = tokens[1] == "full";
+        infos.append(info);
+
+        if (!detected_encryption && tokens.length > 4) {
+          // Just use the encryption status of the first one we see;
+          // mixed-encryption backups is not supported.
+          detected_encryption = true;
+          existing_encrypted = tokens[4] == "enc";
         }
       }
       else if (in_chain)

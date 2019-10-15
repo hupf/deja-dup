@@ -59,12 +59,12 @@ public class ConfigLabelDescription : ConfigLabel
   void set_from_config_restore()
   {
     var val = DejaDup.last_run_date(DejaDup.TimestampType.BACKUP);
+    var time = new DateTime.from_iso8601(val, new TimeZone.utc());
 
     // This here encodes a lot of outside GUI information in this widget,
     // but it's a very special case thing.
-    var time = TimeVal();
     var button_name = "<b>%s</b>".printf(_("Restore…"));
-    if (val == "" || !time.from_iso8601(val))
+    if (time == null)
       label.label = _("You may use the %s button to browse for existing backups.").printf(button_name);
     else {
       var file_manager = external_dgettext("nautilus", "Files");

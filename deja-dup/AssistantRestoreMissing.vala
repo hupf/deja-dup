@@ -27,13 +27,13 @@ public class DeletedFile {
    * can access pretty file name and mark file for restore.
    * 
    * @param //string// ''name'' Full path name of file
-   * @param //Time// ''deleted'' Information when was file deleted
+   * @param //DateTime// ''deleted'' Information when was file deleted
    */
   public string name {get; set;}
-  public Time deleted {get; set;}
+  public DateTime deleted {get; set;}
   public bool restore {get; set; default = false;}
 
-  public DeletedFile(string name, Time deleted) {
+  public DeletedFile(string name, DateTime deleted) {
     this.name = name;
     this.deleted = deleted;
   }
@@ -70,25 +70,6 @@ public class AssistantRestoreMissing : AssistantRestore {
   private File display_directory;
 
   private bool backups_queue_filled = false;
-  private static int compare_time(Time a, Time b) {
-    /*
-     * Compare function for backups queue
-     *
-     * Default comparing for queue goes from oldest to newest so we use our own
-     * compare function to reverse that ordering and proceed from newest to oldest
-     * since it is far more likely that user deleted file in recent history.
-     *
-     * @param //Time// ''a'', ''b'' Time objects
-     */
-    var a_epoch = int.parse(a.format("%s"));
-    var b_epoch = int.parse(b.format("%s"));
-    if (a_epoch < b_epoch)
-      return 1;
-    else if (a_epoch == b_epoch)
-      return 0;
-    else
-      return -1;
-  }
 
   /*
     If user moves forward while OperationFiles is runing, code cleanup stops the current operation
@@ -97,7 +78,7 @@ public class AssistantRestoreMissing : AssistantRestore {
   */
   private bool scan_queue = true;
   private bool cancel_assistant = false;
-  private Sequence<Time?> backups_queue = new Sequence<Time?>();
+  private Sequence<DateTime?> backups_queue = new Sequence<DateTime?>();
 
   private HashTable<string, DeletedFile> allfiles_prev;
   private List<File> restore_files_remaining;
@@ -173,7 +154,7 @@ public class AssistantRestoreMissing : AssistantRestore {
           _restore_files.prepend(file);
         else
           _restore_files.remove_link(_restore_files.find_custom(file, (a, b) => {
-            if (a != null && b != null && (a as File).equal(b as File))
+            if (a != null && b != null && ((File)a).equal((File)b))
               return 0;
             else
               return 1;
@@ -277,13 +258,11 @@ public class AssistantRestoreMissing : AssistantRestore {
      * @param //DejaDup.OperationStatus// ''op'' Operation currently being run
      * @param //GLib.List<string>?// ''dates'' ISO 8601 dates of backups.
      */
-    TimeVal tv = TimeVal();
-
     if (!this.backups_queue_filled) {
       foreach(var date in dates) {
-        if (tv.from_iso8601(date)) {
-          Time t = Time.local(tv.tv_sec);
-          this.backups_queue.insert_sorted(t, (CompareDataFunc)compare_time);
+        var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
+        if (datetime != null) {
+          this.backups_queue.insert_sorted(datetime, (CompareDataFunc)DateTime.compare);
         }
       }
 
@@ -318,13 +297,10 @@ public class AssistantRestoreMissing : AssistantRestore {
     begin.remove();
 
     /* Update progress */
-    int tepoch = int.parse(etime.format("%s"));
-    TimeVal ttoday = TimeVal();
-    ttoday.get_current_time();
-    int ttodayi = (int) ttoday.tv_sec;
+    var ttoday = new DateTime.now_local();
     
     string worddiff;
-    int tdiff =  (ttodayi - tepoch)/60/60; // Hours
+    TimeSpan tdiff =  ttoday.difference(etime) / TimeSpan.HOUR;
     if (tdiff / 24 == 0 ) {
       worddiff = _("Scanning for files from up to a day ago…");
     }
@@ -332,17 +308,17 @@ public class AssistantRestoreMissing : AssistantRestore {
       worddiff = _("Scanning for files from up to a week ago…");
     }
     else if (tdiff / 24 / 30 == 0) {
-    worddiff = _("Scanning for files from up to a month ago…");
+      worddiff = _("Scanning for files from up to a month ago…");
     }
     else if (tdiff / 24 / 30 >= 1 && tdiff / 24 / 30 <= 12) {
-      int n = tdiff / 24 / 30;
+      int n = (int)(tdiff / 24 / 30);
       worddiff = dngettext(Config.GETTEXT_PACKAGE,
                            "Scanning for files from about a month ago…",
                            "Scanning for files from about %d months ago…",
                            n).printf(n);
     }
     else {
-      int n = tdiff / 24 / 30 / 12;
+      int n = (int)(tdiff / 24 / 30 / 12);
       worddiff = dngettext(Config.GETTEXT_PACKAGE,
                            "Scanning for files from about a year ago…",
                            "Scanning for files from about %d years ago…",

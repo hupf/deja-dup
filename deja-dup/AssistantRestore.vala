@@ -324,12 +324,10 @@ public class AssistantRestore : AssistantOperation
     return _("Restoring:");
   }
 
-  bool is_same_day(TimeVal one, TimeVal two)
+  bool is_same_day(DateTime one, DateTime two)
   {
-    Date day1 = Date(), day2 = Date();
-    day1.set_time_val(one);
-    day2.set_time_val(two);
-    return day1.compare(day2) == 0;
+    return one.get_year() == two.get_year() &&
+           one.get_day_of_year() == two.get_day_of_year();
   }
 
   protected virtual void handle_collection_dates(DejaDup.OperationStatus op, List<string>? dates)
@@ -341,24 +339,24 @@ public class AssistantRestore : AssistantOperation
      * converts dates to TimeVal structures and later converts them to Time to
      * time to show them in nicely formate local form.
      */
-    var timevals = new List<TimeVal?>();
-    TimeVal tv = TimeVal();
+    var datetimes = new List<DateTime?>();
     
     got_dates = true;
     date_store.clear();
     
     foreach (string date in dates) {
-      if (tv.from_iso8601(date)) {
-        timevals.append(tv);
+      var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
+      if (datetime != null) {
+        datetimes.append(datetime);
       }
     }
 
-    for (unowned List<TimeVal?>? i = timevals; i != null; i = i.next) {
-      tv = i.data;
+    for (unowned List<DateTime?>? i = datetimes; i != null; i = i.next) {
+      var datetime = i.data;
 
       string format = "%x";
-      if ((i.prev != null && is_same_day(i.prev.data, tv)) ||
-          (i.next != null && is_same_day(i.next.data, tv))) {
+      if ((i.prev != null && is_same_day(i.prev.data, datetime)) ||
+          (i.next != null && is_same_day(i.next.data, datetime))) {
         // Translators: %x is the current date, %X is the current time.
         // This will be in a list with other strings that just have %x (the
         // current date).  So make sure if you change this, it still makes
@@ -366,11 +364,10 @@ public class AssistantRestore : AssistantOperation
         format = _("%x %X");
       }
 
-      Time t = Time.local(tv.tv_sec);
-      string user_str = t.format(format);
+      string user_str = datetime.format(format);
       Gtk.TreeIter iter;
       date_store.prepend(out iter);
-      date_store.@set(iter, 0, user_str, 1, tv.to_iso8601());
+      date_store.@set(iter, 0, user_str, 1, datetime.format("%s"));
       date_combo.set_active_iter(iter);
     }
     
@@ -531,4 +528,3 @@ public class AssistantRestore : AssistantOperation
     base.do_close();
   }
 }
-

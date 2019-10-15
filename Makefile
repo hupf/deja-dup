@@ -77,9 +77,9 @@ translations: pot
 	git add po/*.po
 	git add help/*.po
 
-.PHONY: deb
-deb:
-	DEB_BUILD_OPTIONS=nocheck debuild
+.PHONY: devshell
+devshell:
+	flatpak run --filesystem=host org.gnome.Sdk//master
 
 .PHONY: flatpak
 flatpak:

@@ -21,7 +21,7 @@ install_data(join_paths('icons', '@0@.svg'.format(application_id)),
 
 configure_file(input: join_paths('icons', 'org.gnome.DejaDup-symbolic.svg'),
     output: '@0@-symbolic.svg'.format(application_id),
-    configuration: configuration_data(),
+    copy: true,
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'symbolic', 'apps'))
 
 install_data('deja-dup.convert',

@@ -17,13 +17,13 @@
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
 project('deja-dup', ['vala', 'c'],
-    version: '40.1',
+    version: '40.1+',
     license: 'GPLv3+',
     default_options: [
         'warning_level=1',
         'buildtype=debugoptimized',
     ],
-    meson_version: '>= 0.38')
+    meson_version: '>= 0.47')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -45,7 +45,7 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-gio_dep = dependency('gio-2.0', version: '>= 2.46')
+gio_dep = dependency('gio-2.0', version: '>= 2.56')
 gio_unix_dep = dependency('gio-unix-2.0')
 goa_dep = dependency('goa-1.0', version: '>= 3.8.0', required: false)
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
@@ -78,7 +78,7 @@ endif
 common_vflags = [
     '--pkg=config',
     '--pkg=posix',
-    '--target-glib=2.46',
+    '--target-glib=2.56',
     '--vapidir', vapidir,
 ]
 common_cflags = [

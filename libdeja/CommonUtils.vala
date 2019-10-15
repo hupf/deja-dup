@@ -56,11 +56,17 @@ public bool in_testing_mode()
   return (testing_str != null && int.parse(testing_str) > 0);
 }
 
+string current_time_as_iso8601()
+{
+  var now = new DateTime.now_utc();
+  // When we depend on glib >=2.62, we can uncomment this:
+  // return now.format_iso8601();
+  return now.format("%FT%T%:::z");
+}
+
 public void update_last_run_timestamp(TimestampType type)
 {
-  TimeVal cur_time = TimeVal();
-  cur_time.get_current_time();
-  var cur_time_str = cur_time.to_iso8601();
+  var cur_time_str = current_time_as_iso8601();
   
   var settings = get_settings();
   settings.delay();
@@ -249,15 +255,12 @@ public DateTime? next_run_date()
   if (period_days <= 0)
     period_days = 1;
 
-  TimeVal last_run_tval = TimeVal();
-  if (!last_run_tval.from_iso8601(last_run_string))
+  DateTime last_run = new DateTime.from_iso8601(last_run_string, new TimeZone.utc());
+  if (last_run == null)
     return new DateTime.now_local();
 
   var period = (TimeSpan)period_days * get_day();
-
-  var last_run = new DateTime.from_timeval_local(last_run_tval);
   var last_scheduled = most_recent_scheduled_date(period);
-
   if (last_scheduled.compare(last_run) <= 0)
     last_scheduled = last_scheduled.add(period);
 
@@ -299,11 +302,10 @@ public bool make_prompt_check()
 
   // OK, monitor has run before but user hasn't yet backed up or restored.
   // Let's see whether we should prompt now.
-  TimeVal last_run_tval = TimeVal();
-  if (!last_run_tval.from_iso8601(prompt))
+  var last_run = new DateTime.from_iso8601(prompt, new TimeZone.utc());
+  if (last_run == null)
     return false;
 
-  var last_run = new DateTime.from_timeval_local(last_run_tval);
   last_run = last_run.add_seconds(get_prompt_delay());
 
   var now = new DateTime.now_local();
@@ -327,9 +329,7 @@ private void update_time_key(string key, bool cancel)
     cur_time_str = "disabled";
   }
   else {
-    TimeVal cur_time = TimeVal();
-    cur_time.get_current_time();
-    cur_time_str = cur_time.to_iso8601();
+    cur_time_str = current_time_as_iso8601();
   }
 
   settings.set_string(key, cur_time_str);
@@ -370,11 +370,10 @@ public bool is_nag_time()
     return false;
   }
 
-  TimeVal last_check_tval = TimeVal();
-  if (!last_check_tval.from_iso8601(nag))
+  var last_check = new DateTime.from_iso8601(nag, new TimeZone.utc());
+  if (last_check == null)
     return false;
 
-  var last_check = new DateTime.from_timeval_local(last_check_tval);
   last_check = last_check.add_seconds(get_nag_delay());
 
   var now = new DateTime.now_local();
@@ -666,18 +665,11 @@ public int get_full_backup_threshold()
   return threshold;
 }
 
-public Date get_full_backup_threshold_date()
+public DateTime get_full_backup_threshold_date()
 {
-  TimeVal now = TimeVal();
-  now.get_current_time();
-  
-  Date date = Date();
-  date.set_time_val(now);
-  
+  var date = new DateTime.now_local();
   var days = get_full_backup_threshold();
-  date.subtract_days(days);
-  
-  return date;
+  return date.add_days(-days);;
 }
 
 public Secret.Schema get_passphrase_schema()

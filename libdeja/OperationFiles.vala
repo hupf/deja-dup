@@ -24,17 +24,17 @@ public class OperationFiles : Operation {
   public signal void listed_current_files(string date, string file);
   public File source {get; construct;}
 
-  private Time time; // Default value is 1900-01-00 00:00:00; since epoch hasn't happened yet, its default %s value is -1
-    
+  private DateTime time = null;
+
   public OperationFiles(Backend backend,
-                        Time? time_in,
+                        DateTime? time_in,
                         File source) {
     Object(mode: ToolJob.Mode.LIST, source: source, backend: backend);
     if (time_in != null)
         time = time_in;
   }
 
-  public Time get_time()
+  public DateTime get_time()
   {
     return time;
   }
@@ -47,7 +47,7 @@ public class OperationFiles : Operation {
 
   protected override List<string>? make_argv()
   {
-    if (time.format("%s") != "-1")
+    if (time != null)
       job.time = time.format("%s");
     else
       job.time = null;

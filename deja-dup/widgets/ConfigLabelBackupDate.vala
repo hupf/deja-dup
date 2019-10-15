@@ -108,11 +108,11 @@ public class ConfigLabelBackupDate : ConfigLabel
   protected void set_from_config_last()
   {
     var val = DejaDup.last_run_date(DejaDup.TimestampType.BACKUP);
-    var time = TimeVal();
-    if (val == "" || !time.from_iso8601(val))
+    var time = new DateTime.from_iso8601(val, new TimeZone.utc());
+    if (time == null)
       label.label = "<b>%s</b>".printf(_("No recent backups."));
     else
-      label.label = "<b>%s</b>".printf(pretty_last_name(new DateTime.from_timeval_local(time)));
+      label.label = "<b>%s</b>".printf(pretty_last_name(time));
   }
 
   protected void set_from_config_next()

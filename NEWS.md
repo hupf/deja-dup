@@ -1,3 +1,10 @@
+# 40.1+
+- Fix any problems when 2038 hits by using 64-bit dates internally
+
+## Packaging
+- Require glib 2.56
+- Require meson 0.47
+
 # 40.1
 - Fix versioning to be correct
 

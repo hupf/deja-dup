@@ -134,7 +134,7 @@ public class Preferences : Gtk.Grid
     w.margin_top = 6;
     w.halign = Gtk.Align.START;
     w.expand = false;
-    (w as Gtk.Button).clicked.connect((b) => {app.restore();});
+    ((Gtk.Button)w).clicked.connect((b) => {app.restore();});
     restore_button = w as Gtk.Button;
     label_sizes.add_widget(w);
     table.attach(w, 1, row, 1, 1);
@@ -166,7 +166,7 @@ public class Preferences : Gtk.Grid
     w.margin_top = 6;
     w.halign = Gtk.Align.START;
     w.expand = false;
-    (w as Gtk.Button).clicked.connect((b) => {app.backup();});
+    ((Gtk.Button)w).clicked.connect((b) => {app.backup();});
     backup_button = w as Gtk.Button;
     label_sizes.add_widget(w);
     table.attach(w, 1, row, 1, 1);

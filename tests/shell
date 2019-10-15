@@ -36,8 +36,12 @@ SHNAME=$(basename $0)
 ROOTDIR=$(mktemp -d --tmpdir dd.XXXXXXXXXX)
 export DEJA_DUP_TEST_ROOT="${ROOTDIR}"
 
-echo "$@" > "$ROOTDIR/runscript.sh"
-cat "$ROOTDIR/runscript.sh"
+RUN_CMD=
+ARGS=$@
+if [ -n "$ARGS" ]; then
+  echo "$ARGS" > "$ROOTDIR/runscript.sh"
+  RUN_CMD="sh '$ROOTDIR/runscript.sh'"
+fi
 
 run_shell()
 {
@@ -50,7 +54,7 @@ run_shell()
     # Explain the details
     echo "Your data playground and home directory is ${ROOTDIR}"
     echo "Run deja-dup or deja-dup-monitor to test."
-    echo "Run exit to leave."
+    echo "Run exit 0 to leave."
     echo "Run exit 1 to leave and keep data playground intact."
   fi
   CMD="$ARGS"
@@ -75,7 +79,7 @@ if [ "$SHNAME" = "shell" ]; then
   export DEJA_DUP_MONITOR_EXEC="${BUILDDIR}/deja-dup/monitor/deja-dup-monitor"
   export PATH="${BUILDDIR}/deja-dup/monitor:${BUILDDIR}/deja-dup:${PATH}"
 
-  run_shell "sh $ROOTDIR/runscript.sh"
+  run_shell $RUN_CMD
 fi
 
 
@@ -124,4 +128,4 @@ else
   export DEJA_DUP_TEST_SYSTEM=1
 fi
 
-run_shell "sh $ROOTDIR/runscript.sh"
+run_shell $RUN_CMD

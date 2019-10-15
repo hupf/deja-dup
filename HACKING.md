@@ -1,28 +1,27 @@
-# New to deja-dup?
+# Set Up the GNOME SDK
 
-When making a non-trivial change, remember to add yourself to AUTHORS and help/C/credits.page
+To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
+
+1. [Install flatpak](https://flatpak.org/setup/).
+1. `flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo`
+1. `flatpak install gnome-nightly flatpak org.gnome.Sdk//master`
+1. `make devshell`
+
+# Building
 
 deja-dup uses meson, but for most development purposes, you can simply use the convenience top-level Makefile:
  * To build: `make`
- * To test: `make check`
  * To install: `make install DESTDIR=/tmp/deja-dup`
 
-When testing a change, it is helpful to run `./tests/shell` (or `shell-local` if you want a silo'd dbus environment too)
+# Folder Layout
+ * libdeja: non-GUI library that wraps policy and hides complexity of duplicity
+ * deja-dup: GNOME UI for libdeja, including a nautilus plugin
+ * data: shared schemas, icons, etc
+
+# Testing
+
+When manually testing a change, it is helpful to run `./tests/shell` (or `shell-local` if you want a silo'd dbus environment too)
 That will give you a full shell pointing at all your built executables.
 
-## Folder Layout
- * libdeja: non-GUI library that wraps policy and hides complexity of duplicity
- * deja-dup: GNOME UI for libdeja, including integration points with nautilus and control-center
- * data: shared schemas, icons, etc
- * vapi: some helper APIs for vala
-
-## Flatpak
-
-To build a local flatpak, run `make flatpak`. You'll want an up-to-date flatpak-builder though.
-
-If you're on Ubuntu:
-
-```
-sudo add-apt-repository ppa:alexlarsson/flatpak
-sudo apt update
-```
+* Running all tests: `make check`
+* Running one test: `meson test script-threshold-inc -C builddir/ -v`
