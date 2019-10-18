@@ -25,25 +25,25 @@ public abstract class RecursiveOp : Object
 {
   public signal void done();
   public signal void raise_error(File src, File dst, string errstr);
-  
+
   public File src {get; construct;}
   public File dst {get; construct;}
-  
+
   protected FileType src_type;
   protected FileType dst_type;
   protected virtual void handle_file() {} // src is file
   protected virtual void handle_dir() {} // src is dir
   protected virtual void finish_dir() {} // src is dir we are done with
   protected abstract RecursiveOp? clone_for_info(FileInfo info);
-  
+
   int refs;
-  
+
   bool idle_action()
   {
     start_async.begin();
     return false;
   }
-  
+
   public void start()
   {
     Idle.add(idle_action);
@@ -51,14 +51,14 @@ public abstract class RecursiveOp : Object
     done.connect((m) => {loop.quit();});
     loop.run();
   }
-  
+
   public async void start_async()
   {
     if (src != null)
       src_type = src.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
     if (dst != null)
       dst_type = dst.query_file_type(FileQueryInfoFlags.NOFOLLOW_SYMLINKS, null);
-    
+
     switch (src_type) {
     case FileType.DIRECTORY:
       yield do_dir();
@@ -115,16 +115,16 @@ public abstract class RecursiveOp : Object
       remove_ref(); // parent dir itself
     }
   }
-  
+
   void add_ref() {
     ++refs;
   }
-  
+
   void remove_ref() {
     --refs;
     check_ref();
   }
-  
+
   void check_ref() {
     if (refs == 0) {
       if (src_type == FileType.DIRECTORY)

@@ -544,7 +544,10 @@ public class BackendGoogle : Backend
     // And show the oauth consent page finally
     var location = yield get_consent_location();
     if (location != null)
-      show_oauth_consent_page(_("You first need to allow Déjà Dup Backup Tool to access your Google account."), location);
+      show_oauth_consent_page(
+        _("You first need to allow Déjà Dup Backup Tool to access your Google account."),
+        location
+      );
   }
 
   public override async void get_envp() throws Error

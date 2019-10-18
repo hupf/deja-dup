@@ -25,7 +25,7 @@ public class DeletedFile {
    *
    * After providing full file path and time of when was file last seen, instances
    * can access pretty file name and mark file for restore.
-   * 
+   *
    * @param //string// ''name'' Full path name of file
    * @param //DateTime// ''deleted'' Information when was file deleted
    */
@@ -40,7 +40,7 @@ public class DeletedFile {
 
   public string filename() {
     var splited_fn = this.name.split("/");
-    return splited_fn[splited_fn.length-1];
+    return splited_fn[splited_fn.length - 1];
   }
 
   public string queue_format() {
@@ -55,15 +55,15 @@ public class AssistantRestoreMissing : AssistantRestore {
    * Assistant for showing deleted files
    *
    * Assistant for showing deleted files. Execution flow goes as follows:
-   * 
+   *
    * 1. AssistantRestoreMissing is called with //File// ''list_dir'' directory
    * 2. //void// do_prepare prepares listfiles_page and runs do_query_collection_dates that initializes query operation for collections dates. Results of query operation are returned to handle_collection_dates in one batch.
    * 3. handle_collection_dates fills the //PriorityQueue// ''backups_queue'' with //Time// values of backup dates, scans provided //File// ''list_dir'' with files that are currently located in directory and runs do_query_files_at_date
-   * 4. do_query_files_at_date begins query operation for list-current-files at specific times and returns the results to handle_listed_files.  
+   * 4. do_query_files_at_date begins query operation for list-current-files at specific times and returns the results to handle_listed_files.
    * 5. handle_listed_files appends files to the list of deleted files with appropriate controls.
-   * 6. When OperationFiles finishes, query_files_finished releases variables and, if required, calls do_query_files_at_date. 
+   * 6. When OperationFiles finishes, query_files_finished releases variables and, if required, calls do_query_files_at_date.
    * 7. After user selects files that he wishes to restore, he moves to confirmation page and starts the restore operation
-   * 
+   *
    * @param //File// ''list_dir'' Directory whose deleted files will be shown.
    */
   private File list_directory;
@@ -73,7 +73,7 @@ public class AssistantRestoreMissing : AssistantRestore {
 
   /*
     If user moves forward while OperationFiles is runing, code cleanup stops the current operation
-    and stops recursive loop without the need to clear backups_queue. If user decides to go back, 
+    and stops recursive loop without the need to clear backups_queue. If user decides to go back,
     OperationFiles will continue with NEXT item in backups_queue.
   */
   private bool scan_queue = true;
@@ -226,8 +226,8 @@ public class AssistantRestoreMissing : AssistantRestore {
        * and attach it to our TreeView model if all conditions are met.
        *
        * @param //DejaDup.OperationFiles// ''op'' Operation that is currently running
-       * @param //string// ''date'' Time of last change of file 
-       * @param //string// ''file'' Full path of file 
+       * @param //string// ''date'' Time of last change of file
+       * @param //string// ''file'' Full path of file
        */
     string filestr = @"/$file";
     if (this.list_directory.get_path() in filestr && this.list_directory.get_path() != filestr) {
@@ -268,7 +268,7 @@ public class AssistantRestoreMissing : AssistantRestore {
 
       this.allfiles_prev = new HashTable<string, DeletedFile>(str_hash, str_equal);
       this.backups_queue_filled = true;
-    
+
       this.spinner.start();
     }
   }
@@ -276,10 +276,10 @@ public class AssistantRestoreMissing : AssistantRestore {
   protected void do_query_files_at_date()
   {
     /*
-     * Initializes query operation for list-current-files at specific date 
+     * Initializes query operation for list-current-files at specific date
      *
      * Initializes query operation, updates list files page with current date of scan
-     * in human semi-friendly form and connect appropriate signals. 
+     * in human semi-friendly form and connect appropriate signals.
      */
     if (cancel_assistant) {
       do_close();
@@ -291,16 +291,16 @@ public class AssistantRestoreMissing : AssistantRestore {
       query_files_finished(query_op_files, true, false, null);
       return;
     }
-    
+
     var begin = backups_queue.get_begin_iter();
     var etime = begin.get();
     begin.remove();
 
     /* Update progress */
     var ttoday = new DateTime.now_local();
-    
+
     string worddiff;
-    TimeSpan tdiff =  ttoday.difference(etime) / TimeSpan.HOUR;
+    TimeSpan tdiff = ttoday.difference(etime) / TimeSpan.HOUR;
     if (tdiff / 24 == 0 ) {
       worddiff = _("Scanning for files from up to a day ago…");
     }
@@ -328,12 +328,12 @@ public class AssistantRestoreMissing : AssistantRestore {
     this.current_scan_date.set_text(worddiff);
 
     realize();
-    
+
     /* Time object does not support GObject-style construction */
     query_op_files = new DejaDup.OperationFiles(backend, etime, list_directory);
     query_op_files.listed_current_files.connect(handle_listed_files);
     query_op_files.done.connect(query_files_finished);
-    
+
     op = query_op_files;
     op.passphrase_required.connect(get_passphrase);
     op.raise_error.connect((o, e, d) => {show_error(e, d);});
@@ -342,16 +342,16 @@ public class AssistantRestoreMissing : AssistantRestore {
 #endif
 
     op.set_state(op_state); // share state between ops
-    
+
     query_op_files.start.begin();
   }
-  
+
   protected override void query_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     query_op = null;
     op_state = this.op.get_state();
     this.op = null;
-    
+
     if (cancelled)
       do_close();
     else if (success)
@@ -404,12 +404,12 @@ public class AssistantRestoreMissing : AssistantRestore {
         force_visible(false);
     }
   }
-  
+
   protected void query_files_finished(DejaDup.Operation? op, bool success, bool cancelled, string? detail)
   {
     query_op_files = null;
     this.op = null;
-    
+
     if (backups_queue.get_length() == 0) {
       this.spinner.stop();
       DejaDup.destroy_widget(this.spinner);
@@ -437,14 +437,14 @@ public class AssistantRestoreMissing : AssistantRestore {
     restore_files_remaining.remove_link(restore_files_remaining);
 
     /*
-    OperationRestore usually takes list of file so restore. Since it is high 
+    OperationRestore usually takes list of file so restore. Since it is high
     probability that if we will restore multiple files, they will be from different dates,
     we simply call OperationRestore multiple times with single date and file.
     */
-    
+
     var file_list = new GLib.List<File>();
     file_list.append(File.new_for_path(restore_file.name));
-    
+
     var rest_op = new DejaDup.OperationRestore(backend, "/",
                                                restore_file.deleted.format("%s"),
                                                file_list);

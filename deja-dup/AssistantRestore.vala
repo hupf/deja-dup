@@ -22,7 +22,7 @@ using GLib;
 public class AssistantRestore : AssistantOperation
 {
   public string restore_location {get; protected set; default = "/";}
-  
+
   protected List<File> _restore_files;
   public List<File> restore_files {
     get {
@@ -32,14 +32,14 @@ public class AssistantRestore : AssistantOperation
       this._restore_files = value.copy_deep ((CopyFunc) Object.ref);
     }
   }
-  
+
   public AssistantRestore.with_files(List<File> files)
   {
     // This puts the restore dialog into 'known file mode', where it only
     // restores the listed files, not the whole backup
     restore_files = files;
   }
-  
+
   protected DejaDup.OperationStatus query_op;
   protected DejaDup.Operation.State op_state;
   Gtk.ProgressBar query_progress_bar;
@@ -104,7 +104,7 @@ public class AssistantRestore : AssistantOperation
     config_location.hexpand = true;
     page.attach(config_location, 1, rows, 1, 1);
     ++rows;
-    
+
     config_location.extras.hexpand = true;
     page.attach(config_location.extras, 0, rows, 2, 1);
     ++rows;
@@ -122,7 +122,7 @@ public class AssistantRestore : AssistantOperation
 
     return page;
   }
-  
+
   protected override void add_custom_config_pages()
   {
     // always show for a full restore or if user hasn't ever used us
@@ -132,52 +132,52 @@ public class AssistantRestore : AssistantOperation
       set_page_title(page, _("Restore From Where?"));
     }
   }
-  
+
   Gtk.Widget make_query_backend_page()
   {
     query_progress_bar = new Gtk.ProgressBar();
-    
+
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.set("child", query_progress_bar,
              "border-width", 12);
     page.child_set(query_progress_bar, "expand", false);
-    
+
     return page;
   }
-  
+
   Gtk.Widget make_date_page()
   {
     date_store = new Gtk.ListStore(2, typeof(string), typeof(string));
     date_combo = new Gtk.ComboBoxText();
     date_combo.model = date_store;
-    
+
     var date_label = new Gtk.Label(_("_Date"));
     date_label.set("mnemonic-widget", date_combo,
                    "use-underline", true,
                    "xalign", 1.0f);
-    
+
     var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
     hbox.set("child", date_label,
              "child", date_combo);
-    
+
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.set("child", hbox,
              "border-width", 12);
-    
+
     hbox.child_set(date_label, "expand", false);
     hbox.child_set(date_combo, "expand", false);
     page.child_set(hbox, "expand", false);
-    
+
     return page;
   }
-  
+
   Gtk.Widget make_restore_dest_page()
   {
     var orig_radio = new Gtk.RadioButton(null);
     orig_radio.set("label", _("Restore files to _original locations"),
                    "use-underline", true);
     orig_radio.toggled.connect((r) => {if (r.active) restore_location = "/";});
-    
+
     var cust_radio = new Gtk.RadioButton(null);
     cust_radio.set("label", _("Restore to _specific folder"),
                    "use-underline", true,
@@ -187,22 +187,22 @@ public class AssistantRestore : AssistantOperation
         restore_location = cust_button.get_filename();
       cust_box.sensitive = r.active;
     });
-    
+
     cust_button =
       new Gtk.FileChooserButton(_("Choose destination for restored files"),
                                 Gtk.FileChooserAction.SELECT_FOLDER);
     cust_button.selection_changed.connect((b) => {restore_location = b.get_filename();});
-    
+
     var cust_label = new Gtk.Label("    " + _("Restore _folder"));
     cust_label.set("mnemonic-widget", cust_button,
                    "use-underline", true,
                    "xalign", 1.0f);
-    
+
     cust_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
     cust_box.set("child", cust_label,
                  "child", cust_button,
                  "sensitive", false);
-    
+
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.set("child", orig_radio,
              "child", cust_radio,
@@ -211,21 +211,21 @@ public class AssistantRestore : AssistantOperation
     page.child_set(orig_radio, "expand", false);
     page.child_set(cust_radio, "expand", false);
     page.child_set(cust_box, "expand", false);
-    
+
     return page;
   }
-  
+
   protected override Gtk.Widget? make_confirm_page()
   {
     int rows = 0;
     Gtk.Widget label, w;
-    
+
     confirm_table = new Gtk.Grid();
     var page = confirm_table;
     page.set("row-spacing", 6,
              "column-spacing", 12,
              "border-width", 12);
-    
+
     ensure_config_location();
     label = new Gtk.Label(_("Backup location"));
     label.set("xalign", 1.0f, "yalign", 0.0f);
@@ -242,7 +242,7 @@ public class AssistantRestore : AssistantOperation
     page.attach(confirm_date_label, 0, rows, 1, 1);
     page.attach(confirm_date, 1, rows, 1, 1);
     ++rows;
-    
+
     confirm_location_label = new Gtk.Label(_("Restore folder"));
     confirm_location_label.set("xalign", 1.0f);
     confirm_location = new Gtk.Label("");
@@ -250,7 +250,7 @@ public class AssistantRestore : AssistantOperation
     page.attach(confirm_location_label, 0, rows, 1, 1);
     page.attach(confirm_location, 1, rows, 1, 1);
     ++rows;
-    
+
     confirm_files_label = new Gtk.Label("");
     confirm_files_label.set("xalign", 1.0f, "yalign", 0.0f);
     confirm_files = new Gtk.Grid();
@@ -261,10 +261,10 @@ public class AssistantRestore : AssistantOperation
     page.attach(confirm_files_label, 0, rows, 1, 1);
     page.attach(confirm_files, 1, rows, 1, 1);
     ++rows;
-    
+
     return page;
   }
-  
+
   void add_query_backend_page()
   {
     var page = make_query_backend_page();
@@ -272,7 +272,7 @@ public class AssistantRestore : AssistantOperation
     set_page_title(page, _("Checking for Backups…"));
     query_progress_page = page;
   }
-  
+
   void add_date_page()
   {
     var page = make_date_page();
@@ -280,7 +280,7 @@ public class AssistantRestore : AssistantOperation
     set_page_title(page, _("Restore From When?"));
     date_page = page;
   }
-  
+
   void add_restore_dest_page()
   {
     var page = make_restore_dest_page();
@@ -288,7 +288,7 @@ public class AssistantRestore : AssistantOperation
     set_page_title(page, _("Restore to Where?"));
     restore_dest_page = page;
   }
-  
+
   protected override DejaDup.Operation? create_op()
   {
     string date = null;
@@ -316,7 +316,7 @@ public class AssistantRestore : AssistantOperation
 
     return rest_op;
   }
-  
+
   protected override string get_progress_file_prefix()
   {
     // Translators:  This is the word 'Restoring' in the phrase
@@ -340,10 +340,10 @@ public class AssistantRestore : AssistantOperation
      * time to show them in nicely formate local form.
      */
     var datetimes = new List<DateTime?>();
-    
+
     got_dates = true;
     date_store.clear();
-    
+
     foreach (string date in dates) {
       var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
       if (datetime != null) {
@@ -370,30 +370,30 @@ public class AssistantRestore : AssistantOperation
       date_store.@set(iter, 0, user_str, 1, datetime.format("%s"));
       date_combo.set_active_iter(iter);
     }
-    
+
     // If we didn't see any dates...  Must not be any backups on the backend
     if (date_store.iter_n_children(null) == 0)
       show_error(_("No backups to restore"), null);
   }
-  
+
   protected virtual void query_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     this.op_state = op.get_state();
     this.query_op = null;
     this.op = null;
-    
+
     if (cancelled)
       do_close();
     else if (success)
       go_forward();
   }
-  
+
   bool query_pulse()
   {
     query_progress_bar.pulse();
     return true;
   }
-  
+
   protected async void do_query()
   {
     realize();
@@ -414,16 +414,16 @@ public class AssistantRestore : AssistantOperation
 
     yield op.start();
   }
-  
+
   protected override void do_prepare(Assistant assist, Gtk.Widget page)
   {
     base.do_prepare(assist, page);
-    
+
     if (query_timeout_id > 0) {
       Source.remove(query_timeout_id);
       query_timeout_id = 0;
     }
-    
+
     if (page == date_page) {
       // Hmm, we never got a date from querying the backend, but we also
       // didn't hit an error (since we're about to show this page, and not
@@ -449,14 +449,14 @@ public class AssistantRestore : AssistantOperation
         confirm_date_label.hide();
         confirm_date.hide();
       }
-      
+
       // Where we restore to
       if (restore_files == null) {
         if (restore_location == "/")
           confirm_location.label = _("Original location");
         else
           confirm_location.label = DejaDup.get_file_desc(File.new_for_path(restore_location));
-        
+
         confirm_location_label.show();
         confirm_location.show();
         confirm_files_label.hide();
@@ -476,7 +476,7 @@ public class AssistantRestore : AssistantOperation
           file_label.set("xalign", 0.0f);
           confirm_files.add(file_label);
         }
-        
+
         confirm_location_label.hide();
         confirm_location.hide();
         confirm_files_label.show();
@@ -517,14 +517,14 @@ public class AssistantRestore : AssistantOperation
       }
     }
   }
-  
+
   protected override void do_close()
   {
     if (query_timeout_id > 0) {
       Source.remove(query_timeout_id);
       query_timeout_id = 0;
     }
-    
+
     base.do_close();
   }
 }

@@ -72,7 +72,7 @@ public class MountOperationAssistant : MountOperation
   static void go_forward_changed(MountOperationAssistant mop)
   {
     if (mop.go_forward)
-      mop.assist.go_forward();      
+      mop.assist.go_forward();
   }
 
   public override void aborted()
@@ -194,7 +194,7 @@ public class MountOperationAssistant : MountOperation
                 "use-underline", true,
                 "xalign", 1.0f);
       table.attach(label, ucol, rows, 1, 1);
-      table.attach(username_w, ucol+1, rows, 2-ucol, 1);
+      table.attach(username_w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
     }
     else
@@ -212,7 +212,7 @@ public class MountOperationAssistant : MountOperation
                 "use-underline", true,
                 "xalign", 1.0f);
       table.attach(label, ucol, rows, 1, 1);
-      table.attach(domain_w, ucol+1, rows, 2-ucol, 1);
+      table.attach(domain_w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
     }
     else
@@ -228,12 +228,12 @@ public class MountOperationAssistant : MountOperation
                 "use-underline", true,
                 "xalign", 1.0f);
       table.attach(label, ucol, rows, 1, 1);
-      table.attach(password_w, ucol+1, rows, 2-ucol, 1);
+      table.attach(password_w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
 
       var w = new Gtk.CheckButton.with_mnemonic(label_show_password);
       w.bind_property("active", password_w, "visibility", BindingFlags.SYNC_CREATE);
-      table.attach(w, ucol+1, rows, 2-ucol, 1);
+      table.attach(w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
     }
     else
@@ -241,7 +241,7 @@ public class MountOperationAssistant : MountOperation
 
     if ((flags & AskPasswordFlags.SAVING_SUPPORTED) != 0) {
       remember_w = new Gtk.CheckButton.with_mnemonic(label_remember_password);
-      table.attach(remember_w, ucol+1, rows, 2-ucol, 1);
+      table.attach(remember_w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
     }
     else

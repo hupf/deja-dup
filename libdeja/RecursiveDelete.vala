@@ -31,7 +31,7 @@ public class RecursiveDelete : RecursiveOp
   {
     Object(src: source, skip: skip);
   }
-  
+
   protected override void handle_file()
   {
     try {
@@ -41,7 +41,7 @@ public class RecursiveDelete : RecursiveOp
       raise_error(src, dst, e.message);
     }
   }
-   
+
   protected override void finish_dir()
   {
     try {
@@ -54,7 +54,7 @@ public class RecursiveDelete : RecursiveOp
       // a non-empty directory.
     }
   }
-  
+
   protected override RecursiveOp? clone_for_info(FileInfo info)
   {
     var child_name = info.get_name();

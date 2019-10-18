@@ -70,7 +70,8 @@ public class ConfigLabelDescription : ConfigLabel
       var file_manager = external_dgettext("nautilus", "Files");
       if (Environment.get_variable("XDG_CURRENT_DESKTOP") == "MATE")
         file_manager = external_dgettext("caja", "Caja");
-      label.label = _("You can restore the entire backup with the %s button or use %s to either revert individual files or restore missing ones.").printf(button_name, file_manager);
+      label.label = _("You can restore the entire backup with the %s button or use %s to either " +
+                      "revert individual files or restore missing ones.").printf(button_name, file_manager);
     }
   }
 
@@ -79,7 +80,8 @@ public class ConfigLabelDescription : ConfigLabel
     var next = DejaDup.next_run_date();
     if (next == null) {
       var button_name = "<b>%s</b>".printf(_("Back Up Now…"));
-      label.label = _("You should <a href=''>enable</a> automatic backups or use the %s button to start one now.").printf(button_name);
+      label.label = _("You should <a href=''>enable</a> automatic backups or use the %s button to " +
+                      "start one now.").printf(button_name);
     }
     else {
       var period = settings.get_int(DejaDup.PERIODIC_PERIOD_KEY);

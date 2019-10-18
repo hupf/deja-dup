@@ -55,7 +55,8 @@ public class AssistantBackup : AssistantOperation
     rv.is_full.connect((op, first) => {
       op.use_progress = true;
       set_secondary_label(first ? _("Creating the first backup.  This may take a while.")
-                                : _("Creating a fresh backup to protect against backup corruption.  This will take longer than normal."));
+                                : _("Creating a fresh backup to protect against backup corruption.  " +
+                                    "This will take longer than normal."));
 
       // Ask user for password if first backup
       if (first)
@@ -69,7 +70,7 @@ public class AssistantBackup : AssistantOperation
 
     return rv;
   }
-  
+
   void do_resume()
   {
     hide_everything();
@@ -91,7 +92,7 @@ public class AssistantBackup : AssistantOperation
   protected override void do_prepare(Assistant assist, Gtk.Widget page)
   {
     base.do_prepare(assist, page);
-    
+
     if (page == summary_page) {
       if (error_occurred) {
         set_page_title(page, _("Backup Failed"));
@@ -112,4 +113,3 @@ public class AssistantBackup : AssistantOperation
     }
   }
 }
-

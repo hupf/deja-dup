@@ -40,7 +40,7 @@ public abstract class AssistantOperation : Assistant
    */
   protected Gtk.Widget confirm_page {get; private set;}
   public signal void closing(bool success);
-  
+
   public bool automatic {get; construct; default = false;}
   protected StatusIcon status_icon;
   protected bool succeeded = false;
@@ -76,12 +76,12 @@ public abstract class AssistantOperation : Assistant
   Gtk.ScrolledWindow progress_scroll;
   Gtk.Expander progress_expander;
   protected Gtk.Widget progress_page {get; private set;}
-  
+
   protected Gtk.Label summary_label;
   protected Gtk.Widget detail_widget;
   Gtk.TextView detail_text_view;
   protected Gtk.Widget summary_page {get; private set;}
-  
+
   protected DejaDup.Operation op;
   uint timeout_id;
   protected bool error_occurred {get; private set;}
@@ -108,7 +108,7 @@ public abstract class AssistantOperation : Assistant
     add_question_page();
     add_progress_page();
     add_summary_page();
-    
+
     canceled.connect(do_cancel);
     closed.connect(do_close);
     prepare.connect(do_prepare);
@@ -142,7 +142,7 @@ public abstract class AssistantOperation : Assistant
       progress_bar.pulse();
     return true;
   }
-  
+
   void show_progress(DejaDup.Operation op, double percent)
   {
     /*
@@ -153,13 +153,13 @@ public abstract class AssistantOperation : Assistant
     progress_bar.fraction = percent;
     gives_progress = true;
   }
-  
+
   void set_progress_label(DejaDup.Operation op, string label)
   {
     progress_label.label = label;
     progress_file_label.label = "";
   }
-  
+
   void set_progress_label_file(DejaDup.Operation op, File file, bool actual)
   {
     string prefix;
@@ -198,7 +198,7 @@ public abstract class AssistantOperation : Assistant
       buffer.delete(ref start, ref cutoff);
     }
   }
-  
+
   protected void set_secondary_label(string text)
   {
     if (text != null && text != "") {
@@ -299,13 +299,13 @@ public abstract class AssistantOperation : Assistant
   public virtual void show_error(string error, string? detail)
   {
     error_occurred = true;
-    
+
     summary_label.label = error;
     summary_label.selectable = true;
-    
+
     if (detail != null)
       show_detail(detail);
-    
+
     go_to_page(summary_page);
     set_header_icon("dialog-error");
     page_box.queue_resize();
@@ -445,7 +445,9 @@ public abstract class AssistantOperation : Assistant
              "column-spacing", 6,
              "border-width", 12);
 
-    w = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case of an emergency, please enter your encryption password again to perform a brief restore test."));
+    w = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
+                        "of an emergency, please enter your encryption password again to perform a " +
+                        "brief restore test."));
     w.set("xalign", 0.0f,
           "max-width-chars", 25,
           "wrap", true);
@@ -541,7 +543,7 @@ public abstract class AssistantOperation : Assistant
     summary_label.set("xalign", 0.0f);
     summary_label.wrap = true;
     summary_label.max_width_chars = 25;
-    
+
     detail_text_view = new Gtk.TextView();
     detail_text_view.editable = false;
     detail_text_view.wrap_mode = Gtk.WrapMode.WORD;
@@ -551,14 +553,14 @@ public abstract class AssistantOperation : Assistant
     scroll.add(detail_text_view);
     scroll.no_show_all = true; // only will be shown if an error occurs
     detail_widget = scroll;
-    
+
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.set("child", summary_label,
              "child", detail_widget,
              "border-width", 12);
     page.child_set(summary_label, "expand", false);
     page.child_set(detail_widget, "expand", true);
-    
+
     return page;
   }
 
@@ -627,7 +629,7 @@ public abstract class AssistantOperation : Assistant
     append_page(page, Type.FINISH);
     summary_page = page;
   }
-  
+
   protected virtual void apply_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     if (status_icon != null) {
@@ -721,7 +723,7 @@ public abstract class AssistantOperation : Assistant
     /*
      * Prepare page in assistant
      *
-     * Prepares every page in assistant for various operations. For example, if 
+     * Prepares every page in assistant for various operations. For example, if
      * user returns to confirmation page from progress page, it is necessary
      * to kill running operation. If user advances to progress page, it runs
      * do_apply and runs the needed operation.
@@ -733,7 +735,7 @@ public abstract class AssistantOperation : Assistant
       Source.remove(timeout_id);
       timeout_id = 0;
     }
-    
+
     if (page == confirm_page) {
       if (op != null) {
         op.done.disconnect(apply_finished);
@@ -791,7 +793,7 @@ public abstract class AssistantOperation : Assistant
 
     return true;
   }
-  
+
   protected virtual void do_close()
   {
     if (timeout_id > 0) {
@@ -1077,4 +1079,3 @@ public abstract class AssistantOperation : Assistant
     }
   }
 }
-

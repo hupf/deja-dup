@@ -34,7 +34,7 @@ public class OperationRestore : Operation
       this._restore_files = value.copy_deep ((CopyFunc) Object.ref);
     }
   }
-  
+
   public OperationRestore(Backend backend,
                           string dest_in,
                           string? time_in = null,
@@ -42,7 +42,7 @@ public class OperationRestore : Operation
     Object(dest: dest_in, time: time_in, restore_files: files_in,
            mode: ToolJob.Mode.RESTORE, backend: backend);
   }
-  
+
   public async override void start()
   {
     action_desc_changed(_("Restoring files…"));
@@ -56,7 +56,7 @@ public class OperationRestore : Operation
     job.local = File.new_for_path(dest);
     return null;
   }
-  
+
   internal async override void operation_finished(bool success, bool cancelled, string? detail)
   {
     if (success)

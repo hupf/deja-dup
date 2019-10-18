@@ -32,7 +32,9 @@ string get_header()
 
 string get_body()
 {
-  return _("Important documents, data, and settings can be protected by storing them in a backup. In the case of a disaster, you would be able to recover them from that backup.");
+  return _("Important documents, data, and settings can be protected by storing " +
+           "them in a backup. In the case of a disaster, you would be able to recover " +
+           "them from that backup.");
 }
 
 string get_cancel_button(bool mnemonics)
@@ -61,4 +63,3 @@ void show_prompt_notification(Gtk.Application app)
   note.add_button(get_ok_button(false), "app.prompt-ok");
   app.send_notification("prompt", note);
 }
-

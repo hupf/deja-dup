@@ -30,7 +30,7 @@ public class ConfigLabelLocation : ConfigLabel
   {
     Object(key: null, location: location);
   }
-  
+
   construct {
     img = new Gtk.Image.from_icon_name("folder", Gtk.IconSize.MENU);
     fill_box();
@@ -74,4 +74,3 @@ public class ConfigLabelLocation : ConfigLabel
 }
 
 }
-

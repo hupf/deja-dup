@@ -48,7 +48,7 @@ public abstract class Operation : Object
   public bool use_progress {get; set; default = true;}
 
   public ToolJob.Mode mode {get; construct; default = ToolJob.Mode.INVALID;}
-  
+
   public static string mode_to_string(ToolJob.Mode mode)
   {
     switch (mode) {
@@ -64,7 +64,7 @@ public abstract class Operation : Object
       return _("Preparing…");
     }
   }
-  
+
   // The State functions can be used to carry information from one operation
   // to another.
   public class State {
@@ -148,7 +148,7 @@ public abstract class Operation : Object
     else
       operation_finished.begin(false, true, null);
   }
-  
+
   public void stop()
   {
     if (chained_op != null)
@@ -158,7 +158,7 @@ public abstract class Operation : Object
     else
       operation_finished.begin(true, true, null);
   }
-  
+
   protected virtual void connect_to_job()
   {
     /*
@@ -202,7 +202,7 @@ public abstract class Operation : Object
 
     done(success, cancelled, detail);
   }
-  
+
   protected virtual List<string>? make_argv()
   {
   /**

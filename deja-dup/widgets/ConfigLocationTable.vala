@@ -82,4 +82,3 @@ public abstract class ConfigLocationTable : Gtk.Grid
 }
 
 }
-

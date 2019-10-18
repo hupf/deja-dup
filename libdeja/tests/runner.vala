@@ -130,7 +130,10 @@ string make_fd_arg(bool as_root)
   return as_root ? "--log-file=?" : "--log-fd=?";
 }
 
-string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = false, string extra = "", string include_args = "", string exclude_args = "", bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null, bool as_root = false)
+string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = false,
+                    string extra = "", string include_args = "", string exclude_args = "",
+                    bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null,
+                    bool as_root = false)
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
@@ -144,7 +147,8 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
   var tempdir = Path.build_filename(test_home, "tmp");
   var archive = tmp_archive ? "%s/duplicity-?".printf(tempdir) : "%s/deja-dup".printf(cachedir);
 
-  var end_str = "%s'--verbosity=9' '--gpg-options=--no-use-agent' '--archive-dir=%s' '--tempdir=%s' '%s'".printf(enc_str, archive, tempdir, make_fd_arg(as_root));
+  var end_str = "%s'--verbosity=9' '--gpg-options=--no-use-agent' '--archive-dir=%s' '--tempdir=%s' '%s'"
+    .printf(enc_str, archive, tempdir, make_fd_arg(as_root));
 
   if (mode == Mode.CLEANUP)
     return "cleanup '--force' 'gio+file://%s' %s".printf(backupdir, end_str);
@@ -154,10 +158,12 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
       file_arg = "'--file-to-restore=%s' ".printf(file_to_restore.substring(1)); // skip root /
       dest_arg = file_to_restore;
     }
-    return "'restore' %s%s'--force' 'gio+file://%s' '%s%s' %s".printf(file_arg, extra, backupdir, restoredir, dest_arg, end_str);
+    return "'restore' %s%s'--force' 'gio+file://%s' '%s%s' %s"
+      .printf(file_arg, extra, backupdir, restoredir, dest_arg, end_str);
   }
   else if (mode == Mode.VERIFY)
-    return "'restore' '--file-to-restore=%s/deja-dup/metadata' '--force' 'gio+file://%s' '%s/deja-dup/metadata' %s".printf(cachedir.substring(1), backupdir, cachedir, end_str);
+    return "'restore' '--file-to-restore=%s/deja-dup/metadata' '--force' 'gio+file://%s' '%s/deja-dup/metadata' %s"
+      .printf(cachedir.substring(1), backupdir, cachedir, end_str);
   else if (mode == Mode.LIST)
     return "'list-current-files' %s'gio+file://%s' %s".printf(extra, backupdir, end_str);
   else if (mode == Mode.REMOVE)
@@ -183,7 +189,9 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     args += "'--exclude=%s' ".printf(backupdir);
     args += "'--include=%s/deja-dup/metadata' ".printf(cachedir);
 
-    string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails", "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache", "~/.adobe/Flash_Player/AssetCache"};
+    string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails",
+                          "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache",
+                          "~/.adobe/Flash_Player/AssetCache"};
     foreach (string ex in excludes1) {
       ex = ex.replace("~", Environment.get_home_dir());
       if (FileUtils.test (ex, FileTest.IS_SYMLINK | FileTest.EXISTS))
@@ -587,7 +595,8 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
 
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
-  var dupscript = "ARGS: " + default_args(br, mode, encrypted, extra_args, include_args, exclude_args, tmp_archive, remove_n, file_to_restore, as_root);
+  var dupscript = "ARGS: " + default_args(br, mode, encrypted, extra_args, include_args, exclude_args,
+                                          tmp_archive, remove_n, file_to_restore, as_root);
 
   if (tmp_archive)
     dupscript += "\n" + "TMP_ARCHIVE";
@@ -612,7 +621,9 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
   if (as_root)
     dupscript += "\n" + "AS_ROOT";
 
-  var verify_script = "mkdir -p %s/deja-dup/metadata && echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && echo -n '0' >> %s/deja-dup/metadata/README".printf(cachedir, cachedir, cachedir);
+  var verify_script = ("mkdir -p %s/deja-dup/metadata && " +
+                       "echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && " +
+                       "echo -n '0' >> %s/deja-dup/metadata/README").printf(cachedir, cachedir, cachedir);
   if (mode == Mode.VERIFY)
     dupscript += "\n" + "SCRIPT: " + verify_script;
   if (script != null) {
@@ -675,7 +686,7 @@ void backup_run()
   }
 }
 
-const OptionEntry[] options = {
+const OptionEntry[] OPTIONS = {
   {"system", 0, 0, OptionArg.NONE, ref system_mode, "Run against system install", null},
   {null}
 };
@@ -685,7 +696,7 @@ int main(string[] args)
   Test.init(ref args);
 
   OptionContext context = new OptionContext("");
-  context.add_main_entries(options, null);
+  context.add_main_entries(OPTIONS, null);
   try {
     context.parse(ref args);
   } catch (Error e) {

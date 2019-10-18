@@ -97,7 +97,7 @@ public abstract class BackendFile : Backend
       // in the direction of trying to restore in a new folder rather than on
       // top of their running system, which, let's be honest, is probably not
       // a good idea anyway.
-      // 
+      //
       // Here's a joke for reading this far: Where did Napolean keep his armies?
       // In his sleevies!
       as_root = false;
@@ -197,8 +197,10 @@ public abstract class BackendFile : Backend
           var free_str = Environment.get_variable("DEJA_DUP_TEST_SPACE_FREE");
           var free_list = free_str.split(";");
           space = uint64.parse(free_list[0]);
-          if (free_list[1] != null)
-            Environment.set_variable("DEJA_DUP_TEST_SPACE_FREE", string.joinv(";", free_list[1:free_list.length]), true);
+          if (free_list[1] != null) {
+            var space_free = string.joinv(";", free_list[1:free_list.length]);
+            Environment.set_variable("DEJA_DUP_TEST_SPACE_FREE", space_free, true);
+          }
       }
       if (space == INFINITE_SPACE)
         return space - 1; // avoid accidentally reporting infinite

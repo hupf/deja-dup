@@ -35,18 +35,18 @@ public class RecursiveMove : RecursiveOp
   {
     Object(src: source, dst: dest);
   }
-  
+
   void progress_callback(int64 current_num_bytes, int64 total_num_bytes)
   {
     // Do nothing right now
   }
-  
+
   protected override void handle_file()
   {
     if (dst_type == FileType.DIRECTORY) {
       // GIO will throw a fit if we try to overwrite a directory with a file.
       // So cleanly delete directory first.
-      
+
       // We don't care about doing this 100% atomically, since user is
       // intending to restore files to a previous state and implicitly doesn't
       // worry about current state as long as we restore.  It kinda sucks that
@@ -61,7 +61,7 @@ public class RecursiveMove : RecursiveOp
         return;
       }
     }
-    
+
     try {
       src.move(dst,
                FileCopyFlags.ALL_METADATA |
@@ -89,14 +89,14 @@ public class RecursiveMove : RecursiveOp
       raise_error(src, dst, e.message);
     }
   }
-  
+
   protected override void handle_dir()
   {
     if (dst_type != FileType.UNKNOWN && dst_type != FileType.DIRECTORY) {
       // Hmmm...  Something that's not a directory is in our way.
       // Move dst file out of the way before we continue, else GIO will
       // complain.
-      
+
       // We don't care about doing this 100% atomically, since user is
       // intending to restore files to a previous state and implicitly doesn't
       // worry about current state as long as we restore.  If we can delete
@@ -110,10 +110,10 @@ public class RecursiveMove : RecursiveOp
         raise_error(src, dst, e.message);
         return;
       }
-      
+
       dst_type = FileType.UNKNOWN; // now the file's gone
     }
-    
+
     if (dst_type == FileType.UNKNOWN) {
       // Create it.  The GIO move function does not guarantee that we can move
       // whole folders across filesystems.  So we'll just create it and
@@ -127,7 +127,7 @@ public class RecursiveMove : RecursiveOp
       }
     }
   }
-  
+
   protected override void finish_dir()
   {
     // Now, we'll try to change it's settings to match our restore copy.
@@ -154,7 +154,7 @@ public class RecursiveMove : RecursiveOp
       // a non-empty directory.
     }
   }
-  
+
   protected override RecursiveOp? clone_for_info(FileInfo info)
   {
     var child_name = info.get_name();

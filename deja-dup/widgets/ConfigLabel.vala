@@ -27,7 +27,7 @@ public class ConfigLabel : ConfigWidget
   {
     Object(key: key, ns: ns);
   }
-  
+
   protected Gtk.Grid box;
   protected Gtk.Label label;
   construct {
@@ -53,4 +53,3 @@ public class ConfigLabel : ConfigWidget
 }
 
 }
-

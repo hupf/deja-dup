@@ -55,8 +55,11 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     if (!DejaDup.parse_version(version_string, out major, out minor, out micro))
       throw new SpawnError.FAILED(_("Could not understand duplicity version ‘%s’.").printf(version_string));
 
-    if (!DejaDup.meets_version(major, minor, micro, REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO))
-      throw new SpawnError.FAILED(_("Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but only found version %d.%d.%.2d").printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
+    if (!DejaDup.meets_version(major, minor, micro, REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO)) {
+      var msg = _("Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, " +
+                  "but only found version %d.%d.%.2d");
+      throw new SpawnError.FAILED(msg.printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
+    }
   }
 
   public override DejaDup.ToolJob create_job () throws Error
@@ -68,4 +71,3 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     return new DuplicityJob();
   }
 }
-

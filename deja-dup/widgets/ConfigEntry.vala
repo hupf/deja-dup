@@ -30,7 +30,7 @@ public class ConfigEntry : ConfigWidget
   {
     Object(key: key, ns: ns, is_uri: is_uri, settings: settings);
   }
-  
+
   public string get_text()
   {
     return entry.get_text();
@@ -47,7 +47,7 @@ public class ConfigEntry : ConfigWidget
     entry = new Gtk.Entry();
     add(entry);
     mnemonic_widget = entry;
-    
+
     set_from_config.begin();
     entry.focus_out_event.connect(handle_focus_out);
   }
@@ -71,4 +71,3 @@ public class ConfigEntry : ConfigWidget
 }
 
 }
-

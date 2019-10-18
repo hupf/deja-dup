@@ -90,7 +90,7 @@ public class BackendRackspace : Backend
       try {
         var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
         secret_key = yield Secret.password_lookup(schema,
-                                                  null, 
+                                                  null,
                                                   "user", id,
                                                   "server", RACKSPACE_SERVER,
                                                   "protocol", "https");
@@ -143,7 +143,8 @@ public class BackendRackspace : Backend
   }
 
   void ask_password() {
-    mount_op.set("label_help", _("You can sign up for a Rackspace Cloud Files account <a href=\"%s\">online</a>.").printf("https://signup.rackspacecloud.com/signup"));
+    var help = _("You can sign up for a Rackspace Cloud Files account <a href=\"%s\">online</a>.");
+    mount_op.set("label_help", help.printf("https://signup.rackspacecloud.com/signup"));
     mount_op.set("label_title", _("Connect to Rackspace Cloud Files"));
     mount_op.set("label_password", _("_API access key"));
     mount_op.set("label_show_password", _("S_how API access key"));

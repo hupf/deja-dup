@@ -416,7 +416,8 @@ public abstract class Assistant : Gtk.Window
     int boxw, boxh;
     page_box.get_size_request(out boxw, out boxh);
     page.get_preferred_size(null, out pagereq);
-    page_box.set_size_request(int.max(boxw, pagereq.width+page_box_req.width), int.max(boxh, pagereq.height+page_box_req.height));
+    page_box.set_size_request(int.max(boxw, pagereq.width + page_box_req.width),
+                              int.max(boxh, pagereq.height + page_box_req.height));
   }
 
   public void set_page_title(Gtk.Widget page, string title)

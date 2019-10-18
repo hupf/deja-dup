@@ -31,7 +31,7 @@ static DejaDup.FilteredSettings settings = null;
 static bool testing_delay = true;
 
 static bool show_version = false;
-const OptionEntry[] options = {
+const OptionEntry[] OPTIONS = {
   {"version", 0, 0, OptionArg.NONE, ref show_version, N_("Show version"), null},
   {null}
 };
@@ -92,12 +92,12 @@ static async bool is_ready(out string when)
 static bool handle_options(out int status)
 {
   status = 0;
-  
+
   if (show_version) {
     print("%s %s\n", "deja-dup-monitor", Config.VERSION);
     return false;
   }
-  
+
   return true;
 }
 
@@ -111,7 +111,7 @@ static async void kickoff()
   TimeSpan wait_time;
   if (!time_until_next_run(out wait_time))
     return;
-  
+
   if (wait_time > 0) {
     // Huh?  Shouldn't have been called now.
     prepare_next_run();
@@ -157,7 +157,7 @@ static bool time_until_next_run(out TimeSpan time)
     debug("Automatic backups disabled. Stopping monitor.");
     return false;
   }
-  
+
   time = time_until(next_date);
   return true;
 }
@@ -204,7 +204,7 @@ static void prepare_next_run()
     loop.quit();
     return;
   }
-  
+
   prepare_run(wait_time);
 }
 
@@ -256,9 +256,9 @@ static int main(string[] args)
   // a computer screen.  This program acts like a daemon that kicks off
   // backups at scheduled times.
   Environment.set_application_name(_("Backup Monitor"));
-  
+
   OptionContext context = new OptionContext("");
-  context.add_main_entries(options, Config.GETTEXT_PACKAGE);
+  context.add_main_entries(OPTIONS, Config.GETTEXT_PACKAGE);
   try {
     context.parse(ref args);
   } catch (Error e) {

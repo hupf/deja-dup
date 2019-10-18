@@ -25,10 +25,10 @@ internal class DuplicityInstance : Object
   public signal void exited(int code);
   public signal void message(string[] control_line, List<string>? data_lines,
                              string user_text);
-  
+
   public bool verbose {get; private set; default = false;}
   public string forced_cache_dir {get; set; default = null;}
-  
+
   public async void start(List<string> argv_in, List<string>? envp_in,
                           bool as_root = false)
   {
@@ -69,7 +69,7 @@ internal class DuplicityInstance : Object
     int myenv_len = 0;
     while (myenv[myenv_len] != null)
       ++myenv_len;
-    
+
     var env_len = myenv_len + envp_in.length();
     string[] real_envp = new string[env_len + 1];
     int i = 0;
@@ -78,11 +78,11 @@ internal class DuplicityInstance : Object
     foreach (string env in envp_in)
       real_envp[i++] = env;
     real_envp[i] = null;
-    
+
     List<string> argv = new List<string>();
     foreach (string arg in argv_in)
       argv.append(arg);
-    
+
     argv.append("--verbosity=9");
 
     // It's possible for --use-agent to be on by default (as it is in Ubuntu).
@@ -105,7 +105,7 @@ internal class DuplicityInstance : Object
 
     // Finally, actual duplicity command
     argv.prepend("duplicity");
-    
+
     // Grab version of command line to show user
     string user_cmd = null;
     foreach(string a in argv) {
@@ -149,12 +149,12 @@ internal class DuplicityInstance : Object
       argv.prepend(Path.build_filename(Config.PKG_LIBEXEC_DIR, "duplicity"));
       argv.prepend("pkexec");
     }
-    
+
     string[] real_argv = new string[argv.length()];
     i = 0;
     foreach(string a in argv)
       real_argv[i++] = a;
-    
+
     // Kill any lockfile, since our cancel methods may leave them around.
     // We already are pretty sure we don't have other duplicities in our
     // archive directories, because we use our own and we ensure we only have
@@ -172,14 +172,14 @@ internal class DuplicityInstance : Object
                           // See our PASSPHRASE handling for more info.
                           Posix.setsid();
                         }, out child_pid, null, null, null);
-    
+
     debug("Running the following duplicity (%i) command: %s\n", (int)child_pid, user_cmd);
-    
+
     watch_id = ChildWatch.add(child_pid, spawn_finished);
-    
+
     if (pipes[1] != -1)
       Posix.close(pipes[1]);
-    
+
     yield read_log();
     return true;
   }
@@ -188,7 +188,7 @@ internal class DuplicityInstance : Object
   {
     return (int)child_pid > 0;
   }
-  
+
   public void cancel()
   {
     if (is_started())
@@ -208,7 +208,7 @@ internal class DuplicityInstance : Object
     if (is_started())
       cont_child();
   }
-  
+
   uint watch_id;
   Pid child_pid;
   int[] pipes;
@@ -223,24 +223,24 @@ internal class DuplicityInstance : Object
     pipes = new int[2];
     pipes[0] = pipes[1] = -1;
   }
-  
+
   ~DuplicityInstance()
   {
     if (watch_id != 0)
       Source.remove(watch_id);
-    
+
     if (is_started()) {
       debug("duplicity (%i) process killed\n", (int)child_pid);
       kill_child();
     }
-    
+
     try {
       if (scriptfile != null)
         scriptfile.delete(null);
     }
     catch (Error e) {warning("%s\n", e.message);}
   }
-  
+
   void kill_child() {
     Posix.kill((Posix.pid_t)child_pid, Posix.Signal.KILL);
   }
@@ -252,15 +252,13 @@ internal class DuplicityInstance : Object
   void cont_child() {
     Posix.kill((Posix.pid_t)child_pid, Posix.Signal.CONT);
   }
-  
+
   async void read_log_lines()
   {
-    /*
-     * Process data from stream that is returned by read_log
-     *
-     * As reader returns lines that are outputed by duplicity, read_log_lines makes sure
-     * that data is processed at right speed and passes that data along the chain of functions. 
-     */
+    // Process data from stream that is returned by read_log
+    //
+    // As reader returns lines that are outputed by duplicity, read_log_lines makes sure
+    // that data is processed at right speed and passes that data along the chain of functions.
     List<string> stanza = new List<string>();
     while (reader != null) {
       try {
@@ -285,7 +283,7 @@ internal class DuplicityInstance : Object
         else if (stanza != null) {
           if (verbose)
             print("\n"); // breather
-          
+
           process_stanza(stanza);
           stanza = new List<string>();
         }
@@ -303,17 +301,14 @@ internal class DuplicityInstance : Object
       }
       catch (Error e2) {warning("%s\n", e2.message);}
     }
-    
+
     unref();
   }
 
   async void read_log()
   {
-   /*
-    * Asynchronous reading of duplicity's log via stream
-    *
-    * Stream initiated either from log file or pipe
-    */
+    // Asynchronous reading of duplicity's log via stream.
+    // Stream initiated either from log file or pipe.
     InputStream stream;
 
     if (logstream != null)
@@ -328,27 +323,27 @@ internal class DuplicityInstance : Object
     ref();
     yield read_log_lines();
   }
-  
+
   // If start is < 0, starts at word.length - 1.
   static int num_suffix(string word, char ch, long start = -1)
   {
     int rv = 0;
-    
+
     if (start < 0)
       start = (long)word.length - 1;
-    
+
     for (long i = start; i >= 0; --i, ++rv)
       if (word[i] != ch)
         break;
-    
+
     return rv;
   }
-  
+
   static string validated_string(string s)
   {
     var rv = new StringBuilder();
     weak string p = s;
-    
+
     while (p[0] != 0) {
       unichar ch = p.get_char_validated();
       if (ch == (unichar)(-1) || ch == (unichar)(-2)) {
@@ -360,22 +355,22 @@ internal class DuplicityInstance : Object
         p = p.next_char();
       }
     }
-    
+
     return rv.str;
   }
-  
+
   static string compress_string(string s_in)
   {
     var rv = new StringBuilder.sized(s_in.length);
     weak char[] s = (char[])s_in;
-    
+
     int i = 0;
     while (s[i] != 0) {
-      if (s[i] == '\\' && s[i+1] != 0) {
+      if (s[i] == '\\' && s[i + 1] != 0) {
         bool bare_escape = false;
-        
+
         // http://docs.python.org/reference/lexical_analysis.html
-        switch (s[i+1]) {
+        switch (s[i + 1]) {
         case 'b': rv.append_c('\b'); i += 2; break; // backspace
         case 'f': rv.append_c('\f'); i += 2; break; // form feed
         case 't': rv.append_c('\t'); i += 2; break; // tab
@@ -384,17 +379,17 @@ internal class DuplicityInstance : Object
         case 'v': rv.append_c('\xb'); i += 2; break; // vertical tab
         case 'a': rv.append_c('\x7'); i += 2; break; // bell
         case 'U': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i+2, 8), null, 16);
+          var val = DejaDup.strtoull(((string)s).substring(i + 2, 8), null, 16);
           rv.append_unichar((unichar)val);
           i += 10;
           break;
         case 'u': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i+2, 4), null, 16);
+          var val = DejaDup.strtoull(((string)s).substring(i + 2, 4), null, 16);
           rv.append_unichar((unichar)val);
           i += 6;
           break;
         case 'x': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i+2, 2), null, 16);
+          var val = DejaDup.strtoull(((string)s).substring(i + 2, 2), null, 16);
           rv.append_unichar((unichar)val);
           i += 4;
           break;
@@ -407,11 +402,11 @@ internal class DuplicityInstance : Object
         case '6':
         case '7':
           // start of an octal number
-          if (s[i+2] != 0 && s[i+3] != 0 && s[i+4] != 0) {
+          if (s[i + 2] != 0 && s[i + 3] != 0 && s[i + 4] != 0) {
             char[] tmpstr = new char[4];
-            tmpstr[0] = s[i+2];
-            tmpstr[1] = s[i+3];
-            tmpstr[2] = s[i+4];
+            tmpstr[0] = s[i + 2];
+            tmpstr[1] = s[i + 3];
+            tmpstr[2] = s[i + 4];
             var val = DejaDup.strtoull((string)tmpstr, null, 8);
             rv.append_unichar((unichar)val);
             i += 5;
@@ -423,37 +418,37 @@ internal class DuplicityInstance : Object
           bare_escape = true; break;
         }
         if (bare_escape) {
-          rv.append_c(s[i+1]); i+=2;
+          rv.append_c(s[i + 1]); i += 2;
         }
       }
       else
         rv.append_c(s[i++]);
     }
-    
+
     return rv.str;
   }
-  
+
   static void split_line(string line, out string[] split)
   {
     var firstsplit = line.split(" ");
     var splitlist = new List<string>();
-    
+
     int i;
     bool in_group = false;
     string group_word = "";
     for (i = 0; firstsplit[i] != null; ++i) {
       string word = firstsplit[i];
-      
-      if (firstsplit[i+1] == null)
+
+      if (firstsplit[i + 1] == null)
         word = word.chomp();
-      
+
       // Merge word groupings like 'hello \'goodbye' as one word.
       // Assumes that duplicity isn't a dick and gives us well formed groupings
       // so we only check for apostrophe at beginning and end of words.  We
       // won't crash if duplicity is a dick, but we won't correctly group words.
       if (!in_group && word.has_prefix("\'"))
         in_group = true;
-      
+
       if (in_group) {
         if (word.has_suffix("\'") &&
             // OK, word ends with '...  But is it a *real* ' or a fake one?
@@ -466,16 +461,16 @@ internal class DuplicityInstance : Object
         else if (num_suffix(word, '\\') % 2 == 1)
           // Chop off last backslash.
           word = word.substring(0, word.length - 2);
-        
+
         // get rid of any other escaping backslashes and translate octals
         word = compress_string(word);
-        
+
         // Now join to rest of group.
         if (group_word == "")
           group_word = word;
         else
           group_word += " " + word;
-        
+
         if (!in_group) {
           // add to list, but drop single quotes
           splitlist.append(group_word.substring(1, group_word.length - 2));
@@ -485,36 +480,32 @@ internal class DuplicityInstance : Object
       else
         splitlist.append(word);
     }
-    
+
     // Now make it nice array for ease of random access
     split = new string[splitlist.length()];
     i = 0;
     foreach (string s in splitlist)
       split[i++] = s;
   }
-  
+
   void process_stanza(List<string> stanza)
   {
-    /*
-     * Split the line/stanza that was echoed by stream and pass it forward in a 
-     * more structured way via a signal.
-     */
+    // Split the line/stanza that was echoed by stream and pass it forward in a
+    // more structured way via a signal.
     string[] control_line;
     split_line(stanza.data, out control_line);
-    
+
     var data = grab_stanza_data(stanza);
-    
+
     var text = grab_stanza_text(stanza);
-    
+
     processed_a_message = true;
     message(control_line, data, text);
   }
-  
+
   List<string> grab_stanza_data(List<string> stanza)
   {
-    /*
-     * Return only data from stanza that was returned by stream
-     */
+    // Return only data from stanza that was returned by stream
     var list = new List<string>();
     stanza = stanza.next; // skip first control line
     foreach (string line in stanza) {
@@ -523,7 +514,7 @@ internal class DuplicityInstance : Object
     }
     return list;
   }
-  
+
   string grab_stanza_text(List<string> stanza)
   {
     string text = "";
@@ -535,11 +526,11 @@ internal class DuplicityInstance : Object
     }
     return text.chomp();
   }
-  
+
   void spawn_finished(Pid pid, int status)
   {
     this.status = status;
-    
+
     if (Process.if_exited(status)) {
       var exitval = Process.exit_status(status);
       debug("duplicity (%i) exited with value %i\n", (int)pid, exitval);
@@ -547,20 +538,20 @@ internal class DuplicityInstance : Object
     else {
       debug("duplicity (%i) process killed\n", (int)pid);
     }
-    
+
     watch_id = 0;
     Process.close_pid(pid);
-    
+
     process_done = true;
     if (reader == null)
       send_done_for_status();
   }
-  
+
   void send_done_for_status()
   {
     bool success = Process.if_exited(status) && Process.exit_status(status) == 0;
     bool cancelled = !Process.if_exited(status);
-    
+
     if (Process.if_exited(status) && !processed_a_message &&
         (Process.exit_status(status) == 126 || // pkexec returns 126 on cancel
          Process.exit_status(status) == 127))  // and 127 on bad password
@@ -573,4 +564,3 @@ internal class DuplicityInstance : Object
     done(success, cancelled);
   }
 }
-

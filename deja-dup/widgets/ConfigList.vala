@@ -198,21 +198,21 @@ public class ConfigList : ConfigWidget
     vbox.pack_start(scroll, true, true, 0);
     vbox.pack_start(tbar, false, true, 0);
     add(vbox);
-    
+
     var selection = tree.get_selection();
     selection.set_mode(Gtk.SelectionMode.MULTIPLE);
-    
+
     key_press_event.connect(on_key_press_event);
-    
+
     key_changed.begin();
     handle_selection_change(selection);
     selection.changed.connect(handle_selection_change);
   }
-  
+
   bool on_key_press_event(Gtk.Widget w, Gdk.EventKey e)
   {
     uint modifiers = Gtk.accelerator_get_default_mod_mask();
-    
+
     // Vala keysym bindings would be nice.  Check for delete or kp_delete
     if ((e.keyval == 0xffff || e.keyval == 0xff9f) && (e.state & modifiers) == 0) {
       handle_remove();
@@ -225,7 +225,7 @@ public class ConfigList : ConfigWidget
   protected override async void set_from_config()
   {
     var list = settings.get_file_list(key);
-    
+
     Gtk.ListStore model;
     tree.get("model", out model);
     model.row_deleted.disconnect(write_to_config);
@@ -240,13 +240,13 @@ public class ConfigList : ConfigWidget
       model.insert_with_values(out iter, i++, 0, f.get_path(), 1, s);
     }
   }
-  
+
   void handle_selection_change(Gtk.TreeSelection sel)
   {
     var empty = sel.count_selected_rows() == 0;
     remove_button.set_sensitive(!empty);
   }
-  
+
   void handle_add()
   {
     var dlg = new Gtk.FileChooserNative(_("Choose folders"),
@@ -254,11 +254,11 @@ public class ConfigList : ConfigWidget
                                         Gtk.FileChooserAction.SELECT_FOLDER,
                                         _("_Add"), null);
     dlg.select_multiple = true;
-    
+
     if (dlg.run() != Gtk.ResponseType.ACCEPT) {
       return;
     }
-    
+
     SList<string> files = dlg.get_filenames();
 
     add_files(files);
@@ -274,7 +274,7 @@ public class ConfigList : ConfigWidget
     var slist_val = settings.get_value(key);
     string*[] slist = slist_val.get_strv();
     bool rv = false;
-    
+
     foreach (string file in files) {
       var folder = File.new_for_path(file);
       bool found = false;
@@ -285,7 +285,7 @@ public class ConfigList : ConfigWidget
           break;
         }
       }
-      
+
       if (!found) {
         slist += folder.get_parse_name();
         rv = true;
@@ -339,4 +339,3 @@ public class ConfigList : ConfigWidget
 }
 
 }
-

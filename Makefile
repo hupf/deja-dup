@@ -102,3 +102,13 @@ snap:
 	rm -f *.snap
 	snapcraft snap
 	snap install ./*.snap --classic --dangerous
+
+builddir/vlint:
+	mkdir -p builddir
+	git clone https://github.com/vala-lang/vala-lint builddir/vala-lint
+	cd builddir/vala-lint && meson build && ninja -C build
+	ln -s ./vala-lint/build/src/io.elementary.vala-lint builddir/vlint
+
+.PHONY: lint
+lint: builddir/vlint
+	builddir/vlint -c vala-lint.conf .

@@ -87,4 +87,3 @@ public class FilteredSettings : Settings
 }
 
 }
-

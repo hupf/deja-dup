@@ -42,7 +42,7 @@ public class BackendGCS : Backend
   public override bool is_native() {
     return false;
   }
-  
+
   public override Icon? get_icon() {
     return new ThemedIcon("deja-dup-cloud");
   }
@@ -59,7 +59,7 @@ public class BackendGCS : Backend
 
     return "gs://%s/%s".printf(bucket, folder);
   }
-  
+
   public override string get_location_pretty()
   {
     var bucket = settings.get_string(GCS_BUCKET_KEY);
@@ -70,7 +70,7 @@ public class BackendGCS : Backend
       // Translators: %s/%s is a folder.
       return _("%s/%s on Google Cloud Storage").printf(bucket, folder);
   }
-  
+
   string settings_id;
   string id;
   string secret_key;
@@ -78,19 +78,19 @@ public class BackendGCS : Backend
   {
     settings_id = settings.get_string(GCS_ID_KEY);
     id = settings_id == null ? "" : settings_id;
-    
+
     if (id != "" && secret_key != null) {
       // We've already been run before and got the key
       got_secret_key();
       return;
     }
-    
+
     if (id != "") {
       // First, try user's keyring
       try {
         var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
         secret_key = yield Secret.password_lookup(schema,
-                                                  null, 
+                                                  null,
                                                   "user", id,
                                                   "server", GCS_SERVER,
                                                   "protocol", "https");
@@ -143,7 +143,9 @@ public class BackendGCS : Backend
   }
 
   void ask_password() {
-    mount_op.set("label_help", _("You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>. Remember to enable Interoperability and create keys.").printf("http://cloud.google.com"));
+    var help = _("You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>.");
+    help += " " + _("Remember to enable Interoperability and create keys.");
+    mount_op.set("label_help", help.printf("http://cloud.google.com"));
     mount_op.set("label_title", _("Connect to Google Cloud Storage"));
     mount_op.set("label_username", _("_Access key ID"));
     mount_op.set("label_password", _("_Secret access key"));
@@ -155,11 +157,11 @@ public class BackendGCS : Backend
                           AskPasswordFlags.NEED_USERNAME |
                           AskPasswordFlags.SAVING_SUPPORTED);
   }
-  
+
   void got_secret_key() {
     if (id != settings_id)
       settings.set_string(GCS_ID_KEY, id);
-    
+
     List<string> envp = new List<string>();
     envp.append("GS_ACCESS_KEY_ID=%s".printf(id));
     envp.append("GS_SECRET_ACCESS_KEY=%s".printf(secret_key));

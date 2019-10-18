@@ -57,7 +57,7 @@ public class OperationBackup : Operation
     var settings = get_settings();
     var include_list = settings.get_file_list(INCLUDE_LIST_KEY);
     var exclude_list = settings.get_file_list(EXCLUDE_LIST_KEY);
-    
+
     // Exclude directories no one wants to backup
     add_always_excluded_dirs(ref job.excludes, ref job.exclude_regexps);
 
@@ -76,12 +76,12 @@ public class OperationBackup : Operation
     catch (Error e) {
       warning("%s\n", e.message);
     }
-    
+
     job.local = File.new_for_path("/");
 
     return null;
   }
-  
+
   void add_always_excluded_dirs(ref List<File> files, ref List<string> regexps)
   {
     // User doesn't care about cache
@@ -112,7 +112,7 @@ public class OperationBackup : Operation
       regexps.prepend(Path.build_filename(dir, ".var/app/*/cache")); // flatpak
       regexps.prepend(Path.build_filename(dir, "snap/*/*/.cache"));
     }
-    
+
     // Skip all of our temporary directories
     foreach (var tempdir in DejaDup.get_tempdirs())
       files.prepend(File.new_for_path(tempdir));

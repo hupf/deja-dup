@@ -27,7 +27,7 @@ public class DejaDupApp : Gtk.Application
   SimpleAction quit_action = null;
   public AssistantOperation op {get; private set; default = null;}
 
-  const OptionEntry[] options = {
+  const OptionEntry[] OPTIONS = {
     {"version", 0, 0, OptionArg.NONE, null, N_("Show version"), null},
     {"restore", 0, 0, OptionArg.NONE, null, N_("Restore given files"), null},
     {"backup", 0, 0, OptionArg.NONE, null, N_("Immediately start a backup"), null},
@@ -39,7 +39,7 @@ public class DejaDupApp : Gtk.Application
     {null}
   };
 
-  const ActionEntry[] actions = {
+  const ActionEntry[] ACTIONS = {
     {"backup", backup},
     {"backup-auto", backup_auto},
     {"restore", restore},
@@ -56,7 +56,7 @@ public class DejaDupApp : Gtk.Application
   {
     Object(application_id: Config.APPLICATION_ID,
            flags: ApplicationFlags.HANDLES_COMMAND_LINE);
-    add_main_option_entries(options);
+    add_main_option_entries(OPTIONS);
   }
 
   public override int handle_local_options(VariantDict options)
@@ -209,7 +209,7 @@ public class DejaDupApp : Gtk.Application
       return;
     }
 
-    add_action_entries(actions, this);
+    add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
     set_accels_for_action("app.quit", {"<Primary>q"});
     quit_action = lookup_action("quit") as SimpleAction;

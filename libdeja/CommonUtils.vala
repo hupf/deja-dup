@@ -67,7 +67,7 @@ string current_time_as_iso8601()
 public void update_last_run_timestamp(TimestampType type)
 {
   var cur_time_str = current_time_as_iso8601();
-  
+
   var settings = get_settings();
   settings.delay();
   settings.set_string(LAST_RUN_KEY, cur_time_str);
@@ -638,7 +638,7 @@ public async string get_nickname (File f)
     // Translators: this is the trash folder
     s = _("Trash");
   }
-  else 
+  else
     s = DejaDup.get_display_name(f);
 
   return s;
@@ -649,11 +649,11 @@ public int get_full_backup_threshold()
   // So, there are a few factors affecting how often to make a fresh full
   // backup:
   //
-  // 1) The longer we wait, the more we're filling up the backend with 
+  // 1) The longer we wait, the more we're filling up the backend with
   //    iterations on the same crap.
   // 2) The longer we wait, there's a higher risk that some bit will flip
   //    and the whole incremental chain afterwards is toast.
-  // 3) The longer we wait, the less annoying we are, since full backups 
+  // 3) The longer we wait, the less annoying we are, since full backups
   //    take a long time.
   //
   // We default to 3 months.
@@ -669,7 +669,7 @@ public DateTime get_full_backup_threshold_date()
 {
   var date = new DateTime.now_local();
   var days = get_full_backup_threshold();
-  return date.add_days(-days);;
+  return date.add_days(-days);
 }
 
 public Secret.Schema get_passphrase_schema()

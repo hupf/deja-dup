@@ -80,13 +80,13 @@ public File? parse_dir(string dir)
 public File[] parse_dir_list(string*[] dirs)
 {
   File[] rv = new File[0];
-  
+
   foreach (string s in dirs) {
     var f = parse_dir(s);
     if (f != null)
       rv += f;
   }
-  
+
   return rv;
 }
 

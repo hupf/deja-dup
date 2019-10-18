@@ -44,9 +44,9 @@ internal class DuplicityJob : DejaDup.ToolJob
     DELETE,
   }
   protected State state {get; set;}
-  
+
   DuplicityInstance inst;
-  
+
   List<string> backend_argv;
   List<string> saved_argv;
   List<string> saved_envp;
@@ -58,22 +58,22 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   string last_bad_volume;
   uint bad_volume_count;
-  
+
   bool has_progress_total = false;
   uint64 progress_total; // zero, unless we already know limit
   uint64 progress_count; // count of how far we are along in the current instance
-  
+
   static File slash;
   static File slash_root;
   static File slash_home;
   static File slash_home_me;
-  
+
   bool has_checked_contents = false;
   bool has_non_home_contents = false;
   List<File> homes = new List<File>();
 
   List<File> local_error_files = null;
-  
+
   bool checked_collection_info = false;
   bool got_collection_info = false;
   struct DateInfo {
@@ -83,13 +83,13 @@ internal class DuplicityJob : DejaDup.ToolJob
   List<DateInfo?> collection_info = null;
 
   bool reported_full_backups = false;
-  
+
   bool checked_backup_space = false;
 
   const int MINIMUM_FULL = 2;
   bool deleted_files = false;
   int delete_age = 0;
-  
+
   File last_touched_file = null;
   string forced_cache_dir = null;
 
@@ -125,7 +125,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     backend_argv = new List<string>();
     backend.add_argv(DejaDup.ToolJob.Mode.INVALID, ref backend_argv);
     backend.add_argv(mode, ref saved_argv);
-    
+
     if (mode == DejaDup.ToolJob.Mode.BACKUP)
       process_include_excludes();
 
@@ -159,7 +159,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     /*
      * Starts Duplicity backup with added enviroment variables
-     * 
+     *
      * Start Duplicity backup process with costum values for enviroment variables.
      */
     backend.envp_ready.disconnect(continue_with_envp);
@@ -210,7 +210,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     // For symlinks, we want to add the link and its target to the list.
     // Normally, duplicity ignores targets, and this is fine and expected
-    // behavior.  But if the user explicitly requested a directory with a 
+    // behavior.  But if the user explicitly requested a directory with a
     // symlink in it's path, they expect a follow-through.
     // If a symlink is anywhere above the directory specified by the user,
     // duplicity will stop at that symlink and only backup the broken link.
@@ -233,7 +233,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         so_far = parent.resolve_relative_path(piece);
         var info = so_far.query_info(FileAttribute.STANDARD_IS_SYMLINK + "," +
                                      FileAttribute.STANDARD_SYMLINK_TARGET,
-                                     FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 
+                                     FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
                                      null);
         if (info.get_is_symlink()) {
           // Check if we've seen this before (i.e. are we in a loop?)
@@ -299,8 +299,8 @@ internal class DuplicityJob : DejaDup.ToolJob
     // characters, so we surround each with brackets.
     string rv;
     rv = path.replace("[", "[[]");
-    rv =   rv.replace("?", "[?]");
-    rv =   rv.replace("*", "[*]");
+    rv = rv.replace("?", "[?]");
+    rv = rv.replace("*", "[*]");
     return rv;
   }
 
@@ -339,19 +339,19 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     saved_argv.append("--exclude=**");
   }
-  
+
   public override void cancel() {
     var prev_mode = mode;
     mode = DejaDup.ToolJob.Mode.INVALID;
-    
+
     if (prev_mode == DejaDup.ToolJob.Mode.BACKUP && state == State.NORMAL) {
       if (cleanup())
         return;
     }
-    
+
     cancel_inst();
   }
-  
+
   public override void stop() {
     // just abruptly stop, without a cleanup, duplicity will resume
     was_stopped = true;
@@ -387,14 +387,14 @@ internal class DuplicityJob : DejaDup.ToolJob
     state = State.NORMAL;
     if (restore_files == null) // only clear if we're not in middle of restore sequence
       local_error_files = null;
-    
+
     if (mode == DejaDup.ToolJob.Mode.INVALID)
       return false;
-    
+
     var extra_argv = new List<string>();
     string action_desc = null;
     File custom_local = null;
-    
+
     switch (original_mode) {
     case DejaDup.ToolJob.Mode.BACKUP:
       // We need to first check the backup status to see if we need to start
@@ -430,7 +430,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           delete_cache();
         }
       }
-      
+
       break;
     case DejaDup.ToolJob.Mode.RESTORE:
       // We need to first check the backup status to see if we should use
@@ -461,10 +461,10 @@ internal class DuplicityJob : DejaDup.ToolJob
             extra_argv.append(slash.get_relative_path(new_home));
           }
         }
-        
+
         if (restore_files != null) {
           // Just do first one.  Others will come when we're done
-          
+
           // make path to specific restore file, since duplicity will just
           // drop the file exactly where you ask it
           var local_file = make_local_rel_path(restore_files.data);
@@ -478,7 +478,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           if (!local_file.has_prefix(slash_home_me) &&
               !(DejaDup.in_testing_mode() && local_file.get_path().has_prefix(Environment.get_tmp_dir())))
             needs_root = true;
-          
+
           try {
             // won't have correct permissions...
             local_file.make_directory_with_parents(null);
@@ -491,7 +491,7 @@ internal class DuplicityJob : DejaDup.ToolJob
             return false;
           }
           custom_local = local_file;
-          
+
           var rel_file_path = slash.get_relative_path(restore_files.data);
           extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
         }
@@ -499,22 +499,22 @@ internal class DuplicityJob : DejaDup.ToolJob
           if (has_non_home_contents && !this.local.has_prefix(slash_home_me))
             needs_root = true;
         }
-        
+
         progress(0f);
       }
       break;
     }
-    
+
     // Send appropriate description for what we're about to do.  Is often
     // very quickly overridden by a message like "Backing up file X"
     if (action_desc == null)
       action_desc = DejaDup.Operation.mode_to_string(mode);
     set_status(action_desc);
-    
+
     connect_and_start(extra_argv, null, null, custom_local);
     return true;
   }
-  
+
   File? make_local_rel_path(File file)
   {
     string rel_file_path = slash.get_relative_path(file);
@@ -522,7 +522,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       return null;
     return local.resolve_relative_path(rel_file_path);
   }
-  
+
   async void report_full_backups()
   {
     DateTime full_backup = null;
@@ -607,7 +607,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         return;
       }
     }
-    
+
     if (!restart())
       done(false, false, null);
   }
@@ -615,19 +615,19 @@ internal class DuplicityJob : DejaDup.ToolJob
   bool cleanup() {
     if (state == State.CLEANUP)
       return false;
-    
+
     state = State.CLEANUP;
     var cleanup_argv = new List<string>();
     cleanup_argv.append("cleanup");
     cleanup_argv.append("--force");
     cleanup_argv.append(get_remote());
-    
+
     set_status(_("Cleaning up…"));
     connect_and_start(null, null, cleanup_argv);
-    
+
     return true;
   }
-  
+
   void delete_excess(int cutoff, DejaDup.Backend? backend_override = null) {
     state = State.DELETE;
     var argv = new List<string>();
@@ -635,13 +635,13 @@ internal class DuplicityJob : DejaDup.ToolJob
     argv.append("%d".printf(cutoff));
     argv.append("--force");
     argv.append(get_remote(backend_override));
-    
+
     set_status(_("Cleaning up…"));
     connect_and_start(null, null, argv);
-    
+
     return;
   }
-  
+
   bool can_ignore_error()
   {
     // Ignore errors during cleanup.  If they're real, they'll repeat.
@@ -667,23 +667,23 @@ internal class DuplicityJob : DejaDup.ToolJob
         if (restart())
           return;
         break;
-      
+
       case State.DELETE:
         if (restart()) // In case we were interrupting normal flow
           return;
         break;
-      
+
       case State.CLEANUP:
         cleaned_up_once = true;
         if (restart()) // restart in case cleanup was interrupting normal flow
           return;
-        
+
         // Else, we probably started cleaning up after a cancel.  Just continue
         // that cancels
         success = false;
         cancelled = true;
         break;
-      
+
       case State.STATUS:
         checked_collection_info = true;
         var should_restart = mode != original_mode;
@@ -694,15 +694,15 @@ internal class DuplicityJob : DejaDup.ToolJob
             return;
         }
         break;
-      
+
       case State.CHECK_CONTENTS:
         has_checked_contents = true;
         mode = original_mode;
-        
+
         if (restart())
           return;
         break;
-      
+
       case State.NORMAL:
         if (mode == DejaDup.ToolJob.Mode.RESTORE && restore_files != null) {
           _restore_files.delete_link(_restore_files);
@@ -745,17 +745,17 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
     else if (was_stopped)
       success = true; // we treat stops as success
-    
+
     if (error_issued)
       success = false;
-    
+
     if (!success && !cancelled && !error_issued)
       show_error(_("Failed with an unknown error."));
 
     inst = null;
     done(success, cancelled, detail);
   }
-  
+
   string saved_status;
   File saved_status_file;
   bool saved_status_file_action;
@@ -793,7 +793,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       deleted_files = true;
       return false;
     }
-    
+
     // Check if we need to delete any backups
     // If we got collection info, examine it to see if we should delete old
     // files.
@@ -827,7 +827,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         delete_excess(cutoff);
         return true;
       }
-      
+
       // If we don't need to delete, pretend we did and move on.
       deleted_files = true;
       return false;
@@ -911,7 +911,7 @@ internal class DuplicityJob : DejaDup.ToolJob
      */
     if (control_line.length == 0)
       return;
-    
+
     var keyword = control_line[0];
     switch (keyword) {
     case "ERROR":
@@ -925,7 +925,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       break;
     }
   }
-  
+
   bool ask_question(string t, string m)
   {
     disconnect_inst();
@@ -976,10 +976,10 @@ internal class DuplicityJob : DejaDup.ToolJob
                                        string text_in)
   {
     string text = text_in;
-    
+
     if (can_ignore_error())
       return;
-    
+
     if (firstline.length > 1) {
       switch (int.parse(firstline[1])) {
 
@@ -1008,7 +1008,10 @@ internal class DuplicityJob : DejaDup.ToolJob
 
       case ERROR_HOSTNAME_CHANGED:
         if (firstline.length >= 4) {
-          if (!ask_question(_("Computer name changed"), _("The existing backup is of a computer named %s, but the current computer’s name is %s.  If this is unexpected, you should back up to a different location.").printf(firstline[3], firstline[2])))
+          var msg = _("The existing backup is of a computer named %s, but the " +
+                      "current computer’s name is %s.  If this is unexpected, " +
+                      "you should back up to a different location.");
+          if (!ask_question(_("Computer name changed"), msg.printf(firstline[3], firstline[2])))
             return;
         }
         // Else just assume that user wants to allow the mismatch...
@@ -1073,10 +1076,10 @@ internal class DuplicityJob : DejaDup.ToolJob
         break;
       }
     }
-    
+
     show_error(text);
   }
-  
+
   void process_exception(string exception, string text)
   {
     switch (exception) {
@@ -1094,7 +1097,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           if (restart()) // get_remote() will eventually grab new bucket name
             return;
         }
-        
+
         show_error(_("S3 bucket name is not available."));
       }
       break;
@@ -1140,7 +1143,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         return;
       break;
     }
-    
+
     // For most, don't do anything special.  Show generic 'unknown error'
     // message, but provide the exception text for better bug reports.
     // Plus, sometimes it may clue the user in to what's wrong.
@@ -1150,7 +1153,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (!error_issued && !restart_without_cache())
       show_error(_("Failed with an unknown error."), text);
   }
-  
+
   protected virtual void process_info(string[] firstline, List<string>? data,
                                       string text)
   {
@@ -1205,37 +1208,37 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
     listed_current_files(date, file);
   }
-  
+
   void process_diff_file(string file) {
     var gfile = make_file_obj(file);
     last_touched_file = gfile;
     if (gfile.query_file_type(FileQueryInfoFlags.NONE, null) != FileType.DIRECTORY)
       set_status_file(gfile, state != State.DRY_RUN);
   }
-  
+
   void process_patch_file(string file) {
     var gfile = make_file_obj(file);
     last_touched_file = gfile;
     if (gfile.query_file_type(FileQueryInfoFlags.NONE, null) != FileType.DIRECTORY)
       set_status_file(gfile, state != State.DRY_RUN);
   }
-  
+
   void process_progress(string[] firstline)
   {
     double total;
-    
+
     if (firstline.length > 2)
       this.progress_count = uint64.parse(firstline[2]);
     else
       return;
-    
+
     if (firstline.length > 3)
       total = double.parse(firstline[3]);
     else if (this.progress_total > 0)
       total = this.progress_total;
     else
       return; // can't do progress without a total
-    
+
     double percent = (double)this.progress_count / total;
     if (percent > 1)
       percent = 1;
@@ -1243,13 +1246,13 @@ internal class DuplicityJob : DejaDup.ToolJob
       percent = 0;
     progress(percent);
   }
-  
+
   File make_file_obj(string file)
   {
     // All files are relative to root.
     return slash.resolve_relative_path(file);
   }
-  
+
   void process_collection_status(List<string>? lines)
   {
     /*
@@ -1262,7 +1265,7 @@ internal class DuplicityJob : DejaDup.ToolJob
      */
     if (mode != DejaDup.ToolJob.Mode.STATUS || got_collection_info)
       return;
-    
+
     var dates = new List<string>();
     var infos = new List<DateInfo?>();
     bool in_chain = false;
@@ -1307,7 +1310,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     collection_dates(dates);
   }
-  
+
   protected virtual void process_warning(string[] firstline, List<string>? data,
                                          string text)
   {
@@ -1357,7 +1360,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       }
     }
   }
-  
+
   void show_error(string errorstr, string? detail = null)
   {
     if (error_issued == false) {
@@ -1410,13 +1413,13 @@ internal class DuplicityJob : DejaDup.ToolJob
                          List<string>? envp_extra = null,
                          List<string>? argv_entire = null,
                          File? custom_local = null)
-  { 
+  {
     /*
      * For passed arguments start a new duplicity instance, set duplicity in the right mode and execute command
      */
     /* Disconnect instance */
     disconnect_inst();
-    
+
     /* Start new duplicity instance */
     inst = new DuplicityInstance();
     inst.done.connect(handle_done);
@@ -1433,7 +1436,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     /* Set arguments for call to duplicity */
     weak List<string> master_argv = argv_entire == null ? saved_argv : argv_entire;
     weak File local_arg = custom_local == null ? local : custom_local;
-    
+
     var argv = new List<string>();
     foreach (string s in master_argv) argv.append(s);
     foreach (string s in this.backend_argv) argv.append(s);
@@ -1499,4 +1502,3 @@ internal class DuplicityJob : DejaDup.ToolJob
     inst.start.begin(argv, envp, needs_root);
   }
 }
-

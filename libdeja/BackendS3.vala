@@ -43,7 +43,7 @@ public class BackendS3 : Backend
     if (mode == ToolJob.Mode.INVALID)
       argv.append("--s3-use-new-style");
   }
-  
+
   string get_default_bucket() {
     return "deja-dup-auto-%s".printf(id.down());
   }
@@ -51,7 +51,7 @@ public class BackendS3 : Backend
   public override bool is_native() {
     return false;
   }
-  
+
   public override Icon? get_icon() {
     return new ThemedIcon("deja-dup-cloud");
   }
@@ -71,11 +71,11 @@ public class BackendS3 : Backend
       bucket = default_bucket;
       settings.set_string(S3_BUCKET_KEY, bucket);
     }
-    
+
     var folder = get_folder_key(settings, S3_FOLDER_KEY);
     return "s3+http://%s/%s".printf(bucket, folder);
   }
-  
+
   public bool bump_bucket() {
     // OK, the bucket we tried must already exist, so let's use a different
     // one.  We'll take previous bucket name and increment it.
@@ -90,15 +90,15 @@ public class BackendS3 : Backend
       settings.set_string(S3_BUCKET_KEY, bucket);
       return true;
     }
-    
+
     if (!bucket.has_prefix("deja-dup-auto-"))
       return false;
-    
+
     var bits = bucket.split("-");
     if (bits == null || bits[0] == null || bits[1] == null ||
         bits[2] == null || bits[3] == null)
       return false;
-    
+
     if (bits[4] == null)
       bucket += "-2";
     else {
@@ -106,11 +106,11 @@ public class BackendS3 : Backend
       bits[4] = (num + 1).to_string();
       bucket = string.joinv("-", bits);
     }
-    
+
     settings.set_string(S3_BUCKET_KEY, bucket);
     return true;
   }
-  
+
   public override string get_location_pretty()
   {
     var folder = get_folder_key(settings, S3_FOLDER_KEY);
@@ -120,7 +120,7 @@ public class BackendS3 : Backend
       // Translators: %s is a folder.
       return _("%s on Amazon S3").printf(folder);
   }
-  
+
   string settings_id;
   string id;
   string secret_key;
@@ -128,19 +128,19 @@ public class BackendS3 : Backend
   {
     settings_id = settings.get_string(S3_ID_KEY);
     id = settings_id == null ? "" : settings_id;
-    
+
     if (id != "" && secret_key != null) {
       // We've already been run before and got the key
       got_secret_key();
       return;
     }
-    
+
     if (id != "") {
       // First, try user's keyring
       try {
         var schema = Secret.get_schema(Secret.SchemaType.COMPAT_NETWORK);
         secret_key = yield Secret.password_lookup(schema,
-                                                  null, 
+                                                  null,
                                                   "user", id,
                                                   "server", S3_SERVER,
                                                   "protocol", "https");
@@ -193,7 +193,8 @@ public class BackendS3 : Backend
   }
 
   void ask_password() {
-    mount_op.set("label_help", _("You can sign up for an Amazon S3 account <a href=\"%s\">online</a>.").printf("http://aws.amazon.com/s3/"));
+    var help = _("You can sign up for an Amazon S3 account <a href=\"%s\">online</a>.");
+    mount_op.set("label_help", help.printf("http://aws.amazon.com/s3/"));
     mount_op.set("label_title", _("Connect to Amazon S3"));
     mount_op.set("label_username", _("_Access key ID"));
     mount_op.set("label_password", _("_Secret access key"));
@@ -205,11 +206,11 @@ public class BackendS3 : Backend
                           AskPasswordFlags.NEED_USERNAME |
                           AskPasswordFlags.SAVING_SUPPORTED);
   }
-  
+
   void got_secret_key() {
     if (id != settings_id)
       settings.set_string(S3_ID_KEY, id);
-    
+
     List<string> envp = new List<string>();
     envp.append("AWS_ACCESS_KEY_ID=%s".printf(id));
     envp.append("AWS_SECRET_ACCESS_KEY=%s".printf(secret_key));

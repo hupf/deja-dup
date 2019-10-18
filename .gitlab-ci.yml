@@ -5,6 +5,10 @@ include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_c
 variables:
   BUNDLE: deja-dup-dev.flatpak
 
+lint:
+  image: valalang/lint
+  script: io.elementary.vala-lint -c vala-lint.conf .
+
 flatpak:
   extends: .flatpak
   variables:

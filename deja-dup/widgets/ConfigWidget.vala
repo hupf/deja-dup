@@ -30,14 +30,14 @@ public abstract class ConfigWidget : Gtk.EventBox
   public string ns {get; construct; default = "";}
   public FilteredSettings settings {get; construct;}
 
-  protected bool syncing;  
+  protected bool syncing;
   List<FilteredSettings> all_settings;
   construct {
     visible_window = false;
 
     if (settings == null)
       settings = DejaDup.get_settings(ns);
-    
+
     if (key != null)
       watch_key(key);
 
@@ -73,7 +73,7 @@ public abstract class ConfigWidget : Gtk.EventBox
 
   protected async void key_changed()
   {
-    // Not great to just drop new notification on the floor when already 
+    // Not great to just drop new notification on the floor when already
     // syncing, but we don't have a good cancellation method.
     if (syncing)
       return;
@@ -96,4 +96,3 @@ public abstract class ConfigWidget : Gtk.EventBox
 }
 
 }
-

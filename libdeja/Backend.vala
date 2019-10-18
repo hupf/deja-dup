@@ -55,9 +55,9 @@ public abstract class Backend : Object
   public virtual async Backend? report_full_backups(bool first_backup) {return null;}
 
   // Only called during backup
-  public static uint64 INFINITE_SPACE = uint64.MAX;
+  public const uint64 INFINITE_SPACE = uint64.MAX;
   public virtual async uint64 get_space(bool free = true) {return INFINITE_SPACE;}
-  
+
   // Arguments needed only when the particular mode is active
   // If mode == INVALID, arguments needed any time the backup is referenced.
   public virtual void add_argv(ToolJob.Mode mode, ref List<string> argv) {}

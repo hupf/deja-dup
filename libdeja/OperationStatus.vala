@@ -24,11 +24,11 @@ namespace DejaDup {
 public class OperationStatus : Operation
 {
   public signal void collection_dates(List<string>? dates);
-  
+
   public OperationStatus(Backend backend) {
     Object(mode: ToolJob.Mode.STATUS, backend: backend);
   }
-  
+
   protected override void connect_to_job()
   {
     job.collection_dates.connect((d, dates) => {collection_dates(dates);});

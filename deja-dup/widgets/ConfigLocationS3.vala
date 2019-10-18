@@ -36,4 +36,3 @@ public class ConfigLocationS3 : ConfigLocationTable
 }
 
 }
-
