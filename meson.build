@@ -45,6 +45,7 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
+gdk_x11_dep = dependency('gdk-x11-3.0', required: false)
 gio_dep = dependency('gio-2.0', version: '>= 2.56')
 gio_unix_dep = dependency('gio-unix-2.0')
 goa_dep = dependency('goa-1.0', version: '>= 3.8.0', required: false)
@@ -100,6 +101,10 @@ common_cflags = [
     '-DICON_NAME="@0@"'.format(application_id),
     '-DLOCALE_DIR="@0@"'.format(localedir),
     '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)]
+
+if gdk_x11_dep.found()
+common_vflags += ['--define=HAS_X11']
+endif
 
 if goa_dep.found()
 common_vflags += ['--define=HAS_GOA']

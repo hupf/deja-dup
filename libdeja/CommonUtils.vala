@@ -160,6 +160,14 @@ public void run_deja_dup(string[] args = {}, string exec = "deja-dup")
   }
 }
 
+public string get_monitor_exec()
+{
+  var monitor_exec = Environment.get_variable("DEJA_DUP_MONITOR_EXEC");
+  if (monitor_exec != null && monitor_exec.length > 0)
+    return monitor_exec;
+  return Path.build_filename(Config.PKG_LIBEXEC_DIR, "deja-dup-monitor");
+}
+
 uint32 machine_id = 0;
 uint32 get_machine_id()
 {

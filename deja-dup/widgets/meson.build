@@ -17,7 +17,8 @@
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
 libwidgets = shared_library('widgets',
-    ['ConfigBool.vala',
+    ['Background.vala',
+     'ConfigBool.vala',
      'ConfigChoice.vala',
      'ConfigDelete.vala',
      'ConfigEntry.vala',
@@ -42,7 +43,12 @@ libwidgets = shared_library('widgets',
      'WidgetUtils.vala'],
     vala_args: common_vflags,
     c_args: common_cflags,
-    dependencies: [goa_dep, gtk_dep, secret_dep],
+    dependencies: [
+        gdk_x11_dep,
+        goa_dep,
+        gtk_dep,
+        secret_dep
+    ],
     link_with: [libdeja],
     include_directories: [libdeja_inc],
     install: true,

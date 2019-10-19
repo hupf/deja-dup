@@ -77,12 +77,8 @@ public void destroy_widget(Gtk.Widget w)
 bool start_monitor_if_needed(FilteredSettings settings)
 {
   if (settings.get_boolean(PERIODIC_KEY)) {
-    var monitor_exec = Environment.get_variable("DEJA_DUP_MONITOR_EXEC");
-    if (monitor_exec == null || monitor_exec.length == 0) {
-        monitor_exec = Path.build_filename(Config.PKG_LIBEXEC_DIR, "deja-dup-monitor");
-    }
     // Will quickly and harmlessly bail if it can't claim the bus name
-    run_deja_dup({}, monitor_exec);
+    run_deja_dup({}, DejaDup.get_monitor_exec());
   }
   // Don't need to worry about else condition: the monitor will shut itself off
   // when periodic is disabled.

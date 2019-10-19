@@ -4,6 +4,7 @@
 ## Packaging
 - Require glib 2.56
 - Require meson 0.47
+- Add optional dependency on libgdk-x11
 
 # 40.1
 - Fix versioning to be correct

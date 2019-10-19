@@ -276,7 +276,7 @@ static int main(string[] args)
   loop = new MainLoop(null, false);
   Idle.add(() => {
     // quit if we can't get the bus name or become disconnected
-    Bus.own_name(BusType.SESSION, "org.gnome.DejaDup.Monitor",
+    Bus.own_name(BusType.SESSION, Config.APPLICATION_ID + ".Monitor",
                  BusNameOwnerFlags.NONE, ()=>{},
                  ()=>{begin_monitoring();},
                  ()=>{loop.quit();});

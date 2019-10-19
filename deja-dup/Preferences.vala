@@ -28,7 +28,23 @@ public class PreferencesPeriodicSwitch : Gtk.Switch
   construct
   {
     settings = DejaDup.get_settings();
-    settings.bind(DejaDup.PERIODIC_KEY, this, "active", SettingsBindFlags.DEFAULT);
+    settings.bind(DejaDup.PERIODIC_KEY, this, "active", SettingsBindFlags.GET);
+    state_set.connect(request_background);
+  }
+
+  bool request_background(bool state)
+  {
+    if (state) {
+      var bg = new Background();
+      if (!bg.request_autostart(this)) {
+        this.sensitive = !bg.permission_refused;
+        this.active = false;
+        return true; // don't change state, skip default handler
+      }
+    }
+
+    settings.set_boolean(DejaDup.PERIODIC_KEY, state);
+    return false;
   }
 }
 

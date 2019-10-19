@@ -108,8 +108,12 @@ public class ConfigLabelDescription : ConfigLabel
 
   bool enable_auto_backup()
   {
-    var settings = DejaDup.get_settings();
-    settings.set_boolean(DejaDup.PERIODIC_KEY, true);
+    var bg = new Background();
+    if (bg.request_autostart(this)) {
+      var settings = DejaDup.get_settings();
+      settings.set_boolean(DejaDup.PERIODIC_KEY, true);
+    }
+
     return true;
   }
 }
