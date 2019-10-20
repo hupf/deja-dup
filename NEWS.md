@@ -1,5 +1,6 @@
 # 40.1+
 - Fix any problems when 2038 hits by using 64-bit dates internally
+- Update translations
 
 ## Packaging
 - Require glib 2.56

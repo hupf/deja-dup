@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-04-04 21:26-0400\n"
+"POT-Creation-Date: 2019-10-19 14:44-0400\n"
 "PO-Revision-Date: 2019-03-29 09:44+0000\n"
 "Last-Translator: gorkaazk <gorkaazkarate@gmail.com>\n"
 "Language-Team: Basque <eu@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2019-04-06 05:53+0000\n"
-"X-Generator: Launchpad (build 18920)\n"
+"X-Launchpad-Export-Date: 2019-10-20 06:18+0000\n"
+"X-Generator: Launchpad (build 186023fa645d8be19d403a76064f0643f510db2f)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
@@ -43,11 +43,8 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.appdata.xml.in:12
 msgid ""
-"Support for local, remote, or cloud backup locations such as Google Drive "
-"and Nextcloud"
+"Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
-"Lokalean, urrunean edo lainoan babeskopia egiteko Google Drive eta Nextcloud "
-"bezalako euskarrien helbidea"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:13
 msgid "Securely encrypts and compresses your data"
@@ -67,9 +64,10 @@ msgstr "Babeskopien maiztasuna programatzen du"
 msgid "Integrates well into your GNOME desktop"
 msgstr "Ondo integratzen da zure GNOME mahaigainean"
 
-#: data/org.gnome.DejaDup.desktop.in:5
-msgid "Backups@name_suffix@"
-msgstr ""
+#. Translators: "Backups" is a noun
+#: data/org.gnome.DejaDup.desktop.in:5 deja-dup/main.vala:166
+msgid "Backups"
+msgstr "Babeskopiak"
 
 #: data/org.gnome.DejaDup.desktop.in:6
 msgid "Change your backup settings"
@@ -732,7 +730,7 @@ msgstr ""
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:696
 #: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1160
+#: libdeja/tools/duplicity/DuplicityJob.vala:1151
 msgid "Failed with an unknown error."
 msgstr "Huts egin du errore ezezagunarengatik."
 
@@ -819,89 +817,88 @@ msgstr "Leheneratzen:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:366
+#: deja-dup/AssistantRestore.vala:364
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:379
+#: deja-dup/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Ez dago leheneratzeko babeskopiarik"
 
-#: deja-dup/AssistantRestore.vala:459
+#: deja-dup/AssistantRestore.vala:456
 msgid "Original location"
 msgstr "Jatorrizko kokapena"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:467
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Leheneratuko den fitxategia"
 msgstr[1] "Leheneratuko diren fitxategiak"
 
-#: deja-dup/AssistantRestore.vala:491
+#: deja-dup/AssistantRestore.vala:488
 msgid "Restore Failed"
 msgstr "Leheneratzeak huts egin du"
 
-#: deja-dup/AssistantRestore.vala:493
+#: deja-dup/AssistantRestore.vala:490
 msgid "Restore Finished"
 msgstr "Leheneratzea amaitu da"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:496
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your files were successfully restored."
 msgstr "Zure fitxategiak ongi leheneratu dira"
 
-#: deja-dup/AssistantRestore.vala:499
+#: deja-dup/AssistantRestore.vala:496
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Zure fitxategia ongi leheneratu da."
 msgstr[1] "Zure fitxategiak ongi leheneratu dira."
 
-#: deja-dup/AssistantRestore.vala:506 libdeja/Operation.vala:58
+#: deja-dup/AssistantRestore.vala:503 libdeja/Operation.vala:58
 msgid "Restoring…"
 msgstr "Leheneratzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:186
+#: deja-dup/AssistantRestoreMissing.vala:167
 msgid "File"
 msgstr "Fitxategia"
 
-#: deja-dup/AssistantRestoreMissing.vala:187
+#: deja-dup/AssistantRestoreMissing.vala:168
 msgid "Last seen"
 msgstr "Azken aldiz ikusia"
 
-#: deja-dup/AssistantRestoreMissing.vala:198
+#: deja-dup/AssistantRestoreMissing.vala:179
 msgid "Restore which Files?"
 msgstr "Zein fitxategi leheneratuko da?"
 
-#. Hours
-#: deja-dup/AssistantRestoreMissing.vala:329
+#: deja-dup/AssistantRestoreMissing.vala:305
 msgid "Scanning for files from up to a day ago…"
 msgstr "Duela egun batetik honako fitxategiak bilatzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:332
+#: deja-dup/AssistantRestoreMissing.vala:308
 msgid "Scanning for files from up to a week ago…"
 msgstr "Duela aste batetik honako fitxategiak bilatzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:335
+#: deja-dup/AssistantRestoreMissing.vala:311
 msgid "Scanning for files from up to a month ago…"
 msgstr "Duela hilabetetik honako fitxategiak bilatzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:340
+#: deja-dup/AssistantRestoreMissing.vala:316
 #, c-format
 msgid "Scanning for files from about a month ago…"
 msgid_plural "Scanning for files from about %d months ago…"
 msgstr[0] "Duela hilabete inguruko fitxategiak eskaneatzen..."
 msgstr[1] "Duela %d hilabete inguruko fitxategiak eskaneatzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:347
+#: deja-dup/AssistantRestoreMissing.vala:323
 #, c-format
 msgid "Scanning for files from about a year ago…"
 msgid_plural "Scanning for files from about %d years ago…"
 msgstr[0] "Duela urtebete inguruko fitxategiak eskaneatzen..."
 msgstr[1] "Duela %d urtebete inguruko fitxategiak eskaneatzen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:440
+#: deja-dup/AssistantRestoreMissing.vala:416
 msgid "Scanning finished"
 msgstr "Eskaneatzea amaitu da"
 
@@ -969,11 +966,6 @@ msgstr "Direktorio hori ez da existitzen"
 #: deja-dup/main.vala:117
 msgid "You must provide a directory, not a file"
 msgstr "Direktorio bat adierazi behar duzu, ez fitxategi bat"
-
-#. Translators: "Backups" is a noun
-#: deja-dup/main.vala:166
-msgid "Backups"
-msgstr "Babeskopiak"
 
 #: deja-dup/main.vala:183
 msgid "Automatic backup"
@@ -1091,11 +1083,11 @@ msgstr ""
 "Dokumentu, datu eta ezarpen garrantzitsuak babeskopia bidez babes daitezke. "
 "Hondamendia gertatuz gero, babeskopiatik abiatuta berreskuratu ahal dituzu."
 
-#: deja-dup/Prompt.vala:40
+#: deja-dup/Prompt.vala:42
 msgid "_Don't Show Again"
 msgstr "_Ez erakutsi berriro"
 
-#: deja-dup/Prompt.vala:48
+#: deja-dup/Prompt.vala:50
 msgid "_Open Backup Settings"
 msgstr "_Ireki babeskopiaren ezarpenak"
 
@@ -1356,14 +1348,14 @@ msgid_plural "%d days"
 msgstr[0] "Egun %d"
 msgstr[1] "%d egun"
 
-#: deja-dup/widgets/WidgetUtils.vala:29
+#: deja-dup/widgets/WidgetUtils.vala:34
 #, c-format
 msgid "Could not display %s"
 msgstr "Ezin izan da %s erakutsi"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:577
+#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:578
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s %2$s-(e)n"
@@ -1388,15 +1380,15 @@ msgstr "‘%s’ konektatu dadin itxaroten..."
 msgid "%s on Google Drive"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:362
+#: libdeja/BackendGoogle.vala:364
 msgid "Could not log into Google servers."
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:438
+#: libdeja/BackendGoogle.vala:440
 msgid "Google credentials for Déjà Dup"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:545
+#: libdeja/BackendGoogle.vala:548
 msgid ""
 "You first need to allow Déjà Dup Backup Tool to access your Google account."
 msgstr ""
@@ -1419,19 +1411,19 @@ msgid ""
 msgstr ""
 "Rackspace Cloud Files kontu bat sor dezakezu <a href=\"%s\">linean</a>."
 
-#: libdeja/BackendRackspace.vala:147
+#: libdeja/BackendRackspace.vala:148
 msgid "Connect to Rackspace Cloud Files"
 msgstr "Konektatu Rackspace Cloud Files zerbitzuarekin"
 
-#: libdeja/BackendRackspace.vala:148
+#: libdeja/BackendRackspace.vala:149
 msgid "_API access key"
 msgstr "_API atzitze-gakoa"
 
-#: libdeja/BackendRackspace.vala:149
+#: libdeja/BackendRackspace.vala:150
 msgid "S_how API access key"
 msgstr "E_rakutsi API atzitze-gakoa"
 
-#: libdeja/BackendRackspace.vala:150
+#: libdeja/BackendRackspace.vala:151
 msgid "_Remember API access key"
 msgstr "Gogo_ratu API atzitze-gakoa"
 
@@ -1465,47 +1457,47 @@ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
 msgstr ""
 "Amazon S3 kontu bat lortzeko izena eman dezakezu <a href=\"%s\">linean</a>."
 
-#: libdeja/BackendS3.vala:197
+#: libdeja/BackendS3.vala:198
 msgid "Connect to Amazon S3"
 msgstr "Konektatu Amazon S3 zerbitzuarekin"
 
-#: libdeja/BackendS3.vala:198
+#: libdeja/BackendS3.vala:199
 msgid "_Access key ID"
 msgstr "_Atzitze-gakoaren IDa"
 
-#: libdeja/BackendS3.vala:199
+#: libdeja/BackendS3.vala:200
 msgid "_Secret access key"
 msgstr "Atzitze-gako _sekretua"
 
-#: libdeja/BackendS3.vala:200
+#: libdeja/BackendS3.vala:201
 msgid "S_how secret access key"
 msgstr "E_rakutsi atzitze-gako sekretua"
 
-#: libdeja/BackendS3.vala:201
+#: libdeja/BackendS3.vala:202
 msgid "_Remember secret access key"
 msgstr "_Gogoratu atzitze-gako sekretua"
 
-#: libdeja/CommonUtils.vala:550
+#: libdeja/CommonUtils.vala:551
 msgid "Access Granted"
 msgstr ""
 
-#: libdeja/CommonUtils.vala:551
+#: libdeja/CommonUtils.vala:552
 msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:628
+#: libdeja/CommonUtils.vala:629
 #, c-format
 msgid "Home (%s)"
 msgstr "Karpeta nagusia (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:633
+#: libdeja/CommonUtils.vala:634
 msgid "Home"
 msgstr "Karpeta nagusia"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:638
+#: libdeja/CommonUtils.vala:639
 msgid "Trash"
 msgstr "Zakarrontzia"
 
@@ -1597,23 +1589,23 @@ msgstr ""
 "idatz dezakezula."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:964
+#: libdeja/tools/duplicity/DuplicityJob.vala:955
 msgid "Bad encryption password."
 msgstr "Zifratze-pasahitz okerra."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1009
+#: libdeja/tools/duplicity/DuplicityJob.vala:1000
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Ezin izan da ‘%s’ leheneratu: Fitxategia ez da aurkitu babeskopian"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1020
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "Ordenagailuaren izena aldatu da"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1020
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1624,70 +1616,70 @@ msgstr ""
 "ordenagailuaren izena %s da. Hau espero ez bazenuen, beste kokapen batean "
 "egin beharko zenuke babeskopia."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1055
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ sortzen saiatzean."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1059
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ irakurtzen saiatzean."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1067
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ ezabatzen saiatzean."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Babeskopiaren ‘%s’ kokapena ez da existitzen."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1080
-#: libdeja/tools/duplicity/DuplicityJob.vala:1131
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1122
 msgid "No space left."
 msgstr "Ez dago espaziorik."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1094
+#: libdeja/tools/duplicity/DuplicityJob.vala:1085
 msgid "Invalid ID."
 msgstr "ID baliogabea."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1096
+#: libdeja/tools/duplicity/DuplicityJob.vala:1087
 msgid "Invalid secret key."
 msgstr "Gako sekretu baliogabea."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1098
+#: libdeja/tools/duplicity/DuplicityJob.vala:1089
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr ""
 "Zure Amazon Web Services zerbitzuko kontua ez dago alta emanda S3 zerbitzuan."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1107
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "S3 bucket name is not available."
 msgstr "S3 ontzi-izena ezin da eskuratu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1120
+#: libdeja/tools/duplicity/DuplicityJob.vala:1111
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia irakurtzean."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#: libdeja/tools/duplicity/DuplicityJob.vala:1113
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia idaztean."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1133
+#: libdeja/tools/duplicity/DuplicityJob.vala:1124
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Ez dago lekurik ‘%s’-(e)n."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1141
+#: libdeja/tools/duplicity/DuplicityJob.vala:1132
 msgid "No backup files found"
 msgstr "Ez da aurkitu babeskopiaren fitxategirik"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1191
+#: libdeja/tools/duplicity/DuplicityJob.vala:1182
 msgid "Uploading…"
 msgstr "Kargatzen..."
 
@@ -1738,6 +1730,13 @@ msgstr ""
 
 #~ msgid "Could not start backup tool"
 #~ msgstr "Ezin izan da babeskopia-tresna abiarazi"
+
+#~ msgid ""
+#~ "Support for local, remote, or cloud backup locations such as Google Drive "
+#~ "and Nextcloud"
+#~ msgstr ""
+#~ "Lokalean, urrunean edo lainoan babeskopia egiteko Google Drive eta Nextcloud "
+#~ "bezalako euskarrien helbidea"
 
 #, c-format
 #~ msgid "Waiting for %s to be configured in your backup settings…"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-04-04 21:26-0400\n"
+"POT-Creation-Date: 2019-10-19 14:44-0400\n"
 "PO-Revision-Date: 2019-04-11 21:18+0000\n"
 "Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -16,15 +16,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2019-04-12 05:59+0000\n"
-"X-Generator: Launchpad (build 18920)\n"
+"X-Launchpad-Export-Date: 2019-10-20 06:19+0000\n"
+"X-Generator: Launchpad (build 186023fa645d8be19d403a76064f0643f510db2f)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:7 deja-dup/main.vala:361
+#: data/org.gnome.DejaDup.appdata.xml.in:7 deja-dup/main.vala:362
 msgid "Déjà Dup Backup Tool"
 msgstr "Déjà Dup alat sigurnosnog kopiranja"
 
@@ -44,11 +44,8 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.appdata.xml.in:12
 msgid ""
-"Support for local, remote, or cloud backup locations such as Google Drive "
-"and Nextcloud"
+"Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
-"Podrška za lokalno, udaljeno ili u oblaku sigurnosno kopiranje poput Google "
-"Diska i Nextclouda"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:13
 msgid "Securely encrypts and compresses your data"
@@ -69,9 +66,10 @@ msgstr "Raspored redovite sigurnosne kopije"
 msgid "Integrates well into your GNOME desktop"
 msgstr "Integrira se dobro u GNOME radno okruženje"
 
-#: data/org.gnome.DejaDup.desktop.in:5
-msgid "Backups@name_suffix@"
-msgstr "Sigurnosna kopija@naziv_sufiks@"
+#. Translators: "Backups" is a noun
+#: data/org.gnome.DejaDup.desktop.in:5 deja-dup/main.vala:166
+msgid "Backups"
+msgstr "Sigurnosno kopiranje"
 
 #: data/org.gnome.DejaDup.desktop.in:6
 msgid "Change your backup settings"
@@ -268,11 +266,11 @@ msgstr ""
 "Ako nije odabrano, Déjà Dup neće pokrenuti raspored sigurnosnog kopiranja "
 "putem mreža s naplatom (poput 4G mreže)."
 
-#: data/org.gnome.DejaDup.gschema.xml:88
+#: data/org.gnome.DejaDup.gschema.xml:89
 msgid "Type of location to store backup"
 msgstr "Vrsta lokacije za spremanje sigurnosne kopije"
 
-#: data/org.gnome.DejaDup.gschema.xml:89
+#: data/org.gnome.DejaDup.gschema.xml:90
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -280,14 +278,14 @@ msgstr ""
 "Vrsta lokacije sigurnosne kopije. Ako je ‘auto’, zadano će biti izabrano na "
 "temelju onoga što je dostupno."
 
-#: data/org.gnome.DejaDup.gschema.xml:105
-#: data/org.gnome.DejaDup.gschema.xml:128
-#: data/org.gnome.DejaDup.gschema.xml:141
-#: data/org.gnome.DejaDup.gschema.xml:208
+#: data/org.gnome.DejaDup.gschema.xml:107
+#: data/org.gnome.DejaDup.gschema.xml:130
+#: data/org.gnome.DejaDup.gschema.xml:143
+#: data/org.gnome.DejaDup.gschema.xml:187
 msgid "The folder where backups are stored"
 msgstr "Mapa spremanja sigurnosnih kopija"
 
-#: data/org.gnome.DejaDup.gschema.xml:106
+#: data/org.gnome.DejaDup.gschema.xml:108
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -295,11 +293,11 @@ msgstr ""
 "Hijerarhija mape gdje su sigurnosne kopije spremljene. Putanje mogu biti "
 "potpune ili povezane prema vašoj osobnoj mapi."
 
-#: data/org.gnome.DejaDup.gschema.xml:113
+#: data/org.gnome.DejaDup.gschema.xml:115
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml:114
+#: data/org.gnome.DejaDup.gschema.xml:116
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -307,23 +305,23 @@ msgstr ""
 "Jedinstveni identifikator datotečnog sustava diska, koji se koristi za "
 "prepoznavanje diska kada je priključen."
 
-#: data/org.gnome.DejaDup.gschema.xml:118
+#: data/org.gnome.DejaDup.gschema.xml:120
 msgid "Name"
 msgstr "Naziv"
 
-#: data/org.gnome.DejaDup.gschema.xml:119
+#: data/org.gnome.DejaDup.gschema.xml:121
 msgid "The name of the external drive."
 msgstr "Naziv vanjskog diska"
 
-#: data/org.gnome.DejaDup.gschema.xml:123
+#: data/org.gnome.DejaDup.gschema.xml:125
 msgid "Icon"
 msgstr "Ikona"
 
-#: data/org.gnome.DejaDup.gschema.xml:124
+#: data/org.gnome.DejaDup.gschema.xml:126
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Ikona vanjskog diska, poput serijske Gikone."
 
-#: data/org.gnome.DejaDup.gschema.xml:129
+#: data/org.gnome.DejaDup.gschema.xml:131
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -331,16 +329,15 @@ msgstr ""
 "Hijerarhija mape gdje su sigurnosne kopije spremljene. Putanje su povezane "
 "prema disku."
 
-#: data/org.gnome.DejaDup.gschema.xml:136
+#: data/org.gnome.DejaDup.gschema.xml:138
 msgid "The server address"
 msgstr "Adresa poslužitelja"
 
-#: data/org.gnome.DejaDup.gschema.xml:137
+#: data/org.gnome.DejaDup.gschema.xml:139
 msgid "The URI of the remote server location."
 msgstr "URI lokacije udaljenog poslužitelja."
 
-#: data/org.gnome.DejaDup.gschema.xml:142
-#: data/org.gnome.DejaDup.gschema.xml:209
+#: data/org.gnome.DejaDup.gschema.xml:144
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -348,21 +345,21 @@ msgstr ""
 "Hijerarhija mape gdje su sigurnosne kopije spremljene. Putanje mogu biti "
 "potpune ili povezane prema poslužitelju."
 
-#: data/org.gnome.DejaDup.gschema.xml:149
+#: data/org.gnome.DejaDup.gschema.xml:151
 msgid "Amazon S3 Access Key ID"
 msgstr "Amazon S3 ID pristupni ključ"
 
-#: data/org.gnome.DejaDup.gschema.xml:150
+#: data/org.gnome.DejaDup.gschema.xml:152
 msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
 msgstr ""
 "Vaš Amazon S3 identifikacijski pristupni ključ. Koristi se kao vaše S3 "
 "korisničko ime."
 
-#: data/org.gnome.DejaDup.gschema.xml:154
+#: data/org.gnome.DejaDup.gschema.xml:156
 msgid "The Amazon S3 bucket name to use"
 msgstr "Naziv Amazon S3 spremnika za korištenje"
 
-#: data/org.gnome.DejaDup.gschema.xml:155
+#: data/org.gnome.DejaDup.gschema.xml:157
 msgid ""
 "Which Amazon S3 bucket to store files in. This does not need to exist "
 "already. Only legal hostname strings are valid."
@@ -370,12 +367,12 @@ msgstr ""
 "U koji Amazon S3 spremnik da pohranim datoteke. To ne treba već postojati. "
 "Samo legalni hostname nizovi su valjani."
 
-#: data/org.gnome.DejaDup.gschema.xml:159
+#: data/org.gnome.DejaDup.gschema.xml:161
 msgid "The Amazon S3 folder"
 msgstr "Amazon S3 mapa"
 
-#: data/org.gnome.DejaDup.gschema.xml:160
-#: data/org.gnome.DejaDup.gschema.xml:178
+#: data/org.gnome.DejaDup.gschema.xml:162
+#: data/org.gnome.DejaDup.gschema.xml:180
 msgid ""
 "An optional folder name to store files in. This folder will be created in "
 "the chosen bucket."
@@ -383,11 +380,11 @@ msgstr ""
 "Dodatni naziv mape za spremanje datoteka. Ova mapa će biti izrađena u "
 "odabranom spremniku"
 
-#: data/org.gnome.DejaDup.gschema.xml:167
+#: data/org.gnome.DejaDup.gschema.xml:169
 msgid "Google Cloud Storage Access Key ID"
 msgstr "ID pristupnog ključa Google Cloud pohrane"
 
-#: data/org.gnome.DejaDup.gschema.xml:168
+#: data/org.gnome.DejaDup.gschema.xml:170
 msgid ""
 "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
 "Cloud Storage username."
@@ -395,11 +392,11 @@ msgstr ""
 "Vaš identifikator pristupnog ključa Google Cloud pohrane. Koristi se kao "
 "vaše korisničko ime Google Cloud pohrane."
 
-#: data/org.gnome.DejaDup.gschema.xml:172
+#: data/org.gnome.DejaDup.gschema.xml:174
 msgid "The Google Cloud Storage bucket name to use"
 msgstr "Naziv za korištenje buketa Google Cloud pohrane"
 
-#: data/org.gnome.DejaDup.gschema.xml:173
+#: data/org.gnome.DejaDup.gschema.xml:175
 msgid ""
 "Which Google Cloud Storage bucket to store files in. This does not need to "
 "exist already. Only legal hostname strings are valid."
@@ -407,7 +404,7 @@ msgstr ""
 "U koji će se buket Google Cloud pohrane spremati datoteke. Ovo nije potrebno "
 "ako već postoji. Samo znakovi stvarnih naziva računala su valjani."
 
-#: data/org.gnome.DejaDup.gschema.xml:177
+#: data/org.gnome.DejaDup.gschema.xml:179
 msgid "The Google Cloud Storage folder"
 msgstr "Mapa Google Cloud pohrane"
 
@@ -419,11 +416,11 @@ msgstr ""
 "Putanja mape gdje su sigurnosne kopije pohranjene. Putanje mogu biti "
 "apsolutne ili relativne na računalu."
 
-#: data/org.gnome.DejaDup.gschema.xml:185
+#: data/org.gnome.DejaDup.gschema.xml:195
 msgid "The Rackspace Cloud Files container"
 msgstr "Spremnik datoteka Rackspace oblaka"
 
-#: data/org.gnome.DejaDup.gschema.xml:186
+#: data/org.gnome.DejaDup.gschema.xml:196
 msgid ""
 "Which Rackspace Cloud Files container to store files in. This does not need "
 "to exist already. Only legal hostname strings are valid."
@@ -431,19 +428,19 @@ msgstr ""
 "U koji Rackspace oblak datoteka spremnik da pohranim datoteke.  To ne treba "
 "već postojati. Samo legalni hostname nizovi su valjani."
 
-#: data/org.gnome.DejaDup.gschema.xml:190
+#: data/org.gnome.DejaDup.gschema.xml:200
 msgid "Your Rackspace username"
 msgstr "Vaše Rackspace korisničko ime"
 
-#: data/org.gnome.DejaDup.gschema.xml:191
+#: data/org.gnome.DejaDup.gschema.xml:201
 msgid "This is your username for the Rackspace Cloud Files service."
 msgstr "Ovo je vaše korisničko ime za usluge Rackspace oblak datoteka."
 
-#: data/org.gnome.DejaDup.gschema.xml:216
+#: data/org.gnome.DejaDup.gschema.xml:208
 msgid "The OpenStack Swift container"
 msgstr "OpenStack Swift spremnik"
 
-#: data/org.gnome.DejaDup.gschema.xml:217
+#: data/org.gnome.DejaDup.gschema.xml:209
 msgid ""
 "Which OpenStack Swift container to store files in. This does not need to "
 "exist already. Only legal hostname strings are valid."
@@ -451,32 +448,32 @@ msgstr ""
 "U koji će se OpenStack Swift spremnik spremati datoteke. Ovo nije potrebno "
 "ako već postoji. Samo znakovi stvarnih naziva računala su valjani."
 
-#: data/org.gnome.DejaDup.gschema.xml:221
+#: data/org.gnome.DejaDup.gschema.xml:213
 msgid "Your OpenStack username"
 msgstr "Vaše OpenStack korisničko ime"
 
-#: data/org.gnome.DejaDup.gschema.xml:222
+#: data/org.gnome.DejaDup.gschema.xml:214
 msgid "This is your username for the OpenStack Swift service."
 msgstr "Ovo je vaše korisničko ime OpenStack Swift usluge."
 
-#: data/org.gnome.DejaDup.gschema.xml:226
+#: data/org.gnome.DejaDup.gschema.xml:218
 msgid "Your OpenStack tenant"
 msgstr "Vaš OpenStack zakupac"
 
-#: data/org.gnome.DejaDup.gschema.xml:227
+#: data/org.gnome.DejaDup.gschema.xml:219
 msgid "This is your tenant for the OpenStack Swift service."
 msgstr "Ovo je vaš zakupac za OpenStack Swift uslugu."
 
-#: data/org.gnome.DejaDup.gschema.xml:231
+#: data/org.gnome.DejaDup.gschema.xml:223
 msgid "Authentication URL"
 msgstr "URL ovjere"
 
-#: data/org.gnome.DejaDup.gschema.xml:232
+#: data/org.gnome.DejaDup.gschema.xml:224
 msgid ""
 "This is the Authentication URL, or keystone URL for the OpenStack service"
 msgstr "Ovo je URL ovjere, ili osnovni URL za OpenStack uslugu"
 
-#: deja-dup/AssistantRestore.vala:66
+#: data/org.gnome.DejaDup.policy.in:10 deja-dup/AssistantRestore.vala:66
 msgid "Restore"
 msgstr "Vrati"
 
@@ -520,7 +517,7 @@ msgstr "_O Sigurnosnom kopiranju"
 msgid "Folder"
 msgstr "Mapa"
 
-#: data/ui/restore-missing.ui:61 deja-dup/AssistantOperation.vala:168
+#: data/ui/restore-missing.ui:61 deja-dup/AssistantOperation.vala:173
 msgid "Scanning…"
 msgstr "Pretraživanje..."
 
@@ -655,27 +652,27 @@ msgstr "Vaše datoteke su uspješno sigurnosno kopirane i testirane."
 msgid "Backing Up…"
 msgstr "Sigurnosno kopirnje..."
 
-#: deja-dup/AssistantOperation.vala:167
+#: deja-dup/AssistantOperation.vala:172
 msgid "Scanning:"
 msgstr "Pretraživanje:"
 
-#: deja-dup/AssistantOperation.vala:272
+#: deja-dup/AssistantOperation.vala:277
 msgid "_Details"
 msgstr "_Pojedinosti"
 
-#: deja-dup/AssistantOperation.vala:318
+#: deja-dup/AssistantOperation.vala:323
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Kako bi mogli nastaviti, sljedeći paketi moraju biti instalirani:"
 
-#: deja-dup/AssistantOperation.vala:354
+#: deja-dup/AssistantOperation.vala:359
 msgid "_Allow restoring without a password"
 msgstr "_Dopusti vraćanje bez lozinke"
 
-#: deja-dup/AssistantOperation.vala:360
+#: deja-dup/AssistantOperation.vala:365
 msgid "_Password-protect your backup"
 msgstr "_Zaštitite lozinkom svoju sigurnosnu kopiju"
 
-#: deja-dup/AssistantOperation.vala:372
+#: deja-dup/AssistantOperation.vala:377
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -683,24 +680,24 @@ msgstr ""
 "Trebat ćete vašu lozinku da bi mogli vratiti svoje datoteke. Možda ju želite "
 "zapisati."
 
-#: deja-dup/AssistantOperation.vala:387 deja-dup/AssistantOperation.vala:456
+#: deja-dup/AssistantOperation.vala:392 deja-dup/AssistantOperation.vala:461
 msgid "E_ncryption password"
 msgstr "Š_ifrirana lozinka"
 
-#: deja-dup/AssistantOperation.vala:404
+#: deja-dup/AssistantOperation.vala:409
 msgid "Confir_m password"
 msgstr "Potvrd_i lozinku"
 
-#: deja-dup/AssistantOperation.vala:417 deja-dup/AssistantOperation.vala:465
+#: deja-dup/AssistantOperation.vala:422 deja-dup/AssistantOperation.vala:470
 msgid "_Show password"
 msgstr "_Prikaži lozinku"
 
-#: deja-dup/AssistantOperation.vala:424
+#: deja-dup/AssistantOperation.vala:429
 #: deja-dup/MountOperationAssistant.vala:39
 msgid "_Remember password"
 msgstr "_Zapamti lozinku"
 
-#: deja-dup/AssistantOperation.vala:443
+#: deja-dup/AssistantOperation.vala:448
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -709,7 +706,7 @@ msgstr ""
 "Za provjeru mogućnosti preuzimanja svojih datoteka u hitnom slučaju, upišite "
 "ponovno svoju šifriranu lozinku za izvođenje kratkog testa vraćanja."
 
-#: deja-dup/AssistantOperation.vala:470
+#: deja-dup/AssistantOperation.vala:475
 msgid "Test every two _months"
 msgstr "Testiraj svaka dva _mjeseca"
 
@@ -717,15 +714,15 @@ msgstr "Testiraj svaka dva _mjeseca"
 msgid "_Grant Access"
 msgstr "_Dopusit pristup"
 
-#: deja-dup/AssistantOperation.vala:537
+#: deja-dup/AssistantOperation.vala:569
 msgid "Install Packages"
 msgstr "Instaliraj pakete"
 
-#: deja-dup/AssistantOperation.vala:552
+#: deja-dup/AssistantOperation.vala:584
 msgid "Summary"
 msgstr "Kratak pregled"
 
-#: deja-dup/AssistantOperation.vala:574
+#: deja-dup/AssistantOperation.vala:606
 msgid "Restore Test"
 msgstr "Test vraćanja"
 
@@ -739,25 +736,25 @@ msgstr "Dopusti pristup"
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:646
-#: libdeja/tools/duplicity/DuplicityJob.vala:724
-#: libdeja/tools/duplicity/DuplicityJob.vala:1111
+#: deja-dup/AssistantOperation.vala:696
+#: libdeja/tools/duplicity/DuplicityJob.vala:753
+#: libdeja/tools/duplicity/DuplicityJob.vala:1151
 msgid "Failed with an unknown error."
 msgstr "Neuspjelo s nepoznatom greškom."
 
-#: deja-dup/AssistantOperation.vala:853
+#: deja-dup/AssistantOperation.vala:904
 msgid "Require Password?"
 msgstr "Potrebna je lozinka?"
 
-#: deja-dup/AssistantOperation.vala:855
+#: deja-dup/AssistantOperation.vala:906
 msgid "Encryption Password Needed"
 msgstr "Potrebna je lozinka šifriranja"
 
-#: deja-dup/AssistantOperation.vala:928
+#: deja-dup/AssistantOperation.vala:978
 msgid "Backup encryption password"
 msgstr "Lozinka šifriranja sigurnosne kopije"
 
-#: deja-dup/AssistantOperation.vala:999
+#: deja-dup/AssistantOperation.vala:1056
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instaliraj"
@@ -828,77 +825,76 @@ msgstr "Vraćanje:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:366
+#: deja-dup/AssistantRestore.vala:364
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:379
+#: deja-dup/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Nema sigurnosnih kopija za vraćanje"
 
-#: deja-dup/AssistantRestore.vala:459
+#: deja-dup/AssistantRestore.vala:456
 msgid "Original location"
 msgstr "Izvorna lokacija"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:467
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datoteka za vraćanje"
 msgstr[1] "Datoteke za vraćanje"
 msgstr[2] "Datoteka za vraćanje"
 
-#: deja-dup/AssistantRestore.vala:491
+#: deja-dup/AssistantRestore.vala:488
 msgid "Restore Failed"
 msgstr "Vraćanje nije uspjelo"
 
-#: deja-dup/AssistantRestore.vala:493
+#: deja-dup/AssistantRestore.vala:490
 msgid "Restore Finished"
 msgstr "Vraćanje završeno"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:496
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your files were successfully restored."
 msgstr "Vaše datoteke su uspješno vraćene."
 
-#: deja-dup/AssistantRestore.vala:499
+#: deja-dup/AssistantRestore.vala:496
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Vaša datoteka je uspješno vraćena."
 msgstr[1] "Vaše datoteke su uspješno vraćene."
 msgstr[2] "Vaše datoteke su uspješno vraćene."
 
-#: deja-dup/AssistantRestore.vala:506 libdeja/Operation.vala:58
+#: deja-dup/AssistantRestore.vala:503 libdeja/Operation.vala:58
 msgid "Restoring…"
 msgstr "Vraćanje..."
 
-#: deja-dup/AssistantRestoreMissing.vala:186
+#: deja-dup/AssistantRestoreMissing.vala:167
 msgid "File"
 msgstr "Datoteka"
 
-#: deja-dup/AssistantRestoreMissing.vala:187
+#: deja-dup/AssistantRestoreMissing.vala:168
 msgid "Last seen"
 msgstr "Zadnji put viđen"
 
-#: deja-dup/AssistantRestoreMissing.vala:198
+#: deja-dup/AssistantRestoreMissing.vala:179
 msgid "Restore which Files?"
 msgstr "Koje datoteke vratiti?"
 
-#. Hours
-#: deja-dup/AssistantRestoreMissing.vala:329
+#: deja-dup/AssistantRestoreMissing.vala:305
 msgid "Scanning for files from up to a day ago…"
 msgstr "Pretraživanje datoteka do prije jednog dana..."
 
-#: deja-dup/AssistantRestoreMissing.vala:332
+#: deja-dup/AssistantRestoreMissing.vala:308
 msgid "Scanning for files from up to a week ago…"
 msgstr "Pretraživanje datoteka do prije tjedan dana..."
 
-#: deja-dup/AssistantRestoreMissing.vala:335
+#: deja-dup/AssistantRestoreMissing.vala:311
 msgid "Scanning for files from up to a month ago…"
 msgstr "Pretraživanje datoteka do prije mjesec dana..."
 
-#: deja-dup/AssistantRestoreMissing.vala:340
+#: deja-dup/AssistantRestoreMissing.vala:316
 #, c-format
 msgid "Scanning for files from about a month ago…"
 msgid_plural "Scanning for files from about %d months ago…"
@@ -906,7 +902,7 @@ msgstr[0] "Pretraživanje datoteka otprilike od mjesec dana..."
 msgstr[1] "Pretraživanje datoteka otprilike od %d mjeseca..."
 msgstr[2] "Pretraživanje datoteka otprilike od %d mjeseca..."
 
-#: deja-dup/AssistantRestoreMissing.vala:347
+#: deja-dup/AssistantRestoreMissing.vala:323
 #, c-format
 msgid "Scanning for files from about a year ago…"
 msgid_plural "Scanning for files from about %d years ago…"
@@ -914,36 +910,36 @@ msgstr[0] "Pretraživanje datoteka otprilike od prije godinu dana..."
 msgstr[1] "Pretraživanje datoteka otprilike od prije %d godine..."
 msgstr[2] "Pretraživanje datoteka otprilike od prije %d godina..."
 
-#: deja-dup/AssistantRestoreMissing.vala:440
+#: deja-dup/AssistantRestoreMissing.vala:416
 msgid "Scanning finished"
 msgstr "Pretraživanje završeno"
 
-#: deja-dup/Assistant.vala:320
+#: deja-dup/Assistant.vala:325
 msgid "Co_ntinue"
 msgstr "Na_stavi"
 
-#: deja-dup/Assistant.vala:326
+#: deja-dup/Assistant.vala:331
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Test"
 
-#: deja-dup/Assistant.vala:362
+#: deja-dup/Assistant.vala:367
 msgid "_Resume Later"
 msgstr "_Nastavi kasnije"
 
-#: deja-dup/Assistant.vala:368
+#: deja-dup/Assistant.vala:373
 msgid "_Back"
 msgstr "_Natrag"
 
-#: deja-dup/Assistant.vala:370
+#: deja-dup/Assistant.vala:375
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: deja-dup/Assistant.vala:376
+#: deja-dup/Assistant.vala:381
 msgid "_Cancel"
 msgstr "_Odustani"
 
-#: deja-dup/Assistant.vala:387
+#: deja-dup/Assistant.vala:392
 msgid "_Forward"
 msgstr "_Naprijed"
 
@@ -982,11 +978,6 @@ msgstr "Mapa ne postoji"
 #: deja-dup/main.vala:117
 msgid "You must provide a directory, not a file"
 msgstr "Morate osigurati mapu a ne datoteku"
-
-#. Translators: "Backups" is a noun
-#: deja-dup/main.vala:166
-msgid "Backups"
-msgstr "Sigurnosno kopiranje"
 
 #: deja-dup/main.vala:183
 msgid "Automatic backup"
@@ -1101,11 +1092,11 @@ msgstr ""
 "Bitni dokumenti, podaci i postavke mogu se zaštititi pohranom u sigurnosnu "
 "kopiju. U slučaju katastrofe, moći ćete ih vratiti iz te sigurnosne kopije."
 
-#: deja-dup/Prompt.vala:40
+#: deja-dup/Prompt.vala:42
 msgid "_Don't Show Again"
 msgstr "_Ne prikazuj ponovno"
 
-#: deja-dup/Prompt.vala:48
+#: deja-dup/Prompt.vala:50
 msgid "_Open Backup Settings"
 msgstr "_Otvori postavke sigurnosnog kopiranja"
 
@@ -1128,8 +1119,9 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Pokretanje planiranog sigurnosnog kopiranja"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendRackspace.vala:54
-#: libdeja/BackendRemote.vala:132 libdeja/BackendS3.vala:64
+#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
+#: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
+#: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
 msgstr ""
 "Sigurnosno kopiranje će početi kada mrežno povezivanje postane dostupno."
@@ -1278,34 +1270,34 @@ msgstr "Ukloni"
 msgid "Choose folders"
 msgstr "Odaberi mape"
 
-#: deja-dup/widgets/ConfigLocation.vala:136
+#: deja-dup/widgets/ConfigLocation.vala:129
 msgid "Network Server"
 msgstr "Mrežni poslužitelj"
 
 #. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:141
+#: deja-dup/widgets/ConfigLocation.vala:134
 msgid "Local Folder"
 msgstr "Lokalna mapa"
 
 #. Note that we are using | not || here, because if show_deprecated is set,
 #. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:303 libdeja/BackendS3.vala:122
+#: deja-dup/widgets/ConfigLocation.vala:191 libdeja/BackendS3.vala:118
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/widgets/ConfigLocation.vala:305
+#: deja-dup/widgets/ConfigLocation.vala:193
 msgid "Google Cloud Storage"
 msgstr "Google Cloud pohrana"
 
-#: libdeja/BackendGOA.vala:94
+#: deja-dup/widgets/ConfigLocation.vala:195 libdeja/BackendGoogle.vala:105
 msgid "Google Drive"
 msgstr "Google disk"
 
-#: deja-dup/widgets/ConfigLocation.vala:309 libdeja/BackendRackspace.vala:72
+#: deja-dup/widgets/ConfigLocation.vala:197 libdeja/BackendRackspace.vala:68
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace oblak datoteke"
 
-#: deja-dup/widgets/ConfigLocation.vala:311
+#: deja-dup/widgets/ConfigLocation.vala:199
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
@@ -1316,7 +1308,7 @@ msgstr "_Mrežne lokacije"
 #: deja-dup/widgets/ConfigLocationCustom.vala:44
 #: deja-dup/widgets/ConfigLocationFile.vala:44
 #: deja-dup/widgets/ConfigLocationGCS.vala:38
-#: deja-dup/widgets/ConfigLocationGoa.vala:36
+#: deja-dup/widgets/ConfigLocationGoogle.vala:31
 #: deja-dup/widgets/ConfigLocationS3.vala:33
 #: deja-dup/widgets/ConfigLocationVolume.vala:33
 msgid "_Folder"
@@ -1369,29 +1361,28 @@ msgstr[0] "%d dan"
 msgstr[1] "%d dana"
 msgstr[2] "%d dana"
 
-#: deja-dup/widgets/WidgetUtils.vala:29
+#: deja-dup/widgets/WidgetUtils.vala:34
 #, c-format
 msgid "Could not display %s"
 msgstr "Nije moguće prikazati %s"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:95 libdeja/CommonUtils.vala:508
+#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:578
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s na %2$s"
 
-#: libdeja/BackendDrive.vala:102
+#: libdeja/BackendDrive.vala:98
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "Sigurnosno kopiranje će započeti kada se %s poveže."
 
-#: libdeja/BackendDrive.vala:184 libdeja/BackendGOA.vala:158
-#: libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:183 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "Lokacija pohrane je nedostupna"
 
-#: libdeja/BackendDrive.vala:184
+#: libdeja/BackendDrive.vala:183
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Čekanje da se '%s' poveže..."
@@ -1402,15 +1393,15 @@ msgstr "Čekanje da se '%s' poveže..."
 msgid "%s on Google Drive"
 msgstr "%s na Google Disk"
 
-#: libdeja/BackendGoogle.vala:362
+#: libdeja/BackendGoogle.vala:364
 msgid "Could not log into Google servers."
 msgstr "Nemoguća prijava na Google poslužitelje."
 
-#: libdeja/BackendGoogle.vala:438
+#: libdeja/BackendGoogle.vala:440
 msgid "Google credentials for Déjà Dup"
 msgstr "Google vjerodajnice za Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:545
+#: libdeja/BackendGoogle.vala:548
 msgid ""
 "You first need to allow Déjà Dup Backup Tool to access your Google account."
 msgstr ""
@@ -1418,16 +1409,16 @@ msgstr ""
 "Google računu."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:75
+#: libdeja/BackendRackspace.vala:71
 #, c-format
 msgid "%s on Rackspace Cloud Files"
 msgstr "%s na Rackspace oblak datoteke"
 
-#: libdeja/BackendRackspace.vala:117 libdeja/BackendS3.vala:167
+#: libdeja/BackendRackspace.vala:114 libdeja/BackendS3.vala:164
 msgid "Permission denied"
 msgstr "Dozvola odbijena"
 
-#: libdeja/BackendRackspace.vala:148
+#: libdeja/BackendRackspace.vala:146
 #, c-format
 msgid ""
 "You can sign up for a Rackspace Cloud Files account <a "
@@ -1436,34 +1427,34 @@ msgstr ""
 "Možete se prijaviti za Rackspace oblak datoteka račun na <a "
 "href=\"%s\">Internetu</a>."
 
-#: libdeja/BackendRackspace.vala:149
+#: libdeja/BackendRackspace.vala:148
 msgid "Connect to Rackspace Cloud Files"
 msgstr "Spoji se na Rackspace oblak datoteke"
 
-#: libdeja/BackendRackspace.vala:150
+#: libdeja/BackendRackspace.vala:149
 msgid "_API access key"
 msgstr "_API pristupni ključ"
 
-#: libdeja/BackendRackspace.vala:151
+#: libdeja/BackendRackspace.vala:150
 msgid "S_how API access key"
 msgstr "P_rikaži API pristupni ključ"
 
-#: libdeja/BackendRackspace.vala:152
+#: libdeja/BackendRackspace.vala:151
 msgid "_Remember API access key"
 msgstr "_Zapamti  API pristupni ključ"
 
-#: libdeja/BackendRemote.vala:114
+#: libdeja/BackendRemote.vala:110
 msgid "The network server is not available"
 msgstr "Mrežni poslužitelj nije dostupan"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Čekanje mrežnog povezivanja..."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:175
+#: libdeja/BackendRemote.vala:171
 msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
@@ -1471,60 +1462,60 @@ msgstr ""
 "dijeljenja."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:125
+#: libdeja/BackendS3.vala:121
 #, c-format
 msgid "%s on Amazon S3"
 msgstr "%s na Amazon S3"
 
-#: libdeja/BackendS3.vala:198
+#: libdeja/BackendS3.vala:196
 #, c-format
 msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
 msgstr ""
 "Možete se prijaviti za Amazon S3 račun na  <a href=\"%s\">Internetu</a>."
 
-#: libdeja/BackendS3.vala:199
+#: libdeja/BackendS3.vala:198
 msgid "Connect to Amazon S3"
 msgstr "Poveži se na Amazon S3"
 
-#: libdeja/BackendS3.vala:200
+#: libdeja/BackendS3.vala:199
 msgid "_Access key ID"
 msgstr "_ID pristupnog ključa"
 
-#: libdeja/BackendS3.vala:201
+#: libdeja/BackendS3.vala:200
 msgid "_Secret access key"
 msgstr "_Tajni pristupni ključ"
 
-#: libdeja/BackendS3.vala:202
+#: libdeja/BackendS3.vala:201
 msgid "S_how secret access key"
 msgstr "P_rikaži tajni pristupni ključ"
 
-#: libdeja/BackendS3.vala:203
+#: libdeja/BackendS3.vala:202
 msgid "_Remember secret access key"
 msgstr "_Zapamti tajni pristupni ključ"
 
-#: libdeja/CommonUtils.vala:550
+#: libdeja/CommonUtils.vala:551
 msgid "Access Granted"
 msgstr "Dopusti pristup"
 
-#: libdeja/CommonUtils.vala:551
+#: libdeja/CommonUtils.vala:552
 msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 msgstr ""
 "Déjà Dup alat sigurnosnog kopiranja će sada nastaviti. Možete zatvoriti ovu "
 "stranicu."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:559
+#: libdeja/CommonUtils.vala:629
 #, c-format
 msgid "Home (%s)"
 msgstr "Osobna mapa (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:564
+#: libdeja/CommonUtils.vala:634
 msgid "Home"
 msgstr "Osobna mapa"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:569
+#: libdeja/CommonUtils.vala:639
 msgid "Trash"
 msgstr "Smeće"
 
@@ -1557,33 +1548,33 @@ msgid "Listing files…"
 msgstr "Popis datoteka..."
 
 #: libdeja/Operation.vala:64 libdeja/Operation.vala:93
-#: libdeja/tools/duplicity/DuplicityJob.vala:400
-#: libdeja/tools/duplicity/DuplicityJob.vala:407
-#: libdeja/tools/duplicity/DuplicityJob.vala:432
-#: libdeja/tools/duplicity/DuplicityJob.vala:437
+#: libdeja/tools/duplicity/DuplicityJob.vala:405
+#: libdeja/tools/duplicity/DuplicityJob.vala:416
+#: libdeja/tools/duplicity/DuplicityJob.vala:441
+#: libdeja/tools/duplicity/DuplicityJob.vala:446
 msgid "Preparing…"
 msgstr "Pripremanje..."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:98
-#: libdeja/tools/duplicity/DuplicityJob.vala:181
+#: libdeja/tools/duplicity/DuplicityJob.vala:101
+#: libdeja/tools/duplicity/DuplicityJob.vala:184
 msgid "Paused (no network)"
 msgstr "Pauzirano (nema mreže)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:464
+#: libdeja/tools/duplicity/DuplicityJob.vala:473
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "Nije moguće vratiti ‘%s’: Nije valjana lokacija datoteke"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:536
+#: libdeja/tools/duplicity/DuplicityJob.vala:579
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Lokacija sigurnosnog kopiranja je premala. Pokušajte koristiti lokaciju s "
 "najmanje %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:560
+#: libdeja/tools/duplicity/DuplicityJob.vala:604
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1592,15 +1583,15 @@ msgstr ""
 "Lokacija sigurnosnog kopiranja nema dovoljno slobodnog prostora. Pokušajte "
 "koristiti lokaciju s najmanje %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:581
-#: libdeja/tools/duplicity/DuplicityJob.vala:595
+#: libdeja/tools/duplicity/DuplicityJob.vala:625
+#: libdeja/tools/duplicity/DuplicityJob.vala:639
 msgid "Cleaning up…"
 msgstr "Brisanje..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:691
+#: libdeja/tools/duplicity/DuplicityJob.vala:720
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1611,7 +1602,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:707
+#: libdeja/tools/duplicity/DuplicityJob.vala:736
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1619,28 +1610,24 @@ msgstr ""
 "Nije moguće vratiti sljedeće datoteke. Provjerite možete li pisati po njima."
 
 #. notify upper layers, if they want to do anything
-#. Duplicity tried to ask the user what the encryption password is.
-#. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:964
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
-#: libdeja/tools/duplicity/DuplicityJob.vala:1067
+#: libdeja/tools/duplicity/DuplicityJob.vala:955
 msgid "Bad encryption password."
 msgstr "Netočna lozinka šifriranja."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:951
+#: libdeja/tools/duplicity/DuplicityJob.vala:1000
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "Nije moguće vratiti ‘%s’: Datoteka nije pronađena u sigurnosnoj kopiji"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:970
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "Naziv računala je promijenjen"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:970
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1651,69 +1638,69 @@ msgstr ""
 "trenutnog računala je %s. Ako je ovo neočekivano, trebali bi sigurnosno "
 "kopirati na drugu lokaciju."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1005
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Dozvola odbijena kada pokušavate stvoriti ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1009
-#: libdeja/tools/duplicity/DuplicityJob.vala:1013
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Dozvola odbijena kada pokušavate čitati ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1017
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Dozvola odbijena kada pokušavate obrisati ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1024
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ lokacija sigurnosne kopije ne postoji."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1030
-#: libdeja/tools/duplicity/DuplicityJob.vala:1082
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1122
 msgid "No space left."
 msgstr "Nema slobodnog prostora."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1044
+#: libdeja/tools/duplicity/DuplicityJob.vala:1085
 msgid "Invalid ID."
 msgstr "Pogrešan ID."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1046
+#: libdeja/tools/duplicity/DuplicityJob.vala:1087
 msgid "Invalid secret key."
 msgstr "Pogrešan tajni ključ."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1048
+#: libdeja/tools/duplicity/DuplicityJob.vala:1089
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "Vaš Amazon Web Servis račun nije prijavljen za S3 uslugu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "S3 bucket name is not available."
 msgstr "S3 naziv spremnika nije dostupan."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1111
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Greška pri čitanju datoteke ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1073
+#: libdeja/tools/duplicity/DuplicityJob.vala:1113
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Greška pri pisanju datoteke ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1084
+#: libdeja/tools/duplicity/DuplicityJob.vala:1124
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Nema slobodnog prostora u ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
+#: libdeja/tools/duplicity/DuplicityJob.vala:1132
 msgid "No backup files found"
 msgstr "Nema pronađenih datoteka sigurnosne kopije"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1142
+#: libdeja/tools/duplicity/DuplicityJob.vala:1182
 msgid "Uploading…"
 msgstr "Slanje..."
 
@@ -1811,3 +1798,13 @@ msgstr ""
 
 #~ msgid "Could not start backup tool"
 #~ msgstr "Nemoguće pokretanje alata sigurnosnog kopiranja"
+
+#~ msgid ""
+#~ "Support for local, remote, or cloud backup locations such as Google Drive "
+#~ "and Nextcloud"
+#~ msgstr ""
+#~ "Podrška za lokalno, udaljeno ili u oblaku sigurnosno kopiranje poput Google "
+#~ "Diska i Nextclouda"
+
+#~ msgid "Backups@name_suffix@"
+#~ msgstr "Sigurnosna kopija@naziv_sufiks@"
