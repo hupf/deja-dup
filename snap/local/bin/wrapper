@@ -14,4 +14,4 @@ export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export LD_LIBRARY_PATH="$SNAP/usr/lib/$SNAP_LAUNCHER_ARCH_TRIPLET/gvfs:$LD_LIBRARY_PATH"
 
 export DEJA_DUP_MONITOR_EXEC="/snap/bin/deja-dup.monitor"
-exec "$SNAP/bin/deja-dup" "$@"
+exec "$SNAP/usr/bin/deja-dup" "$@"

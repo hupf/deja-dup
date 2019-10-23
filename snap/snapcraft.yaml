@@ -1,14 +1,7 @@
 # -*- Mode: YAML; indent-tabs-mode: nil; tab-width: 2 -*-
 ---
 name: deja-dup
-version: git
-version-script: grep 'version:' meson.build -m1 | cut -d\' -f2
-summary: Déjà Dup Backup Tool
-description: |
-  An easy to use personal backup system for your GNOME desktop.
-
-  https://wiki.gnome.org/Apps/DejaDup
-icon: data/icons/org.gnome.DejaDup.svg
+adopt-info: deja-dup
 license: GPL-3.0+
 
 grade: stable
@@ -19,18 +12,17 @@ base: core18
 apps:
   deja-dup:
     command: desktop-launch $SNAP/bin/wrapper
-    desktop: share/applications/org.gnome.DejaDup.desktop
+    common-id: org.gnome.DejaDup
     environment:
       PATH: $SNAP/bin:$PATH
       PYTHONPATH: $SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3/dist-packages
-      XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+      XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS
   monitor:
     command: desktop-launch $SNAP/bin/monitor.wrapper
+    autostart: org.gnome.DejaDup.Monitor.desktop
     environment:
-      PATH: /snap/bin:$PATH
-      XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
-    passthrough:
-      autostart: org.gnome.DejaDup.Monitor.desktop
+      PATH: $SNAP/usr/bin:$PATH
+      XDG_DATA_DIRS: $SNAP/usr/share:$XDG_DATA_DIRS
   duplicity:
     command: bin/duplicity
     environment:
@@ -71,7 +63,9 @@ parts:
     source: .
     source-type: git
     meson-parameters:
-      - --prefix=/snap/deja-dup/current
+      - --prefix=/snap/deja-dup/current/usr
+      - --sysconfdir=/snap/deja-dup/current/etc
+    parse-info: [usr/share/metainfo/org.gnome.DejaDup.appdata.xml]
     organize:
       snap/deja-dup/current: .
     build-packages:
@@ -96,10 +90,13 @@ parts:
       - libjson-glib-1.0-0
       - libsecret-1-0
       - libsoup2.4-1
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(grep 'version:' meson.build -m1 | cut -d\' -f2)"
     override-prime: |
       snapcraftctl prime
-      sed -i 's|Icon=.*|Icon=/share/icons/hicolor/scalable/apps/org.gnome.DejaDup.svg|' share/applications/org.gnome.DejaDup.desktop
-      glib-compile-schemas share/glib-2.0/schemas
+      glib-compile-schemas usr/share/glib-2.0/schemas
+
 
   desktop-gtk3:
     source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
