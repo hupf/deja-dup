@@ -1,11 +1,17 @@
-# 40.1+
-- Fix any problems when 2038 hits by using 64-bit dates internally
+# 40.2
+- Fix 2038 date problems by using 64-bit dates internally
 - Update translations
 
 ## Packaging
-- Require glib 2.56
-- Require meson 0.47
-- Add optional dependency on libgdk-x11
+- Fix building against `valac` 0.45.2 and later
+- Require `glib` 2.56
+- Require `meson` 0.47
+- Add optional dependency on `libgdk-x11-3.0` (only used in flatpak builds)
+- Make `libgoa-1.0` an optional dependency (still recommended for a few years
+  though)
+
+## Flatpak
+- Support autostarting via the new Background portal
 
 # 40.1
 - Fix versioning to be correct
