@@ -14,15 +14,6 @@ finish-args:
   - --talk-name=org.gtk.vfs.*
 
 modules:
-  - name: libgpg-error
-    config-opts:
-      - --disable-doc
-    sources:
-      - type: git
-        url: https://dev.gnupg.org/source/libgpg-error.git
-        tag: 7865041c77f4  # needed for its gawk build fix
-
-
   - ./fasteners.json
   - ./future.json
 
