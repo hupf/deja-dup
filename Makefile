@@ -92,7 +92,7 @@ flatpak:
 
 .PHONY: flatpak-update
 flatpak-update:
-	for p in 2to3 fasteners future pydrive pygobject; do \
+	for p in fasteners future pydrive; do \
 		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p.json $$p; \
 	done
 	sed -i 's/^[][]//g' flatpak/*.json

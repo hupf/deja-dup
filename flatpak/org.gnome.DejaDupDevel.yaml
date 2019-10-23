@@ -2,7 +2,6 @@
 ---
 app-id: org.gnome.DejaDupDevel
 runtime: org.gnome.Platform
-runtime-version: master
 sdk: org.gnome.Sdk
 command: deja-dup
 
@@ -12,8 +11,6 @@ finish-args:
   - --share=network
   - --socket=fallback-x11
   - --socket=wayland
-  - --talk-name=org.freedesktop.secrets
-  - --talk-name=org.gtk.vfs
   - --talk-name=org.gtk.vfs.*
 
 modules:
@@ -60,7 +57,6 @@ modules:
 
 
   - ./pydrive.json
-  - ./pygobject.json
 
 
   - name: deja-dup
