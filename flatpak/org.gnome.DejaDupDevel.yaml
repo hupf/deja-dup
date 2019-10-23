@@ -25,6 +25,7 @@ modules:
       - type: git
         url: https://github.com/python/cpython
         tag: v3.7.4
+        commit: e09359112e250268eca209355abeb17abf822486
 
   - name: librsync
     buildsystem: cmake
@@ -32,6 +33,7 @@ modules:
       - type: git
         url: https://github.com/librsync/librsync
         tag: v2.0.2
+        commit: 400ecbd28ac94d9a363c5ff7e58aea93cb1d90c4
 
   - name: duplicity
     buildsystem: simple
@@ -41,7 +43,7 @@ modules:
     sources:
       - type: archive
         url: https://launchpad.net/duplicity/0.8-series/0.8.05/+download/duplicity-0.8.05.tar.gz
-        md5: 9e265feb8bb67ea6565f4d0f3101de22
+        sha256: 064672cf492003ff05f2d7ca8493d12af86de06aa1c60d77ac8dd74b2da3111d
       - type: patch
         path: ./python3.patch
         strip-components: 0
