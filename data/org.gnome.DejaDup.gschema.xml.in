@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- -*- Mode: XML; indent-tabs-mode: nil; tab-width: 2 -*- -->
 
-<schemalist gettext-domain="deja-dup">
+<schemalist gettext-domain="@gettext@">
 
-  <schema id="org.gnome.DejaDup" path="/org/gnome/deja-dup/">
+  <schema id="@appid@" path="/org/gnome/@gsettingspath@/">
     <key name="include-list" type="as">
       <default>[ '$HOME' ]</default>
       <summary>Folders to save</summary>
@@ -89,19 +89,19 @@
       <summary>Type of location to store backup</summary>
       <description>The type of backup location.  If ‘auto’, a default will be chosen based on what is available.</description>
     </key>
-    <child name="rackspace" schema="org.gnome.DejaDup.Rackspace"/>
-    <child name="openstack" schema="org.gnome.DejaDup.OpenStack"/>
-    <child name="s3" schema="org.gnome.DejaDup.S3"/>
-    <child name="gcs" schema="org.gnome.DejaDup.GCS"/>
-    <child name='goa' schema="org.gnome.DejaDup.GOA"/>
-    <child name='google' schema="org.gnome.DejaDup.Google"/>
-    <child name='remote' schema="org.gnome.DejaDup.Remote"/>
-    <child name='local' schema="org.gnome.DejaDup.Local"/>
-    <child name='drive' schema="org.gnome.DejaDup.Drive"/>
-    <child name="file" schema="org.gnome.DejaDup.File"/>
+    <child name="rackspace" schema="@appid@.Rackspace"/>
+    <child name="openstack" schema="@appid@.OpenStack"/>
+    <child name="s3" schema="@appid@.S3"/>
+    <child name="gcs" schema="@appid@.GCS"/>
+    <child name='goa' schema="@appid@.GOA"/>
+    <child name='google' schema="@appid@.Google"/>
+    <child name='remote' schema="@appid@.Remote"/>
+    <child name='local' schema="@appid@.Local"/>
+    <child name='drive' schema="@appid@.Drive"/>
+    <child name="file" schema="@appid@.File"/>
   </schema>
 
-  <schema id="org.gnome.DejaDup.Local" path="/org/gnome/deja-dup/local/">
+  <schema id="@appid@.Local" path="/org/gnome/@gsettingspath@/local/">
     <key name="folder" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The folder where backups are stored</summary>
@@ -109,7 +109,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.Drive" path="/org/gnome/deja-dup/drive/">
+  <schema id="@appid@.Drive" path="/org/gnome/@gsettingspath@/drive/">
     <key name="uuid" type="s">
       <default>''</default>
       <summary>UUID</summary>
@@ -132,7 +132,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.Remote" path="/org/gnome/deja-dup/remote/">
+  <schema id="@appid@.Remote" path="/org/gnome/@gsettingspath@/remote/">
     <key name="uri" type="s">
       <default>''</default>
       <summary>The server address</summary>
@@ -145,7 +145,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.S3" path="/org/gnome/deja-dup/s3/">
+  <schema id="@appid@.S3" path="/org/gnome/@gsettingspath@/s3/">
     <key name="id" type="s">
       <default>''</default>
       <summary>Amazon S3 Access Key ID</summary>
@@ -163,7 +163,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.GCS" path="/org/gnome/deja-dup/gcs/">
+  <schema id="@appid@.GCS" path="/org/gnome/@gsettingspath@/gcs/">
     <key name="id" type="s">
       <default>''</default>
       <summary>Google Cloud Storage Access Key ID</summary>
@@ -181,7 +181,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.Google" path="/org/gnome/deja-dup/google/">
+  <schema id="@appid@.Google" path="/org/gnome/@gsettingspath@/google/">
     <key name="folder" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The folder where backups are stored</summary>
@@ -189,7 +189,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.Rackspace" path="/org/gnome/deja-dup/rackspace/">
+  <schema id="@appid@.Rackspace" path="/org/gnome/@gsettingspath@/rackspace/">
     <key name="container" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The Rackspace Cloud Files container</summary>
@@ -202,7 +202,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.OpenStack" path="/org/gnome/deja-dup/openstack/">
+  <schema id="@appid@.OpenStack" path="/org/gnome/@gsettingspath@/openstack/">
     <key name="container" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The OpenStack Swift container</summary>
@@ -226,7 +226,7 @@
   </schema>
 
   <!-- deprecated schemas -->
-  <schema id="org.gnome.DejaDup.File" path="/org/gnome/deja-dup/file/">
+  <schema id="@appid@.File" path="/org/gnome/@gsettingspath@/file/">
     <key name="path" type="s">
       <default>''</default>
     </key>
@@ -257,7 +257,7 @@
     </key>
   </schema>
 
-  <schema id="org.gnome.DejaDup.GOA" path="/org/gnome/deja-dup/goa/">
+  <schema id="@appid@.GOA" path="/org/gnome/@gsettingspath@/goa/">
     <key name="id" type="s">
       <default>''</default>
     </key>

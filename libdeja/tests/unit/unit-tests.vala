@@ -220,12 +220,12 @@ void migrate_goa_owncloud()
   assert(remote.get_string(DejaDup.REMOTE_FOLDER_KEY) == "test/folder");
 }
 
-string get_top_srcdir()
+string get_top_builddir()
 {
-  var srcdir = Environment.get_variable("top_srcdir");
-  if (srcdir == null)
-    srcdir = "../../..";
-  return srcdir;
+  var builddir = Environment.get_variable("top_builddir");
+  if (builddir == null)
+    builddir = "../../../builddir";
+  return builddir;
 }
 
 string get_srcdir()
@@ -254,7 +254,7 @@ void reset_keys(Settings settings)
 
 void teardown()
 {
-  reset_keys(new Settings("org.gnome.DejaDup"));
+  reset_keys(new Settings(Config.APPLICATION_ID));
 }
 
 int main(string[] args)
@@ -283,7 +283,7 @@ int main(string[] args)
   var data_dirs = Environment.get_variable("XDG_DATA_DIRS");
   Environment.set_variable("XDG_DATA_DIRS", "%s:%s".printf(Path.build_filename(tmpdir, "share"), data_dirs), true);
 
-  if (Posix.system("cp %s/data/org.gnome.DejaDup.gschema.xml %s".printf(get_top_srcdir(), schema_dir)) != 0)
+  if (Posix.system("cp %s/data/%s.gschema.xml %s".printf(get_top_builddir(), Config.APPLICATION_ID, schema_dir)) != 0)
     warning("Could not copy schema to %s", schema_dir);
 
   if (Posix.system("glib-compile-schemas %s".printf(schema_dir)) != 0)

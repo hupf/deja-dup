@@ -1,14 +1,10 @@
 ## Multiple monitor daemons
 
-Profiles are a way to get parallel-installed deja-dups. They're used for testing and for containerized deployments
-like flatpak and snap.
+Profiles are a way to get parallel-installed deja-dups. They're used for testing containerized deployments like flatpak.
+Although parallel-installed deja-dups means multiple monitor daemons, they shouldn't conflict with each other because
+they each claim separate bus names and use separate gsettings schemas.
 
-But parallel-installed deja-dups means multiple monitor daemons. Which, since they all share the same gsettings, would
-mean kicking off multiple backups at the same time.
-
-To avoid this, we claim the normal org.gnome.DejaDup.Monitor bus name regardless of what the profile is. We still kick
-off the specific profile bus name for the actual backup.
-
+However, there is still the possiblity of a race between the stable-release monitors (from distro, flatpak, and snap).
 The first monitor to start wins the race. It's possible to put our thumb on the scale by adjusing the installed
 autostart desktop file's X-GNOME-Autostart-Delay value.
 

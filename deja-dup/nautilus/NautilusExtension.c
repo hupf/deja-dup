@@ -313,7 +313,7 @@ void nautilus_module_initialize(GTypeModule *module)
   bindtextdomain(GETTEXT_PACKAGE, LOCALE_DIR);
   bind_textdomain_codeset(GETTEXT_PACKAGE, "UTF-8");
 
-  settings = g_settings_new("org.gnome.DejaDup");
+  settings = g_settings_new(APPLICATION_ID);
   g_signal_connect(settings, "changed::include-list",
                    update_include_excludes, NULL);
   g_signal_connect(settings, "changed::exclude-list",

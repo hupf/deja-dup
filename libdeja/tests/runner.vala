@@ -21,12 +21,12 @@ using GLib;
 
 bool system_mode = false;
 
-string get_top_srcdir()
+string get_top_builddir()
 {
-  var srcdir = Environment.get_variable("top_srcdir");
-  if (srcdir == null)
-    srcdir = "../..";
-  return srcdir;
+  var builddir = Environment.get_variable("top_builddir");
+  if (builddir == null)
+    builddir = "../../builddir";
+  return builddir;
 }
 
 string get_srcdir()
@@ -48,7 +48,7 @@ void setup_gsettings()
     var data_dirs = Environment.get_variable("XDG_DATA_DIRS");
     Environment.set_variable("XDG_DATA_DIRS", "%s:%s".printf(Path.build_filename(dir, "share"), data_dirs), true);
 
-    if (Posix.system("cp %s/data/org.gnome.DejaDup.gschema.xml %s".printf(get_top_srcdir(), schema_dir)) != 0)
+    if (Posix.system("cp %s/data/%s.gschema.xml %s".printf(get_top_builddir(), Config.APPLICATION_ID, schema_dir)) != 0)
       warning("Could not copy schema to %s", schema_dir);
 
     if (Posix.system("glib-compile-schemas %s".printf(schema_dir)) != 0)

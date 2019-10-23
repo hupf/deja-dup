@@ -16,6 +16,16 @@
 # You should have received a copy of the GNU General Public License
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
+conf_data = configuration_data()
+conf_data.set('appid', application_id)
+conf_data.set('bindir', bindir)
+conf_data.set('gettext', meson.project_name())
+conf_data.set('gsettingspath', profile == '' ? 'deja-dup' : 'deja-dup-' + profile.to_lower())
+conf_data.set('icon', application_id)
+conf_data.set('pkglibexecdir', pkglibexecdir)
+conf_data.set('profile', profile)
+conf_data.set('version', meson.project_version())
+
 install_data(join_paths('icons', '@0@.svg'.format(application_id)),
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'))
 
@@ -24,29 +34,21 @@ configure_file(input: join_paths('icons', 'org.gnome.DejaDup-symbolic.svg'),
     copy: true,
     install_dir: join_paths(datadir, 'icons', 'hicolor', 'symbolic', 'apps'))
 
-install_data('deja-dup.convert',
-    install_dir: join_paths(datadir, 'GConf', 'gsettings'))
-
 install_man('deja-dup.1')
 
-install_data('org.gnome.DejaDup.gschema.xml',
+gschema = configure_file(input: 'org.gnome.DejaDup.gschema.xml.in',
+    output: '@0@.gschema.xml'.format(application_id),
+    configuration: conf_data,
     install_dir: join_paths(datadir, 'glib-2.0', 'schemas'))
 
 test('validate-gschema', glib_compile_schemas,
-    args: ['--strict', '--dry-run', '--schema-file',
-           join_paths(meson.current_source_dir(), 'org.gnome.DejaDup.gschema.xml')])
+    args: ['--strict', '--dry-run', '--schema-file', gschema])
 
-conf_data = configuration_data()
-conf_data.set('appid', application_id)
-conf_data.set('bindir', bindir)
 configure_file(input: 'org.gnome.DejaDup.service.in',
     output: '@0@.service'.format(application_id),
     configuration: conf_data,
     install_dir: join_paths(datadir, 'dbus-1', 'services'))
 
-conf_data = configuration_data()
-conf_data.set('icon', application_id)
-conf_data.set('pkglibexecdir', pkglibexecdir)
 monitor_desktop = configure_file(input: 'org.gnome.DejaDup.Monitor.desktop.in',
     output: '@0@.Monitor.desktop'.format(application_id),
     configuration: conf_data,
@@ -55,8 +57,6 @@ monitor_desktop = configure_file(input: 'org.gnome.DejaDup.Monitor.desktop.in',
 test('validate-monitor-desktop', desktop_file_validate,
     args: [monitor_desktop])
 
-conf_data = configuration_data()
-conf_data.set('icon', application_id)
 vars = configure_file(input: 'org.gnome.DejaDup.desktop.in',
     output: 'org.gnome.DejaDup.vars.desktop.in',
     configuration: conf_data)
@@ -71,9 +71,6 @@ deja_dup_desktop = custom_target('org.gnome.DejaDup.desktop',
 test('validate-desktop', desktop_file_validate,
     args: [deja_dup_desktop.full_path()])
 
-conf_data = configuration_data()
-conf_data.set('appid', application_id)
-conf_data.set('version', meson.project_version())
 vars = configure_file(input: 'org.gnome.DejaDup.appdata.xml.in',
     output: 'org.gnome.DejaDup.vars.appdata.xml.in',
     configuration: conf_data)
@@ -87,18 +84,11 @@ deja_dup_appdata = custom_target('org.gnome.DejaDup.appdata.xml',
 test('validate-appstream', appstream_util,
     args: ['--nonet', 'validate-relax', deja_dup_appdata.full_path()])
 
-conf_data = configuration_data()
-conf_data.set('appid', application_id)
-conf_data.set('icon', application_id)
-conf_data.set('pkglibexecdir', pkglibexecdir)
 configure_file(input: 'org.gnome.DejaDup.policy.in',
     output: '@0@.policy'.format(application_id),
     configuration: conf_data,
     install_dir: join_paths(datadir, 'polkit-1', 'actions'))
 
-conf_data = configuration_data()
-conf_data.set('icon', application_id)
-conf_data.set('profile', profile)
 resources_xml = configure_file(input: 'resources.xml',
     output: 'resources.vars.xml',
     configuration: conf_data)

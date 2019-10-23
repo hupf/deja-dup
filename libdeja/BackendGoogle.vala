@@ -354,7 +354,7 @@ public class BackendGoogle : Backend
   Secret.Schema get_secret_schema()
   {
     return new Secret.Schema(
-      "org.gnome.DejaDup.Google", Secret.SchemaFlags.NONE,
+      Config.APPLICATION_ID + ".Google", Secret.SchemaFlags.NONE,
       "client_id", Secret.SchemaAttributeType.STRING
     );
   }

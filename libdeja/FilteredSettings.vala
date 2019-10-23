@@ -37,7 +37,7 @@ public class FilteredSettings : Settings
 
   public FilteredSettings(string? schema = null, bool ro = false)
   {
-    string full_schema = "org.gnome.DejaDup";
+    string full_schema = Config.APPLICATION_ID;
     if (schema != null && schema != "")
       full_schema += "." + schema;
 
