@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-10-19 14:44-0400\n"
-"PO-Revision-Date: 2019-04-16 05:10+0000\n"
+"POT-Creation-Date: 2019-10-20 11:53-0400\n"
+"PO-Revision-Date: 2019-10-20 23:58+0000\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2019-10-20 06:20+0000\n"
+"X-Launchpad-Export-Date: 2019-10-21 06:20+0000\n"
 "X-Generator: Launchpad (build 186023fa645d8be19d403a76064f0643f510db2f)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
@@ -83,7 +83,7 @@ msgstr "déjà;deja;dup;備份;"
 msgid "Back Up"
 msgstr "備份"
 
-#: data/org.gnome.DejaDup.gschema.xml:9 deja-dup/Preferences.vala:189
+#: data/org.gnome.DejaDup.gschema.xml:9 deja-dup/Preferences.vala:205
 msgid "Folders to save"
 msgstr "要儲存的資料夾"
 
@@ -101,7 +101,7 @@ msgstr ""
 "、$TRASH、和 $VIDEOS 會辨識為使用者的特殊目錄，且可以是較長路徑中的開頭 ($HOME/subdir)。保留的值 $USER "
 "則會以使用者的使用者名稱替換，且可以放在路徑中的任何地方。相對路徑條目則是相對於使用者的家目錄。"
 
-#: data/org.gnome.DejaDup.gschema.xml:14 deja-dup/Preferences.vala:201
+#: data/org.gnome.DejaDup.gschema.xml:14 deja-dup/Preferences.vala:217
 msgid "Folders to ignore"
 msgstr "要忽略的資料夾"
 
@@ -567,24 +567,24 @@ msgstr "正在建立新鮮備份以保護備份免於損壞。這會比一般情
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:88
+#: deja-dup/AssistantBackup.vala:89
 msgid "Backing up:"
 msgstr "備份中："
 
-#: deja-dup/AssistantBackup.vala:97
+#: deja-dup/AssistantBackup.vala:98
 msgid "Backup Failed"
 msgstr "備份失敗"
 
-#: deja-dup/AssistantBackup.vala:100
+#: deja-dup/AssistantBackup.vala:101
 msgid "Backup Finished"
 msgstr "備份成功"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:104
+#: deja-dup/AssistantBackup.vala:105
 msgid "Your files were successfully backed up and tested."
 msgstr "您的檔案已成功備份並通過測試。"
 
-#: deja-dup/AssistantBackup.vala:111
+#: deja-dup/AssistantBackup.vala:112
 msgid "Backing Up…"
 msgstr "正在備份..."
 
@@ -614,7 +614,7 @@ msgid ""
 "it down."
 msgstr "您以後需要密碼才能還原檔案。您可能會想要把它抄下來。"
 
-#: deja-dup/AssistantOperation.vala:392 deja-dup/AssistantOperation.vala:461
+#: deja-dup/AssistantOperation.vala:392 deja-dup/AssistantOperation.vala:463
 msgid "E_ncryption password"
 msgstr "加密密碼(_N)"
 
@@ -622,7 +622,7 @@ msgstr "加密密碼(_N)"
 msgid "Confir_m password"
 msgstr "確認密碼(_M)"
 
-#: deja-dup/AssistantOperation.vala:422 deja-dup/AssistantOperation.vala:470
+#: deja-dup/AssistantOperation.vala:422 deja-dup/AssistantOperation.vala:472
 msgid "_Show password"
 msgstr "顯示密碼(_S)"
 
@@ -638,27 +638,27 @@ msgid ""
 "brief restore test."
 msgstr "為了檢查您是否可以在緊急時刻擷取您的檔案，請再次輸入您的加密密碼來執行一次簡快的還原測試。"
 
-#: deja-dup/AssistantOperation.vala:475
+#: deja-dup/AssistantOperation.vala:477
 msgid "Test every two _months"
 msgstr "每兩個月測試一次(_M)"
 
-#: deja-dup/AssistantOperation.vala:506
+#: deja-dup/AssistantOperation.vala:508
 msgid "_Grant Access"
 msgstr "授予存取權限(_G)"
 
-#: deja-dup/AssistantOperation.vala:569
+#: deja-dup/AssistantOperation.vala:571
 msgid "Install Packages"
 msgstr "安裝軟體包"
 
-#: deja-dup/AssistantOperation.vala:584
+#: deja-dup/AssistantOperation.vala:586
 msgid "Summary"
 msgstr "摘要"
 
-#: deja-dup/AssistantOperation.vala:606
+#: deja-dup/AssistantOperation.vala:608
 msgid "Restore Test"
 msgstr "還原測試"
 
-#: deja-dup/AssistantOperation.vala:614
+#: deja-dup/AssistantOperation.vala:616
 msgid "Grant Access"
 msgstr "授予存取權限"
 
@@ -668,25 +668,25 @@ msgstr "授予存取權限"
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:696
+#: deja-dup/AssistantOperation.vala:698
 #: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1151
+#: libdeja/tools/duplicity/DuplicityJob.vala:1154
 msgid "Failed with an unknown error."
 msgstr "失敗伴隨未知錯誤。"
 
-#: deja-dup/AssistantOperation.vala:904
+#: deja-dup/AssistantOperation.vala:906
 msgid "Require Password?"
 msgstr "是否需要密碼？"
 
-#: deja-dup/AssistantOperation.vala:906
+#: deja-dup/AssistantOperation.vala:908
 msgid "Encryption Password Needed"
 msgstr "需要加密密碼"
 
-#: deja-dup/AssistantOperation.vala:978
+#: deja-dup/AssistantOperation.vala:980
 msgid "Backup encryption password"
 msgstr "備份加密密碼"
 
-#: deja-dup/AssistantOperation.vala:1056
+#: deja-dup/AssistantOperation.vala:1058
 msgctxt "verb"
 msgid "_Install"
 msgstr "安裝(_I)"
@@ -959,51 +959,51 @@ msgstr "以此使用者連線(_S)"
 msgid "_Domain"
 msgstr "網域(_D)"
 
-#: deja-dup/Preferences.vala:80
+#: deja-dup/Preferences.vala:96
 msgid "Categories"
 msgstr "類別"
 
-#: deja-dup/Preferences.vala:133
+#: deja-dup/Preferences.vala:149
 msgid "_Restore…"
 msgstr "還原(_R)..."
 
-#: deja-dup/Preferences.vala:165
+#: deja-dup/Preferences.vala:181
 msgid "_Back Up Now…"
 msgstr "立即備份(_B)…"
 
-#: deja-dup/Preferences.vala:177
+#: deja-dup/Preferences.vala:193
 msgid "Overview"
 msgstr "概覽"
 
-#: deja-dup/Preferences.vala:213
+#: deja-dup/Preferences.vala:229
 msgid "_Storage location"
 msgstr "儲存位置(_S)"
 
 #. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:231
+#: deja-dup/Preferences.vala:247
 msgid "Storage location"
 msgstr "儲存位置"
 
-#: deja-dup/Preferences.vala:253
+#: deja-dup/Preferences.vala:269
 msgid "_Automatic backup"
 msgstr "自動備份(_A)"
 
 #. translators: as in "Every day"
-#: deja-dup/Preferences.vala:264
+#: deja-dup/Preferences.vala:280
 msgid "_Every"
 msgstr "每(_E)"
 
-#: deja-dup/Preferences.vala:274
+#: deja-dup/Preferences.vala:290
 msgctxt "verb"
 msgid "_Keep"
 msgstr "保留(_K)"
 
-#: deja-dup/Preferences.vala:281
+#: deja-dup/Preferences.vala:297
 msgid ""
 "Old backups will be deleted earlier if the storage location is low on space."
 msgstr "如儲存位置空間不足，會先刪除舊的備份。"
 
-#: deja-dup/Preferences.vala:292
+#: deja-dup/Preferences.vala:308
 msgid "Scheduling"
 msgstr "排程"
 
@@ -1135,26 +1135,26 @@ msgid ""
 "revert individual files or restore missing ones."
 msgstr "您可以使用 %s 按鈕還原整個備份，或是使用《%s》回復個別檔案或還原遺失的檔案。"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:81
+#: deja-dup/widgets/ConfigLabelDescription.vala:82
 msgid "Back Up Now…"
 msgstr "立即備份…"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
+#: deja-dup/widgets/ConfigLabelDescription.vala:83
 #, c-format
 msgid ""
 "You should <a href=''>enable</a> automatic backups or use the %s button to "
 "start one now."
 msgstr "應<a href=''>啟用</a>自動備份或以 %s 鈕立即開始新備份。"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:88
+#: deja-dup/widgets/ConfigLabelDescription.vala:90
 msgid "A backup automatically starts every day."
 msgstr "每日會自動備份。"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:90
+#: deja-dup/widgets/ConfigLabelDescription.vala:92
 msgid "A backup automatically starts every week."
 msgstr "每週會自動備份。"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:93
+#: deja-dup/widgets/ConfigLabelDescription.vala:95
 #, c-format
 msgid "A backup automatically starts every %d day."
 msgid_plural "A backup automatically starts every %d days."
@@ -1276,7 +1276,7 @@ msgstr "無法顯示 %s"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:578
+#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:586
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上的 %1$s"
@@ -1394,27 +1394,27 @@ msgstr "顯示秘密存取金鑰(_H)"
 msgid "_Remember secret access key"
 msgstr "記住祕密存取金鑰(_R)"
 
-#: libdeja/CommonUtils.vala:551
+#: libdeja/CommonUtils.vala:559
 msgid "Access Granted"
 msgstr "已授予存取權限"
 
-#: libdeja/CommonUtils.vala:552
+#: libdeja/CommonUtils.vala:560
 msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 msgstr "Déjà Dup 備份工作可以繼續進行。現在可以關閉本頁。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:637
 #, c-format
 msgid "Home (%s)"
 msgstr "家屋 (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:642
 msgid "Home"
 msgstr "家屋資料夾"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:639
+#: libdeja/CommonUtils.vala:647
 msgid "Trash"
 msgstr ""
 
@@ -1513,10 +1513,6 @@ msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "無法還原「%s」：在備份內找不到檔案"
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:1011
-msgid "Computer name changed"
-msgstr "電腦名稱已變更"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1524,69 +1520,73 @@ msgid ""
 "location."
 msgstr "現存的備份其電腦名稱為 %s，但是目前的電腦名稱為 %s。若這是您未預期的問題，建議您應該備份至不同位置。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1046
+#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+msgid "Computer name changed"
+msgstr "電腦名稱已變更"
+
+#: libdeja/tools/duplicity/DuplicityJob.vala:1049
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "當嘗試建立「%s」時未獲許可。"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/tools/duplicity/DuplicityJob.vala:1053
+#: libdeja/tools/duplicity/DuplicityJob.vala:1057
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "當嘗試讀取「%s」時未獲許可。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1058
+#: libdeja/tools/duplicity/DuplicityJob.vala:1061
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "當嘗試刪除「%s」時未獲許可。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1065
+#: libdeja/tools/duplicity/DuplicityJob.vala:1068
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "備份位置「%s」不存在。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#: libdeja/tools/duplicity/DuplicityJob.vala:1074
+#: libdeja/tools/duplicity/DuplicityJob.vala:1125
 msgid "No space left."
 msgstr "沒有剩餘空間。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1085
+#: libdeja/tools/duplicity/DuplicityJob.vala:1088
 msgid "Invalid ID."
 msgstr "ID 無效。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1087
+#: libdeja/tools/duplicity/DuplicityJob.vala:1090
 msgid "Invalid secret key."
 msgstr "祕密金鑰無效。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1089
+#: libdeja/tools/duplicity/DuplicityJob.vala:1092
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "您的 Amazon 網路服務帳號未註冊 S3 服務。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1098
+#: libdeja/tools/duplicity/DuplicityJob.vala:1101
 msgid "S3 bucket name is not available."
 msgstr "S3 bucket 名稱不可用。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1111
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "讀取「%s」檔案發生錯誤。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1113
+#: libdeja/tools/duplicity/DuplicityJob.vala:1116
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "寫入「%s」檔案發生錯誤。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1124
+#: libdeja/tools/duplicity/DuplicityJob.vala:1127
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "「%s」內沒有剩餘空間。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1132
+#: libdeja/tools/duplicity/DuplicityJob.vala:1135
 msgid "No backup files found"
 msgstr "找不到備份檔案"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1182
+#: libdeja/tools/duplicity/DuplicityJob.vala:1185
 msgid "Uploading…"
 msgstr "正在上傳..."
 

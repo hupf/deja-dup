@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-10-19 14:44-0400\n"
-"PO-Revision-Date: 2019-10-05 09:29+0000\n"
+"POT-Creation-Date: 2019-10-20 11:53-0400\n"
+"PO-Revision-Date: 2019-10-20 23:58+0000\n"
 "Last-Translator: Úr Balázs <balazs@urbalazs.hu>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2019-10-20 06:19+0000\n"
+"X-Launchpad-Export-Date: 2019-10-21 06:19+0000\n"
 "X-Generator: Launchpad (build 186023fa645d8be19d403a76064f0643f510db2f)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
@@ -87,7 +87,7 @@ msgstr "déjà;deja;dup;"
 msgid "Back Up"
 msgstr "Biztonsági mentés"
 
-#: data/org.gnome.DejaDup.gschema.xml:9 deja-dup/Preferences.vala:189
+#: data/org.gnome.DejaDup.gschema.xml:9 deja-dup/Preferences.vala:205
 msgid "Folders to save"
 msgstr "Mentendő mappák"
 
@@ -109,7 +109,7 @@ msgstr ""
 "útvonalban bárhol szerepelhet. A relatív bejegyzések a felhasználó home "
 "könyvtárához képest relatívak."
 
-#: data/org.gnome.DejaDup.gschema.xml:14 deja-dup/Preferences.vala:201
+#: data/org.gnome.DejaDup.gschema.xml:14 deja-dup/Preferences.vala:217
 msgid "Folders to ignore"
 msgstr "Mellőzendő mappák"
 
@@ -634,24 +634,24 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:88
+#: deja-dup/AssistantBackup.vala:89
 msgid "Backing up:"
 msgstr "Biztonsági mentés:"
 
-#: deja-dup/AssistantBackup.vala:97
+#: deja-dup/AssistantBackup.vala:98
 msgid "Backup Failed"
 msgstr "Biztonsági mentés sikertelen"
 
-#: deja-dup/AssistantBackup.vala:100
+#: deja-dup/AssistantBackup.vala:101
 msgid "Backup Finished"
 msgstr "Biztonsági mentés befejeződött"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:104
+#: deja-dup/AssistantBackup.vala:105
 msgid "Your files were successfully backed up and tested."
 msgstr "A fájlok mentése és ellenőrzésre sikeres."
 
-#: deja-dup/AssistantBackup.vala:111
+#: deja-dup/AssistantBackup.vala:112
 msgid "Backing Up…"
 msgstr "Biztonsági mentés…"
 
@@ -682,7 +682,7 @@ msgid ""
 msgstr ""
 "A jelszóra szüksége lesz a fájlok visszaállításhoz. Ha gondolja jegyezze le."
 
-#: deja-dup/AssistantOperation.vala:392 deja-dup/AssistantOperation.vala:461
+#: deja-dup/AssistantOperation.vala:392 deja-dup/AssistantOperation.vala:463
 msgid "E_ncryption password"
 msgstr "Titkosítási _jelszó"
 
@@ -690,7 +690,7 @@ msgstr "Titkosítási _jelszó"
 msgid "Confir_m password"
 msgstr "Jelszó _megerősítése"
 
-#: deja-dup/AssistantOperation.vala:422 deja-dup/AssistantOperation.vala:470
+#: deja-dup/AssistantOperation.vala:422 deja-dup/AssistantOperation.vala:472
 msgid "_Show password"
 msgstr "Je_lszó megjelenítése"
 
@@ -709,27 +709,27 @@ msgstr ""
 "fájlok, adja meg a titkosító jelszót egy gyors visszaállítási teszt "
 "elvégzéséhez!"
 
-#: deja-dup/AssistantOperation.vala:475
+#: deja-dup/AssistantOperation.vala:477
 msgid "Test every two _months"
 msgstr "Ellenőrzés két _havonta."
 
-#: deja-dup/AssistantOperation.vala:506
+#: deja-dup/AssistantOperation.vala:508
 msgid "_Grant Access"
 msgstr "_Hozzáférés megadása"
 
-#: deja-dup/AssistantOperation.vala:569
+#: deja-dup/AssistantOperation.vala:571
 msgid "Install Packages"
 msgstr "Csomagok telepítése"
 
-#: deja-dup/AssistantOperation.vala:584
+#: deja-dup/AssistantOperation.vala:586
 msgid "Summary"
 msgstr "Összegzés"
 
-#: deja-dup/AssistantOperation.vala:606
+#: deja-dup/AssistantOperation.vala:608
 msgid "Restore Test"
 msgstr "Visszaállítási teszt"
 
-#: deja-dup/AssistantOperation.vala:614
+#: deja-dup/AssistantOperation.vala:616
 msgid "Grant Access"
 msgstr "Hozzáférés megadása"
 
@@ -739,25 +739,25 @@ msgstr "Hozzáférés megadása"
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:696
+#: deja-dup/AssistantOperation.vala:698
 #: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1151
+#: libdeja/tools/duplicity/DuplicityJob.vala:1154
 msgid "Failed with an unknown error."
 msgstr "Ismeretlen hiba lépett fel."
 
-#: deja-dup/AssistantOperation.vala:904
+#: deja-dup/AssistantOperation.vala:906
 msgid "Require Password?"
 msgstr "Szükséges legyen a jelszó megadása?"
 
-#: deja-dup/AssistantOperation.vala:906
+#: deja-dup/AssistantOperation.vala:908
 msgid "Encryption Password Needed"
 msgstr "Titkosítási jelszó szükséges"
 
-#: deja-dup/AssistantOperation.vala:978
+#: deja-dup/AssistantOperation.vala:980
 msgid "Backup encryption password"
 msgstr "Biztonsági mentést titkosító jelszó"
 
-#: deja-dup/AssistantOperation.vala:1056
+#: deja-dup/AssistantOperation.vala:1058
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Telepítés"
@@ -1042,53 +1042,53 @@ msgstr "Kapcsolódás _felhasználóként"
 msgid "_Domain"
 msgstr "_Tartomány"
 
-#: deja-dup/Preferences.vala:80
+#: deja-dup/Preferences.vala:96
 msgid "Categories"
 msgstr "Kategóriák"
 
-#: deja-dup/Preferences.vala:133
+#: deja-dup/Preferences.vala:149
 msgid "_Restore…"
 msgstr "_Visszaállítás…"
 
-#: deja-dup/Preferences.vala:165
+#: deja-dup/Preferences.vala:181
 msgid "_Back Up Now…"
 msgstr "_Mentés most…"
 
-#: deja-dup/Preferences.vala:177
+#: deja-dup/Preferences.vala:193
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: deja-dup/Preferences.vala:213
+#: deja-dup/Preferences.vala:229
 msgid "_Storage location"
 msgstr "_Tárolási hely"
 
 #. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:231
+#: deja-dup/Preferences.vala:247
 msgid "Storage location"
 msgstr "Tárolási hely"
 
-#: deja-dup/Preferences.vala:253
+#: deja-dup/Preferences.vala:269
 msgid "_Automatic backup"
 msgstr "_Automatikus mentés"
 
 #. translators: as in "Every day"
-#: deja-dup/Preferences.vala:264
+#: deja-dup/Preferences.vala:280
 msgid "_Every"
 msgstr "_Minden"
 
-#: deja-dup/Preferences.vala:274
+#: deja-dup/Preferences.vala:290
 msgctxt "verb"
 msgid "_Keep"
 msgstr "_Megtartás"
 
-#: deja-dup/Preferences.vala:281
+#: deja-dup/Preferences.vala:297
 msgid ""
 "Old backups will be deleted earlier if the storage location is low on space."
 msgstr ""
 "A régi mentések korábban kerülnek törlésre, ha a tárolási helyen kevés a "
 "tárhely."
 
-#: deja-dup/Preferences.vala:292
+#: deja-dup/Preferences.vala:308
 msgid "Scheduling"
 msgstr "Ütemezés"
 
@@ -1233,11 +1233,11 @@ msgstr ""
 "Visszaállíthatja a teljes biztonsági mentést a %s gombbal, vagy a %s "
 "segítségével visszaállíthat egy-egy fájlt, vagy helyreállíthat hiányzókat."
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:81
+#: deja-dup/widgets/ConfigLabelDescription.vala:82
 msgid "Back Up Now…"
 msgstr "Mentés most…"
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
+#: deja-dup/widgets/ConfigLabelDescription.vala:83
 #, c-format
 msgid ""
 "You should <a href=''>enable</a> automatic backups or use the %s button to "
@@ -1246,15 +1246,15 @@ msgstr ""
 "<a href=''>Engedélyezze</a> az automatikus mentéseket, vagy használja a %s "
 "gombot egy új mentéshez."
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:88
+#: deja-dup/widgets/ConfigLabelDescription.vala:90
 msgid "A backup automatically starts every day."
 msgstr "Minden nap automatikusan elindul a mentés."
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:90
+#: deja-dup/widgets/ConfigLabelDescription.vala:92
 msgid "A backup automatically starts every week."
 msgstr "Minden héten automatikusan elindul a mentés."
 
-#: deja-dup/widgets/ConfigLabelDescription.vala:93
+#: deja-dup/widgets/ConfigLabelDescription.vala:95
 #, c-format
 msgid "A backup automatically starts every %d day."
 msgid_plural "A backup automatically starts every %d days."
@@ -1378,7 +1378,7 @@ msgstr "%s megjelenítése sikertelen"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:578
+#: libdeja/BackendDrive.vala:91 libdeja/CommonUtils.vala:586
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s ezen: %2$s"
@@ -1499,28 +1499,28 @@ msgstr "_Titkos azonosítókulcs megjelenítése"
 msgid "_Remember secret access key"
 msgstr "_Emlékezzen a titkos azonosítókulcsra"
 
-#: libdeja/CommonUtils.vala:551
+#: libdeja/CommonUtils.vala:559
 msgid "Access Granted"
 msgstr "Hozzáférés biztosítva"
 
-#: libdeja/CommonUtils.vala:552
+#: libdeja/CommonUtils.vala:560
 msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 msgstr ""
 "A Déjà Dup biztonságimentés-kezelő most folytatja. Ez az oldal bezárható."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:637
 #, c-format
 msgid "Home (%s)"
 msgstr "Saját mappa (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:642
 msgid "Home"
 msgstr "Saját mappa"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:639
+#: libdeja/CommonUtils.vala:647
 msgid "Trash"
 msgstr "Kuka"
 
@@ -1628,10 +1628,6 @@ msgstr ""
 "Nem állítható vissza: „%s”. A fájl nem található meg a biztonsági mentésben"
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:1011
-msgid "Computer name changed"
-msgstr "A számítógép neve megváltozott"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1641,71 +1637,75 @@ msgstr ""
 "A meglévő biztonsági mentés neve %s, de a jelenlegi gépnév %s. Ha ez nem "
 "várt fejlemény, inkább készítsen biztonsági mentést egy másik helyre."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1046
+#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+msgid "Computer name changed"
+msgstr "A számítógép neve megváltozott"
+
+#: libdeja/tools/duplicity/DuplicityJob.vala:1049
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Hozzáférés megtagadva a következő készítése közben: „%s”."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/tools/duplicity/DuplicityJob.vala:1053
+#: libdeja/tools/duplicity/DuplicityJob.vala:1057
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Hozzáférés megtagadva a következő olvasása közben: „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1058
+#: libdeja/tools/duplicity/DuplicityJob.vala:1061
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Hozzáférés megtagadva a következő törlése közben: „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1065
+#: libdeja/tools/duplicity/DuplicityJob.vala:1068
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "A biztonsági mentés helye nem létezik: „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#: libdeja/tools/duplicity/DuplicityJob.vala:1074
+#: libdeja/tools/duplicity/DuplicityJob.vala:1125
 msgid "No space left."
 msgstr "Nincs több hely."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1085
+#: libdeja/tools/duplicity/DuplicityJob.vala:1088
 msgid "Invalid ID."
 msgstr "Érvénytelen azonosító."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1087
+#: libdeja/tools/duplicity/DuplicityJob.vala:1090
 msgid "Invalid secret key."
 msgstr "Érvénytelen titkosítási kulcs."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1089
+#: libdeja/tools/duplicity/DuplicityJob.vala:1092
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr ""
 "Az Ön Amazon Webszolgáltatás fiókja nincs csatlakoztatva az S3 "
 "szolgáltatáshoz."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1098
+#: libdeja/tools/duplicity/DuplicityJob.vala:1101
 msgid "S3 bucket name is not available."
 msgstr "Az S3 bucket név nem áll rendelkezésre."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1111
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fájlolvasási hiba: „%s”"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1113
+#: libdeja/tools/duplicity/DuplicityJob.vala:1116
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fájlírási hiba: „%s”"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1124
+#: libdeja/tools/duplicity/DuplicityJob.vala:1127
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Nem maradt több hely itt: „%s”"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1132
+#: libdeja/tools/duplicity/DuplicityJob.vala:1135
 msgid "No backup files found"
 msgstr "Nem találhatóak biztonsági mentési fájlok"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1182
+#: libdeja/tools/duplicity/DuplicityJob.vala:1185
 msgid "Uploading…"
 msgstr "Feltöltés…"
 
