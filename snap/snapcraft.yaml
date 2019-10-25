@@ -95,6 +95,7 @@ parts:
       snapcraftctl set-version "$(grep 'version:' meson.build -m1 | cut -d\' -f2)"
     override-prime: |
       snapcraftctl prime
+      sed -i 's|Icon=.*|Icon=${SNAP}/meta/gui/icon.svg|' usr/share/applications/org.gnome.DejaDup.desktop
       glib-compile-schemas usr/share/glib-2.0/schemas
 
 
