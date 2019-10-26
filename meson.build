@@ -19,10 +19,6 @@
 project('deja-dup', ['vala', 'c'],
     version: '40.2',
     license: 'GPLv3+',
-    default_options: [
-        'warning_level=1',
-        'buildtype=debugoptimized',
-    ],
     meson_version: '>= 0.47')
 
 gnome = import('gnome')

@@ -25,16 +25,21 @@ apps:
       PATH: $SNAP/bin:$PATH
       PYTHONPATH: $SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3/dist-packages
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+      GIO_MODULE_DIR: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gio/modules
+      GTK_EXE_PREFIX: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
   monitor:
     command: desktop-launch $SNAP/bin/monitor.wrapper
     autostart: org.gnome.DejaDup.Monitor.desktop
     environment:
       PATH: $SNAP/bin:$PATH
       XDG_DATA_DIRS: $SNAP/share:$XDG_DATA_DIRS
+      GIO_MODULE_DIR: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gio/modules
+      GTK_EXE_PREFIX: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET
   duplicity:
     command: bin/duplicity
     environment:
       PYTHONPATH: $SNAP/lib/python3.6/site-packages:$SNAP/usr/lib/python3/dist-packages
+      GIO_MODULE_DIR: $SNAP/usr/lib/$SNAPCRAFT_ARCH_TRIPLET/gio/modules
 
 parts:
   dump:
@@ -71,6 +76,7 @@ parts:
     source: .
     source-type: git
     meson-parameters:
+      - --buildtype=release
       - --prefix=/snap/deja-dup/current
     organize:
       snap/deja-dup/current: .
