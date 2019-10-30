@@ -33,7 +33,7 @@ check: all
 
 .PHONY: clean
 clean:
-	rm -rf builddir parts stage prime *.snap
+	rm -rf builddir
 
 .PHONY: screenshots
 screenshots: all
@@ -96,12 +96,6 @@ flatpak-update:
 		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p.json $$p; \
 	done
 	sed -i 's/^[][]//g' flatpak/*.json
-
-.PHONY: snap
-snap:
-	rm -f *.snap
-	snapcraft snap
-	snap install ./*.snap --classic --dangerous
 
 builddir/vlint:
 	mkdir -p builddir

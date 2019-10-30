@@ -30,15 +30,3 @@ nightly:
   extends: .publish_nightly
   dependencies:
     - flatpak
-
-# Disabled for now until snapcore/snapcraft is updated with snapcraft 3:
-# https://bugs.launchpad.net/snapcraft/+bug/1814024
-#snap:
-#  stage: deploy
-#  image: snapcore/snapcraft
-#  script:
-#    - snapcraft snap -o deja-dup-dev.snap
-#  artifacts:
-#    paths:
-#      - deja-dup-dev.snap
-#    expire_in: 30 days
