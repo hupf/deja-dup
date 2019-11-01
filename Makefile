@@ -35,34 +35,6 @@ check: all
 clean:
 	rm -rf builddir
 
-.PHONY: screenshots
-screenshots: all
-	@gsettings set org.gnome.desktop.interface font-name 'Cantarell 11'
-	@gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita'
-	@gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-	@gsettings set org.gnome.desktop.wm.preferences theme 'Adwaita'
-	@gsettings set org.gnome.DejaDup backend 'file'
-	@sleep 5
-	
-	@mkdir -p ./builddir/screenshots
-	@rm -f ./builddir/screenshots/*
-	
-	@./tests/shell-local "deja-dup" &
-	@gnome-screenshot --window --delay 1 --file data/appdata/01-main.png
-	@killall deja-dup
-	
-	@./tests/shell-local "deja-dup --backup" >/dev/null &
-	@gnome-screenshot --window --delay 1 --file data/appdata/02-backup.png
-	@killall deja-dup
-	
-	@gsettings reset org.gnome.desktop.interface font-name
-	@gsettings reset org.gnome.desktop.interface gtk-theme
-	@gsettings reset org.gnome.desktop.interface icon-theme
-	@gsettings reset org.gnome.desktop.wm.preferences theme
-	@gsettings reset org.gnome.DejaDup backend
-	
-	@eog data/appdata
-
 .PHONY: pot
 pot: configure
 	ninja -C builddir deja-dup-pot help-deja-dup-pot

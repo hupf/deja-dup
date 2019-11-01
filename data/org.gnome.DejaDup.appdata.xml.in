@@ -2,8 +2,7 @@
 <!-- For copyright information, see AUTHORS. -->
 <component type="desktop-application">
     <id>@appid@</id>
-    <metadata_license>CC-BY-SA-4.0</metadata_license>
-    <project_license>GPL-3.0+</project_license>
+
     <name>Déjà Dup Backup Tool</name>
     <summary>Keep your important documents safe from disaster</summary>
     <description>
@@ -15,7 +14,9 @@
             <li>Schedules regular backups</li>
             <li>Integrates well into your GNOME desktop</li>
         </ul>
+        <p>Déjà Dup focuses on ease of use and recovering from personal, accidental data loss. If you need a full system backup or an archival program, try other backup apps.</p>
     </description>
+
     <kudos>
         <kudo>HiDpiIcon</kudo>
         <kudo>HighContrast</kudo>
@@ -23,20 +24,36 @@
         <kudo>Notifications</kudo>
         <kudo>UserDocs</kudo>
     </kudos>
+
+    <provides>
+        <binary>deja-dup</binary>
+        <id>deja-dup.desktop</id>
+        <id>org.gnome.DejaDup.desktop</id>
+    </provides>
+
+    <project_license>GPL-3.0+</project_license>
     <launchable type="desktop-id">@appid@.desktop</launchable>
     <translation type="gettext">@gettext@</translation>
+    <content_rating type="oars-1.1" />
+
     <url type="homepage">https://wiki.gnome.org/Apps/DejaDup</url>
     <url type="help">https://wiki.gnome.org/Apps/DejaDup/Help</url>
     <url type="bugtracker">https://bugs.launchpad.net/deja-dup</url>
     <url type="translate">https://translations.launchpad.net/deja-dup</url>
+    <url type="contact">mailto:deja-dup-list@gnome.org</url>
+
+    <metadata_license>CC-BY-SA-4.0</metadata_license>
     <update_contact>deja-dup-list@gnome.org</update_contact>
-    <content_rating type="oars-1.1" />
+
     <screenshots>
         <screenshot type="default">
             <image type="source">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/appdata/01-main.png</image>
         </screenshot>
         <screenshot>
-            <image type="source">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/appdata/02-backup.png</image>
+            <image type="source">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/appdata/02-location.png</image>
+        </screenshot>
+        <screenshot>
+            <image type="source">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/appdata/03-restore.png</image>
         </screenshot>
     </screenshots>
 
