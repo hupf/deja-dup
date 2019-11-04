@@ -30,8 +30,10 @@ static DejaDup.FilteredSettings settings = null;
 
 static bool testing_delay = true;
 
+static bool no_delay = false;
 static bool show_version = false;
 const OptionEntry[] OPTIONS = {
+  {"no-delay", 0, OptionFlags.HIDDEN, OptionArg.NONE, ref no_delay, null, null},
   {"version", 0, 0, OptionArg.NONE, ref show_version, N_("Show version"), null},
   {null}
 };
@@ -242,7 +244,7 @@ static void begin_monitoring()
   watch_settings();
 
   // Delay first check to give the network and desktop environment a chance to start up.
-  if (DejaDup.in_testing_mode())
+  if (no_delay || DejaDup.in_testing_mode())
     make_first_check();
   else
     Timeout.add_seconds(120, () => {make_first_check(); return false;});
