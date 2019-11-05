@@ -103,6 +103,11 @@ internal class DuplicityInstance : Object
     if (DejaDup.ensure_directory_exists(tempdir))
       argv.append("--tempdir=%s".printf(tempdir));
 
+    // Testing arguments
+    var fast_fail_str = Environment.get_variable("DEJA_DUP_TEST_FAST_FAIL");
+    if (fast_fail_str != null && int.parse(fast_fail_str) > 0)
+      argv.append("--num-retries=1");
+
     // Finally, actual duplicity command
     argv.prepend("duplicity");
 
