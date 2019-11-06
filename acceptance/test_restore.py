@@ -57,10 +57,13 @@ class RestoreTest(BaseTest):
 
         # Prepare for either initial backup or incremental
         def ready():
-            return window.dead or window.findChild(
-                GenericPredicate(name='Forward'),
-                retry=False, requireResult=False
-            )
+            try:
+                return window.dead or window.findChild(
+                    GenericPredicate(name='Forward'),
+                    retry=False, requireResult=False
+                )
+            except GLib.GError:
+                return True
         self.wait_for(ready, timeout=60)
         if window.dead:
             return
@@ -121,6 +124,8 @@ class GoogleRestoreTest(RestoreTest):
 
     def setUp(self):
         super().setUp()
+        if not int(self.get_config('google', 'enabled', fallback='0')):
+            self.skipTest('Google not enabled')
         self.set_string('backend', 'google')
         self.set_string('folder', self.folder, child='google')
 

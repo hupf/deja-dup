@@ -21,6 +21,7 @@ import os
 import stat
 from contextlib import contextmanager
 
+from dogtail.predicate import GenericPredicate
 from gi.repository import GLib
 
 from . import BaseTest
@@ -100,3 +101,46 @@ class BackupTest(BaseTest):
         with self.new_files():
             self.walk_incremental_backup(app, password='t')
 
+    # We don't have a "resume_full" test because that isn't supported
+    # currently. We blow away the cache before full backups for safety.
+    def test_resume_incremental(self):
+        app = self.cmd('--backup')
+        self.walk_initial_backup(app)
+
+        self.randomize_srcdir()
+        app = self.cmd('--backup')
+        window = app.window('Back Up')
+        def mid_progress():
+            bar = window.findChild(
+                GenericPredicate(roleName='progress bar'),
+                retry=False, requireResult=False
+            )
+            return bar and bar.value > 0.6
+        with self.new_files():
+            self.wait_for(mid_progress)
+            app.button('Resume Later').click()
+            self.wait_for(lambda: window.dead)
+
+        app = self.cmd('--backup')
+        window = app.window('Back Up')
+        self.did_resume = False
+        def finish_progress():
+            try:
+                if window.dead:
+                    return True
+                bar = window.findChild(
+                    GenericPredicate(roleName='progress bar'),
+                    retry=False, requireResult=False
+                )
+                if bar.value >= 0.3:
+                    self.did_resume = True
+                elif not self.did_resume:
+                    assert bar.value == 0
+                return False
+            except GLib.GError:
+                return True
+        old_files = self.backup_files
+        with self.new_files():
+            self.wait_for(finish_progress)
+            assert window.dead
+        assert set(self.backup_files) >= set(old_files)

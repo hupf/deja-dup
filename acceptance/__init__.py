@@ -20,6 +20,7 @@
 import os
 import shutil
 import signal
+import subprocess
 import unittest
 from time import sleep
 
@@ -38,6 +39,9 @@ class BaseTest(unittest.TestCase):
         self.settings = Gio.Settings.new('org.gnome.DejaDup')
         self.reset_gsettings(self.settings)
 
+        # Clean any previous cache files
+        shutil.rmtree(os.environ['DD_CACHE_DIR'], ignore_errors=True)
+
         # Set up tiny sample source root
         self.rootdir = GLib.get_home_dir() + '/.deja-dup-test'
         self.srcdir = self.rootdir + '/src'
@@ -49,6 +53,15 @@ class BaseTest(unittest.TestCase):
 
         # Point at that root
         self.set_strv('include-list', [self.srcdir])
+
+    def randomize_srcdir(self):
+        datadir = os.path.join(self.srcdir, 'data')
+        os.makedirs(datadir, exist_ok=True)
+
+        basedir = os.path.realpath(os.path.join(os.path.dirname(__file__)))
+        args = [os.path.join(basedir, 'randomizer'), datadir]
+
+        subprocess.run(args, check=True)
 
     def wait_for(self, func, timeout=30):
         while not func() and timeout:
@@ -96,7 +109,7 @@ class BaseTest(unittest.TestCase):
         # Add a cleanup for any spawned deja-dup processes
         self.addCleanup(self.kill_bus, 'org.gnome.DejaDup')
 
-        pid = self.start_pid(os.environ['DEJA_DUP_MONITOR_EXEC'], '--no-delay')
+        pid = self.start_pid(os.environ['DD_MONITOR_EXEC'], '--no-delay')
         return tree.root.application('org.gnome.DejaDup') if window else pid
 
     def reset_gsettings(self, settings):
@@ -122,7 +135,7 @@ class BaseTest(unittest.TestCase):
             kwargs['label'] = obj.labeler.name
         return obj.parent.child(**kwargs)
 
-    def walk_initial_backup(self, app, error=False, password=None):
+    def walk_initial_backup(self, app, error=False, password=None, wait=True):
         window = app.window('Back Up')
 
         if password:
@@ -135,7 +148,8 @@ class BaseTest(unittest.TestCase):
         window.button('Forward').click()
 
         if not error:
-            self.wait_for(lambda: window.dead)
+            if wait:
+                self.wait_for(lambda: window.dead)
         else:
             window.childNamed('Backup Failed')
             window.button('Close').click()

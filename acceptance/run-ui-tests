@@ -14,7 +14,8 @@ export DEJA_DUP_TEST_FAST_FAIL=1
 if [ "$1" = "--snap" ]; then
   shift
   export XDG_DATA_DIRS=$HOME/snap/deja-dup/current/.local/share:$XDG_DATA_DIRS
-  export DEJA_DUP_MONITOR_EXEC=deja-dup.monitor
+  export DD_MONITOR_EXEC=deja-dup.monitor
+  export DD_CACHE_DIR=$HOME/snap/deja-dup/common/.cache/deja-dup
 else
   echo "Must provide a mode"
   exit 1
