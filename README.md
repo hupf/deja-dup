@@ -12,7 +12,8 @@ Features:
  * Integrates well into your GNOME desktop
 
 Déjà Dup focuses on ease of use and personal, accidental data loss.
-If you need a full system backup or an archival program, try other backup apps.
+If you need a full system backup or an archival program, you may prefer other
+backup apps.
 
 ## Links
 
