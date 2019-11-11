@@ -36,7 +36,7 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         super().setUp()
         self.dbus = None
-        self.settings = Gio.Settings.new('org.gnome.DejaDup')
+        self.settings = Gio.Settings.new(os.environ['DD_APPID'])
         self.reset_gsettings(self.settings)
 
         # Clean any previous cache files
@@ -97,20 +97,20 @@ class BaseTest(unittest.TestCase):
     def start_pid(self, cmd, *args):
         pid = run(cmd,
                   arguments=' '.join(args or []),
-                  appName='org.gnome.DejaDup')
+                  appName=os.environ['DD_APPID'])
         self.addCleanup(self.kill_pid, pid)
         return pid
 
     def cmd(self, *args, window=True):
         pid = self.start_pid('deja-dup', *args)
-        return tree.root.application('org.gnome.DejaDup') if window else pid
+        return tree.root.application(os.environ['DD_APPID']) if window else pid
 
     def monitor(self, *args, window=True):
         # Add a cleanup for any spawned deja-dup processes
-        self.addCleanup(self.kill_bus, 'org.gnome.DejaDup')
+        self.addCleanup(self.kill_bus, os.environ['DD_APPID'])
 
         pid = self.start_pid(os.environ['DD_MONITOR_EXEC'], '--no-delay')
-        return tree.root.application('org.gnome.DejaDup') if window else pid
+        return tree.root.application(os.environ['DD_APPID']) if window else pid
 
     def reset_gsettings(self, settings):
         schema = settings.get_property('settings-schema')

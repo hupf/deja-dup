@@ -80,7 +80,7 @@ class BackupTest(BaseTest):
         self.set_string('last-run', '')
         self.set_string('last-backup', '')
         self.wait_for(lambda: self.settings.get_string('last-backup'))
-        self.wait_for(lambda: not self.get_bus_pid('org.gnome.DejaDup'))
+        self.wait_for(lambda: not self.get_bus_pid(os.environ['DD_APPID']))
         assert starting_files != self.backup_files
 
     def test_storage_error(self):
