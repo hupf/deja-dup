@@ -1,5 +1,6 @@
 # 40.2+
 - Fix a bug that prevented resuming a full backup
+- Update translations
 
 # 40.2
 - Fix 2038 date problems by using 64-bit dates internally
