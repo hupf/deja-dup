@@ -32,6 +32,10 @@ elif [ "$1" = "--dev" ]; then
   export DD_CACHE_DIR=$HOME/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
 
+  if grep '^ID.*debian$' /etc/os-release >/dev/null; then
+    export DD_DEBIAN_DUPLICITY=1
+  fi
+
 else
   echo "Must provide a mode"
   exit 1

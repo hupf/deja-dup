@@ -27,13 +27,19 @@ public class RecursiveDelete : RecursiveOp
   // filename, but since we don't *need* that yet, we don't bother.
   public string? skip {get; construct;}
 
-  public RecursiveDelete(File source, string? skip = null)
+  // A regex to whitelist which files to delete
+  public Regex? only {get; construct;}
+
+  public RecursiveDelete(File source, string? skip=null, Regex? only=null)
   {
-    Object(src: source, skip: skip);
+    Object(src: source, skip: skip, only: only);
   }
 
   protected override void handle_file()
   {
+    if (only != null && !only.match(src.get_basename(), 0, null))
+      return;
+
     try {
       src.@delete(null);
     }
@@ -44,6 +50,9 @@ public class RecursiveDelete : RecursiveOp
 
   protected override void finish_dir()
   {
+    if (only != null && !only.match(src.get_basename(), 0, null))
+      return;
+
     try {
       src.@delete(null); // will only be deleted if empty, so we won't
                          // accidentally toss files left over from a failed
@@ -62,7 +71,7 @@ public class RecursiveDelete : RecursiveOp
       return null;
 
     var src_child = src.get_child(child_name);
-    return new RecursiveDelete(src_child); // intentionally doesn't pass skip name
+    return new RecursiveDelete(src_child, null, only); // intentionally doesn't pass skip name
   }
 }
 

@@ -425,9 +425,19 @@ internal class DuplicityJob : DejaDup.ToolJob
           progress(0f);
         if (is_full_backup) {
           // Make sure duplicity has to verify new password against the
-          // existing backup files by deleting any unencrypted caches.  And
-          // helps us keep the size of the cache down over time.
-          delete_cache();
+          // existing backup files by deleting any local manifests.
+          // Duplicity will re-download and re-decrypt them with the
+          // currently provided passphrase.
+          // This avoids a duplicity bug/feature(?) where you can have
+          // different passphrases for each full backup chain, as long
+          // as you never re-download past metadata.
+          // https://bugs.launchpad.net/duplicity/+bug/918489
+          try {
+            delete_cache(new Regex("^duplicity-full\\..*\\.manifest$", 0, 0));
+          }
+          catch (Error e) {
+            warning("%s\n", e.message);
+          }
         }
       }
 
@@ -867,14 +877,14 @@ internal class DuplicityJob : DejaDup.ToolJob
   protected const int WARNING_CANNOT_PROCESS = 12; // basically, cannot write or change attrs
   protected const int DEBUG_GENERIC = 1;
 
-  void delete_cache()
+  void delete_cache(Regex? only=null)
   {
     string dir = Environment.get_user_cache_dir();
     if (dir == null)
       return;
 
     var cachedir = Path.build_filename(dir, Config.PACKAGE);
-    var del = new DejaDup.RecursiveDelete(File.new_for_path(cachedir), "metadata");
+    var del = new DejaDup.RecursiveDelete(File.new_for_path(cachedir), "metadata", only);
     del.start();
   }
 

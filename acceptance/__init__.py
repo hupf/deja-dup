@@ -25,7 +25,9 @@ import unittest
 from time import sleep
 
 from dogtail.config import config
+config.ensureSensitivity = True
 config.logDebugToFile = False
+config.searchShowingOnly = True
 
 from dogtail import tree
 from dogtail.procedural import run
@@ -149,7 +151,7 @@ class BaseTest(unittest.TestCase):
 
         if not error:
             if wait:
-                self.wait_for(lambda: window.dead)
+                self.wait_for(lambda: window.dead, timeout=60)
         else:
             window.childNamed('Backup Failed')
             window.button('Close').click()

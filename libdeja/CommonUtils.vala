@@ -668,8 +668,8 @@ public int get_full_backup_threshold()
 
   var settings = get_settings();
   var threshold = settings.get_int(FULL_BACKUP_PERIOD_KEY);
-  if (threshold < 1)
-    threshold = 84; // 3 months
+  if (threshold < 0)
+    threshold = 90; // 3 months
   return threshold;
 }
 

@@ -21,12 +21,14 @@ import os
 import stat
 from contextlib import contextmanager
 
+import ddt
 from dogtail.predicate import GenericPredicate
 from gi.repository import GLib
 
 from . import BaseTest
 
 
+@ddt.ddt
 class BackupTest(BaseTest):
     def setUp(self):
         super().setUp()
@@ -101,15 +103,19 @@ class BackupTest(BaseTest):
         with self.new_files():
             self.walk_incremental_backup(app, password='t')
 
-    # We don't have a "resume_full" test because that isn't supported
-    # currently. We blow away the cache before full backups for safety.
-    def test_resume_incremental(self):
-        app = self.cmd('--backup')
-        self.walk_initial_backup(app)
+    @ddt.data(True, False)
+    def test_resume(self, initial):
+        if not initial:
+            app = self.cmd('--backup')
+            self.walk_initial_backup(app, password='t')
 
         self.randomize_srcdir()
         app = self.cmd('--backup')
         window = app.window('Back Up')
+        if initial:
+            self.walk_initial_backup(app, password='t', wait=False)
+        else:
+            self.walk_incremental_backup(app, password='t', wait=False)
         def mid_progress():
             bar = window.findChild(
                 GenericPredicate(roleName='progress bar'),
@@ -123,6 +129,26 @@ class BackupTest(BaseTest):
 
         app = self.cmd('--backup')
         window = app.window('Back Up')
+        if initial:
+            # This flow is a little janky. So we can't 100% detect that there
+            # is a resumable backup sitting on backend. So we still give the
+            # first-time-backup password prompt. And then accept whatever the
+            # password is, to use when we call duplicity.
+            # Then... duplicity tries to decrypt metadata and can't, so we
+            # prompt to confirm password. Then when re-doing the backup with
+            # the right password, we do the first-time-backup password screen
+            # again. While annoying, at least we avoid duplicity bugs around
+            # password changes midstream.
+            if os.environ.get('DD_DEBIAN_DUPLICITY') != '1':
+                # Debian has a bug preventing us from fixing bad passwords here
+                # https://bugs.debian.org/944512
+                # So don't bother testing it in this case, until they fix that
+                self.walk_initial_backup(app, password='nope', wait=False)
+                self.walk_incremental_backup(app, password='t', wait=False)
+            self.walk_initial_backup(app, password='t', wait=False)
+        else:
+            self.walk_incremental_backup(app, password='nope', wait=False)
+            self.walk_incremental_backup(app, password='t', wait=False)
         self.did_resume = False
         def finish_progress():
             try:
@@ -132,15 +158,29 @@ class BackupTest(BaseTest):
                     GenericPredicate(roleName='progress bar'),
                     retry=False, requireResult=False
                 )
-                if bar.value >= 0.3:
+                if bar and bar.value >= 0.3:
                     self.did_resume = True
-                elif not self.did_resume:
+                elif bar and not self.did_resume:
                     assert bar.value == 0
                 return False
             except GLib.GError:
                 return True
         old_files = self.backup_files
         with self.new_files():
-            self.wait_for(finish_progress)
+            self.wait_for(finish_progress, timeout=60)
             assert window.dead
         assert set(self.backup_files) >= set(old_files)
+
+    def test_no_passphrase_change_on_full(self):
+        """
+        Ensure we check passphrases between full backups
+        https://bugs.launchpad.net/duplicity/+bug/918489
+        """
+        self.settings.set_int('full-backup-period', 0)
+
+        app = self.cmd('--backup')
+        self.walk_initial_backup(app, password='t')
+
+        app = self.cmd('--backup')
+        self.walk_incremental_backup(app, password='nope', wait=False)
+        self.walk_incremental_backup(app, password='t')
