@@ -1,4 +1,4 @@
-# 40.2+
+# 40.3
 - Fix a bug that prevented resuming a full backup
 - Update translations
 
