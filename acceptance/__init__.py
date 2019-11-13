@@ -38,8 +38,7 @@ class BaseTest(unittest.TestCase):
     def setUp(self):
         super().setUp()
         self.dbus = None
-        self.settings = Gio.Settings.new(os.environ['DD_APPID'])
-        self.reset_gsettings(self.settings)
+        self.reset_gsettings(self.get_settings())
 
         # Clean any previous cache files
         shutil.rmtree(os.environ['DD_CACHE_DIR'], ignore_errors=True)
@@ -97,14 +96,15 @@ class BaseTest(unittest.TestCase):
             pass
 
     def start_pid(self, cmd, *args):
-        pid = run(cmd,
-                  arguments=' '.join(args or []),
+        commandline = cmd.split(' ') + list(args or [])
+        pid = run(commandline[0],
+                  arguments=' '.join(commandline[1:]),
                   appName=os.environ['DD_APPID'])
         self.addCleanup(self.kill_pid, pid)
         return pid
 
     def cmd(self, *args, window=True):
-        pid = self.start_pid('deja-dup', *args)
+        pid = self.start_pid(os.environ['DD_EXEC'], *args)
         return tree.root.application(os.environ['DD_APPID']) if window else pid
 
     def monitor(self, *args, window=True):
@@ -166,8 +166,45 @@ class BaseTest(unittest.TestCase):
         if wait:
             self.wait_for(lambda: window.dead)
 
+    def get_settings(self, child=None):
+        settings = Gio.Settings.new(os.environ['DD_APPID'])
+        if child:
+            return settings.get_child(child)
+        return settings
+
+    def get_value(self, func, key, child=None):
+        if 'DD_KEYFILE' in os.environ:
+            # The keyfile gsettings backend does not seem to reload correctly.
+            # Or more accurately, I couldn't get it to do so. So we read
+            # directly from it.
+            keyfile = GLib.KeyFile()
+            keyfile.load_from_file(os.environ['DD_KEYFILE'], 0)
+            group = 'org/gnome/deja-dup'
+            if child:
+                group += '/' + child
+            if func == 'get_int':
+                func = 'get_int32'
+            strvalue = keyfile.get_value(group, key)
+            varvalue = GLib.Variant.parse(None, strvalue)
+            return getattr(varvalue, func)()
+
+        settings = self.get_settings(child=child)
+        return getattr(settings, func)(key)
+
+    def get_strv(self, key, child=None):
+        return self.get_value('get_strv', key, child=child)
+
+    def get_string(self, key, child=None):
+        return self.get_value('get_string', key, child=child)
+
+    def get_boolean(self, key, child=None):
+        return self.get_value('get_boolean', key, child=child)
+
+    def get_int(self, key, child=None):
+        return self.get_value('get_int', key, child=child)
+
     def set_value(self, func, key, value, child=None):
-        settings = self.settings.get_child(child) if child else self.settings
+        settings = self.get_settings(child=child)
         getattr(settings, func)(key, value)
         settings.sync()
 

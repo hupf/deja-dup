@@ -36,7 +36,7 @@ class PreferencesTest(BaseTest):
         self.assertFalse(periodic.checked)
         self.assertFalse(periodic_header.checked)
         periodic.click()
-        self.assertTrue(self.settings.get_boolean('periodic'))
+        self.assertTrue(self.get_boolean('periodic'))
 
         # Periodic from settings
         self.assertTrue(periodic.checked)
@@ -52,11 +52,11 @@ class PreferencesTest(BaseTest):
         period = self.app.child(label='Every').child(roleName='combo box')
         period.click()
         period.child(roleName='menu item', name='Day').click()
-        self.assertEqual(self.settings.get_int('periodic-period'), 1)
+        self.assertEqual(self.get_int('periodic-period'), 1)
 
         period.click()
         period.child(roleName='menu item', name='Week').click()
-        self.assertEqual(self.settings.get_int('periodic-period'), 7)
+        self.assertEqual(self.get_int('periodic-period'), 7)
 
         # Period from settings
         self.set_int('periodic-period', 10)
@@ -66,11 +66,11 @@ class PreferencesTest(BaseTest):
         delete = self.app.child(label='Keep').child(roleName='combo box')
         delete.click()
         delete.child(roleName='menu item', name='At least a year').click()
-        self.assertEqual(self.settings.get_int('delete-after'), 365)
+        self.assertEqual(self.get_int('delete-after'), 365)
 
         delete.click()
         delete.child(roleName='menu item', name='Forever').click()
-        self.assertEqual(self.settings.get_int('delete-after'), 0)
+        self.assertEqual(self.get_int('delete-after'), 0)
 
         # Delete After from settings
         self.set_int('delete-after', 12)
@@ -126,7 +126,7 @@ class PreferencesTest(BaseTest):
         remove = self.app.child(name='Remove')
         remove.click()
         self.assertListEqual(self.table_names(table), ['~/Desktop'])
-        self.assertEqual(self.settings.get_strv(key), [home + '/Desktop'])
+        self.assertEqual(self.get_strv(key), [home + '/Desktop'])
 
         # Add one
         add = self.app.child(name='Add')
@@ -135,7 +135,7 @@ class PreferencesTest(BaseTest):
         dlg.child(name='Documents').click()
         dlg.child(name='Add').click()
         self.assertListEqual(self.table_names(table), ['~/Desktop', '~/Documents'])
-        self.assertEqual(self.settings.get_strv(key), [home + '/Desktop', home + '/Documents'])
+        self.assertEqual(self.get_strv(key), [home + '/Desktop', home + '/Documents'])
 
     def test_includes(self):
         self.assert_inclusion_table('Folders to save', 'IncludeList',

@@ -81,7 +81,7 @@ class BackupTest(BaseTest):
         starting_files = self.backup_files
         self.set_string('last-run', '')
         self.set_string('last-backup', '')
-        self.wait_for(lambda: self.settings.get_string('last-backup'))
+        self.wait_for(lambda: self.get_string('last-backup'))
         self.wait_for(lambda: not self.get_bus_pid(os.environ['DD_APPID']))
         assert starting_files != self.backup_files
 
@@ -176,7 +176,7 @@ class BackupTest(BaseTest):
         Ensure we check passphrases between full backups
         https://bugs.launchpad.net/duplicity/+bug/918489
         """
-        self.settings.set_int('full-backup-period', 0)
+        self.set_int('full-backup-period', 0)
 
         app = self.cmd('--backup')
         self.walk_initial_backup(app, password='t')

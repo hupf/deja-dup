@@ -1,9 +1,6 @@
 #!/bin/sh
 # -*- Mode: sh; indent-tabs-mode: nil; tab-width: 2 -*-
 
-# Dogtail requires this
-gsettings set org.gnome.desktop.interface toolkit-accessibility true
-
 EXISTING=$(ps x -o pid,cmd | grep deja-dup | sed 's/^ *\([0-9]\+\).*/\1/')
 if [ -n "$EXISTING" ]; then
   kill -9 $EXISTING 2>/dev/null
@@ -14,9 +11,23 @@ export DEJA_DUP_TEST_FAST_FAIL=1
 if [ "$1" = "--snap" ]; then
   shift
   export XDG_DATA_DIRS=$HOME/snap/deja-dup/current/.local/share:$XDG_DATA_DIRS
-  export DD_MONITOR_EXEC=deja-dup.monitor
+  export DD_EXEC="snap run deja-dup"
+  export DD_MONITOR_EXEC="snap run deja-dup.monitor"
   export DD_CACHE_DIR=$HOME/snap/deja-dup/common/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDup
+
+elif [ "$1" = "--flatpak" ]; then
+  shift
+  export GSETTINGS_BACKEND=keyfile
+  export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDup/config
+  export XDG_DATA_DIRS="$(flatpak info org.gnome.DejaDup -l)/files/share":$XDG_DATA_DIRS
+  export DD_EXEC="flatpak run -p org.gnome.DejaDup"
+  export DD_MONITOR_EXEC="flatpak run -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup"
+  export DD_CACHE_DIR=$HOME/.var/app/org.gnome.DejaDup/cache/deja-dup
+  export DD_APPID=org.gnome.DejaDup
+  export DD_KEYFILE=$XDG_CONFIG_HOME/glib-2.0/settings/keyfile
+
+  cp -a ~/.config/user-dirs.dirs "$XDG_CONFIG_HOME"
 
 elif [ "$1" = "--dev" ]; then
   shift
@@ -27,7 +38,7 @@ elif [ "$1" = "--dev" ]; then
   glib-compile-schemas "${BUILDDIR}/tmpshare/glib-2.0/schemas"
 
   export XDG_DATA_DIRS="${BUILDDIR}/tmpshare:${XDG_DATA_DIRS}"
-  export PATH="${BUILDDIR}/deja-dup:${PATH}"
+  export DD_EXEC="${BUILDDIR}/deja-dup/deja-dup"
   export DD_MONITOR_EXEC="${BUILDDIR}/deja-dup/monitor/deja-dup-monitor"
   export DD_CACHE_DIR=$HOME/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
@@ -40,5 +51,8 @@ else
   echo "Must provide a mode"
   exit 1
 fi
+
+# Dogtail requires this
+gsettings set org.gnome.desktop.interface toolkit-accessibility true
 
 exec pytest-3 $*
