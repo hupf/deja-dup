@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-10-23 13:39-0400\n"
+"POT-Creation-Date: 2019-11-11 15:26-0500\n"
 "PO-Revision-Date: 2019-10-20 10:35+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2019-10-24 07:03+0000\n"
-"X-Generator: Launchpad (build 469f241f4e73cc0bdffa4e30654052a2af068e06)\n"
+"X-Launchpad-Export-Date: 2019-11-13 06:17+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:7 deja-dup/main.vala:362
+#: data/org.gnome.DejaDup.appdata.xml.in:6 deja-dup/main.vala:362
 msgid "Déjà Dup Backup Tool"
 msgstr "Narzędzie do tworzenia kopii zapasowych Déjà Dup"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:8
+#: data/org.gnome.DejaDup.appdata.xml.in:7
 msgid "Keep your important documents safe from disaster"
 msgstr "Trzymaj ważne dokumenty z dala od niebezpieczeństw"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:10
+#: data/org.gnome.DejaDup.appdata.xml.in:9
 msgid ""
 "Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
@@ -42,31 +42,38 @@ msgstr ""
 "złożoność kopii zapasowych (regularnie szyfrując je i przechowując poza "
 "komputerem) i używa programu duplicity."
 
-#: data/org.gnome.DejaDup.appdata.xml.in:12
+#: data/org.gnome.DejaDup.appdata.xml.in:11
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
 "Obsługa lokalnych, zdalnych oraz umieszczonych w chmurze kopii zapasowych, "
 "takich jak Google Drive"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:13
+#: data/org.gnome.DejaDup.appdata.xml.in:12
 msgid "Securely encrypts and compresses your data"
 msgstr "Bezpiecznie szyfruje i kompresuje dane"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:14
+#: data/org.gnome.DejaDup.appdata.xml.in:13
 msgid ""
 "Incrementally backs up, letting you restore from any particular backup"
 msgstr ""
 "Tworzy przyrostowe kopie zapasowe, umożliwiając przywracanie z dowolnej "
 "chwili"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:15
+#: data/org.gnome.DejaDup.appdata.xml.in:14
 msgid "Schedules regular backups"
 msgstr "Planuje regularne kopie zapasowe"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:16
+#: data/org.gnome.DejaDup.appdata.xml.in:15
 msgid "Integrates well into your GNOME desktop"
 msgstr "Dobrze integruje się ze środowiskiem GNOME"
+
+#: data/org.gnome.DejaDup.appdata.xml.in:17
+msgid ""
+"Déjà Dup focuses on ease of use and recovering from personal, accidental "
+"data loss. If you need a full system backup or an archival program, you may "
+"prefer other backup apps."
+msgstr ""
 
 #. Translators: "Backups" is a noun
 #: data/org.gnome.DejaDup.desktop.in:5 deja-dup/main.vala:166
@@ -739,8 +746,8 @@ msgstr "Udzielenie dostępu"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:698
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:763
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Failed with an unknown error."
 msgstr "Niepowodzenie, wystąpił nieznany błąd."
 
@@ -945,7 +952,7 @@ msgstr "_Anuluj"
 msgid "_Forward"
 msgstr "_Dalej"
 
-#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:35
+#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:37
 msgid "Show version"
 msgstr "Wyświetla wersję"
 
@@ -1128,14 +1135,14 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Rozpoczynanie zaplanowanego utworzenia kopii zapasowej"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
+#: deja-dup/monitor/monitor.vala:85 libdeja/BackendGoogle.vala:89
 #: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
 #: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
 msgstr ""
 "Wykonanie kopii zapasowej zostanie rozpoczęte po uzyskaniu dostępu do sieci."
 
-#: deja-dup/monitor/monitor.vala:86
+#: deja-dup/monitor/monitor.vala:88
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
@@ -1145,7 +1152,7 @@ msgstr ""
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: deja-dup/monitor/monitor.vala:258
+#: deja-dup/monitor/monitor.vala:260
 msgid "Backup Monitor"
 msgstr "Monitor kopii zapasowych"
 
@@ -1556,8 +1563,8 @@ msgstr "Wyświetlanie listy plików…"
 #: libdeja/Operation.vala:64 libdeja/Operation.vala:93
 #: libdeja/tools/duplicity/DuplicityJob.vala:405
 #: libdeja/tools/duplicity/DuplicityJob.vala:416
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:451
+#: libdeja/tools/duplicity/DuplicityJob.vala:456
 msgid "Preparing…"
 msgstr "Przygotowywanie…"
 
@@ -1567,20 +1574,20 @@ msgid "Paused (no network)"
 msgstr "Wstrzymano (brak sieci)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:483
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "Nie można przywrócić „%s”: nieprawidłowe położenie pliku"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:589
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Położenie kopii zapasowej jest za małe. Proszę użyć położenia z co najmniej "
 "%s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:614
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1589,15 +1596,15 @@ msgstr ""
 "Położenie kopii zapasowej ma za mało wolnego miejsca. Proszę użyć położenia "
 "z co najmniej %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:635
+#: libdeja/tools/duplicity/DuplicityJob.vala:649
 msgid "Cleaning up…"
 msgstr "Czyszczenie…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1608,7 +1615,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:746
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1617,19 +1624,19 @@ msgstr ""
 "zapisać."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:965
 msgid "Bad encryption password."
 msgstr "Nieprawidłowe hasło szyfrowania."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1010
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Nie można przywrócić „%s”: nie odnaleziono pliku w kopii zapasowej"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1021
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1640,74 +1647,74 @@ msgstr ""
 "a bieżąca nazwa komputera to %s. Jeśli ta sytuacja nie została przewidziana, "
 "należy utworzyć kopię zapasową w innym położeniu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1024
 msgid "Computer name changed"
 msgstr "Zmieniono nazwę komputera"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Brak uprawnień podczas próby utworzenia „%s”."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Brak uprawnień podczas próby odczytania „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Brak uprawnień podczas próby usunięcia „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Położenie kopii zapasowej „%s” nie istnieje."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1084
+#: libdeja/tools/duplicity/DuplicityJob.vala:1135
 msgid "No space left."
 msgstr "Brak miejsca."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "Invalid ID."
 msgstr "Nieprawidłowy identyfikator."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
+#: libdeja/tools/duplicity/DuplicityJob.vala:1100
 msgid "Invalid secret key."
 msgstr "Nieprawidłowy tajny klucz."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
+#: libdeja/tools/duplicity/DuplicityJob.vala:1102
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr ""
 "Konto serwisu Amazon Web Services nie ma możliwości używania serwisu S3."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
+#: libdeja/tools/duplicity/DuplicityJob.vala:1111
 msgid "S3 bucket name is not available."
 msgstr "Nazwa kubełka serwisu S3 jest niedostępna."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1124
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Błąd podczas odczytywania pliku „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1126
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Błąd podczas zapisywania pliku „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1137
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Brak miejsca w „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1145
 msgid "No backup files found"
 msgstr "Nie odnaleziono żadnych plików kopii zapasowych"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1195
 msgid "Uploading…"
 msgstr "Wysyłanie…"
 

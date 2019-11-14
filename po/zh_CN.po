@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-10-23 13:39-0400\n"
+"POT-Creation-Date: 2019-11-11 15:26-0500\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: shijing <jingshi@ubuntukylin.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -15,8 +15,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2019-10-24 07:03+0000\n"
-"X-Generator: Launchpad (build 469f241f4e73cc0bdffa4e30654052a2af068e06)\n"
+"X-Launchpad-Export-Date: 2019-11-13 06:17+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 "Language: zh\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
@@ -24,42 +24,49 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:7 deja-dup/main.vala:362
+#: data/org.gnome.DejaDup.appdata.xml.in:6 deja-dup/main.vala:362
 msgid "Déjà Dup Backup Tool"
 msgstr "Déjà Dup 备份工具"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:8
+#: data/org.gnome.DejaDup.appdata.xml.in:7
 msgid "Keep your important documents safe from disaster"
 msgstr "保护您的重要文件"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:10
+#: data/org.gnome.DejaDup.appdata.xml.in:9
 msgid ""
 "Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
 "backend."
 msgstr "Déjà Dup 是一个简易备份工具，使用 dupicity 作为后端程序，隐藏了合理备份背后的复杂机制(加密、异地、定期)。"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:12
+#: data/org.gnome.DejaDup.appdata.xml.in:11
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
 
-#: data/org.gnome.DejaDup.appdata.xml.in:13
+#: data/org.gnome.DejaDup.appdata.xml.in:12
 msgid "Securely encrypts and compresses your data"
 msgstr "安全地加密并压缩您的数据"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:14
+#: data/org.gnome.DejaDup.appdata.xml.in:13
 msgid ""
 "Incrementally backs up, letting you restore from any particular backup"
 msgstr "增量式备份，方便您从任意备份点恢复"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:15
+#: data/org.gnome.DejaDup.appdata.xml.in:14
 msgid "Schedules regular backups"
 msgstr "日常定期备份"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:16
+#: data/org.gnome.DejaDup.appdata.xml.in:15
 msgid "Integrates well into your GNOME desktop"
 msgstr "融入 GNOME 桌面"
+
+#: data/org.gnome.DejaDup.appdata.xml.in:17
+msgid ""
+"Déjà Dup focuses on ease of use and recovering from personal, accidental "
+"data loss. If you need a full system backup or an archival program, you may "
+"prefer other backup apps."
+msgstr ""
 
 #. Translators: "Backups" is a noun
 #: data/org.gnome.DejaDup.desktop.in:5 deja-dup/main.vala:166
@@ -659,8 +666,8 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:698
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:763
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Failed with an unknown error."
 msgstr "因出现未知错误而失败。"
 
@@ -857,7 +864,7 @@ msgstr "取消(_C)"
 msgid "_Forward"
 msgstr "前进(_F)"
 
-#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:35
+#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:37
 msgid "Show version"
 msgstr "显示版本号"
 
@@ -922,6 +929,7 @@ msgstr ""
 "  otm123 https://launchpad.net/~otm123\n"
 "  peaceman https://launchpad.net/~zengchang1985\n"
 "  shijing https://launchpad.net/~shijing\n"
+"  wsxy162 https://launchpad.net/~wsxy162\n"
 "  xcffl https://launchpad.net/~xcffl\n"
 "  冯垚 https://launchpad.net/~290188494-t\n"
 "  黄崇文 https://launchpad.net/~hcw1588"
@@ -1044,13 +1052,13 @@ msgstr "未能成功备份全部文件。更多细节参见对话框。"
 msgid "Starting scheduled backup"
 msgstr "开始计划备份"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
+#: deja-dup/monitor/monitor.vala:85 libdeja/BackendGoogle.vala:89
 #: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
 #: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
 msgstr "备份将在网络连接可用时开始。"
 
-#: deja-dup/monitor/monitor.vala:86
+#: deja-dup/monitor/monitor.vala:88
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
@@ -1058,7 +1066,7 @@ msgstr ""
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: deja-dup/monitor/monitor.vala:258
+#: deja-dup/monitor/monitor.vala:260
 msgid "Backup Monitor"
 msgstr "备份监视器"
 
@@ -1448,8 +1456,8 @@ msgstr "正在列出文件..."
 #: libdeja/Operation.vala:64 libdeja/Operation.vala:93
 #: libdeja/tools/duplicity/DuplicityJob.vala:405
 #: libdeja/tools/duplicity/DuplicityJob.vala:416
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:451
+#: libdeja/tools/duplicity/DuplicityJob.vala:456
 msgid "Preparing…"
 msgstr "正在准备..."
 
@@ -1459,33 +1467,33 @@ msgid "Paused (no network)"
 msgstr "已暂停(无网络)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:483
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "无法还原“%s”：不是有效的文件位置"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:589
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:614
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:635
+#: libdeja/tools/duplicity/DuplicityJob.vala:649
 msgid "Cleaning up…"
 msgstr "正在清理..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1494,26 +1502,26 @@ msgstr "无法备份下列文件。请确认您可以打开这些文件。"
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:746
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr "无法恢复下列文件。请确认您能够写入它们。"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:965
 msgid "Bad encryption password."
 msgstr "无效的加密密码。"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1010
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "无法恢复“%s”：在备份中未找到该文件"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1021
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1521,73 +1529,73 @@ msgid ""
 "location."
 msgstr "现有备份是名为 %s 的计算机的备份，但当前计算机的名称却是 %s。如果这在意料之外，则您应该备份到其它位置。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1024
 msgid "Computer name changed"
 msgstr "计算机名称已更改"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "尝试创建“%s”时被拒绝访问。"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "尝试读取“%s”时权限被拒绝。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "尝试删除“%s”时权限被拒绝。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "备份位置“%s”不存在。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1084
+#: libdeja/tools/duplicity/DuplicityJob.vala:1135
 msgid "No space left."
 msgstr "无剩余空间。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "Invalid ID."
 msgstr "无效的 ID。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
+#: libdeja/tools/duplicity/DuplicityJob.vala:1100
 msgid "Invalid secret key."
 msgstr "无效的私钥。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
+#: libdeja/tools/duplicity/DuplicityJob.vala:1102
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "您的 Amazon Web Services 帐号未注册 S3 服务。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
+#: libdeja/tools/duplicity/DuplicityJob.vala:1111
 msgid "S3 bucket name is not available."
 msgstr "S3 存储段名称不可用。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1124
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "读取文件“%s”时出错。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1126
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "写入文件“%s”时出错。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1137
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "“%s”上没有剩余空间。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1145
 msgid "No backup files found"
 msgstr "未找到备份文件"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1195
 msgid "Uploading…"
 msgstr "正在上传..."
 

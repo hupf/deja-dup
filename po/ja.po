@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2019-10-23 13:39-0400\n"
-"PO-Revision-Date: 2019-08-11 04:50+0000\n"
+"POT-Creation-Date: 2019-11-11 15:26-0500\n"
+"PO-Revision-Date: 2019-11-13 10:39+0000\n"
 "Last-Translator: Shinichirou Yamada "
 "<yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -16,23 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2019-10-24 07:02+0000\n"
-"X-Generator: Launchpad (build 469f241f4e73cc0bdffa4e30654052a2af068e06)\n"
+"X-Launchpad-Export-Date: 2019-11-14 06:53+0000\n"
+"X-Generator: Launchpad (build c597c3229eb023b1e626162d5947141bf7befb13)\n"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:7 deja-dup/main.vala:362
+#: data/org.gnome.DejaDup.appdata.xml.in:6 deja-dup/main.vala:362
 msgid "Déjà Dup Backup Tool"
 msgstr "Déjà Dup バックアップツール"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:8
+#: data/org.gnome.DejaDup.appdata.xml.in:7
 msgid "Keep your important documents safe from disaster"
 msgstr "重要なドキュメントを災害から守る"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:10
+#: data/org.gnome.DejaDup.appdata.xml.in:9
 msgid ""
 "Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
@@ -41,27 +41,37 @@ msgstr ""
 "Déjà Dup はシンプルなバックアップツールです。バックアップに特有の複雑な設定は見せずに、適切に (暗号化して/別の場所に/定期的に) "
 "バックアップします。バックエンドとして duplicity を用いています。"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:12
+#: data/org.gnome.DejaDup.appdata.xml.in:11
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
-msgstr ""
+msgstr "ローカル、リモート、Google ドライブといったクラウドのバックアップ場所をサポート"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:13
+#: data/org.gnome.DejaDup.appdata.xml.in:12
 msgid "Securely encrypts and compresses your data"
 msgstr "あなたのデータを安全に暗号化、圧縮"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:14
+#: data/org.gnome.DejaDup.appdata.xml.in:13
 msgid ""
 "Incrementally backs up, letting you restore from any particular backup"
 msgstr "差分バックアップにより特定のバックアップからの復元が可能"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:15
+#: data/org.gnome.DejaDup.appdata.xml.in:14
 msgid "Schedules regular backups"
 msgstr "定期的なバップアップをスケジュール"
 
-#: data/org.gnome.DejaDup.appdata.xml.in:16
+#: data/org.gnome.DejaDup.appdata.xml.in:15
 msgid "Integrates well into your GNOME desktop"
 msgstr "GNOME デスクトップに高度に統合"
+
+#: data/org.gnome.DejaDup.appdata.xml.in:17
+msgid ""
+"Déjà Dup focuses on ease of use and recovering from personal, accidental "
+"data loss. If you need a full system backup or an archival program, you may "
+"prefer other backup apps."
+msgstr ""
+"Déjà Dup "
+"は、使いやすさと、個人が不測の事態によって失ったデータを復元することに、焦点を置いています。システム全体のバックアップやアーカイバルなプログラムが必要な場"
+"合は、他のバックアップアプリを選択することをお勧めします。"
 
 #. Translators: "Backups" is a noun
 #: data/org.gnome.DejaDup.desktop.in:5 deja-dup/main.vala:166
@@ -499,11 +509,11 @@ msgstr "AppleTalk"
 
 #: data/ui/server-hint.ui:89
 msgid "File Transfer Protocol"
-msgstr "FTP"
+msgstr "ファイル転送プロトコル"
 
 #: data/ui/server-hint.ui:100
 msgid "Network File System"
-msgstr "NFS"
+msgstr "ネットワークファイルシステム"
 
 #: data/ui/server-hint.ui:111
 msgid "Samba"
@@ -511,7 +521,7 @@ msgstr "Samba"
 
 #: data/ui/server-hint.ui:122
 msgid "SSH File Transfer Protocol"
-msgstr "SFTP"
+msgstr "SSH ファイル転送プロトコル"
 
 #: data/ui/server-hint.ui:133
 msgid "WebDAV"
@@ -682,8 +692,8 @@ msgstr "アクセス許可"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:698
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:763
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Failed with an unknown error."
 msgstr "不明なエラーで失敗しました"
 
@@ -880,7 +890,7 @@ msgstr "キャンセル(_C)"
 msgid "_Forward"
 msgstr "進む(_F)"
 
-#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:35
+#: deja-dup/main.vala:31 deja-dup/monitor/monitor.vala:37
 msgid "Show version"
 msgstr "バージョンを表示する"
 
@@ -1066,13 +1076,13 @@ msgstr "一部のファイルのバックアップに失敗しました。詳細
 msgid "Starting scheduled backup"
 msgstr "スケジュールされたバックアップを開始しています"
 
-#: deja-dup/monitor/monitor.vala:83 libdeja/BackendGoogle.vala:89
+#: deja-dup/monitor/monitor.vala:85 libdeja/BackendGoogle.vala:89
 #: libdeja/BackendRackspace.vala:50 libdeja/BackendRemote.vala:128
 #: libdeja/BackendS3.vala:60
 msgid "Backup will begin when a network connection becomes available."
 msgstr "ネットワークが利用可能になるとバックアップが開始されます。"
 
-#: deja-dup/monitor/monitor.vala:86
+#: deja-dup/monitor/monitor.vala:88
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "従量制ではないネットワークが利用可能になると、バックアップが開始されます。"
@@ -1080,7 +1090,7 @@ msgstr "従量制ではないネットワークが利用可能になると、バ
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: deja-dup/monitor/monitor.vala:258
+#: deja-dup/monitor/monitor.vala:260
 msgid "Backup Monitor"
 msgstr "バックアップモニター"
 
@@ -1332,7 +1342,7 @@ msgstr "Google のサーバーにログインできませんでした。"
 
 #: libdeja/BackendGoogle.vala:440
 msgid "Google credentials for Déjà Dup"
-msgstr ""
+msgstr "Déjà Dup 用の Google の資格情報"
 
 #: libdeja/BackendGoogle.vala:548
 msgid ""
@@ -1425,7 +1435,7 @@ msgstr "アクセスが許可されました"
 
 #: libdeja/CommonUtils.vala:560
 msgid "Déjà Dup Backup Tool will now continue. You can close this page."
-msgstr ""
+msgstr "Déjà Dup バックアップツールを続行します。このページは閉じてかまいません。"
 
 #. Translators: this is the home folder and %s is the user's username
 #: libdeja/CommonUtils.vala:637
@@ -1472,8 +1482,8 @@ msgstr "ファイルをリストアップしています…"
 #: libdeja/Operation.vala:64 libdeja/Operation.vala:93
 #: libdeja/tools/duplicity/DuplicityJob.vala:405
 #: libdeja/tools/duplicity/DuplicityJob.vala:416
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:451
+#: libdeja/tools/duplicity/DuplicityJob.vala:456
 msgid "Preparing…"
 msgstr "準備しています…"
 
@@ -1483,33 +1493,33 @@ msgid "Paused (no network)"
 msgstr "中断 (ネットワークが利用できません)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:483
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "‘%s’ を復元できませんでした: 場所の指定が適切ではありません"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:589
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "バックアップの保存場所が小さすぎます。%s 以上の場所を試してみてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:614
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr "バックアップの保存場所に十分な空き領域がありません。%s 以上の場所を試してみてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:635
+#: libdeja/tools/duplicity/DuplicityJob.vala:649
 msgid "Cleaning up…"
 msgstr "クリーンアップしています…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1518,26 +1528,26 @@ msgstr "次のファイルがバックアップできませんでした。ファ
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:746
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr "次のファイルが復元できませんでした。ファイルを書き込めるか確認してください。"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:965
 msgid "Bad encryption password."
 msgstr "暗号化パスワードが違います。"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:1010
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’ を復元できませんでした: ファイルがバックアップ内に見つかりません"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1021
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1546,73 +1556,73 @@ msgid ""
 msgstr ""
 "見つかったバックアップのコンピューター名は %s ですが、現在のコンピューター名は %s です。意図していない場合は、別の場所にバックアップしてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1024
 msgid "Computer name changed"
 msgstr "コンピューター名が変更されました"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ を作成しようとしましたが権限がありません。"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ を読み込もうとしましたが権限がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ を削除しようとしましたが権限がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "バックアップの保存場所 ‘%s’ が存在しません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1084
+#: libdeja/tools/duplicity/DuplicityJob.vala:1135
 msgid "No space left."
 msgstr "空き容量がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
+#: libdeja/tools/duplicity/DuplicityJob.vala:1098
 msgid "Invalid ID."
 msgstr "不正な ID です。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
+#: libdeja/tools/duplicity/DuplicityJob.vala:1100
 msgid "Invalid secret key."
 msgstr "不正な Secret Key です。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
+#: libdeja/tools/duplicity/DuplicityJob.vala:1102
 msgid "Your Amazon Web Services account is not signed up for the S3 service."
 msgstr "あなたの Amazon Web サービスアカウントは S3 サービスにサインアップされていません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
+#: libdeja/tools/duplicity/DuplicityJob.vala:1111
 msgid "S3 bucket name is not available."
 msgstr "S3 バケット名が使用できません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1124
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "ファイル ‘%s’ を読み込み中にエラー。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1126
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "ファイル ‘%s’ を書き込み中にエラー。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1137
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ に空き容量がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1145
 msgid "No backup files found"
 msgstr "バックアップファイルが見つかりません"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1195
 msgid "Uploading…"
 msgstr "アップロードしています…"
 
