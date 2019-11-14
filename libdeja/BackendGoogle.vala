@@ -20,6 +20,9 @@
 /**
  * This backend is for the consumer-focused storage offering by Google.
  * At the time of this writing, it is called Google Drive.
+ *
+ * See the following doc for more info on how we authorize ourselves:
+ * https://developers.google.com/identity/protocols/OAuth2InstalledApp
  */
 
 using GLib;
@@ -401,7 +404,7 @@ public class BackendGoogle : Backend
     if (reader == null) {
       // Problem with authorization -- maybe we were revoked?
       // Let's restart the auth process.
-      yield start_authorization();
+      start_authorization();
       return;
     }
 
@@ -446,7 +449,7 @@ public class BackendGoogle : Backend
     }
   }
 
-  async string? get_consent_location() throws Error
+  string get_consent_location()
   {
     var message = Soup.Form.request_new(
       "GET",
@@ -457,14 +460,7 @@ public class BackendGoogle : Backend
       "code_challenge", pkce,
       "scope", "https://www.googleapis.com/auth/drive.file"
     );
-    message.set_flags(Soup.MessageFlags.NO_REDIRECT);
-    yield session.send_async(message);
-
-    var location = message.response_headers.get_one("location");
-    if (location == null)
-      stop_login(message.reason_phrase);
-
-    return location;
+    return message.uri.to_string(false);
   }
 
   async void get_credentials(string code) throws Error
@@ -526,7 +522,7 @@ public class BackendGoogle : Backend
     get_credentials.begin(code);
   }
 
-  async void start_authorization() throws Error
+  void start_authorization() throws Error
   {
     // Start a server and listen on it
     server = new Soup.Server("server-header",
@@ -542,7 +538,7 @@ public class BackendGoogle : Backend
     pkce = Uuid.string_random() + Uuid.string_random();
 
     // And show the oauth consent page finally
-    var location = yield get_consent_location();
+    var location = get_consent_location();
     if (location != null)
       show_oauth_consent_page(
         _("You first need to allow Déjà Dup Backup Tool to access your Google account."),
@@ -554,7 +550,7 @@ public class BackendGoogle : Backend
   {
     yield find_refresh_token();
     if (refresh_token == null)
-      yield start_authorization();
+      start_authorization();
     else {
       // We refresh the tokens ourselves (rather than duplicity) for two reasons:
       // 1) We can snapshot the current access/refresh tokens into libsecret
