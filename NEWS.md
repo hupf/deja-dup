@@ -1,3 +1,7 @@
+# 40.4
+- Fix a bug that prevented the first login to Google Drive
+- Update translations
+
 # 40.3
 - Fix a bug that prevented resuming a full backup
 - Update translations

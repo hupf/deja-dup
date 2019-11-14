@@ -17,7 +17,7 @@
 # along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
 
 project('deja-dup', ['vala', 'c'],
-    version: '40.3',
+    version: '40.4',
     license: 'GPLv3+',
     meson_version: '>= 0.47')
 
