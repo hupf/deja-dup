@@ -103,8 +103,11 @@ class BaseTest(unittest.TestCase):
         self.addCleanup(self.kill_pid, pid)
         return pid
 
-    def cmd(self, *args, window=True):
-        pid = self.start_pid(os.environ['DD_EXEC'], *args)
+    def cmd(self, *args, window=True, env=None):
+        execline = os.environ['DD_EXEC']
+        if env:
+            execline = 'env %s %s' % (env, execline)
+        pid = self.start_pid(execline, *args)
         return tree.root.application(os.environ['DD_APPID']) if window else pid
 
     def monitor(self, *args, window=True):
