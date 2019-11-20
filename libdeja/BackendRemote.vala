@@ -163,6 +163,8 @@ public class BackendRemote : BackendFile
     }
 
     var root = get_root_from_settings();
+    if (root == null)
+      throw new IOError.FAILED("%s", _("Could not mount storage location."));
 
     if (root.get_uri_scheme() == "smb" && root.get_uri().split("/").length < 5) {
       // Special sanity check for some edge cases like smb:// where if the user
