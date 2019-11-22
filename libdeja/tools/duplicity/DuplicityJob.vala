@@ -171,6 +171,9 @@ internal class DuplicityJob : DejaDup.ToolJob
       return;
     }
 
+    if (mode == DejaDup.ToolJob.Mode.INVALID) // already stopped
+      return;
+
     foreach (string s in envp)
       saved_envp.append(s);
 
