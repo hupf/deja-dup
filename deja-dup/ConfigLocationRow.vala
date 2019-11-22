@@ -12,21 +12,12 @@ public class ConfigLocationRow : BuilderWidget
     Object(builder: builder);
   }
 
-  List<Settings> all_settings;
+  DejaDup.BackendWatcher watcher;
   construct {
     adopt_name("location");
 
-    var settings = DejaDup.get_settings();
-    settings.changed["backend"].connect(update_text);
-    all_settings.prepend(settings);
-
-    string[] roots = {DejaDup.DRIVE_ROOT, DejaDup.GOOGLE_ROOT,
-                      DejaDup.LOCAL_ROOT, DejaDup.REMOTE_ROOT};
-    foreach (var root in roots) {
-      settings = DejaDup.get_settings(root);
-      settings.change_event.connect(update_text_handler);
-      all_settings.prepend(settings);
-    }
+    watcher = new DejaDup.BackendWatcher();
+    watcher.changed.connect(update_text);
 
     update_text();
 
@@ -49,11 +40,6 @@ public class ConfigLocationRow : BuilderWidget
     var backend = DejaDup.Backend.get_default();
     var description = builder.get_object("location_description") as Gtk.Label;
     description.label = backend.get_location_pretty();
-  }
-
-  bool update_text_handler() {
-    update_text();
-    return false;
   }
 
   void show_location_options() {

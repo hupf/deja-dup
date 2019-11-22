@@ -225,7 +225,6 @@ static void begin_monitoring()
   DejaDup.Network.get().notify["metered"].connect(network_changed);
 
   var mon = VolumeMonitor.get();
-  mon.ref(); // bug 569418; bad things happen when VM goes away
   mon.volume_added.connect(volume_added);
 
   watch_settings();

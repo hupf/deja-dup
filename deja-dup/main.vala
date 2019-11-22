@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  * SPDX-FileCopyrightText: Canonical Ltd
  * SPDX-FileCopyrightText: Michael Terry
- * SPDX-FileCopyrightText: 2010 Urban Skudnik <urban.skudnik@gmail.com>
  */
 
 using GLib;
@@ -15,14 +14,13 @@ public class DejaDupApp : Gtk.Application
   Gtk.ApplicationWindow main_window = null;
   Gtk.MenuButton menu_button = null;
   SimpleAction quit_action = null;
-  public AssistantOperation op {get; private set; default = null;}
+  public AssistantOperation operation {get; private set; default = null;}
 
   const OptionEntry[] OPTIONS = {
     {"version", 0, 0, OptionArg.NONE, null, N_("Show version"), null},
     {"restore", 0, 0, OptionArg.NONE, null, N_("Restore given files"), null},
     {"backup", 0, 0, OptionArg.NONE, null, N_("Immediately start a backup"), null},
     {"auto", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
-    {"restore-missing", 0, 0, OptionArg.NONE, null, N_("Restore deleted files"), null},
     {"delay", 0, OptionFlags.HIDDEN, OptionArg.STRING, null, null, null},
     {"prompt", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
     {"", 0, 0, OptionArg.FILENAME_ARRAY, null, null, null}, // remaining
@@ -44,7 +42,15 @@ public class DejaDupApp : Gtk.Application
     {"quit", quit},
   };
 
-  public DejaDupApp()
+  static DejaDupApp instance;
+
+  public static DejaDupApp get_instance() {
+    if (instance == null)
+      instance = new DejaDupApp();
+    return instance;
+  }
+
+  private DejaDupApp()
   {
     Object(application_id: Config.APPLICATION_ID,
            flags: ApplicationFlags.HANDLES_COMMAND_LINE);
@@ -71,7 +77,7 @@ public class DejaDupApp : Gtk.Application
     }
 
     if (options.contains("restore")) {
-      if (op != null) {
+      if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
@@ -85,34 +91,8 @@ public class DejaDupApp : Gtk.Application
 
       restore_full(file_list);
     }
-    else if (options.contains("restore-missing")) {
-      if (op != null) {
-        command_line.printerr("%s\n", _("An operation is already in progress"));
-        return 1;
-      }
-
-      if (filenames.length == 0) {
-        command_line.printerr("%s\n", _("No directory provided"));
-        return 1;
-      }
-      else if (filenames.length > 1) {
-        command_line.printerr("%s\n", _("Only one directory can be shown at once"));
-        return 1;
-      }
-
-      File list_directory = command_line.create_file_for_arg(filenames[0]);
-      if (!list_directory.query_exists(null)) {
-        command_line.printerr("%s\n", _("Directory does not exist"));
-        return 1;
-      }
-      if (list_directory.query_file_type (0, null) != FileType.DIRECTORY) {
-        command_line.printerr("%s\n", _("You must provide a directory, not a file"));
-        return 1;
-      }
-      assign_op(new AssistantRestoreMissing(list_directory));
-    }
     else if (options.contains("backup")) {
-      if (op != null) {
+      if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
@@ -133,17 +113,12 @@ public class DejaDupApp : Gtk.Application
     return 0;
   }
 
-  public void register_window(Gtk.Window w)
-  {
-    add_window(w);
-  }
-
   public override void activate()
   {
     base.activate();
 
-    if (op != null)
-      op.present_with_time(Gtk.get_current_event_time());
+    if (operation != null)
+      operation.present_with_time(Gtk.get_current_event_time());
     else if (main_window != null)
       main_window.present_with_time(Gtk.get_current_event_time());
     else {
@@ -156,7 +131,6 @@ public class DejaDupApp : Gtk.Application
         this.main_window = null;
         this.menu_button = null;
       });
-      register_window(main_window);
       main_window.show_all();
     }
   }
@@ -191,39 +165,38 @@ public class DejaDupApp : Gtk.Application
 
   public override void shutdown()
   {
-    if (op != null)
-      op.stop();
+    if (operation != null)
+      operation.stop();
     base.shutdown();
   }
 
   void clear_op()
   {
-    op = null;
+    operation = null;
     quit_action.set_enabled(true);
   }
 
   void assign_op(AssistantOperation op)
   {
-    if (this.op != null) {
+    if (operation != null) {
       warning("Trying to override operation! This shouldn't happen.");
       return;
     }
 
-    this.op = op;
-    this.op.destroy.connect(clear_op);
+    operation = op;
+    operation.destroy.connect(clear_op);
     quit_action.set_enabled(false);
-    register_window(op);
 
     if (main_window != null) {
-      op.transient_for = main_window;
-      op.modal = true;
-      op.destroy_with_parent = true;
-      op.type_hint = Gdk.WindowTypeHint.DIALOG;
+      operation.transient_for = main_window;
+      operation.modal = true;
+      operation.destroy_with_parent = true;
+      operation.type_hint = Gdk.WindowTypeHint.DIALOG;
       main_window.present_with_time(Gtk.get_current_event_time());
     }
 
-    op.show_all();
-    op.present_with_time(Gtk.get_current_event_time());
+    operation.show_all();
+    operation.present_with_time(Gtk.get_current_event_time());
 
     Gdk.notify_startup_complete();
   }
@@ -275,7 +248,7 @@ public class DejaDupApp : Gtk.Application
 
   public void backup()
   {
-    if (op != null) {
+    if (operation != null) {
       op_show();
     } else {
       backup_full(false);
@@ -284,7 +257,7 @@ public class DejaDupApp : Gtk.Application
 
   public void backup_auto()
   {
-    if (op == null) {
+    if (operation == null) {
       backup_full(true);
     }
   }
@@ -298,23 +271,32 @@ public class DejaDupApp : Gtk.Application
 
   public void restore()
   {
-    if (op != null) {
+    if (operation != null) {
       op_show();
     } else {
       restore_full(null);
     }
   }
 
-  void restore_full(List<File>? file_list)
+  public void restore_files(List<File> file_list, string? when = null)
   {
-    assign_op(new AssistantRestore.with_files(file_list));
+    if (operation != null) {
+      op_show();
+    } else {
+      restore_full(file_list, when);
+    }
+  }
+
+  void restore_full(List<File>? file_list, string? when = null)
+  {
+    assign_op(new AssistantRestore.with_files(file_list, when));
   }
 
   void op_show()
   {
-    // Show op window if it exists, else just activate
-    if (op != null)
-      op.force_visible(true);
+    // Show operation window if it exists, else just activate
+    if (operation != null)
+      operation.force_visible(true);
     else
       activate();
   }
@@ -350,5 +332,5 @@ int main(string[] args)
 
   Hdy.init(ref args);
 
-  return new DejaDupApp().run(args);
+  return DejaDupApp.get_instance().run(args);
 }

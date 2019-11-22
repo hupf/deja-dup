@@ -75,8 +75,6 @@ public abstract class AssistantOperation : Assistant
   protected bool error_occurred {get; private set;}
   bool gives_progress;
 
-  bool searched_for_passphrase = false;
-
   bool saved_pos;
   int saved_x;
   int saved_y;
@@ -86,16 +84,23 @@ public abstract class AssistantOperation : Assistant
 
   construct
   {
-    add_custom_config_pages();
-    add_backend_install_page();
-    add_setup_pages();
-    add_confirm_page();
-    add_password_page();
-    add_nag_page();
-    add_consent_page();
-    add_question_page();
-    add_progress_page();
-    add_summary_page();
+    // This is a bit of a hack -- ideally we wouldn't rely on idle loop for this
+    // sort of setup, but subclasses aren't ready to be called when we are
+    // constructing ourselves. I need to properly refactor these classes.
+    // But for now, just add everything next idle check.
+    Idle.add(() => {
+      add_custom_config_pages();
+      add_backend_install_page();
+      add_setup_pages();
+      add_confirm_page();
+      add_password_page();
+      add_nag_page();
+      add_consent_page();
+      add_question_page();
+      add_progress_page();
+      add_summary_page();
+      return false;
+    });
 
     canceled.connect(do_cancel);
     closed.connect(do_close);
@@ -822,46 +827,8 @@ public abstract class AssistantOperation : Assistant
     }
   }
 
-  async string? lookup_keyring()
-  {
-    try {
-      return Secret.password_lookup_sync(DejaDup.get_passphrase_schema(),
-                                         null,
-                                         "owner", Config.PACKAGE,
-                                         "type", "passphrase");
-    }
-    catch (Error e) {
-      warning("%s\n", e.message);
-      return null;
-    }
-  }
-
   protected void get_passphrase()
   {
-    if (!searched_for_passphrase && !DejaDup.in_testing_mode() &&
-        op.use_cached_password) {
-      // If we get asked for passphrase again, it is because a
-      // saved or entered passphrase didn't work.  So don't bother
-      // searching a second time.
-      searched_for_passphrase = true;
-
-      string str = null;
-
-      // First, try user's keyring
-      var loop = new MainLoop(null);
-      lookup_keyring.begin((obj, res) => {
-        str = lookup_keyring.end(res);
-        loop.quit();
-      });
-      loop.run();
-
-      // Did we get anything?
-      if (str != null) {
-        op.set_passphrase(str);
-        return;
-      }
-    }
-
     ask_passphrase();
   }
 
@@ -954,39 +921,14 @@ public abstract class AssistantOperation : Assistant
 
     if (op.use_cached_password) {
       if (encrypt_enabled.active) {
-        passphrase = encrypt_entry.get_text().strip();
-        if (passphrase == "") // all whitespace password?  allow it...
-          passphrase = encrypt_entry.get_text();
+        passphrase = DejaDup.process_passphrase(encrypt_entry.get_text());
       }
 
-      try {
-        if (passphrase != "" && encrypt_remember.active) {
-          // Save passphrase long term
-          Secret.password_store_sync(DejaDup.get_passphrase_schema(),
-                                     Secret.COLLECTION_DEFAULT,
-                                     _("Backup encryption password"),
-                                     passphrase,
-                                     null,
-                                     "owner", Config.PACKAGE,
-                                     "type", "passphrase");
-        }
-        else {
-          // If we weren't asked to save a password, clear it out. This
-          // prevents any attempt to accidentally use an old password.
-          Secret.password_clear_sync(DejaDup.get_passphrase_schema(),
-                                     null,
-                                     "owner", Config.PACKAGE,
-                                     "type", "passphrase");
-        }
-      }
-      catch (Error e) {
-        warning("%s\n", e.message);
-      }
+      var remember = passphrase != "" && encrypt_remember.active;
+      yield DejaDup.store_passphrase(passphrase, remember);
     }
     else {
-      passphrase = nag_entry.get_text().strip();
-      if (passphrase == "") // all whitespace password?  allow it...
-        passphrase = nag_entry.get_text();
+      passphrase = DejaDup.process_passphrase(nag_entry.get_text());
     }
 
     op.set_passphrase(passphrase);

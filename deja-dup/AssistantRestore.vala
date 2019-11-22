@@ -10,6 +10,7 @@ using GLib;
 public class AssistantRestore : AssistantOperation
 {
   public string restore_location {get; protected set; default = "/";}
+  public string when {get; protected set; default = null;}
 
   protected List<File> _restore_files;
   public List<File> restore_files {
@@ -21,11 +22,11 @@ public class AssistantRestore : AssistantOperation
     }
   }
 
-  public AssistantRestore.with_files(List<File> files)
+  public AssistantRestore.with_files(List<File> files, string? when = null)
   {
     // This puts the restore dialog into 'known file mode', where it only
     // restores the listed files, not the whole backup
-    restore_files = files;
+    Object(restore_files: files, when: when);
   }
 
   protected DejaDup.OperationStatus query_op;
@@ -51,6 +52,7 @@ public class AssistantRestore : AssistantOperation
   Gtk.Widget date_page;
   Gtk.Widget restore_dest_page;
   bool got_dates;
+  bool show_confirm_page = true;
   construct
   {
     title = _("Restore");
@@ -62,8 +64,14 @@ public class AssistantRestore : AssistantOperation
 
   protected override void add_setup_pages()
   {
-    add_query_backend_page();
-    add_date_page();
+    if (when == null) {
+      add_query_backend_page();
+      add_date_page();
+    } else {
+      // if we have a date, we only show one page before the confirm, so there
+      // is very little to confirm, not worth it.
+      show_confirm_page = false;
+    }
     add_restore_dest_page();
   }
 
@@ -137,22 +145,32 @@ public class AssistantRestore : AssistantOperation
     var orig_radio = new Gtk.RadioButton(null);
     orig_radio.set("label", _("Restore files to _original locations"),
                    "use-underline", true);
-    orig_radio.toggled.connect((r) => {if (r.active) restore_location = "/";});
+    orig_radio.toggled.connect((r) => {
+      if (r.active) {
+        restore_location = "/";
+        allow_forward(true);
+      }
+    });
 
     var cust_radio = new Gtk.RadioButton(null);
     cust_radio.set("label", _("Restore to _specific folder"),
                    "use-underline", true,
                    "group", orig_radio);
     cust_radio.toggled.connect((r) => {
-      if (r.active)
+      if (r.active) {
         restore_location = cust_button.get_filename();
+        allow_forward(restore_location != null);
+      }
       cust_box.sensitive = r.active;
     });
 
     cust_button =
       new Gtk.FileChooserButton(_("Choose destination for restored files"),
                                 Gtk.FileChooserAction.SELECT_FOLDER);
-    cust_button.selection_changed.connect((b) => {restore_location = b.get_filename();});
+    cust_button.selection_changed.connect((b) => {
+      restore_location = b.get_filename();
+      allow_forward(restore_location != null);
+    });
 
     var cust_label = new Gtk.Label("    " + _("Restore _folder"));
     cust_label.set("mnemonic-widget", cust_button,
@@ -175,6 +193,9 @@ public class AssistantRestore : AssistantOperation
 
   protected override Gtk.Widget? make_confirm_page()
   {
+    if (!show_confirm_page)
+      return null;
+
     int rows = 0;
     Gtk.Widget label;
 
@@ -249,7 +270,10 @@ public class AssistantRestore : AssistantOperation
   void add_restore_dest_page()
   {
     var page = make_restore_dest_page();
-    append_page(page);
+    if (show_confirm_page)
+      append_page(page);
+    else
+      append_page(page, Type.NORMAL, get_apply_text());
     set_page_title(page, _("Restore to Where?"));
     restore_dest_page = page;
   }
@@ -257,7 +281,9 @@ public class AssistantRestore : AssistantOperation
   protected override DejaDup.Operation? create_op()
   {
     string date = null;
-    if (got_dates) {
+    if (when != null) {
+      date = when;
+    } else if (got_dates) {
       Gtk.TreeIter iter;
       if (date_combo.get_active_iter(out iter))
         date_store.get(iter, 1, out date);
@@ -289,52 +315,10 @@ public class AssistantRestore : AssistantOperation
     return _("Restoring:");
   }
 
-  bool is_same_day(DateTime one, DateTime two)
-  {
-    return one.get_year() == two.get_year() &&
-           one.get_day_of_year() == two.get_day_of_year();
-  }
-
   protected virtual void handle_collection_dates(DejaDup.OperationStatus op, List<string>? dates)
   {
-    /*
-     * Receives list of dates of backups and shows them to user
-     *
-     * After receiving list of dates at which backups were performed function
-     * converts dates to TimeVal structures and later converts them to Time to
-     * time to show them in nicely formate local form.
-     */
-    var datetimes = new List<DateTime?>();
-
     got_dates = true;
-    date_store.clear();
-
-    foreach (string date in dates) {
-      var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
-      if (datetime != null) {
-        datetimes.append(datetime);
-      }
-    }
-
-    for (unowned List<DateTime?>? i = datetimes; i != null; i = i.next) {
-      var datetime = i.data;
-
-      string format = "%x";
-      if ((i.prev != null && is_same_day(i.prev.data, datetime)) ||
-          (i.next != null && is_same_day(i.next.data, datetime))) {
-        // Translators: %x is the current date, %X is the current time.
-        // This will be in a list with other strings that just have %x (the
-        // current date).  So make sure if you change this, it still makes
-        // sense in that context.
-        format = _("%x %X");
-      }
-
-      string user_str = datetime.format(format);
-      Gtk.TreeIter iter;
-      date_store.prepend(out iter);
-      date_store.@set(iter, 0, user_str, 1, datetime.format("%s"));
-      date_combo.set_active_iter(iter);
-    }
+    TimeCombo.fill_combo_with_dates(date_combo, dates);
 
     // If we didn't see any dates...  Must not be any backups on the backend
     if (date_store.iter_n_children(null) == 0)
@@ -395,12 +379,6 @@ public class AssistantRestore : AssistantOperation
       // the summary/error page).  Skip the date portion, since the backend
       // must not be capable of giving us dates (duplicity < 0.5.04 couldn't).
       if (!got_dates)
-        skip();
-    }
-    else if (page == restore_dest_page) {
-      // If we're doing a known-file-set restore, assume user wants same-location
-      // restore.
-      if (restore_files != null)
         skip();
     }
     else if (page == confirm_page) {

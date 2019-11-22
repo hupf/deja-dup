@@ -8,14 +8,14 @@ using GLib;
 
 namespace DejaDup {
 public class OperationFiles : Operation {
-  public signal void listed_current_files(string date, string file);
-  public File source {get; construct;}
+  public signal void listed_current_files(string date, string file, string type);
+  public File? source {get; construct;}
 
   private DateTime time = null;
 
   public OperationFiles(Backend backend,
-                        DateTime? time_in,
-                        File source) {
+                        DateTime? time_in = null,
+                        File? source = null) {
     Object(mode: ToolJob.Mode.LIST, source: source, backend: backend);
     if (time_in != null)
         time = time_in;
@@ -28,7 +28,7 @@ public class OperationFiles : Operation {
 
   protected override void connect_to_job()
   {
-    job.listed_current_files.connect((d, date, file) => {listed_current_files(date, file);});
+    job.listed_current_files.connect((d, date, file, type) => {listed_current_files(date, file, type);});
     base.connect_to_job();
   }
 

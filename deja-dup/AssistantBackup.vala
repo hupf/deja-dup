@@ -136,4 +136,9 @@ public class AssistantBackup : AssistantOperation
       set_page_title(page, _("Backing Up…"));
     }
   }
+
+  protected override void apply_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
+  {
+    base.apply_finished(op, success, cancelled, detail);
+  }
 }

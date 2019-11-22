@@ -13,6 +13,13 @@ public string get_trash_path()
   return Path.build_filename(Environment.get_user_data_dir(), "Trash");
 }
 
+// The path of the canary metadata dir we insert into our backups (with a "README" file)
+public File get_metadir()
+{
+  var cachedir = try_realpath(Environment.get_user_cache_dir());
+  return File.new_for_path(Path.build_filename(cachedir, Config.PACKAGE, "metadata"));
+}
+
 public string? parse_keywords(string dir)
 {
   string result = dir;
@@ -78,4 +85,3 @@ public File[] parse_dir_list(string*[] dirs)
 }
 
 } // end namespace
-

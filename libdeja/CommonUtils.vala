@@ -588,6 +588,43 @@ public Secret.Schema get_passphrase_schema()
                            "type", Secret.SchemaAttributeType.STRING);
 }
 
+// Process (strips) a passphrase
+public string process_passphrase(string input)
+{
+  var processed = input.strip();
+  if (processed == "") // all whitespace password?  allow it...
+    return input;
+  return processed;
+}
+
+// Should be called even if remember=false, so we can clear it
+public async void store_passphrase(string passphrase, bool remember)
+{
+  try {
+    if (remember) {
+      // Save passphrase long term
+      Secret.password_store_sync(get_passphrase_schema(),
+                                 Secret.COLLECTION_DEFAULT,
+                                 _("Backup encryption password"),
+                                 passphrase,
+                                 null,
+                                 "owner", Config.PACKAGE,
+                                 "type", "passphrase");
+    }
+    else {
+      // If we weren't asked to save a password, clear it out. This
+      // prevents any attempt to accidentally use an old password.
+      Secret.password_clear_sync(get_passphrase_schema(),
+                                 null,
+                                 "owner", Config.PACKAGE,
+                                 "type", "passphrase");
+    }
+  }
+  catch (Error e) {
+    warning("%s\n", e.message);
+  }
+}
+
 public bool ensure_directory_exists(string path)
 {
   var gfile = File.new_for_path(path);
@@ -686,14 +723,14 @@ public string[] get_tempdirs()
   return {Environment.get_tmp_dir(), "/var/tmp", hometmp};
 }
 
-public async void clean_tempdirs()
+public async void clean_tempdirs(bool all=true)
 {
   var tempdirs = get_tempdirs();
   const int NUM_ENUMERATED = 16;
   foreach (var tempdir in tempdirs) {
     var gfile = File.new_for_path(tempdir);
 
-    // Now try to find and delete all files that start with "duplicity-"
+    // Now try to find and delete all files that start with "duplicity-" or "deja-dup-"
     try {
       var enumerator = yield gfile.enumerate_children_async(
                          FileAttribute.STANDARD_NAME,
@@ -703,7 +740,7 @@ public async void clean_tempdirs()
         var infos = yield enumerator.next_files_async(NUM_ENUMERATED,
                                                       Priority.DEFAULT, null);
         foreach (FileInfo info in infos) {
-          if (info.get_name().has_prefix("duplicity-")) {
+          if (info.get_name().has_prefix("duplicity-") || (all && info.get_name().has_prefix("deja-dup-"))) {
             var child = gfile.get_child(info.get_name());
             yield new DejaDup.RecursiveDelete(child).start_async();
           }

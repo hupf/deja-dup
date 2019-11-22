@@ -28,8 +28,6 @@ public class MountOperationAssistant : MountOperation
   public bool go_forward {get; set; default = false;} // set by backends if they want to move on
   public bool retry_mode {get; set; default = false;} // skip any questions, send existing data back
 
-  signal void button_clicked();
-
   public AssistantOperation assist {get; construct;}
   Gtk.Bin password_page;
   Gtk.Box layout;

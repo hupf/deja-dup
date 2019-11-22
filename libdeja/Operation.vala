@@ -74,6 +74,7 @@ public abstract class Operation : Object
   bool finished = false;
   string saved_detail = null;
   Operation chained_op = null;
+  bool searched_for_passphrase = false;
 
   public async virtual void start()
   {
@@ -113,10 +114,8 @@ public abstract class Operation : Object
     ref(); // don't know what might happen in passphrase_required call
 
     // Get encryption passphrase if needed
-    if (needs_password && passphrase == null) {
-      needs_password = true;
-      passphrase_required(); // will block and call set_passphrase when ready
-    }
+    if (needs_password && passphrase == null)
+      find_passphrase_sync(); // will block and call set_passphrase when ready
     else
       job.encrypt_password = passphrase;
 
@@ -185,7 +184,7 @@ public abstract class Operation : Object
     finished = true;
 
     yield backend.cleanup();
-    yield DejaDup.clean_tempdirs();
+    yield DejaDup.clean_tempdirs(false /* just duplicity temp files */);
 
     done(success, cancelled, detail);
   }
@@ -228,7 +227,7 @@ public abstract class Operation : Object
     subop.progress.connect((p) => {progress(p);});
     subop.passphrase_required.connect(() => {
       needs_password = true;
-      passphrase_required();
+      find_passphrase_sync();
       if (!needs_password)
         subop.set_passphrase(passphrase);
     });
@@ -243,6 +242,49 @@ public abstract class Operation : Object
     progress(0);
 
     yield subop.start();
+  }
+
+  async string? lookup_keyring()
+  {
+    try {
+      return Secret.password_lookup_sync(DejaDup.get_passphrase_schema(),
+                                         null,
+                                         "owner", Config.PACKAGE,
+                                         "type", "passphrase");
+    }
+    catch (Error e) {
+      warning("%s\n", e.message);
+      return null;
+    }
+  }
+
+  void find_passphrase_sync()
+  {
+    // First, looks locally in keyring
+    if (!searched_for_passphrase && !DejaDup.in_testing_mode() && use_cached_password) {
+      // If we get asked for passphrase again, it is because a
+      // saved or entered passphrase didn't work.  So don't bother
+      // searching a second time.
+      searched_for_passphrase = true;
+
+      string str = null;
+
+      // First, try user's keyring
+      var loop = new MainLoop(null);
+      lookup_keyring.begin((obj, res) => {
+        str = lookup_keyring.end(res);
+        loop.quit();
+      });
+      loop.run();
+
+      // Did we get anything?
+      if (str != null) {
+        set_passphrase(str);
+        return;
+      }
+    }
+
+    passphrase_required();
   }
 
 #if HAS_PACKAGEKIT

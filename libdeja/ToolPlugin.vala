@@ -26,7 +26,7 @@ public abstract class ToolJob : Object
 
   // type-specific signals
   public signal void collection_dates(List<string>? dates); // HISTORY
-  public signal void listed_current_files(string date, string file); // LIST
+  public signal void listed_current_files(string date, string file, string type); // LIST
 
   // life cycle control
   public abstract void start ();

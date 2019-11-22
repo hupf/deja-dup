@@ -27,12 +27,12 @@ public class PreferencesWindow : BuilderWidget
         return false;
     });
 
+    DejaDupApp.get_instance().add_window(widget);
     widget.show();
   }
 
   public PreferencesWindow()
   {
-    typeof(Hdy.PreferencesWindow).ensure();
     Object(builder: new Builder("preferences"));
   }
 

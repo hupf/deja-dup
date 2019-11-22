@@ -32,9 +32,6 @@ public class MainWindow : BuilderWidget
     var backup_button = builder.get_object("backup-button") as Gtk.Button;
     backup_button.clicked.connect(application.backup);
 
-    var restore_button = builder.get_object("restore-button") as Gtk.Button;
-    restore_button.clicked.connect(application.restore);
-
     var initial_backup_button = builder.get_object("initial-backup-button") as Gtk.Button;
     initial_backup_button.clicked.connect(application.backup);
 
@@ -47,8 +44,12 @@ public class MainWindow : BuilderWidget
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
                                null, null);
 
+    new HeaderBar(builder);
+    new Browser(builder, application);
     new ConfigAutoBackup(builder);
     new ConfigStatusLabel(builder);
+
+    DejaDupApp.get_instance().add_window(app_window);
   }
 
   static bool get_visible_child(Value val, Variant variant, void *data)

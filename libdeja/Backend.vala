@@ -20,6 +20,7 @@ public abstract class Backend : Object
   public signal void show_oauth_consent_page(string? message, string? url);
 
   public MountOperation mount_op {get; set;}
+  public signal void needed_mount_op(); // if user interaction was required, but not provided
 
   public abstract bool is_native(); // must be callable when nothing is mounted, nothing is prepared
   public virtual Icon? get_icon() {return null;}

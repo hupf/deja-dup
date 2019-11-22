@@ -53,6 +53,7 @@ public abstract class Assistant : Gtk.Window
 
   protected bool can_resume = false;
 
+  public weak List<PageInfo> first_shown = null;
   public weak List<PageInfo> current;
   List<PageInfo> infos;
 
@@ -95,6 +96,8 @@ public abstract class Assistant : Gtk.Window
     add(dlg_vbox);
 
     response.connect(handle_response);
+
+    DejaDupApp.get_instance().add_window(this);
   }
 
   public void allow_forward(bool allow)
@@ -250,6 +253,9 @@ public abstract class Assistant : Gtk.Window
     // Listeners of prepare may have changed current on us, so only proceed
     // if they haven't.
     if (current.data.page == info.page) {
+      if (first_shown == null)
+        first_shown = current;
+
       use_title(info);
       set_buttons();
 
@@ -303,7 +309,7 @@ public abstract class Assistant : Gtk.Window
     default:
     case Type.NORMAL:
       show_cancel = true;
-      show_back = current.prev != null;
+      show_back = current.prev != null && current != first_shown;
       show_forward = true;
       break;
     case Type.INTERRUPT:

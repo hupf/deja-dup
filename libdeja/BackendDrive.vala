@@ -142,6 +142,10 @@ public class BackendDrive : BackendFile
       yield vol.mount(MountMountFlags.NONE, mount_op, null);
     } catch (IOError.ALREADY_MOUNTED e) {
       return false;
+    } catch (IOError.FAILED_HANDLED e) {
+      // needed mount_op but none provided
+      needed_mount_op();
+      return false;
     } catch (IOError.DBUS_ERROR e) {
       // This is not very descriptive, but IOError.DBUS_ERROR is the
       // error given when someone else is mounting at the same time.  Sometimes

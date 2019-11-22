@@ -54,9 +54,8 @@ public class OperationBackup : Operation
       job.includes.prepend(s);
 
     // Insert deja-dup meta info directory
-    string cachedir = Environment.get_user_cache_dir();
     try {
-      metadir = File.new_for_path(Path.build_filename(cachedir, Config.PACKAGE, "metadata"));
+      metadir = get_metadir();
       fill_metadir();
       job.includes.prepend(metadir);
     }

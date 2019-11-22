@@ -477,7 +477,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           }
 
           if (!local_file.has_prefix(slash_home_me) &&
-              !(DejaDup.in_testing_mode() && local_file.get_path().has_prefix(Environment.get_tmp_dir())))
+              !local_file.get_path().has_prefix(Environment.get_tmp_dir()))
             needs_root = true;
 
           try {
@@ -1164,15 +1164,17 @@ internal class DuplicityJob : DejaDup.ToolJob
           set_status(_("Uploading…"));
         break;
       case INFO_FILE_STAT:
-        process_file_stat(firstline[2], firstline[3], data, text);
+        process_file_stat(firstline[2], firstline[3], firstline[4], data, text);
         break;
       }
     }
   }
 
-  void process_file_stat(string date, string file, List<string> data, string text)
+  void process_file_stat(string date, string file, string type, List<string> data, string text)
   {
     if (mode != DejaDup.ToolJob.Mode.LIST)
+      return;
+    if (file == ".")
       return;
     if (state == State.CHECK_CONTENTS) {
       var gfile = make_file_obj(file);
@@ -1185,7 +1187,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           !gfile.has_prefix(slash_home))
         has_non_home_contents = true;
     }
-    listed_current_files(date, file);
+    listed_current_files(date, file, type);
   }
 
   void process_diff_file(string file) {
