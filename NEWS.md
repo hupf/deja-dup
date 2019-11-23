@@ -1,3 +1,7 @@
+# 40.5
+- Fix a bug that prevented backing up to Google Drive in some rare situations
+- Update translations
+
 # 40.4
 - Fix a bug that prevented the first login to Google Drive
 - Update translations
