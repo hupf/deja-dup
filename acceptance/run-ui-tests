@@ -47,6 +47,7 @@ elif [ "$1" = "--dev" ]; then
   cp "${BUILDDIR}/data/org.gnome.DejaDupDevel.gschema.xml" "${BUILDDIR}/tmpshare/glib-2.0/schemas"
   glib-compile-schemas "${BUILDDIR}/tmpshare/glib-2.0/schemas"
 
+  export PATH="$BUILDDIR/deja-dup:$PATH"
   export XDG_DATA_DIRS="${BUILDDIR}/tmpshare:${XDG_DATA_DIRS}"
   export DD_MODE="dev"
   export DD_EXEC="${BUILDDIR}/deja-dup/deja-dup"

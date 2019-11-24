@@ -78,12 +78,11 @@ class BackupTest(BaseTest):
         with self.new_files():
             self.walk_initial_backup(app)
 
-        starting_files = self.backup_files
-        self.set_string('last-run', '')
-        self.set_string('last-backup', '')
-        self.wait_for(lambda: self.get_string('last-backup'))
-        self.wait_for(lambda: not self.get_bus_pid(os.environ['DD_APPID']))
-        assert starting_files != self.backup_files
+        with self.new_files():
+            self.set_string('last-run', '')
+            self.set_string('last-backup', '')
+            self.wait_for(lambda: self.get_string('last-backup'))
+            self.wait_for(lambda: not self.get_bus_pid(os.environ['DD_APPID']))
 
     def test_storage_error(self):
         os.chmod(self.destdir, stat.S_IRUSR | stat.S_IXUSR)
@@ -145,10 +144,14 @@ class BackupTest(BaseTest):
                 # So don't bother testing it in this case, until they fix that
                 self.walk_initial_backup(app, password='nope', wait=False)
                 self.walk_incremental_backup(app, password='t', wait=False)
-            self.walk_initial_backup(app, password='t', wait=False)
+            else:
+                self.walk_initial_backup(app, password='t', wait=False)
         else:
-            self.walk_incremental_backup(app, password='nope', wait=False)
-            self.walk_incremental_backup(app, password='t', wait=False)
+            if os.environ.get('DD_DEBIAN_DUPLICITY') != '1':
+                self.walk_incremental_backup(app, password='nope', wait=False)
+                self.walk_incremental_backup(app, password='t', wait=False)
+            else:
+                self.walk_incremental_backup(app, password='t', wait=False)
         self.did_resume = False
         def finish_progress():
             try:

@@ -64,7 +64,7 @@ class RestoreTest(BaseTest):
                 )
             except GLib.GError:
                 return True
-        self.wait_for(ready, timeout=60)
+        self.wait_for(ready, timeout=120)
         if window.dead:
             return
 
