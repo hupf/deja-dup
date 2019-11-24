@@ -144,8 +144,7 @@ class BackupTest(BaseTest):
                 # So don't bother testing it in this case, until they fix that
                 self.walk_initial_backup(app, password='nope', wait=False)
                 self.walk_incremental_backup(app, password='t', wait=False)
-            else:
-                self.walk_initial_backup(app, password='t', wait=False)
+            self.walk_initial_backup(app, password='t', wait=False)
         else:
             if os.environ.get('DD_DEBIAN_DUPLICITY') != '1':
                 self.walk_incremental_backup(app, password='nope', wait=False)
