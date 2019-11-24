@@ -85,11 +85,6 @@ internal class DuplicityInstance : Object
 
     argv.append("--verbosity=9");
 
-    // It's possible for --use-agent to be on by default (as it is in Ubuntu).
-    // But we never want an agent, and it's a possible point of failure (e.g.
-    // bug 681002), so just make sure it's disabled.
-    argv.append("--gpg-options=--no-use-agent");
-
     // Cache signature files
     var cache_dir = forced_cache_dir;
     if (cache_dir == null)
