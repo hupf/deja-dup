@@ -344,7 +344,8 @@ public class BackendGoogle : Backend
 
     // Parse metadata
     reader.read_member("storageQuota");
-    reader.read_member("limit");
+    if (!reader.read_member("limit"))
+      return INFINITE_SPACE; // no limit present means an unlimited quota
     var limit = uint64.parse(reader.get_string_value());
     reader.end_member();
     reader.read_member("usage");
