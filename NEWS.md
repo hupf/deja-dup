@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC0-1.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
 # 40.5
 - Fix a bug that prevented backing up to Google Drive in some rare situations
 - Update translations

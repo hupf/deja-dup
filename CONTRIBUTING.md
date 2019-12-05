@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
 # Set Up the GNOME SDK
 
 To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
@@ -25,3 +30,7 @@ That will give you a full shell pointing at all your built executables.
 
 * Running all tests: `make check`
 * Running one test: `meson test script-threshold-inc -C builddir/ -v`
+
+# Copyright
+
+If you are making a [substantial patch](https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html) (adding ~15 lines or more), add yourself to the top of the file in a new copyright line.

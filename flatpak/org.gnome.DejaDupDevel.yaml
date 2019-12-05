@@ -1,4 +1,7 @@
 # -*- Mode: YAML; indent-tabs-mode: nil; tab-width: 2 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
 ---
 app-id: org.gnome.DejaDupDevel
 runtime: org.gnome.Platform
@@ -14,8 +17,8 @@ finish-args:
   - --talk-name=org.gtk.vfs.*
 
 modules:
-  - ./fasteners.json
-  - ./future.json
+  - ./fasteners.yaml
+  - ./future.yaml
 
   - name: lib2to3  # needed for past module (from future module)
     buildsystem: simple
@@ -49,7 +52,7 @@ modules:
         strip-components: 0
 
 
-  - ./pydrive.json
+  - ./pydrive.yaml
 
 
   - name: deja-dup

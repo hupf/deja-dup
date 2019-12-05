@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
 # Déjà Dup Backup Tool
 
 Déjà Dup is a simple backup tool. It hides the complexity of backing up the

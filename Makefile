@@ -1,20 +1,7 @@
 # -*- Mode: Makefile; indent-tabs-mode: t; tab-width: 2 -*-
 #
-# This file is part of Déjà Dup.
-# For copyright information, see AUTHORS.
-#
-# Déjà Dup is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 3 of the License, or
-# (at your option) any later version.
-#
-# Déjà Dup is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Déjà Dup.  If not, see <http://www.gnu.org/licenses/>.
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
 
 .PHONY: all
 all: configure
@@ -44,6 +31,8 @@ clean:
 .PHONY: pot
 pot: configure
 	ninja -C builddir deja-dup-pot help-deja-dup-pot
+	@sed -i 's/This file is distributed under the same license as the deja-dup package./SPDX-License-Identifier\: GPL-3.0-or-later/' po/deja-dup.pot
+	@sed -i '1i# SPDX-License-Identifier\: CC-BY-SA-4.0\n# SPDX-FileCopyrightText\: Michael Terry\n' help/deja-dup.pot
 
 .PHONY: translations
 translations: pot
@@ -52,6 +41,8 @@ translations: pot
 	bzr co --lightweight lp:~mterry/deja-dup/translations builddir/translations
 	cp -a builddir/translations/po/*.po po
 	cp -a builddir/translations/help/*.po help
+	@sed -i 's/This file is distributed under the same license as the deja-dup package./SPDX-License-Identifier\: GPL-3.0-or-later/' po/*.po
+	@sed -i 's/This file is distributed under the same license as the deja-dup package./SPDX-License-Identifier\: CC-BY-SA-4.0/' help/*.po
 	git add po/*.po
 	git add help/*.po
 
@@ -71,9 +62,11 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	for p in fasteners future pydrive; do \
-		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p.json $$p; \
+		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p $$p; \
+		../flatpak-builder-tools/flatpak-json2yaml.py -f --output flatpak/$$p.yaml flatpak/$$p.json; \
+		rm flatpak/$$p.json; \
+		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' flatpak/$$p.yaml; \
 	done
-	sed -i 's/^[][]//g' flatpak/*.json
 
 builddir/vlint:
 	mkdir -p builddir
@@ -84,3 +77,4 @@ builddir/vlint:
 .PHONY: lint
 lint: builddir/vlint
 	builddir/vlint -c vala-lint.conf .
+	reuse lint

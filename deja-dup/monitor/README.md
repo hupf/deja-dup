@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
 ## Multiple monitor daemons
 
 Profiles are a way to get parallel-installed deja-dups. They're used for testing containerized deployments like flatpak.

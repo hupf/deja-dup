@@ -1,3 +1,8 @@
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
 The meson yelp tooling assumes translation files and translated figure images
 are in locale subdirectories.
 

@@ -1,11 +1,18 @@
 # -*- Mode: YAML; indent-tabs-mode: nil; tab-width: 2 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
 ---
 include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_ci_initiative.yml
 
 variables:
   BUNDLE: deja-dup-dev.flatpak
 
-lint:
+reuse_lint:
+  image: fsfe/reuse
+  script: reuse lint
+
+vala_lint:
   image: valalang/lint
   script: io.elementary.vala-lint -c vala-lint.conf .
 
@@ -17,14 +24,6 @@ flatpak:
     FLATPAK_MODULE: deja-dup
     RUNTIME_REPO: https://nightly.gnome.org/gnome-nightly.flatpakrepo
     APP_ID: org.gnome.DejaDupDevel
-
-review:
-  extends: .review
-  dependencies:
-    - flatpak
-
-stop_review:
-  extends: .stop_review
 
 nightly:
   extends: .publish_nightly
