@@ -1,78 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- Mode: XML; indent-tabs-mode: nil; tab-width: 2 -*- -->
 <!--
 SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-<component type="desktop-application">
-    <id>@appid@</id>
+<component
+  type="desktop-application"
+  xmlns:its="http://www.w3.org/2005/11/its"
+  its:version="2.0"
+>
+  <id>@appid@</id>
 
-    <name>Déjà Dup Backup Tool</name>
-    <summary>Keep your important documents safe from disaster</summary>
-    <description>
-        <p>Déjà Dup is a simple backup tool. It hides the complexity of backing up the Right Way (encrypted, off-site, and regular) and uses duplicity as the backend.</p>
-        <ul>
-            <li>Support for local, remote, or cloud backup locations such as Google Drive</li>
-            <li>Securely encrypts and compresses your data</li>
-            <li>Incrementally backs up, letting you restore from any particular backup</li>
-            <li>Schedules regular backups</li>
-            <li>Integrates well into your GNOME desktop</li>
-        </ul>
-        <p>Déjà Dup focuses on ease of use and recovering from personal, accidental data loss. If you need a full system backup or an archival program, you may prefer other backup apps.</p>
-    </description>
+  <name>Déjà Dup Backup Tool</name>
+  <summary>Keep your important documents safe from disaster</summary>
+  <description>
+    <p>Déjà Dup is a simple backup tool. It hides the complexity of backing up the Right Way (encrypted, off-site, and regular) and uses duplicity as the backend.</p>
+    <ul>
+      <li>Support for local, remote, or cloud backup locations such as Google Drive</li>
+      <li>Securely encrypts and compresses your data</li>
+      <li>Incrementally backs up, letting you restore from any particular backup</li>
+      <li>Schedules regular backups</li>
+      <li>Integrates well into your GNOME desktop</li>
+    </ul>
+    <p>Déjà Dup focuses on ease of use and recovering from personal, accidental data loss. If you need a full system backup or an archival program, you may prefer other backup apps.</p>
+  </description>
 
-    <kudos>
-        <kudo>HiDpiIcon</kudo>
-        <kudo>HighContrast</kudo>
-        <kudo>ModernToolkit</kudo>
-        <kudo>Notifications</kudo>
-        <kudo>UserDocs</kudo>
-    </kudos>
+  <kudos>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>HighContrast</kudo>
+    <kudo>ModernToolkit</kudo>
+    <kudo>Notifications</kudo>
+    <kudo>UserDocs</kudo>
+  </kudos>
 
-    <provides>
-        <binary>deja-dup</binary>
-        <id>deja-dup.desktop</id>
-        <id>deja-dup-preferences.desktop</id>
-        <id>io.snapcraft.deja-dup-FWBFbkKw7QOrYcJDRBwoDT2JNsavuet8</id>
-        <id>org.gnome.DejaDup.desktop</id>
-    </provides>
+  <provides>
+    <binary>deja-dup</binary>
+    <id>deja-dup.desktop</id>
+    <id>deja-dup-preferences.desktop</id>
+    <id>io.snapcraft.deja-dup-FWBFbkKw7QOrYcJDRBwoDT2JNsavuet8</id>
+    <id>org.gnome.DejaDup.desktop</id>
+  </provides>
 
-    <project_license>GPL-3.0-or-later</project_license>
-    <launchable type="desktop-id">@appid@.desktop</launchable>
-    <translation type="gettext">@gettext@</translation>
-    <content_rating type="oars-1.1" />
+  <categories>
+    <category>Utility</category>
+  </categories>
 
-    <url type="homepage">https://wiki.gnome.org/Apps/DejaDup</url>
-    <url type="help">https://wiki.gnome.org/Apps/DejaDup/Help</url>
-    <url type="bugtracker">https://bugs.launchpad.net/deja-dup</url>
-    <url type="translate">https://translations.launchpad.net/deja-dup</url>
-    <url type="faq">https://wiki.gnome.org/Apps/DejaDup/Details</url>
-    <url type="donation">https://wiki.gnome.org/Apps/DejaDup/Donate</url>
+  <project_license>GPL-3.0-or-later</project_license>
+  <launchable type="desktop-id">@appid@.desktop</launchable>
+  <translation type="gettext">@gettext@</translation>
+  <content_rating type="oars-1.1" />
 
-    <metadata_license>CC-BY-SA-4.0</metadata_license>
-    <developer_name>Michael Terry</developer_name>
-    <update_contact>deja-dup-list@gnome.org</update_contact>
+  <url type="homepage">https://wiki.gnome.org/Apps/DejaDup</url>
+  <url type="help">https://wiki.gnome.org/Apps/DejaDup/Help</url>
+  <url type="bugtracker">https://bugs.launchpad.net/deja-dup</url>
+  <url type="translate">https://translations.launchpad.net/deja-dup</url>
+  <url type="faq">https://wiki.gnome.org/Apps/DejaDup/Details</url>
+  <url type="donation">https://wiki.gnome.org/Apps/DejaDup/Donate</url>
 
-    <screenshots>
-        <screenshot type="default">
-            <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/main.png</image>
-        </screenshot>
-        <screenshot>
-            <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/location.png</image>
-        </screenshot>
-        <screenshot>
-            <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/restore.png</image>
-        </screenshot>
-        <screenshot>
-            <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/accolades.png</image>
-        </screenshot>
-    </screenshots>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
+  <developer_name its:translate="no">Michael Terry</developer_name>
+  <update_contact>deja-dup-list@gnome.org</update_contact>
 
-    <releases>
-        <release version="40.5" date="2019-11-23" />
-        <release version="40.4" date="2019-11-14" />
-        <release version="40.3" date="2019-11-13" />
-        <release version="40.2" date="2019-10-23" />
-    </releases>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/main.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/location.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/restore.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source" width="1280" height="720">https://gitlab.gnome.org/World/deja-dup/raw/@version@/data/screenshots/accolades.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="40.5" date="2019-11-23">
+      <description its:translate="no">
+        <p>Fixes a bug that prevented backing up to Google Drive in some rare situations.</p>
+      </description>
+    </release>
+    <release version="40.4" date="2019-11-14">
+      <description its:translate="no">
+        <p>Fixes a bug that prevented the first login to Google Drive.</p>
+      </description>
+    </release>
+    <release version="40.3" date="2019-11-13">
+      <description its:translate="no">
+        <p>Fixes a bug that prevented resuming a full backup.</p>
+      </description>
+    </release>
+    <release version="40.2" date="2019-10-23">
+      <description its:translate="no">
+        <p>Fixes 2038 date problems by using 64-bit dates internally.</p>
+      </description>
+    </release>
+  </releases>
 
 </component>
