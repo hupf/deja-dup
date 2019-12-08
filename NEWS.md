@@ -1,7 +1,12 @@
 <!--
-SPDX-License-Identifier: CC0-1.0
+SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
+
+# 40.6
+- Fixes a bug that prevented backing up to Google Drive accounts with unlimited
+  quotas
+- Updated translations
 
 # 40.5
 - Fix a bug that prevented backing up to Google Drive in some rare situations
