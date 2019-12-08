@@ -348,7 +348,7 @@ int main(string[] args)
   // context is itself a reference to both the underlying command line tool
   // "duplicity" and the act of duplicating data for backup.  As a whole, the
   // phrase "Déjà Dup" may not be very translatable.
-  var appname = _("Déjà Dup Backup Tool");
+  var appname = _("Déjà Dup Backups");
 
   Environment.set_application_name(appname);
   Environment.set_prgname(Config.APPLICATION_ID);

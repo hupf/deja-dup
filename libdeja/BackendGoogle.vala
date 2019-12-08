@@ -529,7 +529,7 @@ public class BackendGoogle : Backend
     var location = get_consent_location();
     if (location != null)
       show_oauth_consent_page(
-        _("You first need to allow Déjà Dup Backup Tool to access your Google account."),
+        _("You first need to allow Backups to access your Google account."),
         location
       );
   }

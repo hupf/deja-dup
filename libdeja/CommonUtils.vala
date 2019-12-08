@@ -544,7 +544,7 @@ public string get_access_granted_html()
     var html = (string)html_bytes.get_data();
 
     html = html.replace("$TITLE", _("Access Granted"));
-    html = html.replace("$TEXT", _("Déjà Dup Backup Tool will now continue. You can close this page."));
+    html = html.replace("$TEXT", _("Backups will now continue. You can close this page."));
     return html;
   }
   catch (Error e) {

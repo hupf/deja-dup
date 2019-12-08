@@ -3,7 +3,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-# Déjà Dup Backup Tool
+# Déjà Dup Backups
 
 Déjà Dup is a simple backup tool. It hides the complexity of backing up the
 Right Way (encrypted, off-site, and regular) and uses
