@@ -27,16 +27,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/python/cpython
-        tag: v3.7.4
-        commit: e09359112e250268eca209355abeb17abf822486
+        tag: v3.8.0
+        commit: fa919fdf2583bdfead1df00e842f24f30b2a34bf
 
   - name: librsync
     buildsystem: cmake-ninja
     sources:
       - type: git
         url: https://github.com/librsync/librsync
-        tag: v2.0.2
-        commit: 400ecbd28ac94d9a363c5ff7e58aea93cb1d90c4
+        tag: v2.2.1
+        commit: 5917692418657dc78c9cbde3a8db4c85f25b9c8d
 
   - name: duplicity
     buildsystem: simple
@@ -45,8 +45,8 @@ modules:
       - python3 setup.py install --prefix /app
     sources:
       - type: archive
-        url: https://launchpad.net/duplicity/0.8-series/0.8.05/+download/duplicity-0.8.05.tar.gz
-        sha256: 064672cf492003ff05f2d7ca8493d12af86de06aa1c60d77ac8dd74b2da3111d
+        url: https://launchpad.net/duplicity/0.8-series/0.8.08/+download/duplicity-0.8.08.tar.gz
+        sha256: 0917e9ee23f9befad4d2819e42f5c6e8a2a2c7052f9e0a625b8278c8ac9e3df2
       - type: patch
         path: ./python3.patch
         strip-components: 0
