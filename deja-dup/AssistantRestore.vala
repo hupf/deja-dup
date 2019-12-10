@@ -126,9 +126,8 @@ public class AssistantRestore : AssistantOperation
     query_progress_bar = new Gtk.ProgressBar();
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.set("child", query_progress_bar,
-             "border-width", 12);
-    page.child_set(query_progress_bar, "expand", false);
+    page.border_width = 12;
+    page.add(query_progress_bar);
 
     return page;
   }
@@ -145,16 +144,12 @@ public class AssistantRestore : AssistantOperation
                    "xalign", 1.0f);
 
     var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-    hbox.set("child", date_label,
-             "child", date_combo);
+    hbox.add(date_label);
+    hbox.add(date_combo);
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.set("child", hbox,
-             "border-width", 12);
-
-    hbox.child_set(date_label, "expand", false);
-    hbox.child_set(date_combo, "expand", false);
-    page.child_set(hbox, "expand", false);
+    page.border_width = 12;
+    page.add(hbox);
 
     return page;
   }
@@ -187,18 +182,15 @@ public class AssistantRestore : AssistantOperation
                    "xalign", 1.0f);
 
     cust_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-    cust_box.set("child", cust_label,
-                 "child", cust_button,
-                 "sensitive", false);
+    cust_box.sensitive = false;
+    cust_box.add(cust_label);
+    cust_box.add(cust_button);
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.set("child", orig_radio,
-             "child", cust_radio,
-             "child", cust_box,
-             "border-width", 12);
-    page.child_set(orig_radio, "expand", false);
-    page.child_set(cust_radio, "expand", false);
-    page.child_set(cust_box, "expand", false);
+    page.border_width = 12;
+    page.add(orig_radio);
+    page.add(cust_radio);
+    page.add(cust_box);
 
     return page;
   }

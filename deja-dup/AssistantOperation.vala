@@ -256,15 +256,15 @@ public abstract class AssistantOperation : Assistant
     progress_scroll.scroll_event.connect(stop_autoscroll);
     ((Gtk.Range)progress_scroll.get_vscrollbar()).change_value.connect(stop_autoscroll);
     progress_scroll.expand = true;
-    progress_scroll.child = progress_text;
     progress_scroll.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
     progress_scroll.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
     progress_scroll.border_width = 0;
     progress_scroll.min_content_height = 200;
     progress_scroll.expand = true;
+    progress_scroll.add(progress_text);
     progress_expander = new Gtk.Expander.with_mnemonic(_("_Details"));
-    progress_expander.child = progress_scroll;
     progress_expander.expand = true;
+    progress_expander.add(progress_scroll);
     page.attach(progress_expander, 0, row, 2, 1);
     ++row;
 
@@ -528,7 +528,7 @@ public abstract class AssistantOperation : Assistant
   protected virtual Gtk.Widget make_summary_page()
   {
     summary_label = new Gtk.Label("");
-    summary_label.set("xalign", 0.0f);
+    summary_label.xalign = 0.0f;
     summary_label.wrap = true;
     summary_label.max_width_chars = 25;
 
@@ -539,15 +539,14 @@ public abstract class AssistantOperation : Assistant
 
     var scroll = new Gtk.ScrolledWindow(null, null);
     scroll.add(detail_text_view);
+    scroll.vexpand = true;
     scroll.no_show_all = true; // only will be shown if an error occurs
     detail_widget = scroll;
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.set("child", summary_label,
-             "child", detail_widget,
-             "border-width", 12);
-    page.child_set(summary_label, "expand", false);
-    page.child_set(detail_widget, "expand", true);
+    page.border_width = 12;
+    page.add(summary_label);
+    page.add(detail_widget);
 
     return page;
   }

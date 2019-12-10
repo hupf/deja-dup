@@ -160,9 +160,9 @@ public class DejaDupApp : Gtk.Application
       main_window.set_titlebar(header);
 
       var menu = this.get_menu_by_id("primary-menu");
-      var menu_button = new Gtk.MenuButton ();
-      menu_button.set_image(new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.BUTTON));
-      menu_button.show();
+      var menu_button = new Gtk.MenuButton();
+      menu_button.add(new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.BUTTON));
+      menu_button.show_all();
       menu_button.set_menu_model(menu);
       header.pack_end(menu_button);
 

@@ -23,6 +23,8 @@ SHNAME=$(basename $0)
 ROOTDIR=$(mktemp -d --tmpdir dd.XXXXXXXXXX)
 export DEJA_DUP_TEST_ROOT="${ROOTDIR}"
 
+export G_ENABLE_DIAGNOSTIC=1
+
 RUN_CMD=
 ARGS=$@
 if [ -n "$ARGS" ]; then
