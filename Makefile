@@ -61,7 +61,7 @@ flatpak:
 
 .PHONY: flatpak-update
 flatpak-update:
-	for p in fasteners future pydrive; do \
+	for p in duplicity pydrive; do \
 		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p $$p; \
 		../flatpak-builder-tools/flatpak-json2yaml.py -f --output flatpak/$$p.yaml flatpak/$$p.json; \
 		rm flatpak/$$p.json; \
