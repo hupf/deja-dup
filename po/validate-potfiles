@@ -1,0 +1,12 @@
+#!/bin/sh
+# -*- Mode: sh; indent-tabs-mode: nil; tab-width: 4 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+set -e
+
+sources=$(find .. -regextype posix-extended -regex '.*\.(c|vala)' -o -regex '\.\./data/.*\.(in|ui)' | sed 's|^\.\./||' | grep -v '^builddir/' | grep -v '/tests/' | sort)
+
+test -e POTFILES.in
+echo "$sources" | diff -u -B -I '^#.*' POTFILES.in -
