@@ -6,7 +6,7 @@
 
 set -e
 
-sources=$(find .. -regextype posix-extended -regex '.*\.(c|vala)' -o -regex '\.\./data/.*\.(in|ui)' | sed 's|^\.\./||' | grep -v '^builddir/' | grep -v '^flatpak_app/' | grep -v '/tests/' | sort)
+sources=$(find .. -regextype posix-extended -regex '.*\.(c|vala)' -o -regex '\.\./data/.*\.(in|ui)' | sed 's|^\.\./||' | grep -v '^builddir/' | grep -v '^flatpak_app/' | grep -v '^_build/' | grep -v '/tests/' | sort)
 
 test -e POTFILES.in
 echo "$sources" | diff -u -B -I '^#.*' POTFILES.in -
