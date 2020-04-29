@@ -8,12 +8,11 @@ include: https://gitlab.gnome.org/GNOME/citemplates/raw/master/flatpak/flatpak_c
 variables:
   BUNDLE: deja-dup-dev.flatpak
 
-# Disabled until https://github.com/fsfe/reuse-tool/issues/223 is fixed
-# reuse_lint:
-#   image: fsfe/reuse
-#   script:
-#     - rm -f repo.tar  # gitlab adds repo.tar file
-#     - reuse lint
+reuse_lint:
+  image:
+    name: fsfe/reuse
+    entrypoint: [""]
+  script: reuse lint
 
 vala_lint:
   image: valalang/lint
