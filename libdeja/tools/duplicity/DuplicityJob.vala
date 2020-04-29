@@ -432,6 +432,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       }
 
       break;
+
     case DejaDup.ToolJob.Mode.RESTORE:
       // We need to first check the backup status to see if we should use
       // encryption.
@@ -502,6 +503,9 @@ internal class DuplicityJob : DejaDup.ToolJob
 
         progress(0f);
       }
+      break;
+
+    default:
       break;
     }
 
@@ -740,6 +744,9 @@ internal class DuplicityJob : DejaDup.ToolJob
             }
           }
         }
+        break;
+
+      case NOT_STARTED:
         break;
       }
     }
@@ -1470,6 +1477,8 @@ internal class DuplicityJob : DejaDup.ToolJob
         if (time != null)
           argv.append("--time=%s".printf(time));
         argv.append(get_remote());
+        break;
+      default:
         break;
       }
     }

@@ -75,7 +75,7 @@ public class Background : Object
     return "/org/freedesktop/portal/desktop/request/%s/%s".printf(sender, token);
   }
 
-  void got_response(DBusConnection connection, string sender_name, string object_path,
+  void got_response(DBusConnection connection, string? sender_name, string object_path,
                     string interface_name, string signal_name, Variant parameters)
   {
     Variant values;

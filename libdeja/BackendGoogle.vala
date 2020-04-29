@@ -98,40 +98,6 @@ public class BackendGoogle : Backend
       return _("%s on Google Drive").printf(folder);
   }
 
-  async List<File> find_target_folders(File cwd, string[] needles)
-  {
-    // Are we done? Then just return the current folder.
-    if (needles.length == 0 || needles[0] == "") {
-      var found = new List<File>();
-      found.append(cwd);
-      return found;
-    }
-
-    // Not done yet, dig through the files here.
-    var answers = new List<File>();
-    var needle = needles[0];
-    try {
-      var enumerator = yield cwd.enumerate_children_async(
-        "%s,%s".printf(FileAttribute.STANDARD_DISPLAY_NAME, FileAttribute.STANDARD_NAME),
-        FileQueryInfoFlags.NONE);
-      var children = yield enumerator.next_files_async(50);
-      while (children.length() > 0) {
-        foreach (var child in children) {
-          if (child.get_display_name() == needle) {
-            var found = enumerator.get_child(child);
-            answers.concat(yield find_target_folders(found, needles[1:needles.length]));
-          }
-        }
-        children = yield enumerator.next_files_async(50);
-      }
-    }
-    catch (Error e) {
-      // ignore, fall through to return answers we do have
-    }
-
-    return answers;
-  }
-
   async void delete_root_finder()
   {
     var message = Soup.Form.request_new(
@@ -172,6 +138,40 @@ public class BackendGoogle : Backend
   }
 
 #if HAS_GOA
+  async List<File> find_target_folders(File cwd, string[] needles)
+  {
+    // Are we done? Then just return the current folder.
+    if (needles.length == 0 || needles[0] == "") {
+      var found = new List<File>();
+      found.append(cwd);
+      return found;
+    }
+
+    // Not done yet, dig through the files here.
+    var answers = new List<File>();
+    var needle = needles[0];
+    try {
+      var enumerator = yield cwd.enumerate_children_async(
+        "%s,%s".printf(FileAttribute.STANDARD_DISPLAY_NAME, FileAttribute.STANDARD_NAME),
+        FileQueryInfoFlags.NONE);
+      var children = yield enumerator.next_files_async(50);
+      while (children.length() > 0) {
+        foreach (var child in children) {
+          if (child.get_display_name() == needle) {
+            var found = enumerator.get_child(child);
+            answers.concat(yield find_target_folders(found, needles[1:needles.length]));
+          }
+        }
+        children = yield enumerator.next_files_async(50);
+      }
+    }
+    catch (Error e) {
+      // ignore, fall through to return answers we do have
+    }
+
+    return answers;
+  }
+
   async GenericSet<string?> find_duplicity_ids(string token, List<File> parents) throws Error
   {
     string[] parent_ids = {};
