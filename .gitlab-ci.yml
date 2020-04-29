@@ -10,7 +10,9 @@ variables:
 
 reuse_lint:
   image: fsfe/reuse
-  script: rm -f repo.tar && reuse lint  # gitlab adds repo.tar file
+  script:
+    - rm -f repo.tar  # gitlab adds repo.tar file
+    - reuse lint
 
 vala_lint:
   image: valalang/lint
