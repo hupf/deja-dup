@@ -62,6 +62,19 @@ public string? parse_keywords(string dir)
   return result;
 }
 
+public File remove_read_root(File folder)
+{
+  var root = InstallEnv.instance().get_read_root();
+  if (root == null)
+    return folder;
+
+  var relpath = File.new_for_path(root).get_relative_path(folder);
+  if (relpath == null)
+    return folder;
+
+  return File.new_for_path("/").resolve_relative_path(relpath);
+}
+
 public File? parse_dir(string dir)
 {
   var result = parse_keywords(dir);

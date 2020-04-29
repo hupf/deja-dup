@@ -33,7 +33,6 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   DuplicityInstance inst;
 
-  List<string> backend_argv;
   List<string> saved_argv;
   List<string> saved_envp;
   bool is_full_backup = false;
@@ -97,12 +96,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     mode = original_mode;
     saved_argv = new List<string>();
     saved_envp = new List<string>();
-    backend_argv = new List<string>();
-    backend.add_argv(DejaDup.ToolJob.Mode.INVALID, ref backend_argv);
-    backend.add_argv(mode, ref saved_argv);
-
-    if (mode == DejaDup.ToolJob.Mode.BACKUP)
-      process_include_excludes();
 
     var settings = DejaDup.get_settings();
     delete_age = settings.get_int(DejaDup.DELETE_AFTER_KEY);
@@ -148,6 +141,13 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     if (mode == DejaDup.ToolJob.Mode.INVALID) // already stopped
       return;
+
+    // Process includes/excludes after envp is ready, so any backup location
+    // folders that the backend needs are already created.
+    if (mode == DejaDup.ToolJob.Mode.BACKUP) {
+      backend.add_excludes(ref excludes);
+      process_include_excludes();
+    }
 
     foreach (string s in envp)
       saved_envp.append(s);
@@ -282,6 +282,11 @@ internal class DuplicityJob : DejaDup.ToolJob
     return rv;
   }
 
+  string prefix_local(string path)
+  {
+    return Path.build_filename(local.get_path(), path);
+  }
+
   void process_include_excludes()
   {
     expand_links_in_list(ref includes, true);
@@ -297,20 +302,20 @@ internal class DuplicityJob : DejaDup.ToolJob
     foreach (File i in includes) {
       foreach (File e in excludes2.copy()) {
         if (e.has_prefix(i)) {
-          saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
+          saved_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
           excludes2.remove(e);
         }
       }
-      saved_argv.append("--include=" + escape_duplicity_path(i.get_path()));
+      saved_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
     }
     foreach (File e in excludes2) {
-      saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
+      saved_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
     }
 
     // TODO: Figure out a more reasonable way to order regexps and files.
     // For now, just stick regexps in the end, as they are more general.
     foreach (string r in exclude_regexps) {
-      saved_argv.append("--exclude=" + r);
+      saved_argv.append("--exclude=" + prefix_local(r));
     }
 
     saved_argv.append("--exclude=**");
@@ -1397,7 +1402,6 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     var argv = new List<string>();
     foreach (string s in base_argv) argv.append(s);
-    foreach (string s in this.backend_argv) argv.append(s);
     foreach (string s in argv_extra) argv.append(s);
 
     /* Set duplicity into right mode */

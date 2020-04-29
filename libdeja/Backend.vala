@@ -43,9 +43,7 @@ public abstract class Backend : Object
   public const uint64 INFINITE_SPACE = uint64.MAX;
   public virtual async uint64 get_space(bool free = true) {return INFINITE_SPACE;}
 
-  // Arguments needed only when the particular mode is active
-  // If mode == INVALID, arguments needed any time the backup is referenced.
-  public virtual void add_argv(ToolJob.Mode mode, ref List<string> argv) {}
+  public virtual void add_excludes(ref List<File> exludes) {}
 
   public static Backend get_for_type(string backend_name, Settings? settings = null)
   {

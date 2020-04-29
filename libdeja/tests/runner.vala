@@ -167,7 +167,6 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     args += "collection-status ";
 
   if (mode == Mode.STATUS || mode == Mode.NONE || mode == Mode.DRY || mode == Mode.BACKUP) {
-    args += "'--exclude=%s' ".printf(backupdir);
     args += "'--include=%s/deja-dup/metadata' ".printf(cachedir);
 
     string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails",
@@ -203,13 +202,14 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     }
     args += include_args;
 
-    string[] excludes2 = {"/sys", "/run", "/proc", tempdir};
+    string[] excludes2 = {"/sys", "/run", "/proc", "/dev", tempdir};
     foreach (string ex in excludes2) {
       if (FileUtils.test (ex, FileTest.EXISTS))
         args += "'--exclude=%s' ".printf(ex);
     }
 
     args += "'--exclude=%s/deja-dup' '--exclude=%s' ".printf(cachedir, cachedir);
+    args += "'--exclude=%s' ".printf(backupdir);
 
     // Really, these following two lists can be interweaved, depending on
     // what the paths are and the order in gsettings.  But tests are careful
