@@ -44,9 +44,9 @@ gpgerror_libs = run_command('gpg-error-config', '--libs').stdout().strip()
 gpgerror_dep = declare_dependency(link_args: gpgerror_libs.split())
 
 # Programs
-appstream_util = find_program('appstream-util')
-dbus_run_session = find_program('dbus-run-session')
-desktop_file_validate = find_program('desktop-file-validate')
+appstream_util = find_program('appstream-util', required: false)
+dbus_run_session = find_program('dbus-run-session', required: false)
+desktop_file_validate = find_program('desktop-file-validate', required: false)
 glib_compile_schemas = find_program('glib-compile-schemas')
 msgfmt = find_program('msgfmt')
 
