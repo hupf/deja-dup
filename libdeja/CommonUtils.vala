@@ -406,9 +406,6 @@ public bool initialize(out string header, out string msg)
 
   tool = new DuplicityPlugin();
 
-  migrate_file_settings();
-  migrate_goa_settings();
-
   /* We do a little trick here.  BackendAuto -- which is the default
      backend on a fresh install of deja-dup -- will do some work to
      automatically suss out which backend should be used instead of it.
@@ -421,103 +418,6 @@ public bool initialize(out string header, out string msg)
   clean_tempdirs.begin();
 
   return true;
-}
-
-void migrate_file_settings()
-{
-  // The old "File" schema has been split in three: local, remote, and drive
-
-  var file = get_settings("File");
-  if (file.get_boolean("migrated"))
-    return;
-
-  var drive = get_settings(DRIVE_ROOT);
-  if (file.get_user_value("icon") != null)
-    drive.set_string(DRIVE_ICON_KEY, file.get_string("icon"));
-  if (file.get_user_value("short-name") != null)
-    drive.set_string(DRIVE_NAME_KEY, file.get_string("short-name"));
-  if (file.get_user_value("uuid") != null)
-    drive.set_string(DRIVE_UUID_KEY, file.get_string("uuid"));
-  if (file.get_user_value("relpath") != null)
-    drive.set_string(DRIVE_FOLDER_KEY, file.get_value("relpath").get_bytestring());
-
-  var type = file.get_string("type");
-  var path = file.get_string("path");
-  var gfile = File.parse_name(path);
-  if (type == "normal" && path != "") {
-    if (gfile.is_native()) {
-      var local = get_settings(LOCAL_ROOT);
-      local.set_string(LOCAL_FOLDER_KEY, gfile.get_path());
-    } else {
-      var remote = get_settings(REMOTE_ROOT);
-      remote.set_string(REMOTE_URI_KEY, gfile.get_uri());
-      remote.set_string(REMOTE_FOLDER_KEY, "");
-    }
-  }
-
-  var settings = get_settings();
-  if (settings.get_string(BACKEND_KEY) == "file") {
-    if (type == "volume")
-      settings.set_string(BACKEND_KEY, "drive");
-    else if (gfile.is_native())
-      settings.set_string(BACKEND_KEY, "local");
-    else
-      settings.set_string(BACKEND_KEY, "remote");
-  }
-
-  file.set_boolean("migrated", true);
-}
-
-void migrate_goa_settings()
-{
-  // The old "Goa" backend has been deprecated.
-  //   google => google backend
-  //   owncloud => remote backend
-
-  var settings = get_settings();
-  if (settings.get_string(BACKEND_KEY) != "goa")
-    return;
-
-  var goa = get_settings("GOA");
-  var type = goa.get_string("type");
-
-  if (type == "google") {
-    var google = get_settings(GOOGLE_ROOT);
-
-    // Folder
-    if (goa.get_user_value("folder") != null)
-      google.set_string(GOOGLE_FOLDER_KEY, goa.get_string("folder"));
-
-    settings.set_string(BACKEND_KEY, "google");
-  }
-  else if (type == "owncloud") {
-    var remote = get_settings(REMOTE_ROOT);
-
-    // Folder
-    if (goa.get_user_value("folder") != null)
-      remote.set_string(REMOTE_FOLDER_KEY, goa.get_string("folder"));
-
-    // URI
-    var uri = ""; // if we can't lookup goa, clear out the current URI with ""
-#if HAS_GOA
-    try {
-      var id = goa.get_string("id");
-      var goa_client = new Goa.Client.sync(null);
-      var goa_object = goa_client.lookup_by_id(id);
-      if (goa_object != null) {
-        var files = goa_object.get_files();
-        if (files != null)
-          uri = files.uri;
-      }
-    }
-    catch (Error e) {
-      // ignore - maybe GOA just isn't installed
-    }
-#endif
-    remote.set_string(REMOTE_URI_KEY, uri);
-
-    settings.set_string(BACKEND_KEY, "remote");
-  }
 }
 
 public void i18n_setup()

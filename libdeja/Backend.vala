@@ -38,9 +38,6 @@ public abstract class Backend : Object
 
   public virtual async void cleanup() {}
 
-  // This call is designed to help with the GOA -> Google migration - can be deleted when done with that
-  public virtual async Backend? report_full_backups(bool first_backup) {return null;}
-
   // Only called during backup
   public const uint64 INFINITE_SPACE = uint64.MAX;
   public virtual async uint64 get_space(bool free = true) {return INFINITE_SPACE;}
@@ -51,16 +48,16 @@ public abstract class Backend : Object
 
   public static Backend get_for_type(string backend_name, Settings? settings = null)
   {
-    if (backend_name == "s3")
-      return new BackendS3(settings);
-    else if (backend_name == "gcs")
-      return new BackendGCS(settings);
+    if (backend_name == "file" ||
+        backend_name == "gcs" ||
+        backend_name == "goa" ||
+        backend_name == "rackspace" ||
+        backend_name == "openstack" ||
+        backend_name == "s3" ||
+        backend_name == "u1")
+      return new BackendUnsupported();
     else if (backend_name == "google")
       return new BackendGoogle(settings);
-    else if (backend_name == "rackspace")
-      return new BackendRackspace(settings);
-    else if (backend_name == "openstack")
-      return new BackendOpenstack(settings);
     else if (backend_name == "drive")
       return new BackendDrive(settings);
     else if (backend_name == "remote")
@@ -76,14 +73,17 @@ public abstract class Backend : Object
     var backend = settings.get_string(BACKEND_KEY);
 
     if (backend != "auto" &&
-        backend != "s3" &&
-        backend != "gcs" &&
-        backend != "google" &&
-        backend != "rackspace" &&
-        backend != "openstack" &&
         backend != "drive" &&
+        backend != "file" &&
+        backend != "gcs" &&
+        backend != "goa" &&
+        backend != "google" &&
+        backend != "local" &&
+        backend != "openstack" &&
+        backend != "rackspace" &&
         backend != "remote" &&
-        backend != "local")
+        backend != "s3" &&
+        backend != "u1")
       backend = "auto"; // default to auto if string is not known
 
     return backend;

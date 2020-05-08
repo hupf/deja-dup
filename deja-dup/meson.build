@@ -21,7 +21,6 @@ deja_dup = executable('deja-dup',
     c_args: common_cflags,
     dependencies: [
         gio_unix_dep,
-        goa_dep,
         gtk_dep,
         packagekit_dep,
         secret_dep,

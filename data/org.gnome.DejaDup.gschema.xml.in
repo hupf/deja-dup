@@ -79,30 +79,24 @@ SPDX-FileCopyrightText: Michael Terry
         <choice value='remote'/>
         <choice value='local'/>
         <choice value='drive'/>
-        <choice value='gcs'/>
-        <choice value='goa'/>
         <choice value='google'/>
-        <choice value='rackspace'/>
-        <choice value='openstack'/>
-        <choice value='s3'/>
         <!-- deprecated -->
         <choice value='file'/>
+        <choice value='gcs'/>
+        <choice value='goa'/>
+        <choice value='openstack'/>
+        <choice value='rackspace'/>
+        <choice value='s3'/>
         <choice value='u1'/>
       </choices>
       <default>'auto'</default>
       <summary>Type of location to store backup</summary>
       <description>The type of backup location.  If ‘auto’, a default will be chosen based on what is available.</description>
     </key>
-    <child name="rackspace" schema="@appid@.Rackspace"/>
-    <child name="openstack" schema="@appid@.OpenStack"/>
-    <child name="s3" schema="@appid@.S3"/>
-    <child name="gcs" schema="@appid@.GCS"/>
-    <child name='goa' schema="@appid@.GOA"/>
     <child name='google' schema="@appid@.Google"/>
     <child name='remote' schema="@appid@.Remote"/>
     <child name='local' schema="@appid@.Local"/>
     <child name='drive' schema="@appid@.Drive"/>
-    <child name="file" schema="@appid@.File"/>
   </schema>
 
   <schema id="@appid@.Local" path="/org/gnome/@gsettingspath@/local/">
@@ -149,130 +143,11 @@ SPDX-FileCopyrightText: Michael Terry
     </key>
   </schema>
 
-  <schema id="@appid@.S3" path="/org/gnome/@gsettingspath@/s3/">
-    <key name="id" type="s">
-      <default>''</default>
-      <summary>Amazon S3 Access Key ID</summary>
-      <description>Your Amazon S3 Access Key Identifier.  This acts as your S3 username.</description>
-    </key>
-    <key name="bucket" type="s">
-      <default>''</default>
-      <summary>The Amazon S3 bucket name to use</summary>
-      <description>Which Amazon S3 bucket to store files in.  This does not need to exist already.  Only legal hostname strings are valid.</description>
-    </key>
-    <key name="folder" type="s">
-      <default>'$HOSTNAME'</default>
-      <summary>The Amazon S3 folder</summary>
-      <description>An optional folder name to store files in.  This folder will be created in the chosen bucket.</description>
-    </key>
-  </schema>
-
-  <schema id="@appid@.GCS" path="/org/gnome/@gsettingspath@/gcs/">
-    <key name="id" type="s">
-      <default>''</default>
-      <summary>Google Cloud Storage Access Key ID</summary>
-      <description>Your Google Cloud Storage Access Key Identifier.  This acts as your Google Cloud Storage username.</description>
-    </key>
-    <key name="bucket" type="s">
-      <default>''</default>
-      <summary>The Google Cloud Storage bucket name to use</summary>
-      <description>Which Google Cloud Storage bucket to store files in.  This does not need to exist already.  Only legal hostname strings are valid.</description>
-    </key>
-    <key name="folder" type="s">
-      <default>'$HOSTNAME'</default>
-      <summary>The Google Cloud Storage folder</summary>
-      <description>An optional folder name to store files in.  This folder will be created in the chosen bucket.</description>
-    </key>
-  </schema>
-
   <schema id="@appid@.Google" path="/org/gnome/@gsettingspath@/google/">
     <key name="folder" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The folder where backups are stored</summary>
       <description>The folder path where backups are stored. Paths can be absolute or relative to the host.</description>
-    </key>
-  </schema>
-
-  <schema id="@appid@.Rackspace" path="/org/gnome/@gsettingspath@/rackspace/">
-    <key name="container" type="s">
-      <default>'$HOSTNAME'</default>
-      <summary>The Rackspace Cloud Files container</summary>
-      <description>Which Rackspace Cloud Files container to store files in.  This does not need to exist already.  Only legal hostname strings are valid.</description>
-    </key>
-    <key name="username" type="s">
-      <default>''</default>
-      <summary>Your Rackspace username</summary>
-      <description>This is your username for the Rackspace Cloud Files service.</description>
-    </key>
-  </schema>
-
-  <schema id="@appid@.OpenStack" path="/org/gnome/@gsettingspath@/openstack/">
-    <key name="container" type="s">
-      <default>'$HOSTNAME'</default>
-      <summary>The OpenStack Swift container</summary>
-      <description>Which OpenStack Swift container to store files in.  This does not need to exist already.  Only legal hostname strings are valid.</description>
-    </key>
-    <key name="username" type="s">
-      <default>''</default>
-      <summary>Your OpenStack username</summary>
-      <description>This is your username for the OpenStack Swift service.</description>
-    </key>
-    <key name="tenant" type="s">
-      <default>''</default>
-      <summary>Your OpenStack tenant</summary>
-      <description>This is your tenant for the OpenStack Swift service.</description>
-    </key>
-    <key name="authurl" type="s">
-      <default>''</default>
-      <summary>Authentication URL</summary>
-      <description>This is the Authentication URL, or keystone URL for the OpenStack service</description>
-    </key>
-  </schema>
-
-  <!-- deprecated schemas -->
-  <schema id="@appid@.File" path="/org/gnome/@gsettingspath@/file/">
-    <key name="path" type="s">
-      <default>''</default>
-    </key>
-    <key name="type" type="s">
-      <choices>
-        <choice value='normal'/>
-        <choice value='volume'/>
-      </choices>
-      <default>'normal'</default>
-    </key>
-    <key name="relpath" type="ay">
-      <default>[]</default>
-    </key>
-    <key name="uuid" type="s">
-      <default>''</default>
-    </key>
-    <key name="name" type="s">
-      <default>''</default>
-    </key>
-    <key name="short-name" type="s">
-      <default>''</default>
-    </key>
-    <key name="icon" type="s">
-      <default>''</default>
-    </key>
-    <key name="migrated" type="b">
-      <default>false</default>
-    </key>
-  </schema>
-
-  <schema id="@appid@.GOA" path="/org/gnome/@gsettingspath@/goa/">
-    <key name="id" type="s">
-      <default>''</default>
-    </key>
-    <key name="type" type="s">
-      <default>''</default>
-    </key>
-    <key name="folder" type="s">
-      <default>'$HOSTNAME'</default>
-    </key>
-    <key name="migrated" type="b">
-      <default>false</default>
     </key>
   </schema>
 

@@ -31,7 +31,6 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 gdk_x11_dep = dependency('gdk-x11-3.0', required: false)
 gio_dep = dependency('gio-2.0', version: '>= 2.56')
 gio_unix_dep = dependency('gio-unix-2.0')
-goa_dep = dependency('goa-1.0', version: '>= 3.8.0', required: false)
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 nautilus_dep = dependency('libnautilus-extension', required: false)
@@ -67,14 +66,10 @@ common_vflags = [
 ]
 common_cflags = [
     '-w',
-    '-DGOA_API_IS_SUBJECT_TO_CHANGE',
     '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
     '-DDUPLICITY_PACKAGES="@0@"'.format(get_option('duplicity_pkgs')),
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
-    '-DBOTO_PACKAGES="@0@"'.format(get_option('boto_pkgs')),
-    '-DCLOUDFILES_PACKAGES="@0@"'.format(get_option('cloudfiles_pkgs')),
     '-DPYDRIVE_PACKAGES="@0@"'.format(get_option('pydrive_pkgs')),
-    '-DSWIFTCLIENT_PACKAGES="@0@"'.format(get_option('swiftclient_pkgs')),
     '-DGOOGLE_CLIENT_ID="@0@"'.format(get_option('google_client_id')),
     '-DPACKAGE="@0@"'.format(meson.project_name()),
     '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
@@ -87,10 +82,6 @@ common_cflags = [
 
 if gdk_x11_dep.found()
 common_vflags += ['--define=HAS_X11']
-endif
-
-if goa_dep.found()
-common_vflags += ['--define=HAS_GOA']
 endif
 
 if packagekit_dep.found()

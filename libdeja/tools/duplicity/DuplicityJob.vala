@@ -539,16 +539,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     var do_restart = true;
     reported_full_backups = true; // don't do this a second time
 
-    // Notify the backend if we have full backups. This is a special check
-    // to help migration for the Google backend. If it returns a backend,
-    // we should delete all but one full backup from it.
-    var delete_backend = yield backend.report_full_backups(first_backup);
-    if (delete_backend != null) {
-      delete_excess(1, delete_backend);
-      first_backup = false; // has another backend, so don't report this as the first backup
-      do_restart = false;
-    }
-
     // Set full backup threshold and determine whether we should trigger
     // a full backup.
     var threshold = DejaDup.get_full_backup_threshold_date();
@@ -1090,24 +1080,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   void process_exception(string exception, string text)
   {
     switch (exception) {
-    case "S3ResponseError":
-      if (text.contains("<Code>InvalidAccessKeyId</Code>"))
-        show_error(_("Invalid ID."));
-      else if (text.contains("<Code>SignatureDoesNotMatch</Code>"))
-        show_error(_("Invalid secret key."));
-      else if (text.contains("<Code>NotSignedUp</Code>"))
-        show_error(_("Your Amazon Web Services account is not signed up for the S3 service."));
-      break;
-    case "S3CreateError":
-      if (text.contains("<Code>BucketAlreadyExists</Code>")) {
-        if (((DejaDup.BackendS3)backend).bump_bucket()) {
-          if (restart()) // get_remote() will eventually grab new bucket name
-            return;
-        }
-
-        show_error(_("S3 bucket name is not available."));
-      }
-      break;
     case "EOFError":
       // Duplicity tried to ask the user what the encryption password is.
       report_encryption_error();

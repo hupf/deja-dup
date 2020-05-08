@@ -19,10 +19,7 @@ namespace Config {
 
 	public const string DUPLICITY_PACKAGES;
 	public const string GVFS_PACKAGES;
-	public const string BOTO_PACKAGES;
-	public const string CLOUDFILES_PACKAGES;
 	public const string PYDRIVE_PACKAGES;
-	public const string SWIFTCLIENT_PACKAGES;
 
 	public const string GOOGLE_CLIENT_ID;
 }

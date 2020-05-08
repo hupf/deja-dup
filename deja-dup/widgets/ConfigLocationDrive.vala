@@ -8,9 +8,9 @@ using GLib;
 
 namespace DejaDup {
 
-public class ConfigLocationVolume : ConfigLocationTable
+public class ConfigLocationDrive : ConfigLocationTable
 {
-  public ConfigLocationVolume(Gtk.SizeGroup sg, FilteredSettings settings) {
+  public ConfigLocationDrive(Gtk.SizeGroup sg, FilteredSettings settings) {
     Object(label_sizes: sg, settings: settings);
   }
 

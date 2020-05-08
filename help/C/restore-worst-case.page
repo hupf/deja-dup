@@ -45,24 +45,6 @@ SPDX-FileCopyrightText: Michael Terry
 <p>If <app>duplicity</app> appears to be having trouble connecting to your server, try downloading all the <app>duplicity</app> files yourself to a local folder and following the simpler example above.</p>
 <terms>
   <item>
-    <title>Amazon S3</title>
-    <p>Look up your Amazon S3 access key ID and secret access key and replace instances of <var>ID</var> and <var>SECRET</var> in the example below with those respective values.</p>
-    <p>You may have specified a folder in which to put the backup files.  In the example below, replace any instance of <var>FOLDER</var> with that path.</p>
-    <screen its:translate="no">
-export AWS_ACCESS_KEY_ID=<var its:translate="yes">ID</var>
-export AWS_SECRET_ACCESS_KEY=<var its:translate="yes">SECRET</var>
-duplicity s3+http://deja-dup-auto-<var its:translate="yes">LOWERCASE_ID</var>/<var its:translate="yes">FOLDER</var> /tmp/restore</screen>
-  </item>
-  <item>
-    <title>Rackspace Cloud Files</title>
-    <p>Look up your Rackspace username and API key and replace instances of <var>USERNAME</var> and <var>KEY</var> in the example below with those respective values.</p>
-    <p>You may have specified a container in which to put the backup files.  In the example below, replace any instance of <var>CONTAINER</var> with that name.</p>
-    <screen its:translate="no">
-export CLOUDFILES_USERNAME=<var its:translate="yes">USERNAME</var>
-export CLOUDFILES_APIKEY=<var its:translate="yes">KEY</var>
-duplicity cf+http://<var its:translate="yes">CONTAINER</var> /tmp/restore</screen>
-  </item>
-  <item>
     <title>FTP</title>
     <p>Look up your server address, port, username, and password and replace instances of <var>SERVER</var>, <var>PORT</var>, <var>USERNAME</var>, and <var>PASSWORD</var> in the example below with those respective values.</p>
     <p>You may have specified a folder in which to put the backup files.  In the example below, replace any instance of <var>FOLDER</var> with that path.</p>

@@ -93,9 +93,7 @@ public class ConfigLocation : ConfigWidget
     }
 
     all_settings = new HashTable<string, FilteredSettings>(str_caseless_hash, str_caseless_equal);
-    string[] roots = {"", REMOTE_ROOT, DRIVE_ROOT, LOCAL_ROOT,
-                      S3_ROOT, GCS_ROOT, OPENSTACK_ROOT, RACKSPACE_ROOT,
-                      GOOGLE_ROOT};
+    string[] roots = {"", REMOTE_ROOT, DRIVE_ROOT, LOCAL_ROOT, GOOGLE_ROOT};
     foreach (string? root in roots) {
       all_settings.insert(root, new FilteredSettings(root, read_only));
     }
@@ -114,12 +112,12 @@ public class ConfigLocation : ConfigWidget
 
     add_entry(new ThemedIcon("network-server"),
               _("Network Server"), Group.REMOTE,
-              new ConfigLocationCustom(label_sizes, all_settings[REMOTE_ROOT]));
+              new ConfigLocationRemote(label_sizes, all_settings[REMOTE_ROOT]));
     add_separator(Group.REMOTE_SEP);
 
     // And a local folder option
     add_entry(new ThemedIcon("folder"), _("Local Folder"),
-              Group.LOCAL, new ConfigLocationFile(label_sizes, all_settings[LOCAL_ROOT]));
+              Group.LOCAL, new ConfigLocationLocal(label_sizes, all_settings[LOCAL_ROOT]));
 
     // Now insert removable drives
     var mon = VolumeMonitor.get();
@@ -173,22 +171,20 @@ public class ConfigLocation : ConfigWidget
 
   void insert_clouds()
   {
-    // Note that we are using | not || here, because if show_deprecated is set,
-    // we want to insert multiple backends.
-    if (insert_cloud("s3", _("Amazon S3"), show_deprecated, "deja-dup-cloud",
-                     new ConfigLocationS3(label_sizes, all_settings[S3_ROOT])) |
-        insert_cloud("gcs", _("Google Cloud Storage"), show_deprecated, "deja-dup-cloud",
-                     new ConfigLocationGCS(label_sizes, all_settings[GCS_ROOT])) |
-        insert_cloud("google", _("Google Drive"), true, "deja-dup-google-drive",
-                     new ConfigLocationGoogle(label_sizes, all_settings[GOOGLE_ROOT])) |
-        insert_cloud("rackspace", _("Rackspace Cloud Files"), show_deprecated, "deja-dup-cloud",
-                     new ConfigLocationRackspace(label_sizes, all_settings[RACKSPACE_ROOT])) |
-        insert_cloud("openstack", _("OpenStack Swift"), show_deprecated, "deja-dup-cloud",
-                     new ConfigLocationOpenstack(label_sizes, all_settings[OPENSTACK_ROOT])))
-      add_separator(Group.CLOUD_SEP);
+    insert_cloud("s3", _("Amazon S3"), false, "deja-dup-cloud",
+                 new ConfigLocationUnsupported(label_sizes));
+    insert_cloud("gcs", _("Google Cloud Storage"), false, "deja-dup-cloud",
+                 new ConfigLocationUnsupported(label_sizes));
+    insert_cloud("google", _("Google Drive"), true, "deja-dup-google-drive",
+                 new ConfigLocationGoogle(label_sizes, all_settings[GOOGLE_ROOT]));
+    insert_cloud("rackspace", _("Rackspace Cloud Files"), false, "deja-dup-cloud",
+                 new ConfigLocationUnsupported(label_sizes));
+    insert_cloud("openstack", _("OpenStack Swift"), false, "deja-dup-cloud",
+                 new ConfigLocationUnsupported(label_sizes));
+    add_separator(Group.CLOUD_SEP);
   }
 
-  bool insert_cloud(string id, string name, bool force_show, string icon, Gtk.Widget w)
+  void insert_cloud(string id, string name, bool force_show, string icon, Gtk.Widget w)
   {
     // Most cloud backends are deprecated.  So we only show
     // them if they are already configured as the backend (either from older
@@ -196,9 +192,7 @@ public class ConfigLocation : ConfigWidget
     var backend = Backend.get_type_name(all_settings[""]);
     if (force_show || backend == id) {
       add_entry(new ThemedIcon(icon), name, Group.CLOUD, w, id);
-      return true;
-    } else
-      return false;
+    }
   }
 
   bool is_allowed_volume(Volume vol)
@@ -320,7 +314,7 @@ public class ConfigLocation : ConfigWidget
     if (num_volumes++ == 0)
       add_separator(Group.VOLUMES_SEP);
     add_entry(icon, name, Group.VOLUMES,
-              new ConfigLocationVolume(label_sizes, all_settings[DRIVE_ROOT]), uuid);
+              new ConfigLocationDrive(label_sizes, all_settings[DRIVE_ROOT]), uuid);
   }
 
   void update_volume(VolumeMonitor monitor, Volume v)

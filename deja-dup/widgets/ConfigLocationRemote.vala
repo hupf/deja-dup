@@ -8,9 +8,9 @@ using GLib;
 
 namespace DejaDup {
 
-public class ConfigLocationCustom : ConfigLocationTable
+public class ConfigLocationRemote : ConfigLocationTable
 {
-  public ConfigLocationCustom(Gtk.SizeGroup sg, FilteredSettings settings) {
+  public ConfigLocationRemote(Gtk.SizeGroup sg, FilteredSettings settings) {
     Object(label_sizes: sg, settings: settings);
   }
 
