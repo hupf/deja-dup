@@ -7,7 +7,7 @@
 
 #include "dirhandling.h"
 #include "NautilusExtension.h"
-#include <libnautilus-extension/nautilus-menu-provider.h>
+#include <nautilus-extension.h>
 #include <glib/gi18n-lib.h>
 
 GList *dirs = NULL;
@@ -140,8 +140,6 @@ deja_dup_nautilus_extension_get_background_items(NautilusMenuProvider *provider,
                                                  NautilusFileInfo *file)
 {
   NautilusMenuItem *item;
-  guint length;
-  GList *file_copies;
   gchar *path;
 
   if (file == NULL)
@@ -175,7 +173,6 @@ deja_dup_nautilus_extension_get_file_items(NautilusMenuProvider *provider,
 {
   NautilusMenuItem *item;
   guint length;
-  GList *file_copies;
   gchar *path;
 
   if (files == NULL)
@@ -227,9 +224,9 @@ static GType deja_dup_nautilus_extension_type = 0;
 
 
 DejaDupNautilusExtension* deja_dup_nautilus_extension_construct (GType object_type) {
-  DejaDupNautilusExtension * self;
-  self = g_object_newv (object_type, 0, NULL);
-  return self;
+  GObject * self;
+  self = g_object_new_with_properties (object_type, 0, NULL, NULL);
+  return DEJA_DUP_NAUTILUS_EXTENSION(self);
 }
 
 
