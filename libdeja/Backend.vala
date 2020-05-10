@@ -48,14 +48,8 @@ public abstract class Backend : Object
 
   public static Backend get_for_type(string backend_name, Settings? settings = null)
   {
-    if (backend_name == "file" ||
-        backend_name == "gcs" ||
-        backend_name == "goa" ||
-        backend_name == "rackspace" ||
-        backend_name == "openstack" ||
-        backend_name == "s3" ||
-        backend_name == "u1")
-      return new BackendUnsupported();
+    if (backend_name == "auto")
+      return new BackendAuto();
     else if (backend_name == "google")
       return new BackendGoogle(settings);
     else if (backend_name == "drive")
@@ -65,7 +59,7 @@ public abstract class Backend : Object
     else if (backend_name == "local")
       return new BackendLocal(settings);
     else
-      return new BackendAuto();
+      return new BackendUnsupported();
   }
 
   public static string get_type_name(Settings settings)

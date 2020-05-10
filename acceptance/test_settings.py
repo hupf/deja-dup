@@ -13,13 +13,17 @@ class PreferencesTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.app = self.cmd()
+        self.app.childNamed('Menu').click()
+        self.app.button('Preferences').click()
 
-    def test_scheduling(self):
-        self.app.child(name='Scheduling').click()
+    def test_general(self):
+        # Grab switch from main window
+        periodic_header = self.app.child(name='Automatic backup')
+
+        prefs = self.app.window('Preferences')
 
         # Periodic to settings
-        periodic = self.app.child(label='Automatic backup')
-        periodic_header = self.app.child(name='Automatic backup')
+        periodic = prefs.child(name='Automatic backup')
         self.assertFalse(periodic.checked)
         self.assertFalse(periodic_header.checked)
         periodic.click()
@@ -36,41 +40,45 @@ class PreferencesTest(BaseTest):
         self.assertTrue(self.refresh(periodic_header).checked)
 
         # Period to settings
-        period = self.app.child(label='Every').child(roleName='combo box')
+        period = prefs.child(label='Automatic Backup Frequency')
         period.click()
-        period.child(roleName='menu item', name='Day').click()
+        prefs.child(name='Daily').click()
         self.assertEqual(self.get_int('periodic-period'), 1)
 
         period.click()
-        period.child(roleName='menu item', name='Week').click()
+        prefs.child(name='Weekly').click()
         self.assertEqual(self.get_int('periodic-period'), 7)
 
         # Period from settings
         self.set_int('periodic-period', 10)
-        self.assertEqual(self.refresh(period).combovalue, '10 days')
+        self.refresh(period).child(name='Every 10 days')  # just test existence
 
         # Delete After to settings
-        delete = self.app.child(label='Keep').child(roleName='combo box')
+        delete = prefs.child(label='Keep Backups')
         delete.click()
-        delete.child(roleName='menu item', name='At least a year').click()
+        prefs.child(name='At least a year').click()
         self.assertEqual(self.get_int('delete-after'), 365)
 
         delete.click()
-        delete.child(roleName='menu item', name='Forever').click()
+        prefs.child(name='Forever').click()
         self.assertEqual(self.get_int('delete-after'), 0)
 
         # Delete After from settings
         self.set_int('delete-after', 12)
-        self.assertEqual(self.refresh(delete).combovalue, 'At least 12 days')
+        self.refresh(delete).child(name='At least 12 days')  # just test existence
 
     def table_names(self, table):
         table = self.refresh(table)
-        objs = table.findChildren(lambda x: x.roleName == 'table cell')
+        def iter(x):
+            return x.roleName == 'label' and x.name
+        objs = table.findChildren(iter, showingOnly=False)
         return [x.name for x in objs]
 
-    def assert_inclusion_table(self, category, widget, key):
-        self.app.child(name=category).click()
-        table = self.app.child(name=widget)
+    def assert_inclusion_table(self, widget, key):
+        prefs = self.app.window('Preferences')
+        prefs.child(name='Folders').click()
+
+        table = prefs.child(name=widget)
 
         user = GLib.get_user_name()
         home = GLib.get_home_dir()
@@ -82,7 +90,6 @@ class PreferencesTest(BaseTest):
             '$DOCUMENTS/path',
             '$DOWNLOAD',
             '$MUSIC/path',
-            '$PICTURES',
             '$PUBLIC_SHARE',
             '$TEMPLATES/path',
             '$VIDEOS',
@@ -90,13 +97,13 @@ class PreferencesTest(BaseTest):
             '$TRASH',
             'relative/$USER/path',
             '/absolute/$USER/path',
+            '$PICTURES',
         ])
-        self.assertListEqual(self.table_names(table), [
+        labels = [
             '~/Desktop',
             '~/Documents/path',
             '~/Downloads',
             '~/Music/path',
-            '~/Pictures',
             'Home ({})'.format(homename),
             '~/Templates/path',
             '~/Videos',
@@ -104,30 +111,30 @@ class PreferencesTest(BaseTest):
             'Trash',
             '~/relative/{}/path'.format(user),
             '/absolute/{}/path'.format(user),
-        ])
+            '~/Pictures',
+        ]
+        self.assertListEqual(self.table_names(table), labels)
 
         # Remove most
-        rows = table.findChildren(lambda x: x.roleName == 'table cell')[1:]
-        for row in rows:
-            row.select()
-        remove = self.app.child(name='Remove')
-        remove.click()
-        self.assertListEqual(self.table_names(table), ['~/Desktop'])
-        self.assertEqual(self.get_strv(key), [home + '/Desktop'])
+        def remove_buttons(x):
+            return x.roleName == 'push button' and x.name == 'Remove'
+        count = len(labels)
+        for i in range(len(labels) - 1):
+            self.refresh(table).findChild(remove_buttons).click()
+        self.assertListEqual(self.table_names(table), ['~/Pictures'])
+        self.assertEqual(self.get_strv(key), ['$PICTURES'])
 
         # Add one
-        add = self.app.child(name='Add')
+        add = table.child(name='Add')
         add.click()
         dlg = self.app.child(roleName='file chooser')
         dlg.child(name='Documents').click()
         dlg.child(name='Add').click()
-        self.assertListEqual(self.table_names(table), ['~/Desktop', '~/Documents'])
-        self.assertEqual(self.get_strv(key), [home + '/Desktop', home + '/Documents'])
+        self.assertListEqual(self.table_names(table), ['~/Pictures', '~/Documents'])
+        self.assertEqual(self.get_strv(key), ['$PICTURES', home + '/Documents'])
 
     def test_includes(self):
-        self.assert_inclusion_table('Folders to save', 'IncludeList',
-                                    'include-list')
+        self.assert_inclusion_table('Includes', 'include-list')
 
     def test_excludes(self):
-        self.assert_inclusion_table('Folders to ignore', 'ExcludeList',
-                                    'exclude-list')
+        self.assert_inclusion_table('Excludes', 'exclude-list')

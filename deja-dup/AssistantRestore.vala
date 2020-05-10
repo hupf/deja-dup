@@ -37,8 +37,10 @@ public class AssistantRestore : AssistantOperation
   Gtk.Box cust_box;
   Gtk.FileChooserButton cust_button;
   Gtk.Grid confirm_table;
-  Gtk.SizeGroup label_sizes;
-  DejaDup.ConfigLocation config_location;
+  ConfigLocationGrid location_grid;
+  Gtk.Widget config_location;
+  Gtk.Image confirm_storage_image;
+  Gtk.Label confirm_storage_label;
   Gtk.Label confirm_location_label;
   Gtk.Label confirm_location;
   Gtk.Label confirm_date_label;
@@ -68,47 +70,23 @@ public class AssistantRestore : AssistantOperation
   void ensure_config_location()
   {
     if (config_location == null) {
-      label_sizes = new Gtk.SizeGroup(Gtk.SizeGroupMode.HORIZONTAL);
-      config_location = new DejaDup.ConfigLocation(true, true, label_sizes);
+      var builder = new Builder("preferences");
+      location_grid = new ConfigLocationGrid(builder, true);
+
+      var location_label = builder.get_object("location_label") as Gtk.Label;
+      location_label.label = _("_Backup location");
+
+      config_location = builder.get_object("location_grid") as Gtk.Widget;
+      config_location.ref();
+      config_location.parent.remove(config_location);
     }
   }
 
   Gtk.Widget make_backup_location_page()
   {
-    int rows = 0;
-    Gtk.Widget label;
-
-    var page = new Gtk.Grid();
-    page.set("row-spacing", 6,
-             "column-spacing", 12,
-             "border-width", 12);
-
     ensure_config_location();
-    label = new Gtk.Label.with_mnemonic(_("_Backup location"));
-    label.set("xalign", 1.0f,
-              "mnemonic-widget", config_location);
-    label_sizes.add_widget(label);
-    page.attach(label, 0, rows, 1, 1);
-    config_location.hexpand = true;
-    page.attach(config_location, 1, rows, 1, 1);
-    ++rows;
-
-    config_location.extras.hexpand = true;
-    page.attach(config_location.extras, 0, rows, 2, 1);
-    ++rows;
-
-    page.show_all();
-
-    // Now make sure to reserve the excess space that the hidden bits of
-    // ConfigLocation will need.
-    Gtk.Requisition req, hidden;
-    page.get_preferred_size(null, out req);
-    hidden = config_location.hidden_size();
-    req.width = req.width + hidden.width;
-    req.height = req.height + hidden.height;
-    page.set_size_request(req.width, req.height);
-
-    return page;
+    config_location.show_all();
+    return config_location;
   }
 
   protected override void add_custom_config_pages()
@@ -198,7 +176,7 @@ public class AssistantRestore : AssistantOperation
   protected override Gtk.Widget? make_confirm_page()
   {
     int rows = 0;
-    Gtk.Widget label, w;
+    Gtk.Widget label;
 
     confirm_table = new Gtk.Grid();
     var page = confirm_table;
@@ -209,10 +187,17 @@ public class AssistantRestore : AssistantOperation
     ensure_config_location();
     label = new Gtk.Label(_("Backup location"));
     label.set("xalign", 1.0f, "yalign", 0.0f);
-    w = new DejaDup.ConfigLabelLocation(config_location);
-    w.set("hexpand", true);
+    confirm_storage_image = new Gtk.Image.from_icon_name("folder", Gtk.IconSize.MENU);
+    confirm_storage_label = new Gtk.Label("");
+    confirm_storage_label.xalign = 0;
+    confirm_storage_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+    var grid = new Gtk.Grid();
+    grid.column_spacing = 6;
+    grid.hexpand = true;
+    grid.add(confirm_storage_image);
+    grid.add(confirm_storage_label);
     page.attach(label, 0, rows, 1, 1);
-    page.attach(w, 1, rows, 1, 1);
+    page.attach(grid, 1, rows, 1, 1);
     ++rows;
 
     confirm_date_label = new Gtk.Label(_("Restore date"));
@@ -288,7 +273,7 @@ public class AssistantRestore : AssistantOperation
     }
 
     ensure_config_location();
-    var rest_op = new DejaDup.OperationRestore(config_location.get_backend(),
+    var rest_op = new DejaDup.OperationRestore(location_grid.get_backend(),
                                                restore_location, date,
                                                resolved_files);
     if (this.op_state != null)
@@ -379,7 +364,7 @@ public class AssistantRestore : AssistantOperation
     realize();
 
     ensure_config_location();
-    query_op = new DejaDup.OperationStatus(config_location.get_backend());
+    query_op = new DejaDup.OperationStatus(location_grid.get_backend());
     op = query_op;
 
     op.done.connect(query_finished);
@@ -420,6 +405,15 @@ public class AssistantRestore : AssistantOperation
     }
     else if (page == confirm_page) {
       // When we restore from
+      var backend = location_grid.get_backend();
+      string desc = backend.get_location_pretty();
+      Icon icon = backend.get_icon();
+      confirm_storage_label.label = desc == null ? "" : desc;
+      if (icon == null)
+        confirm_storage_image.set_from_icon_name("folder", Gtk.IconSize.MENU);
+      else
+        confirm_storage_image.set_from_gicon(icon, Gtk.IconSize.MENU);
+
       if (got_dates) {
         confirm_date.label = date_combo.get_active_text();
         confirm_date_label.show();

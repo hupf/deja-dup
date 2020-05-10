@@ -375,15 +375,29 @@ public bool is_nag_time()
   return (last_check.compare(now) <= 0);
 }
 
+public string process_folder_key(string folder, bool abs_allowed, out bool replaced)
+{
+  replaced = false;
+
+  string processed = folder;
+  if (processed.contains("$HOSTNAME")) {
+    processed = processed.replace("$HOSTNAME", Environment.get_host_name());
+    replaced = true;
+  }
+
+  if (!abs_allowed && processed.has_prefix("/"))
+    processed = processed.substring(1);
+
+  return processed;
+}
+
 public string get_folder_key(Settings settings, string key, bool abs_allowed = false)
 {
+  bool replaced;
   string folder = settings.get_string(key);
-  if (folder.contains("$HOSTNAME")) {
-    folder = folder.replace("$HOSTNAME", Environment.get_host_name());
+  folder = process_folder_key(folder, abs_allowed, out replaced);
+  if (replaced)
     settings.set_string(key, folder);
-  }
-  if (!abs_allowed && folder.has_prefix("/"))
-    folder = folder.substring(1);
   return folder;
 }
 

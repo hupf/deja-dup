@@ -29,9 +29,10 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
 gdk_x11_dep = dependency('gdk-x11-3.0', required: false)
-gio_dep = dependency('gio-2.0', version: '>= 2.56')
+gio_dep = dependency('gio-2.0', version: '>= 2.64')
 gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
+handy_dep = dependency('libhandy-0.0', version: '>= 0.0.10')
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 nautilus_dep = dependency('libnautilus-extension', required: false)
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
@@ -61,10 +62,11 @@ endif
 common_vflags = [
     '--pkg=config',
     '--pkg=posix',
-    '--target-glib=2.56',
+    '--target-glib=2.64',
     '--vapidir', vapidir,
 ]
 common_cflags = [
+    '-DHANDY_USE_UNSTABLE_API',
     '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
     '-DDUPLICITY_PACKAGES="@0@"'.format(get_option('duplicity_pkgs')),
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),

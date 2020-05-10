@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 20:24-0400\n"
+"POT-Creation-Date: 2020-05-14 21:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:358
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:156
 msgid "Backups"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Back Up"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgid ""
 "relative to the user’s home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr ""
 
@@ -317,7 +317,7 @@ msgid ""
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr ""
 
@@ -341,15 +341,95 @@ msgid "Help"
 msgstr ""
 
 #: data/ui/menus.ui:12
-msgid "_Keyboard Shortcuts"
+msgid "_Preferences"
 msgstr ""
 
 #: data/ui/menus.ui:16
-msgid "_Help"
+msgid "_Keyboard Shortcuts"
 msgstr ""
 
 #: data/ui/menus.ui:20
+msgid "_Help"
+msgstr ""
+
+#: data/ui/menus.ui:24
 msgid "_About Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:23
+msgid "Storage"
+msgstr ""
+
+#: data/ui/preferences.ui:28
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:74
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:83
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:97
+msgid "Schedule"
+msgstr ""
+
+#: data/ui/preferences.ui:103
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:113 deja-dup/main.vala:173
+msgid "Automatic backup"
+msgstr ""
+
+#: data/ui/preferences.ui:125
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:143
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:149
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:158
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:164
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:173
+msgid "Preferences"
+msgstr ""
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:229
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:266 data/ui/preferences.ui:331
+#: data/ui/preferences.ui:369 data/ui/preferences.ui:435
+msgid "_Folder"
+msgstr ""
+
+#: data/ui/preferences.ui:303
+msgid "_Network Location"
+msgstr ""
+
+#: data/ui/preferences.ui:410 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr ""
+
+#: data/ui/preferences.ui:451
+msgid "_Choose Folder…"
 msgstr ""
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
@@ -597,65 +677,65 @@ msgctxt "verb"
 msgid "_Install"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:58
+#: deja-dup/AssistantRestore.vala:60
 msgid "_Restore"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr ""
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr ""
 
@@ -663,46 +743,46 @@ msgstr ""
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr ""
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] ""
 msgstr[1] ""
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr ""
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] ""
 msgstr[1] ""
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr ""
 
@@ -781,52 +861,20 @@ msgstr ""
 msgid "_Domain"
 msgstr ""
 
-#: deja-dup/Preferences.vala:84
+#: deja-dup/Preferences.vala:81
 msgid "Categories"
 msgstr ""
 
-#: deja-dup/Preferences.vala:137
+#: deja-dup/Preferences.vala:134
 msgid "_Restore…"
 msgstr ""
 
-#: deja-dup/Preferences.vala:169
+#: deja-dup/Preferences.vala:166
 msgid "_Back Up Now…"
 msgstr ""
 
-#: deja-dup/Preferences.vala:181
+#: deja-dup/Preferences.vala:178
 msgid "Overview"
-msgstr ""
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr ""
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr ""
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr ""
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr ""
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr ""
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
 msgstr ""
 
 #: deja-dup/Prompt.vala:18
@@ -865,6 +913,94 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr ""
 
+#: deja-dup/config/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr ""
+
+#: deja-dup/config/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr ""
+
+#: deja-dup/config/ConfigDelete.vala:18
+msgid "Forever"
+msgstr ""
+
+#: deja-dup/config/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: deja-dup/config/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr ""
+
+#: deja-dup/config/ConfigFolderList.vala:69
+msgid "Add"
+msgstr ""
+
+#: deja-dup/config/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr ""
+
+#: deja-dup/config/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr ""
+
+#. *** Basic entries ***
+#: deja-dup/config/ConfigLocationCombo.vala:72
+#: deja-dup/config/ConfigLocationCombo.vala:266 libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr ""
+
+#: deja-dup/config/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr ""
+
+#: deja-dup/config/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr ""
+
+#: deja-dup/config/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr ""
+
+#: deja-dup/config/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] ""
+msgstr[1] ""
+
 #: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
 msgid "Show version"
 msgstr ""
@@ -881,35 +1017,31 @@ msgstr ""
 msgid "Restore deleted files"
 msgstr ""
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:73 deja-dup/main.vala:88 deja-dup/main.vala:114
 msgid "An operation is already in progress"
 msgstr ""
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:93
 msgid "No directory provided"
 msgstr ""
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:97
 msgid "Only one directory can be shown at once"
 msgstr ""
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:103
 msgid "Directory does not exist"
 msgstr ""
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:107
 msgid "You must provide a directory, not a file"
 msgstr ""
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr ""
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:261
 msgid "Scheduled backup delayed"
 msgstr ""
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:286
 msgid "translator-credits"
 msgstr ""
 
@@ -923,42 +1055,23 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 
-#: deja-dup/nautilus/NautilusExtension.c:159
+#: deja-dup/nautilus/NautilusExtension.c:157
 msgid "Restore Missing Files…"
 msgstr ""
 
-#: deja-dup/nautilus/NautilusExtension.c:160
+#: deja-dup/nautilus/NautilusExtension.c:158
 msgid "Restore deleted files from backup"
 msgstr ""
 
-#: deja-dup/nautilus/NautilusExtension.c:202
+#: deja-dup/nautilus/NautilusExtension.c:199
 msgid "Revert to Previous Version…"
 msgid_plural "Revert to Previous Versions…"
 msgstr[0] ""
 msgstr[1] ""
 
-#: deja-dup/nautilus/NautilusExtension.c:206
+#: deja-dup/nautilus/NautilusExtension.c:203
 msgid "Restore file from backup"
 msgid_plural "Restore files from backup"
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr ""
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr ""
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr ""
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -1046,98 +1159,6 @@ msgid_plural "A backup automatically starts every %d days."
 msgstr[0] ""
 msgstr[1] ""
 
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr ""
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr ""
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr ""
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr ""
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:114
-msgid "Network Server"
-msgstr ""
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:119
-msgid "Local Folder"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:174
-msgid "Amazon S3"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:176
-msgid "Google Cloud Storage"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendGoogle.vala:86
-msgid "Google Drive"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:180
-msgid "Rackspace Cloud Files"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:182
-msgid "OpenStack Swift"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationDrive.vala:20
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationLocal.vala:31
-#: deja-dup/widgets/ConfigLocationRemote.vala:31
-msgid "_Folder"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationLocal.vala:25
-msgid "_Choose Folder…"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationLocal.vala:36
-msgid "Choose Folder"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationLocal.vala:39
-msgid "_OK"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationRemote.vala:25
-msgid "_Network Location"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationUnsupported.vala:18
-#: libdeja/BackendUnsupported.vala:28
-msgid "This storage location is no longer supported."
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
 #: deja-dup/widgets/WidgetUtils.vala:22
 #, c-format
 msgid "Could not display %s"
@@ -1145,7 +1166,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:473
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr ""
@@ -1201,27 +1222,27 @@ msgstr ""
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#: libdeja/CommonUtils.vala:446
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr ""
 
-#: libdeja/CommonUtils.vala:447
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:524
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr ""
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:529
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr ""
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:534
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr ""
 

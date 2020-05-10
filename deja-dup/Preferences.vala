@@ -64,15 +64,12 @@ public class Preferences : Gtk.Grid
     var settings_page = new Gtk.Grid();
     Gtk.Stack stack = new Gtk.Stack();
     Gtk.Widget w;
-    Gtk.Label label;
     Gtk.Grid table;
     Gtk.TreeIter iter;
     int row;
     int i = 0;
     string name;
     Gtk.SizeGroup label_sizes;
-
-    var settings = DejaDup.get_settings();
 
     settings_page.column_spacing = 12;
 
@@ -179,121 +176,6 @@ public class Preferences : Gtk.Grid
     name = "overview";
     stack.add_named(table, name);
     cat_model.insert_with_values(out iter, i, 0, _("Overview"), 1, name);
-    ++i;
-
-    // Reset page
-    table = new_panel();
-
-    w = new DejaDup.ConfigList(DejaDup.INCLUDE_LIST_KEY);
-    w.expand = true;
-    table.add(w);
-
-    name = "include";
-    stack.add_named(table, name);
-    cat_model.insert_with_values(out iter, i, 0, _("Folders to save"), 1, name);
-    ++i;
-
-    // Reset page
-    table = new_panel();
-
-    w = new DejaDup.ConfigList(DejaDup.EXCLUDE_LIST_KEY);
-    w.expand = true;
-    table.add(w);
-
-    name = "exclude";
-    stack.add_named(table, name);
-    cat_model.insert_with_values(out iter, i, 0, _("Folders to ignore"), 1, name);
-    ++i;
-
-    // Reset page
-    table = new_panel();
-    table.row_spacing = 6;
-    table.column_spacing = 12;
-    table.halign = Gtk.Align.CENTER;
-    row = 0;
-
-    label_sizes = new Gtk.SizeGroup(Gtk.SizeGroupMode.HORIZONTAL);
-    var location = new DejaDup.ConfigLocation(false, false, label_sizes);
-    label = new Gtk.Label(_("_Storage location"));
-    label.mnemonic_widget = location;
-    label.use_underline = true;
-    label.xalign = 1.0f;
-    label_sizes.add_widget(label);
-
-    table.attach(label, 0, row, 1, 1);
-    table.attach(location, 1, row, 1, 1);
-    location.hexpand = true;
-    ++row;
-
-    location.extras.hexpand = true;
-    table.attach(location.extras, 0, row, 2, 1);
-    ++row;
-
-    name = "storage";
-    stack.add_named(table, name);
-    // Translators: storage as in "where to store the backup"
-    cat_model.insert_with_values(out iter, i, 0, _("Storage location"), 1, name);
-    ++i;
-
-    // Now make sure to reserve the excess space that the hidden bits of
-    // ConfigLocation will need.
-    Gtk.Requisition req, hidden;
-    table.show_all();
-    table.get_preferred_size(null, out req);
-    hidden = location.hidden_size();
-    req.width = req.width + hidden.width;
-    req.height = req.height + hidden.height;
-    table.set_size_request(req.width, req.height);
-
-    // Reset page
-    table = new_panel();
-    table.row_spacing = 6;
-    table.column_spacing = 12;
-    table.halign = Gtk.Align.CENTER;
-    row = 0;
-
-    w = new DejaDup.PreferencesPeriodicSwitch();
-    w.halign = Gtk.Align.START;
-    label = new Gtk.Label.with_mnemonic(_("_Automatic backup"));
-    label.mnemonic_widget = w;
-    label.xalign = 1.0f;
-    table.attach(label, 0, row, 1, 1);
-    table.attach(w, 1, row, 1, 1);
-    ++row;
-
-    w = new DejaDup.ConfigPeriod(DejaDup.PERIODIC_PERIOD_KEY);
-    w.hexpand = true;
-    settings.bind(DejaDup.PERIODIC_KEY, w, "sensitive", SettingsBindFlags.GET);
-    // translators: as in "Every day"
-    label = new Gtk.Label.with_mnemonic(_("_Every"));
-    label.mnemonic_widget = w;
-    label.xalign = 1.0f;
-    settings.bind(DejaDup.PERIODIC_KEY, label, "sensitive", SettingsBindFlags.GET);
-    table.attach(label, 0, row, 1, 1);
-    table.attach(w, 1, row, 1, 1);
-    ++row;
-
-    w = new DejaDup.ConfigDelete(DejaDup.DELETE_AFTER_KEY);
-    w.hexpand = true;
-    label = new Gtk.Label.with_mnemonic(C_("verb", "_Keep"));
-    label.mnemonic_widget = w;
-    label.xalign = 1.0f;
-    table.attach(label, 0, row, 1, 1);
-    table.attach(w, 1, row, 1, 1);
-    ++row;
-
-    label = new Gtk.Label(_("Old backups will be deleted earlier if the storage location is low on space."));
-    var attrs = new Pango.AttrList();
-    attrs.insert(Pango.attr_style_new(Pango.Style.ITALIC));
-    label.set_attributes(attrs);
-    label.wrap = true;
-    label.max_width_chars = 25;
-    table.attach(label, 1, row, 1, 1);
-    ++row;
-
-    name = "schedule";
-    stack.add_named(table, name);
-    cat_model.insert_with_values(out iter, i, 0, _("Scheduling"), 1, name);
     ++i;
 
     stack.show_all(); // can't switch to pages that aren't shown

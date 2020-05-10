@@ -17,6 +17,29 @@ public class BackendLocal : BackendFile
     Object(settings: (settings != null ? settings : get_settings(LOCAL_ROOT)));
   }
 
+  // path may be relative to home or absolute
+  public static File? get_file_for_path(string path)
+  {
+    var root = File.new_for_path(Environment.get_home_dir());
+
+    try {
+      return root.get_child_for_display_name(path);
+    } catch (Error e) {
+      warning("%s", e.message);
+      return null;
+    }
+  }
+
+  // returns either an absolute path or a relative one from home
+  public static string get_path_from_file(File file)
+  {
+    var root = File.new_for_path(Environment.get_home_dir());
+    var path = root.get_relative_path(file);
+    if (path == null)
+      return file.get_path();
+    return path;
+  }
+
   // Get mountable root
   protected override File? get_root_from_settings()
   {
@@ -26,15 +49,8 @@ public class BackendLocal : BackendFile
   // Get full URI to backup folder
   protected override File? get_file_from_settings()
   {
-    var root = get_root_from_settings();
     var folder = get_folder_key(settings, LOCAL_FOLDER_KEY, true);
-
-    try {
-      return root.get_child_for_display_name(folder);
-    } catch (Error e) {
-      warning("%s", e.message);
-      return null;
-    }
+    return get_file_for_path(folder);
   }
 
   public override Icon? get_icon()

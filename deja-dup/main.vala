@@ -36,6 +36,7 @@ public class DejaDupApp : Gtk.Application
     {"prompt-ok", prompt_ok},
     {"prompt-cancel", prompt_cancel},
     {"delay", delay, "s"},
+    {"preferences", preferences},
     {"help", help},
     {"about", about},
     {"quit", quit},
@@ -263,6 +264,12 @@ public class DejaDupApp : Gtk.Application
     send_notification("backup-status", note);
   }
 
+  void preferences()
+  {
+    unowned List<Gtk.Window> list = get_windows();
+    PreferencesWindow.show(list == null ? null : list.data);
+  }
+
   void help()
   {
     unowned List<Gtk.Window> list = get_windows();
@@ -355,6 +362,8 @@ int main(string[] args)
   Gtk.Window.set_default_icon_name(Config.ICON_NAME);
 
   resources_get_resource()._register();
+
+  Hdy.init(ref args);
 
   return new DejaDupApp().run(args);
 }

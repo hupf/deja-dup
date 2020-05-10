@@ -42,6 +42,14 @@ modules:
   - ./pydrive.yaml
 
 
+  - name: libhandy
+    buildsystem: meson
+    sources:
+      - type: git
+        url: https://source.puri.sm/Librem5/libhandy
+        tag: v0.0.13
+        commit: 7a193d7692c9c76a1a94f17c4d30b585f77d177c
+
   - name: deja-dup
     buildsystem: meson
     builddir: true
