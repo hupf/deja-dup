@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 21:18-0400\n"
+"POT-Creation-Date: 2020-05-14 22:20-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:358
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:370
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:156
+#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:161
 msgid "Backups"
 msgstr ""
 
@@ -332,12 +332,22 @@ msgstr ""
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
+msgid "Show help"
 msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
 msgstr ""
 
 #: data/ui/menus.ui:12
@@ -356,79 +366,79 @@ msgstr ""
 msgid "_About Backups"
 msgstr ""
 
-#: data/ui/preferences.ui:23
+#: data/ui/preferences.ui:27
 msgid "Storage"
 msgstr ""
 
-#: data/ui/preferences.ui:28
+#: data/ui/preferences.ui:32
 msgid "_Location"
 msgstr ""
 
-#: data/ui/preferences.ui:74
+#: data/ui/preferences.ui:78
 msgid "_Keep Backups"
 msgstr ""
 
-#: data/ui/preferences.ui:83
+#: data/ui/preferences.ui:87
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space."
 msgstr ""
 
-#: data/ui/preferences.ui:97
+#: data/ui/preferences.ui:101
 msgid "Schedule"
 msgstr ""
 
-#: data/ui/preferences.ui:103
+#: data/ui/preferences.ui:107
 msgid "Back Up _Automatically"
 msgstr ""
 
-#: data/ui/preferences.ui:113 deja-dup/main.vala:173
+#: data/ui/preferences.ui:117 deja-dup/main.vala:178
 msgid "Automatic backup"
 msgstr ""
 
-#: data/ui/preferences.ui:125
+#: data/ui/preferences.ui:129
 msgid "Automatic Backup _Frequency"
 msgstr ""
 
-#: data/ui/preferences.ui:143
+#: data/ui/preferences.ui:147
 msgid "Folders to Back Up"
 msgstr ""
 
-#: data/ui/preferences.ui:149
+#: data/ui/preferences.ui:153
 msgid "Includes"
 msgstr ""
 
-#: data/ui/preferences.ui:158
+#: data/ui/preferences.ui:162
 msgid "Folders to Ignore"
 msgstr ""
 
-#: data/ui/preferences.ui:164
+#: data/ui/preferences.ui:168
 msgid "Excludes"
 msgstr ""
 
-#: data/ui/preferences.ui:173
+#: data/ui/preferences.ui:177
 msgid "Preferences"
 msgstr ""
 
 #. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:229
+#: data/ui/preferences.ui:233
 msgid "_Storage Location"
 msgstr ""
 
-#: data/ui/preferences.ui:266 data/ui/preferences.ui:331
-#: data/ui/preferences.ui:369 data/ui/preferences.ui:435
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
 msgid "_Folder"
 msgstr ""
 
-#: data/ui/preferences.ui:303
+#: data/ui/preferences.ui:307
 msgid "_Network Location"
 msgstr ""
 
-#: data/ui/preferences.ui:410 libdeja/BackendUnsupported.vala:28
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
 msgid "This storage location is no longer supported."
 msgstr ""
 
-#: data/ui/preferences.ui:451
+#: data/ui/preferences.ui:455
 msgid "_Choose Folder…"
 msgstr ""
 
@@ -1001,47 +1011,47 @@ msgid_plural "Every %d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/main.vala:21 deja-dup/monitor/monitor.vala:24
 msgid "Show version"
 msgstr ""
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr ""
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr ""
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr ""
 
-#: deja-dup/main.vala:73 deja-dup/main.vala:88 deja-dup/main.vala:114
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr ""
 
-#: deja-dup/main.vala:93
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr ""
 
-#: deja-dup/main.vala:97
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr ""
 
-#: deja-dup/main.vala:103
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr ""
 
-#: deja-dup/main.vala:107
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr ""
 
-#: deja-dup/main.vala:261
+#: deja-dup/main.vala:267
 msgid "Scheduled backup delayed"
 msgstr ""
 
-#: deja-dup/main.vala:286
+#: deja-dup/main.vala:298
 msgid "translator-credits"
 msgstr ""
 

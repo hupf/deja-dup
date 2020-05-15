@@ -13,6 +13,7 @@ extern unowned Resource resources_get_resource();
 public class DejaDupApp : Gtk.Application
 {
   Gtk.ApplicationWindow main_window = null;
+  Gtk.MenuButton menu_button = null;
   SimpleAction quit_action = null;
   public AssistantOperation op {get; private set; default = null;}
 
@@ -38,6 +39,7 @@ public class DejaDupApp : Gtk.Application
     {"delay", delay, "s"},
     {"preferences", preferences},
     {"help", help},
+    {"menu", menu},
     {"about", about},
     {"quit", quit},
   };
@@ -150,7 +152,10 @@ public class DejaDupApp : Gtk.Application
       // We're first instance.  Yay!
 
       main_window = new Gtk.ApplicationWindow(this);
-      main_window.destroy.connect(() => {this.main_window = null;});
+      main_window.destroy.connect(() => {
+        this.main_window = null;
+        this.menu_button = null;
+      });
 
       // Translators: "Backups" is a noun
       main_window.title = _("Backups");
@@ -161,7 +166,7 @@ public class DejaDupApp : Gtk.Application
       main_window.set_titlebar(header);
 
       var menu = this.get_menu_by_id("primary-menu");
-      var menu_button = new Gtk.MenuButton();
+      menu_button = new Gtk.MenuButton();
       menu_button.add(new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.BUTTON));
       menu_button.show_all();
       menu_button.set_menu_model(menu);
@@ -201,6 +206,7 @@ public class DejaDupApp : Gtk.Application
 
     add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
+    set_accels_for_action("app.menu", {"F10"});
     set_accels_for_action("app.quit", {"<Primary>q"});
     quit_action = lookup_action("quit") as SimpleAction;
 
@@ -275,6 +281,12 @@ public class DejaDupApp : Gtk.Application
     unowned List<Gtk.Window> list = get_windows();
     DejaDup.show_uri(list == null ? null : list.data,
                      "help:" + Config.PACKAGE);
+  }
+
+  void menu()
+  {
+    if (menu_button != null)
+      menu_button.clicked();
   }
 
   void about()
