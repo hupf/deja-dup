@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-17 14:02-0400\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,7 @@ msgstr ""
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr ""
 
@@ -846,6 +845,134 @@ msgstr[1] ""
 msgid "Scanning finished"
 msgstr ""
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr ""
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr ""
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr ""
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr ""
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr ""
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr ""
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr ""
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr ""
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr ""
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] ""
+msgstr[1] ""
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] ""
+msgstr[1] ""
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr ""
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr ""
@@ -915,135 +1042,12 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr ""
 
-#: deja-dup/config/ConfigDelete.vala:16
-msgid "At least six months"
-msgstr ""
-
-#: deja-dup/config/ConfigDelete.vala:17
-msgid "At least a year"
-msgstr ""
-
-#: deja-dup/config/ConfigDelete.vala:18
-msgid "Forever"
-msgstr ""
-
-#: deja-dup/config/ConfigDelete.vala:27
+#: deja-dup/WidgetUtils.vala:22
 #, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/config/ConfigFolderList.vala:51
-msgid "Remove"
+msgid "Could not display %s"
 msgstr ""
 
-#: deja-dup/config/ConfigFolderList.vala:69
-msgid "Add"
-msgstr ""
-
-#: deja-dup/config/ConfigFolderList.vala:79
-msgid "Choose folders"
-msgstr ""
-
-#: deja-dup/config/ConfigFolderList.vala:81
-msgid "_Add"
-msgstr ""
-
-#. *** Basic entries ***
-#: deja-dup/config/ConfigLocationCombo.vala:72
-#: deja-dup/config/ConfigLocationCombo.vala:266 libdeja/BackendGoogle.vala:86
-msgid "Google Drive"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:73
-msgid "Local Folder"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:74
-msgid "Network Server"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:264
-msgid "Google Cloud Storage"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:268
-msgid "OpenStack Swift"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:270
-msgid "Rackspace Cloud Files"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationCombo.vala:272
-msgid "Amazon S3"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationGrid.vala:108
-msgid "Choose Folder"
-msgstr ""
-
-#: deja-dup/config/ConfigLocationGrid.vala:111
-msgid "_OK"
-msgstr ""
-
-#: deja-dup/config/ConfigPeriod.vala:24
-msgid "Daily"
-msgstr ""
-
-#: deja-dup/config/ConfigPeriod.vala:25
-msgid "Weekly"
-msgstr ""
-
-#: deja-dup/config/ConfigPeriod.vala:34
-#, c-format
-msgid "Every %d day"
-msgid_plural "Every %d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#. Check for some really simple/common friendly names
-#: deja-dup/config/ConfigStatusLabel.vala:46
-msgid "Next backup is today."
-msgstr ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:48
-msgid "Next backup is tomorrow."
-msgstr ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:56
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] ""
-msgstr[1] ""
-
-#. Check for some really simple/common friendly names
-#: deja-dup/config/ConfigStatusLabel.vala:73
-msgid "Last backup was today."
-msgstr ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:75
-msgid "Last backup was yesterday."
-msgstr ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:83
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:96
-msgid "No recent backups."
-msgstr ""
-
-#: deja-dup/config/ConfigStatusLabel.vala:102
-msgid "No backup scheduled."
-msgstr ""
-
-#: deja-dup/main.vala:21 deja-dup/monitor/monitor.vala:24
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr ""
 
@@ -1087,41 +1091,6 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGoogle.vala:70
-#: libdeja/BackendRemote.vala:116
-msgid "Backup will begin when a network connection becomes available."
-msgstr ""
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr ""
-
-#: deja-dup/nautilus/NautilusExtension.c:157
-msgid "Restore Missing Files…"
-msgstr ""
-
-#: deja-dup/nautilus/NautilusExtension.c:158
-msgid "Restore deleted files from backup"
-msgstr ""
-
-#: deja-dup/nautilus/NautilusExtension.c:199
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/nautilus/NautilusExtension.c:203
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr ""
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
 #: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
@@ -1141,6 +1110,11 @@ msgstr ""
 #: libdeja/BackendDrive.vala:170
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
+msgstr ""
+
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
 msgstr ""
 
 #. Translators: %s is a folder.
@@ -1375,3 +1349,28 @@ msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr ""
+
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr ""
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr ""
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr ""
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] ""
+msgstr[1] ""
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] ""
+msgstr[1] ""

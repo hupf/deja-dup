@@ -92,5 +92,7 @@ endif
 subdir('data')
 subdir('help')
 subdir('libdeja')
+subdir('monitor')
+subdir('nautilus')
 subdir('deja-dup')
 subdir('po')
