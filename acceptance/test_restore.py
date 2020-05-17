@@ -90,10 +90,10 @@ class RestoreTest(BaseTest):
     def test_simple_cycle(self):
         app = self.cmd()
 
-        app.button('Back Up Now…').click()
+        app.button('Back Up Now').click()
         self.walk_backup(app)
 
-        app.button('Restore…').click()
+        app.button('Restore').click()
         self.walk_restore(app)
 
 

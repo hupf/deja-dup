@@ -41,11 +41,11 @@ class BackupTest(BaseTest):
 
     def test_from_preferences(self):
         app = self.cmd()
-        app.button('Back Up Now…').click()
+        app.button('Back Up Now').click()
         with self.new_files():
             self.walk_initial_backup(app)
 
-        app.button('Back Up Now…').click()
+        app.button('Back Up Now').click()
         with self.new_files():
             self.walk_incremental_backup(app)
 

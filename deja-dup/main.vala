@@ -135,8 +135,6 @@ public class DejaDupApp : Gtk.Application
 
   public void register_window(Gtk.Window w)
   {
-    if (Config.PROFILE != "")
-      w.get_style_context().add_class("devel");
     add_window(w);
   }
 
@@ -151,38 +149,13 @@ public class DejaDupApp : Gtk.Application
     else {
       // We're first instance.  Yay!
 
-      main_window = new Gtk.ApplicationWindow(this);
+      var window = new MainWindow(this);
+      main_window = window.app_window;
+      menu_button = window.menu_button;
       main_window.destroy.connect(() => {
         this.main_window = null;
         this.menu_button = null;
       });
-
-      // Translators: "Backups" is a noun
-      main_window.title = _("Backups");
-      main_window.resizable = false;
-
-      var header = new Gtk.HeaderBar();
-      header.show_close_button = true;
-      main_window.set_titlebar(header);
-
-      var menu = this.get_menu_by_id("primary-menu");
-      menu_button = new Gtk.MenuButton();
-      menu_button.add(new Gtk.Image.from_icon_name("open-menu-symbolic", Gtk.IconSize.BUTTON));
-      menu_button.show_all();
-      menu_button.set_menu_model(menu);
-      header.pack_end(menu_button);
-
-      var auto_switch = new DejaDup.PreferencesPeriodicSwitch();
-      var accessible = auto_switch.get_accessible();
-      if (accessible != null)
-        accessible.set_name(_("Automatic backup"));
-      auto_switch.valign = Gtk.Align.CENTER;
-      header.pack_end(auto_switch);
-
-      var prefs = new DejaDup.Preferences();
-      prefs.app = this;
-      prefs.border_width = 12;
-      main_window.add(prefs);
       register_window(main_window);
       main_window.show_all();
     }

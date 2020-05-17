@@ -14,6 +14,7 @@ public class ConfigAutoBackup : BuilderWidget
 
   construct {
     var auto_backup = builder.get_object("auto_backup") as Gtk.Switch;
+    adopt_widget(auto_backup);
 
     var settings = DejaDup.get_settings();
     settings.bind(DejaDup.PERIODIC_KEY, auto_backup, "active", SettingsBindFlags.GET);

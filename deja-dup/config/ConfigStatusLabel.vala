@@ -7,30 +7,22 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public class ConfigLabelBackupDate : ConfigLabel
+public class ConfigStatusLabel : BuilderWidget
 {
-  public enum Kind {LAST, NEXT}
-  public Kind kind {get; construct;}
-
-  public ConfigLabelBackupDate(Kind kind)
-  {
-    Object(kind: kind);
+  public ConfigStatusLabel(Gtk.Builder builder) {
+    Object(builder: builder);
   }
 
+  Settings settings;
   construct {
-    watch_key(DejaDup.LAST_BACKUP_KEY);
-    if (kind == Kind.NEXT) {
-      watch_key(DejaDup.PERIODIC_KEY);
-      watch_key(DejaDup.PERIODIC_PERIOD_KEY);
-    }
-  }
+    adopt_name("status_label");
 
-  protected override void fill_box()
-  {
-    base.fill_box();
-    label.use_markup = true;
+    settings = DejaDup.get_settings();
+    settings.changed[DejaDup.PERIODIC_KEY].connect(update_label);
+    settings.changed[DejaDup.PERIODIC_PERIOD_KEY].connect(update_label);
+    settings.changed[DejaDup.LAST_BACKUP_KEY].connect(update_label);
+
+    update_label();
   }
 
   bool is_same_day(DateTime one, DateTime two)
@@ -46,7 +38,7 @@ public class ConfigLabelBackupDate : ConfigLabel
       var now = new DateTime.now_local();
 
       // If we're past due, just say today.
-      if (kind == Kind.NEXT && now.compare(date) > 0)
+      if (now.compare(date) > 0)
         date = now;
 
       // Check for some really simple/common friendly names
@@ -73,7 +65,7 @@ public class ConfigLabelBackupDate : ConfigLabel
       // A last date in the future doesn't make any sense.
       // Pretending it happened today doesn't make any more sense, but at
       // least is intelligible.
-      if (kind == Kind.LAST && now.compare(date) < 0)
+      if (now.compare(date) < 0)
         date = now;
 
       // Check for some really simple/common friendly names
@@ -93,32 +85,25 @@ public class ConfigLabelBackupDate : ConfigLabel
       }
   }
 
-  protected void set_from_config_last()
+  void update_label()
   {
-    var val = DejaDup.last_run_date(DejaDup.TimestampType.BACKUP);
-    var time = new DateTime.from_iso8601(val, new TimeZone.utc());
-    if (time == null)
-      label.label = "<b>%s</b>".printf(_("No recent backups."));
-    else
-      label.label = "<b>%s</b>".printf(pretty_last_name(time));
-  }
+    string last_label;
+    string next_label;
 
-  protected void set_from_config_next()
-  {
+    var last = DejaDup.last_run_date(DejaDup.TimestampType.BACKUP);
+    var last_time = new DateTime.from_iso8601(last, new TimeZone.utc());
+    if (last_time == null)
+      last_label = _("No recent backups.");
+    else
+      last_label = pretty_last_name(last_time);
+
     var next = DejaDup.next_run_date();
     if (next == null)
-      label.label = "<b>%s</b>".printf(_("No backup scheduled."));
+      next_label = _("No backup scheduled.");
     else
-      label.label = "<b>%s</b>".printf(pretty_next_name(next));
-  }
+      next_label = pretty_next_name(next);
 
-  protected override async void set_from_config()
-  {
-    if (kind == Kind.LAST)
-      set_from_config_last();
-    else
-      set_from_config_next();
+    var status = builder.get_object("status_label") as Gtk.Label;
+    status.label = "%s\n%s".printf(last_label, next_label);
   }
-}
-
 }

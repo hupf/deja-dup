@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <object class="GtkApplicationWindow" id="main-window">
+    <property name="can_focus">False</property>
+    <property name="resizable">False</property>
+    <property name="default_width">550</property>
+    <property name="default_height">300</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="title" translatable="yes" comments="Translators: &quot;Backups&quot; is a noun">Backups</property>
+        <property name="show_close_button">True</property>
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkMenuButton" id="primary-menu-button">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <child>
+              <object class="GtkImage">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="icon_name">open-menu-symbolic</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="pack_type">end</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="GtkGrid">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="halign">start</property>
+        <property name="valign">center</property>
+        <property name="hexpand">True</property>
+        <property name="vexpand">True</property>
+        <property name="border_width">18</property>
+        <child>
+          <object class="GtkImage" id="app-logo">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="pixel_size">256</property>
+            <property name="icon_name">org.gnome.DejaDup</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkGrid">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="valign">start</property>
+            <property name="margin_top">18</property>
+            <property name="hexpand">True</property>
+            <property name="row_spacing">36</property>
+            <property name="column_spacing">12</property>
+            <child>
+              <object class="GtkSwitch" id="auto_backup">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="hexpand">True</property>
+                <property name="label" translatable="yes">Back up _automatically</property>
+                <property name="use_underline">True</property>
+                <property name="mnemonic_widget">auto_backup</property>
+                <property name="xalign">0</property>
+              </object>
+              <packing>
+                <property name="left_attach">1</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="status_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="halign">start</property>
+                <property name="valign">center</property>
+                <property name="wrap">True</property>
+                <property name="max_width_chars">30</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">1</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkGrid">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="row_spacing">6</property>
+                <child>
+                  <object class="GtkButton" id="backup-button">
+                    <property name="label" translatable="yes">_Back Up Now</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="use_underline">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkButton" id="restore-button">
+                    <property name="label" translatable="yes">_Restore</property>
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="receives_default">True</property>
+                    <property name="halign">start</property>
+                    <property name="valign">center</property>
+                    <property name="use_underline">True</property>
+                  </object>
+                  <packing>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+                <property name="width">2</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">0</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkSizeGroup">
+    <widgets>
+      <widget name="backup-button"/>
+      <widget name="restore-button"/>
+    </widgets>
+  </object>
+</interface>

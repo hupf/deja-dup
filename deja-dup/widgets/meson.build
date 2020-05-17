@@ -5,10 +5,6 @@
 
 libwidgets = shared_library('widgets',
     ['Background.vala',
-     'ConfigLabel.vala',
-     'ConfigLabelBackupDate.vala',
-     'ConfigLabelDescription.vala',
-     'ConfigWidget.vala',
      'WidgetUtils.vala'],
     vala_args: common_vflags,
     c_args: common_cflags,

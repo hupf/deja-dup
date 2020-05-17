@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 22:20-0400\n"
+"POT-Creation-Date: 2020-05-17 14:02-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:370
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:161
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr ""
 
@@ -350,6 +350,18 @@ msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr ""
 
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr ""
+
 #: data/ui/menus.ui:12
 msgid "_Preferences"
 msgstr ""
@@ -392,7 +404,7 @@ msgstr ""
 msgid "Back Up _Automatically"
 msgstr ""
 
-#: data/ui/preferences.ui:117 deja-dup/main.vala:178
+#: data/ui/preferences.ui:117
 msgid "Automatic backup"
 msgstr ""
 
@@ -687,10 +699,6 @@ msgctxt "verb"
 msgid "_Install"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:60
-msgid "_Restore"
-msgstr ""
-
 #: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr ""
@@ -871,22 +879,6 @@ msgstr ""
 msgid "_Domain"
 msgstr ""
 
-#: deja-dup/Preferences.vala:81
-msgid "Categories"
-msgstr ""
-
-#: deja-dup/Preferences.vala:134
-msgid "_Restore…"
-msgstr ""
-
-#: deja-dup/Preferences.vala:166
-msgid "_Back Up Now…"
-msgstr ""
-
-#: deja-dup/Preferences.vala:178
-msgid "Overview"
-msgstr ""
-
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
 msgstr ""
@@ -1011,6 +1003,46 @@ msgid_plural "Every %d days"
 msgstr[0] ""
 msgstr[1] ""
 
+#. Check for some really simple/common friendly names
+#: deja-dup/config/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] ""
+msgstr[1] ""
+
+#. Check for some really simple/common friendly names
+#: deja-dup/config/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] ""
+msgstr[1] ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr ""
+
+#: deja-dup/config/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr ""
+
 #: deja-dup/main.vala:21 deja-dup/monitor/monitor.vala:24
 msgid "Show version"
 msgstr ""
@@ -1047,11 +1079,11 @@ msgstr ""
 msgid "You must provide a directory, not a file"
 msgstr ""
 
-#: deja-dup/main.vala:267
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr ""
 
-#: deja-dup/main.vala:298
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 
@@ -1082,90 +1114,6 @@ msgstr[1] ""
 #: deja-dup/nautilus/NautilusExtension.c:203
 msgid "Restore file from backup"
 msgid_plural "Restore files from backup"
-msgstr[0] ""
-msgstr[1] ""
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] ""
-msgstr[1] ""
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr ""
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
 msgstr[0] ""
 msgstr[1] ""
 
