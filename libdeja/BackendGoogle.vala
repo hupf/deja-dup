@@ -190,10 +190,10 @@ public class BackendGoogle : Backend
   {
     var schema = get_secret_schema();
     try {
-      refresh_token = yield Secret.password_lookup(schema,
-                                                   null,
-                                                   "client_id",
-                                                   Config.GOOGLE_CLIENT_ID);
+      refresh_token = Secret.password_lookup_sync(schema,
+                                                  null,
+                                                  "client_id",
+                                                  Config.GOOGLE_CLIENT_ID);
     } catch (Error e) {
       // Ignore, just act like we didn't find it
     }
@@ -203,12 +203,12 @@ public class BackendGoogle : Backend
   {
     var schema = get_secret_schema();
     try {
-      yield Secret.password_store(schema,
-                                  Secret.COLLECTION_DEFAULT,
-                                  _("Google credentials for Déjà Dup"),
-                                  refresh_token,
-                                  null,
-                                  "client_id", Config.GOOGLE_CLIENT_ID);
+      Secret.password_store_sync(schema,
+                                 Secret.COLLECTION_DEFAULT,
+                                 _("Google credentials for Déjà Dup"),
+                                 refresh_token,
+                                 null,
+                                 "client_id", Config.GOOGLE_CLIENT_ID);
     } catch (Error e) {
       warning("%s\n", e.message);
     }

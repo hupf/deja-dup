@@ -825,10 +825,10 @@ public abstract class AssistantOperation : Assistant
   async string? lookup_keyring()
   {
     try {
-      return yield Secret.password_lookup(DejaDup.get_passphrase_schema(),
-                                          null,
-                                          "owner", Config.PACKAGE,
-                                          "type", "passphrase");
+      return Secret.password_lookup_sync(DejaDup.get_passphrase_schema(),
+                                         null,
+                                         "owner", Config.PACKAGE,
+                                         "type", "passphrase");
     }
     catch (Error e) {
       warning("%s\n", e.message);
@@ -962,21 +962,21 @@ public abstract class AssistantOperation : Assistant
       try {
         if (passphrase != "" && encrypt_remember.active) {
           // Save passphrase long term
-          yield Secret.password_store(DejaDup.get_passphrase_schema(),
-                                      Secret.COLLECTION_DEFAULT,
-                                      _("Backup encryption password"),
-                                      passphrase,
-                                      null,
-                                      "owner", Config.PACKAGE,
-                                      "type", "passphrase");
+          Secret.password_store_sync(DejaDup.get_passphrase_schema(),
+                                     Secret.COLLECTION_DEFAULT,
+                                     _("Backup encryption password"),
+                                     passphrase,
+                                     null,
+                                     "owner", Config.PACKAGE,
+                                     "type", "passphrase");
         }
         else {
           // If we weren't asked to save a password, clear it out. This
           // prevents any attempt to accidentally use an old password.
-          yield Secret.password_clear(DejaDup.get_passphrase_schema(),
-                                      null,
-                                      "owner", Config.PACKAGE,
-                                      "type", "passphrase");
+          Secret.password_clear_sync(DejaDup.get_passphrase_schema(),
+                                     null,
+                                     "owner", Config.PACKAGE,
+                                     "type", "passphrase");
         }
       }
       catch (Error e) {
