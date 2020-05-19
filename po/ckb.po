@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
 "PO-Revision-Date: 2020-02-22 11:02+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Kurdish (Sorani) <ckb@li.org>\n"
@@ -15,16 +15,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-03-16 06:32+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:15+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
-msgstr ""
+msgstr "مۆنیتەری پاڵپشت"
 
 #: data/org.gnome.DejaDup.Monitor.desktop.in:7
 msgid "Schedules backups at regular intervals"
@@ -40,7 +39,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -86,7 +85,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "پاڵپشتییەکان"
 
@@ -104,7 +103,7 @@ msgstr "déjà;deja;dup;"
 msgid "Back Up"
 msgstr "پاڵپشتی بکە"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "بوخچە بۆ پاشەکەوتکردن"
 
@@ -118,7 +117,7 @@ msgid ""
 "relative to the user’s home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "بوخچە بۆ پشتگوێخستن"
 
@@ -263,178 +262,72 @@ msgstr ""
 "جۆری ئەو شوێنەی پاڵپشتییەکانی تێدا هەڵبگیرێت. ئەگەر ‘خۆکار’بێت، ئەوا بنەڕەت "
 "هەڵدەبژێردرێت لەسەر بنەمای ئەوەی بەردەستە."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "بوخچەی کە پاڵپشتییەکانی تێدا هەڵدەگیرێت"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr "ناو"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr "ناوی وەگەرصەری دەرەکی."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr "وێنۆچکە"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr "ناونیشانی ڕاژە"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Amazon S3 Access Key ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "بوخچەی The Amazon S3"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "ناونیشانی کلیلی چوونەناوی کۆکەرەوەی هەوری گووگڵ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "بوخچەی کۆکەرەوەی هەوری گووگڵ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "ناوی بەکارهێنەری OpenStack"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "بەستەری ڕێپێدان"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "هێنانەوە"
 
@@ -449,25 +342,127 @@ msgstr "گشتی"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "دەرچوون"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "یارمەتی"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "دەرچوون"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "ـهێنانەوە"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "ـقەدبڕەکانی تەختەکلیل"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "_یارمەتی"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "ـ دەربارەی پاڵپشتییەکان"
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr ""
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr ""
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "پاڵپشتی خۆکار"
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr ""
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "ـبوخچە"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr "ـشوێنی ڕایەڵە"
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr ""
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "ـبوخچە هەڵبژێرە..."
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -692,8 +687,8 @@ msgstr "بەدەستهێنانی چوونەناوەوە"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "سەرکەوتوو نەبو بە هۆی هەڵەیەکی نەزانراەوە"
 
@@ -714,65 +709,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_دامەزراندن"
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "ـهێنانەوە"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "ـشوێنی پاڵپشتی"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "لە کوێ دەیهێنیتەوە؟"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "ـڕۆژ"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "هێنانەوەی پەڕگەکان بۆ شوێنی ـبنەرەت"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "هێنانەوە بۆ بوخچەی ـتایبەت"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "جێیمەبەستی پەڕگە هێنراوەکان دیاریبەک"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "هێنانەوەیـبوخچە"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "شوێنی پاڵپشتی"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "ڕۆژی هێنانەوە"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "هێنانەوە بوخچە"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "پشکنینی بۆ پاڵپشتی..."
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "لە کەیەوە بیهێنێتەوە؟"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "بیهێنێتەوە بۆ کوێ؟"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "هێنانەوە..."
 
@@ -780,46 +771,46 @@ msgstr "هێنانەوە..."
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "هیچ پاڵثشتییەک نیە بۆ هێنانەوە"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "شوێنی بنەڕەت"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "پەڕگە بۆ هێنانەوە"
 msgstr[1] "پەڕگەکان بۆ هێنانەوە"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "هێنانەوە سەرکەوتوو نەبوو"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "هێنانەوە تەواوبوو"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "بەسەرکەوتووی هێنانەوەی پەڕگەکان ئەنجام درا."
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "بەسەرکەوتووی هێنانەوەی پەڕگە ئەنجام درا."
 msgstr[1] "بەسەرکەوتووی هێنانەوەی پەڕگەکان ئەنجام درا."
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "هێنانەوە..."
 
@@ -865,13 +856,139 @@ msgstr[1] "پشکنین بۆ پەڕگەکان بە پێی %d ساڵ پێش ئێ�
 msgid "Scanning finished"
 msgstr "پشکنین کۆتای هات"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "بە لایەنی کەمەوە شەش مانگ"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "بە لایەنی کەمەوە ساڵێک"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "تاکۆتایی"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "بەلایەنی کەمەوە %d ڕۆژ"
+msgstr[1] "بەلایەنی کەمەوە %d ڕۆژ"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "سڕینەوە"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "زۆركردن"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "بوخچە هەڵبژێرە"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "_زۆرکردن"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "گوگڵ درایڤ"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "بوخچەی ناوخۆیی"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr "ڕاژەی ڕایەڵە"
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "کۆکەرەوەی هەوری گوگڵ"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "پەڕگە هەوری ڕاکسپەیس"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "ئەمەزۆن S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "بوخچە هەڵبژێرە"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "ـباشە"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "پاڵپشتی داهاتوو ئەمڕۆیە."
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "پاڵپشتی داهاتوو سبەینێیە."
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "پاڵپشتی داهاتوو دوای %d  ڕؤژ لەئێستاوە."
+msgstr[1] "پاڵپشتی داهاتوو دوای %d  ڕؤژ لەئێستاوە."
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "کۆتا پاڵپشتی ئەمڕۆ بووە."
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "کۆتا پاڵپشتی دوێنی بووە."
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "کۆتا پاڵپشتی %d پێش ئێستا بووە."
+msgstr[1] "کۆتا پاڵپشتی %d پێش ئێستا بووە."
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "هیچ پاڵپشتیەکی نوێ نیە."
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "هیچ پاڵپشتیەک لە ئارادا نیە."
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "پەیوەندی بکە بە ڕاژەوە"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "_ناوی بەکارهێنەر"
 
@@ -899,54 +1016,6 @@ msgstr "پەیوەندی بکە وەک بەکارهێنـەر"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "_دۆمەین"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "هاوپۆلەکان"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "ـهێنانەوە..."
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "ـئیستا پاڵپشتی بکە"
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "پوختە"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "ـشوێنی کۆکردنەوە"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "شوێنی کۆکردنەوە"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "زپاڵپشتی خۆکار"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "ـهەموو"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "_هێشتنەوە"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "ڕێکخستن"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -986,321 +1055,61 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr ""
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
-msgid "Show version"
-msgstr "وەشان پیشان بدە"
-
-#: deja-dup/main.vala:21
-msgid "Restore given files"
-msgstr "پەڕگەی دراو بهێنەوە"
-
-#: deja-dup/main.vala:22
-msgid "Immediately start a backup"
-msgstr "یەسکەر پاڵپشتی دەستپێبکە"
-
-#: deja-dup/main.vala:24
-msgid "Restore deleted files"
-msgstr "پەڕگە سڕاوەکان بهێنەوە"
-
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
-msgid "An operation is already in progress"
-msgstr "کردارێک ئێشتا لە کاردایە"
-
-#: deja-dup/main.vala:92
-msgid "No directory provided"
-msgstr "هیچ پێڕستێک نەدراوە"
-
-#: deja-dup/main.vala:96
-msgid "Only one directory can be shown at once"
-msgstr "تەنها یەک پێڕست پیشان دەدرێت لە یەکجاردا"
-
-#: deja-dup/main.vala:102
-msgid "Directory does not exist"
-msgstr "پێڕست بوونی نیە"
-
-#: deja-dup/main.vala:106
-msgid "You must provide a directory, not a file"
-msgstr "تۆ دەبێت پێڕست دابنێی، نەک پەڕگە"
-
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr "پاڵپشتی خۆکار"
-
-#: deja-dup/main.vala:260
-msgid "Scheduled backup delayed"
-msgstr "پاڵپشتی ڕێکخراو دوواخرا"
-
-#: deja-dup/main.vala:279
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Jwtiyar Nariman https://launchpad.net/~jwtiyar"
-
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr "پاڵپشتی دەستپێدەکات کاتێک ئینتەرنێت بەردەست بـێت."
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr ""
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "هێنانەوەی پەڕگە ونبووەکان"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "پەڕگە سڕاوەکان بهێنەوەرە لە پاڵپشتییەوە"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "بگەڕێوە بۆ وەشانی پێشوو..."
-msgstr[1] "بگەڕێوە بۆ وەشانەکانی پێشوو..."
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "هێنانوەی پەڕگە لە پاڵپشتیەوە"
-msgstr[1] "هێنانوەی پەڕگەکان لە پاڵپشتیەوە"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "بە لایەنی کەمەوە شەش مانگ"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "بە لایەنی کەمەوە ساڵێک"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "تاکۆتایی"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "بەلایەنی کەمەوە %d ڕۆژ"
-msgstr[1] "بەلایەنی کەمەوە %d ڕۆژ"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "پاڵپشتی داهاتوو ئەمڕۆیە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "پاڵپشتی داهاتوو سبەینێیە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "پاڵپشتی داهاتوو دوای %d  ڕؤژ لەئێستاوە."
-msgstr[1] "پاڵپشتی داهاتوو دوای %d  ڕؤژ لەئێستاوە."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "کۆتا پاڵپشتی ئەمڕۆ بووە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "کۆتا پاڵپشتی دوێنی بووە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "کۆتا پاڵپشتی %d پێش ئێستا بووە."
-msgstr[1] "کۆتا پاڵپشتی %d پێش ئێستا بووە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "هیچ پاڵپشتیەکی نوێ نیە."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "هیچ پاڵپشتیەک لە ئارادا نیە."
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "هێنانەوە..."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr ""
-"پێویستە پەنججە بنێی بە دوگمەی %s  بۆ ئەوەی بەناو پاڵپشتیەکاندا بگەڕێی."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "ئێستا پاڵپشتی بکە..."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-"پێویستە پاڵپشتی خۆکار <a href=''>چالاک</a> بکەیت یان پەنجە بنێی بەدوگمەی %s "
-"بۆ دەستپێکردنی دانەیەکی نوێ."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "پاڵپشتی خۆکارانە هەموو ڕۆژێک دەستێیدەکات."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "پاڵپشتی خۆکارانە هەموو هەفتەیەک دەستپیدەکات."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "پاڵپشتی خۆکارانە هەموو %d ڕۆژ جارێک دەستپێدەکات."
-msgstr[1] "پاڵپشتی خۆکارانە هەموو %d ڕۆژ جارێک دەستپێدەکات."
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "_زۆرکردن"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "زۆركردن"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "ـسڕینەوە"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "سڕینەوە"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "بوخچە هەڵبژێرە"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr "ڕاژەی ڕایەڵە"
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "بوخچەی ناوخۆیی"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "ئەمەزۆن S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr "کۆکەرەوەی هەوری گوگڵ"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "گوگڵ درایڤ"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "پەڕگە هەوری ڕاکسپەیس"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr "ـشوێنی ڕایەڵە"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "ـبوخچە"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "ـبوخچە هەڵبژێرە..."
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "بوخچە هەڵبژێرە"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "ـباشە"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr "GCS Access Key I_D"
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr "_Bucket"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "ـکۆنتێنەر"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "S3 Access Key I_D"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "ڕۆژ"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d ڕۆژ"
-msgstr[1] "%d ڕۆژ"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
+#: deja-dup/WidgetUtils.vala:22
 #, c-format
 msgid "Could not display %s"
 msgstr "ناتوانرێت %s پیشانبدرئت"
 
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
+msgid "Show version"
+msgstr "وەشان پیشان بدە"
+
+#: deja-dup/main.vala:22
+msgid "Restore given files"
+msgstr "پەڕگەی دراو بهێنەوە"
+
+#: deja-dup/main.vala:23
+msgid "Immediately start a backup"
+msgstr "یەسکەر پاڵپشتی دەستپێبکە"
+
+#: deja-dup/main.vala:25
+msgid "Restore deleted files"
+msgstr "پەڕگە سڕاوەکان بهێنەوە"
+
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
+msgid "An operation is already in progress"
+msgstr "کردارێک ئێشتا لە کاردایە"
+
+#: deja-dup/main.vala:95
+msgid "No directory provided"
+msgstr "هیچ پێڕستێک نەدراوە"
+
+#: deja-dup/main.vala:99
+msgid "Only one directory can be shown at once"
+msgstr "تەنها یەک پێڕست پیشان دەدرێت لە یەکجاردا"
+
+#: deja-dup/main.vala:105
+msgid "Directory does not exist"
+msgstr "پێڕست بوونی نیە"
+
+#: deja-dup/main.vala:109
+msgid "You must provide a directory, not a file"
+msgstr "تۆ دەبێت پێڕست دابنێی، نەک پەڕگە"
+
+#: deja-dup/main.vala:240
+msgid "Scheduled backup delayed"
+msgstr "پاڵپشتی ڕێکخراو دوواخرا"
+
+#: deja-dup/main.vala:271
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Brwa Salam https://launchpad.net/~brwasalam\n"
+"  Jwtiyar Nariman https://launchpad.net/~jwtiyar"
+
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s لە %2$s"
@@ -1319,99 +1128,27 @@ msgstr "شوێنی کۆکەرەوە بەردەست نیە"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "چاوەڕێی %s’ دەکرێت تاوەکوو پەیوەست دەبێت"
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "ڕێپێدان ڕەتکرایەوە"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "ـناونیشانی کلیلی چوونەناو"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "ـکلیلی چوونەناوی نهێنی"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "پیشـاندانی کلیلی چوونەناوی نهێنی"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "ـکلیلی چوونەناوی نهێنی لەبیرمەکە"
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
+msgstr "پاڵپشتی دەستپێدەکات کاتێک ئینتەرنێت بەردەست بـێت."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s لە ناو گوگڵ درایڤ"
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr "نەتوانرا بچیتە ناو ڕاژەکانی گوگڵ."
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr "بەڵگەنامە باوەڕثیکراوەکانی گوگڵ بۆ  Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
-msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "%s لەناو پەڕگە هەوری ڕاکسپەیس"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr ""
-"دەتوانی خۆت تۆمار بکەیت لە پەڕگە هەوری ڕاکسپەیس بە <a href=\"%s\">سەرهێڵ</a>."
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "پەیوەندیبەستن بە پەڕگە هەوری ڕاکسپەیس"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "ـکلیلی چوونەناوی API"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "کلیلی چوونەناوی API پیشـان بدە"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
 msgstr ""
 
 #: libdeja/BackendRemote.vala:98
@@ -1434,42 +1171,27 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "%s لە ناو ئەمزۆن S3"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "دەتوانی خۆت تۆماربکەیت لە ئەمەزۆن S3 بە <a href=\"%s\">سەرهێڵ</a>."
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "پەیوەندیکردن بە ئەمەزۆن S3"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr "چوونەناو بەدەستهێنرا"
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "ماڵەوە (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "ماڵەوە"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "تەنەکەخۆڵ"
 
@@ -1488,8 +1210,8 @@ msgstr "لیستەکردنی پەڕگەکان..."
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "ئامادەکاردن..."
 
@@ -1515,20 +1237,20 @@ msgid "Paused (no network)"
 msgstr "وەستێنرا (ئینتەرنێت نیە)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr ""
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "شوێنی هەڵگرتنی پاڵپشتی زۆر بچووکە. تکایە دانەیەک بەکاربێنە تووانستی کەمتر "
 "نەبێت لە %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1537,15 +1259,15 @@ msgstr ""
 "شوێنی هەڵگرتنی پاڵپەشتی بۆشایی پێویستی تێدانییە. تکایە دانەیەک بەکاربێنە "
 "تووانستی کەمتر نەبێت لە %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "پاککردنەوە..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1554,26 +1276,26 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr ""
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "پارێزراکردنی تێپەڕەوشەی خراپ."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "نەتوانرا ‘%s’ بهێندرێتەوە: پەڕگە نیە لە ناو پاڵپشتیدا."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1581,73 +1303,57 @@ msgid ""
 "location."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "ناوی کۆمپیوتەر گۆڕا"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "ڕێپێدان ڕەتکرایەوە کاتێک هەوڵدرا بۆ درووستکردنی ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "ڕێپێدان ڕەتکرایەوە کاتێک هەوڵدرا بۆ خوێندنەوەی ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "ڕێپێدان ڕەتکرایەوە کاتێک هەوڵدرا بۆ سڕینەوەی ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "شوێنی پاڵپشتی ‘%s’ بوونی نیە."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "بۆشایی نەماوە."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "ناونیشانی (ID) هەڵە."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "کلیلی نهێنی هەڵە."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "هەژماری خزمەتگوزاری وێبی ئەمەزۆن تۆمارنەکراوە لە خزمەتگوزاری S3."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr ""
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "هەڵە لە خوێندنەوەی پەڕگەی ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "هەڵە لە نووسینەوەی ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "بۆشایی نەماوە لەسەر ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "هیچ پەڕگەیەکی پاڵپشتی نەدۆزرایەوە"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "بارکردن..."
 
@@ -1667,8 +1373,141 @@ msgid ""
 "version %d.%d.%.2d"
 msgstr ""
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr ""
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "هێنانەوەی پەڕگە ونبووەکان"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "پەڕگە سڕاوەکان بهێنەوەرە لە پاڵپشتییەوە"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "بگەڕێوە بۆ وەشانی پێشوو..."
+msgstr[1] "بگەڕێوە بۆ وەشانەکانی پێشوو..."
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "هێنانوەی پەڕگە لە پاڵپشتیەوە"
+msgstr[1] "هێنانوەی پەڕگەکان لە پاڵپشتیەوە"
+
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "ئامرازی پاڵپشتی Déjà Dup"
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "بوخچەی The Amazon S3"
+
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Amazon S3 Access Key ID"
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "ناونیشانی کلیلی چوونەناوی کۆکەرەوەی هەوری گووگڵ"
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "بوخچەی کۆکەرەوەی هەوری گووگڵ"
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "ناوی بەکارهێنەری OpenStack"
+
+#~ msgid "Authentication URL"
+#~ msgstr "بەستەری ڕێپێدان"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "یارمەتی"
+
+#~ msgid "_Restore…"
+#~ msgstr "ـهێنانەوە..."
+
+#~ msgid "Categories"
+#~ msgstr "هاوپۆلەکان"
+
+#~ msgid "Overview"
+#~ msgstr "پوختە"
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "ـئیستا پاڵپشتی بکە"
+
+#~ msgid "_Storage location"
+#~ msgstr "ـشوێنی کۆکردنەوە"
+
+#~ msgid "Scheduling"
+#~ msgstr "ڕێکخستن"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "_هێشتنەوە"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "زپاڵپشتی خۆکار"
+
+#~ msgid "Storage location"
+#~ msgstr "شوێنی کۆکردنەوە"
+
+#~ msgid "_Every"
+#~ msgstr "ـهەموو"
+
+#~ msgid "Restore…"
+#~ msgstr "هێنانەوە..."
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr ""
+#~ "پێویستە پەنججە بنێی بە دوگمەی %s  بۆ ئەوەی بەناو پاڵپشتیەکاندا بگەڕێی."
+
+#~ msgid "Back Up Now…"
+#~ msgstr "ئێستا پاڵپشتی بکە..."
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "پێویستە پاڵپشتی خۆکار <a href=''>چالاک</a> بکەیت یان پەنجە بنێی بەدوگمەی %s "
+#~ "بۆ دەستپێکردنی دانەیەکی نوێ."
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "پاڵپشتی خۆکارانە هەموو ڕۆژێک دەستێیدەکات."
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "پاڵپشتی خۆکارانە هەموو هەفتەیەک دەستپیدەکات."
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "پاڵپشتی خۆکارانە هەموو %d ڕۆژ جارێک دەستپێدەکات."
+#~ msgstr[1] "پاڵپشتی خۆکارانە هەموو %d ڕۆژ جارێک دەستپێدەکات."
+
+#~ msgid "_Remove"
+#~ msgstr "ـسڕینەوە"
+
+#~ msgid "Day"
+#~ msgstr "ڕۆژ"
+
+#~ msgid "_Container"
+#~ msgstr "ـکۆنتێنەر"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "S3 Access Key I_D"
+
+#~ msgid "_Bucket"
+#~ msgstr "_Bucket"
+
+#~ msgid "GCS Access Key I_D"
+#~ msgstr "GCS Access Key I_D"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d ڕۆژ"
+#~ msgstr[1] "%d ڕۆژ"
 
 #~ msgid ""
 #~ "You first need to allow Déjà Dup Backup Tool to access your Google account."
@@ -1676,9 +1515,64 @@ msgstr ""
 #~ "پێویستە سەرەتا ڕێگە بە توڵامرازی پاڵپشتی Déjà Dup بدەیت کە بچیتە ناو هەژماری "
 #~ "گوگڵەکەتەوە."
 
+#~ msgid "S_how API access key"
+#~ msgstr "کلیلی چوونەناوی API پیشـان بدە"
+
+#~ msgid "_API access key"
+#~ msgstr "ـکلیلی چوونەناوی API"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "%s لەناو پەڕگە هەوری ڕاکسپەیس"
+
+#~ msgid "Permission denied"
+#~ msgstr "ڕێپێدان ڕەتکرایەوە"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "دەتوانی خۆت تۆمار بکەیت لە پەڕگە هەوری ڕاکسپەیس بە <a href=\"%s\">سەرهێڵ</a>."
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "پەیوەندیبەستن بە پەڕگە هەوری ڕاکسپەیس"
+
+#~ msgid "_Access key ID"
+#~ msgstr "ـناونیشانی کلیلی چوونەناو"
+
+#~ msgid "_Secret access key"
+#~ msgstr "ـکلیلی چوونەناوی نهێنی"
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "دەتوانی خۆت تۆماربکەیت لە ئەمەزۆن S3 بە <a href=\"%s\">سەرهێڵ</a>."
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "پەیوەندیکردن بە ئەمەزۆن S3"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "%s لە ناو ئەمزۆن S3"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "پیشـاندانی کلیلی چوونەناوی نهێنی"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "ـکلیلی چوونەناوی نهێنی لەبیرمەکە"
+
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr ""
 #~ "توڵامرازی پاڵپشتی Déjà Dup  ئێستا بەردەام دەبـێت. دەتوانی پەڕە دابخەیتەوە."
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "هەژماری خزمەتگوزاری وێبی ئەمەزۆن تۆمارنەکراوە لە خزمەتگوزاری S3."
+
+#~ msgid "Invalid ID."
+#~ msgstr "ناونیشانی (ID) هەڵە."
+
+#~ msgid "Invalid secret key."
+#~ msgstr "کلیلی نهێنی هەڵە."
 
 #, c-format
 #~ msgid ""

@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
-"PO-Revision-Date: 2020-04-17 17:06+0000\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
+"PO-Revision-Date: 2020-05-04 05:06+0000\n"
 "Last-Translator: rob <linuxned@gmail.com>\n"
 "Language-Team: Dutch <nl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-04-18 06:52+0000\n"
-"X-Generator: Launchpad (build 2e26c9bbd21cdca248baaea29aeffb920afcc32a)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:14+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr "Reservekopieobservatie"
 
@@ -29,7 +29,8 @@ msgstr "Reservekopieobservatie"
 msgid "Schedules backups at regular intervals"
 msgstr "Maken van reservekopieën op regelmatige tijden plannen"
 
-#: data/org.gnome.DejaDup.desktop.in:11
+#: data/org.gnome.DejaDup.Monitor.desktop.in:9
+#: data/org.gnome.DejaDup.desktop.in:9
 msgid "@icon@"
 msgstr "@icon@"
 
@@ -38,7 +39,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup-reservekopieën"
 
@@ -94,25 +95,25 @@ msgstr ""
 "nodig heeft, geeft u misschien de voorkeur aan andere back-up-toepassingen."
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:8 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "Reservekopieën"
 
-#: data/org.gnome.DejaDup.desktop.in:9
+#: data/org.gnome.DejaDup.desktop.in:7
 msgid "Change your backup settings"
 msgstr "Reservekopie-instellingen wijzigen"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/org.gnome.DejaDup.desktop.in:23
+#: data/org.gnome.DejaDup.desktop.in:21
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/org.gnome.DejaDup.desktop.in:30
+#: data/org.gnome.DejaDup.desktop.in:28
 msgid "Back Up"
 msgstr "Reservekopie maken"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "Mappen om een reservekopie van te maken"
 
@@ -134,7 +135,7 @@ msgstr ""
 "kan zich op elke locatie van het pad bevinden. Relatieve onderdelen zijn "
 "relatief aan de Persoonlijke map."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "Mappen om te negeren"
 
@@ -308,14 +309,14 @@ msgstr ""
 "Het type reservekopielocatie. Bij 'auto', zal er een standaardlocatie "
 "gekozen worden die beschikbaar is."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "De map waarin reservekopieën worden opgeslagen"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -323,11 +324,11 @@ msgstr ""
 "De mapstructuur waar reservekopieën worden opgeslagen. Het pad kan absoluut "
 "zijn maar ook relatief aan uw Persoonlijke map."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -335,23 +336,23 @@ msgstr ""
 "Dit is het unieke bestandssysteemkenmerk voor de schijf, dat gebruikt zal "
 "worden voor het herkennen van de schijf wanneer die aangesloten wordt."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr "Naam"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr "De naam van de externe schijf."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr "Pictogram"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Het pictogram van de externe schijf, als een geserialiseerd GIcon."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -359,15 +360,15 @@ msgstr ""
 "De mapstructuur waar reservekopieën worden opgeslagen. Het pad is relatief "
 "aan de schijf."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr "Het serveradres"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr "De URI van de serverlocatie op afstand."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -375,69 +376,7 @@ msgstr ""
 "De mapstructuur waar reservekopieën worden opgeslagen. Het pad kan absoluut "
 "zijn maar ook relatief aan de gastcomputer."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Amazon S3-toegangssleutel-ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr ""
-"Uw Amazon S3-toegangssleutel-ID. Deze fungeert als uw S3-gebruikersnaam."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "De naam om voor de Amazon S3-emmer te gebruiken"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"In welke Amazon S3-emmer de bestanden opgeslagen moeten worden. Deze hoeft "
-"nog niet te bestaan. Alleen legale namen zijn geldig."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "De Amazon S3-map"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr ""
-"Een optionele naam voor een map om bestanden in op te slaan. Deze map zal "
-"gemaakt worden in de gekozen emmer."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "Google Cloud Storage-toegangssleutel-ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-"Uw Google Cloud Storage-toegangssleutel-ID. Deze fungeert als uw Google "
-"Cloud Storage-gebruikersnaam."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr "De naam om voor de Google Cloud Storage-emmer te gebruiken"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"In welke Google Cloud Storage-emmer de bestanden opgeslagen moeten worden. "
-"Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "De Google Cloud Storage-map"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
@@ -445,65 +384,7 @@ msgstr ""
 "Het pad waar reservekopieën worden opgeslagen. Het pad kan absoluut zijn "
 "maar ook relatief aan de gastcomputer."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr "De Rackspace Cloud Files-container"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"In welke Rackspace Cloud Files-container de bestanden opgeslagen moeten "
-"worden. Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "Uw Rackspace-gebruikersnaam"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "Dit is uw gebruikersnaam voor de Rackspace Cloud Files-dienst."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr "De OpenStack Swift-container"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"In welke OpenStack Swift-container de bestanden opgeslagen moeten worden. "
-"Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "Uw OpenStack-gebruikersnaam"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr "Dit is uw gebruikersnaam voor de OpenStack Swift-dienst."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr "Uw OpenStack-project"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr "Dit is uw project voor de OpenStack Swift-dienst."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "Authenticatie-URL"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-"Dit is de authenticatie-URL, of keystone-URL voor de OpenStack-dienst"
-
-#: deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "Herstellen"
 
@@ -520,31 +401,133 @@ msgstr "Algemeen"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Afsluiten"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "Help"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afsluiten"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "He_rstellen"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "_Sneltoetsen"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "_Help"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "_Info Déjà Dup"
 
-#: data/ui/restore-missing.ui:66 deja-dup/AssistantOperation.vala:161
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "Opslag"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "Planning"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "Automatische reservekopie"
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "_Map"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr "_Netwerklocatie"
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr ""
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "_Selecteer map…"
+
+#: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
 msgstr "Zoeken…"
 
-#: data/ui/restore-missing.ui:23
+#: data/ui/restore-missing.ui:74
 msgid "Folder"
 msgstr "Map"
 
@@ -754,19 +737,19 @@ msgstr "Elke twee _maanden testen"
 msgid "_Grant Access"
 msgstr "_Toegang verlenen"
 
-#: deja-dup/AssistantOperation.vala:559
+#: deja-dup/AssistantOperation.vala:558
 msgid "Install Packages"
 msgstr "Pakketten installeren"
 
-#: deja-dup/AssistantOperation.vala:574
+#: deja-dup/AssistantOperation.vala:573
 msgid "Summary"
 msgstr "Samenvatting"
 
-#: deja-dup/AssistantOperation.vala:596
+#: deja-dup/AssistantOperation.vala:595
 msgid "Restore Test"
 msgstr "Herstel-test"
 
-#: deja-dup/AssistantOperation.vala:604
+#: deja-dup/AssistantOperation.vala:603
 msgid "Grant Access"
 msgstr "Toegang verlenen"
 
@@ -776,88 +759,84 @@ msgstr "Toegang verlenen"
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:686
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: deja-dup/AssistantOperation.vala:685
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "Mislukt met een onbekende fout."
 
-#: deja-dup/AssistantOperation.vala:894
+#: deja-dup/AssistantOperation.vala:893
 msgid "Require Password?"
 msgstr "Wachtwoord vereisen?"
 
-#: deja-dup/AssistantOperation.vala:896
+#: deja-dup/AssistantOperation.vala:895
 msgid "Encryption Password Needed"
 msgstr "Versleutelingswachtwoord vereist"
 
-#: deja-dup/AssistantOperation.vala:968
+#: deja-dup/AssistantOperation.vala:967
 msgid "Backup encryption password"
 msgstr "Versleutelingswachtwoord"
 
-#: deja-dup/AssistantOperation.vala:1046
+#: deja-dup/AssistantOperation.vala:1045
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installeren"
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "He_rstellen"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "_Reservekopielocatie"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "Herstellen van waar?"
 
-#: deja-dup/AssistantRestore.vala:142
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "_Datum"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "Bestanden herstellen naar hun _oorspronkelijke locatie"
 
-#: deja-dup/AssistantRestore.vala:170
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "Herstellen naar een _specifieke map"
 
-#: deja-dup/AssistantRestore.vala:180
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "Selecteer map om te herstellen"
 
-#: deja-dup/AssistantRestore.vala:184
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "_Map herstellen"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "Reservekopielocatie"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "Hersteldatum"
 
-#: deja-dup/AssistantRestore.vala:234
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "Map herstellen"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "Zoeken naar reservekopieën…"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "Herstellen van welke datum?"
 
-#: deja-dup/AssistantRestore.vala:276
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "Waar naartoe herstellen?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:312
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "Herstellen van:"
 
@@ -865,97 +844,224 @@ msgstr "Herstellen van:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:352
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:364
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "Geen reservekopieën om te herstellen"
 
-#: deja-dup/AssistantRestore.vala:444
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "Oorspronkelijke locatie"
 
-#: deja-dup/AssistantRestore.vala:455
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Bestand om te herstellen"
 msgstr[1] "Bestanden om te herstellen"
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "Herstellen mislukt"
 
-#: deja-dup/AssistantRestore.vala:478
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "Herstel is voltooid"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:481
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "Uw bestanden zijn succesvol hersteld."
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Uw bestand is succesvol hersteld."
 msgstr[1] "Uw bestanden zijn succesvol hersteld."
 
-#: deja-dup/AssistantRestore.vala:491 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Herstellen..."
 
-#: deja-dup/AssistantRestoreMissing.vala:156
+#: deja-dup/AssistantRestoreMissing.vala:146
 msgid "File"
 msgstr "Bestand"
 
-#: deja-dup/AssistantRestoreMissing.vala:157
+#: deja-dup/AssistantRestoreMissing.vala:147
 msgid "Last seen"
 msgstr "Laatst bekeken"
 
-#: deja-dup/AssistantRestoreMissing.vala:168
+#: deja-dup/AssistantRestoreMissing.vala:158
 msgid "Restore which Files?"
 msgstr "Welke bestanden herstellen?"
 
-#: deja-dup/AssistantRestoreMissing.vala:294
+#: deja-dup/AssistantRestoreMissing.vala:284
 msgid "Scanning for files from up to a day ago…"
 msgstr "Zoeken naar bestanden tot een dag geleden…"
 
-#: deja-dup/AssistantRestoreMissing.vala:297
+#: deja-dup/AssistantRestoreMissing.vala:287
 msgid "Scanning for files from up to a week ago…"
 msgstr "Zoeken naar bestanden tot een week geleden…"
 
-#: deja-dup/AssistantRestoreMissing.vala:300
+#: deja-dup/AssistantRestoreMissing.vala:290
 msgid "Scanning for files from up to a month ago…"
 msgstr "Zoeken naar bestanden tot een maand geleden…"
 
-#: deja-dup/AssistantRestoreMissing.vala:305
+#: deja-dup/AssistantRestoreMissing.vala:295
 #, c-format
 msgid "Scanning for files from about a month ago…"
 msgid_plural "Scanning for files from about %d months ago…"
 msgstr[0] "Zoeken naar bestanden van ongeveer een maand geleden…"
 msgstr[1] "Zoeken naar bestanden van ongeveer %d maanden geleden…"
 
-#: deja-dup/AssistantRestoreMissing.vala:312
+#: deja-dup/AssistantRestoreMissing.vala:302
 #, c-format
 msgid "Scanning for files from about a year ago…"
 msgid_plural "Scanning for files from about %d years ago…"
 msgstr[0] "Zoeken naar bestanden van ongeveer een jaar geleden…"
 msgstr[1] "Zoeken naar bestanden van ongeveer %d jaren geleden…"
 
-#: deja-dup/AssistantRestoreMissing.vala:405
+#: deja-dup/AssistantRestoreMissing.vala:395
 msgid "Scanning finished"
 msgstr "Zoeken voltooid"
+
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "Tenminste zes maanden"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "Tenminste één jaar"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "Voor altijd"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "Tenminste %d dag"
+msgstr[1] "Tenminste %d dagen"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "Verwijderen"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "Toevoegen"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "Selecteer mappen"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "_Toevoegen"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "Google Drive"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "Lokale map"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr "Netwerkserver"
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "Google Cloud Storage"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "Selecteer map"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "_OK"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "Dagelijks"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "Wekelijks"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "Iedere %d dag"
+msgstr[1] "Iedere %d dagen"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "De eerstvolgende reservekopie is vandaag."
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "De eerstvolgende reservekopie is morgen."
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "De eerstvolgende reservekopie is over %d dag."
+msgstr[1] "De eerstvolgende reservekopie is over %d dagen."
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "De laast gemaakte reservekopie was vandaag."
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "De laast gemaakte reservekopie was gisteren."
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "De laatst gemaakte reservekopie was %d dag geleden."
+msgstr[1] "De laast gemaakte back-up was %d dagen geleden."
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "Er zijn geen recente reservekopieën."
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "Er is geen reservekopie gepland."
 
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "Verbinden met server"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "Gebr_uikersnaam"
 
@@ -983,56 +1089,6 @@ msgstr "Verbinden al_s gebruiker"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "_Domein"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "Categorieën"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "He_rstellen..."
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "_Nu reservekopie maken…"
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "Overzicht"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "_Reservekopielocatie"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "Reservekopielocatie"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "_Automatische reservekopieën"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "_Elke"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "_Bewaren"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-"Oude reservekopieën zullen eerder verwijderd worden als de opslaglocatie "
-"bijna vol is."
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "Planning"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -1075,51 +1131,52 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Maken van geplande reservekopie wordt gestart"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "Kan %s niet weergeven"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Versie tonen"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Herstel de aangegeven bestanden"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Nu meteen een reservekopie maken"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "Verwijderde bestanden herstellen"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr "Er is reeds een opdracht gestart om een reservekopie te maken"
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "Geen map aangegeven"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "Er kan maar één map tegelijk getoond worden"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr "Map bestaat niet"
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "U dient een map aan te geven, geen bestand"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr "Automatische reservekopie"
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "Maken van geplande reservekopie is uitgesteld"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1141,277 +1198,9 @@ msgstr ""
 "  rob https://launchpad.net/~rvdb\n"
 "  ubby https://launchpad.net/~kostas-sytske"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGoogle.vala:79
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr ""
-"Het maken van de reservekopie zal beginnen zodra er een netwerkverbinding "
-"beschikbaar is."
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr ""
-"Het maken van de reservekopie zal beginnen zodra er een netwerkverbinding "
-"zonder datalimiet beschikbaar is."
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "Ontbrekende bestanden herstellen…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "Ontbrekende bestanden herstellen vanaf reservekopie"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "Herstellen naar vorige versie…"
-msgstr[1] "Herstellen naar vorige versies…"
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "Bestand herstellen vanaf reservekopie"
-msgstr[1] "Bestanden herstellen vanaf reservekopie"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "Tenminste zes maanden"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "Tenminste één jaar"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "Voor altijd"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "Tenminste %d dag"
-msgstr[1] "Tenminste %d dagen"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "De eerstvolgende reservekopie is vandaag."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "De eerstvolgende reservekopie is morgen."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "De eerstvolgende reservekopie is over %d dag."
-msgstr[1] "De eerstvolgende reservekopie is over %d dagen."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "De laast gemaakte reservekopie was vandaag."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "De laast gemaakte reservekopie was gisteren."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "De laatst gemaakte reservekopie was %d dag geleden."
-msgstr[1] "De laast gemaakte back-up was %d dagen geleden."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "Er zijn geen recente reservekopieën."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "Er is geen reservekopie gepland."
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "Herstellen…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr ""
-"U kunt de knop %s gebruiken om te bladeren naar bestaande reservekopieën."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-"U kunt de volledige reservekopie terugzetten met de %s-knop of %s gebruiken "
-"om wijzigingen aan individuele bestanden te herstellen of verwijderde "
-"bestanden terug te plaatsen."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "Nu reservekopie maken…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-"U zou automatische reservekopieën kunnen <a href=''>inschakelen</a> of de "
-"knop %s gebruiken om nu een reservekopie te maken."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "Er zal automatisch elke dag een reservekopie gemaakt worden."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "Er zal automatisch elke week een reservekopie gemaakt worden."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "Er zal automatisch elke dag een reservekopie gemaakt worden."
-msgstr[1] ""
-"Er zal automatisch om de %d dagen een reservekopie gemaakt worden."
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "_Toevoegen"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "Toevoegen"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "_Verwijderen"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "Verwijderen"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "Selecteer mappen"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr "Netwerkserver"
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "Lokale map"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180
-msgid "Google Cloud Storage"
-msgstr "Google Cloud Storage"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "Google Drive"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/widgets/ConfigLocation.vala:186
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr "_Netwerklocatie"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "_Map"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "_Selecteer map…"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "Selecteer map"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "_OK"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr "GCS -toegangssleutel-I_D"
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr "_Emmer"
-
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "_Container"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr "_Authenticatie-URL"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr "Projec_tnaam"
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "S3-toegangssleutel-I_D"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "Dag"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr "Week"
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d dag"
-msgstr[1] "%d dagen"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "Kan %s niet weergeven"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s op %2$s"
@@ -1430,101 +1219,30 @@ msgstr "Reservekopielocatie is niet beschikbaar"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Wachten totdat '%s' verbonden is..."
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr "%s/%s op Google Cloud Storage"
-
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "Toegang geweigerd"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
 msgstr ""
-"U kunt <a href=\"%s\">online</a> een Google Cloud Storage-account aanmaken."
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr ""
-"Niet vergeten om sleutels aan te maken die interoperabiliteit mogelijk maken."
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr "Verbinding maken met Google Cloud Storage"
-
-#: libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "Toeg_angssleutel-ID"
-
-#: libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "Geheime toegang_ssleutel"
-
-#: libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "Ge_heime toegangssleutel tonen"
-
-#: libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "Geheime toegangssleutel _onthouden"
+"Het maken van de reservekopie zal beginnen zodra er een netwerkverbinding "
+"beschikbaar is."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s op Google Drive"
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr "Aanmelden bij Google-servers is mislukt."
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr "Google-aanmeldgegevens voor Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr "U dient eerst toegang te verlenen tot uw Google-account."
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr "%s op OpenStack Swift"
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "%s op Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr ""
-"U kunt <a href=\"%s\">online</a> een Rackspace Cloud Files-account aanmaken."
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "Verbinding maken met Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "_API-toegangssleutel"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "API-toegangssleutel _tonen"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "API-toegangssleutel _onthouden"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1548,42 +1266,27 @@ msgstr ""
 "Samba-netwerklocaties moeten zowel een computernaam als een naam van een "
 "gedeelde map bevatten."
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "%s op Amazon S3"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "U kunt <a href=\"%s\">online</a> een Amazon S3-account aanmaken."
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "Verbinding maken met Amazon S3"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr "Toegang toegestaan"
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr "Deja Dup zal nu verdergaan. U kunt deze pagina sluiten."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "Persoonlijke map (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "Persoonlijke map"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "Prullenbak"
 
@@ -1602,8 +1305,8 @@ msgstr "Bestandslijst maken..."
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "Voorbereiden…"
 
@@ -1629,20 +1332,20 @@ msgid "Paused (no network)"
 msgstr "Gepauzeerd (geen netwerk)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "Kon ‘%s’ niet herstellen: geen geldige bestandslocatie"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Reservekopielocatie is te klein. Probeer er een te gebruiken met ten minste "
 "%s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1651,15 +1354,15 @@ msgstr ""
 "Reservekopielocatie heeft onvoldoende vrije ruimte. Probeer er een te "
 "gebruiken met ten minste %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "Opruimen..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1670,7 +1373,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1679,19 +1382,19 @@ msgstr ""
 "schrijfrechten heeft voor deze bestanden."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "Versleutelingswachtwoord is onjuist."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Kon ‘%s’ niet herstellen: Kon bestand niet vinden in reservekopie"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1702,74 +1405,57 @@ msgstr ""
 "deze computer is %s. Als dit onverwacht is dient er op een andere locatie "
 "een reservekopie gemaakt te worden."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "Computernaam is veranderd"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Toegang geweigerd bij het aanmaken van ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Toegang geweigerd bij het lezen van ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Toegang geweigerd bij het verwijderen van ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Reservekopielocatie ‘%s’ bestaat niet."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "Geen vrije ruimte."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "Ongeldig ID."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "Ongeldige geheime sleutel."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr ""
-"Uw Amazon Web Services-account is niet geregistreerd voor de S3-dienst."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "S3-emmernaam is niet beschikbaar."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fout bij het lezen van ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fout bij het schrijven van ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Geen vrije ruimte over in ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "Geen reservekopiebestanden gevonden"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "Uploaden..."
 
@@ -1791,8 +1477,51 @@ msgstr ""
 "Deja Dup heeft minimaal versie %d.%d.%.2d van duplicity nodig, maar kon "
 "alleen maar versie %d.%d.%.2d vinden"
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr ""
+"Het maken van de reservekopie zal beginnen zodra er een netwerkverbinding "
+"zonder datalimiet beschikbaar is."
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "Ontbrekende bestanden herstellen…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "Ontbrekende bestanden herstellen vanaf reservekopie"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "Herstellen naar vorige versie…"
+msgstr[1] "Herstellen naar vorige versies…"
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "Bestand herstellen vanaf reservekopie"
+msgstr[1] "Bestanden herstellen vanaf reservekopie"
+
+#~ msgid "Overview"
+#~ msgstr "Overzicht"
+
+#~ msgid "Categories"
+#~ msgstr "Categorieën"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "_Bewaren"
+
+#~ msgid "Scheduling"
+#~ msgstr "Planning"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#~ msgid "Day"
+#~ msgstr "Dag"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr ""
@@ -1804,8 +1533,161 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "Déjà Dup reservekopie maken"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Amazon S3-toegangssleutel-ID"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr ""
+#~ "Uw Amazon S3-toegangssleutel-ID. Deze fungeert als uw S3-gebruikersnaam."
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "In welke Amazon S3-emmer de bestanden opgeslagen moeten worden. Deze hoeft "
+#~ "nog niet te bestaan. Alleen legale namen zijn geldig."
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "De Amazon S3-map"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr ""
+#~ "Een optionele naam voor een map om bestanden in op te slaan. Deze map zal "
+#~ "gemaakt worden in de gekozen emmer."
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "Uw Rackspace-gebruikersnaam"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "Dit is uw gebruikersnaam voor de Rackspace Cloud Files-dienst."
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "Uw OpenStack-gebruikersnaam"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "Dit is uw gebruikersnaam voor de OpenStack Swift-dienst."
+
+#~ msgid "Your OpenStack tenant"
+#~ msgstr "Uw OpenStack-project"
+
+#~ msgid "This is your tenant for the OpenStack Swift service."
+#~ msgstr "Dit is uw project voor de OpenStack Swift-dienst."
+
+#~ msgid "Authentication URL"
+#~ msgstr "Authenticatie-URL"
+
+#~ msgid ""
+#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
+#~ msgstr ""
+#~ "Dit is de authenticatie-URL, of keystone-URL voor de OpenStack-dienst"
+
+#~ msgid "_Restore…"
+#~ msgstr "He_rstellen..."
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "_Nu reservekopie maken…"
+
+#~ msgid "_Storage location"
+#~ msgstr "_Reservekopielocatie"
+
+#~ msgid "Storage location"
+#~ msgstr "Reservekopielocatie"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "_Automatische reservekopieën"
+
+#~ msgid "_Every"
+#~ msgstr "_Elke"
+
+#~ msgid "Restore…"
+#~ msgstr "Herstellen…"
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr ""
+#~ "U kunt de knop %s gebruiken om te bladeren naar bestaande reservekopieën."
+
+#~ msgid "Back Up Now…"
+#~ msgstr "Nu reservekopie maken…"
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "U zou automatische reservekopieën kunnen <a href=''>inschakelen</a> of de "
+#~ "knop %s gebruiken om nu een reservekopie te maken."
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "Er zal automatisch elke dag een reservekopie gemaakt worden."
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "Er zal automatisch elke week een reservekopie gemaakt worden."
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "Er zal automatisch elke dag een reservekopie gemaakt worden."
+#~ msgstr[1] ""
+#~ "Er zal automatisch om de %d dagen een reservekopie gemaakt worden."
+
+#~ msgid "_Remove"
+#~ msgstr "_Verwijderen"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "S3-toegangssleutel-I_D"
+
 #~ msgid "Ubuntu One has shut down.  Please choose another storage location."
 #~ msgstr "Ubuntu One bestaat niet meer. Kies een andere opslaglocatie."
+
+#~ msgid "Week"
+#~ msgstr "Week"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d dag"
+#~ msgstr[1] "%d dagen"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "%s op Rackspace Cloud Files"
+
+#~ msgid "Permission denied"
+#~ msgstr "Toegang geweigerd"
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "Verbinding maken met Rackspace Cloud Files"
+
+#~ msgid "_API access key"
+#~ msgstr "_API-toegangssleutel"
+
+#~ msgid "S_how API access key"
+#~ msgstr "API-toegangssleutel _tonen"
+
+#~ msgid "_Remember API access key"
+#~ msgstr "API-toegangssleutel _onthouden"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "%s op Amazon S3"
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "Verbinding maken met Amazon S3"
+
+#~ msgid "_Access key ID"
+#~ msgstr "Toeg_angssleutel-ID"
+
+#~ msgid "_Secret access key"
+#~ msgstr "Geheime toegang_ssleutel"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "Ge_heime toegangssleutel tonen"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "Geheime toegangssleutel _onthouden"
 
 #, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
@@ -1823,6 +1705,19 @@ msgstr ""
 
 #~ msgid "Could not start backup tool"
 #~ msgstr "Kon de reservekopietoepassing niet starten"
+
+#~ msgid "Invalid ID."
+#~ msgstr "Ongeldig ID."
+
+#~ msgid "Invalid secret key."
+#~ msgstr "Ongeldige geheime sleutel."
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr ""
+#~ "Uw Amazon Web Services-account is niet geregistreerd voor de S3-dienst."
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "S3-emmernaam is niet beschikbaar."
 
 #, c-format
 #~ msgid ""
@@ -1845,11 +1740,53 @@ msgstr ""
 #~ "Aan het wachten op %s omdat deze bezig is met het configureren van uw "
 #~ "reservekopie-instellingen…"
 
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr ""
+#~ "Oude reservekopieën zullen eerder verwijderd worden als de opslaglocatie "
+#~ "bijna vol is."
+
 #, c-format
 #~ msgid "Backup will begin when ‘%s’ has Files support enabled"
 #~ msgstr ""
 #~ "Het maken van de reservekopie zal beginnen zodra ‘%s’ ondersteuning voor "
 #~ "Bestanden heeft ingeschakeld"
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "De naam om voor de Amazon S3-emmer te gebruiken"
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "Google Cloud Storage-toegangssleutel-ID"
+
+#~ msgid ""
+#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
+#~ "Cloud Storage username."
+#~ msgstr ""
+#~ "Uw Google Cloud Storage-toegangssleutel-ID. Deze fungeert als uw Google "
+#~ "Cloud Storage-gebruikersnaam."
+
+#~ msgid "The Google Cloud Storage bucket name to use"
+#~ msgstr "De naam om voor de Google Cloud Storage-emmer te gebruiken"
+
+#~ msgid ""
+#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "In welke Google Cloud Storage-emmer de bestanden opgeslagen moeten worden. "
+#~ "Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "De Google Cloud Storage-map"
+
+#~ msgid "The Rackspace Cloud Files container"
+#~ msgstr "De Rackspace Cloud Files-container"
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "In welke Rackspace Cloud Files-container de bestanden opgeslagen moeten "
+#~ "worden. Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
 
 #~ msgid "Account ID"
 #~ msgstr "Account-ID"
@@ -1863,9 +1800,38 @@ msgstr ""
 #~ msgid "The cached type of account that ID represents."
 #~ msgstr "Het type account waarmee dit ID in het buffergeheugen opgeslagen is."
 
+#~ msgid "The OpenStack Swift container"
+#~ msgstr "De OpenStack Swift-container"
+
+#~ msgid ""
+#~ "Which OpenStack Swift container to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "In welke OpenStack Swift-container de bestanden opgeslagen moeten worden. "
+#~ "Deze hoeft nog niet te bestaan. Alleen legale namen zijn geldig."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "Help"
+
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "Sneltoetsen"
+
+#, c-format
+#~ msgid ""
+#~ "You can restore the entire backup with the %s button or use %s to either "
+#~ "revert individual files or restore missing ones."
+#~ msgstr ""
+#~ "U kunt de volledige reservekopie terugzetten met de %s-knop of %s gebruiken "
+#~ "om wijzigingen aan individuele bestanden te herstellen of verwijderde "
+#~ "bestanden terug te plaatsen."
+
+#~ msgid "GCS Access Key I_D"
+#~ msgstr "GCS -toegangssleutel-I_D"
+
+#~ msgid "_Bucket"
+#~ msgstr "_Emmer"
 
 #~ msgid ""
 #~ "This account is not yet configured. It cannot be used until you add it to "
@@ -1885,6 +1851,9 @@ msgstr ""
 #~ msgid "_Open Online Account Settings"
 #~ msgstr "Online Account-instellingen _openen"
 
+#~ msgid "_Container"
+#~ msgstr "_Container"
+
 #~ msgid "Backup will begin when a storage location is configured"
 #~ msgstr ""
 #~ "Het maken van de reservekopie zal beginnen zodra de reservekopielocatie "
@@ -1894,6 +1863,17 @@ msgstr ""
 #~ msgstr ""
 #~ "Aan het wachten op Online Accounts omdat deze bezig is met het configureren "
 #~ "van uw reservekopie-instellingen…"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "U kunt <a href=\"%s\">online</a> een Rackspace Cloud Files-account aanmaken."
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "U kunt <a href=\"%s\">online</a> een Amazon S3-account aanmaken."
 
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr "Déjà Dup Backup Tool zal nu doorgaan. U kunt deze pagina sluiten."

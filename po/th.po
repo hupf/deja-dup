@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Thai <th@li.org>\n"
@@ -15,14 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2020-03-16 06:32+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:15+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr "เฝ้าสังเกตการสำรองข้อมูล"
 
@@ -40,7 +39,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -88,7 +87,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "การสำรองข้อมูล"
 
@@ -106,7 +105,7 @@ msgstr "déjà;deja;dup;"
 msgid "Back Up"
 msgstr "สำรองข้อมูล"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "โฟลเดอร์ที่จะบันทึกไว้"
 
@@ -120,7 +119,7 @@ msgid ""
 "relative to the user’s home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "โฟลเดอร์ที่จะเพิกเฉย"
 
@@ -274,191 +273,72 @@ msgstr ""
 "ประเภทของตำแหน่งการสำรองข้อมูล ถ้า ‘auto’ "
 "จะเลือกตำแหน่งที่เป็นไปได้เป็นค่าปริยาย"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "โฟลเดอร์สำหรับเก็บข้อมูลสำรอง"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "หมายเลขกุญแจการเข้าถึง Amazon S3"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr ""
-"กุญแจยืนยันตัวตนเพื่อเข้าใช้ Amazon S3 ของคุณ ใช้ชื่อผู้ใช้ S3 ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "ชื่อตะกร้าบน Amazon S3 ที่ใช้"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"ตะกร้า Amazon S3 ที่จะเก็บแฟ้มซึ่งยังไม่มีอยู่ "
-"มีเพียงชื่อเครื่องที่ถูกต้องก็เพียงพอ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "โฟลเดอร์ Amazon S3"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr ""
-"เลือกโฟลเดอร์เพื่อจัดเก็บแฟ้ม โฟลเดอร์นี้จะถูกสร้างขึ้นในตะกร้าที่ถูกเลือก"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "ID คีย์เข้าถึงที่เก็บข้อมูลคลาวด์ของ Google"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-"ตัวระบุคีย์เข้าถึงที่เก็บข้อมูลคลาวด์ของ Google ของคุณ "
-"คีย์นี้ทำงานเหมือนกับชื่อผู้ใช้ที่เก็บข้อมูลคลาวด์ Google ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr "ชื่อที่ฝากข้อมูลที่เก็บข้อมูลคลาวด์ของ Google ที่ต้องการใช้"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"บักเก็ตที่เก็บข้อมูลคลาวด์ของ Google ที่จะใช้จัดเก็บแฟ้ม "
-"ซึ่งไม่จำเป็นต้องมีอยู่แล้ว สามารถใช้ได้เฉพาะสตริงชื่อโฮสต์ที่ถูกต้องเท่านั้น"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "โฟลเดอร์ที่เก็บข้อมูลคลาวด์ของ Google"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr "The Rackspace Cloud Files container"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"Rackspace Cloud Files container ที่จะเก็บแฟ้มซึ่งยังไม่มีอยู่ "
-"มีเพียงชื่อเครื่องที่ถูกต้องก็เพียงพอ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "ชื่อผู้ใช้ Rackspace ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "นี่คือชื่อผู้ใช้บริการ Rackspace Cloud Files ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr "ที่เก็บข้อมูล OpenStack Swift"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"ที่เก็บข้อมูล OpenStack Swift ที่ต้องการจัดเก็บแฟ้ม "
-"ซึ่งไม่จำเป็นต้องมีอยู่แล้ว สามารถใช้ได้เฉพาะสตริงชื่อโฮสต์ที่ถูกต้องเท่านั้น"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "ชื่อผู้ใช้ OpenStack ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr "นี่คือชื่อผู้ใช้ของคุณสำหรับบริการ OpenStack Swift"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr "ชื่อผู้เช่า OpenStack ของคุณ"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr "นี่คือชื่อผู้เช่าของคุณสำหรับบริการ OpenStack Swift"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "URL สำหรับตรวจสอบความถูกต้อง"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-"นี่คือ URL สำหรับยืนยันตัวบุคคล หรือ URL คีย์สโตนสำหรับบริการ OpenStack"
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "กู้คืน"
 
@@ -473,25 +353,127 @@ msgstr ""
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
+msgid "Show help"
 msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
+msgid "Open menu"
 msgstr ""
 
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr ""
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "กู้_คืน"
+
 #: data/ui/menus.ui:12
-msgid "_Keyboard Shortcuts"
+msgid "_Preferences"
 msgstr ""
 
 #: data/ui/menus.ui:16
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "_วิธีใช้"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr ""
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "สื่อจัดเก็บข้อมูล"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "กำหนดการ"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr ""
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr "ปรับแต่ง"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "โ_ฟลเดอร์"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr ""
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr ""
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "เ_ลือกโฟลเดอร์..."
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -722,8 +704,8 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "ล้มเหลวโดยไม่ทราบข้อผิดพลาด"
 
@@ -744,65 +726,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "กู้_คืน"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "ตำแหน่งการ_สำรองข้อมูล"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "กู้คืนจากที่ใด?"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "_วันที่"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "กู้คืนแฟ้มไปยังตำแหน่ง_ดั้งเดิม"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "กู้คืนไปยังโฟลเดอร์ที่_กำหนด"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "เลือกปลายทางสำหรับกู้คืนแฟ้ม"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "กู้คืนโ_ฟลเดอร์"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "ตำแหน่งการสำรองข้อมูล"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "วันที่กู้คืน"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "กู้คืนโฟลเดอร์"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "กำลังตรวจสอบการสำรองข้อมูล..."
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "กู้คืนตั้งแต่เมื่อใด?"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "กู้คืนไปที่ไหน?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "การกู้คืน:"
 
@@ -810,44 +788,44 @@ msgstr "การกู้คืน:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "ไม่มีข้อมูลสำรองที่จะกู้คืน"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "ตำแหน่งดั้งเดิม"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "แฟ้มที่ต้องการกู้คืน"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "การกู้คืนล้มเหลว"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "การกู้คืนเสร็จสิ้น"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "แฟ้มของคุณกู้คืนสำเร็จแล้ว"
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "การกู้คืนแฟ้มของคุณสำเร็จแล้ว"
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "กำลังกู้คืน..."
 
@@ -891,13 +869,135 @@ msgstr[0] "กำลังสแกนแฟ้มของ %d ปี ที่�
 msgid "Scanning finished"
 msgstr "การสแกนเสร็จสิ้น"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "อย่างน้อย 6 เดือน"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "อย่างน้อย 1 ปี"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "ตลอดไป"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "อย่างน้อย %d วัน"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "ลบ"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "เพิ่ม"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "เลือกโฟลเดอร์"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "เ_พิ่ม"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "Google ไดรฟ์"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "โฟลเดอร์ในเครื่อง"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "ที่เก็บข้อมูลคลาวด์ของ Google"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "เลือกโฟลเดอร์"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "_ตกลง"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "รายวัน"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "รายสัปดาห์"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "ทุก %d วัน"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นในวันนี้"
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นในวันพรุ่งนี้"
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นใน %d วันนับจากนี้"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อวันนี้"
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อวานนี้"
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อ %d วันที่ผ่านมา"
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "ไม่มีการสำรองข้อมูลเมื่อเร็ว ๆ นี้"
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "ไม่ได้จัดตารางเวลาการสำรองข้อมูล"
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "เชื่อมต่อไปยังเซิร์ฟเวอร์"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "_ชื่อผู้ใช้"
 
@@ -925,56 +1025,6 @@ msgstr "เชื่อมต่อเป็นผู้ใ_ช้"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "โ_ดเมน"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "หมวด"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "กู้_คืน..."
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "_สำรองข้อมูลเดี๋ยวนี้..."
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "ภาพรวม"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "_ตำแหน่งที่ตั้งของที่เก็บข้อมูล"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "ตำแหน่งที่ตั้งของที่เก็บข้อมูล"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "_สำรองข้อมูลอัตโนมัติ"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "_ทุก"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "_คงไว้"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-"การสำรองข้อมูลครั้งเก่าจะถูกลบ "
-"ถ้าตำแหน่งที่ตั้งของที่เก็บข้อมูลเหลือพื้นที่ว่างน้อย"
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "การจัดตารางงาน"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -1016,317 +1066,63 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "กำลังเริ่มการสำรองข้อมูลตามกำหนดการ"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "ไม่สามารถแสดงผล %s"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "แสดงหมายเลขรุ่น"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "กู้คืนแฟ้มที่กำหนด"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "เริ่มสำรองข้อมูลทันที"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "กู้คืนแฟ้มที่ลบไปแล้ว"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr ""
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "ไม่มีไดเรกทอรีเตรียมไว้"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "แสดงได้ครั้งละไดเรกทอรีเท่านั้น"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr "ไม่มีไดเรกทอรีอยู่"
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "คุณต้องเตรียมไดเรกทอรีให้ ไม่ใช่แฟ้ม"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr ""
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "การสำรองข้อมูลตามกำหนดการล่าช้า"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Anuchit Chalothorn https://launchpad.net/~anuchit-redlinesoft\n"
 "  AnuchitChalothorn https://launchpad.net/~anuchit\n"
 "  Michael Terry https://launchpad.net/~mterry\n"
 "  Rockworld https://launchpad.net/~rockrock2222222\n"
 "  SiraNokyoongtong https://launchpad.net/~gumara"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr "การสำรองจะเริ่มขึ้นเมื่อการเชื่อมต่อเครือข่ายเปิดใช้"
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr ""
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "กู้คืนแฟ้มที่สูญหาย…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "กู้คืนแฟ้มที่ถูกลบมาจากข้อมูลสำรอง"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "ย้อนกลับไปรุ่นก่อนหน้า..."
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "กู้คืนแฟ้มจากข้อมูลสำรอง"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "อย่างน้อย 6 เดือน"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "อย่างน้อย 1 ปี"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "ตลอดไป"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "อย่างน้อย %d วัน"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นในวันนี้"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นในวันพรุ่งนี้"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "การสำรองข้อมูลครั้งถัดไปจะมีขึ้นใน %d วันนับจากนี้"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อวันนี้"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อวานนี้"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "การสำรองข้อมูลครั้งที่ผ่านมาได้มีขึ้นเมื่อ %d วันที่ผ่านมา"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "ไม่มีการสำรองข้อมูลเมื่อเร็ว ๆ นี้"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "ไม่ได้จัดตารางเวลาการสำรองข้อมูล"
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "กู้คืน..."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr "คุณสามารถใช้ปุ่ม %s ในการเรียกดูข้อมูลสำรองที่มีอยู่ได้"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "สำรองข้อมูลเดี๋ยวนี้..."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-"คุณควรจะ<a href=''>เปิดใช้งาน</a>การสำรองข้อมูลอัตโนมัติหรือกดปุ่ม %s "
-"เพื่อเริ่มสำรองข้อมูลได้เลย"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ วัน"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ สัปดาห์"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ %d วัน"
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "เ_พิ่ม"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "เพิ่ม"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "_ลบ"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "ลบ"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "เลือกโฟลเดอร์"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr ""
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "โฟลเดอร์ในเครื่อง"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr "ที่เก็บข้อมูลคลาวด์ของ Google"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "Google ไดรฟ์"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "โ_ฟลเดอร์"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "เ_ลือกโฟลเดอร์..."
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "เลือกโฟลเดอร์"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "_ตกลง"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr ""
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "_ที่จัดเก็บ"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "_หมายเลขกุญแจเข้าถึง S3"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "วัน"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr "สัปดาห์"
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d วัน"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "ไม่สามารถแสดงผล %s"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s บน %2$s"
@@ -1345,101 +1141,28 @@ msgstr ""
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "กำลังรอ ‘%s’ เพื่อจะเชื่อมต่อ..."
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "ไม่ได้รับอนุญาต"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "_หมายเลขกุญแจการเข้าใช้"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "กุญแจ_ลับเพื่อใช้เข้าถึง"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "แ_สดงกุญแจ_ลับเพื่อใช้เข้าถึง"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "_จำกุญแจลับเพื่อใช้เข้าถึง"
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
+msgstr "การสำรองจะเริ่มขึ้นเมื่อการเชื่อมต่อเครือข่ายเปิดใช้"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "%s บน Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr ""
-"คุณสามารถสมัครเพื่อขอรับบัญชี Rackspace Cloud Files <a "
-"href=\"%s\">ออนไลน์</a>"
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "เชื่อมต่อไปยัง Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "กุญแ_จเข้าถึง API"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "แส_ดงกุญแจเข้าถึง API"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "จำกุญแจเ_ข้าถึง API"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1461,42 +1184,27 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "%s บน Amazon S3"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "คุณสามารถสมัครเพื่อขอรับบัญชี Amazon S3 <a href=\"%s\">ออนไลน์</a>"
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "เชื่อมต่อไปยัง Amazon S3"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr ""
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "บ้านของ (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "บ้าน"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "ถังขยะ"
 
@@ -1515,8 +1223,8 @@ msgstr "กำลังไล่เรียงแฟ้ม..."
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "กำลังเตรียม..."
 
@@ -1542,33 +1250,33 @@ msgid "Paused (no network)"
 msgstr "หยุด (ไม่มีเครือข่าย)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "ไม่สามารถกู้คืน ‘%s’: ไม่ใช่ตำแหน่งที่ถูกต้อง"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "กำลังล้างข้อมูล..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1578,7 +1286,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1586,19 +1294,19 @@ msgstr ""
 "ไม่สามารถกู้คืนแฟ้มดังกล่าวได้ โปรดตรวจสอบให้แน่ใจว่าคุณเขียนแฟ้มเหล่านี้ได้"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "รหัสผ่านการเข้ารหัสแย่"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "ไม่สามารถกู้คืน ‘%s’: ไม่พบแฟ้มในข้อมูลสำรอง"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1609,73 +1317,57 @@ msgstr ""
 "แต่ชื่อคอมพิวเตอร์ในปัจจุบันเป็น %s "
 "ถ้าข้อมูลนี้ผิดพลาดคุณควรสำรองข้อมูลที่ตำแหน่งอื่น"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "เปลี่ยนชื่อคอมพิวเตอร์แล้ว"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "ไม่ได้รับอนุญาตขณะพยายามสร้าง '%s'"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "ไม่ได้รับอนุญาตขณะพยายามอ่าน '%s'"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "ไม่ได้รับอนุญาตขณะพยายามลบ '%s'"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "ยังไม่มีตำแหน่งการสำรองข้อมูล ‘%s’"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "ไม่มีพื้นที่ว่างเหลือ"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "ID ไม่ถูกต้อง"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "กุญแจรหัสลับไม่ถูกต้อง"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "บัญชี Amazon Web Services ของคุณไม่สามารถลงทะเบียนบริการ S3 ได้"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "ชื่อตะกร้า S3 ไม่สามารถใช้งานได้"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "การอ่านแฟ้ม ‘%s’ ผิดพลาด"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "การเขียนแฟ้ม ‘%s’ ผิดพลาด"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "ไม่มีพื้นที่ว่างใน ‘%s’"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "ไม่พบแฟ้มข้อมูลสำรอง"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "กำลังอัปโหลด..."
 
@@ -1695,8 +1387,53 @@ msgid ""
 "version %d.%d.%.2d"
 msgstr ""
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr ""
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "กู้คืนแฟ้มที่สูญหาย…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "กู้คืนแฟ้มที่ถูกลบมาจากข้อมูลสำรอง"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "ย้อนกลับไปรุ่นก่อนหน้า..."
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "กู้คืนแฟ้มจากข้อมูลสำรอง"
+
+#~ msgid "Overview"
+#~ msgstr "ภาพรวม"
+
+#~ msgid "Categories"
+#~ msgstr "หมวด"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "_คงไว้"
+
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr ""
+#~ "การสำรองข้อมูลครั้งเก่าจะถูกลบ "
+#~ "ถ้าตำแหน่งที่ตั้งของที่เก็บข้อมูลเหลือพื้นที่ว่างน้อย"
+
+#~ msgid "Scheduling"
+#~ msgstr "การจัดตารางงาน"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#~ msgid "Day"
+#~ msgstr "วัน"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr ""
@@ -1708,9 +1445,218 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "เครื่องมือสำรองข้อมูล Déjà Dup"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "หมายเลขกุญแจการเข้าถึง Amazon S3"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr ""
+#~ "กุญแจยืนยันตัวตนเพื่อเข้าใช้ Amazon S3 ของคุณ ใช้ชื่อผู้ใช้ S3 ของคุณ"
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "ชื่อตะกร้าบน Amazon S3 ที่ใช้"
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "ตะกร้า Amazon S3 ที่จะเก็บแฟ้มซึ่งยังไม่มีอยู่ "
+#~ "มีเพียงชื่อเครื่องที่ถูกต้องก็เพียงพอ"
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "โฟลเดอร์ Amazon S3"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr ""
+#~ "เลือกโฟลเดอร์เพื่อจัดเก็บแฟ้ม โฟลเดอร์นี้จะถูกสร้างขึ้นในตะกร้าที่ถูกเลือก"
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "ID คีย์เข้าถึงที่เก็บข้อมูลคลาวด์ของ Google"
+
+#~ msgid ""
+#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
+#~ "Cloud Storage username."
+#~ msgstr ""
+#~ "ตัวระบุคีย์เข้าถึงที่เก็บข้อมูลคลาวด์ของ Google ของคุณ "
+#~ "คีย์นี้ทำงานเหมือนกับชื่อผู้ใช้ที่เก็บข้อมูลคลาวด์ Google ของคุณ"
+
+#~ msgid "The Google Cloud Storage bucket name to use"
+#~ msgstr "ชื่อที่ฝากข้อมูลที่เก็บข้อมูลคลาวด์ของ Google ที่ต้องการใช้"
+
+#~ msgid ""
+#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "บักเก็ตที่เก็บข้อมูลคลาวด์ของ Google ที่จะใช้จัดเก็บแฟ้ม "
+#~ "ซึ่งไม่จำเป็นต้องมีอยู่แล้ว สามารถใช้ได้เฉพาะสตริงชื่อโฮสต์ที่ถูกต้องเท่านั้น"
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "โฟลเดอร์ที่เก็บข้อมูลคลาวด์ของ Google"
+
+#~ msgid "The Rackspace Cloud Files container"
+#~ msgstr "The Rackspace Cloud Files container"
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Rackspace Cloud Files container ที่จะเก็บแฟ้มซึ่งยังไม่มีอยู่ "
+#~ "มีเพียงชื่อเครื่องที่ถูกต้องก็เพียงพอ"
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "ชื่อผู้ใช้ Rackspace ของคุณ"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "นี่คือชื่อผู้ใช้บริการ Rackspace Cloud Files ของคุณ"
+
+#~ msgid "The OpenStack Swift container"
+#~ msgstr "ที่เก็บข้อมูล OpenStack Swift"
+
+#~ msgid ""
+#~ "Which OpenStack Swift container to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "ที่เก็บข้อมูล OpenStack Swift ที่ต้องการจัดเก็บแฟ้ม "
+#~ "ซึ่งไม่จำเป็นต้องมีอยู่แล้ว สามารถใช้ได้เฉพาะสตริงชื่อโฮสต์ที่ถูกต้องเท่านั้น"
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "ชื่อผู้ใช้ OpenStack ของคุณ"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "นี่คือชื่อผู้ใช้ของคุณสำหรับบริการ OpenStack Swift"
+
+#~ msgid "Your OpenStack tenant"
+#~ msgstr "ชื่อผู้เช่า OpenStack ของคุณ"
+
+#~ msgid "This is your tenant for the OpenStack Swift service."
+#~ msgstr "นี่คือชื่อผู้เช่าของคุณสำหรับบริการ OpenStack Swift"
+
+#~ msgid "Authentication URL"
+#~ msgstr "URL สำหรับตรวจสอบความถูกต้อง"
+
+#~ msgid ""
+#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
+#~ msgstr ""
+#~ "นี่คือ URL สำหรับยืนยันตัวบุคคล หรือ URL คีย์สโตนสำหรับบริการ OpenStack"
+
+#~ msgid "_Restore…"
+#~ msgstr "กู้_คืน..."
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "_สำรองข้อมูลเดี๋ยวนี้..."
+
+#~ msgid "_Storage location"
+#~ msgstr "_ตำแหน่งที่ตั้งของที่เก็บข้อมูล"
+
+#~ msgid "Storage location"
+#~ msgstr "ตำแหน่งที่ตั้งของที่เก็บข้อมูล"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "_สำรองข้อมูลอัตโนมัติ"
+
+#~ msgid "_Every"
+#~ msgstr "_ทุก"
+
+#~ msgid "Restore…"
+#~ msgstr "กู้คืน..."
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr "คุณสามารถใช้ปุ่ม %s ในการเรียกดูข้อมูลสำรองที่มีอยู่ได้"
+
+#~ msgid "Back Up Now…"
+#~ msgstr "สำรองข้อมูลเดี๋ยวนี้..."
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "คุณควรจะ<a href=''>เปิดใช้งาน</a>การสำรองข้อมูลอัตโนมัติหรือกดปุ่ม %s "
+#~ "เพื่อเริ่มสำรองข้อมูลได้เลย"
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ วัน"
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ สัปดาห์"
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "การสำรองข้อมูลจะเริ่มขึ้นโดยอัตโนมัติในทุก ๆ %d วัน"
+
+#~ msgid "_Remove"
+#~ msgstr "_ลบ"
+
+#~ msgid "_Container"
+#~ msgstr "_ที่จัดเก็บ"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "_หมายเลขกุญแจเข้าถึง S3"
+
 #~ msgid "Ubuntu One has shut down.  Please choose another storage location."
 #~ msgstr ""
 #~ "Ubuntu One ได้ปิดการให้บริการแล้ว โปรดเลือกตำแหน่งที่จัดเก็บข้อมูลอื่น"
+
+#~ msgid "Week"
+#~ msgstr "สัปดาห์"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d วัน"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "%s บน Rackspace Cloud Files"
+
+#~ msgid "Permission denied"
+#~ msgstr "ไม่ได้รับอนุญาต"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "คุณสามารถสมัครเพื่อขอรับบัญชี Rackspace Cloud Files <a "
+#~ "href=\"%s\">ออนไลน์</a>"
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "เชื่อมต่อไปยัง Rackspace Cloud Files"
+
+#~ msgid "_API access key"
+#~ msgstr "กุญแ_จเข้าถึง API"
+
+#~ msgid "S_how API access key"
+#~ msgstr "แส_ดงกุญแจเข้าถึง API"
+
+#~ msgid "_Remember API access key"
+#~ msgstr "จำกุญแจเ_ข้าถึง API"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "%s บน Amazon S3"
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "คุณสามารถสมัครเพื่อขอรับบัญชี Amazon S3 <a href=\"%s\">ออนไลน์</a>"
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "เชื่อมต่อไปยัง Amazon S3"
+
+#~ msgid "_Access key ID"
+#~ msgstr "_หมายเลขกุญแจการเข้าใช้"
+
+#~ msgid "_Secret access key"
+#~ msgstr "กุญแจ_ลับเพื่อใช้เข้าถึง"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "แ_สดงกุญแจ_ลับเพื่อใช้เข้าถึง"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "_จำกุญแจลับเพื่อใช้เข้าถึง"
 
 #, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
@@ -1724,6 +1670,18 @@ msgstr ""
 
 #~ msgid "Could not start backup tool"
 #~ msgstr "ไม่สามารถเริ่มต้นเครื่องมือสำรองข้อมูลได้"
+
+#~ msgid "Invalid ID."
+#~ msgstr "ID ไม่ถูกต้อง"
+
+#~ msgid "Invalid secret key."
+#~ msgstr "กุญแจรหัสลับไม่ถูกต้อง"
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "บัญชี Amazon Web Services ของคุณไม่สามารถลงทะเบียนบริการ S3 ได้"
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "ชื่อตะกร้า S3 ไม่สามารถใช้งานได้"
 
 #, c-format
 #~ msgid ""

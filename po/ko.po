@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
 "PO-Revision-Date: 2019-03-29 09:43+0000\n"
 "Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Korean <ko@li.org>\n"
@@ -15,14 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2020-03-16 06:31+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:14+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr "백업 감시"
 
@@ -40,7 +39,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -85,7 +84,7 @@ msgid ""
 msgstr ""
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr ""
 
@@ -103,7 +102,7 @@ msgstr "déjà;deja;dup;데이자 둡;"
 msgid "Back Up"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr ""
 
@@ -117,7 +116,7 @@ msgid ""
 "relative to the user’s home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "무시할 폴더"
 
@@ -258,181 +257,72 @@ msgid ""
 "what is available."
 msgstr "백업 위치의 형식입니다.  '자동'으로 설정하면 사용 가능한 것을 기반으로 기본값을 선택합니다."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Amazon S3 Access Key ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr "Amazon S3 Access Key Identifier를 넣으세요.. 이것이 당신의 S3에 쓰이는 이름이 됩니다."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "Amazon S3 bucket에 사용할 이름"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"파일을 담아둘 Amazon S3 bucket을 고르시오. 반드시 이미 있어야 하는 것은 아닙니다. 올바른 호스트 이름만 쓸 수 있습니다."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "The Amazon S3 폴더"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr "파일을 보관할 추가 폴더의 이름입니다. 이 폴더는 선택한 버킷에 만들어질 것입니다."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"파일을 담아둘 Rackspace Cloud Files container를 고르시오. 반드시 이미 있어야 하는 것은 아닙니다. 올바른 "
-"호스트 이름만 쓸 수 있습니다."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "Rackspace에 쓰이는 이름"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "Rackspace Cloud Files 서비스에서 당신의 이름입니다."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr ""
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "복구"
 
@@ -447,25 +337,127 @@ msgstr "일반"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "끝내기"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "도움"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "끝내기"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "복구(_R)"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "키보드 바로 가기(_K)"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr ""
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr ""
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "저장소"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "스케쥴"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr ""
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr ""
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "폴더(_F)"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr ""
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr ""
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "폴더 선택(_C)…"
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -690,8 +682,8 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "알 수 없는 오류로 실패했습니다."
 
@@ -712,65 +704,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "복구(_R)"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "백업 위치(_B)"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "날짜(_D)"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "원래 위치로 파일 복구(_O)"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "지정한 폴더에 복구(_S)"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "파일을 복구할 위치 선택"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "폴더 복구(_F)"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "떠둘 곳"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "복구 날짜"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "복구 폴더"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "백업 확인 중…"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "어느 곳에 복구합니까?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "복원 중:"
 
@@ -778,44 +766,44 @@ msgstr "복원 중:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "복구할 백업이 없습니다"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "원본 위치"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "복구할 파일"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "복구 실패"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "복구 완료"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "파일을 성공적으로 복구했습니다."
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "파일을 성공적으로 복구했습니다."
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "복구 중…"
 
@@ -859,13 +847,137 @@ msgstr[0] "%d년 전 파일부터 검사…"
 msgid "Scanning finished"
 msgstr "검사가 끝났습니다"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "최소 여섯 달"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "최소 일 년"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "영원히"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "최소 %d일"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "제거"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "추가"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "폴더 선택"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "추가(_A)"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "로컬 폴더"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr ""
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "폴더 선택"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr ""
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "매일"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "매주"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "매 %d일"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] ""
+msgstr[1] ""
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] ""
+msgstr[1] ""
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr ""
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr ""
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "서버에 연결"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "사용자 이름(_U)"
 
@@ -893,54 +1005,6 @@ msgstr "사용자로 연결(_S)"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "도메인(_D)"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "카테고리"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "복구(_R)…"
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr ""
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "개요"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr ""
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr ""
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr ""
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr ""
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr ""
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr ""
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -979,51 +1043,52 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "예정된 백업 시작"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "%s을(를) 표시할 수 없음"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "버전 보이기"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "주어진 파일 복구"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "백업을 바로 시작"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "삭제한 파일 복구"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr ""
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "주어진 디렉터리 없음"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "한번에 한 디렉터리만 볼 수 있음"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr ""
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "파일이 아니라 디렉터리가 필요합니다"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr ""
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "백업 일정이 지연되었습니다"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1031,271 +1096,14 @@ msgstr ""
 "  Kim Boram https://launchpad.net/~boramism\n"
 "  Lee Dongjin https://launchpad.net/~blueocean-dj\n"
 "  Michael Terry https://launchpad.net/~mterry\n"
-"  Min-Soo Kim https://launchpad.net/~misol\n"
 "  Piotr Drąg https://launchpad.net/~piotrdrag\n"
 "  Rockworld https://launchpad.net/~rockrock2222222\n"
 "  Yongmin Hong https://launchpad.net/~revi\n"
 "  minwook shin https://launchpad.net/~minwook-shin"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr "네트워크 연결을 사용할 수 있게 되면 백업을 시작합니다."
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr "측정되지 않은 네트워크 연결을 사용할 수있게되면 백업이 시작됩니다"
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "없어진 파일 복구…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "백업에서 삭제한 파일 복구"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "이전 버전으로 되돌리기…"
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "백업에서 파일 복구"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "최소 여섯 달"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "최소 일 년"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "영원히"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "최소 %d일"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] ""
-msgstr[1] ""
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr ""
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr ""
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "추가(_A)"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "추가"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "제거(_R)"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "제거"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "폴더 선택"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr ""
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "로컬 폴더"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "폴더(_F)"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "폴더 선택(_C)…"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "폴더 선택"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr ""
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr ""
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr ""
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr ""
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "%s을(를) 표시할 수 없음"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s에 있는 %1$s"
@@ -1314,99 +1122,28 @@ msgstr ""
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "‘%s’을(를) 연결하기를 기다리고 있습니다…"
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "권한이 없습니다"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr ""
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr ""
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "비밀 접근 키 ID(_A)"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "비밀 접근 키(_S)"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "비밀 접근 키 보이기(_H)"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "비밀 접근 키 저장(_R)"
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
+msgstr "네트워크 연결을 사용할 수 있게 되면 백업을 시작합니다."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr ""
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr ""
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "%s (Rackspace Cloud Files에 있음)"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr "Rackspace Cloud Files 계정을 <a href=\"%s\">온라인</a>으로 만들 수 있습니다."
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files와 잇기"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "API 접근 키(_A)"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "API 접근 키 보이기(_H)"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "API 접근 키 저장(_R)"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1428,42 +1165,27 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "%s (Amazon S3에 있음)"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "Amazon S3 계정을 <a href=\"%s\">온라인</a>으로 만들 수 있습니다."
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "Amazon S3와 잇기"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr ""
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "홈(%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "홈"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "쓰레기통"
 
@@ -1482,8 +1204,8 @@ msgstr "파일 목록을 만드는 중…"
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "준비 중…"
 
@@ -1507,33 +1229,33 @@ msgid "Paused (no network)"
 msgstr "일시 중지(네트워크 없음)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "‘%s’을(를) 복구할 수 없습니다: 올바르지 않은 파일 위치"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "정리 중…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1542,26 +1264,26 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr ""
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "올바르지 않은 암호화 암호."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’을(를) 복구할 수 없습니다. 백업에서 파일을 찾을 수 없습니다"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1571,73 +1293,57 @@ msgstr ""
 "존재하는 백업은 %s(이)라는 이름의 컴퓨터의 것이지만 현재 사용하는 컴퓨터의 이름은 ‘%s’입니다. 이 것을 예측하지 못한 경우에는 "
 "다른 위치에 백업하십시오."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "컴퓨터 이름 바뀌었음"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’을(를) 만들 권한이 없습니다."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’을(를) 만들 권한이 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’을(를) 삭제할 수 있는 권한이 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "백업 위치 %s이(가) 존재하지 않습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "빈 공간이 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "쓰지 못하는 ID입니다."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "올바르지 않은 비밀 키입니다."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "당신의 Amazon Web Services 계정은 S3 서비스에 쓸 수 없습니다."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "S3 bucket 이름을 쓸 수 없습니다."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "파일 ‘%s’을(를) 읽을 수 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "‘%s’을(를) 쓸 수 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’에 빈 공간이 없습니다."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "백업 파일을 찾을 수 없습니다"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "업로드 중…"
 
@@ -1657,6 +1363,35 @@ msgid ""
 "version %d.%d.%.2d"
 msgstr ""
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr "측정되지 않은 네트워크 연결을 사용할 수있게되면 백업이 시작됩니다"
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "없어진 파일 복구…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "백업에서 삭제한 파일 복구"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "이전 버전으로 되돌리기…"
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "백업에서 파일 복구"
+
+#~ msgid "Overview"
+#~ msgstr "개요"
+
+#~ msgid "Categories"
+#~ msgstr "카테고리"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "우분투 원"
 
@@ -1669,9 +1404,115 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "데이자 둡 백업 도구"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Amazon S3 Access Key ID"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr "Amazon S3 Access Key Identifier를 넣으세요.. 이것이 당신의 S3에 쓰이는 이름이 됩니다."
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "Amazon S3 bucket에 사용할 이름"
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "파일을 담아둘 Amazon S3 bucket을 고르시오. 반드시 이미 있어야 하는 것은 아닙니다. 올바른 호스트 이름만 쓸 수 있습니다."
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "The Amazon S3 폴더"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr "파일을 보관할 추가 폴더의 이름입니다. 이 폴더는 선택한 버킷에 만들어질 것입니다."
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "파일을 담아둘 Rackspace Cloud Files container를 고르시오. 반드시 이미 있어야 하는 것은 아닙니다. 올바른 "
+#~ "호스트 이름만 쓸 수 있습니다."
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "Rackspace에 쓰이는 이름"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "Rackspace Cloud Files 서비스에서 당신의 이름입니다."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "도움"
+
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "단축키"
+
+#~ msgid "_Restore…"
+#~ msgstr "복구(_R)…"
+
+#~ msgid "_Remove"
+#~ msgstr "제거(_R)"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "%s (Rackspace Cloud Files에 있음)"
+
+#~ msgid "Permission denied"
+#~ msgstr "권한이 없습니다"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr "Rackspace Cloud Files 계정을 <a href=\"%s\">온라인</a>으로 만들 수 있습니다."
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "Rackspace Cloud Files와 잇기"
+
+#~ msgid "_API access key"
+#~ msgstr "API 접근 키(_A)"
+
+#~ msgid "S_how API access key"
+#~ msgstr "API 접근 키 보이기(_H)"
+
+#~ msgid "_Remember API access key"
+#~ msgstr "API 접근 키 저장(_R)"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "%s (Amazon S3에 있음)"
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "Amazon S3 계정을 <a href=\"%s\">온라인</a>으로 만들 수 있습니다."
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "Amazon S3와 잇기"
+
+#~ msgid "_Access key ID"
+#~ msgstr "비밀 접근 키 ID(_A)"
+
+#~ msgid "_Secret access key"
+#~ msgstr "비밀 접근 키(_S)"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "비밀 접근 키 보이기(_H)"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "비밀 접근 키 저장(_R)"
+
+#~ msgid "Invalid ID."
+#~ msgstr "쓰지 못하는 ID입니다."
+
+#~ msgid "Invalid secret key."
+#~ msgstr "올바르지 않은 비밀 키입니다."
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "당신의 Amazon Web Services 계정은 S3 서비스에 쓸 수 없습니다."
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "S3 bucket 이름을 쓸 수 없습니다."
 
 #, c-format
 #~ msgid ""

@@ -7,24 +7,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
-"PO-Revision-Date: 2020-03-22 08:24+0000\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
+"PO-Revision-Date: 2020-05-11 21:50+0000\n"
 "Last-Translator: Buckethead <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-03-23 06:36+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:15+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
-msgstr "Yedekleme Takipçisi"
+msgstr "Yedek Gözlemcisi"
 
 #: data/org.gnome.DejaDup.Monitor.desktop.in:7
 msgid "Schedules backups at regular intervals"
@@ -40,7 +39,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Yedekleri"
 
@@ -92,7 +91,7 @@ msgstr ""
 "gereksiniyorsanız başka yeek uygulamalarını yeğleyebilirsiniz."
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "Yedeklemeler"
 
@@ -110,7 +109,7 @@ msgstr "déjà;deja;dup;"
 msgid "Back Up"
 msgstr "Yedekle"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "Kaydedilecek klasörler"
 
@@ -130,7 +129,7 @@ msgstr ""
 "kullanıcı adı ile değiştirilir ve yolun herhangi bir yerinde bulunabilir. "
 "Göreceli girişler, kullanıcının ev dizinine göre yapılır."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "Yok sayılacak klasörler"
 
@@ -301,14 +300,14 @@ msgstr ""
 "Yedek konumunun türü. Eğer 'auto' ise, uygun olana göre bir öntanımlı "
 "seçilecektir."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "Yedeklerin depolanacağı klasör"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -316,11 +315,11 @@ msgstr ""
 "Yedeklerin depolandığı klasör hiyerarşisi. Yollar mutlak veya ev dizininize "
 "göre göreceli olabilir."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -328,38 +327,38 @@ msgstr ""
 "Sürücünün takılı olduğu sürücüyü tanıması için kullanılan özgün dosya "
 "sistemi tanımlayıcısı."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr "Ad"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr "Dış sürücünün adı."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr "Simge"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Dış sürücünün simgesi, seri hale getirilmiş GIcon olarak."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
 "Yedeklerin depolandığı klasör hiyerarşisi. Yollar sürücüye göre görecelidir."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr "Sunucu adresi"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr "Uzak sunucu konumunun URI'si."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -367,69 +366,7 @@ msgstr ""
 "Yedeklerin depolandığı klasör hiyerarşisi. Yollar mutlak veya ana "
 "bilgisayara göre göreceli olabilir."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Amazon S3 Erişim Anahtarı Kimliği"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr ""
-"Amazon S3 Erişim Anahtarı Tanıtıcı'nız. Bu, S3 kullanıcı adınız yerine geçer."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "Kullanılacak Amazon S3 depo adı"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"Dosyaların depolanacağı Amazon S3 deposu. Şu an var olmasına gerek yoktur. "
-"Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "Amazon S3 klasörü"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr ""
-"Dosyaları depolamak için isteğe bağlı klasör adı. Bu klasör, seçili depoda "
-"oluşturulacak."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "Google Bulut Depolama Erişim Anahtarı Kimliği"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-"Google Bulut Depolama Erişim Anahtarı Tanımlayıcınız. Bu, Google Bulut "
-"Depolama kullanıcı adınız gibi davranır."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr "Kullanacağınız Google Bulut Depolama sepet adı"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"Dosyaların depolanacağı Google Bulut Depolama sepeti. Şu an var olmasına "
-"gerek yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "Google Bulut Depolama dizini"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
@@ -437,65 +374,7 @@ msgstr ""
 "Yedeklerin depolanacağı dizin yolu. Yollar mutlak veya ana bilgisayara göre "
 "göreceli olabilir."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr "The Rackspace Bulut Dosya depolayıcı"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"Dosyaların depolanacağı Rackspace Bulut Dosya deposu. Şu an var olmasına "
-"gerek yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "Rackspace kullanıcı adınız"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "Bu, sizin Rackspace Bulut Dosya hizmeti için kullanıcı adınızdır."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr "OpenStack Swift deposu"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"Dosyaların depolanacağı Openstack Swift deposu. Şu an var olmasına gerek "
-"yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "OpenStack kullanıcı adınız"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr "OpenStack Swift hizmeti için kullanıcı adınız."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr "OpenStack kiracınız"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr "Bu, OpenStack Swift hizmeti için kiracınızdır."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "Kimlik Doğrulama Adresi"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-"Bu, Kimlik Doğrulama Adresi veya OpenStack hizmetinin temel taşı adresidir"
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "Geri Yükle"
 
@@ -511,25 +390,127 @@ msgstr "Genel"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Çıkış"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "Yardım"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Çıkış"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "_Geri Yükle"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "_Klavye Kısayolları"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "_Yardım"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "Yedekleme _Hakkında"
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "Depolama"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "Zamanlama"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "Kendiliğinden yedekleme"
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr "Tercihler"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "_Klasör"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr "_Ağ Konumu"
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr "Bu depolama konumu artık desteklenmiyor."
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "Klasör _Seç…"
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -763,8 +744,8 @@ msgstr "Erişime İzin Ver"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "Bilinmeyen nedenden dolayı başarısız."
 
@@ -785,65 +766,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_Kur"
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "_Geri Yükle"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "_Yedekleme konumu"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "Nereden Geri Yükleme Yapılacak?"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "_Tarih"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "Dosyaları _özgün konumlarına geri yükle"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "_Belirli bir klasörden geri yükle"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "Geri yüklenen dosyalar için konum seçin"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "Geri yükleme _klasörü"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "Yedekleme konumu"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "Geri yükleme tarihi"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "Klasörü geri yükle"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "Yedekler Denetleniyor…"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "Hangi Zamandan Geri Yükleme Yapılacak?"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "Nereye Geri Yüklensin?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "Geri yükleniyor:"
 
@@ -851,46 +828,46 @@ msgstr "Geri yükleniyor:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "Geri yüklenebilecek yedek yok"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "Özgün konum"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Geri yüklenecek dosya"
 msgstr[1] "Geri yüklenecek dosyalar"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "Geri Yükleme Başarısız"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "Geri Yükleme Tamamlandı"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "Dosyalarınız başarıyla geri yüklendi."
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Dosyanız başarıyla geri yüklendi."
 msgstr[1] "Dosyalarınız başarıyla geri yüklendi."
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Geri Yükleniyor…"
 
@@ -936,13 +913,139 @@ msgstr[1] "Yaklaşık son %d yıl önceki dosyalar taranıyor…"
 msgid "Scanning finished"
 msgstr "Tarama tamamlandı"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "En az altı ay"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "En az bir yıl"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "Sürekli"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "En az %d gün"
+msgstr[1] "En az %d gün"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "Kaldır"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "Ekle"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "Klasörleri seç"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "_Ekle"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "Google Drive"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "Yerel Klasör"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr "Ağ Sunucusu"
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "Google Bulut Depolama"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Bulut Dosyaları"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "Klasör Seç"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "_Tamam"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "Günlük"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "Haftalık"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "Her %d günde bir"
+msgstr[1] "Her %d günde bir"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "Sonraki yedekleme bugün."
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "Sonraki yedekleme yarın."
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "Sonraki yedekleme %d gün sonra."
+msgstr[1] "Sonraki yedekleme %d gün sonra."
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "En son yedekleme bugündü."
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "En son yedekleme dündü."
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "Son yedekleme %d gün önceydi."
+msgstr[1] "Son yedekleme %d gün önceydi."
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "Yakın zamanda yedeklenmemiş."
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "Zamanlanmış yedekleme yok."
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "Sunucuya Bağlan"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "_Kullanıcı Adı"
 
@@ -970,56 +1073,6 @@ msgstr "_Kullanıcı olarak bağlan"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "_Alan Adı"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "Kategoriler"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "_Geri Yükle…"
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "_Şimdi Yedekle…"
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "Genel Görünüm"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "_Depolama konumu"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "Depolama konumu"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "_Kendiliğinden yedekleme"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "_Her"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "_Tut"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-"Depolama konumunda boş alan azalmışsa eski yedeklemeler daha önce "
-"silinecektir."
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "Zamanlama"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -1059,56 +1112,56 @@ msgstr "Tüm dosyalar yedeklenemedi. Ayrıntılar için iletişim kutusuna bakı
 msgid "Starting scheduled backup"
 msgstr "Zamanlanmış yedekleme başlatılıyor"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "Gösterilemiyor: %s"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Sürümü göster"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Belirtilen dosyaları geri yükle"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Hemen yedekleme başlat"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "Silinen dosyaları geri yükle"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "Hedef dizin belirtilmedi"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "Tek seferde yalnızca bir hedef dizin gösterilebilir"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr "Dizin yok"
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "Hedef dizin belirtmelisiniz, dosya değil"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr "Kendiliğinden yedekleme"
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "Zamanlanmış yedekleme ertelendi"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
-"  Aequitas https://launchpad.net/~h-bardak\n"
-"  Angel Spy https://launchpad.net/~dilara.ekinci\n"
+"  Angel Spy https://launchpad.net/~angel-spy\n"
 "  Buckethead https://launchpad.net/~buckethead1\n"
 "  Cihan Ersoy https://launchpad.net/~cihan.ersoy\n"
 "  Ekin ALPAGUT https://launchpad.net/~ekin-alpagut\n"
@@ -1122,7 +1175,6 @@ msgstr ""
 "  Michael Terry https://launchpad.net/~mterry\n"
 "  Muhammet Kara https://launchpad.net/~muhammet-k\n"
 "  Namık ERDOĞAN https://launchpad.net/~erdogannamik\n"
-"  Onur İ. https://launchpad.net/~nsproo\n"
 "  Osman Tosun https://launchpad.net/~rainman-neu\n"
 "  Sabri Ünal https://launchpad.net/~libreajans\n"
 "  Serdar Delican https://launchpad.net/~sdelican\n"
@@ -1141,272 +1193,9 @@ msgstr ""
 "  İbrahim Çelik https://launchpad.net/~ibrahimcelik89\n"
 "  Şâkir Aşçı https://launchpad.net/~sakirasci"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr "Ağ bağlantısı kullanılabildiğinde yedekleme başlayacak."
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "Eksik Dosyaları Geri Yükle…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "Silinen dosyaları yedekten geri yükle"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "Önceki Sürüme Geri Dön…"
-msgstr[1] "Önceki Sürümlere Geri Dön…"
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "Dosyayı yedekten geri yükle"
-msgstr[1] "Dosyaları yedekten geri yükle"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "En az altı ay"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "En az bir yıl"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "Sürekli"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "En az %d gün"
-msgstr[1] "En az %d gün"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "Sonraki yedekleme bugün."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "Sonraki yedekleme yarın."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "Sonraki yedekleme %d gün sonra."
-msgstr[1] "Sonraki yedekleme %d gün sonra."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "En son yedekleme bugündü."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "En son yedekleme dündü."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "Son yedekleme %d gün önceydi."
-msgstr[1] "Son yedekleme %d gün önceydi."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "Yakın zamanda yedeklenmemiş."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "Zamanlanmış yedekleme yok."
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "Geri yükle…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr "Var olan yedeklere göz atmak için %s düğmesini kullanabilirsiniz."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-"Tüm yedeği %s düğmesiyle geri yükleyebilir, tek dosya geri yüklemek veya "
-"eksik dosyaları geri yüklemek için %s kullanabilirsiniz."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "Şimdi Yedekle…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-"Kendiliğinden yedeklemeyi <a href=''>etkinleştirmeli</a> veya şimdi %s "
-"düğmesini kullanmalısınız."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "Yedekleme her gün kendiliğinden başlar."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "Yedekleme her hafta kendiliğinden başlar."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "Yedekleme her %d günde bir başlar."
-msgstr[1] "Yedekleme her %d günde bir başlar."
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "_Ekle"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "Ekle"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "_Kaldır"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "Kaldır"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "Klasörleri seç"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr "Ağ Sunucusu"
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "Yerel Klasör"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr "Google Bulut Depolama"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "Google Drive"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Bulut Dosyaları"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr "_Ağ Konumu"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "_Klasör"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "Klasör _Seç…"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "Klasör Seç"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "_Tamam"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr "GCS Erişim Anahtarı _Kimliği"
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr "_Sepet"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "_Kap"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr "_Kimlik Doğrulama Adresi"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr "_Kiracı adı"
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "S3 Erişim Anahtarı I_D"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "Gün"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr "Hafta"
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d gün"
-msgstr[1] "%d gün"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "Gösterilemiyor: %s"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s üzerinde %1$s"
@@ -1425,104 +1214,29 @@ msgstr "Depolama konumu kullanılabilir değil"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "'%s'in bağlanılabilirliği bekleniyor..."
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr "Google Bulut Depolama üstünde %s/%s"
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "İzin verilmedi"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
-msgstr ""
-"Google Bulut Depolama hesabına <a href=\"%s\">çevrim içi</a> "
-"kaydolabilirsiniz."
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr "Birlikte işlerliği etkinleştirmeyi anımsa ve anahtarları oluştur."
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr "Google Bulut Depolama’ya Bağlan"
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "_Erişim anahtarı kimliği"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "_Gizli erişim anahtarı"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "Gizli erişim anahtarını _göster"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "Gizli erişim anahtarını _anımsa"
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
+msgstr "Ağ bağlantısı kullanılabildiğinde yedekleme başlayacak."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr "Google Drive üstündeki %s dizini"
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr "Google sunucularına giriş yapılamadı"
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr "Déjà Dup için Google kimlik bilgileri"
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr ""
 "Öncelikle Yedekler’in  Google hesabınıza erişimine izin vermelisiniz."
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr "OpenStack Swift üstünde %s"
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "Rackspace Bulut Dosyaları'nda %s"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr ""
-"<a href=\"%s\">Çevrim içi </a> olarak Rackspace Bulut Dosyaları hesabı "
-"edinebilirsiniz."
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "Rackspace Bulut Dosyaları'na bağlan"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "_API erişim anahtarı"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "API erişim anahtarını _göster"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "API erişim anahtarını _anımsa"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1545,43 +1259,27 @@ msgid ""
 msgstr ""
 "Samba ağ konumları, hem ana bilgisayar adı hem de paylaşım adı içermelidir."
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "Amazon S3 üzerinde %s"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr ""
-"<a href=\"%s\">Çevrim içi</a> olarak Amazon S3 hesabı edinebilirsiniz."
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "Amazon S3'e bağlan"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr "Erişim İzni Verildi"
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr "Yedekler şimdi sürecek. Bu sayfayı kapatabilirsiniz."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "Ev dizini (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "Ev Dizini"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "Çöp"
 
@@ -1600,8 +1298,8 @@ msgstr "Dosyalar listeleniyor…"
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "Hazırlanıyor…"
 
@@ -1627,18 +1325,18 @@ msgid "Paused (no network)"
 msgstr "Duraklatıldı (ağ yok)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "‘%s’ geri yüklenemedi: Geçersiz dosya konumu"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "Yedekleme konumu çok küçük. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1646,15 +1344,15 @@ msgid ""
 msgstr ""
 "Yedekleme konumunda yeterli boş alan yok. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "Temizleniyor…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1664,7 +1362,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1673,19 +1371,19 @@ msgstr ""
 "olun."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "Kötü şifreleme parolası."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "'%s' geri yüklenemedi: Dosya yedek içerisinde bulunamadı"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1695,73 +1393,57 @@ msgstr ""
 "Var olan yedek %s adında bilgisayarın, ama şu anki bilgisayarın adı %s. Eğer "
 "bu beklenmedikse başka konuma yedeklemelisiniz."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "Bilgisayar adı değişmiş"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ oluşturmaya çalışılırken izin verilmedi."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ okunmaya çalışılırken izin verilmedi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ silinmeye çalışılırken izin verilmedi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ yedekleme konumu yok."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "Boş alan kalmadı."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "Geçersiz kimlik."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "Geçersiz gizli anahtar."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "Amazon Ağ Hizmetleri hesabınız S3 hizmetine kaydolmamış."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "S3 kova adı uygun değil."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "'%s' dosyası okunurken hata."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "'%s' dosyası yazılırken hata."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ içerisinde boş alan kalmadı."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "Yedekleme dosyası bulunamadı"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "Yükleniyor…"
 
@@ -1783,8 +1465,55 @@ msgstr ""
 "Yedekler; en az %d.%d.%.2d sürümünde duplicity gerektirir, ancak yalnızca "
 "%d.%d.%.2d sürümü bulunmuştur"
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "Eksik Dosyaları Geri Yükle…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "Silinen dosyaları yedekten geri yükle"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "Önceki Sürüme Geri Dön…"
+msgstr[1] "Önceki Sürümlere Geri Dön…"
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "Dosyayı yedekten geri yükle"
+msgstr[1] "Dosyaları yedekten geri yükle"
+
+#~ msgid "Overview"
+#~ msgstr "Genel Görünüm"
+
+#~ msgid "Categories"
+#~ msgstr "Kategoriler"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "_Tut"
+
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr ""
+#~ "Depolama konumunda boş alan azalmışsa eski yedeklemeler daha önce "
+#~ "silinecektir."
+
+#~ msgid "Scheduling"
+#~ msgstr "Zamanlama"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#~ msgid "Day"
+#~ msgstr "Gün"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr "Yedekleme alanı çok küçük. Daha fazla alana sahip bir konum deneyin."
@@ -1795,8 +1524,107 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "Déjà Dup Yedekleme Aracı"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Amazon S3 Erişim Anahtarı Kimliği"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr ""
+#~ "Amazon S3 Erişim Anahtarı Tanıtıcı'nız. Bu, S3 kullanıcı adınız yerine geçer."
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "Kullanılacak Amazon S3 depo adı"
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "Amazon S3 klasörü"
+
+#~ msgid "The Google Cloud Storage bucket name to use"
+#~ msgstr "Kullanacağınız Google Bulut Depolama sepet adı"
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "Google Bulut Depolama dizini"
+
+#~ msgid "The Rackspace Cloud Files container"
+#~ msgstr "The Rackspace Bulut Dosya depolayıcı"
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "Rackspace kullanıcı adınız"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "Bu, sizin Rackspace Bulut Dosya hizmeti için kullanıcı adınızdır."
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "OpenStack kullanıcı adınız"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "OpenStack Swift hizmeti için kullanıcı adınız."
+
+#~ msgid "_Storage location"
+#~ msgstr "_Depolama konumu"
+
+#~ msgid "Storage location"
+#~ msgstr "Depolama konumu"
+
+#~ msgid "_Every"
+#~ msgstr "_Her"
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "Yedekleme her %d günde bir başlar."
+#~ msgstr[1] "Yedekleme her %d günde bir başlar."
+
+#~ msgid "_Remove"
+#~ msgstr "_Kaldır"
+
+#~ msgid "_Container"
+#~ msgstr "_Kap"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "S3 Erişim Anahtarı I_D"
+
 #~ msgid "Ubuntu One has shut down.  Please choose another storage location."
 #~ msgstr "Ubuntu One kapatılmış.  Lütfen başka bir depolama konumu seçin."
+
+#~ msgid "Week"
+#~ msgstr "Hafta"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d gün"
+#~ msgstr[1] "%d gün"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "Rackspace Bulut Dosyaları'nda %s"
+
+#~ msgid "Permission denied"
+#~ msgstr "İzin verilmedi"
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "Rackspace Bulut Dosyaları'na bağlan"
+
+#~ msgid "_API access key"
+#~ msgstr "_API erişim anahtarı"
+
+#~ msgid "S_how API access key"
+#~ msgstr "API erişim anahtarını _göster"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "Amazon S3 üzerinde %s"
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "Amazon S3'e bağlan"
+
+#~ msgid "_Access key ID"
+#~ msgstr "_Erişim anahtarı kimliği"
+
+#~ msgid "_Secret access key"
+#~ msgstr "_Gizli erişim anahtarı"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "Gizli erişim anahtarını _göster"
 
 #, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
@@ -1811,6 +1639,18 @@ msgstr ""
 #~ msgid "Could not start backup tool"
 #~ msgstr "Yedekleme aracı başlatılamadı"
 
+#~ msgid "Invalid ID."
+#~ msgstr "Geçersiz kimlik."
+
+#~ msgid "Invalid secret key."
+#~ msgstr "Geçersiz gizli anahtar."
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "Amazon Ağ Hizmetleri hesabınız S3 hizmetine kaydolmamış."
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "S3 kova adı uygun değil."
+
 #, c-format
 #~ msgid ""
 #~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
@@ -1819,9 +1659,22 @@ msgstr ""
 #~ "Déjà Dup Yedekleme Aracı Duplicity'nin en az %d.%d.%.2d sürümünü gerektirir, "
 #~ "ama sadece %d.%d.%.2d sürümü mevcut."
 
+#~ msgid "Your OpenStack tenant"
+#~ msgstr "OpenStack kiracınız"
+
+#~ msgid "This is your tenant for the OpenStack Swift service."
+#~ msgstr "Bu, OpenStack Swift hizmeti için kiracınızdır."
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "Yardım"
+
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "Kısayollar"
+
+#~ msgid "Authentication URL"
+#~ msgstr "Kimlik Doğrulama Adresi"
 
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr ""
@@ -1832,3 +1685,122 @@ msgstr ""
 #~ msgstr ""
 #~ "Öncelikle, Déjà Dup Yedekleme Aracı'nın Google hesabınıza erişmesine izin "
 #~ "vermeniz gerekiyor."
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "Google Bulut Depolama Erişim Anahtarı Kimliği"
+
+#~ msgid ""
+#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
+#~ "Cloud Storage username."
+#~ msgstr ""
+#~ "Google Bulut Depolama Erişim Anahtarı Tanımlayıcınız. Bu, Google Bulut "
+#~ "Depolama kullanıcı adınız gibi davranır."
+
+#~ msgid "The OpenStack Swift container"
+#~ msgstr "OpenStack Swift deposu"
+
+#~ msgid "GCS Access Key I_D"
+#~ msgstr "GCS Erişim Anahtarı _Kimliği"
+
+#~ msgid ""
+#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
+#~ msgstr ""
+#~ "Bu, Kimlik Doğrulama Adresi veya OpenStack hizmetinin temel taşı adresidir"
+
+#~ msgid "_Bucket"
+#~ msgstr "_Sepet"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr ""
+#~ "Dosyaları depolamak için isteğe bağlı klasör adı. Bu klasör, seçili depoda "
+#~ "oluşturulacak."
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Dosyaların depolanacağı Amazon S3 deposu. Şu an var olmasına gerek yoktur. "
+#~ "Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
+
+#~ msgid ""
+#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Dosyaların depolanacağı Google Bulut Depolama sepeti. Şu an var olmasına "
+#~ "gerek yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Dosyaların depolanacağı Rackspace Bulut Dosya deposu. Şu an var olmasına "
+#~ "gerek yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
+
+#~ msgid ""
+#~ "Which OpenStack Swift container to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Dosyaların depolanacağı Openstack Swift deposu. Şu an var olmasına gerek "
+#~ "yoktur. Yalnızca yasal ana bilgisayar dizgeleri geçerlidir."
+
+#~ msgid "_Restore…"
+#~ msgstr "_Geri Yükle…"
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "_Şimdi Yedekle…"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "_Kendiliğinden yedekleme"
+
+#~ msgid "Restore…"
+#~ msgstr "Geri yükle…"
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr "Var olan yedeklere göz atmak için %s düğmesini kullanabilirsiniz."
+
+#, c-format
+#~ msgid ""
+#~ "You can restore the entire backup with the %s button or use %s to either "
+#~ "revert individual files or restore missing ones."
+#~ msgstr ""
+#~ "Tüm yedeği %s düğmesiyle geri yükleyebilir, tek dosya geri yüklemek veya "
+#~ "eksik dosyaları geri yüklemek için %s kullanabilirsiniz."
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "Kendiliğinden yedeklemeyi <a href=''>etkinleştirmeli</a> veya şimdi %s "
+#~ "düğmesini kullanmalısınız."
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "Yedekleme her hafta kendiliğinden başlar."
+
+#~ msgid "Back Up Now…"
+#~ msgstr "Şimdi Yedekle…"
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "Yedekleme her gün kendiliğinden başlar."
+
+#~ msgid "_Remember API access key"
+#~ msgstr "API erişim anahtarını _anımsa"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "<a href=\"%s\">Çevrim içi </a> olarak Rackspace Bulut Dosyaları hesabı "
+#~ "edinebilirsiniz."
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "<a href=\"%s\">Çevrim içi</a> olarak Amazon S3 hesabı edinebilirsiniz."
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "Gizli erişim anahtarını _anımsa"

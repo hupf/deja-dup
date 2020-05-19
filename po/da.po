@@ -6,23 +6,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
-"PO-Revision-Date: 2020-03-23 08:14+0000\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
+"PO-Revision-Date: 2020-05-10 12:19+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-03-24 06:43+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:14+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 "Language: da\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr "Overvåger af sikkerhedskopiering"
 
@@ -40,7 +39,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup-sikkerhedskopieringer"
 
@@ -96,7 +95,7 @@ msgstr ""
 "sikkerhedskopieringsprogrammer."
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "Sikkerhedskopieringer"
 
@@ -114,7 +113,7 @@ msgstr "déjà;deja;dup;"
 msgid "Back Up"
 msgstr "Sikkerhedskopiér"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "Mapper der skal gemmes"
 
@@ -135,7 +134,7 @@ msgstr ""
 "brugernavn og kan være hvor som helst i stien. Relative poster er relative "
 "til brugerens hjemmemappe."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "Mapper der skal ignoreres"
 
@@ -306,14 +305,14 @@ msgstr ""
 "Typen af placering af sikkerhedskopi. Hvis sat til \"auto\", vil en "
 "standardværdi blive valgt baseret på, hvad der er tilgængeligt."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "Mappen som sikkerhedskopierne bliver gemt i"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -321,11 +320,11 @@ msgstr ""
 "Mappehierarkiet hvor sikkerhedskopier lagres. Stier kan være absolutte eller "
 "relative til din hjemmemappe."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -333,38 +332,38 @@ msgstr ""
 "Det unikke filsystem-identifikator til drevet, der bruges til at genkende "
 "drevet når det er tilsluttet."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr "Navn"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr "Navnet på det eksterne drev."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr "Ikon"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Ikonet til det eksterne drev, som et serieliseret GIcon."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
 "Mappehierarkiet hvor sikkerhedskopier lagres. Stier er relative til drevet."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr "Serveradressen"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr "URI'en til fjernserverens placering."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -372,69 +371,7 @@ msgstr ""
 "Mappehierarkiet hvor sikkerhedskopier lagres. Stier kan være absolutte eller "
 "relative til værten."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Id for Amazon S3-adgangsnøgle"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr ""
-"Din Amazon S3-adgangsnøgle-identifikator. Den fungerer som dit S3-brugernavn."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "Navn for Amazon S3-spanden som skal benyttes"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"Hvilken Amazon S3-spand der skal opbevares filer i. Den behøver ikke at "
-"findes i forvejen. Kun lovlige værtsnavnsstrenge accepteres."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "Amazon S3-mappe"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr ""
-"Et valgfrit mappenavn til at gemme filer i. Denne mappe vil blive oprettet i "
-"den valgte spand."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "Adgangsnøgle-id til Google Cloud Storage"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-"Din adgangsnøgle-identifikator til Google Cloud Storage. Den fungerer som "
-"dit brugernavn til Google Cloud Storage."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr "Spandnavnet som skal bruges til Google Cloud Storage"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"Hvilken spand til Google Cloud Storage filerne skal lagres i. Den behøver "
-"ikke at findes i forvejen. Kun lovlige værtsnavnestrenge er gyldige."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "Mappen til Google Cloud Storage"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
@@ -442,66 +379,7 @@ msgstr ""
 "Mappestien hvor sikkerhedskopieringer gemmes. Stier kan være absolutte eller "
 "relative til værten."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr "Rackspace Cloud Files-beholder"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"Hvilken Rackspace Cloud Files-beholder som filer skal opbevares i. Den "
-"behøver ikke findes i forvejen. Kun korrekte værtsnavnsstrenge er gyldig."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "Dit Rackspace brugernavn"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "Dette er dit brugernavn til Rackspace Cloud Files-tjenesten."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr "OpenStack Swift-beholderen"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"Hvilken OpenStack Swift-beholder som filer skal lagres i. Den behøver ikke "
-"at findes i forvejen. Kun legitime værtsnavnestrenge er gyldige."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "Dit OpenStack-brugernavn"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr "Dette er dit brugernavn til OpenStack Swift-tjenesten."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr "Din OpenStack-lejer"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr "Dette er din lejer til OpenStack Swift-tjenesten."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "Autentifikations-URL"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr ""
-"Dette er autentifikations-URL'en eller keystone-URL'en til OpenStack-"
-"tjenesten"
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "Genopret"
 
@@ -516,25 +394,127 @@ msgstr "Generelt"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Afslut"
+msgid "Show help"
+msgstr ""
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "Hjælp"
+msgid "Open menu"
+msgstr ""
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Afslut"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "_Genopret"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr ""
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastaturgenveje"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "_Hjælp"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "_Om Sikkerhedskopieringer"
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "Lagerplads"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr ""
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr ""
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr ""
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "Planlægning"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr ""
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "Automatisk sikkerhedskopiering"
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr ""
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr ""
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr ""
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr ""
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr ""
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr ""
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr ""
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "_Mappe"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr "_Netværksplacering"
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr "Lagringsplaceringen understøttes ikke længere."
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "_Vælg mappe…"
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -768,8 +748,8 @@ msgstr "Giv adgang"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "Mislykkedes med en ukendt fejl."
 
@@ -790,65 +770,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_Installer"
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "_Genopret"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "_Placering af sikkerhedskopi"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "Genopret hvorfra?"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "_Dato"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "Genopret filer til _oprindelige placeringer"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "Genopret til _specifik mappe"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "Vælg destination for genoprettede filer"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "Genopret _mappe"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "Placering af sikkerhedskopi"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "Genopret dato"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "Genopret mappe"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "Søger efter sikkerhedskopier…"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "Genopret fra hvornår?"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "Hvortil skal der genoprettes?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "Genopretter:"
 
@@ -856,46 +832,46 @@ msgstr "Genopretter:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "Ingen sikkerhedskopier at genoprette"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "Oprindelig placering"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fil som vil blive genoprettet"
 msgstr[1] "Filer som vil blive genoprettet"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "Genoprettelse mislykkedes"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "Genoprettelse fuldført"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "Dine filer blev genoprettet."
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Din fil blev genoprettet."
 msgstr[1] "Dine filer blev genoprettet."
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Genopretter…"
 
@@ -941,13 +917,139 @@ msgstr[1] "Skanner efter filer som er fra op til for %d år siden…"
 msgid "Scanning finished"
 msgstr "Skanning fuldført"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "Mindst seks måneder"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "Mindst et år"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "Altid"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "Mindst %d dag"
+msgstr[1] "Mindst %d dage"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "Fjern"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "Tilføj"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "Vælg mapper"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "_Tilføj"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "Google Drev"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "Lokal mappe"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr "Netværksserver"
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "Google Cloud Storage"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "Vælg mappe"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "_OK"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "Dagligt"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "Ugentligt"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "%d gang om dagen"
+msgstr[1] "Hver %d. dag"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "Næste sikkerhedskopiering sker i dag."
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "Næste sikkerhedskopiering sker i morgen."
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "Næste sikkerhedskopiering sker %d dag fra nu."
+msgstr[1] "Næste sikkerhedskopiering sker %d dage fra nu."
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "Seneste sikkerhedskopiering skete i dag."
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "Seneste sikkerhedskopiering skete i går."
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "Seneste sikkerhedskopiering skete for %d dag siden."
+msgstr[1] "Seneste sikkerhedskopiering skete for %d dage siden."
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "Ingen nylige sikkerhedskopier."
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "Der er ikke planlagt sikkerhedskopieringer."
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "Forbind til server"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "_Brugernavn"
 
@@ -975,56 +1077,6 @@ msgstr "Forbind som b_ruger"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "_Domæne"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "Kategorier"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "_Genopret…"
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "_Sikkerhedskopiér nu…"
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "Oversigt"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "_Lagringssted"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "Lagringssted"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "_Automatisk sikkerhedskopiering"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "_Hver"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "_Behold"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr ""
-"Ældre sikkerhedskopier vil blive slette tidligere, hvis lagringsstedet har "
-"begrænset plads."
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "Planlægning"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -1067,51 +1119,52 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Starter planlagt sikkerhedskopiering"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "Kunne ikke vise %s"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Vis version"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Genopret givne filer"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Start øjeblikkeligt en sikkerhedskopiering"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "Genopret slettede filer"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr "En handling er allerede i gang"
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "Ingen mappe angivet"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "Kun en mappe kan vises ad gangen"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr "Mappen findes ikke"
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "Du skal vælge en mappe, ikke en fil"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr "Automatisk sikkerhedskopiering"
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "Planlagt sikkerhedskopiering forsinket"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1125,281 +1178,12 @@ msgstr ""
 "  Marc Dam https://launchpad.net/~marcdam\n"
 "  Michael Terry https://launchpad.net/~mterry\n"
 "  Nicholas Christian Langkjær Ipsen https://launchpad.net/~ncli\n"
-"  Peter Skov https://launchpad.net/~a0peter\n"
 "  mjjzf https://launchpad.net/~mjjzf\n"
 "  scootergrisen https://launchpad.net/~scootergrisen"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr ""
-"Sikkerhedskopiering vil begynde når en netværkstilslutning bliver "
-"tilgængelig."
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr ""
-"Sikkerhedskopiering vil begynde når en forbindelse hvor der ikke betales "
-"efter forbrug bliver tilgængelig."
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "Genopret manglende filer…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "Genopret slettede filer fra sikkerhedskopi"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "Rul tilbage til forrige version…"
-msgstr[1] "Rul tilbage til forrige versioner…"
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "Genopret fil fra sikkerhedskopi"
-msgstr[1] "Genopret filer fra sikkerhedskopi"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "Mindst seks måneder"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "Mindst et år"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "Altid"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "Mindst %d dag"
-msgstr[1] "Mindst %d dage"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "Næste sikkerhedskopiering sker i dag."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "Næste sikkerhedskopiering sker i morgen."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "Næste sikkerhedskopiering sker %d dag fra nu."
-msgstr[1] "Næste sikkerhedskopiering sker %d dage fra nu."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "Seneste sikkerhedskopiering skete i dag."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "Seneste sikkerhedskopiering skete i går."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "Seneste sikkerhedskopiering skete for %d dag siden."
-msgstr[1] "Seneste sikkerhedskopiering skete for %d dage siden."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "Ingen nylige sikkerhedskopier."
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "Der er ikke planlagt sikkerhedskopieringer."
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "Genopret…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr ""
-"Du kan bruge %s-knappen for at gennemse eksisterende sikkerhedskopier."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-"Du kan genoprette hele sikkerhedskopien med %s-knappen eller bruge %s til "
-"enten at tilbageføre enkelte filer eller genoprette manglende filer."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "Sikkerhedskopiér nu…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr ""
-"Du bør <a href=''>aktivere</a> automatiske sikkerhedskopier eller bruge %s-"
-"knappen til at starte en nu."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "En sikkerhedskopiering påbegyndes hver dag."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "En sikkerhedskopiering påbegyndes hver uge."
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "En sikkerhedskopiering påbegyndes hver %d dag."
-msgstr[1] "En sikkerhedskopiering påbegyndes hver %d. dag."
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "_Tilføj"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "Tilføj"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "_Fjern"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "Fjern"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "Vælg mapper"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr "Netværksserver"
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "Lokal mappe"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr "Google Cloud Storage"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "Google Drev"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr "_Netværksplacering"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "_Mappe"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "_Vælg mappe…"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "Vælg mappe"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "_OK"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr "Adgangsnøgle-i_d til GCS"
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr "_Spand"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "_Beholder"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr "_Autentifikations-URL"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr "_Lejernavn"
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "I_d for S3-adgangsnøgle"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "Dag"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr "Uge"
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d dag"
-msgstr[1] "%d. dag"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "Kunne ikke vise %s"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s på %2$s"
@@ -1418,105 +1202,32 @@ msgstr "Lagringsplacering ikke tilgængelig"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Venter på at \"%s\" bliver forbundet…"
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr "%s/%s på Google Cloud Storage"
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "Adgang nægtet"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
 msgstr ""
-"Du kan oprette en konto til en Google Cloud Storage-konto <a "
-"href=\"%s\">online</a>."
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr "Husk at aktivere samkørsel og oprette nøgler."
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr "Opret forbindelse til Google Cloud Storage"
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "_Adgangsnøgle-id"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "_Hemmelig adgangsnøgle"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "_Vis hemmelig adgangsnøgle"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "_Husk hemmelig adgangsnøgle"
+"Sikkerhedskopiering vil begynde når en netværkstilslutning bliver "
+"tilgængelig."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s på Google Drive"
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr "Kunne ikke logge ind på Google-servere."
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr "Google-loginoplysninger til Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr ""
 "Du skal første give tilladelse til at Sikkerhedskopieringer må tilgå din "
 "Google-konto."
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr "%s på OpenStack Swift"
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "%s på Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr ""
-"Du kan oprette en konto til en Rackspace Cloud Files-konto <a "
-"href=\"%s\">online</a>."
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "Forbind til Rackspace Cloud Files"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "_API-adgangsnøgle"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "V_is API-adgangsnøgle"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "_Husk API-adgangsnøgle"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1539,42 +1250,27 @@ msgid ""
 msgstr ""
 "Samba-netværksplaceringer skal både indeholde et værtsnavn og et share-navn."
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "%s på Amazon S3"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "Du kan oprette en Amazon S3-konto <a href=\"%s\">online</a>."
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "Forbind til Amazon S3"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr "Adgang givet"
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr "Sikkerhedskopieringer vil nu fortsætte. Du kan lukke siden."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "Hjem (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "Hjem"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "Papirkurv"
 
@@ -1593,8 +1289,8 @@ msgstr "Opretter liste over filer…"
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "Forbereder…"
 
@@ -1620,19 +1316,19 @@ msgid "Paused (no network)"
 msgstr "På pause (intet netværk)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "Kunne ikke genoprette \"%s\": Ikke en gyldig filplacering"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Placering af sikkerhedskopi er for lille. Prøv at bruge en med mindst %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1641,15 +1337,15 @@ msgstr ""
 "Placering af sikkerhedskopi har ikke nok ledig plads. Prøv at bruge en med "
 "mindst %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "Rydder op…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1660,7 +1356,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1669,19 +1365,19 @@ msgstr ""
 "at skrive til dem."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "Forkert krypteringsadgangskode."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Kunne ikke genoprette \"%s\": Fil ikke fundet i sikkerhedskopi"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1692,73 +1388,57 @@ msgstr ""
 "nuværende computers navn er %s. Hvis dette er uventet bør du "
 "sikkerhedskopiere til en anden placering."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "Computernavn ændret"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Adgang nægtet under forsøget på at skabe \"%s\"."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Adgang nægtet under forsøget på at læse \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Adgang nægtet under forsøget på at slette \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Placering af sikkerhedskopi \"%s\" findes ikke."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "Ingen plads tilbage."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "Ugyldigt id."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "Ugyldig hemmelig nøgle."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "Din konto på Amazon Web Services er ikke tilmeldt S3-tjenesten."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "Navnet på S3-spand er ikke ledigt."
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fejl under læsning af fil \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fejl under skrivning til fil \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Ingen ledig plads i \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "Ingen sikkerhedskopier fundet"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "Uploader…"
 
@@ -1780,8 +1460,57 @@ msgstr ""
 "Sikkerhedskopieringer kræver mindst version %d.%d.%.2d af duplicity, men "
 "fandt kun version %d.%d.%.2d"
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr ""
+"Sikkerhedskopiering vil begynde når en forbindelse hvor der ikke betales "
+"efter forbrug bliver tilgængelig."
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "Genopret manglende filer…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "Genopret slettede filer fra sikkerhedskopi"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "Rul tilbage til forrige version…"
+msgstr[1] "Rul tilbage til forrige versioner…"
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "Genopret fil fra sikkerhedskopi"
+msgstr[1] "Genopret filer fra sikkerhedskopi"
+
+#~ msgid "Overview"
+#~ msgstr "Oversigt"
+
+#~ msgid "Categories"
+#~ msgstr "Kategorier"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "_Behold"
+
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr ""
+#~ "Ældre sikkerhedskopier vil blive slette tidligere, hvis lagringsstedet har "
+#~ "begrænset plads."
+
+#~ msgid "Scheduling"
+#~ msgstr "Planlægning"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#~ msgid "Day"
+#~ msgstr "Dag"
 
 #, c-format
 #~ msgid "Backup will begin when ‘%s’ has Files support enabled"
@@ -1811,6 +1540,65 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "Déjà Dup sikkerhedskopieringsværktøj"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Id for Amazon S3-adgangsnøgle"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr ""
+#~ "Din Amazon S3-adgangsnøgle-identifikator. Den fungerer som dit S3-brugernavn."
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "Navn for Amazon S3-spanden som skal benyttes"
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Hvilken Amazon S3-spand der skal opbevares filer i. Den behøver ikke at "
+#~ "findes i forvejen. Kun lovlige værtsnavnsstrenge accepteres."
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "Amazon S3-mappe"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr ""
+#~ "Et valgfrit mappenavn til at gemme filer i. Denne mappe vil blive oprettet i "
+#~ "den valgte spand."
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "Adgangsnøgle-id til Google Cloud Storage"
+
+#~ msgid ""
+#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
+#~ "Cloud Storage username."
+#~ msgstr ""
+#~ "Din adgangsnøgle-identifikator til Google Cloud Storage. Den fungerer som "
+#~ "dit brugernavn til Google Cloud Storage."
+
+#~ msgid "The Google Cloud Storage bucket name to use"
+#~ msgstr "Spandnavnet som skal bruges til Google Cloud Storage"
+
+#~ msgid ""
+#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Hvilken spand til Google Cloud Storage filerne skal lagres i. Den behøver "
+#~ "ikke at findes i forvejen. Kun lovlige værtsnavnestrenge er gyldige."
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "Mappen til Google Cloud Storage"
+
+#~ msgid "The Rackspace Cloud Files container"
+#~ msgstr "Rackspace Cloud Files-beholder"
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "Dit Rackspace brugernavn"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "Dette er dit brugernavn til Rackspace Cloud Files-tjenesten."
+
 #~ msgid "Account ID"
 #~ msgstr "Konto-id"
 
@@ -1823,9 +1611,110 @@ msgstr ""
 #~ msgid "The cached type of account that ID represents."
 #~ msgstr "Den mellemlagrede kontotype som id'et repræsenterer."
 
+#~ msgid "The OpenStack Swift container"
+#~ msgstr "OpenStack Swift-beholderen"
+
+#~ msgid ""
+#~ "Which OpenStack Swift container to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Hvilken OpenStack Swift-beholder som filer skal lagres i. Den behøver ikke "
+#~ "at findes i forvejen. Kun legitime værtsnavnestrenge er gyldige."
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "Dit OpenStack-brugernavn"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "Dette er dit brugernavn til OpenStack Swift-tjenesten."
+
+#~ msgid "Your OpenStack tenant"
+#~ msgstr "Din OpenStack-lejer"
+
+#~ msgid "This is your tenant for the OpenStack Swift service."
+#~ msgstr "Dette er din lejer til OpenStack Swift-tjenesten."
+
+#~ msgid "Authentication URL"
+#~ msgstr "Autentifikations-URL"
+
+#~ msgid ""
+#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
+#~ msgstr ""
+#~ "Dette er autentifikations-URL'en eller keystone-URL'en til OpenStack-"
+#~ "tjenesten"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "Hjælp"
+
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "Genveje"
+
+#~ msgid "_Restore…"
+#~ msgstr "_Genopret…"
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "_Sikkerhedskopiér nu…"
+
+#~ msgid "_Storage location"
+#~ msgstr "_Lagringssted"
+
+#~ msgid "Storage location"
+#~ msgstr "Lagringssted"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "_Automatisk sikkerhedskopiering"
+
+#~ msgid "_Every"
+#~ msgstr "_Hver"
+
+#~ msgid "Restore…"
+#~ msgstr "Genopret…"
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr ""
+#~ "Du kan bruge %s-knappen for at gennemse eksisterende sikkerhedskopier."
+
+#, c-format
+#~ msgid ""
+#~ "You can restore the entire backup with the %s button or use %s to either "
+#~ "revert individual files or restore missing ones."
+#~ msgstr ""
+#~ "Du kan genoprette hele sikkerhedskopien med %s-knappen eller bruge %s til "
+#~ "enten at tilbageføre enkelte filer eller genoprette manglende filer."
+
+#~ msgid "Back Up Now…"
+#~ msgstr "Sikkerhedskopiér nu…"
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "Du bør <a href=''>aktivere</a> automatiske sikkerhedskopier eller bruge %s-"
+#~ "knappen til at starte en nu."
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "En sikkerhedskopiering påbegyndes hver dag."
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "En sikkerhedskopiering påbegyndes hver uge."
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "En sikkerhedskopiering påbegyndes hver %d dag."
+#~ msgstr[1] "En sikkerhedskopiering påbegyndes hver %d. dag."
+
+#~ msgid "_Remove"
+#~ msgstr "_Fjern"
+
+#~ msgid "GCS Access Key I_D"
+#~ msgstr "Adgangsnøgle-i_d til GCS"
+
+#~ msgid "_Bucket"
+#~ msgstr "_Spand"
 
 #~ msgid ""
 #~ "This account is not yet configured. It cannot be used until you add it to "
@@ -1844,8 +1733,23 @@ msgstr ""
 #~ msgid "_Open Online Account Settings"
 #~ msgstr "_Åbn indstillinger for onlinekonti"
 
+#~ msgid "_Container"
+#~ msgstr "_Beholder"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "I_d for S3-adgangsnøgle"
+
 #~ msgid "Ubuntu One has shut down.  Please choose another storage location."
 #~ msgstr "Ubuntu One er blevet lukket. Vælg venligst et andet lagringssted."
+
+#~ msgid "Week"
+#~ msgstr "Uge"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d dag"
+#~ msgstr[1] "%d. dag"
 
 #~ msgid "Backup will begin when a storage location is configured"
 #~ msgstr "Sikkerhedskopiering vil begynde når et lagringssted er konfigureret"
@@ -1854,6 +1758,48 @@ msgstr ""
 #~ msgstr ""
 #~ "Venter på at onlinekonti konfigureres i dine indstillinger for "
 #~ "sikkerhedskopiering…"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "%s på Rackspace Cloud Files"
+
+#~ msgid "Permission denied"
+#~ msgstr "Adgang nægtet"
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "Forbind til Rackspace Cloud Files"
+
+#~ msgid "_API access key"
+#~ msgstr "_API-adgangsnøgle"
+
+#~ msgid "S_how API access key"
+#~ msgstr "V_is API-adgangsnøgle"
+
+#~ msgid "_Remember API access key"
+#~ msgstr "_Husk API-adgangsnøgle"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "%s på Amazon S3"
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "Du kan oprette en Amazon S3-konto <a href=\"%s\">online</a>."
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "Forbind til Amazon S3"
+
+#~ msgid "_Access key ID"
+#~ msgstr "_Adgangsnøgle-id"
+
+#~ msgid "_Secret access key"
+#~ msgstr "_Hemmelig adgangsnøgle"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "_Vis hemmelig adgangsnøgle"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "_Husk hemmelig adgangsnøgle"
 
 #, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
@@ -1873,6 +1819,18 @@ msgstr ""
 #~ msgid "Could not start backup tool"
 #~ msgstr "Sikkerhedskopieringsværktøj kunne ikke startes"
 
+#~ msgid "Invalid ID."
+#~ msgstr "Ugyldigt id."
+
+#~ msgid "Invalid secret key."
+#~ msgstr "Ugyldig hemmelig nøgle."
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "Din konto på Amazon Web Services er ikke tilmeldt S3-tjenesten."
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "Navnet på S3-spand er ikke ledigt."
+
 #, c-format
 #~ msgid ""
 #~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
@@ -1883,6 +1841,21 @@ msgstr ""
 
 #~ msgid "Backups@name_suffix@"
 #~ msgstr "Sikkerhedskopieringer@name_suffix@"
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "Hvilken Rackspace Cloud Files-beholder som filer skal opbevares i. Den "
+#~ "behøver ikke findes i forvejen. Kun korrekte værtsnavnsstrenge er gyldig."
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr ""
+#~ "Du kan oprette en konto til en Rackspace Cloud Files-konto <a "
+#~ "href=\"%s\">online</a>."
 
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr ""

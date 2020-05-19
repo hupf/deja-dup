@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-03-15 12:00-0400\n"
-"PO-Revision-Date: 2020-03-17 13:19+0000\n"
+"POT-Creation-Date: 2020-05-17 16:09-0400\n"
+"PO-Revision-Date: 2020-05-15 11:19+0000\n"
 "Last-Translator: Shinichirou Yamada "
 "<yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -16,14 +16,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2020-03-18 06:34+0000\n"
-"X-Generator: Launchpad (build 3a6db24bbe7280ec09bae73384238390fcc98ad3)\n"
+"X-Launchpad-Export-Date: 2020-05-19 06:14+0000\n"
+"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6
-#: deja-dup/monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
 msgid "Backup Monitor"
 msgstr "バックアップモニター"
 
@@ -41,7 +40,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:351
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup バックアップ"
 
@@ -91,7 +90,7 @@ msgstr ""
 "合は、他のバックアップアプリを選択することをお勧めします。"
 
 #. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/main.vala:155
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
 msgid "Backups"
 msgstr "バックアップ"
 
@@ -109,7 +108,7 @@ msgstr "déjà;deja;dup;backup;デジャ;ダップ;バックアップ;復元;dap
 msgid "Back Up"
 msgstr "バックアップ"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13 deja-dup/Preferences.vala:193
+#: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "バックアップするフォルダー"
 
@@ -128,7 +127,7 @@ msgstr ""
 "($HOME/subdir)。予約値 $USER "
 "はユーザー名に置換されると共に、パス内のどこにでも置くことができます。相対パスの項目は、ユーザーのホームディレクトリからの相対パスです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18 deja-dup/Preferences.vala:205
+#: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "無視するフォルダー"
 
@@ -275,185 +274,72 @@ msgid ""
 "what is available."
 msgstr "バックアップ先の指定。‘auto’ の場合、利用できる場所をデフォルトとして用います。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
-#: data/org.gnome.DejaDup.gschema.xml.in:134
-#: data/org.gnome.DejaDup.gschema.xml.in:147
-#: data/org.gnome.DejaDup.gschema.xml.in:191
+#: data/org.gnome.DejaDup.gschema.xml.in:105
+#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
 msgstr "バックアップを保存するフォルダー"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:112
+#: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr "バックアップを保存するフォルダー階層です。パスは絶対パスか、ホームディレクトリからの相対パスのどちらかです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:120
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr "ドライブが接続された際に使用される、ドライブを認識するための一意なファイルシステム識別子です。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
 msgstr "名前"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:125
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
 msgstr "外付けドライブの名前です。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
 msgstr "アイコン"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:130
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "シリアライズされた GIcon としての外付けドライブのアイコンです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:135
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr "バックアップを保存するフォルダー階層です。パスはドライブからの相対パスです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
 msgstr "サーバーアドレス"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:143
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
 msgstr "リモートサーバーの場所を示す URI です。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:148
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr "バックアップを保存するフォルダー階層です。パスは絶対パスか、ホストからの相対パスのどちらかです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:155
-msgid "Amazon S3 Access Key ID"
-msgstr "Amazon S3 Access Key ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:156
-msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-msgstr "Amazon S3 Access Key の識別子。S3 のユーザー名のようなものです。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:160
-msgid "The Amazon S3 bucket name to use"
-msgstr "使用する Amazon S3 のバケット名"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:161
-msgid ""
-"Which Amazon S3 bucket to store files in. This does not need to exist "
-"already. Only legal hostname strings are valid."
-msgstr ""
-"どの Amazon S3 バケットにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:165
-msgid "The Amazon S3 folder"
-msgstr "Amazon S3 フォルダー"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:166
-#: data/org.gnome.DejaDup.gschema.xml.in:184
-msgid ""
-"An optional folder name to store files in. This folder will be created in "
-"the chosen bucket."
-msgstr "ファイルを置く任意のフォルダー名。選択したバケット内に作成されます。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:173
-msgid "Google Cloud Storage Access Key ID"
-msgstr "Google Cloud Storage Access Key ID"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:174
-msgid ""
-"Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-"Cloud Storage username."
-msgstr ""
-"Google Cloud Storage Access Key の識別子。Google Cloud Storage のユーザー名のようなものです。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:178
-msgid "The Google Cloud Storage bucket name to use"
-msgstr "使用する Google Cloud Storage のバケット名"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:179
-msgid ""
-"Which Google Cloud Storage bucket to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"どの Google Cloud Storage "
-"バケットにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:183
-msgid "The Google Cloud Storage folder"
-msgstr "Google Cloud Storage フォルダー"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:192
+#: data/org.gnome.DejaDup.gschema.xml.in:150
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr "バックアップを保存するフォルダーパスです。パスは絶対パスか、ホストからの相対パスのどちらかです。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:199
-msgid "The Rackspace Cloud Files container"
-msgstr "Rackspace Cloud Files コンテナー"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:200
-msgid ""
-"Which Rackspace Cloud Files container to store files in. This does not need "
-"to exist already. Only legal hostname strings are valid."
-msgstr ""
-"どの Rackspace Cloud Files "
-"コンテナーにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:204
-msgid "Your Rackspace username"
-msgstr "Rackspace のユーザー名"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:205
-msgid "This is your username for the Rackspace Cloud Files service."
-msgstr "Rackspace Cloud Files サービスのユーザー名です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:212
-msgid "The OpenStack Swift container"
-msgstr "OpenStack Swift コンテナー"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:213
-msgid ""
-"Which OpenStack Swift container to store files in. This does not need to "
-"exist already. Only legal hostname strings are valid."
-msgstr ""
-"どの OpenStack Swift コンテナーにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:217
-msgid "Your OpenStack username"
-msgstr "OpenStack のユーザー名"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:218
-msgid "This is your username for the OpenStack Swift service."
-msgstr "OpenStack Swift サービスのユーザー名です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:222
-msgid "Your OpenStack tenant"
-msgstr "OpenStack テナント"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:223
-msgid "This is your tenant for the OpenStack Swift service."
-msgstr "OpenStack Swift サービスのテナント名です。"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:227
-msgid "Authentication URL"
-msgstr "認証 URL"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:228
-msgid ""
-"This is the Authentication URL, or keystone URL for the OpenStack service"
-msgstr "OpenStack サービスの認証 URL、または Keystone URL"
-
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:54
+#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
 msgid "Restore"
 msgstr "復元"
 
@@ -468,25 +354,127 @@ msgstr "全般"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
-msgid "Quit"
-msgstr "終了する"
+msgid "Show help"
+msgstr "ヘルプを表示する"
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
-msgid "Help"
-msgstr "ヘルプを表示する"
+msgid "Open menu"
+msgstr "メニューを開く"
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "終了する"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "キーボードショートカットを表示する"
+
+#: data/ui/main.ui:91
+msgid "Back up _automatically"
+msgstr ""
+
+#: data/ui/main.ui:123
+msgid "_Back Up Now"
+msgstr ""
+
+#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+msgid "_Restore"
+msgstr "復元(_R)"
 
 #: data/ui/menus.ui:12
+msgid "_Preferences"
+msgstr "設定(_P)"
+
+#: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
 msgstr "キーボードショートカット(_K)"
 
-#: data/ui/menus.ui:16
+#: data/ui/menus.ui:20
 msgid "_Help"
 msgstr "ヘルプ(_H)"
 
-#: data/ui/menus.ui:20
+#: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "バックアップについて(_A)"
+
+#: data/ui/preferences.ui:27
+msgid "Storage"
+msgstr "記憶装置"
+
+#: data/ui/preferences.ui:32
+msgid "_Location"
+msgstr "場所(_L)"
+
+#: data/ui/preferences.ui:78
+msgid "_Keep Backups"
+msgstr "バックアップを維持する(_K)"
+
+#: data/ui/preferences.ui:87
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space."
+msgstr "保存先の空き容量が少ない場合、最も古いバックアップから順に削除されます。"
+
+#: data/ui/preferences.ui:101
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: data/ui/preferences.ui:107
+msgid "Back Up _Automatically"
+msgstr "自動的にバックアップする(_A)"
+
+#: data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "自動バックアップ"
+
+#: data/ui/preferences.ui:129
+msgid "Automatic Backup _Frequency"
+msgstr "自動バックアップの頻度(_F)"
+
+#: data/ui/preferences.ui:147
+msgid "Folders to Back Up"
+msgstr "バックアップするフォルダー"
+
+#: data/ui/preferences.ui:153
+msgid "Includes"
+msgstr "含める"
+
+#: data/ui/preferences.ui:162
+msgid "Folders to Ignore"
+msgstr "無視するフォルダー"
+
+#: data/ui/preferences.ui:168
+msgid "Excludes"
+msgstr "除外"
+
+#: data/ui/preferences.ui:177
+msgid "Preferences"
+msgstr "設定"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/preferences.ui:233
+msgid "_Storage Location"
+msgstr "保存場所(_S)"
+
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+msgid "_Folder"
+msgstr "フォルダー(_F)"
+
+#: data/ui/preferences.ui:307
+msgid "_Network Location"
+msgstr "ネットワークの場所(_N)"
+
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
+msgid "This storage location is no longer supported."
+msgstr "この保存場所のサポートは終了しました。"
+
+#: data/ui/preferences.ui:455
+msgid "_Choose Folder…"
+msgstr "フォルダーを選択(_C)..."
 
 #: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
@@ -711,8 +699,8 @@ msgstr "アクセス許可"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:685
-#: libdeja/tools/duplicity/DuplicityJob.vala:753
-#: libdeja/tools/duplicity/DuplicityJob.vala:1154
+#: libdeja/tools/duplicity/DuplicityJob.vala:750
+#: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "不明なエラーで失敗しました"
 
@@ -733,65 +721,61 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "インストール(_I)"
 
-#: deja-dup/AssistantRestore.vala:58
-msgid "_Restore"
-msgstr "復元(_R)"
-
-#: deja-dup/AssistantRestore.vala:87
+#: deja-dup/AssistantRestore.vala:77
 msgid "_Backup location"
 msgstr "バックアップの保存場所(_B)"
 
-#: deja-dup/AssistantRestore.vala:120
+#: deja-dup/AssistantRestore.vala:98
 msgid "Restore From Where?"
 msgstr "どの場所から復元しますか？"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:119
 msgid "_Date"
 msgstr "日付(_D)"
 
-#: deja-dup/AssistantRestore.vala:160
+#: deja-dup/AssistantRestore.vala:138
 msgid "Restore files to _original locations"
 msgstr "元の場所にファイルを復元する(_O)"
 
-#: deja-dup/AssistantRestore.vala:165
+#: deja-dup/AssistantRestore.vala:143
 msgid "Restore to _specific folder"
 msgstr "指定したフォルダーへ復元する(_S)"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:153
 msgid "Choose destination for restored files"
 msgstr "復元するファイルの保存先を選択してください"
 
-#: deja-dup/AssistantRestore.vala:179
+#: deja-dup/AssistantRestore.vala:157
 msgid "Restore _folder"
 msgstr "復元先のフォルダー(_F)"
 
-#: deja-dup/AssistantRestore.vala:210
+#: deja-dup/AssistantRestore.vala:188
 msgid "Backup location"
 msgstr "バックアップの保存場所"
 
-#: deja-dup/AssistantRestore.vala:218
+#: deja-dup/AssistantRestore.vala:203
 msgid "Restore date"
 msgstr "復元の日付"
 
-#: deja-dup/AssistantRestore.vala:226
+#: deja-dup/AssistantRestore.vala:211
 msgid "Restore folder"
 msgstr "復元先のフォルダー"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:237
 msgid "Checking for Backups…"
 msgstr "バックアップの確認中…"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:245
 msgid "Restore From When?"
 msgstr "いつの状態に復元しますか？"
 
-#: deja-dup/AssistantRestore.vala:268
+#: deja-dup/AssistantRestore.vala:253
 msgid "Restore to Where?"
 msgstr "どの場所へ復元しますか？"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:289
 msgid "Restoring:"
 msgstr "復元中:"
 
@@ -799,44 +783,44 @@ msgstr "復元中:"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/AssistantRestore.vala:344
+#: deja-dup/AssistantRestore.vala:329
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:356
+#: deja-dup/AssistantRestore.vala:341
 msgid "No backups to restore"
 msgstr "復元できるバックアップはありません"
 
-#: deja-dup/AssistantRestore.vala:436
+#: deja-dup/AssistantRestore.vala:430
 msgid "Original location"
 msgstr "元の場所"
 
-#: deja-dup/AssistantRestore.vala:447
+#: deja-dup/AssistantRestore.vala:441
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "復元するファイル"
 
-#: deja-dup/AssistantRestore.vala:468
+#: deja-dup/AssistantRestore.vala:462
 msgid "Restore Failed"
 msgstr "復元に失敗しました"
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:464
 msgid "Restore Finished"
 msgstr "復元が終了しました"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:473
+#: deja-dup/AssistantRestore.vala:467
 msgid "Your files were successfully restored."
 msgstr "ファイルが正常に復元されました。"
 
-#: deja-dup/AssistantRestore.vala:476
+#: deja-dup/AssistantRestore.vala:470
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "ファイルが正常に復元されました。"
 
-#: deja-dup/AssistantRestore.vala:483 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "復元しています…"
 
@@ -880,13 +864,135 @@ msgstr[0] "約 %d 年前のファイルをスキャン..."
 msgid "Scanning finished"
 msgstr "スキャン完了"
 
+#: deja-dup/ConfigDelete.vala:16
+msgid "At least six months"
+msgstr "最低6か月"
+
+#: deja-dup/ConfigDelete.vala:17
+msgid "At least a year"
+msgstr "最低1年"
+
+#: deja-dup/ConfigDelete.vala:18
+msgid "Forever"
+msgstr "期限なし"
+
+#: deja-dup/ConfigDelete.vala:27
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "最低 %d 日"
+
+#: deja-dup/ConfigFolderList.vala:51
+msgid "Remove"
+msgstr "削除"
+
+#: deja-dup/ConfigFolderList.vala:69
+msgid "Add"
+msgstr "追加"
+
+#: deja-dup/ConfigFolderList.vala:79
+msgid "Choose folders"
+msgstr "フォルダーを選択"
+
+#: deja-dup/ConfigFolderList.vala:81
+msgid "_Add"
+msgstr "追加(_A)"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: libdeja/BackendGoogle.vala:86
+msgid "Google Drive"
+msgstr "Google ドライブ"
+
+#: deja-dup/ConfigLocationCombo.vala:73
+msgid "Local Folder"
+msgstr "ローカルのフォルダー"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Network Server"
+msgstr "ネットワークサーバー"
+
+#: deja-dup/ConfigLocationCombo.vala:264
+msgid "Google Cloud Storage"
+msgstr "Google Cloud Storage"
+
+#: deja-dup/ConfigLocationCombo.vala:268
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:270
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:272
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigLocationGrid.vala:108
+msgid "Choose Folder"
+msgstr "フォルダーを選択"
+
+#: deja-dup/ConfigLocationGrid.vala:111
+msgid "_OK"
+msgstr "OK(_O)"
+
+#: deja-dup/ConfigPeriod.vala:24
+msgid "Daily"
+msgstr "毎日"
+
+#: deja-dup/ConfigPeriod.vala:25
+msgid "Weekly"
+msgstr "毎週"
+
+#: deja-dup/ConfigPeriod.vala:34
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "%d 日毎"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:46
+msgid "Next backup is today."
+msgstr "次回のバックアップは今日です。"
+
+#: deja-dup/ConfigStatusLabel.vala:48
+msgid "Next backup is tomorrow."
+msgstr "次回のバックアップは明日です。"
+
+#: deja-dup/ConfigStatusLabel.vala:56
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "次のバックアップは今から %d 日後です"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/ConfigStatusLabel.vala:73
+msgid "Last backup was today."
+msgstr "最後のバックアップは今日でした。"
+
+#: deja-dup/ConfigStatusLabel.vala:75
+msgid "Last backup was yesterday."
+msgstr "最後のバックアップは昨日でした。"
+
+#: deja-dup/ConfigStatusLabel.vala:83
+#, c-format
+msgid "Last backup was %d day ago."
+msgid_plural "Last backup was %d days ago."
+msgstr[0] "最後のバックアップは %d 日前でした。"
+
+#: deja-dup/ConfigStatusLabel.vala:96
+msgid "No recent backups."
+msgstr "最近のバックアップはありません。"
+
+#: deja-dup/ConfigStatusLabel.vala:102
+msgid "No backup scheduled."
+msgstr "バックアップの予定はありません。"
+
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "Connect to Server"
 msgstr "サーバーに接続"
 
 #: deja-dup/MountOperationAssistant.vala:24
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:18
-#: deja-dup/widgets/ConfigLocationRackspace.vala:18
 msgid "_Username"
 msgstr "ユーザー名(_U)"
 
@@ -914,54 +1020,6 @@ msgstr "ユーザー名を指定して接続する(_S)"
 #: deja-dup/MountOperationAssistant.vala:198
 msgid "_Domain"
 msgstr "ドメイン(_D)"
-
-#: deja-dup/Preferences.vala:84
-msgid "Categories"
-msgstr "カテゴリー"
-
-#: deja-dup/Preferences.vala:137
-msgid "_Restore…"
-msgstr "復元(_R)…"
-
-#: deja-dup/Preferences.vala:169
-msgid "_Back Up Now…"
-msgstr "今すぐバックアップ(_B)…"
-
-#: deja-dup/Preferences.vala:181
-msgid "Overview"
-msgstr "概要"
-
-#: deja-dup/Preferences.vala:217
-msgid "_Storage location"
-msgstr "保存場所(_S)"
-
-#. Translators: storage as in "where to store the backup"
-#: deja-dup/Preferences.vala:235
-msgid "Storage location"
-msgstr "保存場所"
-
-#: deja-dup/Preferences.vala:257
-msgid "_Automatic backup"
-msgstr "自動バックアップ(_A)"
-
-#. translators: as in "Every day"
-#: deja-dup/Preferences.vala:268
-msgid "_Every"
-msgstr "間隔(_E)"
-
-#: deja-dup/Preferences.vala:278
-msgctxt "verb"
-msgid "_Keep"
-msgstr "保存期間(_K)"
-
-#: deja-dup/Preferences.vala:285
-msgid ""
-"Old backups will be deleted earlier if the storage location is low on space."
-msgstr "バックアップの保存先の空き容量が少なくなると、古いバックアップは指定より早く削除されます。"
-
-#: deja-dup/Preferences.vala:296
-msgid "Scheduling"
-msgstr "スケジュール"
 
 #: deja-dup/Prompt.vala:18
 msgid "Keep your files safe by backing up regularly"
@@ -1001,51 +1059,52 @@ msgstr "一部のファイルのバックアップに失敗しました。詳細
 msgid "Starting scheduled backup"
 msgstr "スケジュールされたバックアップを開始しています"
 
-#: deja-dup/main.vala:20 deja-dup/monitor/monitor.vala:24
+#: deja-dup/WidgetUtils.vala:22
+#, c-format
+msgid "Could not display %s"
+msgstr "%s を表示できません"
+
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "バージョンを表示する"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "与えられたファイルを復元する"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "直ちにバックアップを開始する"
 
-#: deja-dup/main.vala:24
+#: deja-dup/main.vala:25
 msgid "Restore deleted files"
 msgstr "削除ファイルの復元"
 
-#: deja-dup/main.vala:72 deja-dup/main.vala:87 deja-dup/main.vala:113
+#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
 msgid "An operation is already in progress"
 msgstr "作業はすでに実行中です"
 
-#: deja-dup/main.vala:92
+#: deja-dup/main.vala:95
 msgid "No directory provided"
 msgstr "ディレクトリが指定されていません"
 
-#: deja-dup/main.vala:96
+#: deja-dup/main.vala:99
 msgid "Only one directory can be shown at once"
 msgstr "一度に 1 つのディレクトリのみ表示できます"
 
-#: deja-dup/main.vala:102
+#: deja-dup/main.vala:105
 msgid "Directory does not exist"
 msgstr "ディレクトリが存在しません"
 
-#: deja-dup/main.vala:106
+#: deja-dup/main.vala:109
 msgid "You must provide a directory, not a file"
 msgstr "ファイルではなく、ディレクトリを指定する必要があります"
 
-#: deja-dup/main.vala:172
-msgid "Automatic backup"
-msgstr "自動バックアップ"
-
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:240
 msgid "Scheduled backup delayed"
 msgstr "スケジュールされたバックアップが延期されました"
 
-#: deja-dup/main.vala:279
+#: deja-dup/main.vala:271
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1067,263 +1126,9 @@ msgstr ""
 "  epii https://launchpad.net/~epii\n"
 "  kaneisland https://launchpad.net/~kaneisland"
 
-#: deja-dup/monitor/monitor.vala:72 libdeja/BackendGCS.vala:38
-#: libdeja/BackendGoogle.vala:79 libdeja/BackendOpenstack.vala:38
-#: libdeja/BackendRackspace.vala:37 libdeja/BackendRemote.vala:116
-#: libdeja/BackendS3.vala:47
-msgid "Backup will begin when a network connection becomes available."
-msgstr "ネットワークが利用可能になるとバックアップが開始されます。"
-
-#: deja-dup/monitor/monitor.vala:75
-msgid ""
-"Backup will begin when an unmetered network connection becomes available."
-msgstr "従量制ではないネットワークが利用可能になると、バックアップが開始されます。"
-
-#: deja-dup/nautilus/NautilusExtension.c:159
-msgid "Restore Missing Files…"
-msgstr "消去したファイルを復元…"
-
-#: deja-dup/nautilus/NautilusExtension.c:160
-msgid "Restore deleted files from backup"
-msgstr "バックアップから削除ファイルを復元"
-
-#: deja-dup/nautilus/NautilusExtension.c:202
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "以前のバージョンに戻す…"
-
-#: deja-dup/nautilus/NautilusExtension.c:206
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "バックアップからファイルを復元"
-
-#: deja-dup/widgets/ConfigDelete.vala:27
-msgid "At least six months"
-msgstr "最低6か月"
-
-#: deja-dup/widgets/ConfigDelete.vala:28
-msgid "At least a year"
-msgstr "最低1年"
-
-#: deja-dup/widgets/ConfigDelete.vala:29
-msgid "Forever"
-msgstr "期限なし"
-
-#: deja-dup/widgets/ConfigDelete.vala:76
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "最低 %d 日"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:54
-msgid "Next backup is today."
-msgstr "次回のバックアップは今日です。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:56
-msgid "Next backup is tomorrow."
-msgstr "次回のバックアップは明日です。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:64
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "次のバックアップは今から %d 日後です"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:81
-msgid "Last backup was today."
-msgstr "最後のバックアップは今日でした。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:83
-msgid "Last backup was yesterday."
-msgstr "最後のバックアップは昨日でした。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:91
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "最後のバックアップは %d 日前でした。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:101
-msgid "No recent backups."
-msgstr "最近のバックアップはありません。"
-
-#: deja-dup/widgets/ConfigLabelBackupDate.vala:110
-msgid "No backup scheduled."
-msgstr "バックアップの予定はありません。"
-
-#. This here encodes a lot of outside GUI information in this widget,
-#. but it's a very special case thing.
-#: deja-dup/widgets/ConfigLabelDescription.vala:53
-msgid "Restore…"
-msgstr "復元…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:55
-#, c-format
-msgid "You may use the %s button to browse for existing backups."
-msgstr "今あるバックアップを見るには %s ボタンをクリックしてください。"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:60
-#, c-format
-msgid ""
-"You can restore the entire backup with the %s button or use %s to either "
-"revert individual files or restore missing ones."
-msgstr ""
-"%s ボタンでバックアップ全体を復元できます。また、%s (ファイルマネージャー) "
-"を使ってファイルを個別に過去の状態に戻したり、消去したファイルを復元したりすることができます。"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:69
-msgid "Back Up Now…"
-msgstr "今すぐバックアップ…"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:70
-#, c-format
-msgid ""
-"You should <a href=''>enable</a> automatic backups or use the %s button to "
-"start one now."
-msgstr "自動バックアップを<a href=''>有効</a>にするか、 今すぐ始めるには %s ボタンをクリックしてください。"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:77
-msgid "A backup automatically starts every day."
-msgstr "バックアップは自動的に毎日行われます。"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:79
-msgid "A backup automatically starts every week."
-msgstr "バックアップは自動的に毎週行われます。"
-
-#: deja-dup/widgets/ConfigLabelDescription.vala:82
-#, c-format
-msgid "A backup automatically starts every %d day."
-msgid_plural "A backup automatically starts every %d days."
-msgstr[0] "バックアップは自動的に %d 日ごとに行われます。"
-
-#: deja-dup/widgets/ConfigList.vala:165 deja-dup/widgets/ConfigList.vala:242
-msgid "_Add"
-msgstr "追加(_A)"
-
-#: deja-dup/widgets/ConfigList.vala:166
-msgid "Add"
-msgstr "追加"
-
-#: deja-dup/widgets/ConfigList.vala:174
-msgid "_Remove"
-msgstr "削除(_R)"
-
-#: deja-dup/widgets/ConfigList.vala:175
-msgid "Remove"
-msgstr "削除"
-
-#: deja-dup/widgets/ConfigList.vala:239
-msgid "Choose folders"
-msgstr "フォルダーを選択"
-
-#: deja-dup/widgets/ConfigLocation.vala:116
-msgid "Network Server"
-msgstr "ネットワークサーバー"
-
-#. And a local folder option
-#: deja-dup/widgets/ConfigLocation.vala:121
-msgid "Local Folder"
-msgstr "ローカルのフォルダー"
-
-#. Note that we are using | not || here, because if show_deprecated is set,
-#. we want to insert multiple backends.
-#: deja-dup/widgets/ConfigLocation.vala:178 libdeja/BackendS3.vala:105
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/widgets/ConfigLocation.vala:180 libdeja/BackendGCS.vala:55
-msgid "Google Cloud Storage"
-msgstr "Google Cloud Storage"
-
-#: deja-dup/widgets/ConfigLocation.vala:182 libdeja/BackendGoogle.vala:95
-msgid "Google Drive"
-msgstr "Google ドライブ"
-
-#: deja-dup/widgets/ConfigLocation.vala:184 libdeja/BackendRackspace.vala:55
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/widgets/ConfigLocation.vala:186 libdeja/BackendOpenstack.vala:56
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:25
-msgid "_Network Location"
-msgstr "ネットワークの場所(_N)"
-
-#: deja-dup/widgets/ConfigLocationCustom.vala:31
-#: deja-dup/widgets/ConfigLocationFile.vala:31
-#: deja-dup/widgets/ConfigLocationGCS.vala:25
-#: deja-dup/widgets/ConfigLocationGoogle.vala:18
-#: deja-dup/widgets/ConfigLocationS3.vala:20
-#: deja-dup/widgets/ConfigLocationVolume.vala:20
-msgid "_Folder"
-msgstr "フォルダー(_F)"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:25
-msgid "_Choose Folder…"
-msgstr "フォルダーを選択(_C)..."
-
-#: deja-dup/widgets/ConfigLocationFile.vala:36
-msgid "Choose Folder"
-msgstr "フォルダーを選択"
-
-#: deja-dup/widgets/ConfigLocationFile.vala:39
-msgid "_OK"
-msgstr "OK(_O)"
-
-#. Translators: GCS is Google Cloud Services
-#: deja-dup/widgets/ConfigLocationGCS.vala:19
-msgid "GCS Access Key I_D"
-msgstr "GCS Access Key ID(_D)"
-
-#. Translators: "Bucket" refers to a term used by Google Cloud Services
-#. see https://cloud.google.com/storage/docs/key-terms#bucket
-#: deja-dup/widgets/ConfigLocationGCS.vala:23
-msgid "_Bucket"
-msgstr "バケット(_B)"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:20
-#: deja-dup/widgets/ConfigLocationRackspace.vala:20
-msgid "_Container"
-msgstr "コンテナー(_C)"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:22
-msgid "_Authentication URL"
-msgstr "認証 URL(_A)"
-
-#: deja-dup/widgets/ConfigLocationOpenstack.vala:24
-msgid "_Tenant name"
-msgstr "テナント名(_T)"
-
-#: deja-dup/widgets/ConfigLocationS3.vala:18
-msgid "S3 Access Key I_D"
-msgstr "S3 Access Key ID(_D)"
-
-#: deja-dup/widgets/ConfigPeriod.vala:23
-msgid "Day"
-msgstr "毎日"
-
-#: deja-dup/widgets/ConfigPeriod.vala:24
-msgid "Week"
-msgstr "毎週"
-
-#: deja-dup/widgets/ConfigPeriod.vala:69
-#, c-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] "%d 日"
-
-#: deja-dup/widgets/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "%s を表示できません"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:573
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上の %1$s"
@@ -1342,99 +1147,28 @@ msgstr "保存場所が利用できません"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "‘%s’ が接続されるのを待っています…"
 
-#. Translators: %s/%s is a folder.
-#: libdeja/BackendGCS.vala:58
-#, c-format
-msgid "%s/%s on Google Cloud Storage"
-msgstr "Google Cloud Storage 上の %s/%s"
-
-#: libdeja/BackendGCS.vala:101 libdeja/BackendOpenstack.vala:104
-#: libdeja/BackendRackspace.vala:101 libdeja/BackendS3.vala:151
-msgid "Permission denied"
-msgstr "認証に失敗しました"
-
-#: libdeja/BackendGCS.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Google Cloud Storage account <a href=\"%s\">online</a>."
-msgstr "Google Cloud Storage アカウントに<a href=\"%s\">オンライン</a>でサインアップできます。"
-
-#: libdeja/BackendGCS.vala:134
-msgid "Remember to enable Interoperability and create keys."
-msgstr "相互運用性を有効にしてキーを作成しておく必要があります。"
-
-#: libdeja/BackendGCS.vala:136
-msgid "Connect to Google Cloud Storage"
-msgstr "Google Cloud Storage に接続"
-
-#: libdeja/BackendGCS.vala:137 libdeja/BackendS3.vala:186
-msgid "_Access key ID"
-msgstr "Access Key ID(_A)"
-
-#: libdeja/BackendGCS.vala:138 libdeja/BackendS3.vala:187
-msgid "_Secret access key"
-msgstr "Secret Access Key(_S)"
-
-#: libdeja/BackendGCS.vala:139 libdeja/BackendS3.vala:188
-msgid "S_how secret access key"
-msgstr "Secret Access Key を表示する(_H)"
-
-#: libdeja/BackendGCS.vala:140 libdeja/BackendS3.vala:189
-msgid "_Remember secret access key"
-msgstr "Secret Access Key を記憶する(_R)"
+#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: monitor/monitor.vala:72
+msgid "Backup will begin when a network connection becomes available."
+msgstr "ネットワークが利用可能になるとバックアップが開始されます。"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:98
+#: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
 msgstr "Google ドライブ上の %s"
 
-#: libdeja/BackendGoogle.vala:355
+#: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
 msgstr "Google のサーバーにログインできませんでした。"
 
-#: libdeja/BackendGoogle.vala:431
+#: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
 msgstr "Déjà Dup 用の Google の資格情報"
 
-#: libdeja/BackendGoogle.vala:532
+#: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
 msgstr "まず“バックアップ”を Google アカウントにアクセスできるようにする必要があります。"
-
-#. Translators: %s is a folder.
-#: libdeja/BackendOpenstack.vala:59
-#, c-format
-msgid "%s on OpenStack Swift"
-msgstr "OpenStack Swift 上の %s"
-
-#. Translators: %s is a folder.
-#: libdeja/BackendRackspace.vala:58
-#, c-format
-msgid "%s on Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files 上の %s"
-
-#: libdeja/BackendRackspace.vala:133
-#, c-format
-msgid ""
-"You can sign up for a Rackspace Cloud Files account <a "
-"href=\"%s\">online</a>."
-msgstr "Rackspace Cloud Files アカウントに<a href=\"%s\">オンライン</a>でサインアップできます。"
-
-#: libdeja/BackendRackspace.vala:135
-msgid "Connect to Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files に接続"
-
-#: libdeja/BackendRackspace.vala:136
-msgid "_API access key"
-msgstr "API Access Key(_A)"
-
-#: libdeja/BackendRackspace.vala:137
-msgid "S_how API access key"
-msgstr "API Access Key を表示する(_H)"
-
-#: libdeja/BackendRackspace.vala:138
-msgid "_Remember API access key"
-msgstr "API Access Key を記憶する(_R)"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1446,7 +1180,7 @@ msgstr "ネットワークの接続を待っています…"
 
 #: libdeja/BackendRemote.vala:155
 msgid "Could not mount storage location."
-msgstr "ストレージの場所をマウントできませんでした。"
+msgstr "保存場所をマウントできませんでした。"
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
@@ -1456,42 +1190,27 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr "Samba ネットワークの場所は、ホスト名と共有名の両方を含む必要があります。"
 
-#. Translators: %s is a folder.
-#: libdeja/BackendS3.vala:108
-#, c-format
-msgid "%s on Amazon S3"
-msgstr "Amazon S3 上の %s"
-
-#: libdeja/BackendS3.vala:183
-#, c-format
-msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-msgstr "Amazon S3 アカウントに<a href=\"%s\">オンライン</a>でサインアップできます。"
-
-#: libdeja/BackendS3.vala:185
-msgid "Connect to Amazon S3"
-msgstr "Amazon S3 に接続"
-
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:460
 msgid "Access Granted"
 msgstr "アクセスが許可されました"
 
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:461
 msgid "Backups will now continue. You can close this page."
 msgstr "“バックアップ”を続行します。このページは閉じてかまいません。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:624
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "ホーム (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:629
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "ホーム"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:634
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "ゴミ箱"
 
@@ -1510,8 +1229,8 @@ msgstr "ファイルをリストアップしています…"
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:80
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:441
-#: libdeja/tools/duplicity/DuplicityJob.vala:446
+#: libdeja/tools/duplicity/DuplicityJob.vala:442
+#: libdeja/tools/duplicity/DuplicityJob.vala:447
 msgid "Preparing…"
 msgstr "準備しています…"
 
@@ -1535,33 +1254,33 @@ msgid "Paused (no network)"
 msgstr "中断 (ネットワークが利用できません)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:473
+#: libdeja/tools/duplicity/DuplicityJob.vala:474
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "‘%s’ を復元できませんでした: 場所の指定が適切ではありません"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:579
+#: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "バックアップの保存場所が小さすぎます。%s 以上の場所を試してみてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:604
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr "バックアップの保存場所に十分な空き領域がありません。%s 以上の場所を試してみてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:625
-#: libdeja/tools/duplicity/DuplicityJob.vala:639
+#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "クリーンアップしています…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:720
+#: libdeja/tools/duplicity/DuplicityJob.vala:714
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1570,26 +1289,26 @@ msgstr "次のファイルがバックアップできませんでした。ファ
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:730
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr "次のファイルが復元できませんでした。ファイルを書き込めるか確認してください。"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:955
+#: libdeja/tools/duplicity/DuplicityJob.vala:952
 msgid "Bad encryption password."
 msgstr "暗号化パスワードが違います。"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’ を復元できませんでした: ファイルがバックアップ内に見つかりません"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1008
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1598,73 +1317,57 @@ msgid ""
 msgstr ""
 "見つかったバックアップのコンピューター名は %s ですが、現在のコンピューター名は %s です。意図していない場合は、別の場所にバックアップしてください。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1014
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 msgid "Computer name changed"
 msgstr "コンピューター名が変更されました"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1049
+#: libdeja/tools/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ を作成しようとしましたが権限がありません。"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1053
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ を読み込もうとしましたが権限がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ を削除しようとしましたが権限がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1068
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "バックアップの保存場所 ‘%s’ が存在しません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1074
-#: libdeja/tools/duplicity/DuplicityJob.vala:1125
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1104
 msgid "No space left."
 msgstr "空き容量がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1088
-msgid "Invalid ID."
-msgstr "不正な ID です。"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Invalid secret key."
-msgstr "不正な Secret Key です。"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Your Amazon Web Services account is not signed up for the S3 service."
-msgstr "あなたの Amazon Web サービスアカウントは S3 サービスにサインアップされていません。"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1101
-msgid "S3 bucket name is not available."
-msgstr "S3 バケット名が使用できません。"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "ファイル ‘%s’ を読み込み中にエラー。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1116
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "ファイル ‘%s’ を書き込み中にエラー。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1127
+#: libdeja/tools/duplicity/DuplicityJob.vala:1106
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ に空き容量がありません。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1135
+#: libdeja/tools/duplicity/DuplicityJob.vala:1114
 msgid "No backup files found"
 msgstr "バックアップファイルが見つかりません"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1185
+#: libdeja/tools/duplicity/DuplicityJob.vala:1164
 msgid "Uploading…"
 msgstr "アップロードしています…"
 
@@ -1684,8 +1387,51 @@ msgid ""
 "version %d.%d.%.2d"
 msgstr "“バックアップ”は duplicity のバージョン %d.%d.%.2d 以上が必要ですが、%d.%d.%.2d のみ認識されました"
 
+#: monitor/monitor.vala:75
+msgid ""
+"Backup will begin when an unmetered network connection becomes available."
+msgstr "従量制ではないネットワークが利用可能になると、バックアップが開始されます。"
+
+#: nautilus/NautilusExtension.c:157
+msgid "Restore Missing Files…"
+msgstr "消去したファイルを復元…"
+
+#: nautilus/NautilusExtension.c:158
+msgid "Restore deleted files from backup"
+msgstr "バックアップから削除ファイルを復元"
+
+#: nautilus/NautilusExtension.c:199
+msgid "Revert to Previous Version…"
+msgid_plural "Revert to Previous Versions…"
+msgstr[0] "以前のバージョンに戻す…"
+
+#: nautilus/NautilusExtension.c:203
+msgid "Restore file from backup"
+msgid_plural "Restore files from backup"
+msgstr[0] "バックアップからファイルを復元"
+
+#~ msgid "Overview"
+#~ msgstr "概要"
+
+#~ msgid "Categories"
+#~ msgstr "カテゴリー"
+
+#~ msgctxt "verb"
+#~ msgid "_Keep"
+#~ msgstr "保存期間(_K)"
+
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr "バックアップの保存先の空き容量が少なくなると、古いバックアップは指定より早く削除されます。"
+
+#~ msgid "Scheduling"
+#~ msgstr "スケジュール"
+
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#~ msgid "Day"
+#~ msgstr "毎日"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr "バックアップ保存場所の空き容量が足りません。もっと空き容量の大きいもので試してください。"
@@ -1705,15 +1451,170 @@ msgstr "“バックアップ”は duplicity のバージョン %d.%d.%.2d 以�
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "Déjà Dup バックアップツール"
 
+#~ msgid "Amazon S3 Access Key ID"
+#~ msgstr "Amazon S3 Access Key ID"
+
+#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
+#~ msgstr "Amazon S3 Access Key の識別子。S3 のユーザー名のようなものです。"
+
+#~ msgid "The Amazon S3 bucket name to use"
+#~ msgstr "使用する Amazon S3 のバケット名"
+
+#~ msgid ""
+#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
+#~ "already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "どの Amazon S3 バケットにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
+
+#~ msgid "The Amazon S3 folder"
+#~ msgstr "Amazon S3 フォルダー"
+
+#~ msgid ""
+#~ "An optional folder name to store files in. This folder will be created in "
+#~ "the chosen bucket."
+#~ msgstr "ファイルを置く任意のフォルダー名。選択したバケット内に作成されます。"
+
+#~ msgid "Google Cloud Storage Access Key ID"
+#~ msgstr "Google Cloud Storage Access Key ID"
+
+#~ msgid ""
+#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
+#~ "Cloud Storage username."
+#~ msgstr ""
+#~ "Google Cloud Storage Access Key の識別子。Google Cloud Storage のユーザー名のようなものです。"
+
+#~ msgid "The Google Cloud Storage bucket name to use"
+#~ msgstr "使用する Google Cloud Storage のバケット名"
+
+#~ msgid ""
+#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "どの Google Cloud Storage "
+#~ "バケットにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
+
+#~ msgid "The Google Cloud Storage folder"
+#~ msgstr "Google Cloud Storage フォルダー"
+
+#~ msgid "The Rackspace Cloud Files container"
+#~ msgstr "Rackspace Cloud Files コンテナー"
+
+#~ msgid ""
+#~ "Which Rackspace Cloud Files container to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "どの Rackspace Cloud Files "
+#~ "コンテナーにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
+
+#~ msgid "Your Rackspace username"
+#~ msgstr "Rackspace のユーザー名"
+
+#~ msgid "This is your username for the Rackspace Cloud Files service."
+#~ msgstr "Rackspace Cloud Files サービスのユーザー名です。"
+
 #~ msgid "Account ID"
 #~ msgstr "アカウント ID"
 
 #~ msgid "The unique ID for the GNOME Online Account."
 #~ msgstr "GNOME オンラインアカウントの一意な ID です。"
 
+#~ msgid "The OpenStack Swift container"
+#~ msgstr "OpenStack Swift コンテナー"
+
+#~ msgid ""
+#~ "Which OpenStack Swift container to store files in. This does not need to "
+#~ "exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "どの OpenStack Swift コンテナーにファイルを保存するか。既に存在しているものである必要はありません。正しいホスト名の文字列のみが有効です。"
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "OpenStack のユーザー名"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "OpenStack Swift サービスのユーザー名です。"
+
+#~ msgid "Your OpenStack tenant"
+#~ msgstr "OpenStack テナント"
+
+#~ msgid "This is your tenant for the OpenStack Swift service."
+#~ msgstr "OpenStack Swift サービスのテナント名です。"
+
+#~ msgid "Authentication URL"
+#~ msgstr "認証 URL"
+
+#~ msgid ""
+#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
+#~ msgstr "OpenStack サービスの認証 URL、または Keystone URL"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "ヘルプを表示する"
+
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "ショートカット一覧を表示する"
+
+#~ msgid "_Restore…"
+#~ msgstr "復元(_R)…"
+
+#~ msgid "_Back Up Now…"
+#~ msgstr "今すぐバックアップ(_B)…"
+
+#~ msgid "_Storage location"
+#~ msgstr "保存場所(_S)"
+
+#~ msgid "Storage location"
+#~ msgstr "保存場所"
+
+#~ msgid "_Automatic backup"
+#~ msgstr "自動バックアップ(_A)"
+
+#~ msgid "_Every"
+#~ msgstr "間隔(_E)"
+
+#~ msgid "Restore…"
+#~ msgstr "復元…"
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr "今あるバックアップを見るには %s ボタンをクリックしてください。"
+
+#, c-format
+#~ msgid ""
+#~ "You can restore the entire backup with the %s button or use %s to either "
+#~ "revert individual files or restore missing ones."
+#~ msgstr ""
+#~ "%s ボタンでバックアップ全体を復元できます。また、%s (ファイルマネージャー) "
+#~ "を使ってファイルを個別に過去の状態に戻したり、消去したファイルを復元したりすることができます。"
+
+#~ msgid "Back Up Now…"
+#~ msgstr "今すぐバックアップ…"
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr "自動バックアップを<a href=''>有効</a>にするか、 今すぐ始めるには %s ボタンをクリックしてください。"
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "バックアップは自動的に毎日行われます。"
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "バックアップは自動的に毎週行われます。"
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "バックアップは自動的に %d 日ごとに行われます。"
+
+#~ msgid "_Remove"
+#~ msgstr "削除(_R)"
+
+#~ msgid "GCS Access Key I_D"
+#~ msgstr "GCS Access Key ID(_D)"
+
+#~ msgid "_Bucket"
+#~ msgstr "バケット(_B)"
 
 #~ msgid ""
 #~ "This account is not yet configured. It cannot be used until you add it to "
@@ -1723,14 +1624,72 @@ msgstr "“バックアップ”は duplicity のバージョン %d.%d.%.2d 以�
 #~ msgid "_Open Online Account Settings"
 #~ msgstr "オンラインアカウントの設定を開く(_O)"
 
+#~ msgid "_Container"
+#~ msgstr "コンテナー(_C)"
+
+#~ msgid "S3 Access Key I_D"
+#~ msgstr "S3 Access Key ID(_D)"
+
 #~ msgid "Ubuntu One has shut down.  Please choose another storage location."
 #~ msgstr "Ubuntu One はサービス停止しました。他のストレージの保存場所を選択してください。"
+
+#~ msgid "Week"
+#~ msgstr "毎週"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "%d 日"
 
 #~ msgid "Backup will begin when a storage location is configured"
 #~ msgstr "保存場所が設定されるとバックアップが開始されます"
 
 #~ msgid "Waiting for Online Accounts to be configured in your backup settings…"
 #~ msgstr "バックアップの設定でオンラインアカウントが設定されるのを待っています…"
+
+#~ msgid "Permission denied"
+#~ msgstr "認証に失敗しました"
+
+#, c-format
+#~ msgid ""
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
+#~ msgstr "Rackspace Cloud Files アカウントに<a href=\"%s\">オンライン</a>でサインアップできます。"
+
+#~ msgid "Connect to Rackspace Cloud Files"
+#~ msgstr "Rackspace Cloud Files に接続"
+
+#~ msgid "_API access key"
+#~ msgstr "API Access Key(_A)"
+
+#~ msgid "S_how API access key"
+#~ msgstr "API Access Key を表示する(_H)"
+
+#~ msgid "_Remember API access key"
+#~ msgstr "API Access Key を記憶する(_R)"
+
+#, c-format
+#~ msgid "%s on Amazon S3"
+#~ msgstr "Amazon S3 上の %s"
+
+#, c-format
+#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
+#~ msgstr "Amazon S3 アカウントに<a href=\"%s\">オンライン</a>でサインアップできます。"
+
+#~ msgid "Connect to Amazon S3"
+#~ msgstr "Amazon S3 に接続"
+
+#~ msgid "_Access key ID"
+#~ msgstr "Access Key ID(_A)"
+
+#~ msgid "_Secret access key"
+#~ msgstr "Secret Access Key(_S)"
+
+#~ msgid "S_how secret access key"
+#~ msgstr "Secret Access Key を表示する(_H)"
+
+#~ msgid "_Remember secret access key"
+#~ msgstr "Secret Access Key を記憶する(_R)"
 
 #, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
@@ -1745,6 +1704,18 @@ msgstr "“バックアップ”は duplicity のバージョン %d.%d.%.2d 以�
 #~ msgid "Could not start backup tool"
 #~ msgstr "バックアップツールを開始できませんでした。"
 
+#~ msgid "Invalid ID."
+#~ msgstr "不正な ID です。"
+
+#~ msgid "Invalid secret key."
+#~ msgstr "不正な Secret Key です。"
+
+#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgstr "あなたの Amazon Web サービスアカウントは S3 サービスにサインアップされていません。"
+
+#~ msgid "S3 bucket name is not available."
+#~ msgstr "S3 バケット名が使用できません。"
+
 #, c-format
 #~ msgid ""
 #~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
@@ -1758,3 +1729,7 @@ msgstr "“バックアップ”は duplicity のバージョン %d.%d.%.2d 以�
 
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr "Déjà Dup バックアップツールを続行します。このページは閉じてかまいません。"
+
+#, c-format
+#~ msgid "%s on Rackspace Cloud Files"
+#~ msgstr "Rackspace Cloud Files 上の %s"
