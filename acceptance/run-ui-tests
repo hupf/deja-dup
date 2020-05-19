@@ -34,12 +34,34 @@ elif [ "$1" = "--flatpak" ]; then
   export DD_APPID=org.gnome.DejaDup
   export DD_DESKTOP="X-Flatpak=org.gnome.DejaDup"
   export DD_KEYFILE=$XDG_CONFIG_HOME/glib-2.0/settings/keyfile
+  export DD_KEYFILE_GROUPNAME="deja-dup"
 
   cp -a ~/.config/user-dirs.dirs "$XDG_CONFIG_HOME"
 
   # Here's how to set up flatpak for French and English:
   #  flatpak config --set languages "en;fr"
   #  flatpak update -y --subpath=/en --subpath=/fr org.gnome.DejaDup.Locale
+  #  flatpak update -y --subpath=/en --subpath=/fr org.gnome.Platform.Locale
+
+elif [ "$1" = "--flatpak-dev" ]; then
+  shift
+  export GSETTINGS_BACKEND=keyfile
+  export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDupDevel/config
+  export XDG_DATA_DIRS="$(flatpak info --user org.gnome.DejaDupDevel -l)/files/share":$XDG_DATA_DIRS
+  export DD_MODE="flatpak"
+  export DD_EXEC="flatpak run --user -p org.gnome.DejaDupDevel"
+  export DD_MONITOR_EXEC="flatpak run --user -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDupDevel"
+  export DD_CACHE_DIR=$HOME/.var/app/org.gnome.DejaDupDevel/cache/deja-dup
+  export DD_APPID=org.gnome.DejaDupDevel
+  export DD_DESKTOP="X-Flatpak=org.gnome.DejaDupDevel"
+  export DD_KEYFILE=$XDG_CONFIG_HOME/glib-2.0/settings/keyfile
+  export DD_KEYFILE_GROUPNAME="deja-dup-devel"
+
+  cp -a ~/.config/user-dirs.dirs "$XDG_CONFIG_HOME"
+
+  # Here's how to set up flatpak for French and English:
+  #  flatpak config --user --set languages "en;fr"
+  #  flatpak update --user -y --subpath=/en --subpath=/fr org.gnome.DejaDupDevel.Locale
   #  flatpak update -y --subpath=/en --subpath=/fr org.gnome.Platform.Locale
 
 elif [ "$1" = "--dev" ]; then
@@ -54,7 +76,7 @@ elif [ "$1" = "--dev" ]; then
   export XDG_DATA_DIRS="${BUILDDIR}/tmpshare:${XDG_DATA_DIRS}"
   export DD_MODE="dev"
   export DD_EXEC="${BUILDDIR}/deja-dup/deja-dup"
-  export DD_MONITOR_EXEC="${BUILDDIR}/deja-dup/monitor/deja-dup-monitor"
+  export DD_MONITOR_EXEC="${BUILDDIR}/monitor/deja-dup-monitor"
   export DD_CACHE_DIR=$HOME/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
 

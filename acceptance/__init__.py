@@ -169,7 +169,7 @@ class BaseTest(unittest.TestCase):
             # directly from it.
             keyfile = GLib.KeyFile()
             keyfile.load_from_file(os.environ['DD_KEYFILE'], 0)
-            group = 'org/gnome/deja-dup'
+            group = 'org/gnome/' + os.environ['DD_KEYFILE_GROUPNAME']
             if child:
                 group += '/' + child
             if func == 'get_int':

@@ -39,7 +39,7 @@ class BackupTest(BaseTest):
         else:
             assert initial == self.backup_files
 
-    def test_from_preferences(self):
+    def test_from_main_window(self):
         app = self.cmd()
         app.button('Back Up Now').click()
         with self.new_files():
@@ -115,29 +115,8 @@ class BackupTest(BaseTest):
 
         app = self.cmd('--backup')
         window = app.window('Back Up')
-        if initial:
-            # This flow is a little janky. So we can't 100% detect that there
-            # is a resumable backup sitting on backend. So we still give the
-            # first-time-backup password prompt. And then accept whatever the
-            # password is, to use when we call duplicity.
-            # Then... duplicity tries to decrypt metadata and can't, so we
-            # prompt to confirm password. Then when re-doing the backup with
-            # the right password, we do the first-time-backup password screen
-            # again. While annoying, at least we avoid duplicity bugs around
-            # password changes midstream.
-            if os.environ.get('DD_DEBIAN_DUPLICITY') != '1':
-                # Debian has a bug preventing us from fixing bad passwords here
-                # https://bugs.debian.org/944512
-                # So don't bother testing it in this case, until they fix that
-                self.walk_initial_backup(app, password='nope', wait=False)
-                self.walk_incremental_backup(app, password='t', wait=False)
-            self.walk_initial_backup(app, password='t', wait=False)
-        else:
-            if os.environ.get('DD_DEBIAN_DUPLICITY') != '1':
-                self.walk_incremental_backup(app, password='nope', wait=False)
-                self.walk_incremental_backup(app, password='t', wait=False)
-            else:
-                self.walk_incremental_backup(app, password='t', wait=False)
+        self.walk_incremental_backup(app, password='nope', wait=False)
+        self.walk_incremental_backup(app, password='t', wait=False)
         self.did_resume = False
         def finish_progress():
             try:
@@ -156,7 +135,7 @@ class BackupTest(BaseTest):
                 return True
         old_files = self.backup_files
         with self.new_files():
-            self.wait_for(finish_progress, timeout=60)
+            self.wait_for(finish_progress, timeout=120)
             assert window.dead
         assert set(self.backup_files) >= set(old_files)
 

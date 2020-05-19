@@ -21,7 +21,7 @@ class IntegrationTest(BaseTest):
 
     def test_translations(self):
         app = self.cmd(env='LANG=fr_FR.UTF-8')
-        assert app.childNamed('Aucune sauvegarde récente.')
+        assert app.childNamed('Restaurer')
 
     def test_help(self):
         # Also test that help is translated by passing LANG
@@ -32,7 +32,7 @@ class IntegrationTest(BaseTest):
         app.button('Aide').click()
 
         yelp = tree.root.application('yelp')
-        assert yelp.window('Aide à la sauvegarde')
+        assert yelp.childNamed('Sauvegarder')
 
     def test_desktop_file(self):
         # Find the file in system data dirs

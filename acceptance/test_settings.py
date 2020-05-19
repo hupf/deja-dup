@@ -18,26 +18,26 @@ class PreferencesTest(BaseTest):
 
     def test_general(self):
         # Grab switch from main window
-        periodic_header = self.app.child(name='Automatic backup')
+        periodic_main = self.app.window('Backups').child(name='Automatic backup')
 
         prefs = self.app.window('Preferences')
 
         # Periodic to settings
         periodic = prefs.child(name='Automatic backup')
         self.assertFalse(periodic.checked)
-        self.assertFalse(periodic_header.checked)
+        self.assertFalse(periodic_main.checked)
         periodic.click()
         self.assertTrue(self.get_boolean('periodic'))
 
         # Periodic from settings
         self.assertTrue(periodic.checked)
-        self.assertTrue(periodic_header.checked)
+        self.assertTrue(periodic_main.checked)
         self.set_boolean('periodic', False)
-        self.assertFalse(self.refresh(periodic).checked)
-        self.assertFalse(self.refresh(periodic_header).checked)
+        self.wait_for(lambda: not self.refresh(periodic).checked)
+        self.wait_for(lambda: not self.refresh(periodic_main).checked)
         self.set_boolean('periodic', True)
-        self.assertTrue(self.refresh(periodic).checked)
-        self.assertTrue(self.refresh(periodic_header).checked)
+        self.wait_for(lambda: self.refresh(periodic).checked)
+        self.wait_for(lambda: self.refresh(periodic_main).checked)
 
         # Period to settings
         period = prefs.child(label='Automatic Backup Frequency')
