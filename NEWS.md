@@ -3,6 +3,23 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 41.0
+This is a development release leading up to 42.0.
+
+- Drop deprecated backends (GOA, S3, GCS, OpenStack, and Rackspace)
+- Redesign the main window and preferences to follow GNOME design patterns
+- Use "Déjà Dup Backups" instead of "Déjà Dup Backup Tool" as full name
+- Drop "Version" key from desktop files, which broke some parsers
+- Updated translations
+
+## Packaging
+- Add required libhandy-0.0 dependency
+- Bump minimum glib version to 2.64
+- Drop optional goa-1.0 dependency
+- Drop boto_pkgs, cloudfiles_pkgs, and swiftclient_pkgs meson options
+- appstream-util, dbus-run-session, and desktop-file-validate are now optional
+  during build if you don't intend to run tests
+
 # 40.6
 - Fixes a bug that prevented backing up to Google Drive accounts with unlimited
   quotas
