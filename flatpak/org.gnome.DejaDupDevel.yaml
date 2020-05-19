@@ -24,7 +24,7 @@ modules:
       - cp -r Lib/lib2to3 /app/lib/python3.7/site-packages/
     sources:
       - type: git
-        url: https://github.com/python/cpython
+        url: https://github.com/python/cpython.git
         tag: v3.8.0
         commit: fa919fdf2583bdfead1df00e842f24f30b2a34bf
 
@@ -32,7 +32,7 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: git
-        url: https://github.com/librsync/librsync
+        url: https://github.com/librsync/librsync.git
         tag: v2.2.1
         commit: 5917692418657dc78c9cbde3a8db4c85f25b9c8d
 
@@ -44,9 +44,12 @@ modules:
 
   - name: libhandy
     buildsystem: meson
+    config-opts:
+      - -Dexamples=false
+      - -Dtests=false
     sources:
       - type: git
-        url: https://source.puri.sm/Librem5/libhandy
+        url: https://source.puri.sm/Librem5/libhandy.git
         tag: v0.0.13
         commit: 7a193d7692c9c76a1a94f17c4d30b585f77d177c
 
