@@ -25,7 +25,10 @@ public class BackendUnsupported : Backend
   }
 
   public override async void get_envp() throws Error {
-    throw new IOError.FAILED("%s", _("This storage location is no longer supported. You can still use duplicity directly to back up or restore your files."));
+    throw new IOError.FAILED("%s", _(
+      "This storage location is no longer supported. You can still use " +
+      "duplicity directly to back up or restore your files."
+    ));
   }
 }
 
