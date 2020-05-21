@@ -129,7 +129,11 @@ class BaseTest(unittest.TestCase):
 
     def walk_initial_backup(self, app, error=False, password=None, wait=True):
         window = app.window('Back Up')
+        window.button('Forward').click()  # folders
+        window.button('Forward').click()  # storage location
 
+        # window might have closed if auto-launched, so regrab it
+        window = app.window('Back Up')
         if password:
             window.child(roleName='text', label='Encryption password').text = password
             window.child(roleName='text', label='Confirm password').text = password

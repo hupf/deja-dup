@@ -35,7 +35,34 @@ public class MainWindow : BuilderWidget
     var restore_button = builder.get_object("restore-button") as Gtk.Button;
     restore_button.clicked.connect(application.restore);
 
+    var initial_backup_button = builder.get_object("initial-backup-button") as Gtk.Button;
+    initial_backup_button.clicked.connect(application.backup);
+
+    var initial_restore_button = builder.get_object("initial-restore-button") as Gtk.Button;
+    initial_restore_button.clicked.connect(application.restore);
+
+    var overview_stack = builder.get_object("overview-stack") as Gtk.Stack;
+    var settings = DejaDup.get_settings();
+    settings.bind_with_mapping(DejaDup.LAST_BACKUP_KEY, overview_stack, "visible-child-name",
+                               SettingsBindFlags.GET, get_visible_child, set_visible_child,
+                               null, null);
+
     new ConfigAutoBackup(builder);
     new ConfigStatusLabel(builder);
+  }
+
+  static bool get_visible_child(Value val, Variant variant, void *data)
+  {
+    if (variant.get_string() == "")
+      val.set_string("initial");
+    else
+      val.set_string("normal");
+    return true;
+  }
+
+  // Never called, just here to shut up valac
+  static Variant set_visible_child(Value val, VariantType expected_type, void *data)
+  {
+    return new Variant.string("");
   }
 }

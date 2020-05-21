@@ -17,7 +17,9 @@ class PreferencesTest(BaseTest):
         self.app.button('Preferences').click()
 
     def test_general(self):
-        # Grab switch from main window
+        # Grab switch from main window, set last-backup time so the switch shows up
+        now = GLib.DateTime.new_now_utc().format_iso8601()
+        self.set_string('last-backup', now)
         periodic_main = self.app.window('Backups').child(name='Automatic backup')
 
         prefs = self.app.window('Preferences')

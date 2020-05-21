@@ -41,7 +41,7 @@ class BackupTest(BaseTest):
 
     def test_from_main_window(self):
         app = self.cmd()
-        app.button('Back Up Now').click()
+        app.button('Create My First Backup').click()
         with self.new_files():
             self.walk_initial_backup(app)
 
@@ -66,9 +66,9 @@ class BackupTest(BaseTest):
             self.walk_initial_backup(app)
 
         with self.new_files():
-            self.set_string('last-run', '')
-            self.set_string('last-backup', '')
-            self.wait_for(lambda: self.get_string('last-backup'))
+            month_ago = GLib.DateTime.new_now_utc().add_months(-1).format_iso8601()
+            self.set_string('last-backup', month_ago)
+            self.wait_for(lambda: self.get_string('last-backup') != month_ago)
             self.wait_for(lambda: not self.get_bus_pid(os.environ['DD_APPID']))
 
     def test_storage_error(self):

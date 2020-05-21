@@ -9,8 +9,6 @@ using GLib;
 
 public class AssistantBackup : AssistantOperation
 {
-  DejaDup.Backend backend;
-
   public AssistantBackup(bool automatic)
   {
     Object(automatic: automatic);
@@ -18,8 +16,6 @@ public class AssistantBackup : AssistantOperation
 
   construct
   {
-    backend = DejaDup.Backend.get_default();
-
     title = C_("back up is verb", "Back Up");
 
     can_resume = true;
@@ -30,10 +26,50 @@ public class AssistantBackup : AssistantOperation
     return C_("back up is verb", "_Back Up");
   }
 
+  protected override void add_custom_config_pages()
+  {
+    var settings = DejaDup.get_settings();
+    var last_backup = settings.get_string(DejaDup.LAST_BACKUP_KEY);
+
+    // If we've never backed up before, let's prompt for settings
+    if (last_backup == "") {
+      var page = make_include_exclude_page();
+      append_page(page);
+
+      page = make_location_page();
+      append_page(page);
+    }
+  }
+
+  Gtk.Widget make_include_exclude_page()
+  {
+    var prefs_builder = new Builder("preferences");
+    new ConfigFolderList(prefs_builder, "includes", DejaDup.INCLUDE_LIST_KEY);
+    new ConfigFolderList(prefs_builder, "excludes", DejaDup.EXCLUDE_LIST_KEY);
+
+    var page = prefs_builder.get_object("folders_page") as Gtk.Widget;
+    page.ref();
+    page.parent.remove(page);
+
+    return page;
+  }
+
+  Gtk.Widget make_location_page()
+  {
+    var prefs_builder = new Builder("preferences");
+    new ConfigLocationGrid(prefs_builder);
+
+    var config_location = prefs_builder.get_object("location_grid") as Gtk.Widget;
+    config_location.ref();
+    config_location.parent.remove(config_location);
+
+    return config_location;
+  }
+
   protected override DejaDup.Operation? create_op()
   {
     realize();
-    var rv = new DejaDup.OperationBackup(backend);
+    var rv = new DejaDup.OperationBackup(DejaDup.Backend.get_default());
 
     if (automatic) {
       // If in automatic mode, only use progress if it's a full backup (see below)

@@ -46,9 +46,7 @@ public bool in_testing_mode()
 string current_time_as_iso8601()
 {
   var now = new DateTime.now_utc();
-  // When we depend on glib >=2.62, we can uncomment this:
-  // return now.format_iso8601();
-  return now.format("%FT%T%:::z");
+  return now.format_iso8601();
 }
 
 public void update_last_run_timestamp(TimestampType type)

@@ -41,6 +41,8 @@ class RestoreTest(BaseTest):
 
     def walk_backup(self, app):
         window = app.window('Back Up')
+        window.button('Forward').click()  # folders
+        window.button('Forward').click()  # storage location
 
         # Prepare for either initial backup or incremental
         def ready():
@@ -90,7 +92,7 @@ class RestoreTest(BaseTest):
     def test_simple_cycle(self):
         app = self.cmd()
 
-        app.button('Back Up Now').click()
+        app.button('Create My First Backup').click()
         self.walk_backup(app)
 
         app.button('Restore').click()
