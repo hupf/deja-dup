@@ -3,6 +3,16 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 41.1
+This is a development release leading up to 42.0.
+
+- Add welcome state for first time use (with slightly guided backup/restore)
+- Add an in-app browse & restore interface
+- Drop nautilus plugin, in preference of above new browse interface
+
+##### Packaging
+- Drop optional libnautilus-extension dependency
+
 # 41.0
 This is a development release leading up to 42.0.
 
@@ -12,7 +22,7 @@ This is a development release leading up to 42.0.
 - Drop "Version" key from desktop files, which broke some parsers
 - Updated translations
 
-## Packaging
+##### Packaging
 - Add required libhandy-0.0 dependency
 - Bump minimum glib version to 2.64
 - Drop optional goa-1.0 dependency

@@ -20,7 +20,7 @@ deja-dup uses meson, but for most development purposes, you can simply use the c
 
 # Folder Layout
  * libdeja: non-GUI library that wraps policy and hides complexity of duplicity
- * deja-dup: GNOME UI for libdeja, including a nautilus plugin
+ * deja-dup: GNOME UI for libdeja
  * data: shared schemas, icons, etc
 
 # Testing
