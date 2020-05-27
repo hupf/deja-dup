@@ -9,6 +9,7 @@ This is a development release leading up to 42.0.
 - Add welcome state for first time use (with slightly guided backup/restore)
 - Add an in-app browse & restore interface
 - Drop nautilus plugin, in preference of above new browse interface
+- Updated translations
 
 ##### Packaging
 - Drop optional libnautilus-extension dependency

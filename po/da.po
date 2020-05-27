@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-05-17 16:09-0400\n"
-"PO-Revision-Date: 2020-05-10 12:19+0000\n"
+"POT-Creation-Date: 2020-05-19 20:27-0400\n"
+"PO-Revision-Date: 2020-05-21 22:33+0000\n"
 "Last-Translator: scootergrisen <scootergrisen@gmail.com>\n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-05-19 06:14+0000\n"
-"X-Generator: Launchpad (build 0385b538081bc4718df6fb844a3afc89729c94ce)\n"
+"X-Launchpad-Export-Date: 2020-05-22 06:57+0000\n"
+"X-Generator: Launchpad (build 1f7bc749b40714a4cc10f5e4d787118a78037035)\n"
 "Language: da\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
@@ -395,12 +395,12 @@ msgstr "Generelt"
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
 msgid "Show help"
-msgstr ""
+msgstr "Vis hjælp"
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
 msgid "Open menu"
-msgstr ""
+msgstr "Åbn menu"
 
 #: data/ui/help-overlay.ui:38
 msgctxt "shortcut window"
@@ -410,23 +410,27 @@ msgstr "Afslut"
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Tastaturgenveje"
 
-#: data/ui/main.ui:91
+#: data/ui/main.ui:81 data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "Automatisk sikkerhedskopiering"
+
+#: data/ui/main.ui:96
 msgid "Back up _automatically"
-msgstr ""
+msgstr "Sikkerhedskopiér _automatisk"
 
-#: data/ui/main.ui:123
+#: data/ui/main.ui:128
 msgid "_Back Up Now"
-msgstr ""
+msgstr "_Sikkerhedskopiér nu"
 
-#: data/ui/main.ui:138 deja-dup/AssistantRestore.vala:60
+#: data/ui/main.ui:143 deja-dup/AssistantRestore.vala:60
 msgid "_Restore"
 msgstr "_Genopret"
 
 #: data/ui/menus.ui:12
 msgid "_Preferences"
-msgstr ""
+msgstr "_Præferencer"
 
 #: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
@@ -446,17 +450,19 @@ msgstr "Lagerplads"
 
 #: data/ui/preferences.ui:32
 msgid "_Location"
-msgstr ""
+msgstr "_Placering"
 
 #: data/ui/preferences.ui:78
 msgid "_Keep Backups"
-msgstr ""
+msgstr "_Behold sikkerhedskopier"
 
 #: data/ui/preferences.ui:87
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space."
 msgstr ""
+"De ældste sikkerhedskopier slettes stadigvæk tidligere hvis placeringen er "
+"ved at løbe tør for plads."
 
 #: data/ui/preferences.ui:101
 msgid "Schedule"
@@ -464,40 +470,36 @@ msgstr "Planlægning"
 
 #: data/ui/preferences.ui:107
 msgid "Back Up _Automatically"
-msgstr ""
-
-#: data/ui/preferences.ui:117
-msgid "Automatic backup"
-msgstr "Automatisk sikkerhedskopiering"
+msgstr "Sikkerhedskopiér _automatisk"
 
 #: data/ui/preferences.ui:129
 msgid "Automatic Backup _Frequency"
-msgstr ""
+msgstr "_Interval for automatisk sikkerhedskopiering"
 
 #: data/ui/preferences.ui:147
 msgid "Folders to Back Up"
-msgstr ""
+msgstr "Mapper som skal sikkerhedskopieres"
 
 #: data/ui/preferences.ui:153
 msgid "Includes"
-msgstr ""
+msgstr "Inkluderinger"
 
 #: data/ui/preferences.ui:162
 msgid "Folders to Ignore"
-msgstr ""
+msgstr "Mapper som skal ignoreres"
 
 #: data/ui/preferences.ui:168
 msgid "Excludes"
-msgstr ""
+msgstr "Ekskluderinger"
 
 #: data/ui/preferences.ui:177
 msgid "Preferences"
-msgstr ""
+msgstr "Præferencer"
 
 #. Translators: storage as in "where to store the backup"
 #: data/ui/preferences.ui:233
 msgid "_Storage Location"
-msgstr ""
+msgstr "_Lagerplacering"
 
 #: data/ui/preferences.ui:270 data/ui/preferences.ui:335
 #: data/ui/preferences.ui:373 data/ui/preferences.ui:439
@@ -508,9 +510,13 @@ msgstr "_Mappe"
 msgid "_Network Location"
 msgstr "_Netværksplacering"
 
-#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:28
-msgid "This storage location is no longer supported."
-msgstr "Lagringsplaceringen understøttes ikke længere."
+#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:29
+msgid ""
+"This storage location is no longer supported. You can still use duplicity "
+"directly to back up or restore your files."
+msgstr ""
+"Lagerplaceringen understøttes ikke længere. Du kan stadig bruge duplicity "
+"direkte til at sikkerhedskopiere og genoprette dine filer."
 
 #: data/ui/preferences.ui:455
 msgid "_Choose Folder…"
