@@ -16,7 +16,7 @@ public class FileStore : Gtk.ListStore
   public enum Column {
     FILENAME = 0,
     SORT_KEY,
-    ICON,
+    ICON, // never set, but left blank as an aid to Browser, which does some iconview tricks
     GICON,
     MODIFIED,
     PATH,
@@ -185,19 +185,9 @@ public class FileStore : Gtk.ListStore
 
   void insert_file(FileNode node)
   {
-    var theme = Gtk.IconTheme.get_default();
     var content_type = node.type == "dir" ? ContentType.from_mime_type("inode/directory")
                                           : ContentType.guess(node.filename, null, null);
     var gicon = ContentType.get_icon(content_type);
-    var info = theme.lookup_by_gicon(gicon, 64, Gtk.IconLookupFlags.FORCE_SIZE);
-    Gdk.Pixbuf icon = null;
-    try {
-      if (info != null)
-        icon = info.load_icon();
-    }
-    catch (Error e) {
-      // ignore
-    }
 
     // Get relative path to current node
     FileNode iter = node;
@@ -213,7 +203,6 @@ public class FileStore : Gtk.ListStore
     insert_with_values(null, -1,
                        Column.FILENAME, node.filename,
                        Column.SORT_KEY, collate_key(node),
-                       Column.ICON, icon,
                        Column.GICON, gicon,
                        Column.MODIFIED, node.modified,
                        Column.PATH, path);

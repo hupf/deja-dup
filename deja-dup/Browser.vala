@@ -84,11 +84,18 @@ class Browser : BuilderWidget
     var icon_view = builder.get_object("restore-icon-view") as Gtk.IconView;
     bind_property("files-filled", icon_view, "sensitive", BindingFlags.SYNC_CREATE);
     icon_view.model = store;
-    icon_view.text_column = FileStore.Column.FILENAME;
     icon_view.pixbuf_column = FileStore.Column.ICON;
+    icon_view.text_column = FileStore.Column.FILENAME;
     icon_view.item_activated.connect((v, p) => {go_down(p);});
     icon_view.button_press_event.connect(handle_icon_button_press);
     icon_view.selection_changed.connect(selection_changed);
+
+    // Manually tweak some aspects of the icon view (we should maybe switch to
+    // a different widget like Gtk.FlowBox?)
+    var cells = icon_view.get_cells();
+    var pixbuf_renderer = cells.data as Gtk.CellRendererPixbuf;
+    icon_view.set_attributes(pixbuf_renderer, "gicon", FileStore.Column.GICON);
+    pixbuf_renderer.set("stock-size", Gtk.IconSize.DIALOG);
 
     // Set up list view as well
     var list_view = builder.get_object("restore-list-view") as Gtk.TreeView;
