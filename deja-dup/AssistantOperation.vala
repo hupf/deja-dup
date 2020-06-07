@@ -300,7 +300,6 @@ public abstract class AssistantOperation : Assistant
       show_detail(detail);
 
     go_to_page(summary_page);
-    set_header_icon("dialog-error");
     page_box.queue_resize();
   }
 
@@ -745,8 +744,6 @@ public abstract class AssistantOperation : Assistant
       else if (op == null)
         do_apply.begin();
     }
-    else if (page == password_page || page == nag_page)
-      set_header_icon("dialog-password");
   }
 
   // Make Deja Dup invisible, used when we are shutting down or some such.
@@ -983,7 +980,6 @@ public abstract class AssistantOperation : Assistant
     backend_install_packages.label = text;
 
     interrupt(backend_install_page, false);
-    set_header_icon("system-software-install");
     var install_button = add_button(C_("verb", "_Install"), CUSTOM_RESPONSE);
     make_button_default(install_button);
     var loop = new MainLoop(null);

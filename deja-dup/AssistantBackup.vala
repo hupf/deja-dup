@@ -16,7 +16,7 @@ public class AssistantBackup : AssistantOperation
 
   construct
   {
-    title = C_("back up is verb", "Back Up");
+    default_title = C_("back up is verb", "Back Up");
 
     can_resume = true;
     resumed.connect(do_resume);

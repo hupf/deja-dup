@@ -20,8 +20,14 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="title">Backups</property>
-            <property name="custom_title">switcher</property>
             <property name="show_close_button">True</property>
+            <child type="title">
+              <object class="HdyViewSwitcher" id="switcher">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="stack">stack</property>
+              </object>
+            </child>
             <child>
               <object class="GtkButton" id="previous-button">
                 <property name="can_focus">True</property>
@@ -43,13 +49,6 @@ SPDX-FileCopyrightText: Michael Terry
                 <style>
                   <class name="image-button"/>
                 </style>
-              </object>
-            </child>
-            <child>
-              <object class="HdyViewSwitcher" id="switcher">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="stack">stack</property>
               </object>
             </child>
             <child>
@@ -861,6 +860,7 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
+                <property name="halign">start</property>
                 <property name="use_underline">True</property>
                 <property name="draw_indicator">True</property>
               </object>
@@ -875,6 +875,7 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
+                <property name="halign">start</property>
                 <property name="use_underline">True</property>
                 <property name="draw_indicator">True</property>
               </object>

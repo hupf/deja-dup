@@ -55,7 +55,7 @@ public class AssistantRestore : AssistantOperation
   bool show_confirm_page = true;
   construct
   {
-    title = _("Restore");
+    default_title = _("Restore");
   }
 
   protected override string get_apply_text() {

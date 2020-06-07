@@ -29,8 +29,7 @@ public abstract class Assistant : Gtk.Window
     NORMAL, INTERRUPT, CHECK, PROGRESS, FINISH
   }
 
-  Gtk.Label header_title;
-  protected Gtk.Image header_icon;
+  protected string default_title;
   Gtk.HeaderBar header_bar;
   Gtk.Widget back_button;
   protected Gtk.Widget forward_button;
@@ -74,19 +73,6 @@ public abstract class Assistant : Gtk.Window
 
     var evbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
 
-    var ebox = new Gtk.EventBox();
-    ebox.border_width = 6;
-    var ehbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-    header_title = new Gtk.Label("");
-    header_title.name = "header";
-    header_title.xalign = 0f;
-    header_icon = new Gtk.Image();
-    ehbox.border_width = 6;
-    ehbox.pack_start(header_title, true, true, 0);
-    ehbox.pack_start(header_icon, false, false, 0);
-    ebox.add(ehbox);
-    evbox.pack_start(ebox, false, false, 0);
-
     page_box = new Gtk.EventBox();
     evbox.pack_start(page_box, true, true, 0);
 
@@ -104,24 +90,6 @@ public abstract class Assistant : Gtk.Window
   {
     if (current != null && forward_button != null)
       forward_button.sensitive = allow;
-  }
-
-  public void set_header_icon(string? name)
-  {
-    if (name == null) {
-      header_icon.pixbuf = null;
-      return;
-    }
-
-    try {
-      var theme = Gtk.IconTheme.get_for_screen(get_screen());
-      var pixbuf = theme.load_icon(name + "-symbolic", 48,
-                                   Gtk.IconLookupFlags.FORCE_SIZE);
-      header_icon.pixbuf = pixbuf;
-    }
-    catch (Error e) {
-      // Eh, don't worry about it
-    }
   }
 
   void handle_response(int resp)
@@ -229,13 +197,10 @@ public abstract class Assistant : Gtk.Window
 
   void use_title(PageInfo info)
   {
-    var title = Markup.printf_escaped("<span size=\"xx-large\" weight=\"ultrabold\">%s</span>", info.title);
-    header_title.set_markup(title);
-
     if (info.title == "")
-      header_title.hide();
+      title = default_title;
     else
-      header_title.show();
+      title = info.title;
   }
 
   void page_changed()
@@ -245,8 +210,6 @@ public abstract class Assistant : Gtk.Window
     interrupted = null;
     interrupted_from_hidden = false;
     weak PageInfo info = current.data;
-
-    set_header_icon(null); // reset icon
 
     prepare(info.page);
 
