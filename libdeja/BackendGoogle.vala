@@ -119,7 +119,7 @@ public class BackendGoogle : Backend
     return free ? limit - usage : limit;
   }
 
-  Secret.Schema get_secret_schema()
+  static Secret.Schema get_secret_schema()
   {
     return new Secret.Schema(
       Config.APPLICATION_ID + ".Google", Secret.SchemaFlags.NONE,
@@ -186,16 +186,28 @@ public class BackendGoogle : Backend
     got_credentials();
   }
 
-  async void find_refresh_token()
+  public static async string? lookup_refresh_token()
   {
     var schema = get_secret_schema();
     try {
-      refresh_token = Secret.password_lookup_sync(schema,
+      return Secret.password_lookup_sync(schema,
                                                   null,
                                                   "client_id",
                                                   Config.GOOGLE_CLIENT_ID);
     } catch (Error e) {
       // Ignore, just act like we didn't find it
+      return null;
+    }
+  }
+
+  public static async void clear_refresh_token()
+  {
+    var schema = get_secret_schema();
+    try {
+      Secret.password_clear_sync(schema, null,
+                                 "client_id", Config.GOOGLE_CLIENT_ID);
+    } catch (Error e) {
+      // Ignore
     }
   }
 
@@ -313,7 +325,7 @@ public class BackendGoogle : Backend
 
   public override async void get_envp() throws Error
   {
-    yield find_refresh_token();
+    refresh_token = yield lookup_refresh_token();
     if (refresh_token == null)
       start_authorization();
     else {

@@ -47,6 +47,7 @@ public class ConfigLocationGrid : BuilderWidget
 
     google_settings = new DejaDup.FilteredSettings(DejaDup.GOOGLE_ROOT, read_only);
     bind_folder(google_settings, DejaDup.GOOGLE_FOLDER_KEY, "google_folder", false);
+    set_up_google_reset.begin();
 
     local_settings = new DejaDup.FilteredSettings(DejaDup.LOCAL_ROOT, read_only);
     bind_folder(local_settings, DejaDup.LOCAL_FOLDER_KEY, "local_folder", true);
@@ -124,6 +125,20 @@ public class ConfigLocationGrid : BuilderWidget
       var path = DejaDup.BackendLocal.get_path_from_file(dlg.get_file());
       if (path != null)
         entry.text = path;
+    }
+  }
+
+  async void set_up_google_reset()
+  {
+    var google_reset = builder.get_object("google_reset") as Gtk.Button;
+    google_reset.clicked.connect(() => {
+      DejaDup.BackendGoogle.clear_refresh_token.begin();
+      google_reset.visible = false;
+    });
+
+    var token = yield DejaDup.BackendGoogle.lookup_refresh_token();
+    if (token != null) {
+      google_reset.visible = true;
     }
   }
 }
