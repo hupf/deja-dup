@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+import configparser
 import os
 import shutil
 import signal
@@ -41,6 +42,15 @@ class BaseTest(unittest.TestCase):
 
         # Point at that root
         self.set_strv('include-list', [self.srcdir])
+
+        # Set up config.ini support
+        basedir = os.path.realpath(os.path.dirname(__file__))
+        configname = os.path.join(basedir, 'config.ini')
+        if os.path.exists(configname):
+            self.config = configparser.ConfigParser()
+            self.config.read(configname)
+        else:
+            self.config = None
 
     def randomize_srcdir(self):
         datadir = os.path.join(self.srcdir, 'data')
@@ -159,6 +169,13 @@ class BaseTest(unittest.TestCase):
 
         if wait:
             self.wait_for(lambda: window.dead)
+
+    def get_config(self, section, option, fallback=None, required=True):
+        if not self.config:
+            if required:
+                self.skipTest('No config.ini found')
+            return fallback
+        return self.config.get(section, option, fallback=fallback)
 
     def get_settings(self, child=None):
         settings = Gio.Settings.new(os.environ['DD_APPID'])

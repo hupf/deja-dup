@@ -22,6 +22,7 @@ public class MainWindow : BuilderWidget
 
     app_window = builder.get_object("main-window") as Gtk.ApplicationWindow;
     app_window.application = application;
+    app_window.title = _("Backups");
 
     menu_button = builder.get_object("primary-menu-button") as Gtk.MenuButton;
     menu_button.set_menu_model(application.get_menu_by_id("primary-menu"));

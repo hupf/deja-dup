@@ -9,7 +9,8 @@ if [ -n "$EXISTING" ]; then
   kill -9 $EXISTING 2>/dev/null
 fi
 
-export LANG=C.UTF-8
+export LANG=C.UTF
+export TZ=EST+5
 export DEJA_DUP_TEST_FAST_FAIL=1
 
 if [ "$1" = "--snap" ]; then

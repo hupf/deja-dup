@@ -54,27 +54,9 @@ public class FileStore : Gtk.ListStore
       set_current(current.parent);
   }
 
-  public string? get_full_path(Gtk.TreePath path)
-  {
-    Gtk.TreeIter iter;
-    if (!get_iter(out iter, path))
-      return null;
-
-    string filename;
-    @get(iter, Column.FILENAME, out filename);
-
-    FileNode parent = current;
-    while (parent.parent != null) {
-      filename = "%s/%s".printf(parent.filename, filename);
-      parent = parent.parent;
-    }
-
-    return filename;
-  }
-
   public File? get_file(Gtk.TreePath path)
   {
-    var filepath = get_full_path(path);
+    var filepath = get_full_path_from_path(path);
     if (filepath == null)
       return null;
     return File.new_for_path("/" + filepath);
@@ -101,6 +83,7 @@ public class FileStore : Gtk.ListStore
 
   FileNode root;
   FileNode current;
+  string skipped_root = null;
 
   construct {
     set_column_types({typeof(string), typeof(string), typeof(Gdk.Pixbuf),
@@ -115,6 +98,36 @@ public class FileStore : Gtk.ListStore
     });
 
     notify["search-filter"].connect(update_search);
+  }
+
+  string? get_full_path_from_path(Gtk.TreePath path)
+  {
+    Gtk.TreeIter iter;
+    if (!get_iter(out iter, path))
+      return null;
+
+    string filename, rel_path;
+    @get(iter, Column.FILENAME, out filename, Column.PATH, out rel_path);
+
+    if (rel_path == null)
+      return Path.build_filename(get_full_path_from_node(current), filename);
+    else
+      return Path.build_filename(get_full_path_from_node(current), rel_path, filename);
+  }
+
+  string get_full_path_from_node(FileNode node)
+  {
+    string filename = node.filename;
+    FileNode iter = node.parent;
+    while (iter != null && iter.parent != null) {
+      filename = Path.build_filename(iter.filename, filename);
+      iter = iter.parent;
+    }
+
+    if (skipped_root == null)
+      return filename;
+    else
+      return Path.build_filename(skipped_root, filename);
   }
 
   void update_search()
@@ -196,7 +209,7 @@ public class FileStore : Gtk.ListStore
       if (path == null)
         path = iter.parent.filename;
       else
-        path = "%s/%s".printf(iter.parent.filename, path);
+        path = Path.build_filename(iter.parent.filename, path);
       iter = iter.parent;
     }
 
@@ -271,6 +284,8 @@ public class FileStore : Gtk.ListStore
         break;
       root = child;
     }
+    if (root.parent != null)
+      skipped_root = get_full_path_from_node(root.parent);
     root.parent = null;
 
     set_current(root);

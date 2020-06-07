@@ -4,7 +4,6 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-import configparser
 import os
 import shutil
 
@@ -19,25 +18,8 @@ class RestoreTest(BaseTest):
 
     def setUp(self):
         super().setUp()
-
-        basedir = os.path.realpath(os.path.dirname(__file__))
-        configname = os.path.join(basedir, "config.ini")
-
-        if os.path.exists(configname):
-            self.config = configparser.ConfigParser()
-            self.config.read(configname)
-        else:
-            self.config = None
-
         self.folder = self.get_config('default', 'folder',
                                       fallback='deja-dup-test', required=False)
-
-    def get_config(self, section, option, fallback=None, required=True):
-        if not self.config:
-            if required:
-                self.skipTest('No acceptance.ini found')
-            return fallback
-        return self.config.get(section, option, fallback=fallback)
 
     def walk_backup(self, app):
         window = app.window('Back Up')
@@ -95,7 +77,8 @@ class RestoreTest(BaseTest):
         app.button('Create My First Backup').click()
         self.walk_backup(app)
 
-        app.button('Restore').click()
+        self.set_string('last-backup', '')  # to go back to welcome screen
+        app.button('Restore From a Previous Backup').click()
         self.walk_restore(app)
 
 
