@@ -3,6 +3,16 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 41.2
+This is a development release leading up to 42.0.
+
+- Fixes bug preventing some restores using the new browser
+- Adds a button to reset your Google authorization in the preferences
+- Updates look of progress dialogs to be a little less crowded
+- Fixes missing icons for unrecognized file types when using the Adwaita theme
+- Updated help documentation
+- Updated translations
+
 # 41.1
 This is a development release leading up to 42.0.
 
