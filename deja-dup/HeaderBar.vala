@@ -21,7 +21,7 @@ public class HeaderBar : BuilderWidget
     stack.notify["visible-child-name"].connect(update_header);
 
     settings = DejaDup.get_settings();
-    settings.notify[DejaDup.LAST_BACKUP_KEY].connect(update_header);
+    settings.changed[DejaDup.LAST_BACKUP_KEY].connect(update_header);
 
     update_header();
   }
@@ -33,7 +33,6 @@ public class HeaderBar : BuilderWidget
     var search = builder.get_object("search-button") as Gtk.Button;
     var selection = builder.get_object("selection-button") as Gtk.Button;
     var switcher = builder.get_object("switcher") as Hdy.ViewSwitcher;
-    var settings = DejaDup.get_settings();
 
     var is_restore = stack.visible_child_name == "restore";
     var welcome_state = settings.get_string(DejaDup.LAST_BACKUP_KEY) == "";
