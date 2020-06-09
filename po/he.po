@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-05-19 20:27-0400\n"
+"POT-Creation-Date: 2020-06-01 22:23-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -15,13 +15,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-05-21 06:33+0000\n"
-"X-Generator: Launchpad (build 1f7bc749b40714a4cc10f5e4d787118a78037035)\n"
+"X-Launchpad-Export-Date: 2020-06-03 06:14+0000\n"
+"X-Generator: Launchpad (build 275d46a24253e557e4403d52832837e4bfa425b6)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:246
 msgid "Backup Monitor"
 msgstr "צג הגיבוי"
 
@@ -32,20 +32,20 @@ msgstr "הפעלת גיבויים בהפרשים קבועים"
 #: data/org.gnome.DejaDup.Monitor.desktop.in:9
 #: data/org.gnome.DejaDup.desktop.in:9
 msgid "@icon@"
-msgstr ""
+msgstr "@icon@"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:325
 msgid "Déjà Dup Backups"
 msgstr ""
 
 #: data/org.gnome.DejaDup.appdata.xml.in:16
 msgid "Keep your important documents safe from disaster"
-msgstr ""
+msgstr "להגן על המסמכים החשובים שלך מפני אסון"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:18
 msgid ""
@@ -53,28 +53,30 @@ msgid ""
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
 "backend."
 msgstr ""
+"Déjà Dup הוא כלי גיבוי פשוט. הוא מסתיר את המורכבות של גיבוי בדרך הנכונה "
+"(הצפנה, מחוץ לאתר ובאופן קבוע) ומשתמש ב־duplicity כמנגנון הרקע."
 
 #: data/org.gnome.DejaDup.appdata.xml.in:20
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
-msgstr ""
+msgstr "תמיכה במיקומים מקומיים, מרוחקים או ענניים כגון Google Drive"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:21
 msgid "Securely encrypts and compresses your data"
-msgstr ""
+msgstr "מצפין ודוחס את הנתונים שלך באופן מאובטח"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:22
 msgid ""
 "Incrementally backs up, letting you restore from any particular backup"
-msgstr ""
+msgstr "מגבה באופן מצטבר, מאפשר לך לשחזר מכל גיבוי שהוא"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:23
 msgid "Schedules regular backups"
-msgstr ""
+msgstr "מתזמן גיבויים על בסיס קבוע"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:24
 msgid "Integrates well into your GNOME desktop"
-msgstr ""
+msgstr "משתלב בשולחן העבודה GNOME שלך"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:26
 msgid ""
@@ -82,9 +84,11 @@ msgid ""
 "data loss. If you need a full system backup or an archival program, you may "
 "prefer other backup apps."
 msgstr ""
+"מערכת Déjà Dup מתמקדת בקלות שימוש ושחזור מאבדן נתונים מקרי, אישי. אם יש לך "
+"צורך בגיבוי מערכת מלא או בתכנית ארכיון, יתכן שעדיף לך להשתמש ביישומי גיבויים "
+"אחרים."
 
-#. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
+#: data/org.gnome.DejaDup.desktop.in:6
 msgid "Backups"
 msgstr "גיבויים"
 
@@ -115,6 +119,11 @@ msgid ""
 "by the user’s username and can be anywhere in the path. Relative entries are "
 "relative to the user’s home directory."
 msgstr ""
+"זאת רשימת התיקיות שתגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ ‎$DOCUMENTS,‏ "
+"‎$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ ‎$TEMPLATES,‏ ‎$TRASH "
+"ו־‎$VIDEOS מוכרים בתור תיקיות המשתמש וניתן להשתמש בהם כהתחלה לנתיב ארוך יותר "
+"(‎$HOME/subdir). הערך השמור ‎$USER מוחלף בשם המשתמש וניתן להשתמש בו בכל מקום "
+"בנתיב. רשומות יחסיות הן ביחס לתיקיית הבית של המשתמש."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
@@ -129,6 +138,11 @@ msgid ""
 "Reserved value $USER is replaced by the user’s username and can be anywhere "
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr ""
+"זאת רשימת התיקיות שלא תגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ "
+"‎$DOCUMENTS,‏ ‎$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ "
+"‎$TEMPLATES,‏ ‎$TRASH ו־‎$VIDEOS מוכרים בתור תיקיות המשתמש וניתן להשתמש בהם "
+"כהתחלה לנתיב ארוך יותר (‎$HOME/subdir). הערך השמור ‎$USER מוחלף בשם המשתמש "
+"וניתן להשתמש בו בכל מקום בנתיב. רשומות יחסיות הן ביחס לתיקיית הבית של המשתמש."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:23
 msgid "Whether to request the root password"
@@ -256,7 +270,7 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:73
 msgid "Whether to use metered networks"
-msgstr ""
+msgstr "האם להשתמש ברשתות מוגבלות"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:74
 msgid ""
@@ -281,13 +295,15 @@ msgstr ""
 #: data/org.gnome.DejaDup.gschema.xml.in:141
 #: data/org.gnome.DejaDup.gschema.xml.in:149
 msgid "The folder where backups are stored"
-msgstr ""
+msgstr "התיקייה בה הגיבויים מאוחסנים"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:106
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
+"היררכיית התיקיות בהן מאוחסנים הגיבויים. הנתונים יכולים לביות מלאים או יחסיים "
+"לתיקיית הבית שלך."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "UUID"
@@ -301,19 +317,19 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The name of the external drive."
-msgstr ""
+msgstr "שם הכונן החיצוני."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:123
 msgid "Icon"
-msgstr ""
+msgstr "סמל"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The icon of the external drive, as a serialized GIcon."
-msgstr ""
+msgstr "סמל הכונן החיצוני, בתור GIcon משורשר."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid ""
@@ -323,11 +339,11 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:136
 msgid "The server address"
-msgstr ""
+msgstr "כתובת השרת"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid "The URI of the remote server location."
-msgstr ""
+msgstr "כתובת מיקום השרת המרוחק."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid ""
@@ -341,7 +357,8 @@ msgid ""
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
+#: data/org.gnome.DejaDup.policy.in:15 data/ui/main.ui:752
+#: deja-dup/AssistantRestore.vala:58
 msgid "Restore"
 msgstr "שחזור"
 
@@ -352,7 +369,7 @@ msgstr ""
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "כללי"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
@@ -367,28 +384,118 @@ msgstr ""
 #: data/ui/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "יציאה"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: data/ui/main.ui:81 data/ui/preferences.ui:117
-msgid "Automatic backup"
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
 msgstr ""
 
-#: data/ui/main.ui:96
+#: data/ui/help-overlay.ui:58
+msgctxt "shortcut window"
+msgid "Search"
+msgstr ""
+
+#: data/ui/help-overlay.ui:65
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr ""
+
+#: data/ui/main.ui:43
+msgid "Back"
+msgstr ""
+
+#: data/ui/main.ui:86
+msgid "Select"
+msgstr ""
+
+#: data/ui/main.ui:112 data/ui/main.ui:184
+msgid "Search"
+msgstr ""
+
+#: data/ui/main.ui:158 data/ui/main.ui:773 deja-dup/Assistant.vala:375
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: data/ui/main.ui:251
+msgid "Keep your important files safe in a backup."
+msgstr ""
+
+#: data/ui/main.ui:263
+msgid "Create My First _Backup"
+msgstr ""
+
+#: data/ui/main.ui:279
+msgid "_Restore From a Previous Backup"
+msgstr ""
+
+#: data/ui/main.ui:312 data/ui/preferences.ui:117
+msgid "Automatic backup"
+msgstr "גיבוי אוטומטי"
+
+#: data/ui/main.ui:327
 msgid "Back up _automatically"
 msgstr ""
 
-#: data/ui/main.ui:128
+#: data/ui/main.ui:354
 msgid "_Back Up Now"
 msgstr ""
 
-#: data/ui/main.ui:143 deja-dup/AssistantRestore.vala:60
+#: data/ui/main.ui:383
+msgid "Overview"
+msgstr "סקירה"
+
+#: data/ui/main.ui:397 deja-dup/AssistantRestore.vala:62
 msgid "_Restore"
 msgstr "_שחזר"
+
+#: data/ui/main.ui:415 deja-dup/AssistantRestore.vala:127
+msgid "_Date"
+msgstr "_תאריך"
+
+#: data/ui/main.ui:535
+msgid "Scanning backup files…"
+msgstr ""
+
+#: data/ui/main.ui:569
+msgid "_Retry"
+msgstr ""
+
+#: data/ui/main.ui:608
+msgid "_Connect"
+msgstr ""
+
+#: data/ui/main.ui:637
+msgid "Encryption password needed"
+msgstr "נדרשת סיסמת הצפנה"
+
+#: data/ui/main.ui:648
+msgid "_Enter Password"
+msgstr ""
+
+#: data/ui/main.ui:782
+msgid "Con_tinue"
+msgstr ""
+
+#: data/ui/main.ui:850 deja-dup/AssistantOperation.vala:385
+#: deja-dup/AssistantOperation.vala:456
+msgid "E_ncryption password"
+msgstr "ססמת הה_צפנה"
+
+#: data/ui/main.ui:861 deja-dup/AssistantOperation.vala:415
+#: deja-dup/AssistantOperation.vala:465
+msgid "_Show password"
+msgstr "ה_צגת הססמה:"
+
+#: data/ui/main.ui:875 deja-dup/AssistantOperation.vala:422
+#: deja-dup/MountOperationAssistant.vala:27
+msgid "_Remember password"
+msgstr "_שמירת הססמה"
 
 #: data/ui/menus.ui:12
 msgid "_Preferences"
@@ -396,7 +503,7 @@ msgstr ""
 
 #: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "קי_צורי מקלדת"
 
 #: data/ui/menus.ui:20
 msgid "_Help"
@@ -404,6 +511,14 @@ msgstr "ע_זרה"
 
 #: data/ui/menus.ui:24
 msgid "_About Backups"
+msgstr "_על הגיבויים"
+
+#: data/ui/menus.ui:32
+msgid "Select _All"
+msgstr ""
+
+#: data/ui/menus.ui:36
+msgid "Select _None"
 msgstr ""
 
 #: data/ui/preferences.ui:27
@@ -462,13 +577,13 @@ msgid "_Storage Location"
 msgstr ""
 
 #: data/ui/preferences.ui:270 data/ui/preferences.ui:335
-#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:440
 msgid "_Folder"
 msgstr "_תיקייה"
 
 #: data/ui/preferences.ui:307
 msgid "_Network Location"
-msgstr ""
+msgstr "מיקום ב_רשת"
 
 #: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:29
 msgid ""
@@ -476,21 +591,13 @@ msgid ""
 "directly to back up or restore your files."
 msgstr ""
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "_Choose Folder…"
 msgstr "_בחירת תיקייה…"
 
-#: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
-msgid "Scanning…"
-msgstr "בהליכי סריקה..."
-
-#: data/ui/restore-missing.ui:74
-msgid "Folder"
-msgstr "תיקייה"
-
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
-msgstr ""
+msgstr "מיקומי רשת"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
 #: data/ui/server-hint.ui:34
@@ -498,30 +605,32 @@ msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
 msgstr ""
+"מיקומי הרשת מורכבים מקידומת פרוטוקול, כתובת ולפעמים נתיב כתלות בפרוטוקול. "
+"למשל:"
 
 #: data/ui/server-hint.ui:69
 msgid "Available Protocols"
-msgstr ""
+msgstr "פרוטוקולים זמינים"
 
 #: data/ui/server-hint.ui:83
 msgid "AppleTalk"
-msgstr ""
+msgstr "AppleTalk"
 
 #: data/ui/server-hint.ui:94
 msgid "File Transfer Protocol"
-msgstr ""
+msgstr "פרוטוקול העברת קבצים (FTP)"
 
 #: data/ui/server-hint.ui:105
 msgid "Network File System"
-msgstr ""
+msgstr "מערכת קבצים ברשת (NFS)"
 
 #: data/ui/server-hint.ui:116
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: data/ui/server-hint.ui:127
 msgid "SSH File Transfer Protocol"
-msgstr ""
+msgstr "פרוטוקול העברת קבצים עם SSH"
 
 #: data/ui/server-hint.ui:138
 msgid "WebDAV"
@@ -529,71 +638,67 @@ msgstr "WebDAV"
 
 #: data/ui/server-hint.ui:149
 msgid "Prefix"
-msgstr ""
+msgstr "קידומת"
 
 #. Translators: do not translate ftp:// and ftps://
 #: data/ui/server-hint.ui:174
 msgid "ftp:// or ftps://"
-msgstr ""
+msgstr "ftp://‎ או ftps://‎"
 
 #: data/ui/server-hint.ui:196
 msgid "smb://"
-msgstr ""
+msgstr "smb://‎"
 
 #. Translators: do not translate sftp:// and ssh://
 #: data/ui/server-hint.ui:207
 msgid "sftp:// or ssh://"
-msgstr ""
+msgstr "sftp://‎ או ssh://‎"
 
 #. Translators: do not translate dav:// and davs://
 #: data/ui/server-hint.ui:218
 msgid "dav:// or davs://"
-msgstr ""
+msgstr "dav://‎ או davs://‎"
 
-#: deja-dup/Assistant.vala:313
+#: deja-dup/Assistant.vala:319
 msgid "Co_ntinue"
 msgstr "_להמשיך"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:325
 msgctxt "verb"
 msgid "_Test"
 msgstr "_בדיקה"
 
-#: deja-dup/Assistant.vala:355
+#: deja-dup/Assistant.vala:361
 msgid "_Resume Later"
 msgstr "להמשיך מאו_חר יותר"
 
-#: deja-dup/Assistant.vala:361
+#: deja-dup/Assistant.vala:367
 msgid "_Back"
 msgstr "_חזרה"
 
-#: deja-dup/Assistant.vala:363
+#: deja-dup/Assistant.vala:369
 msgid "_Close"
 msgstr "ס_גירה"
 
-#: deja-dup/Assistant.vala:369
-msgid "_Cancel"
-msgstr "_ביטול"
-
-#: deja-dup/Assistant.vala:380
+#: deja-dup/Assistant.vala:386
 msgid "_Forward"
 msgstr "_קדימה"
 
-#: deja-dup/AssistantBackup.vala:23
+#: deja-dup/AssistantBackup.vala:19
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "גיבוי"
 
-#: deja-dup/AssistantBackup.vala:30
+#: deja-dup/AssistantBackup.vala:26
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_גיבוי"
 
-#: deja-dup/AssistantBackup.vala:45
+#: deja-dup/AssistantBackup.vala:81
 msgid "Creating the first backup.  This may take a while."
 msgstr "הגיבוי הראשון נוצר. פעולה זו עלולה לארוך זמן מה."
 
-#: deja-dup/AssistantBackup.vala:46
+#: deja-dup/AssistantBackup.vala:82
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -602,71 +707,62 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:77
+#: deja-dup/AssistantBackup.vala:113
 msgid "Backing up:"
 msgstr "מתבצע גיבוי"
 
-#: deja-dup/AssistantBackup.vala:86
+#: deja-dup/AssistantBackup.vala:122
 msgid "Backup Failed"
 msgstr "הגיבוי נכשל"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:125
 msgid "Backup Finished"
 msgstr "הגיבוי הושלם"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:93
+#: deja-dup/AssistantBackup.vala:129
 msgid "Your files were successfully backed up and tested."
 msgstr "הקבצים שלך גובו ונבדקו."
 
-#: deja-dup/AssistantBackup.vala:100
+#: deja-dup/AssistantBackup.vala:136
 msgid "Backing Up…"
 msgstr "מתבצע גיבוי…"
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:165
 msgid "Scanning:"
 msgstr "בסריקה:"
 
-#: deja-dup/AssistantOperation.vala:265
+#: deja-dup/AssistantOperation.vala:166
+msgid "Scanning…"
+msgstr "בהליכי סריקה..."
+
+#: deja-dup/AssistantOperation.vala:270
 msgid "_Details"
 msgstr "_פרטים"
 
-#: deja-dup/AssistantOperation.vala:311
+#: deja-dup/AssistantOperation.vala:316
 msgid "In order to continue, the following packages need to be installed:"
-msgstr ""
+msgstr "כדי להמשיך, יש להתקין את החבילות הבאות:"
 
-#: deja-dup/AssistantOperation.vala:347
+#: deja-dup/AssistantOperation.vala:352
 msgid "_Allow restoring without a password"
 msgstr "ל_אפשר שחזור ללא ססמה"
 
-#: deja-dup/AssistantOperation.vala:353
+#: deja-dup/AssistantOperation.vala:358
 msgid "_Password-protect your backup"
 msgstr "ה_גנה על הגיבוי שלך בססמה"
 
-#: deja-dup/AssistantOperation.vala:365
+#: deja-dup/AssistantOperation.vala:370
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "לשם שחזור הקבצים שלך תידרש לך ססמה. עדיף לך לכתוב אותה."
 
-#: deja-dup/AssistantOperation.vala:380 deja-dup/AssistantOperation.vala:451
-msgid "E_ncryption password"
-msgstr "ססמת הה_צפנה"
-
-#: deja-dup/AssistantOperation.vala:397
+#: deja-dup/AssistantOperation.vala:402
 msgid "Confir_m password"
 msgstr "אי_שור הססמה"
 
-#: deja-dup/AssistantOperation.vala:410 deja-dup/AssistantOperation.vala:460
-msgid "_Show password"
-msgstr "ה_צגת הססמה:"
-
-#: deja-dup/AssistantOperation.vala:417
-#: deja-dup/MountOperationAssistant.vala:27
-msgid "_Remember password"
-msgstr "_שמירת הססמה"
-
-#: deja-dup/AssistantOperation.vala:436
+#: deja-dup/AssistantOperation.vala:441
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -675,29 +771,29 @@ msgstr ""
 "כדי לבדוק שתהיה לך אפשרות לקבל את הקבצים שלך במקרה חירום, נא להזין את הססמה "
 "שלך שוב כדי לבצע בדיקת שחזור זריזה."
 
-#: deja-dup/AssistantOperation.vala:465
+#: deja-dup/AssistantOperation.vala:470
 msgid "Test every two _months"
 msgstr "לבדוק כל _חודשיים"
 
-#: deja-dup/AssistantOperation.vala:496
+#: deja-dup/AssistantOperation.vala:501
 msgid "_Grant Access"
-msgstr ""
+msgstr "ה_ענקת גישה"
 
-#: deja-dup/AssistantOperation.vala:558
+#: deja-dup/AssistantOperation.vala:563
 msgid "Install Packages"
-msgstr ""
+msgstr "התקנת חבילות"
 
-#: deja-dup/AssistantOperation.vala:573
+#: deja-dup/AssistantOperation.vala:578
 msgid "Summary"
 msgstr "סיכום"
 
-#: deja-dup/AssistantOperation.vala:595
+#: deja-dup/AssistantOperation.vala:600
 msgid "Restore Test"
 msgstr "בדיקת שחזור"
 
-#: deja-dup/AssistantOperation.vala:603
+#: deja-dup/AssistantOperation.vala:608
 msgid "Grant Access"
-msgstr ""
+msgstr "הענקת גישה"
 
 #. For most, don't do anything special.  Show generic 'unknown error'
 #. message, but provide the exception text for better bug reports.
@@ -705,175 +801,131 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:685
+#: deja-dup/AssistantOperation.vala:690
 #: libdeja/tools/duplicity/DuplicityJob.vala:750
 #: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "הפעולה נכשלה עם שגיאה בלתי ידועה."
 
-#: deja-dup/AssistantOperation.vala:893
+#: deja-dup/AssistantOperation.vala:860
 msgid "Require Password?"
 msgstr "האם דרושה ססמה?"
 
-#: deja-dup/AssistantOperation.vala:895
+#: deja-dup/AssistantOperation.vala:862
 msgid "Encryption Password Needed"
 msgstr "נדרשת ססמת הצפנה"
 
-#: deja-dup/AssistantOperation.vala:967
-msgid "Backup encryption password"
-msgstr "ססמת ההצפנה של הגיבוי"
-
-#: deja-dup/AssistantOperation.vala:1045
+#: deja-dup/AssistantOperation.vala:987
 msgctxt "verb"
 msgid "_Install"
-msgstr ""
+msgstr "ה_תקנה"
 
-#: deja-dup/AssistantRestore.vala:77
+#: deja-dup/AssistantRestore.vala:85
 msgid "_Backup location"
 msgstr "_מיקום הגיבוי"
 
-#: deja-dup/AssistantRestore.vala:98
+#: deja-dup/AssistantRestore.vala:106
 msgid "Restore From Where?"
 msgstr "מהיכן לשחזר?"
 
-#: deja-dup/AssistantRestore.vala:119
-msgid "_Date"
-msgstr "_תאריך"
-
-#: deja-dup/AssistantRestore.vala:138
+#: deja-dup/AssistantRestore.vala:146
 msgid "Restore files to _original locations"
 msgstr "שחזור _קבצים למיקומם המקורי"
 
-#: deja-dup/AssistantRestore.vala:143
+#: deja-dup/AssistantRestore.vala:156
 msgid "Restore to _specific folder"
 msgstr "שחזור לתיקייה מו_גדרת"
 
-#: deja-dup/AssistantRestore.vala:153
+#: deja-dup/AssistantRestore.vala:168
 msgid "Choose destination for restored files"
 msgstr "בחר את יעד הקבצים המשוחזרים"
 
-#: deja-dup/AssistantRestore.vala:157
+#: deja-dup/AssistantRestore.vala:175
 msgid "Restore _folder"
 msgstr "_תיקיית השחזור"
 
-#: deja-dup/AssistantRestore.vala:188
+#: deja-dup/AssistantRestore.vala:209
 msgid "Backup location"
 msgstr "מיקום הגיבוי"
 
-#: deja-dup/AssistantRestore.vala:203
+#: deja-dup/AssistantRestore.vala:224
 msgid "Restore date"
 msgstr "תאריך השחזור"
 
-#: deja-dup/AssistantRestore.vala:211
+#: deja-dup/AssistantRestore.vala:232
 msgid "Restore folder"
 msgstr "תיקיית השחזור"
 
-#: deja-dup/AssistantRestore.vala:237
+#: deja-dup/AssistantRestore.vala:258
 msgid "Checking for Backups…"
 msgstr "מתבצע חיפוש אחר גיבויים…"
 
-#: deja-dup/AssistantRestore.vala:245
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore From When?"
 msgstr "ממתי לשחזר?"
 
-#: deja-dup/AssistantRestore.vala:253
+#: deja-dup/AssistantRestore.vala:277
 msgid "Restore to Where?"
 msgstr "להיכן לשחזר?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:289
+#: deja-dup/AssistantRestore.vala:315
 msgid "Restoring:"
 msgstr "בשחזור:"
 
-#. Translators: %x is the current date, %X is the current time.
-#. This will be in a list with other strings that just have %x (the
-#. current date).  So make sure if you change this, it still makes
-#. sense in that context.
-#: deja-dup/AssistantRestore.vala:329
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:325
 msgid "No backups to restore"
 msgstr "אין גיבויים לשחזור"
 
-#: deja-dup/AssistantRestore.vala:430
+#: deja-dup/AssistantRestore.vala:408
 msgid "Original location"
 msgstr "המיקום המקורי"
 
-#: deja-dup/AssistantRestore.vala:441
+#: deja-dup/AssistantRestore.vala:419
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "קובץ לשחזור"
 msgstr[1] "קבצים לשחזור"
 
-#: deja-dup/AssistantRestore.vala:462
+#: deja-dup/AssistantRestore.vala:440
 msgid "Restore Failed"
 msgstr "השחזור נכשל"
 
-#: deja-dup/AssistantRestore.vala:464
+#: deja-dup/AssistantRestore.vala:442
 msgid "Restore Finished"
 msgstr "השחזור הושלם"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:467
+#: deja-dup/AssistantRestore.vala:445
 msgid "Your files were successfully restored."
 msgstr "הקבצים שלך שוחזרו בהצלחה."
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:448
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "הקובץ שלך שוחזר בהצלחה."
 msgstr[1] "הקבצים שלך שוחזרו בהצלחה."
 
-#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:455 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "מתבצע שחזור…"
 
-#: deja-dup/AssistantRestoreMissing.vala:146
-msgid "File"
-msgstr "קובץ"
+#: deja-dup/Browser.vala:201
+msgid "Click on items to select them"
+msgstr ""
 
-#: deja-dup/AssistantRestoreMissing.vala:147
-msgid "Last seen"
-msgstr "נראה לאחרונה"
-
-#: deja-dup/AssistantRestoreMissing.vala:158
-msgid "Restore which Files?"
-msgstr "אילו קבצים לשחזר?"
-
-#: deja-dup/AssistantRestoreMissing.vala:284
-msgid "Scanning for files from up to a day ago…"
-msgstr "מתבצעת סריקה לאיתור קבצים עד לפני יום…"
-
-#: deja-dup/AssistantRestoreMissing.vala:287
-msgid "Scanning for files from up to a week ago…"
-msgstr "מתבצעת סריקה לאיתור קבצים עד לפני שבוע…"
-
-#: deja-dup/AssistantRestoreMissing.vala:290
-msgid "Scanning for files from up to a month ago…"
-msgstr "מתבצעת סריקה לאיתור קבצים עד לפני חודש…"
-
-#: deja-dup/AssistantRestoreMissing.vala:295
+#: deja-dup/Browser.vala:203
 #, c-format
-msgid "Scanning for files from about a month ago…"
-msgid_plural "Scanning for files from about %d months ago…"
-msgstr[0] "מתבצעת סריקה לאיתור קבצים עד לפני חודש…"
-msgstr[1] "מתבצעת סריקה לאיתור קבצים עד לפני %d חודשים…"
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] ""
+msgstr[1] ""
 
-#: deja-dup/AssistantRestoreMissing.vala:302
-#, c-format
-msgid "Scanning for files from about a year ago…"
-msgid_plural "Scanning for files from about %d years ago…"
-msgstr[0] "מתבצעת סריקה לאיתור קבצים עד לפני שנה…"
-msgstr[1] "מתבצעת סריקה לאיתור קבצים עד לפני %d שנים…"
-
-#: deja-dup/AssistantRestoreMissing.vala:395
-msgid "Scanning finished"
-msgstr "הסריקה הסתיימה"
+#: deja-dup/Browser.vala:380
+msgid "Authentication needed"
+msgstr ""
 
 #: deja-dup/ConfigDelete.vala:16
 msgid "At least six months"
@@ -914,7 +966,7 @@ msgstr "הו_ספה"
 #: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
 #: libdeja/BackendGoogle.vala:86
 msgid "Google Drive"
-msgstr ""
+msgstr "Google Drive"
 
 #: deja-dup/ConfigLocationCombo.vala:73
 msgid "Local Folder"
@@ -922,15 +974,15 @@ msgstr "תיקייה מקומית"
 
 #: deja-dup/ConfigLocationCombo.vala:74
 msgid "Network Server"
-msgstr ""
+msgstr "שרת ברשת"
 
 #: deja-dup/ConfigLocationCombo.vala:264
 msgid "Google Cloud Storage"
-msgstr ""
+msgstr "אחסון ב־Google Cloud"
 
 #: deja-dup/ConfigLocationCombo.vala:268
 msgid "OpenStack Swift"
-msgstr ""
+msgstr "OpenStack Swift"
 
 #: deja-dup/ConfigLocationCombo.vala:270
 msgid "Rackspace Cloud Files"
@@ -976,8 +1028,8 @@ msgstr "הגיבוי הבא הוא מחר."
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הגיבוי הבא בעוד יום %d."
+msgstr[1] "הגיבוי הבא בעוד %d ימים."
 
 #. Check for some really simple/common friendly names
 #: deja-dup/ConfigStatusLabel.vala:73
@@ -992,8 +1044,8 @@ msgstr "הגיבוי האחרון התבצע אתמול."
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "הגיבוי האחרון לפני יום %d."
+msgstr[1] "הגיבוי האחרון לפני %d ימים."
 
 #: deja-dup/ConfigStatusLabel.vala:96
 msgid "No recent backups."
@@ -1019,20 +1071,20 @@ msgstr "_ססמה"
 msgid "S_how password"
 msgstr "הצגת ה_ססמה"
 
-#: deja-dup/MountOperationAssistant.vala:68
+#: deja-dup/MountOperationAssistant.vala:66
 msgid "Location not available"
 msgstr "המיקום אינו זמין"
 
-#: deja-dup/MountOperationAssistant.vala:151
+#: deja-dup/MountOperationAssistant.vala:149
 msgid "Connect _anonymously"
 msgstr "התחברות א_למונית"
 
-#: deja-dup/MountOperationAssistant.vala:155
+#: deja-dup/MountOperationAssistant.vala:153
 msgid "Connect as u_ser"
 msgstr "התחברות _בשם המשתמש"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:198
+#: deja-dup/MountOperationAssistant.vala:196
 msgid "_Domain"
 msgstr "מת_חם"
 
@@ -1074,52 +1126,41 @@ msgstr "לא כל הקבצים גובו בהצלחה. נא לעיין בתיבת
 msgid "Starting scheduled backup"
 msgstr "הגיבוי המתוזמן מופעל"
 
+#. Translators: %x is the current date, %X is the current time.
+#. This will be in a list with other strings that just have %x (the
+#. current date).  So make sure if you change this, it still makes
+#. sense in that context.
+#: deja-dup/TimeCombo.vala:85
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
 #: deja-dup/WidgetUtils.vala:22
 #, c-format
 msgid "Could not display %s"
 msgstr "לא ניתן להציג את %s"
 
-#: deja-dup/main.vala:21 monitor/monitor.vala:24
+#: deja-dup/main.vala:20 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "הצגת הגירסה"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:21
 msgid "Restore given files"
 msgstr "Restore given files"
 
-#: deja-dup/main.vala:23
+#: deja-dup/main.vala:22
 msgid "Immediately start a backup"
 msgstr "Immediately start a backup"
 
-#: deja-dup/main.vala:25
-msgid "Restore deleted files"
-msgstr "Restore deleted files"
-
-#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
-msgstr ""
+msgstr "כבר מתבצעת פעילות"
 
-#: deja-dup/main.vala:95
-msgid "No directory provided"
-msgstr "No directory provided"
-
-#: deja-dup/main.vala:99
-msgid "Only one directory can be shown at once"
-msgstr "Only one directory can be shown at once"
-
-#: deja-dup/main.vala:105
-msgid "Directory does not exist"
-msgstr ""
-
-#: deja-dup/main.vala:109
-msgid "You must provide a directory, not a file"
-msgstr "You must provide a directory, not a file"
-
-#: deja-dup/main.vala:240
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "הגיבוי המתוזמן מושהה"
 
-#: deja-dup/main.vala:271
+#: deja-dup/main.vala:244
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1133,7 +1174,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:485
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "‏%1$s בכונן %2$s"
@@ -1141,13 +1182,13 @@ msgstr "‏%1$s בכונן %2$s"
 #: libdeja/BackendDrive.vala:85
 #, c-format
 msgid "Backup will begin when %s is connected."
-msgstr ""
+msgstr "הגיבוי יתחיל עם החיבור אל %s."
 
-#: libdeja/BackendDrive.vala:170 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
-msgstr ""
+msgstr "מיקום האחסון לא זמין"
 
-#: libdeja/BackendDrive.vala:170
+#: libdeja/BackendDrive.vala:174
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "בהמתנה להתחברות של ‘%s’…"
@@ -1161,15 +1202,15 @@ msgstr "הגיבוי יתחיל כאשר חיבור לרשת יהיה זמין."
 #: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
-msgstr ""
+msgstr "%s ב־Google Drive"
 
 #: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
-msgstr ""
+msgstr "לא ניתן להיכנס לשרתי Google."
 
 #: libdeja/BackendGoogle.vala:208
 msgid "Google credentials for Déjà Dup"
-msgstr ""
+msgstr "פרטי גישה מצד Google ל־Déjà Dup"
 
 #: libdeja/BackendGoogle.vala:309
 msgid "You first need to allow Backups to access your Google account."
@@ -1177,7 +1218,7 @@ msgstr ""
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
-msgstr ""
+msgstr "שרת השרת אינו זמין"
 
 #: libdeja/BackendRemote.vala:142
 msgid "Waiting for a network connection…"
@@ -1185,7 +1226,7 @@ msgstr "בהמתנה לחיבור לרשת…"
 
 #: libdeja/BackendRemote.vala:155
 msgid "Could not mount storage location."
-msgstr ""
+msgstr "לא ניתן לעגן את מיקום האחסון."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
@@ -1194,30 +1235,36 @@ msgstr ""
 msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
+"מיקומי הרשת מסוג סמבה (SMB - Samba) חייבים לכלול הן את שם המארח והן את שם "
+"השיתוף."
 
-#: libdeja/CommonUtils.vala:460
+#: libdeja/CommonUtils.vala:458
 msgid "Access Granted"
-msgstr ""
+msgstr "הוענקה גישה"
 
-#: libdeja/CommonUtils.vala:461
+#: libdeja/CommonUtils.vala:459
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:538
+#: libdeja/CommonUtils.vala:536
 #, c-format
 msgid "Home (%s)"
 msgstr "תיקיית הבית (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:543
+#: libdeja/CommonUtils.vala:541
 msgid "Home"
 msgstr "תיקיית הבית"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:548
+#: libdeja/CommonUtils.vala:546
 msgid "Trash"
 msgstr "אשפה"
+
+#: libdeja/CommonUtils.vala:608
+msgid "Backup encryption password"
+msgstr "ססמת ההצפנה של הגיבוי"
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1231,7 +1278,7 @@ msgstr "מתבצע חיפוש אחר גיבויים…"
 msgid "Listing files…"
 msgstr "הקבצים נמנים…"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:80
+#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
 #: libdeja/tools/duplicity/DuplicityJob.vala:442
@@ -1247,7 +1294,7 @@ msgstr "הגיבוי מאומת…"
 msgid "Restoring files…"
 msgstr "קבצים משוחזרים…"
 
-#: libdeja/OperationVerify.vala:81
+#: libdeja/OperationVerify.vala:80
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
@@ -1268,7 +1315,7 @@ msgstr "לא ניתן לשחזר את ‘%s’: לא מקום תקני לקבצ�
 #: libdeja/tools/duplicity/DuplicityJob.vala:573
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
-msgstr ""
+msgstr "מיקום הגיבוי קטן מדי. כדאי לנסות להשתמש באחד עם %s לפחות."
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:598
 #, c-format
@@ -1276,6 +1323,7 @@ msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
+"במיקום הגיבוי אין מספיק מקום פנוי. כדאי לנסות להשתמש באחד עם %s לפחות."
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:619
 #: libdeja/tools/duplicity/DuplicityJob.vala:633
@@ -1396,33 +1444,19 @@ msgstr ""
 #: monitor/monitor.vala:75
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
-msgstr ""
+msgstr "הגיבוי יתחיל כאשר חיבור לרשת שאינה מוגבלת במיכסה יהיה זמין."
 
-#: nautilus/NautilusExtension.c:157
-msgid "Restore Missing Files…"
-msgstr "הקבצים החסרים משוחזרים..."
+#~ msgid "Folder"
+#~ msgstr "תיקייה"
 
-#: nautilus/NautilusExtension.c:158
-msgid "Restore deleted files from backup"
-msgstr "שחזור קבצים שנמחקו מהגיבוי"
-
-#: nautilus/NautilusExtension.c:199
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "חזרה לגרסה הקודמת..."
-msgstr[1] "חזרה לגרסאות קודמות..."
-
-#: nautilus/NautilusExtension.c:203
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "שחזור קובץ מגיבוי"
-msgstr[1] "שחזר קבצים מגיבוי"
-
-#~ msgid "Overview"
-#~ msgstr "סקירה"
+#~ msgid "File"
+#~ msgstr "קובץ"
 
 #~ msgid "Categories"
 #~ msgstr "קטגוריות"
+
+#~ msgid "You must provide a directory, not a file"
+#~ msgstr "You must provide a directory, not a file"
 
 #~ msgctxt "verb"
 #~ msgid "_Keep"
@@ -1486,6 +1520,61 @@ msgstr[1] "שחזר קבצים מגיבוי"
 
 #~ msgid "This is your username for the Rackspace Cloud Files service."
 #~ msgstr "This is your username for the Rackspace Cloud Files service."
+
+#~ msgid "Restore Missing Files…"
+#~ msgstr "הקבצים החסרים משוחזרים..."
+
+#~ msgid "Restore deleted files from backup"
+#~ msgstr "שחזור קבצים שנמחקו מהגיבוי"
+
+#~ msgid "Revert to Previous Version…"
+#~ msgid_plural "Revert to Previous Versions…"
+#~ msgstr[0] "חזרה לגרסה הקודמת..."
+#~ msgstr[1] "חזרה לגרסאות קודמות..."
+
+#~ msgid "Restore file from backup"
+#~ msgid_plural "Restore files from backup"
+#~ msgstr[0] "שחזור קובץ מגיבוי"
+#~ msgstr[1] "שחזר קבצים מגיבוי"
+
+#~ msgid "Last seen"
+#~ msgstr "נראה לאחרונה"
+
+#~ msgid "Restore which Files?"
+#~ msgstr "אילו קבצים לשחזר?"
+
+#~ msgid "Scanning for files from up to a day ago…"
+#~ msgstr "מתבצעת סריקה לאיתור קבצים עד לפני יום…"
+
+#~ msgid "Scanning for files from up to a week ago…"
+#~ msgstr "מתבצעת סריקה לאיתור קבצים עד לפני שבוע…"
+
+#~ msgid "Scanning for files from up to a month ago…"
+#~ msgstr "מתבצעת סריקה לאיתור קבצים עד לפני חודש…"
+
+#, c-format
+#~ msgid "Scanning for files from about a month ago…"
+#~ msgid_plural "Scanning for files from about %d months ago…"
+#~ msgstr[0] "מתבצעת סריקה לאיתור קבצים עד לפני חודש…"
+#~ msgstr[1] "מתבצעת סריקה לאיתור קבצים עד לפני %d חודשים…"
+
+#, c-format
+#~ msgid "Scanning for files from about a year ago…"
+#~ msgid_plural "Scanning for files from about %d years ago…"
+#~ msgstr[0] "מתבצעת סריקה לאיתור קבצים עד לפני שנה…"
+#~ msgstr[1] "מתבצעת סריקה לאיתור קבצים עד לפני %d שנים…"
+
+#~ msgid "Scanning finished"
+#~ msgstr "הסריקה הסתיימה"
+
+#~ msgid "Restore deleted files"
+#~ msgstr "Restore deleted files"
+
+#~ msgid "No directory provided"
+#~ msgstr "No directory provided"
+
+#~ msgid "Only one directory can be shown at once"
+#~ msgstr "Only one directory can be shown at once"
 
 #~ msgid "_Restore…"
 #~ msgstr "_שחזור…"
@@ -1602,3 +1691,66 @@ msgstr[1] "שחזר קבצים מגיבוי"
 #~ msgstr ""
 #~ "כלי הגיבוי Déjà Dup דורש לפחות את גרסה %d.%d.%.2d של duplicity, אך רק הגרסה "
 #~ "%d.%d.%.2d נמצאה"
+
+#~ msgid "This is your username for the OpenStack Swift service."
+#~ msgstr "זה שם המשתמש שלך בשירות ה־Swift של OpenStack."
+
+#~ msgid "Your OpenStack username"
+#~ msgstr "שם המשתמש שלך ב־OpenStack"
+
+#~ msgid "Authentication URL"
+#~ msgstr "כתובת אימות"
+
+#~ msgctxt "shortcut window"
+#~ msgid "Help"
+#~ msgstr "עזרה"
+
+#, c-format
+#~ msgid "You may use the %s button to browse for existing backups."
+#~ msgstr "ניתן להשתמש בכפתור %s כדי לעיין בגיבויים הקיימים."
+
+#~ msgid ""
+#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ msgstr "גיבויים ישנים יימחקו מוקדם יותר אם אין מספיק מקום במיקום האחסון."
+
+#~ msgid "Directory does not exist"
+#~ msgstr "התיקייה לא קיימת"
+
+#, c-format
+#~ msgid ""
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
+#~ "start one now."
+#~ msgstr ""
+#~ "עליך <a href=''>להפעיל</a> גיבויים אוטומטיים או להשתמש בכפתור %s כדי להתחיל "
+#~ "אחד כעת."
+
+#~ msgid "A backup automatically starts every day."
+#~ msgstr "גיבוי מתחיל אוטומטית כל יום."
+
+#~ msgid "A backup automatically starts every week."
+#~ msgstr "גיבוי מתחיל אוטומטית כל שבוע."
+
+#~ msgid "Week"
+#~ msgstr "שבוע"
+
+#, c-format
+#~ msgid "%d day"
+#~ msgid_plural "%d days"
+#~ msgstr[0] "יום %d"
+#~ msgstr[1] "%d ימים"
+
+#~ msgid "_Bucket"
+#~ msgstr "_Bucket"
+
+#, c-format
+#~ msgid "A backup automatically starts every %d day."
+#~ msgid_plural "A backup automatically starts every %d days."
+#~ msgstr[0] "גיבוי מתחיל אוטומטית כל יום %d."
+#~ msgstr[1] "גיבוי מתחיל אוטומטית כל %d ימים."
+
+#~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
+#~ msgstr "כלי הגיבוי Déjà Dup ימשיך כעת. ניתן לסגור את העמוד הזה."
+
+#~ msgid ""
+#~ "You first need to allow Déjà Dup Backup Tool to access your Google account."
+#~ msgstr "תחילה עליך לאשר את הגישה של כלי הגיבוי Déjà Dup לחשבון שלך ב־Google."

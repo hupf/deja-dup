@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-05-19 20:27-0400\n"
+"POT-Creation-Date: 2020-06-01 22:23-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Marcos Lans <Unknown>\n"
 "Language-Team: Galician <gl@li.org>\n"
@@ -16,14 +16,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2020-05-21 06:33+0000\n"
-"X-Generator: Launchpad (build 1f7bc749b40714a4cc10f5e4d787118a78037035)\n"
+"X-Launchpad-Export-Date: 2020-06-03 06:14+0000\n"
+"X-Generator: Launchpad (build 275d46a24253e557e4403d52832837e4bfa425b6)\n"
 "Language: gl\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:246
 msgid "Backup Monitor"
 msgstr "Monitor de copias de seguranza"
 
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:325
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -96,8 +96,7 @@ msgstr ""
 "persoais ou accidentais. Se precisa dunha copia de seguranza dun sistema "
 "completo ou dun programa de arquivo debe buscar outras opcións."
 
-#. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
+#: data/org.gnome.DejaDup.desktop.in:6
 msgid "Backups"
 msgstr "Copias de seguranza"
 
@@ -384,7 +383,8 @@ msgstr ""
 "A ruta ao cartafol no que se gardan as copias de seguranza. As rutas poden "
 "ser absolutas ou relativas ao servidor."
 
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
+#: data/org.gnome.DejaDup.policy.in:15 data/ui/main.ui:752
+#: deja-dup/AssistantRestore.vala:58
 msgid "Restore"
 msgstr "Restaurar"
 
@@ -419,21 +419,111 @@ msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: data/ui/main.ui:81 data/ui/preferences.ui:117
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr ""
+
+#: data/ui/help-overlay.ui:58
+msgctxt "shortcut window"
+msgid "Search"
+msgstr ""
+
+#: data/ui/help-overlay.ui:65
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr ""
+
+#: data/ui/main.ui:43
+msgid "Back"
+msgstr ""
+
+#: data/ui/main.ui:86
+msgid "Select"
+msgstr ""
+
+#: data/ui/main.ui:112 data/ui/main.ui:184
+msgid "Search"
+msgstr ""
+
+#: data/ui/main.ui:158 data/ui/main.ui:773 deja-dup/Assistant.vala:375
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: data/ui/main.ui:251
+msgid "Keep your important files safe in a backup."
+msgstr ""
+
+#: data/ui/main.ui:263
+msgid "Create My First _Backup"
+msgstr ""
+
+#: data/ui/main.ui:279
+msgid "_Restore From a Previous Backup"
+msgstr ""
+
+#: data/ui/main.ui:312 data/ui/preferences.ui:117
 msgid "Automatic backup"
 msgstr "Copia de seguranza automática"
 
-#: data/ui/main.ui:96
+#: data/ui/main.ui:327
 msgid "Back up _automatically"
 msgstr ""
 
-#: data/ui/main.ui:128
+#: data/ui/main.ui:354
 msgid "_Back Up Now"
 msgstr ""
 
-#: data/ui/main.ui:143 deja-dup/AssistantRestore.vala:60
+#: data/ui/main.ui:383
+msgid "Overview"
+msgstr "Vista xeral"
+
+#: data/ui/main.ui:397 deja-dup/AssistantRestore.vala:62
 msgid "_Restore"
 msgstr "_Restaurar"
+
+#: data/ui/main.ui:415 deja-dup/AssistantRestore.vala:127
+msgid "_Date"
+msgstr "_Data"
+
+#: data/ui/main.ui:535
+msgid "Scanning backup files…"
+msgstr ""
+
+#: data/ui/main.ui:569
+msgid "_Retry"
+msgstr ""
+
+#: data/ui/main.ui:608
+msgid "_Connect"
+msgstr ""
+
+#: data/ui/main.ui:637
+msgid "Encryption password needed"
+msgstr ""
+
+#: data/ui/main.ui:648
+msgid "_Enter Password"
+msgstr ""
+
+#: data/ui/main.ui:782
+msgid "Con_tinue"
+msgstr ""
+
+#: data/ui/main.ui:850 deja-dup/AssistantOperation.vala:385
+#: deja-dup/AssistantOperation.vala:456
+msgid "E_ncryption password"
+msgstr "Co_ntrasinal de cifrado"
+
+#: data/ui/main.ui:861 deja-dup/AssistantOperation.vala:415
+#: deja-dup/AssistantOperation.vala:465
+msgid "_Show password"
+msgstr "Mostrar o _contrasinal"
+
+#: data/ui/main.ui:875 deja-dup/AssistantOperation.vala:422
+#: deja-dup/MountOperationAssistant.vala:27
+msgid "_Remember password"
+msgstr "_Lembrar o contrasinal"
 
 #: data/ui/menus.ui:12
 msgid "_Preferences"
@@ -450,6 +540,14 @@ msgstr "_Axuda"
 #: data/ui/menus.ui:24
 msgid "_About Backups"
 msgstr "_Sobre Backups"
+
+#: data/ui/menus.ui:32
+msgid "Select _All"
+msgstr ""
+
+#: data/ui/menus.ui:36
+msgid "Select _None"
+msgstr ""
 
 #: data/ui/preferences.ui:27
 msgid "Storage"
@@ -507,7 +605,7 @@ msgid "_Storage Location"
 msgstr ""
 
 #: data/ui/preferences.ui:270 data/ui/preferences.ui:335
-#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:440
 msgid "_Folder"
 msgstr "Carta_fol"
 
@@ -521,17 +619,9 @@ msgid ""
 "directly to back up or restore your files."
 msgstr ""
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "_Choose Folder…"
 msgstr "_Seleccionar cartafol…"
-
-#: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
-msgid "Scanning…"
-msgstr "Analizando..."
-
-#: data/ui/restore-missing.ui:74
-msgid "Folder"
-msgstr "Cartafol"
 
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
@@ -595,50 +685,46 @@ msgstr "sftp:// ou ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// ou davs://"
 
-#: deja-dup/Assistant.vala:313
+#: deja-dup/Assistant.vala:319
 msgid "Co_ntinue"
 msgstr "Co_ntinuar"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:325
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Probar"
 
-#: deja-dup/Assistant.vala:355
+#: deja-dup/Assistant.vala:361
 msgid "_Resume Later"
 msgstr "_Continuar máis tarde"
 
-#: deja-dup/Assistant.vala:361
+#: deja-dup/Assistant.vala:367
 msgid "_Back"
 msgstr "_Atrás"
 
-#: deja-dup/Assistant.vala:363
+#: deja-dup/Assistant.vala:369
 msgid "_Close"
 msgstr "_Pechar"
 
-#: deja-dup/Assistant.vala:369
-msgid "_Cancel"
-msgstr "_Cancelar"
-
-#: deja-dup/Assistant.vala:380
+#: deja-dup/Assistant.vala:386
 msgid "_Forward"
 msgstr "_Seguinte"
 
-#: deja-dup/AssistantBackup.vala:23
+#: deja-dup/AssistantBackup.vala:19
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Copia de seguranza"
 
-#: deja-dup/AssistantBackup.vala:30
+#: deja-dup/AssistantBackup.vala:26
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Copia de _seguranza"
 
-#: deja-dup/AssistantBackup.vala:45
+#: deja-dup/AssistantBackup.vala:81
 msgid "Creating the first backup.  This may take a while."
 msgstr "Creando a primeira copia de seguranza.  Isto pode levar un anaco."
 
-#: deja-dup/AssistantBackup.vala:46
+#: deja-dup/AssistantBackup.vala:82
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -648,48 +734,52 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:77
+#: deja-dup/AssistantBackup.vala:113
 msgid "Backing up:"
 msgstr "Facendo a copia de seguranza:"
 
-#: deja-dup/AssistantBackup.vala:86
+#: deja-dup/AssistantBackup.vala:122
 msgid "Backup Failed"
 msgstr "Fallou a copia de seguranza"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:125
 msgid "Backup Finished"
 msgstr "Rematou a copia de seguranza"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:93
+#: deja-dup/AssistantBackup.vala:129
 msgid "Your files were successfully backed up and tested."
 msgstr "Os seus ficheiros foron respaldados e comprobados con éxito."
 
-#: deja-dup/AssistantBackup.vala:100
+#: deja-dup/AssistantBackup.vala:136
 msgid "Backing Up…"
 msgstr "Creando a copia..."
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:165
 msgid "Scanning:"
 msgstr "Analizando:"
 
-#: deja-dup/AssistantOperation.vala:265
+#: deja-dup/AssistantOperation.vala:166
+msgid "Scanning…"
+msgstr "Analizando..."
+
+#: deja-dup/AssistantOperation.vala:270
 msgid "_Details"
 msgstr "_Detalles"
 
-#: deja-dup/AssistantOperation.vala:311
+#: deja-dup/AssistantOperation.vala:316
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Para poder continuar debe instalar os seguintes paquetes:"
 
-#: deja-dup/AssistantOperation.vala:347
+#: deja-dup/AssistantOperation.vala:352
 msgid "_Allow restoring without a password"
 msgstr "Permitir rest_aurar sen contrasinal"
 
-#: deja-dup/AssistantOperation.vala:353
+#: deja-dup/AssistantOperation.vala:358
 msgid "_Password-protect your backup"
 msgstr "_Protexa a súa copia de seguranza cun contrasinal"
 
-#: deja-dup/AssistantOperation.vala:365
+#: deja-dup/AssistantOperation.vala:370
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -697,24 +787,11 @@ msgstr ""
 "Precisará do seu contrasinal para restaurar os seus ficheiros. "
 "Recomendámoslle que o escriba e o garde nun lugar seguro."
 
-#: deja-dup/AssistantOperation.vala:380 deja-dup/AssistantOperation.vala:451
-msgid "E_ncryption password"
-msgstr "Co_ntrasinal de cifrado"
-
-#: deja-dup/AssistantOperation.vala:397
+#: deja-dup/AssistantOperation.vala:402
 msgid "Confir_m password"
 msgstr "Confir_mar o contrasinal"
 
-#: deja-dup/AssistantOperation.vala:410 deja-dup/AssistantOperation.vala:460
-msgid "_Show password"
-msgstr "Mostrar o _contrasinal"
-
-#: deja-dup/AssistantOperation.vala:417
-#: deja-dup/MountOperationAssistant.vala:27
-msgid "_Remember password"
-msgstr "_Lembrar o contrasinal"
-
-#: deja-dup/AssistantOperation.vala:436
+#: deja-dup/AssistantOperation.vala:441
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -724,27 +801,27 @@ msgstr ""
 "emerxencia, escriba o seu contrasinal de cifrado de novo para levar a cabo "
 "unha proba de restauración breve."
 
-#: deja-dup/AssistantOperation.vala:465
+#: deja-dup/AssistantOperation.vala:470
 msgid "Test every two _months"
 msgstr "Probar cada dous _meses"
 
-#: deja-dup/AssistantOperation.vala:496
+#: deja-dup/AssistantOperation.vala:501
 msgid "_Grant Access"
 msgstr "_Conceder acceso"
 
-#: deja-dup/AssistantOperation.vala:558
+#: deja-dup/AssistantOperation.vala:563
 msgid "Install Packages"
 msgstr "Instalar paquetes"
 
-#: deja-dup/AssistantOperation.vala:573
+#: deja-dup/AssistantOperation.vala:578
 msgid "Summary"
 msgstr "Resumo"
 
-#: deja-dup/AssistantOperation.vala:595
+#: deja-dup/AssistantOperation.vala:600
 msgid "Restore Test"
 msgstr "Proba de restauración"
 
-#: deja-dup/AssistantOperation.vala:603
+#: deja-dup/AssistantOperation.vala:608
 msgid "Grant Access"
 msgstr "Conceder acceso"
 
@@ -754,175 +831,131 @@ msgstr "Conceder acceso"
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:685
+#: deja-dup/AssistantOperation.vala:690
 #: libdeja/tools/duplicity/DuplicityJob.vala:750
 #: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "Produciuse un erro descoñecido."
 
-#: deja-dup/AssistantOperation.vala:893
+#: deja-dup/AssistantOperation.vala:860
 msgid "Require Password?"
 msgstr "Requirir un contrasinal?"
 
-#: deja-dup/AssistantOperation.vala:895
+#: deja-dup/AssistantOperation.vala:862
 msgid "Encryption Password Needed"
 msgstr "Precisase o contrasinal de cifrado"
 
-#: deja-dup/AssistantOperation.vala:967
-msgid "Backup encryption password"
-msgstr "Contrasinal de cifrado da copia de seguranza"
-
-#: deja-dup/AssistantOperation.vala:1045
+#: deja-dup/AssistantOperation.vala:987
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalar"
 
-#: deja-dup/AssistantRestore.vala:77
+#: deja-dup/AssistantRestore.vala:85
 msgid "_Backup location"
 msgstr "_Localización da copia de seguranza"
 
-#: deja-dup/AssistantRestore.vala:98
+#: deja-dup/AssistantRestore.vala:106
 msgid "Restore From Where?"
 msgstr "Desde onde desexa restaurar?"
 
-#: deja-dup/AssistantRestore.vala:119
-msgid "_Date"
-msgstr "_Data"
-
-#: deja-dup/AssistantRestore.vala:138
+#: deja-dup/AssistantRestore.vala:146
 msgid "Restore files to _original locations"
 msgstr "Restaurar os ficheiros á súa localización orixinal"
 
-#: deja-dup/AssistantRestore.vala:143
+#: deja-dup/AssistantRestore.vala:156
 msgid "Restore to _specific folder"
 msgstr "Restaurar nun cartafol e_specífico"
 
-#: deja-dup/AssistantRestore.vala:153
+#: deja-dup/AssistantRestore.vala:168
 msgid "Choose destination for restored files"
 msgstr "Escolla o destino para os ficheiros restaurados"
 
-#: deja-dup/AssistantRestore.vala:157
+#: deja-dup/AssistantRestore.vala:175
 msgid "Restore _folder"
 msgstr "Restaurar o carta_fol"
 
-#: deja-dup/AssistantRestore.vala:188
+#: deja-dup/AssistantRestore.vala:209
 msgid "Backup location"
 msgstr "Localización da copia de seguranza"
 
-#: deja-dup/AssistantRestore.vala:203
+#: deja-dup/AssistantRestore.vala:224
 msgid "Restore date"
 msgstr "Data de restauración"
 
-#: deja-dup/AssistantRestore.vala:211
+#: deja-dup/AssistantRestore.vala:232
 msgid "Restore folder"
 msgstr "Restaurar o cartafol"
 
-#: deja-dup/AssistantRestore.vala:237
+#: deja-dup/AssistantRestore.vala:258
 msgid "Checking for Backups…"
 msgstr "Buscando copias de seguranza…"
 
-#: deja-dup/AssistantRestore.vala:245
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore From When?"
 msgstr "Restaurar desde cando?"
 
-#: deja-dup/AssistantRestore.vala:253
+#: deja-dup/AssistantRestore.vala:277
 msgid "Restore to Where?"
 msgstr "Onde restaurar?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:289
+#: deja-dup/AssistantRestore.vala:315
 msgid "Restoring:"
 msgstr "Restaurando:"
 
-#. Translators: %x is the current date, %X is the current time.
-#. This will be in a list with other strings that just have %x (the
-#. current date).  So make sure if you change this, it still makes
-#. sense in that context.
-#: deja-dup/AssistantRestore.vala:329
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:325
 msgid "No backups to restore"
 msgstr "Non hai copias de seguranza para restaurar"
 
-#: deja-dup/AssistantRestore.vala:430
+#: deja-dup/AssistantRestore.vala:408
 msgid "Original location"
 msgstr "Lugar orixinal"
 
-#: deja-dup/AssistantRestore.vala:441
+#: deja-dup/AssistantRestore.vala:419
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Ficheiro a restaurar"
 msgstr[1] "Ficheiros a restaurar"
 
-#: deja-dup/AssistantRestore.vala:462
+#: deja-dup/AssistantRestore.vala:440
 msgid "Restore Failed"
 msgstr "Fallou a restauración"
 
-#: deja-dup/AssistantRestore.vala:464
+#: deja-dup/AssistantRestore.vala:442
 msgid "Restore Finished"
 msgstr "Rematou a restauración"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:467
+#: deja-dup/AssistantRestore.vala:445
 msgid "Your files were successfully restored."
 msgstr "Restabelecéronse os ficheiros correctamente."
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:448
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "O seu ficheiro restaurouse sen problemas"
 msgstr[1] "Os seus ficheiros restauráronse sen problemas"
 
-#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:455 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Restaurando..."
 
-#: deja-dup/AssistantRestoreMissing.vala:146
-msgid "File"
-msgstr "Ficheiro"
+#: deja-dup/Browser.vala:201
+msgid "Click on items to select them"
+msgstr ""
 
-#: deja-dup/AssistantRestoreMissing.vala:147
-msgid "Last seen"
-msgstr "Visto por última vez"
-
-#: deja-dup/AssistantRestoreMissing.vala:158
-msgid "Restore which Files?"
-msgstr "Que ficheiros desexa restaurar?"
-
-#: deja-dup/AssistantRestoreMissing.vala:284
-msgid "Scanning for files from up to a day ago…"
-msgstr "Buscando ficheiros de maís  dun día de antigüidade…"
-
-#: deja-dup/AssistantRestoreMissing.vala:287
-msgid "Scanning for files from up to a week ago…"
-msgstr "Buscando ficheiros con máis dunha semana de antigüidade…"
-
-#: deja-dup/AssistantRestoreMissing.vala:290
-msgid "Scanning for files from up to a month ago…"
-msgstr "Buscando ficheiros con máis dun mes de antigüidade…"
-
-#: deja-dup/AssistantRestoreMissing.vala:295
+#: deja-dup/Browser.vala:203
 #, c-format
-msgid "Scanning for files from about a month ago…"
-msgid_plural "Scanning for files from about %d months ago…"
-msgstr[0] "Buscando ficheiros de hai volta dun mes…"
-msgstr[1] "Buscando ficheiros de hai volta de %d meses…"
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] ""
+msgstr[1] ""
 
-#: deja-dup/AssistantRestoreMissing.vala:302
-#, c-format
-msgid "Scanning for files from about a year ago…"
-msgid_plural "Scanning for files from about %d years ago…"
-msgstr[0] "Buscando ficheiros de hai volta dun ano…"
-msgstr[1] "Buscando ficheiros de hai volta de %d anos…"
-
-#: deja-dup/AssistantRestoreMissing.vala:395
-msgid "Scanning finished"
-msgstr "Análise finalizada"
+#: deja-dup/Browser.vala:380
+msgid "Authentication needed"
+msgstr ""
 
 #: deja-dup/ConfigDelete.vala:16
 msgid "At least six months"
@@ -1068,20 +1101,20 @@ msgstr "_Contrasinal"
 msgid "S_how password"
 msgstr "_Mostrar o contrasinal"
 
-#: deja-dup/MountOperationAssistant.vala:68
+#: deja-dup/MountOperationAssistant.vala:66
 msgid "Location not available"
 msgstr "Localización non dispoñíbel"
 
-#: deja-dup/MountOperationAssistant.vala:151
+#: deja-dup/MountOperationAssistant.vala:149
 msgid "Connect _anonymously"
 msgstr "Conectarse _anonimamente"
 
-#: deja-dup/MountOperationAssistant.vala:155
+#: deja-dup/MountOperationAssistant.vala:153
 msgid "Connect as u_ser"
 msgstr "Conectar como o u_suario"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:198
+#: deja-dup/MountOperationAssistant.vala:196
 msgid "_Domain"
 msgstr "_Dominio"
 
@@ -1127,52 +1160,41 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Iniciando a copia de seguranza programada"
 
+#. Translators: %x is the current date, %X is the current time.
+#. This will be in a list with other strings that just have %x (the
+#. current date).  So make sure if you change this, it still makes
+#. sense in that context.
+#: deja-dup/TimeCombo.vala:85
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
 #: deja-dup/WidgetUtils.vala:22
 #, c-format
 msgid "Could not display %s"
 msgstr "Non foi posíbel mostrar %s"
 
-#: deja-dup/main.vala:21 monitor/monitor.vala:24
+#: deja-dup/main.vala:20 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Mostrar a versión"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:21
 msgid "Restore given files"
 msgstr "Restaurar os ficheiros indicados"
 
-#: deja-dup/main.vala:23
+#: deja-dup/main.vala:22
 msgid "Immediately start a backup"
 msgstr "Iniciar a copia de seguranza inmediatamente"
 
-#: deja-dup/main.vala:25
-msgid "Restore deleted files"
-msgstr "Restaurar os ficheiros borrados"
-
-#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
 msgstr "Xa hai unha operación en proceso"
 
-#: deja-dup/main.vala:95
-msgid "No directory provided"
-msgstr "Non se forneceu ningún cartafol"
-
-#: deja-dup/main.vala:99
-msgid "Only one directory can be shown at once"
-msgstr "Só se pode mostrar un cartafol á vez"
-
-#: deja-dup/main.vala:105
-msgid "Directory does not exist"
-msgstr "O cartafol non existe"
-
-#: deja-dup/main.vala:109
-msgid "You must provide a directory, not a file"
-msgstr "Debe fornecer un cartafol, non un ficheiro"
-
-#: deja-dup/main.vala:240
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "Atrasouse a copia de seguranza programada"
 
-#: deja-dup/main.vala:271
+#: deja-dup/main.vala:244
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1189,7 +1211,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:485
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s en %2$s"
@@ -1199,11 +1221,11 @@ msgstr "%1$s en %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "A copia comezará cando %s estea conectado."
 
-#: libdeja/BackendDrive.vala:170 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "A localización da almacenaxe non está dispoñíbel"
 
-#: libdeja/BackendDrive.vala:170
+#: libdeja/BackendDrive.vala:174
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Agardando a que «%s» se conecte..."
@@ -1252,29 +1274,33 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#: libdeja/CommonUtils.vala:460
+#: libdeja/CommonUtils.vala:458
 msgid "Access Granted"
 msgstr "Acceso concedido"
 
-#: libdeja/CommonUtils.vala:461
+#: libdeja/CommonUtils.vala:459
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:538
+#: libdeja/CommonUtils.vala:536
 #, c-format
 msgid "Home (%s)"
 msgstr "Cartafol persoal (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:543
+#: libdeja/CommonUtils.vala:541
 msgid "Home"
 msgstr "Cartafol persoal"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:548
+#: libdeja/CommonUtils.vala:546
 msgid "Trash"
 msgstr "Lixo"
+
+#: libdeja/CommonUtils.vala:608
+msgid "Backup encryption password"
+msgstr "Contrasinal de cifrado da copia de seguranza"
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1288,7 +1314,7 @@ msgstr "Comprobando as copias de seguranza..."
 msgid "Listing files…"
 msgstr "Lista de ficheiros…"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:80
+#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
 #: libdeja/tools/duplicity/DuplicityJob.vala:442
@@ -1304,7 +1330,7 @@ msgstr "Comprobando a copia de seguranza"
 msgid "Restoring files…"
 msgstr "Restaurando os ficheiros..."
 
-#: libdeja/OperationVerify.vala:81
+#: libdeja/OperationVerify.vala:80
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
@@ -1470,31 +1496,17 @@ msgstr ""
 "A copia de seguranza comezará cando haxa dispoñíbel unha conexión de rede "
 "que non teña os datos taxados."
 
-#: nautilus/NautilusExtension.c:157
-msgid "Restore Missing Files…"
-msgstr "Restaurar ficheiros que faltan..."
+#~ msgid "Folder"
+#~ msgstr "Cartafol"
 
-#: nautilus/NautilusExtension.c:158
-msgid "Restore deleted files from backup"
-msgstr "Restaurar ficheiros borrados a partir da copia de seguranza"
-
-#: nautilus/NautilusExtension.c:199
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "Reverter a unha versión anterior..."
-msgstr[1] "Reverter ás versións previas..."
-
-#: nautilus/NautilusExtension.c:203
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "Restaurar ficheiro desde unha copia de seguranza"
-msgstr[1] "Restaurar ficheiros desde unha copia de seguranza"
-
-#~ msgid "Overview"
-#~ msgstr "Vista xeral"
+#~ msgid "File"
+#~ msgstr "Ficheiro"
 
 #~ msgid "Categories"
 #~ msgstr "Categorías"
+
+#~ msgid "You must provide a directory, not a file"
+#~ msgstr "Debe fornecer un cartafol, non un ficheiro"
 
 #~ msgctxt "verb"
 #~ msgid "_Keep"
@@ -1653,6 +1665,64 @@ msgstr[1] "Restaurar ficheiros desde unha copia de seguranza"
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
 #~ msgstr "Atallos do teclado"
+
+#~ msgid "Restore Missing Files…"
+#~ msgstr "Restaurar ficheiros que faltan..."
+
+#~ msgid "Restore deleted files from backup"
+#~ msgstr "Restaurar ficheiros borrados a partir da copia de seguranza"
+
+#~ msgid "Revert to Previous Version…"
+#~ msgid_plural "Revert to Previous Versions…"
+#~ msgstr[0] "Reverter a unha versión anterior..."
+#~ msgstr[1] "Reverter ás versións previas..."
+
+#~ msgid "Restore file from backup"
+#~ msgid_plural "Restore files from backup"
+#~ msgstr[0] "Restaurar ficheiro desde unha copia de seguranza"
+#~ msgstr[1] "Restaurar ficheiros desde unha copia de seguranza"
+
+#~ msgid "Last seen"
+#~ msgstr "Visto por última vez"
+
+#~ msgid "Restore which Files?"
+#~ msgstr "Que ficheiros desexa restaurar?"
+
+#~ msgid "Scanning for files from up to a day ago…"
+#~ msgstr "Buscando ficheiros de maís  dun día de antigüidade…"
+
+#~ msgid "Scanning for files from up to a week ago…"
+#~ msgstr "Buscando ficheiros con máis dunha semana de antigüidade…"
+
+#~ msgid "Scanning for files from up to a month ago…"
+#~ msgstr "Buscando ficheiros con máis dun mes de antigüidade…"
+
+#, c-format
+#~ msgid "Scanning for files from about a month ago…"
+#~ msgid_plural "Scanning for files from about %d months ago…"
+#~ msgstr[0] "Buscando ficheiros de hai volta dun mes…"
+#~ msgstr[1] "Buscando ficheiros de hai volta de %d meses…"
+
+#, c-format
+#~ msgid "Scanning for files from about a year ago…"
+#~ msgid_plural "Scanning for files from about %d years ago…"
+#~ msgstr[0] "Buscando ficheiros de hai volta dun ano…"
+#~ msgstr[1] "Buscando ficheiros de hai volta de %d anos…"
+
+#~ msgid "Scanning finished"
+#~ msgstr "Análise finalizada"
+
+#~ msgid "Restore deleted files"
+#~ msgstr "Restaurar os ficheiros borrados"
+
+#~ msgid "No directory provided"
+#~ msgstr "Non se forneceu ningún cartafol"
+
+#~ msgid "Only one directory can be shown at once"
+#~ msgstr "Só se pode mostrar un cartafol á vez"
+
+#~ msgid "Directory does not exist"
+#~ msgstr "O cartafol non existe"
 
 #~ msgid "_Restore…"
 #~ msgstr "_Restabelecer..."

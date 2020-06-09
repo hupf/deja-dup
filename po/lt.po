@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-05-19 20:27-0400\n"
+"POT-Creation-Date: 2020-06-01 22:23-0400\n"
 "PO-Revision-Date: 2019-01-13 16:10+0000\n"
 "Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Lithuanian <lt@li.org>\n"
@@ -16,13 +16,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "(n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2020-05-21 06:34+0000\n"
-"X-Generator: Launchpad (build 1f7bc749b40714a4cc10f5e4d787118a78037035)\n"
+"X-Launchpad-Export-Date: 2020-06-03 06:14+0000\n"
+"X-Generator: Launchpad (build 275d46a24253e557e4403d52832837e4bfa425b6)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:247
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:246
 msgid "Backup Monitor"
 msgstr "Atsarginių kopijų prižiūryklė"
 
@@ -40,7 +40,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:343
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:325
 msgid "Déjà Dup Backups"
 msgstr ""
 
@@ -84,8 +84,7 @@ msgid ""
 "prefer other backup apps."
 msgstr ""
 
-#. Translators: "Backups" is a noun
-#: data/org.gnome.DejaDup.desktop.in:6 data/ui/main.ui:18
+#: data/org.gnome.DejaDup.desktop.in:6
 msgid "Backups"
 msgstr "Atsarginės kopijos"
 
@@ -342,7 +341,8 @@ msgid ""
 "to the host."
 msgstr ""
 
-#: data/org.gnome.DejaDup.policy.in:15 deja-dup/AssistantRestore.vala:56
+#: data/org.gnome.DejaDup.policy.in:15 data/ui/main.ui:752
+#: deja-dup/AssistantRestore.vala:58
 msgid "Restore"
 msgstr "Atkurti"
 
@@ -375,21 +375,111 @@ msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: data/ui/main.ui:81 data/ui/preferences.ui:117
+#: data/ui/help-overlay.ui:53
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr ""
+
+#: data/ui/help-overlay.ui:58
+msgctxt "shortcut window"
+msgid "Search"
+msgstr ""
+
+#: data/ui/help-overlay.ui:65
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr ""
+
+#: data/ui/main.ui:43
+msgid "Back"
+msgstr ""
+
+#: data/ui/main.ui:86
+msgid "Select"
+msgstr ""
+
+#: data/ui/main.ui:112 data/ui/main.ui:184
+msgid "Search"
+msgstr ""
+
+#: data/ui/main.ui:158 data/ui/main.ui:773 deja-dup/Assistant.vala:375
+msgid "_Cancel"
+msgstr "_Atsisakyti"
+
+#: data/ui/main.ui:251
+msgid "Keep your important files safe in a backup."
+msgstr ""
+
+#: data/ui/main.ui:263
+msgid "Create My First _Backup"
+msgstr ""
+
+#: data/ui/main.ui:279
+msgid "_Restore From a Previous Backup"
+msgstr ""
+
+#: data/ui/main.ui:312 data/ui/preferences.ui:117
 msgid "Automatic backup"
 msgstr ""
 
-#: data/ui/main.ui:96
+#: data/ui/main.ui:327
 msgid "Back up _automatically"
 msgstr ""
 
-#: data/ui/main.ui:128
+#: data/ui/main.ui:354
 msgid "_Back Up Now"
 msgstr ""
 
-#: data/ui/main.ui:143 deja-dup/AssistantRestore.vala:60
+#: data/ui/main.ui:383
+msgid "Overview"
+msgstr "Apžvalga"
+
+#: data/ui/main.ui:397 deja-dup/AssistantRestore.vala:62
 msgid "_Restore"
 msgstr "_Atkurti"
+
+#: data/ui/main.ui:415 deja-dup/AssistantRestore.vala:127
+msgid "_Date"
+msgstr "_Data"
+
+#: data/ui/main.ui:535
+msgid "Scanning backup files…"
+msgstr ""
+
+#: data/ui/main.ui:569
+msgid "_Retry"
+msgstr ""
+
+#: data/ui/main.ui:608
+msgid "_Connect"
+msgstr ""
+
+#: data/ui/main.ui:637
+msgid "Encryption password needed"
+msgstr ""
+
+#: data/ui/main.ui:648
+msgid "_Enter Password"
+msgstr ""
+
+#: data/ui/main.ui:782
+msgid "Con_tinue"
+msgstr ""
+
+#: data/ui/main.ui:850 deja-dup/AssistantOperation.vala:385
+#: deja-dup/AssistantOperation.vala:456
+msgid "E_ncryption password"
+msgstr "Užšifravimo _slaptažodis"
+
+#: data/ui/main.ui:861 deja-dup/AssistantOperation.vala:415
+#: deja-dup/AssistantOperation.vala:465
+msgid "_Show password"
+msgstr "_Rodyti slaptažodį"
+
+#: data/ui/main.ui:875 deja-dup/AssistantOperation.vala:422
+#: deja-dup/MountOperationAssistant.vala:27
+msgid "_Remember password"
+msgstr "Įsi_minti slaptažodį"
 
 #: data/ui/menus.ui:12
 msgid "_Preferences"
@@ -405,6 +495,14 @@ msgstr "_Pagalba"
 
 #: data/ui/menus.ui:24
 msgid "_About Backups"
+msgstr ""
+
+#: data/ui/menus.ui:32
+msgid "Select _All"
+msgstr ""
+
+#: data/ui/menus.ui:36
+msgid "Select _None"
 msgstr ""
 
 #: data/ui/preferences.ui:27
@@ -463,7 +561,7 @@ msgid "_Storage Location"
 msgstr ""
 
 #: data/ui/preferences.ui:270 data/ui/preferences.ui:335
-#: data/ui/preferences.ui:373 data/ui/preferences.ui:439
+#: data/ui/preferences.ui:373 data/ui/preferences.ui:440
 msgid "_Folder"
 msgstr "_Aplankas"
 
@@ -477,17 +575,9 @@ msgid ""
 "directly to back up or restore your files."
 msgstr ""
 
-#: data/ui/preferences.ui:455
+#: data/ui/preferences.ui:456
 msgid "_Choose Folder…"
 msgstr "_Pasirinkite aplanką..."
-
-#: data/ui/restore-missing.ui:37 deja-dup/AssistantOperation.vala:161
-msgid "Scanning…"
-msgstr "Peržiūrima..."
-
-#: data/ui/restore-missing.ui:74
-msgid "Folder"
-msgstr "Aplankas"
 
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
@@ -551,50 +641,46 @@ msgstr ""
 msgid "dav:// or davs://"
 msgstr ""
 
-#: deja-dup/Assistant.vala:313
+#: deja-dup/Assistant.vala:319
 msgid "Co_ntinue"
 msgstr "_Tęsti"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:325
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Testuoti"
 
-#: deja-dup/Assistant.vala:355
+#: deja-dup/Assistant.vala:361
 msgid "_Resume Later"
 msgstr "P_ratęsti vėliau"
 
-#: deja-dup/Assistant.vala:361
+#: deja-dup/Assistant.vala:367
 msgid "_Back"
 msgstr "_Atgal"
 
-#: deja-dup/Assistant.vala:363
+#: deja-dup/Assistant.vala:369
 msgid "_Close"
 msgstr "_Užverti"
 
-#: deja-dup/Assistant.vala:369
-msgid "_Cancel"
-msgstr "_Atsisakyti"
-
-#: deja-dup/Assistant.vala:380
+#: deja-dup/Assistant.vala:386
 msgid "_Forward"
 msgstr "_Pirmyn"
 
-#: deja-dup/AssistantBackup.vala:23
+#: deja-dup/AssistantBackup.vala:19
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Padaryti atsarginę kopiją"
 
-#: deja-dup/AssistantBackup.vala:30
+#: deja-dup/AssistantBackup.vala:26
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Padaryti atsarginę kopiją"
 
-#: deja-dup/AssistantBackup.vala:45
+#: deja-dup/AssistantBackup.vala:81
 msgid "Creating the first backup.  This may take a while."
 msgstr "Kuriama pirma atsarginė kopija. Tai gali užtrukti."
 
-#: deja-dup/AssistantBackup.vala:46
+#: deja-dup/AssistantBackup.vala:82
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -604,49 +690,53 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:77
+#: deja-dup/AssistantBackup.vala:113
 msgid "Backing up:"
 msgstr "Daroma atsarginė kopija:"
 
-#: deja-dup/AssistantBackup.vala:86
+#: deja-dup/AssistantBackup.vala:122
 msgid "Backup Failed"
 msgstr "Nepavyko padaryti atsarginės kopijos"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:125
 msgid "Backup Finished"
 msgstr "Atsarginė kopija padaryta"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:93
+#: deja-dup/AssistantBackup.vala:129
 msgid "Your files were successfully backed up and tested."
 msgstr ""
 "Buvo sėkmingai padarytos ir patikrintos jūsų failų atsarginės kopijos."
 
-#: deja-dup/AssistantBackup.vala:100
+#: deja-dup/AssistantBackup.vala:136
 msgid "Backing Up…"
 msgstr "Daroma atsarginė kopija..."
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:165
 msgid "Scanning:"
 msgstr "Peržiūrima:"
 
-#: deja-dup/AssistantOperation.vala:265
+#: deja-dup/AssistantOperation.vala:166
+msgid "Scanning…"
+msgstr "Peržiūrima..."
+
+#: deja-dup/AssistantOperation.vala:270
 msgid "_Details"
 msgstr "_Išsamiai"
 
-#: deja-dup/AssistantOperation.vala:311
+#: deja-dup/AssistantOperation.vala:316
 msgid "In order to continue, the following packages need to be installed:"
 msgstr ""
 
-#: deja-dup/AssistantOperation.vala:347
+#: deja-dup/AssistantOperation.vala:352
 msgid "_Allow restoring without a password"
 msgstr "_Leisti atkurti be slaptažodžio"
 
-#: deja-dup/AssistantOperation.vala:353
+#: deja-dup/AssistantOperation.vala:358
 msgid "_Password-protect your backup"
 msgstr "Atsarginę kopiją apsaugoti sla_ptažodžiu"
 
-#: deja-dup/AssistantOperation.vala:365
+#: deja-dup/AssistantOperation.vala:370
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -654,24 +744,11 @@ msgstr ""
 "Jums reikės slaptažodžio norint atkurti jūsų failus. Greičiausiai norėsite "
 "jį užsirašyti."
 
-#: deja-dup/AssistantOperation.vala:380 deja-dup/AssistantOperation.vala:451
-msgid "E_ncryption password"
-msgstr "Užšifravimo _slaptažodis"
-
-#: deja-dup/AssistantOperation.vala:397
+#: deja-dup/AssistantOperation.vala:402
 msgid "Confir_m password"
 msgstr "Pa_tvirtinkite slaptažodį"
 
-#: deja-dup/AssistantOperation.vala:410 deja-dup/AssistantOperation.vala:460
-msgid "_Show password"
-msgstr "_Rodyti slaptažodį"
-
-#: deja-dup/AssistantOperation.vala:417
-#: deja-dup/MountOperationAssistant.vala:27
-msgid "_Remember password"
-msgstr "Įsi_minti slaptažodį"
-
-#: deja-dup/AssistantOperation.vala:436
+#: deja-dup/AssistantOperation.vala:441
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -680,27 +757,27 @@ msgstr ""
 "Tam, kad patikrintume, ar galėsite atgauti failus esant avarinei situacijai, "
 "dar kartą įveskite užšifravimo slaptažodį trumpam atkūrimo testui atlikti."
 
-#: deja-dup/AssistantOperation.vala:465
+#: deja-dup/AssistantOperation.vala:470
 msgid "Test every two _months"
 msgstr "Tikrinti kas du _mėnesius"
 
-#: deja-dup/AssistantOperation.vala:496
+#: deja-dup/AssistantOperation.vala:501
 msgid "_Grant Access"
 msgstr ""
 
-#: deja-dup/AssistantOperation.vala:558
+#: deja-dup/AssistantOperation.vala:563
 msgid "Install Packages"
 msgstr ""
 
-#: deja-dup/AssistantOperation.vala:573
+#: deja-dup/AssistantOperation.vala:578
 msgid "Summary"
 msgstr "Santrauka"
 
-#: deja-dup/AssistantOperation.vala:595
+#: deja-dup/AssistantOperation.vala:600
 msgid "Restore Test"
 msgstr "Atkūrimo testas"
 
-#: deja-dup/AssistantOperation.vala:603
+#: deja-dup/AssistantOperation.vala:608
 msgid "Grant Access"
 msgstr ""
 
@@ -710,179 +787,133 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:685
+#: deja-dup/AssistantOperation.vala:690
 #: libdeja/tools/duplicity/DuplicityJob.vala:750
 #: libdeja/tools/duplicity/DuplicityJob.vala:1133
 msgid "Failed with an unknown error."
 msgstr "Nepavyko su nežinoma klaida."
 
-#: deja-dup/AssistantOperation.vala:893
+#: deja-dup/AssistantOperation.vala:860
 msgid "Require Password?"
 msgstr "Reikalauti slaptažodžio?"
 
-#: deja-dup/AssistantOperation.vala:895
+#: deja-dup/AssistantOperation.vala:862
 msgid "Encryption Password Needed"
 msgstr "Reikalingas užšifravimo slaptažodis"
 
-#: deja-dup/AssistantOperation.vala:967
-msgid "Backup encryption password"
-msgstr "Atsarginės kopijos užšifravimo slaptažodis"
-
-#: deja-dup/AssistantOperation.vala:1045
+#: deja-dup/AssistantOperation.vala:987
 msgctxt "verb"
 msgid "_Install"
 msgstr ""
 
-#: deja-dup/AssistantRestore.vala:77
+#: deja-dup/AssistantRestore.vala:85
 msgid "_Backup location"
 msgstr "_Atsarginių kopijų vieta"
 
-#: deja-dup/AssistantRestore.vala:98
+#: deja-dup/AssistantRestore.vala:106
 msgid "Restore From Where?"
 msgstr "Atkurti iš kur?"
 
-#: deja-dup/AssistantRestore.vala:119
-msgid "_Date"
-msgstr "_Data"
-
-#: deja-dup/AssistantRestore.vala:138
+#: deja-dup/AssistantRestore.vala:146
 msgid "Restore files to _original locations"
 msgstr "Atkurti failus _originaliose vietose"
 
-#: deja-dup/AssistantRestore.vala:143
+#: deja-dup/AssistantRestore.vala:156
 msgid "Restore to _specific folder"
 msgstr "Atkurti į _nurodytą aplanką"
 
-#: deja-dup/AssistantRestore.vala:153
+#: deja-dup/AssistantRestore.vala:168
 msgid "Choose destination for restored files"
 msgstr "Pasirinkite atkuriamų failų paskirtį"
 
-#: deja-dup/AssistantRestore.vala:157
+#: deja-dup/AssistantRestore.vala:175
 msgid "Restore _folder"
 msgstr "Atkūrimo _aplankas"
 
-#: deja-dup/AssistantRestore.vala:188
+#: deja-dup/AssistantRestore.vala:209
 msgid "Backup location"
 msgstr "Atsarginių kopijų vieta"
 
-#: deja-dup/AssistantRestore.vala:203
+#: deja-dup/AssistantRestore.vala:224
 msgid "Restore date"
 msgstr "Atkūrimo data"
 
-#: deja-dup/AssistantRestore.vala:211
+#: deja-dup/AssistantRestore.vala:232
 msgid "Restore folder"
 msgstr "Atkūrimo aplankas"
 
-#: deja-dup/AssistantRestore.vala:237
+#: deja-dup/AssistantRestore.vala:258
 msgid "Checking for Backups…"
 msgstr "Ieškoma atsarginių kopijų..."
 
-#: deja-dup/AssistantRestore.vala:245
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore From When?"
 msgstr "Atkurti iš kada?"
 
-#: deja-dup/AssistantRestore.vala:253
+#: deja-dup/AssistantRestore.vala:277
 msgid "Restore to Where?"
 msgstr "Į kur atkurti?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:289
+#: deja-dup/AssistantRestore.vala:315
 msgid "Restoring:"
 msgstr "Atkuriama:"
 
-#. Translators: %x is the current date, %X is the current time.
-#. This will be in a list with other strings that just have %x (the
-#. current date).  So make sure if you change this, it still makes
-#. sense in that context.
-#: deja-dup/AssistantRestore.vala:329
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:325
 msgid "No backups to restore"
 msgstr "Nėra atsarginių kopijų atkūrimui"
 
-#: deja-dup/AssistantRestore.vala:430
+#: deja-dup/AssistantRestore.vala:408
 msgid "Original location"
 msgstr "Originali vieta"
 
-#: deja-dup/AssistantRestore.vala:441
+#: deja-dup/AssistantRestore.vala:419
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Failas atkūrimui"
 msgstr[1] "Failai atkūrimui"
 msgstr[2] "Failai atkūrimui"
 
-#: deja-dup/AssistantRestore.vala:462
+#: deja-dup/AssistantRestore.vala:440
 msgid "Restore Failed"
 msgstr "Nepavyko atkurti"
 
-#: deja-dup/AssistantRestore.vala:464
+#: deja-dup/AssistantRestore.vala:442
 msgid "Restore Finished"
 msgstr "Atkūrimas baigtas"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:467
+#: deja-dup/AssistantRestore.vala:445
 msgid "Your files were successfully restored."
 msgstr "Jūsų failai sėkmingai atkurti."
 
-#: deja-dup/AssistantRestore.vala:470
+#: deja-dup/AssistantRestore.vala:448
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Jūsų failas sėkmingai atkurtas."
 msgstr[1] "Jūsų failai sėkmingai atkurti."
 msgstr[2] "Jūsų failai sėkmingai atkurti."
 
-#: deja-dup/AssistantRestore.vala:477 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:455 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Atkuriama..."
 
-#: deja-dup/AssistantRestoreMissing.vala:146
-msgid "File"
-msgstr "Failas"
+#: deja-dup/Browser.vala:201
+msgid "Click on items to select them"
+msgstr ""
 
-#: deja-dup/AssistantRestoreMissing.vala:147
-msgid "Last seen"
-msgstr "Paskutinį kartą matytas"
-
-#: deja-dup/AssistantRestoreMissing.vala:158
-msgid "Restore which Files?"
-msgstr "Kuriuos failus atkurti?"
-
-#: deja-dup/AssistantRestoreMissing.vala:284
-msgid "Scanning for files from up to a day ago…"
-msgstr "Peržiūrimi iki dienos senumo failai..."
-
-#: deja-dup/AssistantRestoreMissing.vala:287
-msgid "Scanning for files from up to a week ago…"
-msgstr "Peržiūrimi iki savaitės senumo failai..."
-
-#: deja-dup/AssistantRestoreMissing.vala:290
-msgid "Scanning for files from up to a month ago…"
-msgstr "Peržiūrimi iki mėnesio senumo failai..."
-
-#: deja-dup/AssistantRestoreMissing.vala:295
+#: deja-dup/Browser.vala:203
 #, c-format
-msgid "Scanning for files from about a month ago…"
-msgid_plural "Scanning for files from about %d months ago…"
-msgstr[0] "Peržiūrimi maždaug mėnesio senumo failai..."
-msgstr[1] "Peržiūrimi maždaug %d mėnesių senumo failai..."
-msgstr[2] "Peržiūrimi maždaug %d mėnesių senumo failai..."
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] ""
+msgstr[1] ""
 
-#: deja-dup/AssistantRestoreMissing.vala:302
-#, c-format
-msgid "Scanning for files from about a year ago…"
-msgid_plural "Scanning for files from about %d years ago…"
-msgstr[0] "Peržiūrimi maždaug metų senumo failai..."
-msgstr[1] "Peržiūrimi maždaug %d metų senumo failai..."
-msgstr[2] "Peržiūrimi maždaug %d metų senumo failai..."
-
-#: deja-dup/AssistantRestoreMissing.vala:395
-msgid "Scanning finished"
-msgstr "Peržiūra baigta"
+#: deja-dup/Browser.vala:380
+msgid "Authentication needed"
+msgstr ""
 
 #: deja-dup/ConfigDelete.vala:16
 msgid "At least six months"
@@ -1032,20 +1063,20 @@ msgstr "_Slaptažodis"
 msgid "S_how password"
 msgstr "_Rodyti slaptažodį"
 
-#: deja-dup/MountOperationAssistant.vala:68
+#: deja-dup/MountOperationAssistant.vala:66
 msgid "Location not available"
 msgstr "Vieta neprieinama"
 
-#: deja-dup/MountOperationAssistant.vala:151
+#: deja-dup/MountOperationAssistant.vala:149
 msgid "Connect _anonymously"
 msgstr "Jungtis _anonimiškai"
 
-#: deja-dup/MountOperationAssistant.vala:155
+#: deja-dup/MountOperationAssistant.vala:153
 msgid "Connect as u_ser"
 msgstr "Prisijungti _naudotoju"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:198
+#: deja-dup/MountOperationAssistant.vala:196
 msgid "_Domain"
 msgstr "_Sritis"
 
@@ -1090,52 +1121,41 @@ msgstr ""
 msgid "Starting scheduled backup"
 msgstr "Pradedama suplanuota atsarginė kopija"
 
+#. Translators: %x is the current date, %X is the current time.
+#. This will be in a list with other strings that just have %x (the
+#. current date).  So make sure if you change this, it still makes
+#. sense in that context.
+#: deja-dup/TimeCombo.vala:85
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
 #: deja-dup/WidgetUtils.vala:22
 #, c-format
 msgid "Could not display %s"
 msgstr "Nepavyko parodyti %s"
 
-#: deja-dup/main.vala:21 monitor/monitor.vala:24
+#: deja-dup/main.vala:20 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Rodyti versiją"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:21
 msgid "Restore given files"
 msgstr "Atkurti nurodytus failus"
 
-#: deja-dup/main.vala:23
+#: deja-dup/main.vala:22
 msgid "Immediately start a backup"
 msgstr "Iš karto pradėti atsarginės kopijos darymą"
 
-#: deja-dup/main.vala:25
-msgid "Restore deleted files"
-msgstr "Atkurti ištrintus failus"
-
-#: deja-dup/main.vala:75 deja-dup/main.vala:90 deja-dup/main.vala:116
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
 msgstr ""
 
-#: deja-dup/main.vala:95
-msgid "No directory provided"
-msgstr "Nenurodytas katalogas"
-
-#: deja-dup/main.vala:99
-msgid "Only one directory can be shown at once"
-msgstr "Vienu metu gali būti rodomas tik vienas katalogas"
-
-#: deja-dup/main.vala:105
-msgid "Directory does not exist"
-msgstr ""
-
-#: deja-dup/main.vala:109
-msgid "You must provide a directory, not a file"
-msgstr "Jūs privalote pateikti katalogą, ne failą"
-
-#: deja-dup/main.vala:240
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "Suplanuotas atsarginės kopijos darymas uždelstas"
 
-#: deja-dup/main.vala:271
+#: deja-dup/main.vala:244
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1147,7 +1167,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:487
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:485
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s laikmenoje %2$s"
@@ -1157,11 +1177,11 @@ msgstr "%1$s laikmenoje %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr ""
 
-#: libdeja/BackendDrive.vala:170 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr ""
 
-#: libdeja/BackendDrive.vala:170
+#: libdeja/BackendDrive.vala:174
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Laukiama kol „%s“ bus prijungtas..."
@@ -1209,29 +1229,33 @@ msgid ""
 "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
-#: libdeja/CommonUtils.vala:460
+#: libdeja/CommonUtils.vala:458
 msgid "Access Granted"
 msgstr ""
 
-#: libdeja/CommonUtils.vala:461
+#: libdeja/CommonUtils.vala:459
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:538
+#: libdeja/CommonUtils.vala:536
 #, c-format
 msgid "Home (%s)"
 msgstr "Namai (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:543
+#: libdeja/CommonUtils.vala:541
 msgid "Home"
 msgstr "Namai"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:548
+#: libdeja/CommonUtils.vala:546
 msgid "Trash"
 msgstr "Šiukšlinė"
+
+#: libdeja/CommonUtils.vala:608
+msgid "Backup encryption password"
+msgstr "Atsarginės kopijos užšifravimo slaptažodis"
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1245,7 +1269,7 @@ msgstr "Ieškoma atsarginių kopijų..."
 msgid "Listing files…"
 msgstr "Gaunamas failų sąrašas..."
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:80
+#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
 #: libdeja/tools/duplicity/DuplicityJob.vala:395
 #: libdeja/tools/duplicity/DuplicityJob.vala:406
 #: libdeja/tools/duplicity/DuplicityJob.vala:442
@@ -1261,7 +1285,7 @@ msgstr "Tikrinama atsarginė kopija..."
 msgid "Restoring files…"
 msgstr "Atkuriami failai..."
 
-#: libdeja/OperationVerify.vala:81
+#: libdeja/OperationVerify.vala:80
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
@@ -1417,33 +1441,17 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 
-#: nautilus/NautilusExtension.c:157
-msgid "Restore Missing Files…"
-msgstr "Atkurti trūkstamus failus..."
+#~ msgid "Folder"
+#~ msgstr "Aplankas"
 
-#: nautilus/NautilusExtension.c:158
-msgid "Restore deleted files from backup"
-msgstr "Atkurti pašalintus failus iš atsarginės kopijos"
-
-#: nautilus/NautilusExtension.c:199
-msgid "Revert to Previous Version…"
-msgid_plural "Revert to Previous Versions…"
-msgstr[0] "Atkurti ankstesnę versiją..."
-msgstr[1] "Atkurti ankstesnes versijas..."
-msgstr[2] "Atkurti ankstesnes versijas..."
-
-#: nautilus/NautilusExtension.c:203
-msgid "Restore file from backup"
-msgid_plural "Restore files from backup"
-msgstr[0] "Atkurti failą iš atsarginės kopijos"
-msgstr[1] "Atkurti failus iš atsarginės kopijos"
-msgstr[2] "Atkurti failus iš atsarginės kopijos"
-
-#~ msgid "Overview"
-#~ msgstr "Apžvalga"
+#~ msgid "File"
+#~ msgstr "Failas"
 
 #~ msgid "Categories"
 #~ msgstr "Kategorijos"
+
+#~ msgid "You must provide a directory, not a file"
+#~ msgstr "Jūs privalote pateikti katalogą, ne failą"
 
 #~ msgctxt "verb"
 #~ msgid "_Keep"
@@ -1509,6 +1517,65 @@ msgstr[2] "Atkurti failus iš atsarginės kopijos"
 
 #~ msgid "This is your username for the Rackspace Cloud Files service."
 #~ msgstr "Tai yra jūsų „Rackspace Cloud Files“ paslaugos naudotojo vardas."
+
+#~ msgid "Restore Missing Files…"
+#~ msgstr "Atkurti trūkstamus failus..."
+
+#~ msgid "Restore deleted files from backup"
+#~ msgstr "Atkurti pašalintus failus iš atsarginės kopijos"
+
+#~ msgid "Revert to Previous Version…"
+#~ msgid_plural "Revert to Previous Versions…"
+#~ msgstr[0] "Atkurti ankstesnę versiją..."
+#~ msgstr[1] "Atkurti ankstesnes versijas..."
+#~ msgstr[2] "Atkurti ankstesnes versijas..."
+
+#~ msgid "Restore file from backup"
+#~ msgid_plural "Restore files from backup"
+#~ msgstr[0] "Atkurti failą iš atsarginės kopijos"
+#~ msgstr[1] "Atkurti failus iš atsarginės kopijos"
+#~ msgstr[2] "Atkurti failus iš atsarginės kopijos"
+
+#~ msgid "Last seen"
+#~ msgstr "Paskutinį kartą matytas"
+
+#~ msgid "Restore which Files?"
+#~ msgstr "Kuriuos failus atkurti?"
+
+#~ msgid "Scanning for files from up to a day ago…"
+#~ msgstr "Peržiūrimi iki dienos senumo failai..."
+
+#~ msgid "Scanning for files from up to a week ago…"
+#~ msgstr "Peržiūrimi iki savaitės senumo failai..."
+
+#~ msgid "Scanning for files from up to a month ago…"
+#~ msgstr "Peržiūrimi iki mėnesio senumo failai..."
+
+#, c-format
+#~ msgid "Scanning for files from about a month ago…"
+#~ msgid_plural "Scanning for files from about %d months ago…"
+#~ msgstr[0] "Peržiūrimi maždaug mėnesio senumo failai..."
+#~ msgstr[1] "Peržiūrimi maždaug %d mėnesių senumo failai..."
+#~ msgstr[2] "Peržiūrimi maždaug %d mėnesių senumo failai..."
+
+#, c-format
+#~ msgid "Scanning for files from about a year ago…"
+#~ msgid_plural "Scanning for files from about %d years ago…"
+#~ msgstr[0] "Peržiūrimi maždaug metų senumo failai..."
+#~ msgstr[1] "Peržiūrimi maždaug %d metų senumo failai..."
+#~ msgstr[2] "Peržiūrimi maždaug %d metų senumo failai..."
+
+#~ msgid "Scanning finished"
+#~ msgstr "Peržiūra baigta"
+
+#~ msgid "Restore deleted files"
+#~ msgstr "Atkurti ištrintus failus"
+
+#~ msgid "No directory provided"
+#~ msgstr "Nenurodytas katalogas"
+
+#~ msgid "Only one directory can be shown at once"
+#~ msgstr "Vienu metu gali būti rodomas tik vienas katalogas"
 
 #~ msgid "_Restore…"
 #~ msgstr "_Atkurti..."
