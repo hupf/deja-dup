@@ -213,6 +213,12 @@ public class FileStore : Gtk.ListStore
       themed_icon.append_name(text_icon + "-symbolic");
     }
 
+    // Add symbolic link emblem if appropriate
+    if (node.type == "sym") {
+      var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
+      gicon = new EmblemedIcon(gicon, emblem);
+    }
+
     // Get relative path to current node
     FileNode iter = node;
     string path = null;
