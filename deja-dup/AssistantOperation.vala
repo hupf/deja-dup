@@ -488,6 +488,7 @@ public abstract class AssistantOperation : Assistant
     page.row_spacing = 36;
     page.column_spacing = 6;
     page.border_width = 12;
+    page.halign = Gtk.Align.CENTER;
 
     var l = new Gtk.Label("");
     l.xalign = 0.0f;
@@ -690,23 +691,28 @@ public abstract class AssistantOperation : Assistant
       return;
     }
 
+    connect_operation(op);
     op.done.connect(apply_finished);
-    op.raise_error.connect((o, e, d) => {show_error(e, d);});
-    op.passphrase_required.connect(get_passphrase);
     op.action_desc_changed.connect(set_progress_label);
     op.action_file_changed.connect(set_progress_label_file);
     op.progress.connect(show_progress);
-    op.question.connect(show_question);
-#if HAS_PACKAGEKIT
-    op.install.connect(show_install);
-#endif
-    op.backend.mount_op = new MountOperationAssistant(this);
-    op.backend.pause_op.connect(pause_op);
-    op.backend.show_oauth_consent_page.connect(show_oauth_consent_page);
 
     ensure_status_icon(op);
 
     op.start.begin();
+  }
+
+  protected void connect_operation(DejaDup.Operation operation)
+  {
+    operation.raise_error.connect((o, e, d) => {show_error(e, d);});
+    operation.passphrase_required.connect(get_passphrase);
+    operation.question.connect(show_question);
+#if HAS_PACKAGEKIT
+    operation.install.connect(show_install);
+#endif
+    operation.backend.mount_op = new MountOperationAssistant(this);
+    operation.backend.pause_op.connect(pause_op);
+    operation.backend.show_oauth_consent_page.connect(show_oauth_consent_page);
   }
 
   protected virtual void do_prepare(Assistant assist, Gtk.Widget page)
