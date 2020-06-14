@@ -68,7 +68,6 @@ delay = 0
 script = ''
 passphrase = None
 tmp_archive = False
-as_root = False
 
 while len(lines) > curline and lines[curline].strip():
   tokens = lines[curline].split()
@@ -84,8 +83,6 @@ while len(lines) > curline and lines[curline].strip():
     passphrase = tokens[1] if len(tokens) > 1 else ''
   elif lines[curline].strip() == 'TMP_ARCHIVE':
     tmp_archive = True
-  elif lines[curline].strip() == 'AS_ROOT':
-    as_root = True
   curline += 1
 
 if tmp_archive:
@@ -100,10 +97,6 @@ if tmp_archive:
 
 if expected_args != sys.argv[1:]:
   print("TESTFAIL: expected\n%s\nvs\n%s" % (expected_args, sys.argv[1:]), file=logfd)
-  sys.exit(-1)
-
-if (os.environ.get('DEJA_DUP_TEST_AS_ROOT') == '1') != as_root:
-  print("TESTFAIL: expected AS_ROOT=%d, but got %s" % (as_root, os.environ.get('DEJA_DUP_TEST_AS_ROOT')), file=logfd)
   sys.exit(-1)
 
 if passphrase != os.environ.get('PASSPHRASE'):

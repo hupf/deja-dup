@@ -97,10 +97,11 @@ class BackupTest(BaseTest):
 
         self.randomize_srcdir()
         app = self.cmd('--backup')
-        window = app.window('Back Up')
         if initial:
+            window = app.window('Back Up')
             self.walk_initial_backup(app, password='t', wait=False)
         else:
+            window = app.window('Backing Up…')
             self.walk_incremental_backup(app, password='t', wait=False)
         def mid_progress():
             bar = window.findChild(
@@ -114,7 +115,7 @@ class BackupTest(BaseTest):
             self.wait_for(lambda: window.dead)
 
         app = self.cmd('--backup')
-        window = app.window('Back Up')
+        window = app.window('Backing Up…')
         self.walk_incremental_backup(app, password='nope', wait=False)
         self.walk_incremental_backup(app, password='t', wait=False)
         self.did_resume = False

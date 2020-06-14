@@ -274,20 +274,20 @@ public class DejaDupApp : Gtk.Application
     if (operation != null) {
       op_show();
     } else {
-      restore_full(null);
+      restore_full();
     }
   }
 
-  public void restore_files(List<File> file_list, string? when = null)
+  public void restore_files(List<File> file_list, string? when = null, DejaDup.FileTree? tree = null)
   {
     if (operation != null) {
       op_show();
     } else {
-      restore_full(file_list, when);
+      restore_full(file_list, when, tree);
     }
   }
 
-  void restore_full(List<File>? file_list, string? when = null)
+  void restore_full(List<File>? file_list = null, string? when = null, DejaDup.FileTree? tree = null)
   {
     assign_op(new AssistantRestore.with_files(file_list, when));
   }

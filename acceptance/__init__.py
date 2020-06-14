@@ -143,7 +143,7 @@ class BaseTest(unittest.TestCase):
         window.button('Forward').click()  # storage location
 
         # window might have closed if auto-launched, so regrab it
-        window = app.window('Back Up')
+        window = app.window('Require Password?')
         if password:
             window.child(roleName='text', label='Encryption password').text = password
             window.child(roleName='text', label='Confirm password').text = password
@@ -161,7 +161,7 @@ class BaseTest(unittest.TestCase):
             window.button('Close').click()
 
     def walk_incremental_backup(self, app, password=None, wait=True):
-        window = app.window('Back Up')
+        window = app.window('Backing Up…')
 
         if password:
             window.child(roleName='text', label='Encryption password').text = password

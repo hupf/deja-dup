@@ -15,6 +15,7 @@ libdeja = shared_library('deja',
      'BackendWatcher.vala',
      'CommonUtils.vala',
      'DirHandling.vala',
+     'FileTree.vala',
      'FilteredSettings.vala',
      'Network.vala',
      'Operation.vala',
@@ -46,11 +47,5 @@ libdeja = shared_library('deja',
     install_dir: pkglibdir)
 
 libdeja_inc = include_directories('.')
-
-# This is used when running duplicity as root.
-# See data/org.gnome.DejaDup.policy.in and DuplicityInstance.vala for more details.
-install_data('tools/duplicity/duplicity',
-    install_dir: pkglibexecdir,
-    install_mode: 'rwxr-xr-x')
 
 subdir('tests')

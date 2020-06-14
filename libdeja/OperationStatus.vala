@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public class OperationStatus : Operation
+public class DejaDup.OperationStatus : Operation
 {
   public signal void collection_dates(List<string>? dates);
 
@@ -22,6 +20,3 @@ public class OperationStatus : Operation
     base.connect_to_job();
   }
 }
-
-} // end namespace
-

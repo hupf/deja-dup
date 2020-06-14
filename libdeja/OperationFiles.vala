@@ -6,12 +6,13 @@
 
 using GLib;
 
-namespace DejaDup {
-public class OperationFiles : Operation {
-  public signal void listed_current_files(string date, string file, string type);
+public class DejaDup.OperationFiles : Operation
+{
+  public signal void listed_current_files(FileTree tree);
   public File? source {get; construct;}
 
   private DateTime time = null;
+  private FileTree tree = null;
 
   public OperationFiles(Backend backend,
                         DateTime? time_in = null,
@@ -21,6 +22,10 @@ public class OperationFiles : Operation {
         time = time_in;
   }
 
+  construct {
+    tree = new FileTree();
+  }
+
   public DateTime get_time()
   {
     return time;
@@ -28,8 +33,22 @@ public class OperationFiles : Operation {
 
   protected override void connect_to_job()
   {
-    job.listed_current_files.connect((d, date, file, type) => {listed_current_files(date, file, type);});
+    job.listed_current_files.connect(handle_list_file);
     base.connect_to_job();
+  }
+
+  void handle_list_file(ToolJob job, string date, string file, string type)
+  {
+    tree.add(file, type);
+  }
+
+  internal async override void operation_finished(bool success, bool cancelled, string? detail)
+  {
+    if (success && !cancelled) {
+      tree.finish();
+      listed_current_files(tree);
+    }
+    yield base.operation_finished(success, cancelled, detail);
   }
 
   protected override List<string>? make_argv()
@@ -41,5 +60,4 @@ public class OperationFiles : Operation {
     job.local = source;
     return null;
   }
-}
 }

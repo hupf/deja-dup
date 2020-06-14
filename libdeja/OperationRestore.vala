@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public class OperationRestore : Operation
+public class DejaDup.OperationRestore : Operation
 {
   public string dest {get; construct;} // Directory user wants to put files in
   public string time {get; construct;} // Date user wants to restore to
@@ -52,6 +50,3 @@ public class OperationRestore : Operation
     yield base.operation_finished(success, cancelled, detail);
   }
 }
-
-} // end namespace
-

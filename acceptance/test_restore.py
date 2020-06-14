@@ -45,7 +45,7 @@ class RestoreTest(BaseTest):
         self.wait_for(lambda: window.dead, timeout=60)
 
     def walk_restore(self, app, password=None, error=False):
-        window = app.window('Restore')
+        window = app.window('Restore From Where?')
 
         shutil.rmtree(self.srcdir)
 

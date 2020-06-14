@@ -11,6 +11,7 @@ public class AssistantRestore : AssistantOperation
 {
   public string restore_location {get; protected set; default = "/";}
   public string when {get; protected set; default = null;}
+  public DejaDup.FileTree tree {get; protected set; default = null;}
 
   protected List<File> _restore_files;
   public List<File> restore_files {
@@ -22,17 +23,21 @@ public class AssistantRestore : AssistantOperation
     }
   }
 
-  public AssistantRestore.with_files(List<File> files, string? when = null)
+  public AssistantRestore.with_files(List<File> files, string? when = null,
+                                     DejaDup.FileTree? tree = null)
   {
     // This puts the restore dialog into 'known file mode', where it only
     // restores the listed files, not the whole backup
-    Object(restore_files: files, when: when);
+    Object(restore_files: files, when: when, tree: tree);
   }
 
-  protected DejaDup.OperationStatus query_op;
+  protected DejaDup.OperationFiles files_op;
+  protected DejaDup.OperationStatus status_op;
   protected DejaDup.Operation.State op_state;
-  Gtk.ProgressBar query_progress_bar;
-  uint query_timeout_id;
+  Gtk.ProgressBar files_progress_bar;
+  uint files_timeout_id;
+  Gtk.ProgressBar status_progress_bar;
+  uint status_timeout_id;
   Gtk.ComboBoxText date_combo;
   Gtk.ListStore date_store;
   Gtk.Box cust_box;
@@ -48,9 +53,12 @@ public class AssistantRestore : AssistantOperation
   Gtk.Label confirm_date;
   Gtk.Label confirm_files_label;
   Gtk.Grid confirm_files;
-  Gtk.Widget query_progress_page;
+  Gtk.Widget status_progress_page;
   Gtk.Widget date_page;
   Gtk.Widget restore_dest_page;
+  Gtk.Grid bad_files_grid;
+  Gtk.Label bad_files_label;
+  Gtk.Widget files_progress_page;
   bool got_dates;
   bool show_confirm_page = true;
   construct
@@ -65,18 +73,22 @@ public class AssistantRestore : AssistantOperation
   protected override void add_setup_pages()
   {
     if (when == null) {
-      add_query_backend_page();
+      add_status_query_page();
       add_date_page();
     } else {
       // if we have a date, we only show one page before the confirm, so there
       // is very little to confirm, not worth it.
       show_confirm_page = false;
     }
+    if (tree == null)
+      add_files_query_page();
     add_restore_dest_page();
   }
 
   void ensure_config_location()
   {
+    realize();
+
     if (config_location == null) {
       var builder = new Builder("preferences");
       location_grid = new ConfigLocationGrid(builder, true);
@@ -107,13 +119,13 @@ public class AssistantRestore : AssistantOperation
     }
   }
 
-  Gtk.Widget make_query_backend_page()
+  Gtk.Widget make_status_query_page()
   {
-    query_progress_bar = new Gtk.ProgressBar();
+    status_progress_bar = new Gtk.ProgressBar();
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.border_width = 12;
-    page.add(query_progress_bar);
+    page.add(status_progress_bar);
 
     return page;
   }
@@ -140,6 +152,33 @@ public class AssistantRestore : AssistantOperation
     return page;
   }
 
+  void restore_location_updated()
+  {
+    allow_forward(restore_location != null);
+
+    bad_files_grid.visible = false;
+    if (restore_location == null || tree == null)
+      return;
+
+    bool all_bad;
+    var bad_files = RestoreFileTester.get_bad_paths(restore_location, tree, out all_bad, restore_files);
+    if (bad_files.length() > 0) {
+      string label = null;
+      bad_files.sort(strcmp);
+      bad_files.@foreach((file) => {
+        if (label == null)
+          label = file;
+        else
+          label += "\n" + file;
+      });
+      bad_files_label.label = label;
+      bad_files_grid.visible = true;
+
+      if (restore_files != null || all_bad)
+        allow_forward(false); // on basis that they really want these specific files
+    }
+  }
+
   Gtk.Widget make_restore_dest_page()
   {
     var orig_radio = new Gtk.RadioButton(null);
@@ -148,7 +187,7 @@ public class AssistantRestore : AssistantOperation
     orig_radio.toggled.connect((r) => {
       if (r.active) {
         restore_location = "/";
-        allow_forward(true);
+        restore_location_updated();
       }
     });
 
@@ -159,7 +198,7 @@ public class AssistantRestore : AssistantOperation
     cust_radio.toggled.connect((r) => {
       if (r.active) {
         restore_location = cust_button.get_filename();
-        allow_forward(restore_location != null);
+        restore_location_updated();
       }
       cust_box.sensitive = r.active;
     });
@@ -167,9 +206,10 @@ public class AssistantRestore : AssistantOperation
     cust_button =
       new Gtk.FileChooserButton(_("Choose destination for restored files"),
                                 Gtk.FileChooserAction.SELECT_FOLDER);
-    cust_button.selection_changed.connect((b) => {
+    cust_button.local_only = true;
+    cust_button.file_set.connect((b) => {
       restore_location = b.get_filename();
-      allow_forward(restore_location != null);
+      restore_location_updated();
     });
 
     var cust_label = new Gtk.Label("    " + _("Restore _folder"));
@@ -182,11 +222,54 @@ public class AssistantRestore : AssistantOperation
     cust_box.add(cust_label);
     cust_box.add(cust_button);
 
+    var bad_icon = new Gtk.Image.from_icon_name("dialog-warning", Gtk.IconSize.LARGE_TOOLBAR);
+    bad_icon.valign = Gtk.Align.START;
+
+    var bad_header = new Gtk.Label(_("Backups does not have permission to restore the following files:"));
+    bad_header.xalign = 0;
+    bad_header.yalign = 0;
+    bad_header.valign = Gtk.Align.START;
+    bad_header.hexpand = true;
+    bad_header.wrap = true;
+    bad_header.wrap_mode = Pango.WrapMode.WORD;
+
+    bad_files_label = new Gtk.Label("");
+    bad_files_label.xalign = 0;
+    bad_files_label.yalign = 0;
+    bad_files_label.valign = Gtk.Align.START;
+    bad_files_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+
+    bad_files_grid = new Gtk.Grid();
+    bad_files_grid.margin_top = 12;
+    bad_files_grid.column_spacing = 6;
+    bad_files_grid.row_spacing = 6;
+    bad_files_grid.hexpand = true;
+    bad_files_grid.attach(bad_icon, 0, 0);
+    bad_files_grid.attach(bad_header, 1, 0);
+    bad_files_grid.attach(bad_files_label, 0, 1, 2, 1);
+
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
     page.border_width = 12;
+    page.width_request = 450; // it's a long title, give space for it in header
     page.add(orig_radio);
     page.add(cust_radio);
     page.add(cust_box);
+    page.add(bad_files_grid);
+
+    var scroll = new Gtk.ScrolledWindow(null, null);
+    scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
+    scroll.add(page);
+
+    return scroll;
+  }
+
+  Gtk.Widget make_files_query_page()
+  {
+    files_progress_bar = new Gtk.ProgressBar();
+
+    var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
+    page.border_width = 12;
+    page.add(files_progress_bar);
 
     return page;
   }
@@ -251,12 +334,12 @@ public class AssistantRestore : AssistantOperation
     return page;
   }
 
-  void add_query_backend_page()
+  void add_status_query_page()
   {
-    var page = make_query_backend_page();
+    var page = make_status_query_page();
     append_page(page, Type.PROGRESS);
     set_page_title(page, _("Checking for Backups…"));
-    query_progress_page = page;
+    status_progress_page = page;
   }
 
   void add_date_page()
@@ -278,6 +361,12 @@ public class AssistantRestore : AssistantOperation
     restore_dest_page = page;
   }
 
+  void add_files_query_page()
+  {
+    files_progress_page = make_files_query_page();
+    append_page(files_progress_page, Type.PROGRESS);
+  }
+
   protected override DejaDup.Operation? create_op()
   {
     string date = null;
@@ -289,19 +378,10 @@ public class AssistantRestore : AssistantOperation
         date_store.get(iter, 1, out date);
     }
 
-    realize();
-
-    // Convert any specified files to a de-symlink-ified version, in case the
-    // user is sitting inside a symlinked folder.
-    var resolved_files = new GLib.List<File>();
-    foreach (File f in restore_files) {
-      resolved_files.append(DejaDup.try_realfile(f));
-    }
-
     ensure_config_location();
     var rest_op = new DejaDup.OperationRestore(location_grid.get_backend(),
                                                restore_location, date,
-                                               resolved_files);
+                                               restore_files);
     if (this.op_state != null)
       rest_op.set_state(this.op_state);
 
@@ -325,10 +405,10 @@ public class AssistantRestore : AssistantOperation
       show_error(_("No backups to restore"), null);
   }
 
-  protected virtual void query_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
+  protected virtual void status_op_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     this.op_state = op.get_state();
-    this.query_op = null;
+    this.status_op = null;
     this.op = null;
 
     if (cancelled)
@@ -337,23 +417,59 @@ public class AssistantRestore : AssistantOperation
       go_forward();
   }
 
-  bool query_pulse()
+  bool status_pulse()
   {
-    query_progress_bar.pulse();
+    status_progress_bar.pulse();
     return true;
   }
 
-  protected async void do_query()
+  protected async void do_status_query()
   {
-    realize();
-
     ensure_config_location();
-    query_op = new DejaDup.OperationStatus(location_grid.get_backend());
-    op = query_op;
+    status_op = new DejaDup.OperationStatus(location_grid.get_backend());
+    op = status_op;
 
-    connect_operation(query_op);
-    query_op.done.connect(query_finished);
-    query_op.collection_dates.connect(handle_collection_dates);
+    connect_operation(status_op);
+    status_op.done.connect(status_op_finished);
+    status_op.collection_dates.connect(handle_collection_dates);
+
+    yield op.start();
+  }
+
+  void handle_listed_current_files(DejaDup.OperationFiles op, DejaDup.FileTree tree)
+  {
+    this.tree = tree;
+  }
+
+  protected virtual void files_op_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
+  {
+    this.op_state = op.get_state();
+    this.files_op = null;
+    this.op = null;
+
+    if (cancelled)
+      do_close();
+    else if (success)
+      go_forward();
+  }
+
+  bool files_pulse()
+  {
+    files_progress_bar.pulse();
+    return true;
+  }
+
+  protected async void do_files_query()
+  {
+    ensure_config_location();
+    files_op = new DejaDup.OperationFiles(location_grid.get_backend());
+    if (this.op_state != null)
+      files_op.set_state(this.op_state);
+    op = files_op;
+
+    connect_operation(files_op);
+    files_op.done.connect(files_op_finished);
+    files_op.listed_current_files.connect(handle_listed_current_files);
 
     yield op.start();
   }
@@ -361,11 +477,7 @@ public class AssistantRestore : AssistantOperation
   protected override void do_prepare(Assistant assist, Gtk.Widget page)
   {
     base.do_prepare(assist, page);
-
-    if (query_timeout_id > 0) {
-      Source.remove(query_timeout_id);
-      query_timeout_id = 0;
-    }
+    stop_timers();
 
     if (page == date_page) {
       // Hmm, we never got a date from querying the backend, but we also
@@ -448,29 +560,60 @@ public class AssistantRestore : AssistantOperation
     else if (page == progress_page) {
       set_page_title(page, _("Restoring…"));
     }
-    else if (page == query_progress_page) {
+    else if (page == status_progress_page) {
       if (last_op_was_back)
         skip();
       else {
-        query_progress_bar.fraction = 0;
-        query_timeout_id = Timeout.add(250, query_pulse);
-        if (query_op != null && query_op.needs_password) {
+        status_progress_bar.fraction = 0;
+        status_timeout_id = Timeout.add(250, status_pulse);
+        if (status_op != null && status_op.needs_password) {
           // Operation is waiting for password
           provide_password.begin();
         }
-        else if (query_op == null)
-          do_query.begin();
+        else if (status_op == null)
+          do_status_query.begin();
       }
+    }
+    else if (page == files_progress_page) {
+      if (last_op_was_back)
+        skip();
+      else {
+        files_progress_bar.fraction = 0;
+        files_timeout_id = Timeout.add(250, files_pulse);
+        if (files_op != null && files_op.needs_password) {
+          // Operation is waiting for password
+          provide_password.begin();
+        }
+        else if (files_op == null)
+          do_files_query.begin();
+      }
+    }
+  }
+
+  protected override void set_buttons()
+  {
+    base.set_buttons();
+
+    if (current.data.page == restore_dest_page) {
+      restore_location_updated();
     }
   }
 
   protected override void do_close()
   {
-    if (query_timeout_id > 0) {
-      Source.remove(query_timeout_id);
-      query_timeout_id = 0;
-    }
-
+    stop_timers();
     base.do_close();
+  }
+
+  void stop_timers()
+  {
+    if (status_timeout_id > 0) {
+      Source.remove(status_timeout_id);
+      status_timeout_id = 0;
+    }
+    if (files_timeout_id > 0) {
+      Source.remove(files_timeout_id);
+      files_timeout_id = 0;
+    }
   }
 }

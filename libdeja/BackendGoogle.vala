@@ -71,7 +71,7 @@ public class BackendGoogle : Backend
     return yield Network.get().can_reach("https://%s/".printf(GOOGLE_SERVER));
   }
 
-  public override string get_location(ref bool as_root)
+  public override string get_location()
   {
     var folder = get_folder_key(settings, GOOGLE_FOLDER_KEY);
 

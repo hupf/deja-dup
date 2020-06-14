@@ -25,7 +25,7 @@ public abstract class Backend : Object
   public abstract bool is_native(); // must be callable when nothing is mounted, nothing is prepared
   public virtual Icon? get_icon() {return null;}
 
-  public abstract string get_location(ref bool as_root); // URI for duplicity
+  public abstract string get_location(); // URI for duplicity
   public abstract string get_location_pretty(); // short description for user
 
   // list of what-provides hints

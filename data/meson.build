@@ -71,11 +71,6 @@ deja_dup_appdata = custom_target('org.gnome.DejaDup.appdata.xml',
 test('validate-appstream', appstream_util,
     args: ['--nonet', 'validate-relax', deja_dup_appdata.full_path()])
 
-configure_file(input: 'org.gnome.DejaDup.policy.in',
-    output: '@0@.policy'.format(application_id),
-    configuration: conf_data,
-    install_dir: join_paths(datadir, 'polkit-1', 'actions'))
-
 resources_xml = configure_file(input: 'resources.xml',
     output: 'resources.vars.xml',
     configuration: conf_data)

@@ -216,7 +216,7 @@ public abstract class Assistant : Gtk.Window
     // Listeners of prepare may have changed current on us, so only proceed
     // if they haven't.
     if (current.data.page == info.page) {
-      if (first_shown == null)
+      if (first_shown == null && info.type != Type.PROGRESS)
         first_shown = current;
 
       use_title(info);
@@ -257,7 +257,7 @@ public abstract class Assistant : Gtk.Window
     button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
   }
 
-  void set_buttons()
+  protected virtual void set_buttons()
   {
     return_if_fail(current != null);
 

@@ -39,7 +39,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   List<string> saved_envp;
   bool is_full_backup = false;
   bool cleaned_up_once = false;
-  bool needs_root = false;
   bool detected_encryption = false;
   bool existing_encrypted = false;
 
@@ -56,7 +55,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   static File slash_home_me;
 
   bool has_checked_contents = false;
-  bool has_non_home_contents = false;
   List<File> homes = new List<File>();
 
   List<File> local_error_files = null;
@@ -193,7 +191,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     if (backend_override == null)
       backend_override = backend;
-    return backend_override.get_location(ref needs_root);
+    return backend_override.get_location();
   }
 
   void expand_links_in_file(File file, ref List<File> all, bool include, List<File>? seen = null)
@@ -314,8 +312,6 @@ internal class DuplicityJob : DejaDup.ToolJob
         }
       }
       saved_argv.append("--include=" + escape_duplicity_path(i.get_path()));
-      //if (!i.has_prefix(slash_home_me))
-      //  needs_root = true;
     }
     foreach (File e in excludes) {
       saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
@@ -451,9 +447,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         // Only want to bother doing anything if one.  If one, we rename it's
         // home dir to the current user's home dir (i.e. they backed up on one
         // machine as 'alice' and restored on a machine as 'bob').
-        if (homes.length() > 1)
-          has_non_home_contents = true;
-        else if (homes.length() == 1) {
+        if (homes.length() == 1) {
           var old_home = homes.data;
           var new_home = slash_home_me;
           if (!old_home.equal(new_home)) {
@@ -476,10 +470,6 @@ internal class DuplicityJob : DejaDup.ToolJob
             return false;
           }
 
-          if (!local_file.has_prefix(slash_home_me) &&
-              !local_file.get_path().has_prefix(Environment.get_tmp_dir()))
-            needs_root = true;
-
           try {
             // won't have correct permissions...
             local_file.make_directory_with_parents(null);
@@ -495,10 +485,6 @@ internal class DuplicityJob : DejaDup.ToolJob
 
           var rel_file_path = slash.get_relative_path(restore_files.data);
           extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
-        }
-        else {
-          if (has_non_home_contents && !this.local.has_prefix(slash_home_me))
-            needs_root = true;
         }
 
         progress(0f);
@@ -1181,11 +1167,6 @@ internal class DuplicityJob : DejaDup.ToolJob
       if (gfile.equal(slash_root) ||
           (gfile.get_parent() != null && gfile.get_parent().equal(slash_home)))
         homes.append(gfile);
-      if (!has_non_home_contents &&
-          !gfile.equal(slash) &&
-          !gfile.equal(slash_home) &&
-          !gfile.has_prefix(slash_home))
-        has_non_home_contents = true;
     }
     listed_current_files(date, file, type);
   }
@@ -1482,6 +1463,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
 
     /* Start duplicity instance */
-    inst.start.begin(argv, envp, needs_root);
+    inst.start.begin(argv, envp);
   }
 }

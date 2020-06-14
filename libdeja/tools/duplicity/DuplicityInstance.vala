@@ -17,8 +17,7 @@ internal class DuplicityInstance : Object
   public bool verbose {get; private set; default = false;}
   public string forced_cache_dir {get; set; default = null;}
 
-  public async void start(List<string> argv_in, List<string>? envp_in,
-                          bool as_root = false)
+  public async void start(List<string> argv_in, List<string>? envp_in)
   {
     try {
       /* Make deep copies of the lists, so if our caller doesn't yield, the
@@ -29,7 +28,7 @@ internal class DuplicityInstance : Object
       var envp = new List<string>();
       foreach (var env in envp_in)
         envp.append(env);
-      if (!yield start_internal(argv, envp, as_root))
+      if (!yield start_internal(argv, envp))
         done(false, false);
     }
     catch (Error e) {
@@ -39,18 +38,11 @@ internal class DuplicityInstance : Object
     }
   }
 
-  async bool start_internal(List<string> argv_in, List<string>? envp_in,
-                            bool as_root) throws Error
+  async bool start_internal(List<string> argv_in, List<string>? envp_in) throws Error
   {
     var verbose_str = Environment.get_variable("DEJA_DUP_DEBUG");
     if (verbose_str != null && int.parse(verbose_str) > 0)
       verbose = true;
-
-    if (as_root) {
-      var settings = DejaDup.get_settings();
-      if (!settings.get_boolean(DejaDup.ROOT_PROMPT_KEY))
-        as_root = false;
-    }
 
     // Copy current environment, add custom variables
     var myenv = Environment.list_variables();
@@ -105,38 +97,13 @@ internal class DuplicityInstance : Object
         user_cmd = "%s %s".printf(user_cmd, Shell.quote(a));
     }
 
+    // Open pipes to communicate with subprocess
+    if (Posix.pipe(pipes) != 0)
+      return false;
+
     // Add logging argument (after building user-visible command above, as we
     // don't want users to try to use --log-fd on console and get errors)
-    if (as_root) {
-      // Make log file
-      logfile = File.new_tmp(Config.PACKAGE + "-XXXXXX", out logstream);
-      argv.append("--log-file=%s".printf(logfile.get_path()));
-    }
-    else {
-      // Open pipes to communicate with subprocess
-      if (Posix.pipe(pipes) != 0)
-        return false;
-
-      argv.append("--log-fd=%d".printf(pipes[1]));
-    }
-
-    // Run as root if needed
-    if (as_root &&
-        Environment.find_program_in_path("pkexec") != null) {
-      // Set environment variables for subprocess here because pkexec reserves
-      // the right to strip them.
-      StringBuilder args = new StringBuilder();
-      foreach (string env in envp_in)
-        args.append("%s\n".printf(env));
-
-      IOStream iostream;
-      scriptfile = File.new_tmp(Config.PACKAGE + "-XXXXXX", out iostream);
-      yield iostream.get_output_stream().write_all_async(args.data, Priority.DEFAULT, null, null);
-
-      argv.prepend(scriptfile.get_path());
-      argv.prepend(Path.build_filename(Config.PKG_LIBEXEC_DIR, "duplicity"));
-      argv.prepend("pkexec");
-    }
+    argv.append("--log-fd=%d".printf(pipes[1]));
 
     string[] real_argv = new string[argv.length()];
     i = 0;
@@ -201,9 +168,7 @@ internal class DuplicityInstance : Object
   Pid child_pid;
   int[] pipes;
   DataInputStream reader;
-  File logfile;
   IOStream logstream;
-  File scriptfile;
   bool process_done;
   int status;
   bool processed_a_message;
@@ -221,12 +186,6 @@ internal class DuplicityInstance : Object
       debug("duplicity (%i) process killed\n", (int)child_pid);
       kill_child();
     }
-
-    try {
-      if (scriptfile != null)
-        scriptfile.delete(null);
-    }
-    catch (Error e) {warning("%s\n", e.message);}
   }
 
   void kill_child() {
@@ -283,13 +242,6 @@ internal class DuplicityInstance : Object
     }
 
     reader = null;
-    if (logfile != null) {
-      try {
-        logfile.delete(null);
-      }
-      catch (Error e2) {warning("%s\n", e2.message);}
-    }
-
     unref();
   }
 
@@ -539,11 +491,6 @@ internal class DuplicityInstance : Object
   {
     bool success = Process.if_exited(status) && Process.exit_status(status) == 0;
     bool cancelled = !Process.if_exited(status);
-
-    if (Process.if_exited(status) && !processed_a_message &&
-        (Process.exit_status(status) == 126 || // pkexec returns 126 on cancel
-         Process.exit_status(status) == 127))  // and 127 on bad password
-      cancelled = true;
 
     if (Process.if_exited(status))
       exited(Process.exit_status(status));

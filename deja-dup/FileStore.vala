@@ -8,6 +8,7 @@ using GLib;
 
 public class FileStore : Gtk.ListStore
 {
+  public DejaDup.FileTree tree {get; private set; default = null;}
   public bool can_go_up {get; private set; default = false;}
   public string search_filter {get; set; default = null;}
 
@@ -18,17 +19,16 @@ public class FileStore : Gtk.ListStore
     SORT_KEY,
     ICON, // never set, but left blank as an aid to Browser, which does some iconview tricks
     GICON,
-    MODIFIED,
     PATH,
   }
 
   public void register_operation(DejaDup.OperationFiles op)
   {
-    root = new FileNode(null, "", "dir", null);
-    set_current(root);
+    current = null;
+    tree = null;
+    clear();
 
     op.listed_current_files.connect(handle_listed_files);
-    op.done.connect(handle_done);
   }
 
   public bool go_down(Gtk.TreePath path)
@@ -41,7 +41,7 @@ public class FileStore : Gtk.ListStore
     @get(iter, Column.FILENAME, out filename);
 
     var child = current.children.lookup(filename);
-    if (child == null || child.type != "dir")
+    if (child == null || child.kind != "dir")
       return false;
 
     set_current(child);
@@ -64,30 +64,11 @@ public class FileStore : Gtk.ListStore
 
   ////
 
-  class FileNode {
-    public weak FileNode parent;
-    public string filename;
-    public string type;
-    public DateTime modified;
-    public HashTable<string, FileNode> children;
-    public string[] search_tokens;
-
-    public FileNode(FileNode? parent_in, string filename_in, string type_in, DateTime? modified_in) {
-      filename = filename_in;
-      parent = parent_in;
-      type = type_in;
-      modified = modified_in;
-      children = new HashTable<string, FileNode>(str_hash, str_equal);
-    }
-  }
-
-  FileNode root;
-  FileNode current;
-  string skipped_root = null;
+  DejaDup.FileTree.Node current;
 
   construct {
     set_column_types({typeof(string), typeof(string), typeof(Gdk.Pixbuf),
-                      typeof(Icon), typeof(DateTime), typeof(string)});
+                      typeof(Icon), typeof(string)});
 
     set_sort_column_id(Column.FILENAME, Gtk.SortType.ASCENDING);
     set_sort_func(Column.FILENAME, (m, a, b) => {
@@ -110,24 +91,9 @@ public class FileStore : Gtk.ListStore
     @get(iter, Column.FILENAME, out filename, Column.PATH, out rel_path);
 
     if (rel_path == null)
-      return Path.build_filename(get_full_path_from_node(current), filename);
+      return Path.build_filename(tree.node_to_path(current), filename);
     else
-      return Path.build_filename(get_full_path_from_node(current), rel_path, filename);
-  }
-
-  string get_full_path_from_node(FileNode node)
-  {
-    string filename = node.filename;
-    FileNode iter = node.parent;
-    while (iter != null && iter.parent != null) {
-      filename = Path.build_filename(iter.filename, filename);
-      iter = iter.parent;
-    }
-
-    if (skipped_root == null)
-      return filename;
-    else
-      return Path.build_filename(skipped_root, filename);
+      return Path.build_filename(tree.node_to_path(current), rel_path, filename);
   }
 
   void update_search()
@@ -143,7 +109,7 @@ public class FileStore : Gtk.ListStore
     recursive_search(needle_tokens, current);
   }
 
-  void recursive_search(string[] needle_tokens, FileNode node)
+  void recursive_search(string[] needle_tokens, DejaDup.FileTree.Node node)
   {
     node.children.for_each((name, child) => {
       // Calculate and cache search tokens if we haven't done that yet
@@ -180,25 +146,25 @@ public class FileStore : Gtk.ListStore
     });
   }
 
-  void set_current(FileNode node)
+  void set_current(DejaDup.FileTree.Node node)
   {
     clear();
     current = node;
-    can_go_up = current != root;
+    can_go_up = current != tree.root;
     current.children.for_each((name, child) => {
       insert_file(child);
     });
   }
 
-  string collate_key(FileNode node) {
-    var prefix = node.type == "dir" ? "0:" : "1:";
+  string collate_key(DejaDup.FileTree.Node node) {
+    var prefix = node.kind == "dir" ? "0:" : "1:";
     var key = node.filename.collate_key_for_filename();
     return prefix + key;
   }
 
-  void insert_file(FileNode node)
+  void insert_file(DejaDup.FileTree.Node node)
   {
-    var content_type = node.type == "dir" ? ContentType.from_mime_type("inode/directory")
+    var content_type = node.kind == "dir" ? ContentType.from_mime_type("inode/directory")
                                           : ContentType.guess(node.filename, null, null);
     var gicon = ContentType.get_icon(content_type);
 
@@ -214,13 +180,13 @@ public class FileStore : Gtk.ListStore
     }
 
     // Add symbolic link emblem if appropriate
-    if (node.type == "sym") {
+    if (node.kind == "sym") {
       var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
       gicon = new EmblemedIcon(gicon, emblem);
     }
 
     // Get relative path to current node
-    FileNode iter = node;
+    DejaDup.FileTree.Node iter = node;
     string path = null;
     while (iter.parent != current) {
       if (path == null)
@@ -234,77 +200,12 @@ public class FileStore : Gtk.ListStore
                        Column.FILENAME, node.filename,
                        Column.SORT_KEY, collate_key(node),
                        Column.GICON, gicon,
-                       Column.MODIFIED, node.modified,
                        Column.PATH, path);
   }
 
-  void handle_listed_files(DejaDup.OperationFiles op, string date, string file, string type)
+  void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree)
   {
-    var parts = file.split("/");
-    var iter = root;
-    var parent = iter;
-    var datetime = new DateTime.from_iso8601(date, new TimeZone.utc());
-
-    for (int i = 0; i < parts.length; i++) {
-      parent = iter;
-      iter = parent.children.lookup(parts[i]);
-      if (iter == null) {
-        var part_type = (i == parts.length - 1) ? type : "dir";
-        iter = new FileNode(parent, parts[i], part_type, datetime);
-        parent.children.insert(parts[i], iter);
-      }
-    }
-  }
-
-  void clear_metadir()
-  {
-    // parse metadir path
-    var part_iter = DejaDup.get_metadir();
-    List<string> parts = null;
-    while (part_iter.has_parent(null)) {
-      parts.prepend(part_iter.get_basename());
-      part_iter = part_iter.get_parent();
-    }
-
-    // find the metadir node
-    var metadir_node = root;
-    foreach (var part in parts) {
-      metadir_node = metadir_node.children.lookup(part);
-      if (metadir_node == null)
-        return;
-    }
-
-    // now delete the first (metadir) node, then all parents that are empty
-    var node_iter = metadir_node;
-    while (node_iter.parent != null) {
-      var parent = node_iter.parent;
-      parent.children.remove(node_iter.filename);
-      if (parent.children.length > 0)
-        break;
-      node_iter = parent;
-    }
-  }
-
-  void handle_done(DejaDup.Operation op, bool success, bool cancelled, string? detail)
-  {
-    if (!success || cancelled)
-      return;
-
-    // Ignore our cache metadata file (and any empty parents) -- user shouldn't
-    // need to know they exist.
-    clear_metadir();
-
-    // Set root based on first folder with more than one child
-    while (root.children.length == 1) {
-      var child = root.children.get_values().data;
-      if (child.type != "dir")
-        break;
-      root = child;
-    }
-    if (root.parent != null)
-      skipped_root = get_full_path_from_node(root.parent);
-    root.parent = null;
-
-    set_current(root);
+    this.tree = tree;
+    set_current(tree.root);
   }
 }

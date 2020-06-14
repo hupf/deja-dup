@@ -112,15 +112,9 @@ public enum Mode {
   LIST,
 }
 
-string make_fd_arg(bool as_root)
-{
-  return as_root ? "--log-file=?" : "--log-fd=?";
-}
-
 string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = false,
                     string extra = "", string include_args = "", string exclude_args = "",
-                    bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null,
-                    bool as_root = false)
+                    bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null)
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
@@ -134,8 +128,8 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
   var tempdir = Path.build_filename(test_home, "tmp");
   var archive = tmp_archive ? "%s/duplicity-?".printf(tempdir) : "%s/deja-dup".printf(cachedir);
 
-  var end_str = "%s'--verbosity=9' '--archive-dir=%s' '--tempdir=%s' '%s'"
-    .printf(enc_str, archive, tempdir, make_fd_arg(as_root));
+  var end_str = "%s'--verbosity=9' '--archive-dir=%s' '--tempdir=%s' '--log-fd=?'"
+    .printf(enc_str, archive, tempdir);
 
   if (mode == Mode.CLEANUP)
     return "cleanup '--force' 'gio+file://%s' %s".printf(backupdir, end_str);
@@ -507,7 +501,6 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
   bool stop = false;
   bool passphrase = false;
   bool tmp_archive = false;
-  bool as_root = false;
   int return_code = 0;
   int remove_n = -1;
   string script = null;
@@ -520,8 +513,6 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
   if (keyfile.has_group(group)) {
     if (keyfile.has_key(group, "ArchiveDirIsTmp"))
       tmp_archive = keyfile.get_boolean(group, "ArchiveDirIsTmp");
-    if (keyfile.has_key(group, "AsRoot"))
-      as_root = keyfile.get_boolean(group, "AsRoot");
     if (keyfile.has_key(group, "Cancel"))
       cancel = keyfile.get_boolean(group, "Cancel");
     if (keyfile.has_key(group, "Encrypted"))
@@ -583,7 +574,7 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
   var dupscript = "ARGS: " + default_args(br, mode, encrypted, extra_args, include_args, exclude_args,
-                                          tmp_archive, remove_n, file_to_restore, as_root);
+                                          tmp_archive, remove_n, file_to_restore);
 
   if (tmp_archive)
     dupscript += "\n" + "TMP_ARCHIVE";
@@ -604,9 +595,6 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
 
   if (return_code != 0)
     dupscript += "\n" + "RETURN: %d".printf(return_code);
-
-  if (as_root)
-    dupscript += "\n" + "AS_ROOT";
 
   var verify_script = ("mkdir -p %s/deja-dup/metadata && " +
                        "echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && " +

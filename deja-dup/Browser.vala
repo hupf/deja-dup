@@ -164,7 +164,7 @@ class Browser : BuilderWidget
         if (file != null)
           files.append(file);
       }
-      application.restore_files(files, timecombo.when);
+      application.restore_files(files, timecombo.when, store.tree);
     });
 
     // Watch for backend changes that need to reset us

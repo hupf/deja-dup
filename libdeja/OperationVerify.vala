@@ -6,12 +6,10 @@
 
 using GLib;
 
-namespace DejaDup {
-
 /* This is meant to be used right after a successful OperationBackup to
    verify the results. */
 
-public class OperationVerify : Operation
+public class DejaDup.OperationVerify : Operation
 {
   File metadir;
   File destdir;
@@ -90,6 +88,3 @@ public class OperationVerify : Operation
     yield base.operation_finished(success, cancelled, detail);
   }
 }
-
-} // end namespace
-

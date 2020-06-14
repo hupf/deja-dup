@@ -14,7 +14,6 @@ namespace DejaDup {
 public const string INCLUDE_LIST_KEY = "include-list";
 public const string EXCLUDE_LIST_KEY = "exclude-list";
 public const string BACKEND_KEY = "backend";
-public const string ROOT_PROMPT_KEY = "root-prompt";
 public const string LAST_RUN_KEY = "last-run";
 public const string LAST_BACKUP_KEY = "last-backup";
 public const string LAST_RESTORE_KEY = "last-restore";
@@ -759,11 +758,6 @@ public string try_realpath(string input)
 {
   var resolved = Posix.realpath(input);
   return resolved == null ? input : resolved;
-}
-
-public File try_realfile(File input)
-{
-  return File.new_for_path(try_realpath(input.get_path()));
 }
 
 } // end namespace

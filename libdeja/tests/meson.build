@@ -11,7 +11,6 @@ test_runner = executable('test-runner', ['runner.vala'],
     include_directories: [libdeja_inc])
 
 tests = [
-    'as-root',
     'bad-hostname',
     'bad-volume',
     'cancel-noop',

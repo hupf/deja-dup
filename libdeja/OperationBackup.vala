@@ -6,9 +6,7 @@
 
 using GLib;
 
-namespace DejaDup {
-
-public class OperationBackup : Operation
+public class DejaDup.OperationBackup : Operation
 {
   File metadir;
 
@@ -127,6 +125,3 @@ public class OperationBackup : Operation
     FileUtils.set_contents(Path.build_filename(metadir.get_path(), "README"), msg);
   }
 }
-
-} // end namespace
-
