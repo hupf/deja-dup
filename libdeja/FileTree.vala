@@ -49,16 +49,15 @@ public class DejaDup.FileTree : Object
   public Node? file_to_node(File file)
   {
     string remainder;
+    string prefix = "";
+    if (skipped_root != null)
+      prefix = skipped_root;
 
     // remove skipped_root prefix
-    if (skipped_root != null) {
-      var skipped_file = File.new_for_path("/%s".printf(skipped_root));
-      remainder = skipped_file.get_relative_path(file);
-      if (remainder == null)
-        return null;
-    } else {
-      remainder = file.get_path();
-    }
+    var prefix_file = File.new_for_path("/%s".printf(prefix));
+    remainder = prefix_file.get_relative_path(file);
+    if (remainder == null)
+      return null;
 
     // split file path into lookup parts
     var parts = remainder.split("/");
