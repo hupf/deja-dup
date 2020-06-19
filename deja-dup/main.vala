@@ -289,7 +289,7 @@ public class DejaDupApp : Gtk.Application
 
   void restore_full(List<File>? file_list = null, string? when = null, DejaDup.FileTree? tree = null)
   {
-    assign_op(new AssistantRestore.with_files(file_list, when));
+    assign_op(new AssistantRestore.with_files(file_list, when, tree));
   }
 
   void op_show()

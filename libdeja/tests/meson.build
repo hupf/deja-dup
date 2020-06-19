@@ -36,8 +36,6 @@ tests = [
     'old-version',
     'permission',
     'read-error',
-    'rename-one',
-    'rename-two',
     'restore-date',
     'restore-specific',
     'special-chars',

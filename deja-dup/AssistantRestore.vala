@@ -380,7 +380,7 @@ public class AssistantRestore : AssistantOperation
 
     ensure_config_location();
     var rest_op = new DejaDup.OperationRestore(location_grid.get_backend(),
-                                               restore_location, date,
+                                               restore_location, tree, date,
                                                restore_files);
     if (this.op_state != null)
       rest_op.set_state(this.op_state);

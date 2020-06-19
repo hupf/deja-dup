@@ -10,7 +10,7 @@ Settings=include-list=['@TEST_HOME@/x', '@TEST_HOME@/x/y', '$HOME'];exclude-list
 Script=mkdir -p @TEST_HOME@/a/b/c/d && ln -s a/b/c/d @TEST_HOME@/x && ln -s ../.. @TEST_HOME@/x/y
 
 [Duplicity]
-Runs=status;dry;backup;status-restore;list;verify;
+Runs=status;dry;backup;status-restore;verify;
 
 [Duplicity status]
 IncludeArgs='--include=@TEST_HOME@/x' '--include=@TEST_HOME@/a/b/c/d/y' '--exclude=@TEST_HOME@/a/b/c' '--include=@TEST_HOME@/a/b' '--include=@TEST_HOME@/x' '--include=@TEST_HOME@/a/b/c/d'

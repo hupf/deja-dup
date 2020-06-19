@@ -6,7 +6,7 @@ Type=backup
 Passphrases=2
 
 [Duplicity]
-Runs=status 1;dry 1;status 2;dry 2;backup 1;status 3;dry 3;backup 2;status-restore;list;verify;
+Runs=status 1;dry 1;status 2;dry 2;backup 1;status 3;dry 3;backup 2;status-restore;verify;
 
 [Duplicity status 1]
 #echo "INFO 3"
@@ -56,10 +56,6 @@ Encrypted=true
 Passphrase=true
 
 [Duplicity status-restore]
-Encrypted=true
-Passphrase=true
-
-[Duplicity list]
 Encrypted=true
 Passphrase=true
 

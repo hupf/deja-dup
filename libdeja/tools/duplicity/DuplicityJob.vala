@@ -26,7 +26,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     NORMAL,
     DRY_RUN, // used when backing up, and we need to first get time estimate
     STATUS, // used when backing up, and we need to first get collection info
-    CHECK_CONTENTS, // used when restoring, and we need to list /home
     CLEANUP,
     DELETE,
   }
@@ -50,12 +49,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   uint64 progress_count; // count of how far we are along in the current instance
 
   static File slash;
-  static File slash_root;
-  static File slash_home;
-  static File slash_home_me;
-
-  bool has_checked_contents = false;
-  List<File> homes = new List<File>();
 
   List<File> local_error_files = null;
 
@@ -89,9 +82,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   construct {
     if (slash == null) {
       slash = File.new_for_path("/");
-      slash_root = File.new_for_path("/root");
-      slash_home = File.new_for_path("/home");
-      slash_home_me = File.new_for_path(Environment.get_home_dir());
     }
   }
 
@@ -437,24 +427,15 @@ internal class DuplicityJob : DejaDup.ToolJob
         state = State.STATUS;
         action_desc = _("Preparing…");
       }
-      else if (!has_checked_contents) {
-        mode = DejaDup.ToolJob.Mode.LIST;
-        state = State.CHECK_CONTENTS;
-        action_desc = _("Preparing…");
-      }
       else {
-        // OK, do we have multiple, one, or no home dirs?
-        // Only want to bother doing anything if one.  If one, we rename it's
-        // home dir to the current user's home dir (i.e. they backed up on one
-        // machine as 'alice' and restored on a machine as 'bob').
-        if (homes.length() == 1) {
-          var old_home = homes.data;
-          var new_home = slash_home_me;
-          if (!old_home.equal(new_home)) {
-            extra_argv.append("--rename");
-            extra_argv.append(slash.get_relative_path(old_home));
-            extra_argv.append(slash.get_relative_path(new_home));
-          }
+        // If the tree has recorded an old home for the user, let's tell
+        // duplicity to also rename to our new home.
+        if (tree != null && tree.old_home != null) {
+          var old_home = File.new_for_path(tree.old_home);
+          var new_home = File.new_for_path(Environment.get_home_dir());
+          extra_argv.append("--rename");
+          extra_argv.append(slash.get_relative_path(old_home));
+          extra_argv.append(slash.get_relative_path(new_home));
         }
 
         if (restore_files != null) {
@@ -483,7 +464,12 @@ internal class DuplicityJob : DejaDup.ToolJob
           }
           custom_local = local_file;
 
-          var rel_file_path = slash.get_relative_path(restore_files.data);
+          var target_file = restore_files.data;
+          if (tree != null) {
+            var translated_path = tree.original_path(target_file.get_path());
+            target_file = File.new_for_path(translated_path);
+          }
+          var rel_file_path = slash.get_relative_path(target_file);
           extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
         }
 
@@ -673,14 +659,6 @@ internal class DuplicityJob : DejaDup.ToolJob
           if (restart())
             return;
         }
-        break;
-
-      case State.CHECK_CONTENTS:
-        has_checked_contents = true;
-        mode = original_mode;
-
-        if (restart())
-          return;
         break;
 
       case State.NORMAL:
@@ -1162,12 +1140,6 @@ internal class DuplicityJob : DejaDup.ToolJob
       return;
     if (file == ".")
       return;
-    if (state == State.CHECK_CONTENTS) {
-      var gfile = make_file_obj(file);
-      if (gfile.equal(slash_root) ||
-          (gfile.get_parent() != null && gfile.get_parent().equal(slash_home)))
-        homes.append(gfile);
-    }
     listed_current_files(date, file, type);
   }
 

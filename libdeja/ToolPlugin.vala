@@ -25,7 +25,7 @@ public abstract class ToolJob : Object
   public signal void question(string title, string msg);
 
   // type-specific signals
-  public signal void collection_dates(List<string>? dates); // HISTORY
+  public signal void collection_dates(List<string>? dates); // STATUS
   public signal void listed_current_files(string date, string file, string type); // LIST
 
   // life cycle control
@@ -36,7 +36,7 @@ public abstract class ToolJob : Object
   public abstract void resume ();
 
   public enum Mode {
-    INVALID, BACKUP, RESTORE, STATUS, LIST, HISTORY,
+    INVALID, BACKUP, RESTORE, STATUS, LIST,
   }
   public Mode mode {get; set; default = Mode.INVALID;}
 
@@ -63,7 +63,7 @@ public abstract class ToolJob : Object
       this._restore_files = value.copy_deep ((CopyFunc) Object.ref);
     }
   }
-
+  public FileTree tree {get; set;} // RESTORE
   public string time {get; set;} // RESTORE
 }
 

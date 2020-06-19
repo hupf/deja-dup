@@ -7,7 +7,7 @@ Settings=include-list=['@TEST_HOME@/ [*?]', '$HOME'];exclude-list=['@TEST_HOME@/
 Script=mkdir -p '@TEST_HOME@/ [*?]/ [*?]'
 
 [Duplicity]
-Runs=status;dry;backup;status-restore;list;verify;
+Runs=status;dry;backup;status-restore;verify;
 
 [Duplicity status]
 IncludeArgs='--exclude=@TEST_HOME@/ [[][*][?]]/ [[][*][?]]' '--include=@TEST_HOME@/ [[][*][?]]'

@@ -10,6 +10,7 @@ public class DejaDup.OperationRestore : Operation
 {
   public string dest {get; construct;} // Directory user wants to put files in
   public string time {get; construct;} // Date user wants to restore to
+  public FileTree tree {get; construct;}
   private List<File> _restore_files;
   public List<File> restore_files {
     get {
@@ -22,9 +23,10 @@ public class DejaDup.OperationRestore : Operation
 
   public OperationRestore(Backend backend,
                           string dest_in,
+                          FileTree? tree = null,
                           string? time_in = null,
                           List<File>? files_in = null) {
-    Object(dest: dest_in, time: time_in, restore_files: files_in,
+    Object(dest: dest_in, tree: tree, time: time_in, restore_files: files_in,
            mode: ToolJob.Mode.RESTORE, backend: backend);
   }
 
@@ -38,6 +40,7 @@ public class DejaDup.OperationRestore : Operation
   {
     job.restore_files = restore_files;
     job.time = time;
+    job.tree = tree;
     job.local = File.new_for_path(dest);
     return null;
   }

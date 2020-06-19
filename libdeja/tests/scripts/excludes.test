@@ -7,7 +7,7 @@ Settings=include-list=['@TEST_HOME@/nope', '@TEST_HOME@/a', '@TEST_HOME@/a/b/c',
 Script=mkdir -p @TEST_HOME@/a/b/c/d @TEST_HOME@/one/two/three/four
 
 [Duplicity]
-Runs=status;dry;backup;status-restore;list;verify;
+Runs=status;dry;backup;status-restore;verify;
 
 [Duplicity status]
 IncludeArgs='--include=@TEST_HOME@/one/two/three/four' '--exclude=@TEST_HOME@/one/two/three' '--include=@TEST_HOME@/one/two' '--exclude=@TEST_HOME@/a/b/c/d' '--include=@TEST_HOME@/a/b/c' '--exclude=@TEST_HOME@/a/b' '--include=@TEST_HOME@/a' '--exclude=@TEST_HOME@/one'

@@ -37,11 +37,12 @@ public class RestoreFileTester : Object
                            ref List<string> bad_paths)
   {
     var resolved = Path.build_filename(root, tree.node_to_path(node));
-    if (!can_restore(resolved))
+    bool exists;
+    if (!can_restore(resolved, out exists))
       bad_paths.append(resolved);
     else if (node.kind != "dir")
       all_bad = false;
-    if (Posix.errno == Posix.ENOENT) // no use recursing if the files aren't local
+    if (!exists) // no use recursing if the files aren't local
       return;
 
     foreach (var child in node.children.get_values()) {
@@ -49,8 +50,9 @@ public class RestoreFileTester : Object
     }
   }
 
-  static bool can_restore(string path)
+  static bool can_restore(string path, out bool exists)
   {
+    exists = true;
     var fd = Posix.open(path, Posix.O_WRONLY | Posix.O_NONBLOCK | Posix.O_NOFOLLOW);
     if (fd < 0) {
       if (Posix.errno == Posix.EACCES ||
@@ -65,7 +67,8 @@ public class RestoreFileTester : Object
         // permission. But there's also issues with permissions in containers not being
         // the full story either. So ideally we'd try to chmod the dir and/or create
         // a file in it. But testing write access is probably good enough for now.
-        string iter = Path.get_dirname(path);
+        exists = false;
+        string iter = path;
         int access = -1;
         while (access != 0 && Posix.errno == Posix.ENOENT) {
           iter = Path.get_dirname(iter);

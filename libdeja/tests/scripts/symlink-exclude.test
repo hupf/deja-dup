@@ -7,7 +7,7 @@ Settings=include-list=['@TEST_HOME@/a', '$HOME'];exclude-list=['$TRASH', '$DOWNL
 Script=mkdir -p @TEST_HOME@/a/b/c/d && ln -s b @TEST_HOME@/a/2 && ln -s c @TEST_HOME@/a/b/3
 
 [Duplicity]
-Runs=status;dry;backup;status-restore;list;verify;
+Runs=status;dry;backup;status-restore;verify;
 
 [Duplicity status]
 IncludeArgs='--exclude=@TEST_HOME@/a/2/3/d' '--exclude=@TEST_HOME@/a/b/c/d' '--include=@TEST_HOME@/a'
