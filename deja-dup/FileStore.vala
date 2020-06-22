@@ -168,17 +168,6 @@ public class FileStore : Gtk.ListStore
                                           : ContentType.guess(node.filename, null, null);
     var gicon = ContentType.get_icon(content_type);
 
-    // Add some last resort text fallback icons in case the icon isn't in the theme.
-    // (this happens in Adwaita, where the default unknown type of application/octet-stream
-    //  does not have icons in the Adwaita theme).
-    var themed_icon = gicon as ThemedIcon;
-    if (themed_icon != null) {
-      var text_type = ContentType.from_mime_type("text/plain");
-      var text_icon = ContentType.get_generic_icon_name(text_type);
-      themed_icon.append_name(text_icon);
-      themed_icon.append_name(text_icon + "-symbolic");
-    }
-
     // Add symbolic link emblem if appropriate
     if (node.kind == "sym") {
       var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
