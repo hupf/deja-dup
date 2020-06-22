@@ -81,7 +81,7 @@ class BrowserTest(BaseTest):
 
     def start_restore(self):
         self.app.button('Restore').click()
-        self.window = self.app.window('Restore')
+        self.window = self.app.window('Restore to Where?')
 
     def select_location(self, where):
         self.addCleanup(shutil.rmtree, where, ignore_errors=True)
@@ -90,7 +90,6 @@ class BrowserTest(BaseTest):
         self.window.child(roleName='menu item', name='Other…').click()
         os.makedirs(where, exist_ok=True)
         dlg = self.app.child(roleName='file chooser')
-        keyCombo('<Control>l')
         typeText(where + '\n')
         dlg.child(name='Open').click()
 
@@ -116,9 +115,7 @@ class BrowserTest(BaseTest):
         self.window.button('Close').click()
 
     def check_files(self, *file_args, where=None):
-        if where:
-            where = where + self.srcdir
-        else:
+        if not where:
             where = self.srcdir
 
         # confirm no extra files restored
