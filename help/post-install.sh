@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-datadir="$1"
+datadir="$DESTDIR/$1"
 
 # Drop the translation section from the non-translated help
 sed -i 's/.*translation-credits.*//' "$datadir/help/C/deja-dup/credits.page"
