@@ -6,7 +6,7 @@
 
 set -e
 
-pos=$(ls */ -1d | cut -d/ -f1 | grep -v '^C$')
+pos=$(ls *.po -1 | cut -d. -f1)
 
 test -e LINGUAS
 echo "$pos" | diff -u -B -I '^#.*' LINGUAS -

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-06-01 22:23-0400\n"
-"PO-Revision-Date: 2020-03-31 08:11+0000\n"
-"Last-Translator: Pavel Borecki <Unknown>\n"
+"POT-Creation-Date: 2020-06-17 10:12-0400\n"
+"PO-Revision-Date: 2020-06-09 10:09+0000\n"
+"Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2020-06-03 06:13+0000\n"
-"X-Generator: Launchpad (build 275d46a24253e557e4403d52832837e4bfa425b6)\n"
+"X-Launchpad-Export-Date: 2020-06-19 06:19+0000\n"
+"X-Generator: Launchpad (build 1cbd0aa39df153c901321817f9b57cf3f232b507)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -92,7 +92,7 @@ msgstr ""
 "uživatelských dat. Pokud potřebujete zálohu celého systému nebo archivační "
 "program, jsou vhodnější jiné zálohovací aplikace."
 
-#: data/org.gnome.DejaDup.desktop.in:6
+#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
 msgid "Backups"
 msgstr "Zálohy"
 
@@ -151,22 +151,10 @@ msgstr ""
 "popisu umístění. Relativní položky jsou vztažené k domovské složce uživatele."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:23
-msgid "Whether to request the root password"
-msgstr "Vyžadovat heslo správce systému"
-
-#: data/org.gnome.DejaDup.gschema.xml.in:24
-msgid ""
-"Whether to request the root password when backing up from or restoring to "
-"system folders."
-msgstr ""
-"Zda vyžadovat heslo správce systému (root) při zálohování systémových složek "
-"nebo jejich obnovování ze zálohy."
-
-#: data/org.gnome.DejaDup.gschema.xml.in:28
 msgid "The last time Déjà Dup was run"
 msgstr "Kdy bylo Déjà Dup naposledy spuštěno"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:29
+#: data/org.gnome.DejaDup.gschema.xml.in:24
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
@@ -174,11 +162,11 @@ msgstr ""
 "Okamžik, kdy bylo Déjà Dup posledně úspěšně spuštěné. Tento čas by měl být "
 "ve formátu dle normy ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:33
+#: data/org.gnome.DejaDup.gschema.xml.in:28
 msgid "The last time Déjà Dup backed up"
 msgstr "Posledně zálohováno pomocí Déjà Dup"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:34
+#: data/org.gnome.DejaDup.gschema.xml.in:29
 msgid ""
 "The last time Déjà Dup successfully completed a backup. This time should be "
 "in ISO 8601 format."
@@ -186,11 +174,11 @@ msgstr ""
 "Okamžik kdy Déjà Dup posledně úspěšně dokončilo zálohu. Tento čas by měl být "
 "ve formátu dle normy ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:38
+#: data/org.gnome.DejaDup.gschema.xml.in:33
 msgid "The last time Déjà Dup restored"
 msgstr "Kdy bylo posledně obnoveno pomocí Déjà Dup"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:39
+#: data/org.gnome.DejaDup.gschema.xml.in:34
 msgid ""
 "The last time Déjà Dup successfully completed a restore. This time should be "
 "in ISO 8601 format."
@@ -198,29 +186,29 @@ msgstr ""
 "Okamžik kdy Déjà Dup posledně něco úspěšně obnovilo. Tento čas by měl být ve "
 "formátu dle normy ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:43
+#: data/org.gnome.DejaDup.gschema.xml.in:38
 msgid "Whether to periodically back up"
 msgstr "Zálohovat pravidelně"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:44
+#: data/org.gnome.DejaDup.gschema.xml.in:39
 msgid "Whether to automatically back up on a regular schedule."
 msgstr "Zda zálohovat automaticky, podle pravidelného plánu."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:48
+#: data/org.gnome.DejaDup.gschema.xml.in:43
 msgid "How often to periodically back up"
 msgstr "Jak často provádět pravidelné zálohování"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:49
+#: data/org.gnome.DejaDup.gschema.xml.in:44
 msgid "The number of days between backups."
 msgstr "Počet dnů mezi zálohami."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:53
+#: data/org.gnome.DejaDup.gschema.xml.in:48
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr ""
 "Okamžik kdy Déjà Dup posledně zkontrolovalo zda se dotázat na zálohování"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:54
+#: data/org.gnome.DejaDup.gschema.xml.in:49
 msgid ""
 "When a user logs in, the Déjà Dup monitor checks whether it should prompt "
 "about backing up. This is used to increase discoverability for users that "
@@ -232,14 +220,14 @@ msgstr ""
 "vůbec neví. Tento časovač je možné nastavit buď na „vypnout“ nebo na čas ve "
 "formátu dle normy ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:58
+#: data/org.gnome.DejaDup.gschema.xml.in:53
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
 "Okamžik kdy Déjà Dup posledně zkontrolovalo zda se dotazovat na heslo, "
 "kterým jsou šifrovány zálohy"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:59
+#: data/org.gnome.DejaDup.gschema.xml.in:54
 msgid ""
 "In order to prevent you from forgetting your passwords, Déjà Dup will "
 "occasionally notify you to confirm the password. This time should be either "
@@ -249,11 +237,11 @@ msgstr ""
 "připomněli. Tento časovač je možné nastavit buď na „vypnout“ nebo na čas ve "
 "formátu dle normy ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:63
+#: data/org.gnome.DejaDup.gschema.xml.in:58
 msgid "How long to keep backup files"
 msgstr "Jak dlouho uchovávat soubory se zálohou?"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:64
+#: data/org.gnome.DejaDup.gschema.xml.in:59
 msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
@@ -263,11 +251,11 @@ msgstr ""
 "nemazat ani ty nejstarší zálohy. Toto je jen nastavení po kolik dnů "
 "uchovávat přinejmenším – pokud je dost místa, budou zálohy uchovány i déle."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:68
+#: data/org.gnome.DejaDup.gschema.xml.in:63
 msgid "How long to wait between full backups"
 msgstr "Jak dlouho čekat mezi úplnými zálohami"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:69
+#: data/org.gnome.DejaDup.gschema.xml.in:64
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
@@ -275,11 +263,11 @@ msgstr ""
 "Déjà Dup potřebuje příležitostně vytvořit úplnou zálohu. Toto určuje kolik "
 "dní se má čekat mezi úplnými zálohami."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:73
+#: data/org.gnome.DejaDup.gschema.xml.in:68
 msgid "Whether to use metered networks"
 msgstr "Zda používat sítě na kterých je účtován objem přenesených dat"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:74
+#: data/org.gnome.DejaDup.gschema.xml.in:69
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
@@ -288,11 +276,11 @@ msgstr ""
 "připojení přes sítě, na kterých je účtován objem přenesených dat (například "
 "4G)."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:93
+#: data/org.gnome.DejaDup.gschema.xml.in:88
 msgid "Type of location to store backup"
 msgstr "Typ umístění pro ukládání záloh"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:94
+#: data/org.gnome.DejaDup.gschema.xml.in:89
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -300,14 +288,14 @@ msgstr ""
 "Typ umístění záloh. Pokud je nastaveno na „automaticky“, to výchozí bude "
 "zvoleno na základě toho, co je k dispozici."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:105
-#: data/org.gnome.DejaDup.gschema.xml.in:128
-#: data/org.gnome.DejaDup.gschema.xml.in:141
-#: data/org.gnome.DejaDup.gschema.xml.in:149
+#: data/org.gnome.DejaDup.gschema.xml.in:100
+#: data/org.gnome.DejaDup.gschema.xml.in:123
+#: data/org.gnome.DejaDup.gschema.xml.in:136
+#: data/org.gnome.DejaDup.gschema.xml.in:144
 msgid "The folder where backups are stored"
 msgstr "Složka se zálohami"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:106
+#: data/org.gnome.DejaDup.gschema.xml.in:101
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -315,11 +303,11 @@ msgstr ""
 "Hierarchie složek, kde jsou uloženy zálohy. Popisy umístění mohou být "
 "absolutní nebo vztažené k vaší domovské složce."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:108
 msgid "UUID"
 msgstr "Nikde se neopakující identifikátor (UUID)"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:114
+#: data/org.gnome.DejaDup.gschema.xml.in:109
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -327,23 +315,23 @@ msgstr ""
 "Neopakující se identifikátor souborového systému na jednotce – je použit pro "
 "její rozpoznání, když je připojena."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:118
+#: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "Name"
 msgstr "Název"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid "The name of the external drive."
 msgstr "Název vnější jednotky."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:123
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Icon"
 msgstr "Ikona"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Ikona externí jednotky (jako serializované GIcon)."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -351,15 +339,15 @@ msgstr ""
 "Hierarchie složek, kde jsou uloženy zálohy. Popisy umístění jsou vztažené k "
 "jednotce."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:136
+#: data/org.gnome.DejaDup.gschema.xml.in:131
 msgid "The server address"
 msgstr "Adresa serveru"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:137
+#: data/org.gnome.DejaDup.gschema.xml.in:132
 msgid "The URI of the remote server location."
 msgstr "URI identifikátor umístění na vzdáleném serveru."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -367,23 +355,13 @@ msgstr ""
 "Hierarchie složek, kde jsou uloženy zálohy. Popisy umístění mohou být "
 "absolutní nebo vztažené ke stroji."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:150
+#: data/org.gnome.DejaDup.gschema.xml.in:145
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
 "Popis umístění složky do které budou ukládány zálohy. Je možné použít úplný "
 "nebo relativní popis umístění."
-
-#: data/org.gnome.DejaDup.policy.in:15 data/ui/main.ui:752
-#: deja-dup/AssistantRestore.vala:58
-msgid "Restore"
-msgstr "Obnovit"
-
-#: data/org.gnome.DejaDup.policy.in:16
-msgid "Privileges are required to restore files to system locations"
-msgstr ""
-"K obnově souborů do systémových umístění jsou potřeba zvýšená oprávnění"
 
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
@@ -425,7 +403,7 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr ""
 
-#: data/ui/main.ui:43
+#: data/ui/main.ui:46
 msgid "Back"
 msgstr ""
 
@@ -437,81 +415,85 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: data/ui/main.ui:158 data/ui/main.ui:773 deja-dup/Assistant.vala:375
+#: data/ui/main.ui:156 data/ui/main.ui:771 deja-dup/Assistant.vala:338
 msgid "_Cancel"
 msgstr "_Storno"
 
-#: data/ui/main.ui:251
+#: data/ui/main.ui:249
 msgid "Keep your important files safe in a backup."
 msgstr ""
 
-#: data/ui/main.ui:263
+#: data/ui/main.ui:261
 msgid "Create My First _Backup"
 msgstr ""
 
-#: data/ui/main.ui:279
+#: data/ui/main.ui:277
 msgid "_Restore From a Previous Backup"
 msgstr ""
 
-#: data/ui/main.ui:312 data/ui/preferences.ui:117
+#: data/ui/main.ui:310 data/ui/preferences.ui:117
 msgid "Automatic backup"
 msgstr "Automatické zálohování"
 
-#: data/ui/main.ui:327
+#: data/ui/main.ui:325
 msgid "Back up _automatically"
 msgstr ""
 
-#: data/ui/main.ui:354
+#: data/ui/main.ui:352
 msgid "_Back Up Now"
 msgstr ""
 
-#: data/ui/main.ui:383
+#: data/ui/main.ui:381
 msgid "Overview"
 msgstr "Přehled"
 
-#: data/ui/main.ui:397 deja-dup/AssistantRestore.vala:62
+#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:69
 msgid "_Restore"
 msgstr "_Obnovit"
 
-#: data/ui/main.ui:415 deja-dup/AssistantRestore.vala:127
+#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:138
 msgid "_Date"
 msgstr "_Datum"
 
-#: data/ui/main.ui:535
+#: data/ui/main.ui:533
 msgid "Scanning backup files…"
 msgstr ""
 
-#: data/ui/main.ui:569
+#: data/ui/main.ui:567
 msgid "_Retry"
 msgstr ""
 
-#: data/ui/main.ui:608
+#: data/ui/main.ui:606
 msgid "_Connect"
 msgstr ""
 
-#: data/ui/main.ui:637
+#: data/ui/main.ui:635
 msgid "Encryption password needed"
 msgstr "Je vyžadováno heslo šifrování"
 
-#: data/ui/main.ui:648
+#: data/ui/main.ui:646
 msgid "_Enter Password"
 msgstr ""
 
-#: data/ui/main.ui:782
+#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:65
+msgid "Restore"
+msgstr "Obnovit"
+
+#: data/ui/main.ui:780
 msgid "Con_tinue"
 msgstr ""
 
-#: data/ui/main.ui:850 deja-dup/AssistantOperation.vala:385
-#: deja-dup/AssistantOperation.vala:456
+#: data/ui/main.ui:848 deja-dup/AssistantOperation.vala:384
+#: deja-dup/AssistantOperation.vala:455
 msgid "E_ncryption password"
 msgstr "Šifrovací _heslo"
 
-#: data/ui/main.ui:861 deja-dup/AssistantOperation.vala:415
-#: deja-dup/AssistantOperation.vala:465
+#: data/ui/main.ui:859 deja-dup/AssistantOperation.vala:414
+#: deja-dup/AssistantOperation.vala:464
 msgid "_Show password"
 msgstr "Zobrazit he_slo"
 
-#: data/ui/main.ui:875 deja-dup/AssistantOperation.vala:422
+#: data/ui/main.ui:874 deja-dup/AssistantOperation.vala:421
 #: deja-dup/MountOperationAssistant.vala:27
 msgid "_Remember password"
 msgstr "_Zapamatovat heslo"
@@ -595,22 +577,26 @@ msgstr "Nastavení"
 msgid "_Storage Location"
 msgstr ""
 
-#: data/ui/preferences.ui:270 data/ui/preferences.ui:335
-#: data/ui/preferences.ui:373 data/ui/preferences.ui:440
+#: data/ui/preferences.ui:270 data/ui/preferences.ui:354
+#: data/ui/preferences.ui:392 data/ui/preferences.ui:459
 msgid "_Folder"
 msgstr "_Složka"
 
-#: data/ui/preferences.ui:307
+#: data/ui/preferences.ui:294
+msgid "_Reset Account Access"
+msgstr ""
+
+#: data/ui/preferences.ui:326
 msgid "_Network Location"
 msgstr "Umístě_ní v síti"
 
-#: data/ui/preferences.ui:414 libdeja/BackendUnsupported.vala:29
+#: data/ui/preferences.ui:433 libdeja/BackendUnsupported.vala:29
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
 msgstr ""
 
-#: data/ui/preferences.ui:456
+#: data/ui/preferences.ui:475
 msgid "_Choose Folder…"
 msgstr "_Vybrat složku…"
 
@@ -678,28 +664,28 @@ msgstr "sftp:// nebo ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// nebo davs://"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:282
 msgid "Co_ntinue"
 msgstr "Pokračo_vat"
 
-#: deja-dup/Assistant.vala:325
+#: deja-dup/Assistant.vala:288
 msgctxt "verb"
 msgid "_Test"
 msgstr "Vyzkouše_t"
 
-#: deja-dup/Assistant.vala:361
+#: deja-dup/Assistant.vala:324
 msgid "_Resume Later"
 msgstr "Pok_račovat později"
 
-#: deja-dup/Assistant.vala:367
+#: deja-dup/Assistant.vala:330
 msgid "_Back"
 msgstr "Z_pět"
 
-#: deja-dup/Assistant.vala:369
+#: deja-dup/Assistant.vala:332
 msgid "_Close"
 msgstr "Z_avřít"
 
-#: deja-dup/Assistant.vala:386
+#: deja-dup/Assistant.vala:349
 msgid "_Forward"
 msgstr "Vpře_d"
 
@@ -760,20 +746,20 @@ msgstr "Skenování…"
 msgid "_Details"
 msgstr "Po_drobnosti"
 
-#: deja-dup/AssistantOperation.vala:316
+#: deja-dup/AssistantOperation.vala:315
 msgid "In order to continue, the following packages need to be installed:"
 msgstr ""
 "Aby bylo možné pokračovat, je třeba nainstalovat následující balíčky:"
 
-#: deja-dup/AssistantOperation.vala:352
+#: deja-dup/AssistantOperation.vala:351
 msgid "_Allow restoring without a password"
 msgstr "Umožnit obnovu bez hesl_a"
 
-#: deja-dup/AssistantOperation.vala:358
+#: deja-dup/AssistantOperation.vala:357
 msgid "_Password-protect your backup"
 msgstr "_Ochránit zálohu heslem"
 
-#: deja-dup/AssistantOperation.vala:370
+#: deja-dup/AssistantOperation.vala:369
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -781,11 +767,11 @@ msgstr ""
 "Pro obnovu souborů budete potřebovat heslo. Nejspíš si ho budete chtít "
 "zapsat."
 
-#: deja-dup/AssistantOperation.vala:402
+#: deja-dup/AssistantOperation.vala:401
 msgid "Confir_m password"
 msgstr "Potvr_dit heslo"
 
-#: deja-dup/AssistantOperation.vala:441
+#: deja-dup/AssistantOperation.vala:440
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -794,7 +780,7 @@ msgstr ""
 "Pro rychlé ověření, že v případě nouze budete schopni obnovit své soubory, "
 "prosím zadejte znovu své heslo a Déjá Dup zkusí obnovit nějaký soubor."
 
-#: deja-dup/AssistantOperation.vala:470
+#: deja-dup/AssistantOperation.vala:469
 msgid "Test every two _months"
 msgstr "Vyzkoušet každé dva _měsíce"
 
@@ -825,115 +811,119 @@ msgstr "Schválit přístup"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:750
-#: libdeja/tools/duplicity/DuplicityJob.vala:1133
+#: libdeja/tools/duplicity/DuplicityJob.vala:736
+#: libdeja/tools/duplicity/DuplicityJob.vala:1119
 msgid "Failed with an unknown error."
 msgstr "Ukončeno s neznámou chybou."
 
-#: deja-dup/AssistantOperation.vala:860
+#: deja-dup/AssistantOperation.vala:863
 msgid "Require Password?"
 msgstr "Vyžadovat heslo?"
 
-#: deja-dup/AssistantOperation.vala:862
+#: deja-dup/AssistantOperation.vala:865
 msgid "Encryption Password Needed"
 msgstr "Je zapotřebí šifrovací heslo"
 
-#: deja-dup/AssistantOperation.vala:987
+#: deja-dup/AssistantOperation.vala:989
 msgctxt "verb"
 msgid "_Install"
 msgstr "Na_instalovat"
 
-#: deja-dup/AssistantRestore.vala:85
+#: deja-dup/AssistantRestore.vala:96
 msgid "_Backup location"
 msgstr "_Umístění zálohy"
 
-#: deja-dup/AssistantRestore.vala:106
+#: deja-dup/AssistantRestore.vala:117
 msgid "Restore From Where?"
 msgstr "Odkud obnovit?"
 
-#: deja-dup/AssistantRestore.vala:146
+#: deja-dup/AssistantRestore.vala:164
+msgid "Backups does not have permission to restore the following files:"
+msgstr ""
+
+#: deja-dup/AssistantRestore.vala:176
 msgid "Restore files to _original locations"
 msgstr "Obnovit soubory do pův_odních umístění"
 
-#: deja-dup/AssistantRestore.vala:156
+#: deja-dup/AssistantRestore.vala:186
 msgid "Restore to _specific folder"
 msgstr "Obnovit do určené _složky"
 
-#: deja-dup/AssistantRestore.vala:168
+#: deja-dup/AssistantRestore.vala:198
 msgid "Choose destination for restored files"
 msgstr "Zvolte umístění pro obnovené soubory"
 
-#: deja-dup/AssistantRestore.vala:175
+#: deja-dup/AssistantRestore.vala:207
 msgid "Restore _folder"
 msgstr "Složka _pro obnovené"
 
-#: deja-dup/AssistantRestore.vala:209
+#: deja-dup/AssistantRestore.vala:255
 msgid "Backup location"
 msgstr "Umístění zálohy"
 
-#: deja-dup/AssistantRestore.vala:224
+#: deja-dup/AssistantRestore.vala:270
 msgid "Restore date"
 msgstr "Datum obnovení"
 
-#: deja-dup/AssistantRestore.vala:232
+#: deja-dup/AssistantRestore.vala:278
 msgid "Restore folder"
 msgstr "Složka pro obnovení"
 
-#: deja-dup/AssistantRestore.vala:258
+#: deja-dup/AssistantRestore.vala:304
 msgid "Checking for Backups…"
 msgstr "Kontrolují se zálohy⁢…"
 
-#: deja-dup/AssistantRestore.vala:266
+#: deja-dup/AssistantRestore.vala:312
 msgid "Restore From When?"
 msgstr "Ze kdy obnovit?"
 
-#: deja-dup/AssistantRestore.vala:277
+#: deja-dup/AssistantRestore.vala:323
 msgid "Restore to Where?"
 msgstr "Kam obnovit?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:358
 msgid "Restoring:"
 msgstr "Obnovuje se:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:325
+#: deja-dup/AssistantRestore.vala:368
 msgid "No backups to restore"
 msgstr "Nejsou k dispozici žádné zálohy ze kterých by šlo obnovit"
 
-#: deja-dup/AssistantRestore.vala:408
+#: deja-dup/AssistantRestore.vala:477
 msgid "Original location"
 msgstr "Původní umístění"
 
-#: deja-dup/AssistantRestore.vala:419
+#: deja-dup/AssistantRestore.vala:488
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Soubor k obnovení"
 msgstr[1] "Soubory k obnovení"
 msgstr[2] "Souborů k obnovení"
 
-#: deja-dup/AssistantRestore.vala:440
+#: deja-dup/AssistantRestore.vala:509
 msgid "Restore Failed"
 msgstr "Obnovení se nezdařilo"
 
-#: deja-dup/AssistantRestore.vala:442
+#: deja-dup/AssistantRestore.vala:511
 msgid "Restore Finished"
 msgstr "Obnovení dokončeno"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:445
+#: deja-dup/AssistantRestore.vala:514
 msgid "Your files were successfully restored."
 msgstr "Soubory byly úspěšně obnoveny."
 
-#: deja-dup/AssistantRestore.vala:448
+#: deja-dup/AssistantRestore.vala:517
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Soubor byl úspěšně obnoven."
 msgstr[1] "Soubory byly úspěšně obnoveny."
 msgstr[2] "Souborů bylo úspěšně obnoveno."
 
-#: deja-dup/AssistantRestore.vala:455 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:524 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Obnovování…"
 
@@ -1018,11 +1008,11 @@ msgstr "Rackspace Cloud Files"
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/ConfigLocationGrid.vala:108
+#: deja-dup/ConfigLocationGrid.vala:109
 msgid "Choose Folder"
 msgstr "Vybrat složku"
 
-#: deja-dup/ConfigLocationGrid.vala:111
+#: deja-dup/ConfigLocationGrid.vala:112
 msgid "_OK"
 msgstr "_OK"
 
@@ -1104,16 +1094,16 @@ msgstr "Zobrazit _heslo"
 msgid "Location not available"
 msgstr "Umístění není k dispozici"
 
-#: deja-dup/MountOperationAssistant.vala:149
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect _anonymously"
 msgstr "Připojit _anonymně"
 
-#: deja-dup/MountOperationAssistant.vala:153
+#: deja-dup/MountOperationAssistant.vala:152
 msgid "Connect as u_ser"
 msgstr "Připojit _se jako uživatel"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:196
+#: deja-dup/MountOperationAssistant.vala:195
 msgid "_Domain"
 msgstr "_Doména"
 
@@ -1216,7 +1206,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:485
+#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:484
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s na %2$s"
@@ -1251,11 +1241,11 @@ msgstr "%s na disku Google"
 msgid "Could not log into Google servers."
 msgstr "Nedaří se přihlásit k serverům Google."
 
-#: libdeja/BackendGoogle.vala:208
+#: libdeja/BackendGoogle.vala:220
 msgid "Google credentials for Déjà Dup"
 msgstr "Přihlašovací údaje do Google pro Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:309
+#: libdeja/BackendGoogle.vala:321
 msgid "You first need to allow Backups to access your Google account."
 msgstr "Nejprve je třeba umožnit Zálohám přístup k vašemu Google účtu."
 
@@ -1281,31 +1271,31 @@ msgstr ""
 "Je třeba, aby Samba síťové umístění obsahovalo jak název stroje, tak název "
 "sdílení."
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:457
 msgid "Access Granted"
 msgstr "Přístup umožněn"
 
-#: libdeja/CommonUtils.vala:459
+#: libdeja/CommonUtils.vala:458
 msgid "Backups will now continue. You can close this page."
 msgstr "Zálohy nyní budou pokračovat. Tuto stránku nyní můžete zavřít."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:536
+#: libdeja/CommonUtils.vala:535
 #, c-format
 msgid "Home (%s)"
 msgstr "Domovská složka (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:541
+#: libdeja/CommonUtils.vala:540
 msgid "Home"
 msgstr "Domovská složka"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:546
+#: libdeja/CommonUtils.vala:545
 msgid "Trash"
 msgstr "Koš"
 
-#: libdeja/CommonUtils.vala:608
+#: libdeja/CommonUtils.vala:607
 msgid "Backup encryption password"
 msgstr "Heslo pro šifrování zálohy"
 
@@ -1322,47 +1312,47 @@ msgid "Listing files…"
 msgstr "Vypisují se soubory…"
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:395
-#: libdeja/tools/duplicity/DuplicityJob.vala:406
-#: libdeja/tools/duplicity/DuplicityJob.vala:442
-#: libdeja/tools/duplicity/DuplicityJob.vala:447
+#: libdeja/tools/duplicity/DuplicityJob.vala:391
+#: libdeja/tools/duplicity/DuplicityJob.vala:402
+#: libdeja/tools/duplicity/DuplicityJob.vala:438
+#: libdeja/tools/duplicity/DuplicityJob.vala:443
 msgid "Preparing…"
 msgstr "Připravuje se…"
 
-#: libdeja/OperationBackup.vala:29 libdeja/OperationVerify.vala:43
+#: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
 msgid "Verifying backup…"
 msgstr "Kontroluje se záloha…"
 
-#: libdeja/OperationRestore.vala:35
+#: libdeja/OperationRestore.vala:33
 msgid "Restoring files…"
 msgstr "Obnovování souborů…"
 
-#: libdeja/OperationVerify.vala:80
+#: libdeja/OperationVerify.vala:78
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
 msgstr "Záloha je zdá se poškozená. Měli byste ji smazat a pořídit znovu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:88
-#: libdeja/tools/duplicity/DuplicityJob.vala:174
+#: libdeja/tools/duplicity/DuplicityJob.vala:86
+#: libdeja/tools/duplicity/DuplicityJob.vala:172
 msgid "Paused (no network)"
 msgstr "Pozastaveno (není připojení k síti)"
 
 #. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:474
+#: libdeja/tools/duplicity/DuplicityJob.vala:468
 #, c-format
 msgid "Could not restore ‘%s’: Not a valid file location"
 msgstr "Nepodařilo se obnovit „%s“: Neplatné umístění souboru"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:573
+#: libdeja/tools/duplicity/DuplicityJob.vala:559
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Umístění zálohy má příliš malou kapacitu. Zkuste použít nějako s "
 "přinejmenším %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:598
+#: libdeja/tools/duplicity/DuplicityJob.vala:584
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1371,15 +1361,15 @@ msgstr ""
 "Umístění zálohy nemá dostatek volného místa. Zkuste použít nějako s "
 "přinejmenším %s."
 
+#: libdeja/tools/duplicity/DuplicityJob.vala:605
 #: libdeja/tools/duplicity/DuplicityJob.vala:619
-#: libdeja/tools/duplicity/DuplicityJob.vala:633
 msgid "Cleaning up…"
 msgstr "Vyčišťuje se…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:714
+#: libdeja/tools/duplicity/DuplicityJob.vala:700
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1390,7 +1380,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:730
+#: libdeja/tools/duplicity/DuplicityJob.vala:716
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1399,19 +1389,19 @@ msgstr ""
 "zapisovat."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:952
+#: libdeja/tools/duplicity/DuplicityJob.vala:938
 msgid "Bad encryption password."
 msgstr "Chybné šifrovací heslo."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:997
+#: libdeja/tools/duplicity/DuplicityJob.vala:983
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Nepodařilo se obnovit „%s“: Soubor nebyl nenalezen v záloze"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1008
+#: libdeja/tools/duplicity/DuplicityJob.vala:994
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1421,57 +1411,57 @@ msgstr ""
 "Existující záloha pochází z počítače nazvaného %s, ale současný název je %s. "
 "Pokud jste toto neočekávali, měli byste zálohovat do jiného umístění."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 msgid "Computer name changed"
 msgstr "Název počítače byl změněn"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1046
+#: libdeja/tools/duplicity/DuplicityJob.vala:1032
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Při pokusu o vytvoření „%s“ byl odepřen přístup."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/tools/duplicity/DuplicityJob.vala:1036
+#: libdeja/tools/duplicity/DuplicityJob.vala:1040
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Při pokusu o čtení z „%s“ byl odepřen přístup."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1058
+#: libdeja/tools/duplicity/DuplicityJob.vala:1044
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Při pokusu smazání „%s“ byl odepřen přístup."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1065
+#: libdeja/tools/duplicity/DuplicityJob.vala:1051
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Umístění zálohy „%s“ neexistuje."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
-#: libdeja/tools/duplicity/DuplicityJob.vala:1104
+#: libdeja/tools/duplicity/DuplicityJob.vala:1057
+#: libdeja/tools/duplicity/DuplicityJob.vala:1090
 msgid "No space left."
 msgstr "Nezbývá volné místo."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1093
+#: libdeja/tools/duplicity/DuplicityJob.vala:1079
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Chyba při čtení souboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1095
+#: libdeja/tools/duplicity/DuplicityJob.vala:1081
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Chyba při zapisování souboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1106
+#: libdeja/tools/duplicity/DuplicityJob.vala:1092
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Žádné volné místo v „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1114
+#: libdeja/tools/duplicity/DuplicityJob.vala:1100
 msgid "No backup files found"
 msgstr "Nenalezeny žádné soubory se zálohou"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1164
+#: libdeja/tools/duplicity/DuplicityJob.vala:1150
 msgid "Uploading…"
 msgstr "Nahrávání…"
 
@@ -1659,6 +1649,16 @@ msgstr ""
 #~ msgid "Déjà Dup Backup Tool"
 #~ msgstr "Zálohovací nástroj Déjà Dup"
 
+#~ msgid "Whether to request the root password"
+#~ msgstr "Vyžadovat heslo správce systému"
+
+#~ msgid ""
+#~ "Whether to request the root password when backing up from or restoring to "
+#~ "system folders."
+#~ msgstr ""
+#~ "Zda vyžadovat heslo správce systému (root) při zálohování systémových složek "
+#~ "nebo jejich obnovování ze zálohy."
+
 #~ msgid "Amazon S3 Access Key ID"
 #~ msgstr "Identifikátor Amazon S3 přístupového klíče"
 
@@ -1762,6 +1762,10 @@ msgstr ""
 #~ msgstr ""
 #~ "Toto je ověřovací URL adresa nebo URL správy identit (keystone) u služby "
 #~ "OpenStack"
+
+#~ msgid "Privileges are required to restore files to system locations"
+#~ msgstr ""
+#~ "K obnově souborů do systémových umístění jsou potřeba zvýšená oprávnění"
 
 #~ msgid "Restore Missing Files…"
 #~ msgstr "Obnovit chybějící soubory…"
