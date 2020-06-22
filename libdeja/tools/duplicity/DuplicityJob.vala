@@ -444,16 +444,9 @@ internal class DuplicityJob : DejaDup.ToolJob
           // make path to specific restore file, since duplicity will just
           // drop the file exactly where you ask it
           var local_file = make_local_rel_path(restore_files.data);
-          if (local_file == null) {
-            // Was not even a file path (maybe something goofy like computer://)
-            show_error(_("Could not restore ‘%s’: Not a valid file location").printf(
-                         restore_files.data.get_parse_name()));
-            return false;
-          }
-
           try {
             // won't have correct permissions...
-            local_file.make_directory_with_parents(null);
+            local_file.get_parent().make_directory_with_parents(null);
           }
           catch (IOError.EXISTS e) {
             // ignore
@@ -491,12 +484,12 @@ internal class DuplicityJob : DejaDup.ToolJob
     return true;
   }
 
-  File? make_local_rel_path(File file)
+  File make_local_rel_path(File file)
   {
-    string rel_file_path = slash.get_relative_path(file);
-    if (rel_file_path == null)
-      return null;
-    return local.resolve_relative_path(rel_file_path);
+    if (local.get_parent() == null)
+      return file; // original locations, leave file alone
+    else
+      return local.get_child(file.get_basename());
   }
 
   async void report_full_backups()

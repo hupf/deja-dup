@@ -137,7 +137,7 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     string file_arg = "", dest_arg = "";
     if (file_to_restore != null) {
       file_arg = "'--file-to-restore=%s' ".printf(file_to_restore.substring(1)); // skip root /
-      dest_arg = file_to_restore;
+      dest_arg = "/" + File.new_for_path(file_to_restore).get_basename();
     }
     return "'restore' %s%s'--force' 'gio+file://%s' '%s%s' %s"
       .printf(file_arg, extra, backupdir, restoredir, dest_arg, end_str);
