@@ -3,6 +3,28 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.0
+- Updated translations
+
+#### Changes since 40.7
+
+- Redesign the main window and preferences to follow GNOME design patterns
+- Add welcome state for first time use (with slightly guided backup/restore)
+- Add an in-app browse & restore interface
+- Drop nautilus plugin, in preference of above new browse interface
+- Drop deprecated backends (GOA, S3, GCS, OpenStack, and Rackspace)
+- Use "Déjà Dup Backups" instead of "Déjà Dup Backup Tool" as full name
+- Drop "Version" key from desktop files, which broke some parsers
+- Adds a button to reset your Google authorization in the preferences
+- Warn users before they restore files that we can't write to
+
+##### Packaging
+- Add required libhandy-0.0 dependency
+- Bump minimum glib version to 2.64
+- Drop optional goa-1.0 dependency
+- Drop optional libnautilus-extension dependency
+- Drop boto_pkgs, cloudfiles_pkgs, and swiftclient_pkgs meson options
+
 # 41.3
 This is a development release leading up to 42.0.
 
