@@ -29,7 +29,7 @@ elif [ "$1" = "--flatpak" ]; then
   export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDup/config
   export XDG_DATA_DIRS="$(flatpak info --user org.gnome.DejaDup -l)/files/share":$XDG_DATA_DIRS
   export DD_MODE="flatpak"
-  export DD_EXEC="flatpak run --user -p org.gnome.DejaDup"
+  export DD_EXEC="flatpak run --user --filesystem=/tmp -p org.gnome.DejaDup"
   export DD_MONITOR_EXEC="flatpak run --user -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup"
   export DD_CACHE_DIR=$HOME/.var/app/org.gnome.DejaDup/cache/deja-dup
   export DD_APPID=org.gnome.DejaDup
@@ -50,7 +50,7 @@ elif [ "$1" = "--flatpak-dev" ]; then
   export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDupDevel/config
   export XDG_DATA_DIRS="$(flatpak info --user org.gnome.DejaDupDevel -l)/files/share":$XDG_DATA_DIRS
   export DD_MODE="flatpak"
-  export DD_EXEC="flatpak run --user -p org.gnome.DejaDupDevel"
+  export DD_EXEC="flatpak run --user --filesystem=/tmp -p org.gnome.DejaDupDevel"
   export DD_MONITOR_EXEC="flatpak run --user -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDupDevel"
   export DD_CACHE_DIR=$HOME/.var/app/org.gnome.DejaDupDevel/cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
