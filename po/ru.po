@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-06-17 10:12-0400\n"
+"POT-Creation-Date: 2020-06-21 21:37-0400\n"
 "PO-Revision-Date: 2020-05-20 08:16+0000\n"
 "Last-Translator: Michael Terry <mike@mterry.name>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2020-06-19 06:20+0000\n"
+"X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
 "X-Generator: Launchpad (build 1cbd0aa39df153c901321817f9b57cf3f232b507)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
@@ -450,11 +450,11 @@ msgstr ""
 msgid "Overview"
 msgstr "Обзор"
 
-#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:69
+#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:70
 msgid "_Restore"
 msgstr "_Восстановить"
 
-#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:138
+#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:139
 msgid "_Date"
 msgstr "_Дата"
 
@@ -478,7 +478,7 @@ msgstr "Требуется пароль для шифрования"
 msgid "_Enter Password"
 msgstr ""
 
-#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:65
+#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:66
 msgid "Restore"
 msgstr "Восстановить"
 
@@ -815,8 +815,8 @@ msgstr "_Разрешить доступ"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:736
-#: libdeja/tools/duplicity/DuplicityJob.vala:1119
+#: libdeja/tools/duplicity/DuplicityJob.vala:707
+#: libdeja/tools/duplicity/DuplicityJob.vala:1090
 msgid "Failed with an unknown error."
 msgstr "Не удалось (неизвестная ошибка)"
 
@@ -833,101 +833,101 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_Установить"
 
-#: deja-dup/AssistantRestore.vala:96
+#: deja-dup/AssistantRestore.vala:97
 msgid "_Backup location"
 msgstr "_Местоположение резервной копии"
 
-#: deja-dup/AssistantRestore.vala:117
+#: deja-dup/AssistantRestore.vala:118
 msgid "Restore From Where?"
 msgstr "Откуда восстановить?"
 
-#: deja-dup/AssistantRestore.vala:164
-msgid "Backups does not have permission to restore the following files:"
-msgstr ""
-
-#: deja-dup/AssistantRestore.vala:176
+#: deja-dup/AssistantRestore.vala:185
 msgid "Restore files to _original locations"
 msgstr "Восстановить файлы на их прежнее местоположение"
 
-#: deja-dup/AssistantRestore.vala:186
+#: deja-dup/AssistantRestore.vala:195
 msgid "Restore to _specific folder"
 msgstr "Восстановить в _указанную папку"
 
-#: deja-dup/AssistantRestore.vala:198
+#: deja-dup/AssistantRestore.vala:207
 msgid "Choose destination for restored files"
 msgstr "Выберите местоположение для восстанавливаемых файлов"
 
-#: deja-dup/AssistantRestore.vala:207
+#: deja-dup/AssistantRestore.vala:215
 msgid "Restore _folder"
 msgstr "Восстановить в _папку"
 
-#: deja-dup/AssistantRestore.vala:255
+#: deja-dup/AssistantRestore.vala:228
+msgid "Backups does not have permission to restore the following files:"
+msgstr ""
+
+#: deja-dup/AssistantRestore.vala:292
 msgid "Backup location"
 msgstr "Местоположение резервных копий"
 
-#: deja-dup/AssistantRestore.vala:270
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore date"
 msgstr "Дата восстановления"
 
-#: deja-dup/AssistantRestore.vala:278
+#: deja-dup/AssistantRestore.vala:315
 msgid "Restore folder"
 msgstr "Восстановить в папку"
 
-#: deja-dup/AssistantRestore.vala:304
+#: deja-dup/AssistantRestore.vala:341
 msgid "Checking for Backups…"
 msgstr "Проверка резервных копий..."
 
-#: deja-dup/AssistantRestore.vala:312
+#: deja-dup/AssistantRestore.vala:349
 msgid "Restore From When?"
 msgstr "С какого момента восстановить?"
 
-#: deja-dup/AssistantRestore.vala:323
+#: deja-dup/AssistantRestore.vala:360
 msgid "Restore to Where?"
 msgstr "Куда восстановить файлы?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:358
+#: deja-dup/AssistantRestore.vala:395
 msgid "Restoring:"
 msgstr "Востанавливается:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:368
+#: deja-dup/AssistantRestore.vala:405
 msgid "No backups to restore"
 msgstr "Нет резервных копий для восстановления"
 
-#: deja-dup/AssistantRestore.vala:477
+#: deja-dup/AssistantRestore.vala:514
 msgid "Original location"
 msgstr "Первоначальное местоположение"
 
-#: deja-dup/AssistantRestore.vala:488
+#: deja-dup/AssistantRestore.vala:525
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Файл для восстановления"
 msgstr[1] "Файла для восстановления"
 msgstr[2] "Файлов для восстановления"
 
-#: deja-dup/AssistantRestore.vala:509
+#: deja-dup/AssistantRestore.vala:546
 msgid "Restore Failed"
 msgstr "Восстановление не удалось"
 
-#: deja-dup/AssistantRestore.vala:511
+#: deja-dup/AssistantRestore.vala:548
 msgid "Restore Finished"
 msgstr "Восстановление завершено"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:514
+#: deja-dup/AssistantRestore.vala:551
 msgid "Your files were successfully restored."
 msgstr "Ваши файлы были успешно восстановлены"
 
-#: deja-dup/AssistantRestore.vala:517
+#: deja-dup/AssistantRestore.vala:554
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Ваш файл был успешно восстановлен."
 msgstr[1] "Ваши файлы были успешно восстановлены."
 msgstr[2] "Ваши файлы были успешно восстановлены."
 
-#: deja-dup/AssistantRestore.vala:524 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:561 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Восстановление..."
 
@@ -1323,10 +1323,9 @@ msgid "Listing files…"
 msgstr "Список файлов..."
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:391
-#: libdeja/tools/duplicity/DuplicityJob.vala:402
-#: libdeja/tools/duplicity/DuplicityJob.vala:438
-#: libdeja/tools/duplicity/DuplicityJob.vala:443
+#: libdeja/tools/duplicity/DuplicityJob.vala:381
+#: libdeja/tools/duplicity/DuplicityJob.vala:392
+#: libdeja/tools/duplicity/DuplicityJob.vala:428
 msgid "Preparing…"
 msgstr "Выполняется подготовка..."
 
@@ -1334,7 +1333,7 @@ msgstr "Выполняется подготовка..."
 msgid "Verifying backup…"
 msgstr "Проверка резервной копии…"
 
-#: libdeja/OperationRestore.vala:33
+#: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
 msgstr "Восстановление файлов..."
 
@@ -1346,39 +1345,33 @@ msgstr ""
 "Вероятно, ваша резервная копия повреждена. Удалите резервную копию и "
 "попробуйте снова."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:86
-#: libdeja/tools/duplicity/DuplicityJob.vala:172
+#: libdeja/tools/duplicity/DuplicityJob.vala:79
+#: libdeja/tools/duplicity/DuplicityJob.vala:162
 msgid "Paused (no network)"
 msgstr "Приостановлено (нет сети)"
 
-#. Was not even a file path (maybe something goofy like computer://)
-#: libdeja/tools/duplicity/DuplicityJob.vala:468
-#, c-format
-msgid "Could not restore ‘%s’: Not a valid file location"
-msgstr "Невозможно восстановить ‘%s’: Некорректное местоположение файла"
-
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:559
+#: libdeja/tools/duplicity/DuplicityJob.vala:538
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:584
+#: libdeja/tools/duplicity/DuplicityJob.vala:563
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:605
-#: libdeja/tools/duplicity/DuplicityJob.vala:619
+#: libdeja/tools/duplicity/DuplicityJob.vala:584
+#: libdeja/tools/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "Очистка..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:700
+#: libdeja/tools/duplicity/DuplicityJob.vala:671
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1389,7 +1382,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:716
+#: libdeja/tools/duplicity/DuplicityJob.vala:687
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1398,19 +1391,19 @@ msgstr ""
 "есть разрешение на запись."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:938
+#: libdeja/tools/duplicity/DuplicityJob.vala:909
 msgid "Bad encryption password."
 msgstr "Неверный пароль шифрования"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:983
+#: libdeja/tools/duplicity/DuplicityJob.vala:954
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Не удалось восстановить  ‘%s’: файл не найден в резервной копии"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:994
+#: libdeja/tools/duplicity/DuplicityJob.vala:965
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1421,57 +1414,57 @@ msgstr ""
 "избежание непредсказуемых последствий, рекомендуется создать резервную копию "
 "на другом носителе."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:997
+#: libdeja/tools/duplicity/DuplicityJob.vala:968
 msgid "Computer name changed"
 msgstr "Изменилось название компьютера"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1032
+#: libdeja/tools/duplicity/DuplicityJob.vala:1003
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Доступ запрещён при попытке создать ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1036
-#: libdeja/tools/duplicity/DuplicityJob.vala:1040
+#: libdeja/tools/duplicity/DuplicityJob.vala:1007
+#: libdeja/tools/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Доступ запрещён при попытке прочитать ‘%s’"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1044
+#: libdeja/tools/duplicity/DuplicityJob.vala:1015
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Доступ запрещён при попытке удаления ‘%s’"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1051
+#: libdeja/tools/duplicity/DuplicityJob.vala:1022
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Носитель ‘%s’ не существует."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1057
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
+#: libdeja/tools/duplicity/DuplicityJob.vala:1028
+#: libdeja/tools/duplicity/DuplicityJob.vala:1061
 msgid "No space left."
 msgstr "Не осталось свободного места"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1079
+#: libdeja/tools/duplicity/DuplicityJob.vala:1050
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Ошибка чтения файла ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1081
+#: libdeja/tools/duplicity/DuplicityJob.vala:1052
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Ошибка записи файла ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Не осталось свободного места на ‘%s’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1100
+#: libdeja/tools/duplicity/DuplicityJob.vala:1071
 msgid "No backup files found"
 msgstr "Резервных копий не обнаружено"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1150
+#: libdeja/tools/duplicity/DuplicityJob.vala:1121
 msgid "Uploading…"
 msgstr "Передача…"
 
@@ -1521,6 +1514,10 @@ msgstr ""
 
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
+
+#, c-format
+#~ msgid "Could not restore ‘%s’: Not a valid file location"
+#~ msgstr "Невозможно восстановить ‘%s’: Некорректное местоположение файла"
 
 #~ msgid "Backup location is too small.  Try using one with more space."
 #~ msgstr ""
