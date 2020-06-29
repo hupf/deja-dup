@@ -16,33 +16,33 @@ from . import BaseTest
 class IntegrationTest(BaseTest):
     def setUp(self):
         super().setUp()
-        if os.environ['DD_MODE'] == 'dev':
-            self.skipTest('dev mode')
+        if os.environ["DD_MODE"] == "dev":
+            self.skipTest("dev mode")
 
     def test_translations(self):
-        app = self.cmd(env='LANG=fr_FR.UTF-8')
-        assert app.childNamed('Restaurer')
+        app = self.cmd(env="LANG=fr_FR.UTF-8")
+        assert app.childNamed("Restaurer")
 
     def test_help(self):
         # Also test that help is translated by passing LANG
-        app = self.cmd(env='LANG=fr_FR.UTF-8')
-        app.childNamed('Menu').click()
+        app = self.cmd(env="LANG=fr_FR.UTF-8")
+        app.childNamed("Menu").click()
 
-        self.addCleanup(self.kill_bus, 'org.gnome.Yelp')
-        app.button('Aide').click()
+        self.addCleanup(self.kill_bus, "org.gnome.Yelp")
+        app.button("Aide").click()
 
-        yelp = tree.root.application('yelp')
-        assert yelp.childNamed('Sauvegarder')
+        yelp = tree.root.application("yelp")
+        assert yelp.childNamed("Sauvegarder")
 
     def test_desktop_file(self):
         # Find the file in system data dirs
         found = None
-        datadirs = {d + '/applications' for d in GLib.get_system_data_dirs()}
+        datadirs = {d + "/applications" for d in GLib.get_system_data_dirs()}
         for datadir in datadirs:
-            desktopfiles = glob.glob(datadir + '/*.desktop')
+            desktopfiles = glob.glob(datadir + "/*.desktop")
             for desktopfile in desktopfiles:
                 f = open(desktopfile)
-                if os.environ['DD_DESKTOP'] + '\n' in f.readlines():
+                if os.environ["DD_DESKTOP"] + "\n" in f.readlines():
                     found = Gio.DesktopAppInfo.new_from_filename(desktopfile)
                     break
             if found:
@@ -62,6 +62,6 @@ class IntegrationTest(BaseTest):
             assert icon.load(256, None)
 
         # Test launchability
-        self.addCleanup(self.kill_bus, os.environ['DD_APPID'])
+        self.addCleanup(self.kill_bus, os.environ["DD_APPID"])
         found.launch(None, None)
-        assert tree.root.application(os.environ['DD_APPID'])
+        assert tree.root.application(os.environ["DD_APPID"])

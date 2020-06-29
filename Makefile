@@ -68,6 +68,14 @@ flatpak-update:
 		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' flatpak/$$p.yaml; \
 	done
 
+.PHONY: black
+black:
+	black --check -t py38 --exclude builddir --include 'mock/duplicity|\.py$$' .
+
+.PHONY: reuse
+reuse:
+	reuse lint
+
 builddir/vlint:
 	mkdir -p builddir
 	git clone https://github.com/vala-lang/vala-lint builddir/vala-lint
@@ -75,6 +83,5 @@ builddir/vlint:
 	ln -s ./vala-lint/build/src/io.elementary.vala-lint builddir/vlint
 
 .PHONY: lint
-lint: builddir/vlint
+lint: reuse black builddir/vlint
 	builddir/vlint -c vala-lint.conf .
-	reuse lint
