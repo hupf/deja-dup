@@ -6,7 +6,9 @@
 
 set -e
 
-pos=$(ls *.po -1 | cut -d. -f1)
+test -d ../.git || exit 0
+
+pos=$(git ls-files | grep -v '/' | grep '\.po$' | cut -d. -f1)
 
 test -e LINGUAS
 echo "$pos" | diff -u -B -I '^#.*' LINGUAS -

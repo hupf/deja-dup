@@ -6,7 +6,9 @@
 
 set -e
 
-sources=$(find .. -regextype posix-extended -regex '.*\.(c|vala)' -o -regex '\.\./data/.*\.(in|ui)' | sed 's|^\.\./||' | grep -v '^builddir/' | grep -v '^flatpak_app/' | grep -v '^_build/'  | grep -v '^_flatpak_build/' | grep -v '/tests/' | sort)
+test -d .git || exit 0
 
-test -e POTFILES.in
-echo "$sources" | diff -u -B -I '^#.*' POTFILES.in -
+sources=$(git ls-files | grep -e '\.vala$' -e '^data/ui/' -e '^data/.*\.in$' | grep -v '/tests/')
+
+test -e po/POTFILES.in
+echo "$sources" | diff -u -B -I '^#.*' po/POTFILES.in -
