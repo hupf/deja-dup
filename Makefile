@@ -61,11 +61,12 @@ flatpak:
 
 .PHONY: flatpak-update
 flatpak-update:
-	for p in duplicity pydrive; do \
-		../flatpak-builder-tools/pip/flatpak-pip-generator --output flatpak/$$p $$p; \
-		../flatpak-builder-tools/flatpak-json2yaml.py -f --output flatpak/$$p.yaml flatpak/$$p.json; \
-		rm flatpak/$$p.json; \
-		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' flatpak/$$p.yaml; \
+	cd flatpak; \
+	for p in duplicity pydrive2; do \
+		../../flatpak-builder-tools/pip/flatpak-pip-generator --output $$p $$p; \
+		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$p.yaml $$p.json; \
+		rm $$p.json; \
+		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$p.yaml; \
 	done
 
 .PHONY: black
