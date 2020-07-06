@@ -314,6 +314,8 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
 
     saved_argv.append("--exclude=**");
+    saved_argv.append("--exclude-if-present=CACHEDIR.TAG");
+    saved_argv.append("--exclude-if-present=.deja-dup-ignore");
   }
 
   public override void cancel() {

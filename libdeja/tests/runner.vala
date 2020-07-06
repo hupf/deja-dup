@@ -223,6 +223,8 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     args += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
 
     args += "'--exclude=**' ";
+    args += "'--exclude-if-present=CACHEDIR.TAG' ";
+    args += "'--exclude-if-present=.deja-dup-ignore' ";
   }
 
   args += "%s %s%s'gio+file://%s' %s".printf(extra, dry_str, source_str, backupdir, end_str);

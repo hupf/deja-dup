@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-24 09:20-0400\n"
+"POT-Creation-Date: 2020-07-05 21:49-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -744,8 +744,8 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:707
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
+#: libdeja/tools/duplicity/DuplicityJob.vala:709
+#: libdeja/tools/duplicity/DuplicityJob.vala:1092
 msgid "Failed with an unknown error."
 msgstr ""
 
@@ -1212,9 +1212,9 @@ msgid "Listing files…"
 msgstr ""
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:381
-#: libdeja/tools/duplicity/DuplicityJob.vala:392
-#: libdeja/tools/duplicity/DuplicityJob.vala:428
+#: libdeja/tools/duplicity/DuplicityJob.vala:383
+#: libdeja/tools/duplicity/DuplicityJob.vala:394
+#: libdeja/tools/duplicity/DuplicityJob.vala:430
 msgid "Preparing…"
 msgstr ""
 
@@ -1238,27 +1238,27 @@ msgid "Paused (no network)"
 msgstr ""
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:538
+#: libdeja/tools/duplicity/DuplicityJob.vala:540
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:563
+#: libdeja/tools/duplicity/DuplicityJob.vala:565
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:584
-#: libdeja/tools/duplicity/DuplicityJob.vala:598
+#: libdeja/tools/duplicity/DuplicityJob.vala:586
+#: libdeja/tools/duplicity/DuplicityJob.vala:600
 msgid "Cleaning up…"
 msgstr ""
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:671
+#: libdeja/tools/duplicity/DuplicityJob.vala:673
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1267,26 +1267,26 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:687
+#: libdeja/tools/duplicity/DuplicityJob.vala:689
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr ""
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:909
+#: libdeja/tools/duplicity/DuplicityJob.vala:911
 msgid "Bad encryption password."
 msgstr ""
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:954
+#: libdeja/tools/duplicity/DuplicityJob.vala:956
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:965
+#: libdeja/tools/duplicity/DuplicityJob.vala:967
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1294,57 +1294,57 @@ msgid ""
 "location."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:968
+#: libdeja/tools/duplicity/DuplicityJob.vala:970
 msgid "Computer name changed"
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1003
+#: libdeja/tools/duplicity/DuplicityJob.vala:1005
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr ""
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1007
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1009
+#: libdeja/tools/duplicity/DuplicityJob.vala:1013
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1015
+#: libdeja/tools/duplicity/DuplicityJob.vala:1017
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/tools/duplicity/DuplicityJob.vala:1024
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1028
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1030
+#: libdeja/tools/duplicity/DuplicityJob.vala:1063
 msgid "No space left."
-msgstr ""
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
-#, c-format
-msgid "Error reading file ‘%s’."
 msgstr ""
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:1052
 #, c-format
+msgid "Error reading file ‘%s’."
+msgstr ""
+
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#, c-format
 msgid "Error writing file ‘%s’."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1073
 msgid "No backup files found"
 msgstr ""
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1121
+#: libdeja/tools/duplicity/DuplicityJob.vala:1123
 msgid "Uploading…"
 msgstr ""
 
