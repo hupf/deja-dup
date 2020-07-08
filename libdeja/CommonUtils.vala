@@ -713,8 +713,7 @@ public string[] get_tempdirs()
   // If we use /tmp or /var/tmp from inside of a container like flatpak's, gvfs
   // (which is outside the container) won't see our /var/tmp/xxx path and error
   // out.  So we restrict ourselves to the user's home dir in that case.
-  var flatpak_dir = Environment.get_variable("FLATPAK_SANDBOX_DIR");
-  if (flatpak_dir != null && flatpak_dir != "")
+  if (get_install_type() == InstallType.FLATPAK)
     return {hometmp};
 
   // Prefer directories that have their own cleanup logic in case ours isn't
@@ -758,6 +757,22 @@ public string try_realpath(string input)
 {
   var resolved = Posix.realpath(input);
   return resolved == null ? input : resolved;
+}
+
+public enum InstallType {
+  FLATPAK,
+  SNAP,
+  UNKNOWN,
+}
+
+public InstallType get_install_type()
+{
+  if (Environment.get_variable("FLATPAK_ID") != null)
+    return InstallType.FLATPAK;
+  else if (Environment.get_variable("SNAP_NAME") != null)
+    return InstallType.SNAP;
+  else
+    return InstallType.UNKNOWN;
 }
 
 } // end namespace

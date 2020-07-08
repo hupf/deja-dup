@@ -57,10 +57,22 @@ public class DejaDupApp : Gtk.Application
     add_main_option_entries(OPTIONS);
   }
 
+  string version_string()
+  {
+    switch(DejaDup.get_install_type()) {
+    case DejaDup.InstallType.FLATPAK:
+      return Config.VERSION + " (flatpak)";
+    case DejaDup.InstallType.SNAP:
+      return Config.VERSION + " (snap)";
+    default:
+      return Config.VERSION;
+    }
+  }
+
   public override int handle_local_options(VariantDict options)
   {
     if (options.contains("version")) {
-      print("%s %s\n", "deja-dup", Config.VERSION);
+      print("%s %s\n", "deja-dup", version_string());
       return 0;
     }
     return -1;
@@ -242,7 +254,7 @@ public class DejaDupApp : Gtk.Application
                           "license-type", Gtk.License.GPL_3_0,
                           "logo-icon-name", Config.ICON_NAME,
                           "translator-credits", _("translator-credits"),
-                          "version", Config.VERSION,
+                          "version", version_string(),
                           "website", "https://wiki.gnome.org/Apps/DejaDup");
   }
 

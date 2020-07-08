@@ -126,8 +126,7 @@ public class Background : Object
   public bool request_autostart(Gtk.Widget widget)
   {
     // We currently only actually bother checking with the Background portal in flatpak land.
-    var flatpak_id = Environment.get_variable("FLATPAK_ID");
-    if (flatpak_id == null) {
+    if (DejaDup.get_install_type() != DejaDup.InstallType.FLATPAK) {
       this.autostart_allowed = true;
       return this.autostart_allowed;
     }
