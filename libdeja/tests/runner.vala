@@ -693,7 +693,7 @@ int main(string[] args)
   Environment.set_variable("DEJA_DUP_TESTING", "1", true);
   Environment.set_variable("DEJA_DUP_DEBUG", "1", true);
   Environment.set_variable("DEJA_DUP_LANGUAGE", "en", true);
-  Test.bug_base("https://launchpad.net/bugs/%s");
+  Test.bug_base("https://gitlab.gnome.org/World/deja-dup/-/issues/%s");
 
   setup_gsettings();
 

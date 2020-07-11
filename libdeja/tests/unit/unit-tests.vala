@@ -143,7 +143,7 @@ int main(string[] args)
                            true);
   Environment.set_variable("DEJA_DUP_LANGUAGE", "en", true);
   Environment.set_variable("GSETTINGS_BACKEND", "memory", true);
-  Test.bug_base("https://launchpad.net/bugs/%s");
+  Test.bug_base("https://gitlab.gnome.org/World/deja-dup/-/issues/%s");
 
   string tmpdir;
   try {
