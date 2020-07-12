@@ -331,7 +331,11 @@ public class AssistantRestore : AssistantOperation
     page.attach(confirm_files, 1, rows, 1, 1);
     ++rows;
 
-    return page;
+    var scroll = new Gtk.ScrolledWindow(null, null);
+    scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
+    scroll.add(page);
+
+    return scroll;
   }
 
   void add_status_query_page()

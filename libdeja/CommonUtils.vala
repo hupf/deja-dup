@@ -465,6 +465,9 @@ public string get_access_granted_html()
 
 public string get_file_desc(File file)
 {
+  if (file.is_native())
+    return get_display_name(file);
+
   // First try to get the DESCRIPTION.  Else get the DISPLAY_NAME
   try {
     var info = file.query_info(FileAttribute.STANDARD_DISPLAY_NAME + "," +
@@ -478,11 +481,10 @@ public string get_file_desc(File file)
   catch (Error e) {}
 
   var desc = Path.get_basename(file.get_parse_name());
-  if (!file.is_native()) {
-    var uri = new Soup.URI(file.get_uri());
-    if (uri != null && uri.host != null && uri.host != "")
-      desc = _("%1$s on %2$s").printf(desc, uri.host);
-  }
+  var uri = new Soup.URI(file.get_uri());
+  if (uri != null && uri.host != null && uri.host != "")
+    desc = _("%1$s on %2$s").printf(desc, uri.host);
+
   return desc;
 }
 
