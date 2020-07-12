@@ -190,6 +190,10 @@ public abstract class AssistantOperation : Assistant
       buffer.get_iter_at_line(out cutoff, buffer.get_line_count() - LOGS_LINES_TO_KEEP);
       buffer.delete(ref start, ref cutoff);
     }
+
+    progress_expander.visible = true;
+    progress_scroll.visible = true;
+    progress_text.visible = true;
   }
 
   protected void set_secondary_label(string text)
@@ -269,6 +273,7 @@ public abstract class AssistantOperation : Assistant
     progress_scroll.add(progress_text);
     progress_expander = new Gtk.Expander.with_mnemonic(_("_Details"));
     progress_expander.expand = true;
+    progress_expander.no_show_all = true;
     progress_expander.add(progress_scroll);
     page.attach(progress_expander, 0, row, 2, 1);
     ++row;
