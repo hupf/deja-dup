@@ -224,7 +224,7 @@ static void begin_monitoring()
   DejaDup.Network.get().notify["connected"].connect(network_changed);
   DejaDup.Network.get().notify["metered"].connect(network_changed);
 
-  var mon = VolumeMonitor.get();
+  var mon = DejaDup.get_volume_monitor();
   mon.volume_added.connect(volume_added);
 
   watch_settings();

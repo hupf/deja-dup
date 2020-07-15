@@ -777,5 +777,17 @@ public InstallType get_install_type()
     return InstallType.UNKNOWN;
 }
 
+
+// Keep a constant live reference to a single monitor. We have problems when
+// we let glib manage its references, as it might kill it on us, even if we
+// have open signals to it.
+VolumeMonitor _monitor;
+public VolumeMonitor get_volume_monitor()
+{
+  if (_monitor == null)
+    _monitor = VolumeMonitor.get();
+  return _monitor;
+}
+
 } // end namespace
 

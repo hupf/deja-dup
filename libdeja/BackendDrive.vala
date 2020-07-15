@@ -16,17 +16,6 @@ public const string DRIVE_FOLDER_KEY = "folder";
 
 public class BackendDrive : BackendFile
 {
-  VolumeMonitor _monitor = null;
-  VolumeMonitor monitor {
-    get {
-      if (_monitor == null) {
-        _monitor = VolumeMonitor.get();
-        _monitor.ref(); // bug 569418; bad things happen when VM goes away
-      }
-      return _monitor;
-    }
-  }
-
   public BackendDrive(Settings? settings) {
     Object(settings: (settings != null ? settings : get_settings(DRIVE_ROOT)));
   }
@@ -38,6 +27,7 @@ public class BackendDrive : BackendFile
 
   Volume get_volume()
   {
+    var monitor = DejaDup.get_volume_monitor();
     var uuid = settings.get_string(DRIVE_UUID_KEY);
     return monitor.get_volume_for_uuid(uuid);
   }
@@ -170,6 +160,7 @@ public class BackendDrive : BackendFile
   {
     var vol = get_volume();
     if (vol == null) {
+      var monitor = DejaDup.get_volume_monitor();
       var name = settings.get_string(DRIVE_NAME_KEY);
       pause_op(_("Storage location not available"), _("Waiting for ‘%s’ to become connected…").printf(name));
       var loop = new MainLoop(null, false);

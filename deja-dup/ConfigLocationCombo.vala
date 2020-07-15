@@ -33,8 +33,6 @@ public class ConfigLocationCombo : BuilderWidget
     LOCAL,
   }
 
-  VolumeMonitor monitor;
-
   Gtk.ComboBox combo;
   Gtk.ListStore store;
   Gtk.TreeModelSort sort_model;
@@ -76,7 +74,7 @@ public class ConfigLocationCombo : BuilderWidget
     // *** Removable drives ***
 
     drive_settings.notify[DejaDup.DRIVE_UUID_KEY].connect(handle_drive_uuid_change);
-    monitor = VolumeMonitor.get();
+    var monitor = DejaDup.get_volume_monitor();
     foreach (Volume v in monitor.get_volumes()) {
       add_volume(monitor, v);
     }
@@ -322,6 +320,7 @@ public class ConfigLocationCombo : BuilderWidget
   {
     drive_settings.set_string(DejaDup.DRIVE_UUID_KEY, uuid);
 
+    var monitor = DejaDup.get_volume_monitor();
     var vol = monitor.get_volume_for_uuid(uuid);
     if (vol == null) {
       // Not an error, it's just not plugged in right now
