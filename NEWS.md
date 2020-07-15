@@ -3,6 +3,16 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.1
+- Fix automatic backups not firing for removable storage drives, which got
+  broken during the 41.x development cycle
+- Automatically exclude folders that follow the cachedir spec (i.e. that have a
+  CACHEDIR.TAG file in them), and same if they have a .deja-dup-ignore file
+- Use a symbolic back icon in header (vs a full color icon)
+- Stop the restore confirmation screen from growing too big if you are
+  restoring a lot of files
+- Update Polish, Romanian, and Ukrainian translations
+
 # 42.0
 - Updated translations
 
