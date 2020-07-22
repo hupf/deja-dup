@@ -55,7 +55,7 @@ msgid ""
 "backend."
 msgstr ""
 "El Déjà Dup és una eina simple de còpies de seguretat. Amaga la complexitat "
-"de fer còpies de seguretat de la manera correcta (amb encriptat, mantenint "
+"de fer còpies de seguretat de la manera correcta (amb xifratge, mantenint "
 "les còpies a un lloc remot i de forma regular) i usa duplicitat com a "
 "dorsal."
 
@@ -68,7 +68,7 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.appdata.xml.in:21
 msgid "Securely encrypts and compresses your data"
-msgstr "Encripta i comprimeix les vostres dades amb seguretat"
+msgstr "Xifra i comprimeix les vostres dades amb seguretat"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:22
 msgid "Incrementally backs up, letting you restore from any particular backup"
@@ -85,15 +85,14 @@ msgid "Integrates well into your GNOME desktop"
 msgstr "S'integra bé a l'escriptori de GNOME"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:26
-#, fuzzy
 msgid ""
 "Déjà Dup focuses on ease of use and recovering from personal, accidental "
 "data loss. If you need a full system backup or an archival program, you may "
 "prefer other backup apps."
 msgstr ""
 "Déjà Dup se centra en la facilitat d'ús i recuperació de la pèrdua de dades "
-"personals accidentals. Si necessiteu una còpia de seguretat completa del "
-"sistema o un programa d'arxiu és possible que preferiu altres aplicacions de"
+"personals de forma accidental. Si necessiteu una còpia de seguretat completa del "
+"sistema o un programa d'arxiu, és possible que preferiu altres aplicacions de"
 " còpia de seguretat."
 
 #: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
@@ -242,9 +241,9 @@ msgid ""
 "occasionally notify you to confirm the password. This time should be either "
 "‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr ""
-"Per evitar que oblideu les contrasenyes, ocasionalment el Déjà Dup us "
+"Per a evitar que oblideu les contrasenyes, ocasionalment el Déjà Dup us "
 "sol·licitarà que confirmeu la contrasenya. Aquest temps hauria de ser "
-"«disabled» (inhabilitat) per inhabilitar aquesta comprovació o en format ISO"
+"«disabled» (inhabilitat) per a inhabilitar aquesta comprovació o en format ISO"
 " 8601."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:58
@@ -366,7 +365,6 @@ msgstr ""
 "camins poden ser absoluts o relatius a l'amfitrió."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:145
-#, fuzzy
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
@@ -610,7 +608,7 @@ msgid ""
 "directly to back up or restore your files."
 msgstr ""
 "Aquesta ubicació d'emmagatzematge ja no és compatible. Encara podeu "
-"utilitzar la duplicitat directament per fer una còpia de seguretat o "
+"utilitzar la duplicitat directament per a fer una còpia de seguretat o "
 "restaurar els fitxers."
 
 #: data/ui/preferences.ui:475
@@ -769,7 +767,7 @@ msgstr "_Detalls"
 
 #: deja-dup/AssistantOperation.vala:315
 msgid "In order to continue, the following packages need to be installed:"
-msgstr "Per continuar, cal instal·lar els següents paquets:"
+msgstr "Per a continuar, cal instal·lar els següents paquets:"
 
 #: deja-dup/AssistantOperation.vala:351
 msgid "_Allow restoring without a password"
@@ -784,7 +782,7 @@ msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr ""
-"Us caldrà la contrasenya per restaurar els fitxers. Us recomanem que la deseu"
+"Us caldrà la contrasenya per a restaurar els fitxers. Us recomanem que la deseu"
 " en un lloc segur."
 
 #: deja-dup/AssistantOperation.vala:401
@@ -797,7 +795,7 @@ msgid ""
 "of an emergency, please enter your encryption password again to perform a "
 "brief restore test."
 msgstr ""
-"Per comprovar que podeu recuperar els fitxers en cas d'una emergència, "
+"Per a comprovar que podeu recuperar els fitxers en cas d'una emergència, "
 "torneu a introduir la contrasenya de xifratge per a realitzar una petita "
 "comprovació de recuperació."
 
@@ -912,7 +910,7 @@ msgstr "S'està restaurant:"
 #. If we didn't see any dates...  Must not be any backups on the backend
 #: deja-dup/AssistantRestore.vala:405
 msgid "No backups to restore"
-msgstr "No hi ha cap còpia de seguretat per restaurar"
+msgstr "No hi ha cap còpia de seguretat per a restaurar"
 
 #: deja-dup/AssistantRestore.vala:514
 msgid "Original location"
@@ -1251,7 +1249,7 @@ msgstr ""
 
 #. Translators: %s is a folder.
 #: libdeja/BackendGoogle.vala:89
-#, c-format, fuzzy
+#, c-format
 msgid "%s on Google Drive"
 msgstr "%s a Google Drive"
 
@@ -1373,7 +1371,7 @@ msgid ""
 " %s."
 msgstr ""
 "La ubicació de la còpia de seguretat no té prou espai lliure. Proveu "
-"d'utilitzar-ne una amb almenys %s"
+"d'utilitzar-ne una amb almenys %s."
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:586
 #: libdeja/tools/duplicity/DuplicityJob.vala:600
@@ -1400,7 +1398,7 @@ msgid ""
 "write to them."
 msgstr ""
 "No s'han pogut restaurar els fitxers següents. Assegureu-vos que teniu "
-"permisos per escriure'ls."
+"permisos per a escriure'ls."
 
 #. notify upper layers, if they want to do anything
 #: libdeja/tools/duplicity/DuplicityJob.vala:911
@@ -1491,13 +1489,13 @@ msgid "Could not understand duplicity version ‘%s’."
 msgstr "No s'ha pogut processar la versió del Duplicity «%s»."
 
 #: libdeja/tools/duplicity/DuplicityPlugin.vala:46
-#, c-format, fuzzy
+#, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr ""
-"Les còpies de seguretat requereixen almenys la versió per centd.%d.%d.%.2d "
-"de duplicity però només s'ha trobat la versió per centd.%d.%d.2d"
+"Les còpies de seguretat requereixen almenys la versió %d.%d.%.2d "
+"del duplicity, però només s'ha trobat la versió %d.%d.%.2d"
 
 #: monitor/monitor.vala:75
 msgid ""
@@ -1505,442 +1503,3 @@ msgid ""
 msgstr ""
 "La còpia de seguretat començarà quan hi hagi una connexió de xarxa sense "
 "control de consum."
-
-#~ msgid "Folder"
-#~ msgstr "Carpeta"
-
-#~ msgid "File"
-#~ msgstr "Fitxer"
-
-#~ msgid "Categories"
-#~ msgstr "Categories"
-
-#~ msgid "You must provide a directory, not a file"
-#~ msgstr "Heu d'indicar una carpeta, no un fitxer"
-
-#~ msgctxt "verb"
-#~ msgid "_Keep"
-#~ msgstr "_Mantenir"
-
-#~ msgid ""
-#~ "Old backups will be deleted earlier if the storage location is low on space."
-#~ msgstr ""
-#~ "Les còpies de seguretat antigues s'esborraran més aviat si la ubicació "
-#~ "d'emmagatzematge té poc espai."
-
-#~ msgid "Scheduling"
-#~ msgstr "Planificació"
-
-#~ msgid "Ubuntu One"
-#~ msgstr "Ubuntu One"
-
-#~ msgid "Day"
-#~ msgstr "Dia"
-
-#~ msgid "Could not restore ‘%s’: Not a valid file location"
-#~ msgstr "No s'ha pogut restaurar «%s»: no és una ubicació de fitxer vàlida"
-
-#~ msgid "Backup location is too small.  Try using one with more space."
-#~ msgstr ""
-#~ "La ubicació de la còpia de seguretat no és prou gran. Proveu d'utilitzar-ne "
-#~ "una altra amb més espai."
-
-#~ msgid "Backup location does not have enough free space."
-#~ msgstr "La ubicació de la còpia de seguretat no té prou espai lliure."
-
-#~ msgid "Déjà Dup Backup Tool"
-#~ msgstr "Eina de còpies de seguretat Déjà Dup"
-
-#~ msgid "Whether to request the root password"
-#~ msgstr "Si s'ha de demanar la contrasenya d'usuari primari"
-
-#~ msgid ""
-#~ "Whether to request the root password when backing up from or restoring to "
-#~ "system folders."
-#~ msgstr ""
-#~ "Indica si s'ha de demanar la contrasenya d'usuari primari en crear o "
-#~ "restaurar carpetes del sistema."
-
-#~ msgid "Amazon S3 Access Key ID"
-#~ msgstr "Identificador de la clau d'accés de l'Amazon S3"
-
-#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-#~ msgstr ""
-#~ "Identificador de clau d'accés de l'S3 d'Amazon. Aquest serà el vostre nom "
-#~ "d'usuari de l'S3."
-
-#~ msgid "The Amazon S3 bucket name to use"
-#~ msgstr "Nom que s'utilitzarà per al dipòsit de l'S3 d'Amazon"
-
-#~ msgid ""
-#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
-#~ "already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "A quin dipòsit de l'S3 d'Amazon s'han d'emmagatzemar els fitxers. El dipòsit"
-#~ " no cal que existeixi, i només s'accepten noms d'ordinador vàlids."
-
-#~ msgid "The Amazon S3 folder"
-#~ msgstr "La carpeta de l'S3 d'Amazon"
-
-#~ msgid ""
-#~ "An optional folder name to store files in. This folder will be created in "
-#~ "the chosen bucket."
-#~ msgstr ""
-#~ "El nom d'una carpeta opcional on emmagatzemar els fitxers. Aquesta carpeta "
-#~ "es crearà en la galleda triada."
-
-#~ msgid "Google Cloud Storage Access Key ID"
-#~ msgstr "ID de la clau d'accés del Google Cloud Storage"
-
-#~ msgid ""
-#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-#~ "Cloud Storage username."
-#~ msgstr ""
-#~ "El vostre identificador de la clau d'accés del Google Cloud Storage. Això "
-#~ "actua com el vostre nom d'usuari al Google Cloud Storage."
-
-#~ msgid "The Google Cloud Storage bucket name to use"
-#~ msgstr "El nom de bucket del Google Cloud Storage a usar"
-
-#~ msgid ""
-#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
-#~ "exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "En quin bucket del Google Cloud Storage s'han d'emmagatzemar fitxers. Això "
-#~ "no cal que ja existeixi. Sols són vàlids les cadenes de caràcters "
-#~ "d'amfitrions vàlids."
-
-#~ msgid "The Google Cloud Storage folder"
-#~ msgstr "La carpeta del Google Cloud Storage"
-
-#~ msgid "The Rackspace Cloud Files container"
-#~ msgstr "Contenidor d'espai de fitxers al núvol de «Rackspace»"
-
-#~ msgid ""
-#~ "Which Rackspace Cloud Files container to store files in. This does not need "
-#~ "to exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "A quin contenidor de fitxers del núvol de Rackspace s'han d'emmagatzemar els"
-#~ " fitxers. El contenidor no cal que existeixi, i només s'accepten noms "
-#~ "d'ordinador vàlids."
-
-#~ msgid "Your Rackspace username"
-#~ msgstr "El vostre nom d'usuari de Rackspace"
-
-#~ msgid "This is your username for the Rackspace Cloud Files service."
-#~ msgstr ""
-#~ "Aquest és el nom d'usuari del servei de fitxers al núvol de Rackspace."
-
-#~ msgid "The OpenStack Swift container"
-#~ msgstr "El contenidor de l'OpenStack Swift"
-
-#~ msgid ""
-#~ "Which OpenStack Swift container to store files in. This does not need to "
-#~ "exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "En quin contenidor de l'OpenStack Swift emmagatzemar els fitxers. Això no "
-#~ "cal que ja existeixi. Sols són vàlids els noms d'amfitrions legals."
-
-#~ msgid "Your OpenStack username"
-#~ msgstr "El vostre nom d'usuari de l'OpenStack"
-
-#~ msgid "This is your username for the OpenStack Swift service."
-#~ msgstr "Això és el vostre nom d'usuari per al servei de l'OpenStack."
-
-#~ msgid "Your OpenStack tenant"
-#~ msgstr "El vostre tenant d'OpenStack"
-
-#~ msgid "This is your tenant for the OpenStack Swift service."
-#~ msgstr "Aquest és el vostre tenant per al servei de l'OpenStack Swift."
-
-#~ msgid "Authentication URL"
-#~ msgstr "URL d'autenticació"
-
-#~ msgid ""
-#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
-#~ msgstr ""
-#~ "Aquest és l'URL d'autenticació, o URL keystone per al servei OpenStack"
-
-#~ msgid "Restore Missing Files…"
-#~ msgstr "Restaura els fitxers que manquen…"
-
-#~ msgid "Restore deleted files from backup"
-#~ msgstr "Restaura els fitxers suprimits a partir de la còpia de seguretat"
-
-#~ msgid "Revert to Previous Version…"
-#~ msgid_plural "Revert to Previous Versions…"
-#~ msgstr[0] "Recupera la versió anterior…"
-#~ msgstr[1] "Recupera les versions anteriors…"
-
-#~ msgid "Restore file from backup"
-#~ msgid_plural "Restore files from backup"
-#~ msgstr[0] "Restaura el fitxer des de la còpia de seguretat"
-#~ msgstr[1] "Restaura els fitxers des de la còpia de seguretat"
-
-#~ msgid "Last seen"
-#~ msgstr "Vist per darrera vegada"
-
-#~ msgid "Restore which Files?"
-#~ msgstr "Quins fitxers voleu restaurar?"
-
-#~ msgid "Scanning for files from up to a day ago…"
-#~ msgstr "S'estan cercant els fitxers de fins fa un dia…"
-
-#~ msgid "Scanning for files from up to a week ago…"
-#~ msgstr "S'estan cercant els fitxers de fins fa una setmana…"
-
-#~ msgid "Scanning for files from up to a month ago…"
-#~ msgstr "S'estan cercant els fitxers de fins fa un mes…"
-
-#~ msgid "Scanning for files from about a month ago…"
-#~ msgid_plural "Scanning for files from about %d months ago…"
-#~ msgstr[0] "S'estan cercant els fitxers de fa més o menys un mes…"
-#~ msgstr[1] "S'estan cercant els fitxers de fa més o menys un %d mesos…"
-
-#~ msgid "Scanning for files from about a year ago…"
-#~ msgid_plural "Scanning for files from about %d years ago…"
-#~ msgstr[0] "S'estan cercant els fitxers de fa més o menys un any…"
-#~ msgstr[1] "S'estan cercant els fitxers de fa més o menys %d anys…"
-
-#~ msgid "Scanning finished"
-#~ msgstr "Ha finalitzat l'escaneig"
-
-#~ msgid "Restore deleted files"
-#~ msgstr "Restaura fitxers suprimits"
-
-#~ msgid "No directory provided"
-#~ msgstr "No heu indicat la carpeta"
-
-#~ msgid "Only one directory can be shown at once"
-#~ msgstr "Només es mostra una carpeta a la vegada"
-
-#~ msgid "Directory does not exist"
-#~ msgstr "El directori no existeix"
-
-#~ msgid "_Restore…"
-#~ msgstr "_Restaura..."
-
-#~ msgid "_Back Up Now…"
-#~ msgstr "_Fes la còpia de seguretat ara..."
-
-#~ msgid "_Storage location"
-#~ msgstr "_Ubicació de l'emmagatzematge"
-
-#~ msgid "Storage location"
-#~ msgstr "Ubicació de l'emmagatzematge"
-
-#~ msgid "_Automatic backup"
-#~ msgstr "_Còpia de seguretat automàtica"
-
-#~ msgid "_Every"
-#~ msgstr "_Cada"
-
-#~ msgid "Restore…"
-#~ msgstr "Restaura..."
-
-#~ msgid "You may use the %s button to browse for existing backups."
-#~ msgstr ""
-#~ "Podeu utilitzar el botó %s per navegar entre les còpies de seguretat "
-#~ "existents."
-
-#~ msgid ""
-#~ "You can restore the entire backup with the %s button or use %s to either "
-#~ "revert individual files or restore missing ones."
-#~ msgstr ""
-#~ "Podeu restaurar tota la còpia de seguretat amb el botó %s o utilitzeu %s per"
-#~ " revertir arxius individuals o restaurar els que falten."
-
-#~ msgid "Back Up Now…"
-#~ msgstr "Fes una còpia de seguretat ara..."
-
-#~ msgid ""
-#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
-#~ "start one now."
-#~ msgstr ""
-#~ "Hauríeu d'<a href=''>habilitar</a> les còpies de seguretat automàtiques o bé"
-#~ " utilitzar el botó %s per a iniciar-ne una ara."
-
-#~ msgid "A backup automatically starts every day."
-#~ msgstr "S'inicia una còpia de seguretat automàticament cada dia."
-
-#~ msgid "A backup automatically starts every week."
-#~ msgstr "S'inicia una còpia de seguretat automàticament cada setmana."
-
-#~ msgid "A backup automatically starts every %d day."
-#~ msgid_plural "A backup automatically starts every %d days."
-#~ msgstr[0] "S'inicia una còpia de seguretat automàticament cada %d dia."
-#~ msgstr[1] "S'inicia una còpia de seguretat automàticament cada %d dies."
-
-#~ msgid "_Remove"
-#~ msgstr "_Suprimeix"
-
-#~ msgid "_Container"
-#~ msgstr "_Contenidor"
-
-#~ msgid "S3 Access Key I_D"
-#~ msgstr "I_dentificador de la clau d'accés de l'S3 dAmazon"
-
-#~ msgid "Ubuntu One has shut down.  Please choose another storage location."
-#~ msgstr ""
-#~ "L'Ubuntu One s'ha tancat. Si us plau escolliu una altra ubicació "
-#~ "d'emmagatzematge."
-
-#~ msgid "Week"
-#~ msgstr "Setmana"
-
-#~ msgid "%d day"
-#~ msgid_plural "%d days"
-#~ msgstr[0] "%d dia"
-#~ msgstr[1] "%d dies"
-
-#~ msgid "%s on Rackspace Cloud Files"
-#~ msgstr "%s al contenidor de fitxers en el núvol de Rackspace"
-
-#~ msgid "Permission denied"
-#~ msgstr "S’ha denegat el permís"
-
-#~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a "
-#~ "href=\"%s\">online</a>."
-#~ msgstr ""
-#~ "Podeu crear un compte <a href=\"%s\">en línia</a> al servei de fitxers en el"
-#~ " núvol de Rackspace."
-
-#~ msgid "Connect to Rackspace Cloud Files"
-#~ msgstr "ConnectaÇt amb el servei de fitxers en el núvol de Rackspace"
-
-#~ msgid "_API access key"
-#~ msgstr "Clau d'accés de l'_API"
-
-#~ msgid "S_how API access key"
-#~ msgstr "_Mostra la clau d'accés de l'API"
-
-#~ msgid "_Remember API access key"
-#~ msgstr "_Recorda la clau d'accés de l'API"
-
-#~ msgid "%s on Amazon S3"
-#~ msgstr "%s a l'S3 d'Amazon"
-
-#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-#~ msgstr ""
-#~ "Podeu crear un compte <a href=\"%s\">en línia</a> al servei d'emmagatzematge"
-#~ " S3 d'Amazon."
-
-#~ msgid "Connect to Amazon S3"
-#~ msgstr "Connecta't a l'S3 d'Amazon"
-
-#~ msgid "_Access key ID"
-#~ msgstr "Identificador de la _clau d'accés"
-
-#~ msgid "_Secret access key"
-#~ msgstr "_Clau secreta d'accés"
-
-#~ msgid "S_how secret access key"
-#~ msgstr "M_ostra la clau secreta d'accés"
-
-#~ msgid "_Remember secret access key"
-#~ msgstr "_Recorda la clau secreta d'accés"
-
-#~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
-#~ msgstr ""
-#~ "No s'ha pogut trobar l'eina de còpies de seguretat a %s. La instal·lació no "
-#~ "és completa."
-
-#~ msgid "Could not load backup tool.  Your installation is incomplete."
-#~ msgstr ""
-#~ "No s'ha pogut carregar l'eina de còpies de seguretat. La instal·lació no és "
-#~ "completa."
-
-#~ msgid "Backup tool is broken.  Your installation is incomplete."
-#~ msgstr ""
-#~ "L'eina de còpies de seguretat no funciona. La instal·lació no és completa."
-
-#~ msgid "Could not start backup tool"
-#~ msgstr "No s'ha pogut iniciar l'eina de còpies de seguretat"
-
-#~ msgid "Invalid ID."
-#~ msgstr "L'identificador no és vàlid."
-
-#~ msgid "Invalid secret key."
-#~ msgstr "La clau secreta no és vàlida."
-
-#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
-#~ msgstr ""
-#~ "El vostrea compte del servei web d'Amazon no està subscrit al servei S3."
-
-#~ msgid "S3 bucket name is not available."
-#~ msgstr "El nom del dipòsit S3 no està disponible."
-
-#~ msgid ""
-#~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
-#~ "only found version %d.%d.%.2d"
-#~ msgstr ""
-#~ "Al Déjà Dup li cal com a mínim la versió «%d.%d%.2d» del Duplicity, però "
-#~ "només teniu instal·lada la versió «%d.%d%.2d»."
-
-#~ msgid ""
-#~ "Support for local, remote, or cloud backup locations such as Google Drive "
-#~ "and Nextcloud"
-#~ msgstr ""
-#~ "Compatibilitat per a ubicacions de còpies de seguretat locals, remotes o al "
-#~ "núvol, com ara Google Drive i Nextcloud"
-
-#~ msgid "Backup will begin when ‘%s’ has Files support enabled"
-#~ msgstr ""
-#~ "La còpia de seguretat començarà quan «%s» tingui habilitada la "
-#~ "compatibilitat amb Fitxers"
-
-#~ msgid "Waiting for %s to be configured in your backup settings…"
-#~ msgstr ""
-#~ "S'està esperant que es configuri %s als vostres paràmetres de còpies de "
-#~ "seguretat..."
-
-#~ msgid "Account ID"
-#~ msgstr "Id. del compte"
-
-#~ msgid "The unique ID for the GNOME Online Account."
-#~ msgstr "L'identificador únic del compte en línia de GNOME."
-
-#~ msgid "The type of account"
-#~ msgstr "El tipus de compte"
-
-#~ msgid "Privileges are required to restore files to system locations"
-#~ msgstr ""
-#~ "Es requereixen privilegis per restaurar els fitxers a les ubicacions del "
-#~ "sistema"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Help"
-#~ msgstr "Ajuda"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Shortcuts"
-#~ msgstr "Dreceres"
-
-#~ msgid ""
-#~ "This account is not yet configured. It cannot be used until you add it to "
-#~ "your Online Accounts."
-#~ msgstr ""
-#~ "Aquest compte encara no està configurat. No es pot utilitzar fins que no "
-#~ "l'afegiu als vostres comptes en línia."
-
-#~ msgid ""
-#~ "This account has disabled Files support. It cannot be used until Files "
-#~ "support is enabled again for this Online Account."
-#~ msgstr ""
-#~ "Aquest compte ha desactivat la compatibilitat amb Fitxers. No es pot "
-#~ "utilitzar fins que la compatibilitat amb Fitxers estigui habilitada de nou "
-#~ "per a aquest compte en línia."
-
-#~ msgid "_Open Online Account Settings"
-#~ msgstr "_Obre els paràmetres dels comptes en línia"
-
-#~ msgid "Backup will begin when a storage location is configured"
-#~ msgstr ""
-#~ "La còpia de seguretat començarà quan es configuri una ubicació "
-#~ "d'emmagatzematge"
-
-#~ msgid "Waiting for Online Accounts to be configured in your backup settings…"
-#~ msgstr ""
-#~ "S'està esperant que els comptes en línia es configurin als vostres "
-#~ "paràmetres de còpies de seguretat..."
