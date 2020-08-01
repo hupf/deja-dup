@@ -7,4 +7,4 @@
 datadir="$DESTDIR/$1"
 
 # Drop the translation section from the non-translated help
-sed -i 's/.*translation-credits.*//' "$datadir/help/C/deja-dup/credits.page"
+sed -i 's/.*translator-credits.*//' "$datadir/help/C/deja-dup/credits.page"

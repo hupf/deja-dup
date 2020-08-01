@@ -6,12 +6,24 @@ SPDX-FileCopyrightText: Michael Terry
 
 <page xmlns="http://projectmallard.org/1.0/"
       xmlns:its="http://www.w3.org/2005/11/its"
-      its:version="1.0"
+      xmlns:itst="http://itstool.org/extensions/"
+      its:version="2.0"
       type="topic" style="tip"
       id="credits">
+
 <info>
   <desc>Meet the team</desc>
   <link type="guide" xref="index#about"/>
+
+  <its:rules xmlns:mal="http://projectmallard.org/1.0/">
+    <itst:credits appendTo="/mal:page/mal:section[@id='translation-credits']/mal:list">
+      <item><p>
+        <itst:value-of select="name"/>
+        &lt;<itst:value-of select="email"/>&gt;,
+        <itst:value-of select="years"/>
+      </p></item>
+    </itst:credits>
+  </its:rules>
 </info>
 <title>Credits</title>
 
@@ -40,6 +52,6 @@ SPDX-FileCopyrightText: Michael Terry
 </list>
 </section>
 
-<section id="translation-credits"><title>Translation</title><code>translator-credits</code></section>
+<section id="translation-credits"><title>Translation</title><list></list></section>
 
 </page>
