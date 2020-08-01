@@ -50,7 +50,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   static File slash;
 
-  List<File> local_error_files = null;
+  GenericSet<string?> local_error_files = new GenericSet<string?>(str_hash, str_equal);
 
   bool checked_collection_info = false;
   bool got_collection_info = false;
@@ -364,7 +364,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     state = State.NORMAL;
     if (restore_files == null) // only clear if we're not in middle of restore sequence
-      local_error_files = null;
+      local_error_files.remove_all();
 
     if (mode == DejaDup.ToolJob.Mode.INVALID)
       return false;
@@ -666,14 +666,14 @@ internal class DuplicityJob : DejaDup.ToolJob
         }
 
         if (mode == DejaDup.ToolJob.Mode.BACKUP) {
-          if (local_error_files != null) {
+          if (local_error_files.length > 0) {
             // OK, we succeeded yay!  But some files didn't make it into the backup
             // because we couldn't read them.  So tell the user so they don't think
             // everything is hunky dory.
             detail = _("Could not back up the following files.  Please make sure you are able to open them.");
             detail += "\n";
-            foreach (File f in local_error_files) {
-              detail += "\n%s".printf(f.get_parse_name());
+            foreach (var f in local_error_files) {
+              detail += "\n%s".printf(f);
             }
           }
 
@@ -682,14 +682,14 @@ internal class DuplicityJob : DejaDup.ToolJob
             return;
         }
         else if (mode == DejaDup.ToolJob.Mode.RESTORE) {
-          if (local_error_files != null) {
+          if (local_error_files.length > 0) {
             // OK, we succeeded yay!  But some files didn't actually restore
             // because we couldn't write to them.  So tell the user so they
             // don't think everything is hunky dory.
             detail = _("Could not restore the following files.  Please make sure you are able to write to them.");
             detail += "\n";
-            foreach (File f in local_error_files) {
-              detail += "\n%s".printf(f.get_parse_name());
+            foreach (var f in local_error_files) {
+              detail += "\n%s".printf(f);
             }
           }
         }
@@ -1268,7 +1268,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           var error_file = make_file_obj(firstline[2]);
           foreach (File f in includes) {
             if (error_file.equal(f) || error_file.has_prefix(f))
-              local_error_files.append(error_file);
+              local_error_files.add(error_file.get_parse_name());
           }
         }
         break;
@@ -1283,7 +1283,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           var error_file = make_file_obj(firstline[2]);
           if (!error_file.equal(slash) && // for some reason, duplicity likes to talk about '/'
               !text.contains("[Errno 1]")) // Errno 1 is "can't chown" or similar; very common and ignorable
-            local_error_files.append(error_file);
+            local_error_files.add(error_file.get_parse_name());
         }
         break;
       }
