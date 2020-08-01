@@ -15,15 +15,7 @@ public abstract class BackendFile : Backend
   public override async void cleanup() {
     // unmount if we originally mounted the backup location
     if (will_unmount) {
-      var root = get_root_from_settings();
-      try {
-        var mount = yield root.find_enclosing_mount_async();
-        if (mount != null && mount.can_unmount())
-          yield mount.unmount_with_operation(MountUnmountFlags.NONE, null);
-      }
-      catch (Error e) {
-        // ignore
-      }
+      yield unmount();
       will_unmount = false;
     }
   }
@@ -123,6 +115,19 @@ public abstract class BackendFile : Backend
 
   // Returns true if it needed to be mounted, false if already mounted
   public virtual async bool mount() throws Error {return false;}
+
+  protected virtual async void unmount()
+  {
+    var root = get_root_from_settings();
+    try {
+      var mount = yield root.find_enclosing_mount_async();
+      if (mount != null && mount.can_unmount())
+        yield mount.unmount_with_operation(MountUnmountFlags.NONE, null);
+    }
+    catch (Error e) {
+      // ignore
+    }
+  }
 
   public override async uint64 get_space(bool free = true)
   {
