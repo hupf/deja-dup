@@ -5,7 +5,6 @@
 
 gnome.yelp(meson.project_name(),
     sources: ['contribute.page',
-              'credits.page',
               'index.page',
               'license.page',
               'prefs.page',
@@ -14,8 +13,6 @@ gnome.yelp(meson.project_name(),
               'restore-worst-case.page',
               'support.page'],
     symlink_media: true)
-
-meson.add_install_script('post-install.sh', datadir)
 
 validate_help_linguas = find_program('./validate-linguas')
 test('help-linguas', validate_help_linguas,
