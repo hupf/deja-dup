@@ -819,6 +819,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   protected const int WARNING_UNMATCHED_SIG = 4;
   protected const int WARNING_INCOMPLETE_BACKUP = 5;
   protected const int WARNING_ORPHANED_BACKUP = 6;
+  protected const int WARNING_CANNOT_STAT = 9;
   protected const int WARNING_CANNOT_READ = 10;
   protected const int WARNING_CANNOT_PROCESS = 12; // basically, cannot write or change attrs
   protected const int DEBUG_GENERIC = 1;
@@ -1258,6 +1259,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           cleanup(); // stops current backup, cleans up, then resumes
         break;
 
+      case WARNING_CANNOT_STAT:
       case WARNING_CANNOT_READ:
         // A file couldn't be backed up!  We should note the name and present
         // the user with a list at the end.
