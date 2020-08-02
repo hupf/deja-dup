@@ -613,6 +613,13 @@ internal class DuplicityJob : DejaDup.ToolJob
     return state == State.CLEANUP;
   }
 
+  List<unowned string> get_sorted_local_error_files()
+  {
+    var error_files = local_error_files.get_values();
+    error_files.sort(strcmp);
+    return error_files;
+  }
+
   void handle_done(DuplicityInstance? inst, bool success, bool cancelled)
   {
     string detail = null;
@@ -672,7 +679,7 @@ internal class DuplicityJob : DejaDup.ToolJob
             // everything is hunky dory.
             detail = _("Could not back up the following files.  Please make sure you are able to open them.");
             detail += "\n";
-            foreach (var f in local_error_files) {
+            foreach (var f in get_sorted_local_error_files()) {
               detail += "\n%s".printf(f);
             }
           }
@@ -688,7 +695,7 @@ internal class DuplicityJob : DejaDup.ToolJob
             // don't think everything is hunky dory.
             detail = _("Could not restore the following files.  Please make sure you are able to write to them.");
             detail += "\n";
-            foreach (var f in local_error_files) {
+            foreach (var f in get_sorted_local_error_files()) {
               detail += "\n%s".printf(f);
             }
           }
