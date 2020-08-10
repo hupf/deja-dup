@@ -1372,11 +1372,11 @@ internal class DuplicityJob : DejaDup.ToolJob
     inst.exited.connect(handle_exit);
 
     /* Set arguments for call to duplicity */
-    weak List<string> master_argv = argv_entire == null ? saved_argv : argv_entire;
+    weak List<string> base_argv = argv_entire == null ? saved_argv : argv_entire;
     weak File local_arg = custom_local == null ? local : custom_local;
 
     var argv = new List<string>();
-    foreach (string s in master_argv) argv.append(s);
+    foreach (string s in base_argv) argv.append(s);
     foreach (string s in this.backend_argv) argv.append(s);
     foreach (string s in argv_extra) argv.append(s);
 

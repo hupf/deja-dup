@@ -14,7 +14,7 @@ public class RecursiveDelete : RecursiveOp
   // filename, but since we don't *need* that yet, we don't bother.
   public string? skip {get; construct;}
 
-  // A regex to whitelist which files to delete
+  // A regex to constrain which files to delete
   public Regex? only {get; construct;}
 
   public RecursiveDelete(File source, string? skip=null, Regex? only=null)
