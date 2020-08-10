@@ -3,6 +3,15 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.2
+- Mount partitions specified in /etc/fstab if necessary
+- When selecting an internal drive as a Local Folder, treat it as a removable
+  drive, so that we will mount if necessary
+- If using a flatpak install and we can't run in the background, tell the
+  user how to fix it
+- Update Brazilian Portuguese, Catalan, German, Japanese, Polish, and Ukrainian
+  translations
+
 # 42.1
 - Fix automatic backups not firing for removable storage drives, which got
   broken during the 41.x development cycle
