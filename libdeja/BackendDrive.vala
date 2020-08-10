@@ -92,6 +92,31 @@ public class BackendDrive : BackendFile
     }
   }
 
+  // Return strue if path is a volume path and we changed settings
+  public static bool set_volume_info_from_file(File file, Settings settings)
+  {
+    Mount mount;
+    try {
+      mount = file.find_enclosing_mount();
+    } catch (Error e) {
+      return false;
+    }
+
+    var volume = mount.get_volume();
+    if (volume == null)
+      return false;
+
+    var folder = mount.get_root().get_relative_path(file);
+
+    settings.delay();
+    settings.set_string(DRIVE_UUID_KEY, volume.get_uuid());
+    settings.set_string(DRIVE_FOLDER_KEY, folder == null ? "" : folder);
+    update_volume_info(volume, settings);
+    settings.apply();
+
+    return true;
+  }
+
   public static void update_volume_info(Volume volume, Settings settings)
   {
     var name = volume.get_name();

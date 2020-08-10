@@ -122,9 +122,14 @@ public class ConfigLocationGrid : BuilderWidget
     }
 
     if (dlg.run() == Gtk.ResponseType.ACCEPT) {
-      var path = DejaDup.BackendLocal.get_path_from_file(dlg.get_file());
-      if (path != null)
-        entry.text = path;
+      var file = dlg.get_file();
+      if (DejaDup.BackendDrive.set_volume_info_from_file(file, drive_settings)) {
+        settings.set_string(DejaDup.BACKEND_KEY, "drive");
+      } else {
+        var path = DejaDup.BackendLocal.get_path_from_file(file);
+        if (path != null)
+          entry.text = path;
+      }
     }
   }
 

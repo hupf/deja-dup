@@ -249,14 +249,14 @@ public class ConfigLocationCombo : BuilderWidget
     var self = (ConfigLocationCombo)data;
 
     var id = variant.get_string();
-    if (id == "drive")
+    if (id == "drive") {
       id = "drive:" + self.drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
+      if (!self.lookup_id(null, id, null))
+        self.add_saved_volume();
+    }
 
     var found = self.lookup_id(null, id, null);
     if (!found) {
-      // This is an old unsupported backend (un-plugged in drive will be
-      // handled already by add_saved_volume).
-
       var label = id;
       if (id == "gcs")
         label = _("Google Cloud Storage");
