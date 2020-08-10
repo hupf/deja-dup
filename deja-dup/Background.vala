@@ -130,7 +130,9 @@ public class Background : Object
       Gtk.ButtonsType.OK,
       _("Cannot back up automatically")
     );
-    dlg.format_secondary_text(_("Make sure Backups has permission to run in the background in Settings → Applications → Backups and try again."));
+    dlg.format_secondary_text(_("Make sure Backups has permission to run in " +
+                                "the background in Settings → Applications → " +
+                                "Backups and try again."));
     dlg.run();
     DejaDup.destroy_widget(dlg);
   }
