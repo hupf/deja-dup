@@ -23,7 +23,6 @@ public class ConfigAutoBackup : BuilderWidget
       if (state) {
         var bg = new Background();
         if (!bg.request_autostart(auto_backup)) {
-          auto_backup.sensitive = !bg.permission_refused;
           auto_backup.active = false;
           return true; // don't change state, skip default handler
         }

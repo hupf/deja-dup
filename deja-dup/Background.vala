@@ -42,6 +42,7 @@ public class Background : Object
   const string PORTAL_PATH = "/org/freedesktop/portal/desktop";
   const string REQUEST_IFACE = "org.freedesktop.portal.Request";
 
+  Gtk.Window window = null;
   MainLoop loop = null;
   DBusConnection connection = null;
   bool started = false;
@@ -50,11 +51,6 @@ public class Background : Object
 
   construct {
     this.loop = new MainLoop(null, false);
-  }
-
-  ~Background() {
-    if (signal_id > 0)
-      connection.signal_unsubscribe(signal_id);
   }
 
   string get_window_handle(Gtk.Window window)
@@ -86,8 +82,10 @@ public class Background : Object
       values.lookup("autostart", "b", out autostart);
       this.autostart_allowed = autostart;
     }
-    if (this.response == 1)
+    if (this.response == 1) {
       this.permission_refused = true;
+      show_error_dialog();
+    }
 
     this.loop.quit();
   }
@@ -123,6 +121,20 @@ public class Background : Object
     }
   }
 
+  void show_error_dialog()
+  {
+    var dlg = new Gtk.MessageDialog(
+      this.window,
+      Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
+      Gtk.MessageType.ERROR,
+      Gtk.ButtonsType.OK,
+      _("Cannot back up automatically")
+    );
+    dlg.format_secondary_text(_("Make sure Backups has permission to run in the background in Settings → Applications → Backups and try again."));
+    dlg.run();
+    DejaDup.destroy_widget(dlg);
+  }
+
   public bool request_autostart(Gtk.Widget widget)
   {
     // We currently only actually bother checking with the Background portal in flatpak land.
@@ -134,11 +146,17 @@ public class Background : Object
     // Check to make sure that we haven't been called before
     if (!this.started) {
       this.started = true;
+      this.window = widget.get_toplevel() as Gtk.Window;
 
-      this.request_background_helper.begin(widget.get_toplevel() as Gtk.Window);
+      this.request_background_helper.begin(window);
 
       // And wait for response (loop is quit in got_response)
       this.loop.run();
+
+      if (signal_id > 0) {
+        connection.signal_unsubscribe(signal_id);
+        signal_id = 0;
+      }
     }
 
     return this.autostart_allowed;
