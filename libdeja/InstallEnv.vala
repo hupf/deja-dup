@@ -40,4 +40,6 @@ public class DejaDup.InstallEnv : Object
     // run for a while.  (e.g. /tmp every boot, /var/tmp every now and then)
     return {Environment.get_tmp_dir(), "/var/tmp"};
   }
+
+  public virtual void register_monitor_restart(MainLoop loop) {}
 }

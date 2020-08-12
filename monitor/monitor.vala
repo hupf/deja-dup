@@ -262,6 +262,7 @@ static int main(string[] args)
     return 1;
 
   loop = new MainLoop(null, false);
+  DejaDup.InstallEnv.instance().register_monitor_restart(loop);
   Idle.add(() => {
     // quit if we can't get the bus name or become disconnected
     Bus.own_name(BusType.SESSION, Config.APPLICATION_ID + ".Monitor",

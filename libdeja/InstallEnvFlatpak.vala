@@ -31,6 +31,26 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
     var request = new FlatpakAutostartRequest();
     return request.request_autostart(handle, out mitigation);
   }
+
+  FileMonitor update_monitor;
+  public override void register_monitor_restart(MainLoop loop)
+  {
+    var file = File.new_for_path("/app/.updated");
+    try {
+      update_monitor = file.monitor_file(FileMonitorFlags.NONE);
+      update_monitor.changed.connect(() => {
+        var cmd = "flatpak-spawn --latest-version %s".printf(get_monitor_exec());
+        try {
+          Process.spawn_command_line_async(cmd);
+          loop.quit();
+        } catch (SpawnError e) {
+          warning("%s", e.message);
+        }
+      });
+    } catch (IOError e) {
+      warning("%s", e.message);
+    }
+  }
 }
 
 class DejaDup.FlatpakAutostartRequest : Object
