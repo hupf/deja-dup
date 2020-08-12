@@ -59,14 +59,13 @@ public class DejaDupApp : Gtk.Application
 
   string version_string()
   {
-    switch(DejaDup.get_install_type()) {
-    case DejaDup.InstallType.FLATPAK:
-      return Config.VERSION + " (flatpak)";
-    case DejaDup.InstallType.SNAP:
-      return Config.VERSION + " (snap)";
-    default:
-      return Config.VERSION;
-    }
+    var version = Config.VERSION;
+
+    var install_env_name = DejaDup.InstallEnv.instance().get_name();
+    if (install_env_name != null)
+      version += " (%s)".printf(install_env_name);
+
+    return version;
   }
 
   public override int handle_local_options(VariantDict options)

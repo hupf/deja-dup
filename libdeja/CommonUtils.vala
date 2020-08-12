@@ -709,18 +709,10 @@ public string[] get_tempdirs()
   if (tempdir != null && tempdir != "")
     return {tempdir};
 
-  var hometmp = Path.build_filename(Environment.get_user_cache_dir(),
-                                    Config.PACKAGE, "tmp");
-
-  // If we use /tmp or /var/tmp from inside of a container like flatpak's, gvfs
-  // (which is outside the container) won't see our /var/tmp/xxx path and error
-  // out.  So we restrict ourselves to the user's home dir in that case.
-  if (get_install_type() == InstallType.FLATPAK)
-    return {hometmp};
-
-  // Prefer directories that have their own cleanup logic in case ours isn't
-  // run for a while.  (e.g. /tmp every boot, /var/tmp every now and then)
-  return {Environment.get_tmp_dir(), "/var/tmp", hometmp};
+  var tempdirs = InstallEnv.instance().get_system_tempdirs();
+  tempdirs += Path.build_filename(Environment.get_user_cache_dir(),
+                                  Config.PACKAGE, "tmp");
+  return tempdirs;
 }
 
 public async void clean_tempdirs(bool all=true)
@@ -760,23 +752,6 @@ public string try_realpath(string input)
   var resolved = Posix.realpath(input);
   return resolved == null ? input : resolved;
 }
-
-public enum InstallType {
-  FLATPAK,
-  SNAP,
-  UNKNOWN,
-}
-
-public InstallType get_install_type()
-{
-  if (Environment.get_variable("FLATPAK_ID") != null)
-    return InstallType.FLATPAK;
-  else if (Environment.get_variable("SNAP_NAME") != null)
-    return InstallType.SNAP;
-  else
-    return InstallType.UNKNOWN;
-}
-
 
 // Keep a constant live reference to a single monitor. We have problems when
 // we let glib manage its references, as it might kill it on us, even if we
