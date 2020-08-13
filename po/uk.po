@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-10 01:16+0000\n"
-"PO-Revision-Date: 2020-08-10 20:59+0300\n"
+"POT-Creation-Date: 2020-08-13 01:06+0000\n"
+"PO-Revision-Date: 2020-08-13 09:12+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:342
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:341
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -706,11 +706,19 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Резервна копія"
 
-#: deja-dup/AssistantBackup.vala:81
+#: deja-dup/AssistantBackup.vala:89
+msgid ""
+"The following folders cannot be backed up because Backups does not have "
+"access to them:"
+msgstr ""
+"Не вдалося створити резервні копії даних у вказаних нижче теках, оскільки"
+" «Резервним копіям» не вдалося отримати до них доступ:"
+
+#: deja-dup/AssistantBackup.vala:105
 msgid "Creating the first backup.  This may take a while."
 msgstr "Створення першої резервної копії. Це може зайняти деякий час."
 
-#: deja-dup/AssistantBackup.vala:82
+#: deja-dup/AssistantBackup.vala:106
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -720,24 +728,24 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:113
+#: deja-dup/AssistantBackup.vala:137
 msgid "Backing up:"
 msgstr "Резервне копіювання:"
 
-#: deja-dup/AssistantBackup.vala:122
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup Failed"
 msgstr "Збереження провалено"
 
-#: deja-dup/AssistantBackup.vala:125
+#: deja-dup/AssistantBackup.vala:149
 msgid "Backup Finished"
 msgstr "Збереження завершено"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:129
+#: deja-dup/AssistantBackup.vala:153
 msgid "Your files were successfully backed up and tested."
 msgstr "Резервну копію файлів успішно створено й перевірено."
 
-#: deja-dup/AssistantBackup.vala:136
+#: deja-dup/AssistantBackup.vala:160
 msgid "Backing Up…"
 msgstr "Резервування..."
 
@@ -810,27 +818,15 @@ msgstr "Перевірка відновлення"
 msgid "Grant Access"
 msgstr "Надати доступ"
 
-#. For most, don't do anything special.  Show generic 'unknown error'
-#. message, but provide the exception text for better bug reports.
-#. Plus, sometimes it may clue the user in to what's wrong.
-#. But first, try to restart without a cache, since that seems to quite
-#. frequently fix odd metadata errors with duplicity.  If we hit an error
-#. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:695
-#: libdeja/tools/duplicity/DuplicityJob.vala:716
-#: libdeja/tools/duplicity/DuplicityJob.vala:1100
-msgid "Failed with an unknown error."
-msgstr "Невдача з невідомою помилкою"
-
-#: deja-dup/AssistantOperation.vala:868
+#: deja-dup/AssistantOperation.vala:866
 msgid "Require Password?"
 msgstr "Потрібен пароль?"
 
-#: deja-dup/AssistantOperation.vala:870
+#: deja-dup/AssistantOperation.vala:868
 msgid "Encryption Password Needed"
 msgstr "Потрібен пароль шифрування"
 
-#: deja-dup/AssistantOperation.vala:994
+#: deja-dup/AssistantOperation.vala:992
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Встановити"
@@ -933,19 +929,9 @@ msgstr[2] "Файли успішно відновлено."
 msgid "Restoring…"
 msgstr "Відновлення…"
 
-#: deja-dup/Background.vala:131
-#| msgid "Back up _automatically"
+#: deja-dup/Background.vala:48
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
-
-#: deja-dup/Background.vala:133
-msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
-msgstr ""
-"Переконайтеся, що «Резервні копії» мають права доступу для запуску у фоновому"
-" режимі за допомогою пункту «Параметри → Програми → Резервні копії» і"
-" повторіть спробу."
 
 #: deja-dup/Browser.vala:201
 msgid "Click on items to select them"
@@ -983,19 +969,26 @@ msgstr[0] "Раз на %d день"
 msgstr[1] "Раз на %d дні"
 msgstr[2] "Раз на %d днів"
 
-#: deja-dup/ConfigFolderList.vala:51
+#: deja-dup/ConfigFolderList.vala:54
 msgid "Remove"
 msgstr "Вилучити"
 
-#: deja-dup/ConfigFolderList.vala:69
+#: deja-dup/ConfigFolderList.vala:67
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr ""
+"Не вдалося створити резервну копію даних у цій теці, оскільки «Резервним"
+" копіям» не вдалося отримати до неї доступ."
+
+#: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
 msgstr "Додати"
 
-#: deja-dup/ConfigFolderList.vala:79
+#: deja-dup/ConfigFolderList.vala:90
 msgid "Choose folders"
 msgstr "Оберіть каталоги"
 
-#: deja-dup/ConfigFolderList.vala:81
+#: deja-dup/ConfigFolderList.vala:92
 msgid "_Add"
 msgstr "_Додати"
 
@@ -1193,15 +1186,15 @@ msgstr "Відновити дані файли"
 msgid "Immediately start a backup"
 msgstr "Негайно розпочати резервування"
 
-#: deja-dup/main.vala:93 deja-dup/main.vala:108
+#: deja-dup/main.vala:92 deja-dup/main.vala:107
 msgid "An operation is already in progress"
 msgstr "Операція вже виконується"
 
-#: deja-dup/main.vala:225
+#: deja-dup/main.vala:224
 msgid "Scheduled backup delayed"
 msgstr "Резервування за розкладом відкладено"
 
-#: deja-dup/main.vala:261
+#: deja-dup/main.vala:260
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1233,11 +1226,11 @@ msgstr "%1$s на %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "Резервне копіювання почнеться, коли %s підключено."
 
-#: libdeja/BackendDrive.vala:165 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:190 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Місце зберігання недоступне"
 
-#: libdeja/BackendDrive.vala:165
+#: libdeja/BackendDrive.vala:190
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Очікуємо підключення ‘%s’ …"
@@ -1315,6 +1308,15 @@ msgstr "Смітник"
 #: libdeja/CommonUtils.vala:609
 msgid "Backup encryption password"
 msgstr "Пароль шифрування резервної копії"
+
+#: libdeja/InstallEnvFlatpak.vala:92
+msgid ""
+"Make sure Backups has permission to run in the background in Settings → "
+"Applications → Backups and try again."
+msgstr ""
+"Переконайтеся, що «Резервні копії» мають права доступу для запуску у "
+"фоновому режимі за допомогою пункту «Параметри → Програми → Резервні копії» "
+"і повторіть спробу."
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1399,6 +1401,17 @@ msgid ""
 msgstr ""
 "Не вдається відновити такі файли. Будь ласка, переконайтеся чи Ви взагалі "
 "маєте право їх змінювати."
+
+#. For most, don't do anything special.  Show generic 'unknown error'
+#. message, but provide the exception text for better bug reports.
+#. Plus, sometimes it may clue the user in to what's wrong.
+#. But first, try to restart without a cache, since that seems to quite
+#. frequently fix odd metadata errors with duplicity.  If we hit an error
+#. a second time, we'll show the unknown error message.
+#: libdeja/tools/duplicity/DuplicityJob.vala:716
+#: libdeja/tools/duplicity/DuplicityJob.vala:1100
+msgid "Failed with an unknown error."
+msgstr "Невдача з невідомою помилкою"
 
 #. notify upper layers, if they want to do anything
 #: libdeja/tools/duplicity/DuplicityJob.vala:919
