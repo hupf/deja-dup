@@ -124,7 +124,7 @@ public abstract class AssistantOperation : Assistant
    * that is then used to perform various defined tasks on backend. It is
    * also later connected to various signals.
    */
-  protected abstract DejaDup.Operation? create_op();
+  protected abstract async DejaDup.Operation? create_op();
   protected abstract string get_progress_file_prefix();
 
   protected abstract string get_apply_text();
@@ -690,11 +690,9 @@ public abstract class AssistantOperation : Assistant
      * Mounts appropriate backend, creates child operation, connects signals to
      * handler functions and starts operation.
      */
-    op = create_op();
-    if (op == null) {
-      show_error(_("Failed with an unknown error."), null);
+    op = yield create_op();
+    if (op == null)
       return;
-    }
 
     connect_operation(op);
     op.done.connect(apply_finished);

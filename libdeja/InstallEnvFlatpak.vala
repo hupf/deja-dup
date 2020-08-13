@@ -51,6 +51,29 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
       warning("%s", e.message);
     }
   }
+
+  public override bool is_file_available(File file)
+  {
+    // https://docs.flatpak.org/en/latest/sandbox-permissions.html#filesystem-access
+    string[] hidden = { "/lib", "/lib32", "/lib64", "/bin", "/sbin", "/usr",
+                        "/boot", "/root", "/tmp", "/etc", "/app", "/run",
+                        "/proc", "/sys", "/dev", "/var" };
+    string[] allowed = { "/run/media" };
+
+    foreach (var f in allowed) {
+      var ffile = File.new_for_path(f);
+      if (file.equal(ffile) || file.has_prefix(ffile))
+        return true;
+    }
+
+    foreach (var f in hidden) {
+      var ffile = File.new_for_path(f);
+      if (file.equal(ffile) || file.has_prefix(ffile))
+        return false;
+    }
+
+    return true;
+  }
 }
 
 class DejaDup.FlatpakAutostartRequest : Object

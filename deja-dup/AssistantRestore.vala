@@ -371,7 +371,7 @@ public class AssistantRestore : AssistantOperation
     append_page(files_progress_page, Type.PROGRESS);
   }
 
-  protected override DejaDup.Operation? create_op()
+  protected override async DejaDup.Operation? create_op()
   {
     string date = null;
     if (when != null) {

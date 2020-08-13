@@ -44,8 +44,8 @@ public class AssistantBackup : AssistantOperation
   Gtk.Widget make_include_exclude_page()
   {
     var prefs_builder = new Builder("preferences");
-    new ConfigFolderList(prefs_builder, "includes", DejaDup.INCLUDE_LIST_KEY);
-    new ConfigFolderList(prefs_builder, "excludes", DejaDup.EXCLUDE_LIST_KEY);
+    new ConfigFolderList(prefs_builder, "includes", DejaDup.INCLUDE_LIST_KEY, true);
+    new ConfigFolderList(prefs_builder, "excludes", DejaDup.EXCLUDE_LIST_KEY, false);
 
     var page = prefs_builder.get_object("folders_page") as Gtk.Widget;
     page.ref();
@@ -66,9 +66,33 @@ public class AssistantBackup : AssistantOperation
     return config_location;
   }
 
-  protected override DejaDup.Operation? create_op()
+  async string[] get_unavailable_includes()
+  {
+    string[] unavailable = {};
+    var install_env = DejaDup.InstallEnv.instance();
+    var settings = DejaDup.get_settings();
+    var include_list = settings.get_file_list(DejaDup.INCLUDE_LIST_KEY);
+    foreach (var include in include_list) {
+      if (!install_env.is_file_available(include))
+        unavailable += yield DejaDup.get_nickname(include);
+    }
+    return unavailable;
+  }
+
+  protected override async DejaDup.Operation? create_op()
   {
     realize();
+
+    // First, check that we aren't trying to back up any unavailable files
+    var unavailable = yield get_unavailable_includes();
+    if (unavailable.length > 0) {
+      var msg = _("The following folders cannot be backed up because Backups does not have access to them:");
+      msg += " " + string.joinv(", ", unavailable);
+      show_error(msg, null);
+      force_visible(false);
+      return null;
+    }
+
     var rv = new DejaDup.OperationBackup(DejaDup.Backend.get_default());
 
     if (automatic) {

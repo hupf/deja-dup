@@ -42,8 +42,8 @@ public class PreferencesWindow : BuilderWidget
 
     new ConfigAutoBackup(builder);
     new ConfigDelete(builder);
-    new ConfigFolderList(builder, "includes", DejaDup.INCLUDE_LIST_KEY);
-    new ConfigFolderList(builder, "excludes", DejaDup.EXCLUDE_LIST_KEY);
+    new ConfigFolderList(builder, "includes", DejaDup.INCLUDE_LIST_KEY, true);
+    new ConfigFolderList(builder, "excludes", DejaDup.EXCLUDE_LIST_KEY, false);
     new ConfigLocationRow(builder);
     new ConfigPeriod(builder);
   }

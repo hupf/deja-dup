@@ -10,11 +10,14 @@ public class ConfigFolderList : BuilderWidget
 {
   public string builder_id {get; construct;}
   public string settings_key {get; construct;}
+  public bool check_availability {get; construct;}
   public string[] folders {get; protected set;}
 
-  public ConfigFolderList(Gtk.Builder builder, string builder_id, string settings_key)
+  public ConfigFolderList(Gtk.Builder builder, string builder_id,
+                          string settings_key, bool check_availability)
   {
-    Object(builder: builder, builder_id: builder_id, settings_key: settings_key);
+    Object(builder: builder, builder_id: builder_id, settings_key: settings_key,
+           check_availability: check_availability);
   }
 
   DejaDup.FilteredSettings settings;
@@ -56,6 +59,14 @@ public class ConfigFolderList : BuilderWidget
         handle_remove(button.get_data("folder"));
       });
       row.add_action(button);
+
+      var install_env = DejaDup.InstallEnv.instance();
+      if (check_availability && !install_env.is_file_available(file)) {
+        var icon = new Gtk.Image.from_icon_name("dialog-warning", Gtk.IconSize.LARGE_TOOLBAR);
+        icon.visible = true;
+        icon.tooltip_text = _("This folder cannot be backed up because Backups does not have access to it.");
+        row.add_action(icon);
+      }
     }
 
     // Now the "add item" row

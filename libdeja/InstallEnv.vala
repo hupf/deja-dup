@@ -42,4 +42,8 @@ public class DejaDup.InstallEnv : Object
   }
 
   public virtual void register_monitor_restart(MainLoop loop) {}
+
+  // In some containers, parts of the host filesystem are not available to us
+  // (e.g. in flatpak, /lib is hidden by flatpak platform files)
+  public virtual bool is_file_available(File file) { return true; }
 }
