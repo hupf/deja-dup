@@ -30,7 +30,26 @@ clean:
 
 .PHONY: devshell
 devshell:
-	flatpak run --filesystem=host org.gnome.Sdk//master
+	@flatpak run \
+		--env=LD_LIBRARY_PATH=`pwd`/builddir/dev/lib \
+		--env=PKG_CONFIG_PATH=`pwd`/builddir/dev/lib/pkgconfig \
+		--env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share:`pwd`/builddir/dev/share \
+		--filesystem=host \
+		org.gnome.Sdk//master
+
+.PHONY: devshell-setup
+devshell-setup:
+	mkdir -p builddir
+	rm -rf builddir/libhandy
+	git clone --depth=1 --branch=libhandy-0-0 https://gitlab.gnome.org/GNOME/libhandy.git builddir/libhandy
+	flatpak run --filesystem=host --command=make org.gnome.Sdk//master devshell-internal
+	@echo -e '\033[0;36mAll done!\033[0m Run "make devshell" to enter the build environment'
+
+.PHONY: devshell-internal
+devshell-internal:
+	meson -Dtests=false -Dexamples=false --prefix=`pwd`/builddir/dev builddir/libhandy/_build builddir/libhandy
+	ninja -C builddir/libhandy/_build
+	ninja -C builddir/libhandy/_build install
 
 .PHONY: flatpak
 flatpak:
@@ -61,7 +80,7 @@ reuse:
 
 builddir/vlint:
 	mkdir -p builddir
-	git clone https://github.com/vala-lang/vala-lint builddir/vala-lint
+	git clone https://github.com/vala-lang/vala-lint.git builddir/vala-lint
 	cd builddir/vala-lint && meson build && ninja -C build
 	ln -s ./vala-lint/build/src/io.elementary.vala-lint builddir/vlint
 
