@@ -249,9 +249,9 @@ public class DejaDupApp : Gtk.Application
   void about()
   {
     unowned List<Gtk.Window> list = get_windows();
-    string[] artists = {"Barbara Muraus <barbara.muraus@gmail.com>",
-                        "Jakub Steiner <jimmac@novell.com>"};
-    string[] authors = {"Michael Terry <mike@mterry.name>"};
+    string[] artists = {"Barbara Muraus",
+                        "Jakub Steiner"};
+    string[] authors = {"Michael Terry"};
     Gtk.show_about_dialog(list == null ? null : list.data,
                           "artists", artists,
                           "authors", authors,
