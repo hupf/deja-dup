@@ -293,17 +293,17 @@ internal class DuplicityJob : DejaDup.ToolJob
     includes.sort((CompareFunc)cmp_prefix);
     excludes.sort((CompareFunc)cmp_prefix);
 
+    var excludes2 = excludes.copy();
     foreach (File i in includes) {
-      var excludes2 = excludes.copy();
-      foreach (File e in excludes2) {
+      foreach (File e in excludes2.copy()) {
         if (e.has_prefix(i)) {
           saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
-          excludes.remove(e);
+          excludes2.remove(e);
         }
       }
       saved_argv.append("--include=" + escape_duplicity_path(i.get_path()));
     }
-    foreach (File e in excludes) {
+    foreach (File e in excludes2) {
       saved_argv.append("--exclude=" + escape_duplicity_path(e.get_path()));
     }
 
@@ -1248,6 +1248,24 @@ internal class DuplicityJob : DejaDup.ToolJob
     collection_dates(dates);
   }
 
+  bool is_file_in_list(File file, List<File> list)
+  {
+    foreach (File f in list) {
+      if (file.equal(f))
+        return true;
+    }
+    return false;
+  }
+
+  bool is_file_in_or_under_list(File file, List<File> list)
+  {
+    foreach (File f in list) {
+      if (file.equal(f) || file.has_prefix(f))
+        return true;
+    }
+    return false;
+  }
+
   protected virtual void process_warning(string[] firstline, List<string>? data,
                                          string text)
   {
@@ -1271,14 +1289,16 @@ internal class DuplicityJob : DejaDup.ToolJob
         // A file couldn't be backed up!  We should note the name and present
         // the user with a list at the end.
         if (firstline.length > 2) {
-          // Only add it if it's a child of one of our includes.  Sometimes
-          // Duplicity likes to talk to us about folders like /lost+found and
-          // such that we don't care about.
+          // Only add it if it's a child of one of our includes and isn't a
+          // direct exclude. We check includes because sometimes Duplicity
+          // likes to talk to us about folders like /lost+found and such that
+          // we didn't ask about. And we check excludes because Duplicity will
+          // warn us about unreadable files even if we exclude them (but not if
+          // the files are under an excluded folder).
           var error_file = make_file_obj(firstline[2]);
-          foreach (File f in includes) {
-            if (error_file.equal(f) || error_file.has_prefix(f))
-              local_error_files.add(error_file.get_parse_name());
-          }
+          if (is_file_in_or_under_list(error_file, includes) &&
+              !is_file_in_list(error_file, excludes))
+            local_error_files.add(error_file.get_parse_name());
         }
         break;
 
