@@ -58,7 +58,7 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
     string[] hidden = { "/lib", "/lib32", "/lib64", "/bin", "/sbin", "/usr",
                         "/boot", "/root", "/tmp", "/etc", "/app", "/run",
                         "/proc", "/sys", "/dev", "/var" };
-    string[] allowed = { "/run/media" };
+    string[] allowed = { "/run/media", Environment.get_home_dir() };
 
     foreach (var f in allowed) {
       var ffile = File.new_for_path(f);
