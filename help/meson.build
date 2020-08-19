@@ -6,7 +6,6 @@
 gnome.yelp(meson.project_name(),
     sources: ['contribute.page',
               'index.page',
-              'license.page',
               'prefs.page',
               'restore-full.page',
               'restore-revert.page',
