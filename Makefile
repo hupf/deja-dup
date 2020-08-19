@@ -63,12 +63,14 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
-	for p in duplicity pydrive setuptools-scm; do \
+	for p in duplicity pydrive2 setuptools-scm wheel; do \
 		../../flatpak-builder-tools/pip/flatpak-pip-generator --output $$p $$p; \
 		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$p.yaml $$p.json; \
 		rm $$p.json; \
 		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$p.yaml; \
-	done
+	done; \
+	grep -e type: -e url: -e sha256: wheel.yaml >> pydrive2.yaml; \
+	rm wheel.yaml
 
 .PHONY: black
 black:
