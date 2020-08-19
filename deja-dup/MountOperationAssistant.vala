@@ -20,7 +20,6 @@ using GLib;
 public class MountOperationAssistant : MountOperation
 {
   public string label_help {get; set;}
-  public string label_title {get; set; default = _("Connect to Server");}
   public string label_username {get; set; default = _("_Username");}
   public string label_password {get; set; default = _("_Password");}
   public string label_show_password {get; set; default = _("S_how password");}
@@ -123,8 +122,7 @@ public class MountOperationAssistant : MountOperation
     int ucol = 0;
     Gtk.Label label;
 
-    // Display user message
-    assist.set_page_title(password_page, label_title);
+    assist.set_page_title(password_page, "");
 
     label = new Gtk.Label(message);
     label.xalign = 0.0f;

@@ -20,6 +20,14 @@ public class BackendDrive : BackendFile
     Object(settings: (settings != null ? settings : get_settings(DRIVE_ROOT)));
   }
 
+  public override async void cleanup()
+  {
+    // Flush filesystem buffers, just to help guard against the user pulling
+    // out the drive as we tell them the backup is finished.
+    Posix.sync();
+    yield base.cleanup();
+  }
+
   string get_folder()
   {
     return get_folder_key(settings, DRIVE_FOLDER_KEY);
@@ -92,7 +100,7 @@ public class BackendDrive : BackendFile
     }
   }
 
-  // Return strue if path is a volume path and we changed settings
+  // Returns true if path is a volume path and we changed settings
   public static bool set_volume_info_from_file(File file, Settings settings)
   {
     Mount mount;
@@ -189,11 +197,15 @@ public class BackendDrive : BackendFile
       var name = settings.get_string(DRIVE_NAME_KEY);
       pause_op(_("Storage location not available"), _("Waiting for ‘%s’ to become connected…").printf(name));
       var loop = new MainLoop(null, false);
-      var sigid = monitor.volume_added.connect((m, v) => {
+      var add_sigid = monitor.volume_added.connect((m, v) => {
+        loop.quit();
+      });
+      var change_sigid = monitor.volume_changed.connect((m, v) => {
         loop.quit();
       });
       loop.run();
-      monitor.disconnect(sigid);
+      monitor.disconnect(add_sigid);
+      monitor.disconnect(change_sigid);
       pause_op(null, null);
       return yield wait_for_volume();
     }

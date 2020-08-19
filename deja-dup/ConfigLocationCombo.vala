@@ -106,6 +106,9 @@ public class ConfigLocationCombo : BuilderWidget
     if (vol.get_drive() == null)
       return false;
 
+    if (vol.get_mount() == null) // can happen with outer volume of encrypted drives
+      return false;
+
     // Don't add internal hard drives
     if (!vol.get_drive().is_removable())
       return false;
@@ -194,7 +197,10 @@ public class ConfigLocationCombo : BuilderWidget
 
   void update_volume(VolumeMonitor monitor, Volume v)
   {
-    update_volume_full(v.get_uuid(), v.get_name(), v.get_icon());
+    if (!update_volume_full(v.get_uuid(), v.get_name(), v.get_icon())) {
+      // can happen if an encrypted drive finishes mounting internal volume
+      add_volume(monitor, v);
+    }
   }
 
   bool update_volume_full(string uuid, string name, Icon icon)
