@@ -226,8 +226,6 @@ static void begin_monitoring()
 
   var mon = DejaDup.get_volume_monitor();
   mon.volume_added.connect(volume_added);
-  // encrypted volumes will use send changed when the inner volume is mounted
-  mon.volume_changed.connect(volume_added);
 
   watch_settings();
 

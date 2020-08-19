@@ -33,11 +33,9 @@ public class BackendDrive : BackendFile
     return get_folder_key(settings, DRIVE_FOLDER_KEY);
   }
 
-  Volume get_volume()
+  Volume? get_volume()
   {
-    var monitor = DejaDup.get_volume_monitor();
-    var uuid = settings.get_string(DRIVE_UUID_KEY);
-    return monitor.get_volume_for_uuid(uuid);
+    return find_volume(settings.get_string(DRIVE_UUID_KEY));
   }
 
   protected override File? get_root_from_settings()
@@ -100,6 +98,28 @@ public class BackendDrive : BackendFile
     }
   }
 
+  public static string get_uuid(Volume v)
+  {
+    // Note that we don't call get_uuid() here. It is usually the same UUID,
+    // except in the case of encrypted drives. Where get_uuid() gives you the
+    // filesystem UUID of the inner volume, but get_identifier() always gives
+    // you the outer volume UUID. Which is what we want to save & watch for.
+    return v.get_identifier(VolumeIdentifier.UUID);
+  }
+
+  public static Volume? find_volume(string uuid)
+  {
+    // We don't call get_volume_for_uuid here, because encrypted volumes have
+    // two different get_uuid() results, based on whether they are decrypted
+    // or not.
+    var monitor = DejaDup.get_volume_monitor();
+    foreach (var v in monitor.get_volumes()) {
+      if (get_uuid(v) == uuid || v.get_uuid() == uuid)
+        return v;
+    }
+    return null;
+  }
+
   // Returns true if path is a volume path and we changed settings
   public static bool set_volume_info_from_file(File file, Settings settings)
   {
@@ -117,7 +137,6 @@ public class BackendDrive : BackendFile
     var folder = mount.get_root().get_relative_path(file);
 
     settings.delay();
-    settings.set_string(DRIVE_UUID_KEY, volume.get_uuid());
     settings.set_string(DRIVE_FOLDER_KEY, folder == null ? "" : folder);
     update_volume_info(volume, settings);
     settings.apply();
@@ -127,19 +146,18 @@ public class BackendDrive : BackendFile
 
   public static void update_volume_info(Volume volume, Settings settings)
   {
-    var name = volume.get_name();
-    var icon = volume.get_icon();
-
     // sanity check that these writable settings are for this volume
-    var vol_uuid = volume.get_uuid();
+    var vol_uuid = get_uuid(volume);
+    var fs_uuid = volume.get_uuid(); // not normally used, but just to be permissive
     var settings_uuid = settings.get_string(DRIVE_UUID_KEY);
-    if (vol_uuid != settings_uuid)
+    if (vol_uuid != settings_uuid && fs_uuid != settings_uuid)
       return;
 
     settings.delay();
 
-    settings.set_string(DRIVE_NAME_KEY, name);
-    settings.set_string(DRIVE_ICON_KEY, icon.to_string());
+    settings.set_string(DRIVE_UUID_KEY, vol_uuid);
+    settings.set_string(DRIVE_NAME_KEY, volume.get_name());
+    settings.set_string(DRIVE_ICON_KEY, volume.get_icon().to_string());
 
     settings.apply();
   }
@@ -154,7 +172,7 @@ public class BackendDrive : BackendFile
     loop.run();
   }
 
-  async bool mount_internal(Volume vol, bool recurse=true) throws Error
+  async bool mount_internal(Volume vol) throws Error
   {
     // Volumes sometimes return a generic error message instead of
     // IOError.ALREADY_MOUNTED, So let's check manually whether we're mounted.
@@ -173,9 +191,8 @@ public class BackendDrive : BackendFile
       // This is not very descriptive, but IOError.DBUS_ERROR is the
       // error given when someone else is mounting at the same time.  Sometimes
       // happens when a USB stick is inserted and nautilus is fighting us.
-      yield delay(1); // Try again in a second
-      if (recurse)
-        return yield mount_internal(vol, false);
+      yield delay(2); // Try again in a bit
+      return yield mount_internal(vol);
     }
 
     return true;
@@ -197,15 +214,11 @@ public class BackendDrive : BackendFile
       var name = settings.get_string(DRIVE_NAME_KEY);
       pause_op(_("Storage location not available"), _("Waiting for ‘%s’ to become connected…").printf(name));
       var loop = new MainLoop(null, false);
-      var add_sigid = monitor.volume_added.connect((m, v) => {
-        loop.quit();
-      });
-      var change_sigid = monitor.volume_changed.connect((m, v) => {
+      var sigid = monitor.volume_added.connect((m, v) => {
         loop.quit();
       });
       loop.run();
-      monitor.disconnect(add_sigid);
-      monitor.disconnect(change_sigid);
+      monitor.disconnect(sigid);
       pause_op(null, null);
       return yield wait_for_volume();
     }

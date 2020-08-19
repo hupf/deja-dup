@@ -106,9 +106,6 @@ public class ConfigLocationCombo : BuilderWidget
     if (vol.get_drive() == null)
       return false;
 
-    if (vol.get_mount() == null) // can happen with outer volume of encrypted drives
-      return false;
-
     // Don't add internal hard drives
     if (!vol.get_drive().is_removable())
       return false;
@@ -183,7 +180,7 @@ public class ConfigLocationCombo : BuilderWidget
   {
     if (is_allowed_volume(v))
     {
-      add_volume_full(v.get_uuid(), v.get_name(), v.get_icon());
+      add_volume_full(DejaDup.BackendDrive.get_uuid(v), v.get_name(), v.get_icon());
     }
   }
 
@@ -197,10 +194,7 @@ public class ConfigLocationCombo : BuilderWidget
 
   void update_volume(VolumeMonitor monitor, Volume v)
   {
-    if (!update_volume_full(v.get_uuid(), v.get_name(), v.get_icon())) {
-      // can happen if an encrypted drive finishes mounting internal volume
-      add_volume(monitor, v);
-    }
+    update_volume_full(DejaDup.BackendDrive.get_uuid(v), v.get_name(), v.get_icon());
   }
 
   bool update_volume_full(string uuid, string name, Icon icon)
@@ -215,7 +209,7 @@ public class ConfigLocationCombo : BuilderWidget
 
   void remove_volume(VolumeMonitor monitor, Volume v)
   {
-    remove_volume_full(v.get_uuid());
+    remove_volume_full(DejaDup.BackendDrive.get_uuid(v));
   }
 
   void remove_volume_full(string uuid)
@@ -326,8 +320,7 @@ public class ConfigLocationCombo : BuilderWidget
   {
     drive_settings.set_string(DejaDup.DRIVE_UUID_KEY, uuid);
 
-    var monitor = DejaDup.get_volume_monitor();
-    var vol = monitor.get_volume_for_uuid(uuid);
+    var vol = DejaDup.BackendDrive.find_volume(uuid);
     if (vol == null) {
       // Not an error, it's just not plugged in right now
       return;
