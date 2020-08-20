@@ -46,4 +46,6 @@ public class DejaDup.InstallEnv : Object
   // In some containers, parts of the host filesystem are not available to us
   // (e.g. in flatpak, /lib is hidden by flatpak platform files)
   public virtual bool is_file_available(File file) { return true; }
+
+  public virtual string get_debug_info() { return ""; }
 }

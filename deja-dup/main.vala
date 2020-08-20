@@ -57,21 +57,10 @@ public class DejaDupApp : Gtk.Application
     add_main_option_entries(OPTIONS);
   }
 
-  string version_string()
-  {
-    var version = Config.VERSION;
-
-    var install_env_name = DejaDup.InstallEnv.instance().get_name();
-    if (install_env_name != null)
-      version += " (%s)".printf(install_env_name);
-
-    return version;
-  }
-
   public override int handle_local_options(VariantDict options)
   {
     if (options.contains("version")) {
-      print("%s %s\n", "deja-dup", version_string());
+      print("%s %s\n", "deja-dup", Config.VERSION);
       return 0;
     }
     return -1;
@@ -248,18 +237,29 @@ public class DejaDupApp : Gtk.Application
 
   void about()
   {
-    unowned List<Gtk.Window> list = get_windows();
-    string[] artists = {"Barbara Muraus",
-                        "Jakub Steiner"};
-    string[] authors = {"Michael Terry"};
-    Gtk.show_about_dialog(list == null ? null : list.data,
-                          "artists", artists,
-                          "authors", authors,
-                          "license-type", Gtk.License.GPL_3_0,
-                          "logo-icon-name", Config.ICON_NAME,
-                          "translator-credits", _("translator-credits"),
-                          "version", version_string(),
-                          "website", "https://wiki.gnome.org/Apps/DejaDup");
+    var dialog = new Gtk.AboutDialog();
+    dialog.artists = {"Barbara Muraus",
+                      "Jakub Steiner"};
+    dialog.authors = {"Michael Terry"};
+    dialog.license_type = Gtk.License.GPL_3_0;
+    dialog.logo_icon_name = Config.ICON_NAME;
+    dialog.transient_for = main_window;
+    dialog.translator_credits = _("translator-credits");
+    dialog.version = Config.VERSION;
+    dialog.website = "debug";
+    dialog.website_label = _("Debug Information");
+
+    dialog.activate_link.connect((uri) => {
+      if (uri != "debug") {
+        DejaDup.show_uri(dialog, uri);
+      } else {
+        var debug = new DebugInfo(dialog);
+        debug.run();
+      }
+      return true;
+    });
+    dialog.run();
+    DejaDup.destroy_widget(dialog);
   }
 
   public void backup()
