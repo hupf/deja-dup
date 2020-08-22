@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-14 08:14+0000\n"
-"PO-Revision-Date: 2020-08-15 22:00+0900\n"
-"Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
+"POT-Creation-Date: 2020-08-20 02:17+0000\n"
+"PO-Revision-Date: 2020-08-22 13:52+0900\n"
+"Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
+"co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
@@ -352,6 +353,18 @@ msgstr ""
 "バックアップを保存するフォルダーパスです。パスは絶対パスか、ホストからの相対"
 "パスのどちらかです。"
 
+#: data/ui/debug.ui:11 deja-dup/main.vala:250
+msgid "Debug Information"
+msgstr "デバッグ情報"
+
+#: data/ui/debug.ui:35
+msgid "_Copy"
+msgstr "コピー(_C)"
+
+#: data/ui/debug.ui:68
+msgid "All identifying information has been obscured."
+msgstr "識別情報は秘匿しています。"
+
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "General"
@@ -483,7 +496,7 @@ msgid "_Show password"
 msgstr "パスワードを表示する(_S)"
 
 #: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:426
-#: deja-dup/MountOperationAssistant.vala:27
+#: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "パスワードを記憶する(_R)"
 
@@ -695,8 +708,7 @@ msgstr "バックアップ(_B)"
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
-msgstr ""
-"次のフォルダーはアクセス権がないためバックアップできません:"
+msgstr "次のフォルダーはアクセス権がないためバックアップできません:"
 
 #: deja-dup/AssistantBackup.vala:105
 msgid "Creating the first backup.  This may take a while."
@@ -952,8 +964,7 @@ msgstr "削除"
 #: deja-dup/ConfigFolderList.vala:67
 msgid ""
 "This folder cannot be backed up because Backups does not have access to it."
-msgstr ""
-"このフォルダーはアクセス権がないためバックアップできません。"
+msgstr "このフォルダーはアクセス権がないためバックアップできません。"
 
 #: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
@@ -1058,35 +1069,31 @@ msgid "No backup scheduled."
 msgstr "バックアップの予定はありません。"
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "サーバーに接続"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "ユーザー名(_U)"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "パスワード(_P)"
 
-#: deja-dup/MountOperationAssistant.vala:26
+#: deja-dup/MountOperationAssistant.vala:25
 msgid "S_how password"
 msgstr "パスワードを表示する(_H)"
 
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
 msgstr "場所が使用できません"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
 msgstr "匿名で接続する(_A)"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:150
 msgid "Connect as u_ser"
 msgstr "ユーザー名を指定して接続する(_S)"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:193
 msgid "_Domain"
 msgstr "ドメイン(_D)"
 
@@ -1157,15 +1164,15 @@ msgstr "与えられたファイルを復元する"
 msgid "Immediately start a backup"
 msgstr "直ちにバックアップを開始する"
 
-#: deja-dup/main.vala:92 deja-dup/main.vala:107
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
 msgstr "作業はすでに実行中です"
 
-#: deja-dup/main.vala:224
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "スケジュールされたバックアップが延期されました"
 
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:247
 msgid "translator-credits"
 msgstr ""
 "sicklylife <translation@sicklylife.jp>\n"
@@ -1190,21 +1197,21 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:68 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:486
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上の %1$s"
 
-#: libdeja/BackendDrive.vala:75
+#: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "%s が接続されるとバックアップが開始されます。"
 
-#: libdeja/BackendDrive.vala:190 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "保存場所が利用できません"
 
-#: libdeja/BackendDrive.vala:190
+#: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "‘%s’ が接続されるのを待っています…"
@@ -1287,8 +1294,8 @@ msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
 msgstr ""
-"“設定”→“アプリケーション”→“バックアップ”で、このアプリケーション"
-"にバックグラウンドでの実行権限があるか確認して再試行してください。"
+"“設定”→“アプリケーション”→“バックアップ”で、このアプリケーションにバックグラ"
+"ウンドでの実行権限があるか確認して再試行してください。"
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1481,6 +1488,9 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 "従量制ではないネットワークが利用可能になると、バックアップが開始されます。"
+
+#~ msgid "Connect to Server"
+#~ msgstr "サーバーに接続"
 
 #~ msgid "Folder"
 #~ msgstr "フォルダー"
