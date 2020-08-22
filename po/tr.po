@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-14 08:14+0000\n"
-"PO-Revision-Date: 2020-08-16 21:37+0000\n"
+"POT-Creation-Date: 2020-08-20 02:17+0000\n"
+"PO-Revision-Date: 2020-08-22 08:36+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -359,6 +359,18 @@ msgstr ""
 "Yedeklerin depolanacağı dizin yolu. Yollar mutlak veya ana bilgisayara göre "
 "göreceli olabilir."
 
+#: data/ui/debug.ui:11 deja-dup/main.vala:250
+msgid "Debug Information"
+msgstr "Hata Ayıklama Bilgisi"
+
+#: data/ui/debug.ui:35
+msgid "_Copy"
+msgstr "_Kopyala"
+
+#: data/ui/debug.ui:68
+msgid "All identifying information has been obscured."
+msgstr "Tüm kimlikleyici bilgi örtülmüştür."
+
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "General"
@@ -490,7 +502,7 @@ msgid "_Show password"
 msgstr "_Parolayı göster"
 
 #: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:426
-#: deja-dup/MountOperationAssistant.vala:27
+#: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Parolayı anımsa"
 
@@ -701,8 +713,7 @@ msgstr "_Yedekle"
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
-msgstr ""
-"Yedekler’in erişimi olmadığından şu klasörler yedeklenemeyecek:"
+msgstr "Yedekler’in erişimi olmadığından şu klasörler yedeklenemeyecek:"
 
 #: deja-dup/AssistantBackup.vala:105
 msgid "Creating the first backup.  This may take a while."
@@ -959,8 +970,7 @@ msgstr "Kaldır"
 #: deja-dup/ConfigFolderList.vala:67
 msgid ""
 "This folder cannot be backed up because Backups does not have access to it."
-msgstr ""
-"Yedekler’in erişimi olmadığından bu klasör yedeklenemeyecek."
+msgstr "Yedekler’in erişimi olmadığından bu klasör yedeklenemeyecek."
 
 #: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
@@ -1065,35 +1075,31 @@ msgid "No backup scheduled."
 msgstr "Zamanlanmış yedekleme yok."
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "Sunucuya Bağlan"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "_Kullanıcı Adı"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "_Parola"
 
-#: deja-dup/MountOperationAssistant.vala:26
+#: deja-dup/MountOperationAssistant.vala:25
 msgid "S_how password"
 msgstr "Parolayı _göster"
 
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
 msgstr "Konum geçerli değil"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
 msgstr "_Kimliğini belirtmeden bağlan"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:150
 msgid "Connect as u_ser"
 msgstr "_Kullanıcı olarak bağlan"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:193
 msgid "_Domain"
 msgstr "_Alan Adı"
 
@@ -1161,15 +1167,15 @@ msgstr "Belirtilen dosyaları geri yükle"
 msgid "Immediately start a backup"
 msgstr "Hemen yedekleme başlat"
 
-#: deja-dup/main.vala:92 deja-dup/main.vala:107
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: deja-dup/main.vala:224
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "Zamanlanmış yedekleme ertelendi"
 
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:247
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
@@ -1203,21 +1209,21 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:68 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:486
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s üzerinde %1$s"
 
-#: libdeja/BackendDrive.vala:75
+#: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "%s bağlıyken yedekleme işlemi başlayacaktır."
 
-#: libdeja/BackendDrive.vala:190 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Depolama konumu kullanılabilir değil"
 
-#: libdeja/BackendDrive.vala:190
+#: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "'%s'in bağlanılabilirliği bekleniyor..."
@@ -1298,8 +1304,8 @@ msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
 msgstr ""
-"Yedekler’in arka planda çalışma izni olduğuna Ayarlar → "
-"Uygulamalar → Yedekler’e bakarak emin olun ve yeniden deneyin."
+"Yedekler’in arka planda çalışma izni olduğuna Ayarlar → Uygulamalar → "
+"Yedekler’e bakarak emin olun ve yeniden deneyin."
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
@@ -1491,6 +1497,9 @@ msgstr ""
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
+
+#~ msgid "Connect to Server"
+#~ msgstr "Sunucuya Bağlan"
 
 #~ msgid "Folder"
 #~ msgstr "Klasör"
