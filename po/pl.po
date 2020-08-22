@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-14 08:14+0000\n"
-"PO-Revision-Date: 2020-08-16 10:22+0200\n"
+"POT-Creation-Date: 2020-08-20 02:17+0000\n"
+"PO-Revision-Date: 2020-08-22 14:02+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -367,6 +367,18 @@ msgstr ""
 "Ścieżka do katalogu do przechowywania kopii zapasowych. Ścieżki mogą być "
 "bezwzględne lub względne wobec adresu."
 
+#: data/ui/debug.ui:11 deja-dup/main.vala:250
+msgid "Debug Information"
+msgstr "Informacje do debugowania"
+
+#: data/ui/debug.ui:35
+msgid "_Copy"
+msgstr "S_kopiuj"
+
+#: data/ui/debug.ui:68
+msgid "All identifying information has been obscured."
+msgstr "Wszystkie informacje identyfikujące użytkownika zostały ukryte."
+
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "General"
@@ -498,7 +510,7 @@ msgid "_Show password"
 msgstr "_Wyświetlanie hasła"
 
 #: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:426
-#: deja-dup/MountOperationAssistant.vala:27
+#: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Zapamiętanie hasła"
 
@@ -1091,35 +1103,31 @@ msgid "No backup scheduled."
 msgstr "Brak zaplanowanych kopii zapasowych."
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "Połącz z serwerem"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "Nazwa _użytkownika"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "_Hasło"
 
-#: deja-dup/MountOperationAssistant.vala:26
+#: deja-dup/MountOperationAssistant.vala:25
 msgid "S_how password"
 msgstr "_Wyświetlanie hasła"
 
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
 msgstr "Położenie jest niedostępne"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
 msgstr "Połącz _anonimowo"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:150
 msgid "Connect as u_ser"
 msgstr "Połącz jako _użytkownik"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:193
 msgid "_Domain"
 msgstr "_Domena"
 
@@ -1190,15 +1198,15 @@ msgstr "Przywraca podane pliki"
 msgid "Immediately start a backup"
 msgstr "Natychmiast rozpoczyna wykonywanie kopii zapasowej"
 
-#: deja-dup/main.vala:92 deja-dup/main.vala:107
+#: deja-dup/main.vala:81 deja-dup/main.vala:96
 msgid "An operation is already in progress"
 msgstr "Działanie już trwa"
 
-#: deja-dup/main.vala:224
+#: deja-dup/main.vala:213
 msgid "Scheduled backup delayed"
 msgstr "Opóźniono zaplanowane utworzenie kopii zapasowej"
 
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:247
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2010-2020\n"
@@ -1216,21 +1224,21 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:68 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:486
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s w %2$s"
 
-#: libdeja/BackendDrive.vala:75
+#: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "Wykonanie kopii zapasowej zostanie rozpoczęte po połączeniu z %s."
 
-#: libdeja/BackendDrive.vala:190 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Położenie przechowywania jest niedostępne"
 
-#: libdeja/BackendDrive.vala:190
+#: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Oczekiwanie na podłączenie „%s”…"
