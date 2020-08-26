@@ -30,7 +30,6 @@ public abstract class AssistantOperation : Assistant
   public signal void closing(bool success);
 
   public bool automatic {get; construct; default = false;}
-  protected StatusIcon status_icon;
   protected bool succeeded = false;
 
   protected Gtk.Widget backend_install_page {get; private set;}
@@ -74,10 +73,6 @@ public abstract class AssistantOperation : Assistant
   uint timeout_id;
   protected bool error_occurred {get; private set;}
   bool gives_progress;
-
-  bool saved_pos;
-  int saved_x;
-  int saved_y;
 
   const int LOGS_LINES_TO_KEEP = 10000;
   bool adjustment_at_end = true;
@@ -629,44 +624,28 @@ public abstract class AssistantOperation : Assistant
 
   protected virtual void apply_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
-    if (status_icon != null) {
-      status_icon.done(success, cancelled, detail);
-      status_icon = null;
-    }
     this.op = null;
 
     if (cancelled) {
       do_close();
     }
-    else {
-      if (success) {
-        succeeded = true;
+    else if (success) {
+      succeeded = true;
 
-        if (detail != null) {
-          // Expect one paragraph followed by a blank line.  The first paragraph
-          // is an explanation before the full detail content.  So split it out
-          // into a proper label to look nice.
-          var halves = detail.split("\n\n", 2);
-          if (halves.length == 1) // no full detail content
-            summary_label.label = detail;
-          else if (halves.length == 2) {
-            summary_label.label = halves[0];
-            show_detail(halves[1]);
-          }
+      if (detail != null) {
+        // Expect one paragraph followed by a blank line.  The first paragraph
+        // is an explanation before the full detail content.  So split it out
+        // into a proper label to look nice.
+        var halves = detail.split("\n\n", 2);
+        if (halves.length == 1) // no full detail content
+          summary_label.label = detail;
+        else if (halves.length == 2) {
+          summary_label.label = halves[0];
+          show_detail(halves[1]);
         }
-
-        go_to_page(summary_page);
       }
-      else // show error
-        force_visible(false);
-    }
-  }
 
-  protected void ensure_status_icon(DejaDup.Operation o)
-  {
-    if (status_icon == null) {
-      status_icon = StatusIcon.create(this, o, automatic);
-      status_icon.show_window.connect((s, user_click) => {force_visible(user_click);});
+      go_to_page(summary_page);
     }
   }
 
@@ -699,8 +678,6 @@ public abstract class AssistantOperation : Assistant
     op.action_desc_changed.connect(set_progress_label);
     op.action_file_changed.connect(set_progress_label_file);
     op.progress.connect(show_progress);
-
-    ensure_status_icon(op);
 
     op.start.begin();
   }
@@ -759,10 +736,7 @@ public abstract class AssistantOperation : Assistant
   public void hide_everything()
   {
     hide();
-    if (status_icon != null) {
-      status_icon.done(false, true, null);
-      status_icon = null; // hide immediately to seem responsive
-    }
+    Notifications.close_all();
   }
 
   public void stop()
@@ -770,6 +744,11 @@ public abstract class AssistantOperation : Assistant
     hide_everything();
     if (op != null)
       op.stop();
+  }
+
+  public bool has_active_op()
+  {
+    return op != null;
   }
 
   protected virtual void do_cancel()
@@ -787,7 +766,7 @@ public abstract class AssistantOperation : Assistant
     if (is_interrupted() || op == null)
       do_cancel(); // instead, do the normal cancel operation
     else
-      hide_for_now ();
+      hide();
 
     return true;
   }
@@ -802,35 +781,6 @@ public abstract class AssistantOperation : Assistant
     closing(succeeded);
 
     DejaDup.destroy_widget(this);
-  }
-
-  public void force_visible(bool user_click)
-  {
-    show_to_user(this, Gtk.get_current_event_time(), user_click);
-  }
-
-  bool user_focused(Gtk.Widget win, Gdk.EventFocus e)
-  {
-    ((Gtk.Window)win).urgency_hint = false;
-    win.focus_in_event.disconnect(user_focused);
-    return false;
-  }
-
-  void show_to_user(Gtk.Window win, uint time, bool user_click)
-  {
-    win.focus_on_map = user_click;
-    if (saved_pos)
-      win.move(saved_x, saved_y);
-    if (user_click)
-      win.present_with_time(time);
-    else if (!win.is_active || !win.visible) {
-      win.urgency_hint = true;
-      win.show();
-      Idle.add(() => {
-        win.focus_in_event.connect(user_focused);
-        return false;
-      });
-    }
   }
 
   protected void get_passphrase()
@@ -914,7 +864,7 @@ public abstract class AssistantOperation : Assistant
       configure_nag_page();
       nagged = true;
     }
-    force_visible(false);
+    Notifications.attention_needed(this, _("Backups needs your encryption password to continue"));
     // pause until we can provide password by entering new main loop
     password_ask_loop = new MainLoop(null);
     response.connect(stop_password_loop);
@@ -951,7 +901,7 @@ public abstract class AssistantOperation : Assistant
     set_page_title(question_page, title);
     question_label.label = message;
     interrupt(question_page);
-    force_visible(false);
+    Notifications.attention_needed(this, _("Backups needs your input to continue"), title);
     response.connect(stop_question);
     Gtk.main();
   }
@@ -994,7 +944,7 @@ public abstract class AssistantOperation : Assistant
     var loop = new MainLoop(null);
     install_button.clicked.connect(() => {start_install.begin(ids, loop);});
     forward_button = install_button;
-    force_visible(false);
+    Notifications.attention_needed(this, _("Backups needs to install packages to continue"));
 
     loop.run();
   }
@@ -1009,7 +959,7 @@ public abstract class AssistantOperation : Assistant
       set_page_title(question_page, header);
       question_label.label = msg;
       interrupt(question_page, false);
-      force_visible(false);
+      Notifications.operation_blocked(this, header, msg);
     }
   }
 }

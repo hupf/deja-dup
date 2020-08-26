@@ -410,11 +410,8 @@ public ToolPlugin get_tool()
   return tool;
 }
 
-public bool initialize(out string header, out string msg)
+public void initialize()
 {
-  header = null;
-  msg = null;
-
   tool = new DuplicityPlugin();
 
   /* We do a little trick here.  BackendAuto -- which is the default
@@ -422,13 +419,10 @@ public bool initialize(out string header, out string msg)
      automatically suss out which backend should be used instead of it.
      So we request the current backend then drop it just to get that
      ball rolling in case this is the first time. */
-  var unused_backend = DejaDup.Backend.get_default();
-  unused_backend = null;
+  DejaDup.Backend.get_default();
 
   // And cleanup from any previous runs
   clean_tempdirs.begin();
-
-  return true;
 }
 
 public void i18n_setup()

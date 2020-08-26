@@ -258,8 +258,7 @@ static int main(string[] args)
   if (!handle_options(out status))
     return status;
 
-  if (!DejaDup.initialize(null, null))
-    return 1;
+  DejaDup.initialize();
 
   loop = new MainLoop(null, false);
   DejaDup.InstallEnv.instance().register_monitor_restart(loop);

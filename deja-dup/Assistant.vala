@@ -106,11 +106,6 @@ public abstract class Assistant : Gtk.Window
     }
   }
 
-  public void hide_for_now()
-  {
-    DejaDup.hide_background_window_for_shell(this);
-  }
-
   public bool is_interrupted()
   {
     return interrupted != null;
@@ -155,7 +150,7 @@ public abstract class Assistant : Gtk.Window
     if (interrupted != null) {
       next = interrupted;
       if (interrupted_from_hidden)
-        hide_for_now();
+        hide();
     }
     else {
       next = (current == null) ? infos : current.next;

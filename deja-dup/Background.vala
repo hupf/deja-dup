@@ -38,20 +38,6 @@ public class Background : Object
     return "";
   }
 
-  void show_error_dialog(Gtk.Window window, string mitigation)
-  {
-    var dlg = new Gtk.MessageDialog(
-      window,
-      Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-      Gtk.MessageType.ERROR,
-      Gtk.ButtonsType.OK,
-      _("Cannot back up automatically")
-    );
-    dlg.format_secondary_text(mitigation);
-    dlg.run();
-    DejaDup.destroy_widget(dlg);
-  }
-
   public bool request_autostart(Gtk.Widget widget)
   {
     var window = widget.get_toplevel() as Gtk.Window;
@@ -62,7 +48,8 @@ public class Background : Object
                                                 out mitigation);
 
     if (!allowed && mitigation != null)
-      show_error_dialog(window, mitigation);
+      DejaDup.run_error_dialog(window, _("Cannot back up automatically"),
+                               mitigation);
 
     return allowed;
   }

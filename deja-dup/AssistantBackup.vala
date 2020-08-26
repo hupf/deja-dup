@@ -89,7 +89,7 @@ public class AssistantBackup : AssistantOperation
       var msg = _("The following folders cannot be backed up because Backups does not have access to them:");
       msg += " " + string.joinv(", ", unavailable);
       show_error(msg, null);
-      force_visible(false);
+      Notifications.backup_finished(this, false, false, null);
       return null;
     }
 
@@ -110,11 +110,6 @@ public class AssistantBackup : AssistantOperation
       if (first)
         ask_passphrase(first);
     });
-
-    if (automatic)
-      hide_for_now();
-    else
-      show_all();
 
     return rv;
   }
@@ -163,6 +158,7 @@ public class AssistantBackup : AssistantOperation
 
   protected override void apply_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
+    Notifications.backup_finished(this, success, cancelled, detail);
     base.apply_finished(op, success, cancelled, detail);
   }
 }

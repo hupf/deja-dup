@@ -31,7 +31,6 @@ public class DejaDupApp : Gtk.Application
     {"backup", backup},
     {"backup-auto", backup_auto},
     {"restore", restore},
-    {"op-show", op_show},
     {"prompt-ok", prompt_ok},
     {"prompt-cancel", prompt_cancel},
     {"delay", delay, "s"},
@@ -77,6 +76,7 @@ public class DejaDupApp : Gtk.Application
     }
 
     if (options.contains("restore")) {
+      close_excess_modals();
       if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
@@ -92,6 +92,7 @@ public class DejaDupApp : Gtk.Application
       restore_full(file_list);
     }
     else if (options.contains("backup")) {
+      close_excess_modals();
       if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
@@ -102,10 +103,10 @@ public class DejaDupApp : Gtk.Application
     else if (options.contains("delay")) {
       string reason = null;
       options.lookup("delay", "s", ref reason);
-      send_delay_notification(reason);
+      Notifications.automatic_backup_delayed(reason);
     }
     else if (options.contains("prompt")) {
-      prompt(this);
+      Notifications.prompt();
     } else {
       activate();
     }
@@ -117,8 +118,10 @@ public class DejaDupApp : Gtk.Application
   {
     base.activate();
 
-    if (operation != null)
+    if (operation != null) {
+      operation.show_all(); // might have never been shown before
       operation.present_with_time(Gtk.get_current_event_time());
+    }
     else if (main_window != null)
       main_window.present_with_time(Gtk.get_current_event_time());
     else {
@@ -145,11 +148,7 @@ public class DejaDupApp : Gtk.Application
   {
     base.startup();
 
-    /* First, check duplicity version info */
-    if (!DejaDup.gui_initialize(null)) {
-      quit();
-      return;
-    }
+    DejaDup.gui_initialize();
 
     add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
@@ -176,7 +175,7 @@ public class DejaDupApp : Gtk.Application
     quit_action.set_enabled(true);
   }
 
-  void assign_op(AssistantOperation op)
+  void assign_op(AssistantOperation op, bool automatic)
   {
     if (operation != null) {
       warning("Trying to override operation! This shouldn't happen.");
@@ -195,8 +194,15 @@ public class DejaDupApp : Gtk.Application
       main_window.present_with_time(Gtk.get_current_event_time());
     }
 
-    operation.show_all();
-    operation.present_with_time(Gtk.get_current_event_time());
+    // We show operation window if the main window is open, because that would
+    // just cause confusion to have a hidden operation window. This does steal
+    // focus by surfacing a new window though...
+    if (automatic && main_window == null) {
+      Notifications.automatic_backup_started();
+    } else {
+      operation.show_all();
+      operation.present_with_time(Gtk.get_current_event_time());
+    }
 
     Gdk.notify_startup_complete();
   }
@@ -205,28 +211,17 @@ public class DejaDupApp : Gtk.Application
   {
     string reason = null;
     parameter.get("s", ref reason);
-    send_delay_notification(reason);
-  }
-
-  void send_delay_notification(string reason)
-  {
-    var note = new Notification(_("Scheduled backup delayed"));
-    note.set_body(reason);
-    note.set_icon(new ThemedIcon(Config.ICON_NAME));
-    send_notification("backup-status", note);
+    Notifications.automatic_backup_delayed(reason);
   }
 
   void preferences()
   {
-    unowned List<Gtk.Window> list = get_windows();
-    PreferencesWindow.show(list == null ? null : list.data);
+    PreferencesWindow.show(main_window);
   }
 
   void help()
   {
-    unowned List<Gtk.Window> list = get_windows();
-    DejaDup.show_uri(list == null ? null : list.data,
-                     "help:" + Config.PACKAGE);
+    DejaDup.show_uri(main_window, "help:" + Config.PACKAGE);
   }
 
   void menu()
@@ -264,8 +259,9 @@ public class DejaDupApp : Gtk.Application
 
   public void backup()
   {
+    close_excess_modals();
     if (operation != null) {
-      op_show();
+      activate();
     } else {
       backup_full(false);
     }
@@ -273,6 +269,7 @@ public class DejaDupApp : Gtk.Application
 
   public void backup_auto()
   {
+    close_excess_modals();
     if (operation == null) {
       backup_full(true);
     }
@@ -281,14 +278,14 @@ public class DejaDupApp : Gtk.Application
   void backup_full(bool automatic)
   {
     var backop = new AssistantBackup(automatic);
-    assign_op(backop);
-    // showing or not is handled by AssistantBackup
+    assign_op(backop, automatic);
   }
 
   public void restore()
   {
+    close_excess_modals();
     if (operation != null) {
-      op_show();
+      activate();
     } else {
       restore_full();
     }
@@ -296,8 +293,9 @@ public class DejaDupApp : Gtk.Application
 
   public void restore_files(List<File> file_list, string? when = null, DejaDup.FileTree? tree = null)
   {
+    close_excess_modals();
     if (operation != null) {
-      op_show();
+      activate();
     } else {
       restore_full(file_list, when, tree);
     }
@@ -305,16 +303,7 @@ public class DejaDupApp : Gtk.Application
 
   void restore_full(List<File>? file_list = null, string? when = null, DejaDup.FileTree? tree = null)
   {
-    assign_op(new AssistantRestore.with_files(file_list, when, tree));
-  }
-
-  void op_show()
-  {
-    // Show operation window if it exists, else just activate
-    if (operation != null)
-      operation.force_visible(true);
-    else
-      activate();
+    assign_op(new AssistantRestore.with_files(file_list, when, tree), false);
   }
 
   void prompt_ok()
@@ -326,6 +315,26 @@ public class DejaDupApp : Gtk.Application
   void prompt_cancel()
   {
     DejaDup.update_prompt_time(true);
+  }
+
+  void close_excess_modals()
+  {
+    // Things like the about or preference dialogs or no-longer-active progress
+    // dialogs. These should be closed if we're about to do something new like
+    // a backup or restore operation.
+    if (operation != null && !operation.has_active_op()) {
+      DejaDup.destroy_widget(operation);
+      clear_op();
+    }
+
+    if (operation != null || main_window == null)
+      return; // not safe or needed to continue closing modals
+
+    foreach (var window in Gtk.Window.list_toplevels()) {
+      if (window.transient_for == main_window && window.modal && window.visible) {
+        DejaDup.destroy_widget(window);
+      }
+    }
   }
 }
 

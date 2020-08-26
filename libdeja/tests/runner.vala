@@ -238,7 +238,6 @@ class BackupRunner : Object
   public DejaDup.Operation op = null;
   public string path = null;
   public string script = null;
-  public string? init_error = null;
   public string init_script = null;
   public bool success = true;
   public bool cancelled = false;
@@ -261,14 +260,7 @@ class BackupRunner : Object
     if (path != null)
       Environment.set_variable("PATH", path, true);
 
-    string header, msg;
-    if (!DejaDup.initialize(out header, out msg)) {
-      if (header + "\n" + msg != init_error)
-        warning("Init error didn't match; expected '%s', got '%s'", init_error, msg);
-      return;
-    }
-    if (init_error != null)
-      warning("Init error '%s' was expected", init_error);
+    DejaDup.initialize();
 
     if (init_script != null)
       run_script(init_script);
@@ -436,8 +428,6 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     br.detail = replace_keywords(keyfile.get_string(group, "Detail"));
   if (keyfile.has_key(group, "DiskFree"))
     Environment.set_variable("DEJA_DUP_TEST_SPACE_FREE", keyfile.get_string(group, "DiskFree"), true);
-  if (keyfile.has_key(group, "InitError"))
-    br.init_error = keyfile.get_string(group, "InitError");
   if (keyfile.has_key(group, "InitScript"))
     br.init_script = replace_keywords(keyfile.get_string(group, "InitScript"));
   if (keyfile.has_key(group, "Error"))

@@ -503,7 +503,6 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
     var first_backup = full_backup == null;
 
-    var do_restart = true;
     reported_full_backups = true; // don't do this a second time
 
     // Set full backup threshold and determine whether we should trigger
@@ -514,8 +513,9 @@ internal class DuplicityJob : DejaDup.ToolJob
       is_full(first_backup);
     }
 
-    if (do_restart && !restart())
+    if (mode != DejaDup.ToolJob.Mode.INVALID && !restart()) {
       done(false, false, null);
+    }
   }
 
   async void check_backup_space()

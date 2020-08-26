@@ -620,4 +620,10 @@ public class AssistantRestore : AssistantOperation
       files_timeout_id = 0;
     }
   }
+
+  protected override void apply_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
+  {
+    Notifications.restore_finished(this, success, cancelled, detail);
+    base.apply_finished(op, success, cancelled, detail);
+  }
 }
