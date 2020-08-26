@@ -90,6 +90,7 @@ public class ConfigFolderList : BuilderWidget
     var dlg = new Gtk.FileChooserNative(_("Choose folders"), window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
                                         _("_Add"), null);
+    dlg.local_only = true;
     dlg.select_multiple = true;
 
     if (dlg.run() != Gtk.ResponseType.ACCEPT) {
@@ -112,6 +113,11 @@ public class ConfigFolderList : BuilderWidget
 
     foreach (string file in files) {
       var folder = File.new_for_path(file);
+
+      // Strip any leading root path in case the user somehow navigated to the
+      // read root. We'll prefix it again when backing up.
+      folder = DejaDup.remove_read_root(folder);
+
       bool found = false;
       foreach (string s in slist) {
         var sfile = DejaDup.parse_dir(s);

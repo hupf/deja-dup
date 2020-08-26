@@ -41,6 +41,8 @@ public class DejaDup.InstallEnv : Object
     return {Environment.get_tmp_dir(), "/var/tmp"};
   }
 
+  public virtual string get_read_root() { return "/"; }
+
   public virtual void register_monitor_restart(MainLoop loop) {}
 
   // In some containers, parts of the host filesystem are not available to us

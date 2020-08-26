@@ -61,7 +61,7 @@ public class DejaDup.OperationBackup : Operation
       warning("%s\n", e.message);
     }
 
-    job.local = File.new_for_path("/");
+    job.local = File.new_for_path(InstallEnv.instance().get_read_root());
 
     return null;
   }
@@ -102,6 +102,7 @@ public class DejaDup.OperationBackup : Operation
       files.prepend(File.new_for_path(tempdir));
 
     // Skip transient directories
+    files.prepend(File.new_for_path("/dev"));
     files.prepend(File.new_for_path("/proc"));
     files.prepend(File.new_for_path("/run"));
     files.prepend(File.new_for_path("/sys"));
