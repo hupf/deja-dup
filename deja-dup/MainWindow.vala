@@ -37,13 +37,25 @@ public class MainWindow : BuilderWidget
     initial_backup_button.clicked.connect(application.backup);
 
     var initial_restore_button = builder.get_object("initial-restore-button") as Gtk.Button;
-    initial_restore_button.clicked.connect(application.restore);
+    initial_restore_button.clicked.connect(application.start_custom_restore);
 
     var overview_stack = builder.get_object("overview-stack") as Gtk.Stack;
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(DejaDup.LAST_BACKUP_KEY, overview_stack, "visible-child-name",
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
                                null, null);
+
+    // If a custom restore backend is set, we switch to restore.
+    // If we switch away, we undo the custom restore backend.
+    var stack = builder.get_object("stack") as Gtk.Stack;
+    stack.notify["visible-child-name"].connect(() => {
+      if (stack.visible_child_name != "restore")
+        application.custom_backend = null;
+    });
+    application.notify["custom-backend"].connect(() => {
+      if (application.custom_backend != null)
+        stack.visible_child_name = "restore";
+    });
 
     new HeaderBar(builder);
     new Browser(builder, application);

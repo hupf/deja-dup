@@ -40,6 +40,6 @@ public class HeaderBar : BuilderWidget
     previous.visible = is_restore;
     search.visible = is_restore;
     selection.visible = is_restore;
-    switcher.sensitive = !welcome_state;
+    switcher.sensitive = is_restore || !welcome_state;
   }
 }

@@ -47,14 +47,24 @@ class RestoreTest(BaseTest):
         self.wait_for(lambda: window.dead, timeout=60)
 
     def walk_restore(self, app, password=None, error=False):
-        window = app.window("Restore From Where?")
-
         shutil.rmtree(self.srcdir)
 
-        window.button("Forward").click()  # from where
-        window.button("Forward").click()  # when
-        window.button("Forward").click()  # to where
-        window.button("Restore").click()  # summary
+        window = app.window("Restore From Where?")
+        window.button("Search").click()  # from where
+
+        # Switched to restore pane. Now select all.
+        search = app.button("Select")
+        self.wait_for(lambda: search.sensitive)
+        search.click()
+        app.child(
+            roleName="toggle button", name="Click on items to select them"
+        ).click()
+        app.button("Select All").click()
+
+        # And start restore
+        app.button("Restore").click()
+        window = app.window("Restore to Where?")
+        window.button("Restore").click()  # to where
 
         if password:
             window.child(roleName="text", label="Encryption password").text = password

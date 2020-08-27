@@ -15,6 +15,7 @@ public class DejaDupApp : Gtk.Application
   Gtk.MenuButton menu_button = null;
   SimpleAction quit_action = null;
   public AssistantOperation operation {get; private set; default = null;}
+  public DejaDup.Backend custom_backend {get; set; default = null;}
 
   const OptionEntry[] OPTIONS = {
     {"version", 0, 0, OptionArg.NONE, null, N_("Show version"), null},
@@ -30,7 +31,6 @@ public class DejaDupApp : Gtk.Application
   const ActionEntry[] ACTIONS = {
     {"backup", backup},
     {"backup-auto", backup_auto},
-    {"restore", restore},
     {"prompt-ok", prompt_ok},
     {"prompt-cancel", prompt_cancel},
     {"delay", delay, "s"},
@@ -76,23 +76,24 @@ public class DejaDupApp : Gtk.Application
     }
 
     if (options.contains("restore")) {
-      close_excess_modals();
       if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
 
-      List<File> file_list = new List<File>();
-      if (filenames.length > 0) {
-        int i = 0;
-        while (filenames[i] != null)
-          file_list.append(command_line.create_file_for_arg(filenames[i++]));
+      if (filenames.length == 0) {
+        command_line.printerr("%s\n", _("Please list files to restore"));
+        return 1;
       }
 
-      restore_full(file_list);
+      var file_list = new List<File>();
+      int i = 0;
+      while (filenames[i] != null)
+        file_list.append(command_line.create_file_for_arg(filenames[i++]));
+
+      restore_files(file_list);
     }
     else if (options.contains("backup")) {
-      close_excess_modals();
       if (operation != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
@@ -155,6 +156,11 @@ public class DejaDupApp : Gtk.Application
     set_accels_for_action("app.menu", {"F10"});
     set_accels_for_action("app.quit", {"<Primary>q"});
     quit_action = lookup_action("quit") as SimpleAction;
+
+    notify["custom-backend"].connect(() => {
+      var prefs_action = lookup_action("preferences") as SimpleAction;
+      prefs_action.set_enabled(custom_backend == null);
+    });
 
     // Cleanly exit (shutting down duplicity as we go)
     Unix.signal_add(ProcessSignal.HUP, exit_cleanly);
@@ -259,7 +265,6 @@ public class DejaDupApp : Gtk.Application
 
   public void backup()
   {
-    close_excess_modals();
     if (operation != null) {
       activate();
     } else {
@@ -269,7 +274,6 @@ public class DejaDupApp : Gtk.Application
 
   public void backup_auto()
   {
-    close_excess_modals();
     if (operation == null) {
       backup_full(true);
     }
@@ -277,18 +281,29 @@ public class DejaDupApp : Gtk.Application
 
   void backup_full(bool automatic)
   {
-    var backop = new AssistantBackup(automatic);
-    assign_op(backop, automatic);
+    close_excess_modals();
+    assign_op(new AssistantBackup(automatic), automatic);
   }
 
-  public void restore()
+  public DejaDup.Backend get_restore_backend()
   {
-    close_excess_modals();
-    if (operation != null) {
-      activate();
-    } else {
-      restore_full();
-    }
+    if (custom_backend == null)
+      return DejaDup.Backend.get_default();
+    else
+      return custom_backend;
+  }
+
+  // Start a restore with a custom backend (e.g. first time restore)
+  public void start_custom_restore()
+  {
+    var assist = new AssistantLocation();
+    assist.transient_for = main_window;
+    assist.show_all();
+  }
+
+  public void search_custom_restore(DejaDup.Backend backend)
+  {
+    custom_backend = backend; // code in MainWindow will notice this change
   }
 
   public void restore_files(List<File> file_list, string? when = null, DejaDup.FileTree? tree = null)
@@ -297,13 +312,8 @@ public class DejaDupApp : Gtk.Application
     if (operation != null) {
       activate();
     } else {
-      restore_full(file_list, when, tree);
+      assign_op(new AssistantRestore.with_files(file_list, when, tree), false);
     }
-  }
-
-  void restore_full(List<File>? file_list = null, string? when = null, DejaDup.FileTree? tree = null)
-  {
-    assign_op(new AssistantRestore.with_files(file_list, when, tree), false);
   }
 
   void prompt_ok()

@@ -171,6 +171,11 @@ class Browser : BuilderWidget
     watcher = new DejaDup.BackendWatcher();
     watcher.changed.connect(clear_operation);
     watcher.new_backup.connect(clear_operation);
+    application.notify["custom-backend"].connect(() => {
+      clear_operation();
+      if (application.custom_backend != null)
+        start_operation();
+    });
 
     // Set up passphrase dialog
     passphrase_loop = new MainLoop(null); // not started yet, but will be
@@ -462,8 +467,11 @@ class Browser : BuilderWidget
     stop_operation();
     time_filled = false;
 
-    operation = new DejaDup.OperationStatus(DejaDup.Backend.get_default());
+    var backend = application.get_restore_backend();
+    operation = new DejaDup.OperationStatus(backend);
     operation.done.connect((op, success, cancelled, detail) => {
+      if (op != operation)
+        return;
       operation = null;
       if (success) {
         time_filled = true;
@@ -479,9 +487,12 @@ class Browser : BuilderWidget
     stop_operation();
     files_filled = false;
 
+    var backend = application.get_restore_backend();
     var datetime = new DateTime.from_iso8601(timecombo.when, new TimeZone.utc());
-    operation = new DejaDup.OperationFiles(DejaDup.Backend.get_default(), datetime);
+    operation = new DejaDup.OperationFiles(backend, datetime);
     operation.done.connect((op, success, cancelled, detail) => {
+      if (op != operation)
+        return;
       operation = null;
       if (success) {
         files_filled = true;

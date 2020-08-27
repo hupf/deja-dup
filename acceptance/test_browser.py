@@ -318,18 +318,3 @@ class BrowserTest(BaseTest):
         assert button.sensitive
 
         self.window.button("Cancel").click()
-
-        # Now test a full backup attempt
-        self.app.child(roleName="radio button", name="Overview").click()
-        self.set_string("last-backup", "")  # to reset welcome screen
-        self.app.button("Restore From a Previous Backup").click()
-        self.window = self.app.window("Restore From Where?")
-        self.window.button("Forward").click()  # from where
-        self.window.button("Forward").click()  # when
-        button = self.window.button("Forward")
-        self.app.findChild(findPermissionLabel)
-        self.app.findChild(
-            lambda x: x.roleName == "label"
-            and x.name == self.srcdir + "/four.txt\n" + self.srcdir + "/one.txt"
-        )
-        assert button.sensitive  # can still restore in this case

@@ -43,8 +43,6 @@ public class AssistantRestore : AssistantOperation
   Gtk.Box cust_box;
   Gtk.FileChooserButton cust_button;
   Gtk.Grid confirm_table;
-  ConfigLocationGrid location_grid;
-  Gtk.Widget config_location;
   Gtk.Image confirm_storage_image;
   Gtk.Label confirm_storage_label;
   Gtk.Label confirm_location_label;
@@ -70,6 +68,11 @@ public class AssistantRestore : AssistantOperation
     return _("_Restore");
   }
 
+  DejaDup.Backend get_backend()
+  {
+    return DejaDupApp.get_instance().get_restore_backend();
+  }
+
   protected override void add_setup_pages()
   {
     if (when == null) {
@@ -83,40 +86,6 @@ public class AssistantRestore : AssistantOperation
     if (tree == null)
       add_files_query_page();
     add_restore_dest_page();
-  }
-
-  void ensure_config_location()
-  {
-    realize();
-
-    if (config_location == null) {
-      var builder = new Builder("preferences");
-      location_grid = new ConfigLocationGrid(builder, true);
-
-      var location_label = builder.get_object("location_label") as Gtk.Label;
-      location_label.label = _("_Backup location");
-
-      config_location = builder.get_object("location_grid") as Gtk.Widget;
-      config_location.ref();
-      config_location.parent.remove(config_location);
-    }
-  }
-
-  Gtk.Widget make_backup_location_page()
-  {
-    ensure_config_location();
-    config_location.show_all();
-    return config_location;
-  }
-
-  protected override void add_custom_config_pages()
-  {
-    // always show for a full restore or if user hasn't ever used us
-    if (restore_files == null || !DejaDup.has_seen_settings()) {
-      var page = make_backup_location_page();
-      append_page(page);
-      set_page_title(page, _("Restore From Where?"));
-    }
   }
 
   Gtk.Widget make_status_query_page()
@@ -288,7 +257,6 @@ public class AssistantRestore : AssistantOperation
              "column-spacing", 12,
              "border-width", 12);
 
-    ensure_config_location();
     label = new Gtk.Label(_("Backup location"));
     label.set("xalign", 1.0f, "yalign", 0.0f);
     confirm_storage_image = new Gtk.Image.from_icon_name("folder", Gtk.IconSize.MENU);
@@ -382,8 +350,8 @@ public class AssistantRestore : AssistantOperation
         date_store.get(iter, 1, out date);
     }
 
-    ensure_config_location();
-    var rest_op = new DejaDup.OperationRestore(location_grid.get_backend(),
+    var backend = DejaDupApp.get_instance().get_restore_backend();
+    var rest_op = new DejaDup.OperationRestore(backend,
                                                restore_location, tree, date,
                                                restore_files);
     if (this.op_state != null)
@@ -429,8 +397,7 @@ public class AssistantRestore : AssistantOperation
 
   protected async void do_status_query()
   {
-    ensure_config_location();
-    status_op = new DejaDup.OperationStatus(location_grid.get_backend());
+    status_op = new DejaDup.OperationStatus(get_backend());
     op = status_op;
 
     connect_operation(status_op);
@@ -465,8 +432,7 @@ public class AssistantRestore : AssistantOperation
 
   protected async void do_files_query()
   {
-    ensure_config_location();
-    files_op = new DejaDup.OperationFiles(location_grid.get_backend());
+    files_op = new DejaDup.OperationFiles(get_backend());
     if (this.op_state != null)
       files_op.set_state(this.op_state);
     op = files_op;
@@ -493,7 +459,7 @@ public class AssistantRestore : AssistantOperation
     }
     else if (page == confirm_page) {
       // When we restore from
-      var backend = location_grid.get_backend();
+      var backend = get_backend();
       string desc = backend.get_location_pretty();
       Icon icon = backend.get_icon();
       confirm_storage_label.label = desc == null ? "" : desc;
