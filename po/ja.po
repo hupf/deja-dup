@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-20 02:17+0000\n"
-"PO-Revision-Date: 2020-08-22 13:52+0900\n"
+"POT-Creation-Date: 2020-08-26 00:47+0000\n"
+"PO-Revision-Date: 2020-08-27 19:50+0900\n"
 "Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:341
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:350
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup バックアップ"
 
@@ -196,7 +196,7 @@ msgstr "定期的にバックアップする頻度"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:44
 msgid "The number of days between backups."
-msgstr "バックアップ間の日数"
+msgstr "バックアップ間の日数です。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:48
 msgid ""
@@ -353,7 +353,7 @@ msgstr ""
 "バックアップを保存するフォルダーパスです。パスは絶対パスか、ホストからの相対"
 "パスのどちらかです。"
 
-#: data/ui/debug.ui:11 deja-dup/main.vala:250
+#: data/ui/debug.ui:11 deja-dup/main.vala:245
 msgid "Debug Information"
 msgstr "デバッグ情報"
 
@@ -417,7 +417,7 @@ msgstr "選択"
 msgid "Search"
 msgstr "検索"
 
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:338
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:333
 msgid "_Cancel"
 msgstr "キャンセル(_C)"
 
@@ -485,17 +485,17 @@ msgstr "復元"
 msgid "Con_tinue"
 msgstr "続行(_T)"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:389
-#: deja-dup/AssistantOperation.vala:460
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:384
+#: deja-dup/AssistantOperation.vala:455
 msgid "E_ncryption password"
 msgstr "暗号化パスワード(_N)"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:419
-#: deja-dup/AssistantOperation.vala:469
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:414
+#: deja-dup/AssistantOperation.vala:464
 msgid "_Show password"
 msgstr "パスワードを表示する(_S)"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:426
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:421
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "パスワードを記憶する(_R)"
@@ -603,7 +603,7 @@ msgstr ""
 
 #: data/ui/preferences.ui:475
 msgid "_Choose Folder…"
-msgstr "フォルダーを選択(_C)..."
+msgstr "フォルダーを選択(_C)…"
 
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
@@ -669,28 +669,28 @@ msgstr "sftp:// または ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// または davs://"
 
-#: deja-dup/Assistant.vala:282
+#: deja-dup/Assistant.vala:277
 msgid "Co_ntinue"
 msgstr "続行する(_N)"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:283
 msgctxt "verb"
 msgid "_Test"
 msgstr "テスト(_T)"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:319
 msgid "_Resume Later"
 msgstr "後で再開する(_R)"
 
-#: deja-dup/Assistant.vala:330
+#: deja-dup/Assistant.vala:325
 msgid "_Back"
 msgstr "戻る(_B)"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:327
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:344
 msgid "_Forward"
 msgstr "進む(_F)"
 
@@ -724,52 +724,52 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:137
+#: deja-dup/AssistantBackup.vala:132
 msgid "Backing up:"
 msgstr "バックアップ中:"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:141
 msgid "Backup Failed"
 msgstr "バックアップに失敗しました"
 
-#: deja-dup/AssistantBackup.vala:149
+#: deja-dup/AssistantBackup.vala:144
 msgid "Backup Finished"
 msgstr "バックアップが終了しました"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:153
+#: deja-dup/AssistantBackup.vala:148
 msgid "Your files were successfully backed up and tested."
 msgstr "ファイルのバックアップと検証に成功しました。"
 
-#: deja-dup/AssistantBackup.vala:160
+#: deja-dup/AssistantBackup.vala:155
 msgid "Backing Up…"
 msgstr "バックアップ中…"
 
-#: deja-dup/AssistantOperation.vala:165
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning:"
 msgstr "スキャン中:"
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
 msgstr "スキャンしています…"
 
-#: deja-dup/AssistantOperation.vala:274
+#: deja-dup/AssistantOperation.vala:269
 msgid "_Details"
 msgstr "詳細(_D)"
 
-#: deja-dup/AssistantOperation.vala:320
+#: deja-dup/AssistantOperation.vala:315
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "続けるには、次のパッケージをインストールする必要があります。"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:351
 msgid "_Allow restoring without a password"
 msgstr "パスワード無しで復元を許可する(_A)"
 
-#: deja-dup/AssistantOperation.vala:362
+#: deja-dup/AssistantOperation.vala:357
 msgid "_Password-protect your backup"
 msgstr "バックアップをパスワードで保護する(_P)"
 
-#: deja-dup/AssistantOperation.vala:374
+#: deja-dup/AssistantOperation.vala:369
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -777,11 +777,11 @@ msgstr ""
 "ファイルを復元するには、パスワードの入力が必要です。どこかに書き留めておくと"
 "良いでしょう。"
 
-#: deja-dup/AssistantOperation.vala:406
+#: deja-dup/AssistantOperation.vala:401
 msgid "Confir_m password"
 msgstr "パスワードの確認(_M)"
 
-#: deja-dup/AssistantOperation.vala:445
+#: deja-dup/AssistantOperation.vala:440
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -790,42 +790,54 @@ msgstr ""
 "緊急時にファイルの復元ができるかどうかのチェックを行います。簡単な復元テスト"
 "を行うために暗号化パスワードをもう一度入力してください。"
 
-#: deja-dup/AssistantOperation.vala:474
+#: deja-dup/AssistantOperation.vala:469
 msgid "Test every two _months"
 msgstr "2ヶ月おきにテストする(_M)"
 
-#: deja-dup/AssistantOperation.vala:506
+#: deja-dup/AssistantOperation.vala:501
 msgid "_Grant Access"
 msgstr "アクセスを許可(_G)"
 
-#: deja-dup/AssistantOperation.vala:568
+#: deja-dup/AssistantOperation.vala:563
 msgid "Install Packages"
 msgstr "パッケージをインストール"
 
-#: deja-dup/AssistantOperation.vala:583
+#: deja-dup/AssistantOperation.vala:578
 msgid "Summary"
 msgstr "設定一覧"
 
-#: deja-dup/AssistantOperation.vala:605
+#: deja-dup/AssistantOperation.vala:600
 msgid "Restore Test"
 msgstr "復元テスト"
 
-#: deja-dup/AssistantOperation.vala:613
+#: deja-dup/AssistantOperation.vala:608
 msgid "Grant Access"
 msgstr "アクセス許可"
 
-#: deja-dup/AssistantOperation.vala:866
+#: deja-dup/AssistantOperation.vala:816
 msgid "Require Password?"
 msgstr "パスワードを要求しますか?"
 
-#: deja-dup/AssistantOperation.vala:868
+#: deja-dup/AssistantOperation.vala:818
 msgid "Encryption Password Needed"
-msgstr "暗号化パスワードが必要です。"
+msgstr "暗号化パスワードが必要です"
 
-#: deja-dup/AssistantOperation.vala:992
+#: deja-dup/AssistantOperation.vala:867
+msgid "Backups needs your encryption password to continue"
+msgstr "続けるには暗号化パスワードが必要です"
+
+#: deja-dup/AssistantOperation.vala:904
+msgid "Backups needs your input to continue"
+msgstr "続けるには入力が必要です"
+
+#: deja-dup/AssistantOperation.vala:942
 msgctxt "verb"
 msgid "_Install"
 msgstr "インストール(_I)"
+
+#: deja-dup/AssistantOperation.vala:947
+msgid "Backups needs to install packages to continue"
+msgstr "続けるにはパッケージのインストールが必要です"
 
 #: deja-dup/AssistantRestore.vala:97
 msgid "_Backup location"
@@ -921,7 +933,7 @@ msgstr[0] "ファイルが正常に復元されました。"
 msgid "Restoring…"
 msgstr "復元しています…"
 
-#: deja-dup/Background.vala:48
+#: deja-dup/Background.vala:51
 msgid "Cannot back up automatically"
 msgstr "自動バックアップできません"
 
@@ -1043,7 +1055,7 @@ msgstr "次回のバックアップは明日です。"
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
-msgstr[0] "次のバックアップは今から %d 日後です"
+msgstr[0] "次のバックアップは今から %d 日後です。"
 
 #. Check for some really simple/common friendly names
 #: deja-dup/ConfigStatusLabel.vala:73
@@ -1084,6 +1096,10 @@ msgstr "パスワードを表示する(_H)"
 msgid "Location not available"
 msgstr "場所が使用できません"
 
+#: deja-dup/MountOperationAssistant.vala:80
+msgid "Backups needs your password to continue"
+msgstr "続けるにはパスワードが必要です"
+
 #: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
 msgstr "匿名で接続する(_A)"
@@ -1097,11 +1113,40 @@ msgstr "ユーザー名を指定して接続する(_S)"
 msgid "_Domain"
 msgstr "ドメイン(_D)"
 
-#: deja-dup/Prompt.vala:18
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "スケジュールされたバックアップを開始しています"
+
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "スケジュールされたバックアップが延期されました"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "バックアップが完了しました"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "バックアップが終了しました"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr ""
+"しかし、一部のファイルは正常にバックアップできませんでした。"
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "バックアップに失敗しました"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "復元に失敗しました"
+
+#: deja-dup/Notifications.vala:71
 msgid "Keep your files safe by backing up regularly"
 msgstr "バックアップにより、ファイルが安全に保たれます"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
@@ -1111,32 +1156,13 @@ msgstr ""
 "されます。「万が一」のことが起きても、バックアップからそれらを復元することが"
 "できるでしょう。"
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "今後は表示しない(_D)"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "今後表示しない"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "バックアップの設定を開く(_O)"
-
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "バックアップが完了しました"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "バックアップが終了しました"
-
-#: deja-dup/StatusIcon.vala:51
-msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr ""
-"一部のファイルのバックアップに失敗しました。詳細はダイアログを確認してくださ"
-"い。"
-
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "スケジュールされたバックアップを開始しています"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "“バックアップ”を開く"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1147,7 +1173,7 @@ msgstr "スケジュールされたバックアップを開始しています"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:22
+#: deja-dup/WidgetUtils.vala:31
 #, c-format
 msgid "Could not display %s"
 msgstr "%s を表示できません"
@@ -1164,17 +1190,14 @@ msgstr "与えられたファイルを復元する"
 msgid "Immediately start a backup"
 msgstr "直ちにバックアップを開始する"
 
-#: deja-dup/main.vala:81 deja-dup/main.vala:96
+#: deja-dup/main.vala:81 deja-dup/main.vala:97
 msgid "An operation is already in progress"
 msgstr "作業はすでに実行中です"
 
-#: deja-dup/main.vala:213
-msgid "Scheduled backup delayed"
-msgstr "スケジュールされたバックアップが延期されました"
-
-#: deja-dup/main.vala:247
+#: deja-dup/main.vala:242
 msgid "translator-credits"
 msgstr ""
+"Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo.co.jp>\n"
 "sicklylife <translation@sicklylife.jp>\n"
 "\n"
 "Launchpad Contributions:\n"
@@ -1197,7 +1220,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上の %1$s"
@@ -1261,31 +1284,31 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba ネットワークの場所は、ホスト名と共有名の両方を含む必要があります。"
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:451
 msgid "Access Granted"
 msgstr "アクセスが許可されました"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:452
 msgid "Backups will now continue. You can close this page."
 msgstr "“バックアップ”を続行します。このページは閉じてかまいません。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:537
+#: libdeja/CommonUtils.vala:531
 #, c-format
 msgid "Home (%s)"
 msgstr "ホーム (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:542
+#: libdeja/CommonUtils.vala:536
 msgid "Home"
 msgstr "ホーム"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:541
 msgid "Trash"
 msgstr "ゴミ箱"
 
-#: libdeja/CommonUtils.vala:609
+#: libdeja/CommonUtils.vala:603
 msgid "Backup encryption password"
 msgstr "バックアップ暗号化パスワード"
 
@@ -1386,7 +1409,7 @@ msgstr ""
 #: libdeja/tools/duplicity/DuplicityJob.vala:716
 #: libdeja/tools/duplicity/DuplicityJob.vala:1100
 msgid "Failed with an unknown error."
-msgstr "不明なエラーで失敗しました"
+msgstr "不明なエラーで失敗しました。"
 
 #. notify upper layers, if they want to do anything
 #: libdeja/tools/duplicity/DuplicityJob.vala:919
@@ -1488,6 +1511,15 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 "従量制ではないネットワークが利用可能になると、バックアップが開始されます。"
+
+#~ msgid "_Open Backup Settings"
+#~ msgstr "バックアップの設定を開く(_O)"
+
+#~ msgid ""
+#~ "Not all files were successfully backed up.  See dialog for more details."
+#~ msgstr ""
+#~ "一部のファイルのバックアップに失敗しました。詳細はダイアログを確認してくだ"
+#~ "さい。"
 
 #~ msgid "Connect to Server"
 #~ msgstr "サーバーに接続"
