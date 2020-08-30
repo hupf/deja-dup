@@ -14,7 +14,7 @@ public abstract class AssistantOperation : Assistant
    *
    * Abstract class that provides various methods that serve as pages in
    * assistant. Required methods that all classes that inherit from this
-   * class must implement are create_op, make_confirm_page and
+   * class must implement are create_op, get_apply_text and
    * get_progress_file_prefix.
    *
    * Pages are shown in the following order:
@@ -29,7 +29,6 @@ public abstract class AssistantOperation : Assistant
   protected Gtk.Widget confirm_page {get; private set;}
   public signal void closing(bool success);
 
-  public bool automatic {get; construct; default = false;}
   protected bool succeeded = false;
 
   protected Gtk.Widget backend_install_page {get; private set;}

@@ -592,4 +592,12 @@ public class AssistantRestore : AssistantOperation
     Notifications.restore_finished(this, success, cancelled, detail);
     base.apply_finished(op, success, cancelled, detail);
   }
+
+  protected override uint inhibit(Gtk.Application app)
+  {
+    return app.inhibit(this,
+                       Gtk.ApplicationInhibitFlags.LOGOUT |
+                       Gtk.ApplicationInhibitFlags.SUSPEND,
+                       _("Restore in progress"));
+  }
 }

@@ -9,6 +9,8 @@ using GLib;
 
 public class AssistantBackup : AssistantOperation
 {
+  public bool automatic {get; construct; default = false;}
+
   public AssistantBackup(bool automatic)
   {
     Object(automatic: automatic);
@@ -160,5 +162,25 @@ public class AssistantBackup : AssistantOperation
   {
     Notifications.backup_finished(this, success, cancelled, detail);
     base.apply_finished(op, success, cancelled, detail);
+  }
+
+  protected override uint inhibit(Gtk.Application app)
+  {
+    var flags = Gtk.ApplicationInhibitFlags.SUSPEND;
+
+    // We don't prevent logging out for automatic backups, because they can
+    // just be resumed later and weren't triggered by user actions.
+    // So they aren't worth preventing the user from doing something and might
+    // be a surprising addition to the logout dialog.
+    if (!automatic)
+      flags |= Gtk.ApplicationInhibitFlags.LOGOUT;
+    else
+      // At time of writing, gnome-shell still warns the user on logout even
+      // with just a suspend inhibit. So let's avoid annoying the user and just
+      // not bother inhibiting for automatic backups at all until that's fixed.
+      // https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+      return 0;
+
+    return app.inhibit(this, flags, _("Backup in progress"));
   }
 }

@@ -38,6 +38,7 @@ public abstract class Assistant : Gtk.Window
   Gtk.Widget resume_button;
   Gtk.Widget apply_button;
   protected Gtk.EventBox page_box;
+  uint inhibit_id;
 
   public class PageInfo {
     public Gtk.Widget page;
@@ -84,6 +85,11 @@ public abstract class Assistant : Gtk.Window
     response.connect(handle_response);
 
     DejaDupApp.get_instance().add_window(this);
+  }
+
+  ~Assistant()
+  {
+    set_inhibited(false);
   }
 
   public void allow_forward(bool allow)
@@ -216,6 +222,7 @@ public abstract class Assistant : Gtk.Window
 
       use_title(info);
       set_buttons();
+      set_inhibited(info.type == Type.PROGRESS);
 
       var child = page_box.get_child();
       if (child != null) {
@@ -381,6 +388,23 @@ public abstract class Assistant : Gtk.Window
           use_title(info);
         break;
       }
+    }
+  }
+
+  protected virtual uint inhibit(Gtk.Application app)
+  {
+    return 0;
+  }
+
+  void set_inhibited(bool inhibited)
+  {
+    var app = DejaDupApp.get_instance();
+
+    if (inhibited && inhibit_id == 0)
+      inhibit_id = this.inhibit(app);
+    else if (!inhibited && inhibit_id > 0) {
+      app.uninhibit(inhibit_id);
+      inhibit_id = 0;
     }
   }
 }
