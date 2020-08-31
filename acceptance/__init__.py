@@ -19,7 +19,7 @@ config.logDebugToFile = False
 config.searchShowingOnly = True
 
 from dogtail import tree
-from dogtail.procedural import run
+from dogtail.utils import run
 from gi.repository import Gio, GLib
 
 
@@ -98,12 +98,12 @@ class BaseTest(unittest.TestCase):
         except ProcessLookupError:
             pass
 
-    def start_pid(self, cmd, *args):
+    def start_pid(self, cmd, *args, **kwargs):
         commandline = cmd.split(" ") + list(args or [])
         pid = run(
-            commandline[0],
-            arguments=" ".join(commandline[1:]),
+            " ".join(commandline),
             appName=os.environ["DD_APPID"],
+            **kwargs
         )
         self.addCleanup(self.kill_pid, pid)
         return pid
@@ -113,14 +113,16 @@ class BaseTest(unittest.TestCase):
         if env:
             execline = "env %s %s" % (env, execline)
         pid = self.start_pid(execline, *args)
-        return tree.root.application(os.environ["DD_APPID"]) if window else pid
+        return self.get_app() if window else pid
 
-    def monitor(self, *args, window=True):
+    def monitor(self, *args):
         # Add a cleanup for any spawned deja-dup processes
         self.addCleanup(self.kill_bus, os.environ["DD_APPID"])
+        return self.start_pid(os.environ["DD_MONITOR_EXEC"], "--no-delay",
+                              dumb=True, timeout=1)
 
-        pid = self.start_pid(os.environ["DD_MONITOR_EXEC"], "--no-delay")
-        return tree.root.application(os.environ["DD_APPID"]) if window else pid
+    def get_app(self):
+        return tree.root.application(os.environ["DD_APPID"])
 
     def reset_gsettings(self, settings):
         schema = settings.get_property("settings-schema")

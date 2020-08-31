@@ -10,6 +10,7 @@ from contextlib import contextmanager
 
 import ddt
 from dogtail.predicate import GenericPredicate
+from dogtail.rawinput import keyCombo
 from gi.repository import GLib
 
 from . import BaseTest
@@ -59,9 +60,16 @@ class BackupTest(BaseTest):
             self.walk_incremental_backup(app)
 
     def test_from_monitor(self):
+        if os.environ["DD_MODE"] == "dev":
+            self.skipTest("dev can't do notifications")
+
         self.set_boolean("periodic", True)
 
-        app = self.monitor()
+        self.monitor()
+        keyCombo("<Super>v")
+        keyCombo("Enter")
+        app = self.get_app()
+
         with self.new_files():
             self.walk_initial_backup(app)
 

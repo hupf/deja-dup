@@ -8,8 +8,6 @@ SPDX-FileCopyrightText: Michael Terry
 To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
 
 1. [Install flatpak](https://flatpak.org/setup/).
-1. `flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo`
-1. `flatpak install gnome-nightly flatpak org.gnome.Sdk//master`
 1. `make devshell-setup`
 1. `make devshell`
 

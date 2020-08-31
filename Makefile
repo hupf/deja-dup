@@ -39,6 +39,8 @@ devshell:
 
 .PHONY: devshell-setup
 devshell-setup:
+	flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+	flatpak install --or-update gnome-nightly flatpak org.gnome.Sdk//master
 	mkdir -p builddir
 	rm -rf builddir/libhandy
 	git clone --depth=1 --branch=libhandy-0-0 https://gitlab.gnome.org/GNOME/libhandy.git builddir/libhandy
@@ -58,7 +60,7 @@ flatpak:
 	                --state-dir=builddir/.flatpak-builder \
 	                builddir/flatpak \
 	                flatpak/org.gnome.DejaDupDevel.yaml
-	flatpak update --user -y org.gnome.DejaDupDevel
+	flatpak install --or-update --user -y org.gnome.DejaDupDevel//master
 
 .PHONY: flatpak-update
 flatpak-update:

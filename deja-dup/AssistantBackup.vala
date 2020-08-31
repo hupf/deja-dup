@@ -24,6 +24,8 @@ public class AssistantBackup : AssistantOperation
     resumed.connect(do_resume);
   }
 
+  Gtk.Widget include_exclude_page;
+
   protected override string get_apply_text() {
     return C_("back up is verb", "_Back Up");
   }
@@ -35,10 +37,10 @@ public class AssistantBackup : AssistantOperation
 
     // If we've never backed up before, let's prompt for settings
     if (last_backup == "") {
-      var page = make_include_exclude_page();
-      append_page(page);
+      include_exclude_page = make_include_exclude_page();
+      append_page(include_exclude_page);
 
-      page = make_location_page();
+      var page = make_location_page();
       append_page(page);
     }
   }
@@ -155,6 +157,12 @@ public class AssistantBackup : AssistantOperation
     }
     else if (page == progress_page) {
       set_page_title(page, _("Backing Up…"));
+    }
+    else if (page == include_exclude_page) {
+      // In the unlikely event the user turned on automatic backups but never
+      // made a backup, we should tell them if we start up and need to be
+      // configured for first time.
+      Notifications.attention_needed(this, _("Backups needs your input to continue"), title);
     }
   }
 
