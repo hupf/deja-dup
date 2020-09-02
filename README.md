@@ -24,5 +24,5 @@ backup apps.
  * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
  * [Download](https://wiki.gnome.org/Apps/DejaDup/Download)
  * [Get involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
- * [Mailing list](https://mail.gnome.org/mailman/listinfo/deja-dup-list)
+ * [Forums](https://discourse.gnome.org/tags/c/applications/7/deja-dup)
 
