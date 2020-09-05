@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-27 23:30+0000\n"
-"PO-Revision-Date: 2020-08-30 13:46+0300\n"
+"POT-Creation-Date: 2020-08-30 17:21+0000\n"
+"PO-Revision-Date: 2020-09-05 12:40+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -430,7 +430,7 @@ msgstr "Valitse"
 msgid "Search"
 msgstr "Etsi"
 
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:333
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
 msgid "_Cancel"
 msgstr "_Peru"
 
@@ -498,17 +498,17 @@ msgstr "Palauta"
 msgid "Con_tinue"
 msgstr "_Jatka"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:384
-#: deja-dup/AssistantOperation.vala:455
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
+#: deja-dup/AssistantOperation.vala:454
 msgid "E_ncryption password"
 msgstr "_Salauksen salasana"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:414
-#: deja-dup/AssistantOperation.vala:464
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
+#: deja-dup/AssistantOperation.vala:463
 msgid "_Show password"
 msgstr "_Näytä salasana"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:421
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Muista salasana"
@@ -683,42 +683,42 @@ msgstr "sftp:// tai ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// tai davs://"
 
-#: deja-dup/Assistant.vala:277
+#: deja-dup/Assistant.vala:284
 msgid "Co_ntinue"
 msgstr "_Jatka"
 
-#: deja-dup/Assistant.vala:283
+#: deja-dup/Assistant.vala:290
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Testaa"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "_Jatka myöhemmin"
 
-#: deja-dup/Assistant.vala:325
+#: deja-dup/Assistant.vala:332
 msgid "_Back"
 msgstr "_Edellinen"
 
-#: deja-dup/Assistant.vala:327
+#: deja-dup/Assistant.vala:334
 msgid "_Close"
 msgstr "_Sulje"
 
-#: deja-dup/Assistant.vala:344
+#: deja-dup/Assistant.vala:351
 msgid "_Forward"
 msgstr "_Seuraava"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Varmuuskopioi"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Va_rmuuskopioi"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:91
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -726,11 +726,11 @@ msgstr ""
 "Seuraavia kansioita ei voida varmuuskopioida, koska "
 "varmuuskopiointisovelluksella ei ole pääsyä niihin:"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:107
 msgid "Creating the first backup.  This may take a while."
 msgstr "Tehdään ensimmäinen varmuuskopio. Tämä saattaa kestää hetken."
 
-#: deja-dup/AssistantBackup.vala:106
+#: deja-dup/AssistantBackup.vala:108
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -740,26 +740,34 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:132
+#: deja-dup/AssistantBackup.vala:134
 msgid "Backing up:"
 msgstr "Varmuuskopioidaan:"
 
-#: deja-dup/AssistantBackup.vala:141
+#: deja-dup/AssistantBackup.vala:143
 msgid "Backup Failed"
 msgstr "Varmuuskopiointi epäonnistui"
 
-#: deja-dup/AssistantBackup.vala:144
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup Finished"
 msgstr "Varmuuskopio on valmis"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:148
+#: deja-dup/AssistantBackup.vala:150
 msgid "Your files were successfully backed up and tested."
 msgstr "Tiedostosi varmuuskopioitiin ja testattiin onnistuneesti."
 
-#: deja-dup/AssistantBackup.vala:155
+#: deja-dup/AssistantBackup.vala:157
 msgid "Backing Up…"
 msgstr "Varmuuskopioidaan…"
+
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:184
+msgid "Backup in progress"
+msgstr "Varmuuskopiointi on meneillään"
 
 #: deja-dup/AssistantLocation.vala:15
 msgid "Restore From Where?"
@@ -773,31 +781,31 @@ msgstr "_Varmuuskopion sijainti"
 msgid "_Search"
 msgstr "_Etsi"
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning:"
 msgstr "Kartoitetaan:"
 
-#: deja-dup/AssistantOperation.vala:161
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning…"
 msgstr "Kartoitetaan…"
 
-#: deja-dup/AssistantOperation.vala:269
+#: deja-dup/AssistantOperation.vala:268
 msgid "_Details"
 msgstr "_Yksityiskohdat"
 
-#: deja-dup/AssistantOperation.vala:315
+#: deja-dup/AssistantOperation.vala:314
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Seuraavat paketit tulee asentaa, jotta toimintaa voidaan jatkaa:"
 
-#: deja-dup/AssistantOperation.vala:351
+#: deja-dup/AssistantOperation.vala:350
 msgid "_Allow restoring without a password"
 msgstr "Salli _palautus ilman salasanaa"
 
-#: deja-dup/AssistantOperation.vala:357
+#: deja-dup/AssistantOperation.vala:356
 msgid "_Password-protect your backup"
 msgstr "_Suojaa varmuuskopio salasanalla"
 
-#: deja-dup/AssistantOperation.vala:369
+#: deja-dup/AssistantOperation.vala:368
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -805,11 +813,11 @@ msgstr ""
 "Tarvitset salasanan palautusta varten. Varmista siis, että salasana on "
 "varmassa tallessa tai pysyy muistissasi."
 
-#: deja-dup/AssistantOperation.vala:401
+#: deja-dup/AssistantOperation.vala:400
 msgid "Confir_m password"
 msgstr "Va_hvista salasana"
 
-#: deja-dup/AssistantOperation.vala:440
+#: deja-dup/AssistantOperation.vala:439
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -818,52 +826,52 @@ msgstr ""
 "Anna salaamiseen käyttämäsi salasana uudelleen, jotta varmuuskopioiden "
 "palauttamista on mahdollista testata."
 
-#: deja-dup/AssistantOperation.vala:469
+#: deja-dup/AssistantOperation.vala:468
 msgid "Test every two _months"
 msgstr "Testaa _kahden kuukauden välein"
 
-#: deja-dup/AssistantOperation.vala:501
+#: deja-dup/AssistantOperation.vala:500
 msgid "_Grant Access"
 msgstr "_Salli pääsy"
 
-#: deja-dup/AssistantOperation.vala:563
+#: deja-dup/AssistantOperation.vala:562
 msgid "Install Packages"
 msgstr "Asenna paketit"
 
-#: deja-dup/AssistantOperation.vala:578
+#: deja-dup/AssistantOperation.vala:577
 msgid "Summary"
 msgstr "Yhteenveto"
 
-#: deja-dup/AssistantOperation.vala:600
+#: deja-dup/AssistantOperation.vala:599
 msgid "Restore Test"
 msgstr "Palautustesti"
 
-#: deja-dup/AssistantOperation.vala:608
+#: deja-dup/AssistantOperation.vala:607
 msgid "Grant Access"
 msgstr "Salli pääsy"
 
-#: deja-dup/AssistantOperation.vala:816
+#: deja-dup/AssistantOperation.vala:815
 msgid "Require Password?"
 msgstr "Vaaditaanko salasana?"
 
-#: deja-dup/AssistantOperation.vala:818
+#: deja-dup/AssistantOperation.vala:817
 msgid "Encryption Password Needed"
 msgstr "Salauksen salasana vaaditaan"
 
-#: deja-dup/AssistantOperation.vala:867
+#: deja-dup/AssistantOperation.vala:866
 msgid "Backups needs your encryption password to continue"
 msgstr "Varmuuskopion salauksen salasana vaaditaan"
 
-#: deja-dup/AssistantOperation.vala:904
+#: deja-dup/AssistantOperation.vala:903
 msgid "Backups needs your input to continue"
 msgstr "Varmuuskopiot vaatii syötettäsi jatkaakseen"
 
-#: deja-dup/AssistantOperation.vala:942
+#: deja-dup/AssistantOperation.vala:941
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Asenna"
 
-#: deja-dup/AssistantOperation.vala:947
+#: deja-dup/AssistantOperation.vala:946
 msgid "Backups needs to install packages to continue"
 msgstr "Varmuuskopiot vaatii paketteja asennettavaksi jatkaakseen"
 
@@ -955,6 +963,10 @@ msgstr[1] "Tiedostot palautettiin onnistuneesti."
 #: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Palautetaan…"
+
+#: deja-dup/AssistantRestore.vala:601
+msgid "Restore in progress"
+msgstr "Palauttaminen on meneillään"
 
 #: deja-dup/Background.vala:51
 msgid "Cannot back up automatically"
