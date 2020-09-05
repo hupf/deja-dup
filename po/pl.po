@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-27 23:30+0000\n"
-"PO-Revision-Date: 2020-08-29 11:58+0200\n"
+"POT-Creation-Date: 2020-08-30 17:21+0000\n"
+"PO-Revision-Date: 2020-09-05 12:52+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -431,7 +431,7 @@ msgstr "Wybierz"
 msgid "Search"
 msgstr "Wyszukiwanie"
 
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:333
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
 msgid "_Cancel"
 msgstr "_Anuluj"
 
@@ -499,17 +499,17 @@ msgstr "Przywracanie"
 msgid "Con_tinue"
 msgstr "_Kontynuuj"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:384
-#: deja-dup/AssistantOperation.vala:455
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
+#: deja-dup/AssistantOperation.vala:454
 msgid "E_ncryption password"
 msgstr "Hasło _szyfrowania"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:414
-#: deja-dup/AssistantOperation.vala:464
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
+#: deja-dup/AssistantOperation.vala:463
 msgid "_Show password"
 msgstr "_Wyświetlanie hasła"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:421
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Zapamiętanie hasła"
@@ -685,42 +685,42 @@ msgstr "sftp:// lub ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// lub davs://"
 
-#: deja-dup/Assistant.vala:277
+#: deja-dup/Assistant.vala:284
 msgid "Co_ntinue"
 msgstr "Ko_ntynuuj"
 
-#: deja-dup/Assistant.vala:283
+#: deja-dup/Assistant.vala:290
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Testuj"
 
-#: deja-dup/Assistant.vala:319
+#: deja-dup/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "_Wznów później"
 
-#: deja-dup/Assistant.vala:325
+#: deja-dup/Assistant.vala:332
 msgid "_Back"
 msgstr "_Wstecz"
 
-#: deja-dup/Assistant.vala:327
+#: deja-dup/Assistant.vala:334
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: deja-dup/Assistant.vala:344
+#: deja-dup/Assistant.vala:351
 msgid "_Forward"
 msgstr "_Dalej"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Wykonywanie kopii zapasowej"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Wykonaj kopię zapasową"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:91
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -728,11 +728,11 @@ msgstr ""
 "Nie można wykonać kopii zapasowej następujących katalogów, ponieważ "
 "narzędzie do tworzenia kopii zapasowych nie ma do nich dostępu:"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:107
 msgid "Creating the first backup.  This may take a while."
 msgstr "Wykonywanie pierwszej kopii zapasowej. To może chwilę zająć."
 
-#: deja-dup/AssistantBackup.vala:106
+#: deja-dup/AssistantBackup.vala:108
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -742,26 +742,34 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:132
+#: deja-dup/AssistantBackup.vala:134
 msgid "Backing up:"
 msgstr "Wykonywanie kopii zapasowej:"
 
-#: deja-dup/AssistantBackup.vala:141
+#: deja-dup/AssistantBackup.vala:143
 msgid "Backup Failed"
 msgstr "Wykonanie kopii zapasowej się nie powiodło"
 
-#: deja-dup/AssistantBackup.vala:144
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup Finished"
 msgstr "Wykonano kopię zapasową"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:148
+#: deja-dup/AssistantBackup.vala:150
 msgid "Your files were successfully backed up and tested."
 msgstr "Przywrócono i przetestowano pliki."
 
-#: deja-dup/AssistantBackup.vala:155
+#: deja-dup/AssistantBackup.vala:157
 msgid "Backing Up…"
 msgstr "Wykonywanie kopii zapasowej…"
+
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:184
+msgid "Backup in progress"
+msgstr "Trwa wykonywanie kopii zapasowej"
 
 #: deja-dup/AssistantLocation.vala:15
 msgid "Restore From Where?"
@@ -775,41 +783,41 @@ msgstr "Położenie _kopii zapasowej"
 msgid "_Search"
 msgstr "Wy_szukiwanie"
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning:"
 msgstr "Wyszukiwanie:"
 
-#: deja-dup/AssistantOperation.vala:161
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning…"
 msgstr "Wyszukiwanie…"
 
-#: deja-dup/AssistantOperation.vala:269
+#: deja-dup/AssistantOperation.vala:268
 msgid "_Details"
 msgstr "_Szczegóły"
 
-#: deja-dup/AssistantOperation.vala:315
+#: deja-dup/AssistantOperation.vala:314
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Aby kontynuować, należy zainstalować następujące pakiety:"
 
-#: deja-dup/AssistantOperation.vala:351
+#: deja-dup/AssistantOperation.vala:350
 msgid "_Allow restoring without a password"
 msgstr "Zezwolenie na przywracanie bez h_asła"
 
-#: deja-dup/AssistantOperation.vala:357
+#: deja-dup/AssistantOperation.vala:356
 msgid "_Password-protect your backup"
 msgstr "Kopia zapasowa chroniona _hasłem"
 
-#: deja-dup/AssistantOperation.vala:369
+#: deja-dup/AssistantOperation.vala:368
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "Hasło będzie wymagane, aby przywrócić pliki. Lepiej jest je zapisać."
 
-#: deja-dup/AssistantOperation.vala:401
+#: deja-dup/AssistantOperation.vala:400
 msgid "Confir_m password"
 msgstr "P_otwierdzenie hasła"
 
-#: deja-dup/AssistantOperation.vala:440
+#: deja-dup/AssistantOperation.vala:439
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -818,52 +826,52 @@ msgstr ""
 "Aby upewnić się, że będzie można pobrać pliki w razie potrzeby, proszę "
 "wprowadzić hasło szyfrowania ponownie, aby wykonać krótki test przywracania."
 
-#: deja-dup/AssistantOperation.vala:469
+#: deja-dup/AssistantOperation.vala:468
 msgid "Test every two _months"
 msgstr "Testowanie co dwa _miesiące"
 
-#: deja-dup/AssistantOperation.vala:501
+#: deja-dup/AssistantOperation.vala:500
 msgid "_Grant Access"
 msgstr "_Udziel dostępu"
 
-#: deja-dup/AssistantOperation.vala:563
+#: deja-dup/AssistantOperation.vala:562
 msgid "Install Packages"
 msgstr "Instalacja pakietów"
 
-#: deja-dup/AssistantOperation.vala:578
+#: deja-dup/AssistantOperation.vala:577
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: deja-dup/AssistantOperation.vala:600
+#: deja-dup/AssistantOperation.vala:599
 msgid "Restore Test"
 msgstr "Test przywracania"
 
-#: deja-dup/AssistantOperation.vala:608
+#: deja-dup/AssistantOperation.vala:607
 msgid "Grant Access"
 msgstr "Udzielenie dostępu"
 
-#: deja-dup/AssistantOperation.vala:816
+#: deja-dup/AssistantOperation.vala:815
 msgid "Require Password?"
 msgstr "Wymagać hasła?"
 
-#: deja-dup/AssistantOperation.vala:818
+#: deja-dup/AssistantOperation.vala:817
 msgid "Encryption Password Needed"
 msgstr "Wymagane jest hasło szyfrowania"
 
-#: deja-dup/AssistantOperation.vala:867
+#: deja-dup/AssistantOperation.vala:866
 msgid "Backups needs your encryption password to continue"
 msgstr "Do kontynuacji wymagane jest hasło szyfrowania"
 
-#: deja-dup/AssistantOperation.vala:904
+#: deja-dup/AssistantOperation.vala:903
 msgid "Backups needs your input to continue"
 msgstr "Do kontynuacji wymagane jest działanie użytkownika"
 
-#: deja-dup/AssistantOperation.vala:942
+#: deja-dup/AssistantOperation.vala:941
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Zainstaluj"
 
-#: deja-dup/AssistantOperation.vala:947
+#: deja-dup/AssistantOperation.vala:946
 msgid "Backups needs to install packages to continue"
 msgstr "Do kontynuacji wymagana jest instalacja pakietów"
 
@@ -958,6 +966,10 @@ msgstr[2] "Pliki zostały przywrócone."
 #: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Przywracanie…"
+
+#: deja-dup/AssistantRestore.vala:601
+msgid "Restore in progress"
+msgstr "Trwa przywracanie z kopii zapasowej"
 
 #: deja-dup/Background.vala:51
 msgid "Cannot back up automatically"
