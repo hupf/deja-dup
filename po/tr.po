@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-20 02:17+0000\n"
-"PO-Revision-Date: 2020-08-22 08:36+0000\n"
+"POT-Creation-Date: 2020-08-30 17:21+0000\n"
+"PO-Revision-Date: 2020-09-06 00:37+0000\n"
 "Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -39,7 +39,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:341
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:360
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Yedekleri"
 
@@ -149,14 +149,14 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:23
 msgid "The last time Déjà Dup was run"
-msgstr "Déjà Dup'un son çalıştırılma zamanı"
+msgstr "Déjà Dup’un son çalıştırılma zamanı"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:24
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
 msgstr ""
-"Déjà Dup'un başarılı olarak çalıştığı son zaman. Bu zaman ISO 8601 biçiminde "
+"Déjà Dup’un başarılı olarak çalıştığı son zaman. Bu zaman ISO 8601 biçiminde "
 "gösterilir."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:28
@@ -203,7 +203,7 @@ msgstr "Yedekler arasındaki gün sayısı."
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr ""
-"Déjà Dup'ın yedekleme için istemde bulunması gerekip gerekmediğini "
+"Déjà Dup’un yedekleme için istemde bulunması gerekip gerekmediğini "
 "denetlediği son tarih"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:49
@@ -216,13 +216,13 @@ msgstr ""
 "Kullanıcı oturum açtığında, Déjà Dup gözlemcisi yedekleyip "
 "yedeklenmeyeceğini sorar. Bu, yedeklemeyi bilmeyen kullanıcılar için "
 "keşfedilebilirliği artırmakta kullanılır. Bu zaman, ya bu denetlemeyi "
-"kapatmak 'disabled' (devre dışı) olmalı, ya da ISO 8601 biçiminde olmalıdır."
+"kapatmak ‘disabled’ (devre dışı) olmalı, ya da ISO 8601 biçiminde olmalıdır."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:53
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
-"Déjà Dup'ın şifreniz için istemde bulunması gerekip gerekmediğini "
+"Déjà Dup’un şifreniz için istemde bulunması gerekip gerekmediğini "
 "denetlediği son tarih"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:54
@@ -232,7 +232,7 @@ msgid ""
 "‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr ""
 "Déjà Dup şifrenizi unutmanızı önlemek için, ara sıra şifrenizi onaylamanızı "
-"size bildirecektir. Bu zaman, ya bu denetlemeyi kapatmak 'disabled' (devre "
+"size bildirecektir. Bu zaman, ya bu denetlemeyi kapatmak ‘disabled’ (devre "
 "dışı) olmalı, ya da ISO 8601 biçiminde olmalıdır."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:58
@@ -258,7 +258,7 @@ msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
 msgstr ""
-"Déjà Dup'ın ara sıra yeni tam yedekleme yapması gerekir. Bu, tam "
+"Déjà Dup’un ara sıra yeni tam yedekleme yapması gerekir. Bu, tam "
 "yedeklemeler arasında beklenecek olan gün sayısıdır."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:68
@@ -282,7 +282,7 @@ msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
 msgstr ""
-"Yedek konumunun türü. Eğer 'auto' ise, uygun olana göre bir öntanımlı "
+"Yedek konumunun türü. Eğer ‘auto’ ise, uygun olana göre bir öntanımlı "
 "seçilecektir."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:100
@@ -341,7 +341,7 @@ msgstr "Sunucu adresi"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:132
 msgid "The URI of the remote server location."
-msgstr "Uzak sunucu konumunun URI'si."
+msgstr "Uzak sunucu konumunun URI’si."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid ""
@@ -359,7 +359,7 @@ msgstr ""
 "Yedeklerin depolanacağı dizin yolu. Yollar mutlak veya ana bilgisayara göre "
 "göreceli olabilir."
 
-#: data/ui/debug.ui:11 deja-dup/main.vala:250
+#: data/ui/debug.ui:11 deja-dup/main.vala:251
 msgid "Debug Information"
 msgstr "Hata Ayıklama Bilgisi"
 
@@ -423,7 +423,7 @@ msgstr "Seç"
 msgid "Search"
 msgstr "Ara"
 
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:338
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
 msgid "_Cancel"
 msgstr "_Vazgeç"
 
@@ -455,11 +455,11 @@ msgstr "Şimdi _Yedekle"
 msgid "Overview"
 msgstr "Genel Görünüm"
 
-#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:70
+#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:68
 msgid "_Restore"
 msgstr "_Geri Yükle"
 
-#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:139
+#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:108
 msgid "_Date"
 msgstr "_Tarih"
 
@@ -483,7 +483,7 @@ msgstr "Şifreleme parolası gerekli"
 msgid "_Enter Password"
 msgstr "Parolayı _Gir"
 
-#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:66
+#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:64
 msgid "Restore"
 msgstr "Geri Yükle"
 
@@ -491,17 +491,17 @@ msgstr "Geri Yükle"
 msgid "Con_tinue"
 msgstr "_Sürdür"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:389
-#: deja-dup/AssistantOperation.vala:460
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
+#: deja-dup/AssistantOperation.vala:454
 msgid "E_ncryption password"
 msgstr "_Şifreleme parolası"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:419
-#: deja-dup/AssistantOperation.vala:469
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
+#: deja-dup/AssistantOperation.vala:463
 msgid "_Show password"
 msgstr "_Parolayı göster"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:426
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Parolayı anımsa"
@@ -674,52 +674,52 @@ msgstr "sftp:// veya ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// veya davs://"
 
-#: deja-dup/Assistant.vala:282
+#: deja-dup/Assistant.vala:284
 msgid "Co_ntinue"
 msgstr "D_evam et"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:290
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Sına"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:326
 msgid "_Resume Later"
-msgstr "_Daha Sonra Devam Et"
+msgstr "_Daha Sonra Sürdür"
 
-#: deja-dup/Assistant.vala:330
+#: deja-dup/Assistant.vala:332
 msgid "_Back"
 msgstr "_Geri"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:334
 msgid "_Close"
 msgstr "_Kapat"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:351
 msgid "_Forward"
 msgstr "_İleri"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Yedekle"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Yedekle"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:91
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
 msgstr "Yedekler’in erişimi olmadığından şu klasörler yedeklenemeyecek:"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:107
 msgid "Creating the first backup.  This may take a while."
 msgstr "İlk yedek oluşturuluyor. Bu biraz zaman alabilir."
 
-#: deja-dup/AssistantBackup.vala:106
+#: deja-dup/AssistantBackup.vala:108
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -729,52 +729,72 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:137
+#: deja-dup/AssistantBackup.vala:134
 msgid "Backing up:"
 msgstr "Yedekleniyor:"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:143
 msgid "Backup Failed"
 msgstr "Yedekleme Başarısız"
 
-#: deja-dup/AssistantBackup.vala:149
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup Finished"
-msgstr "Yedekleme Tamamlandı"
+msgstr "Yedekleme Bitti"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:153
+#: deja-dup/AssistantBackup.vala:150
 msgid "Your files were successfully backed up and tested."
 msgstr "Dosyalarınız başarıyla yedeklendi ve sınandı."
 
-#: deja-dup/AssistantBackup.vala:160
+#: deja-dup/AssistantBackup.vala:157
 msgid "Backing Up…"
 msgstr "Yedekleniyor…"
 
-#: deja-dup/AssistantOperation.vala:165
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:184
+msgid "Backup in progress"
+msgstr "Yedekleme sürüyor"
+
+#: deja-dup/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "Nereden Geri Yükleme Yapılacak?"
+
+#: deja-dup/AssistantLocation.vala:26
+msgid "_Backup location"
+msgstr "_Yedekleme konumu"
+
+#: deja-dup/AssistantLocation.vala:33
+msgid "_Search"
+msgstr "_Ara"
+
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning:"
 msgstr "Taranıyor:"
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning…"
 msgstr "Taranıyor…"
 
-#: deja-dup/AssistantOperation.vala:274
+#: deja-dup/AssistantOperation.vala:268
 msgid "_Details"
 msgstr "_Ayrıntılar"
 
-#: deja-dup/AssistantOperation.vala:320
+#: deja-dup/AssistantOperation.vala:314
 msgid "In order to continue, the following packages need to be installed:"
-msgstr "Devam etmek için aşağıdaki paketlerin kurulması gerekiyor:"
+msgstr "Sürdürmek için şu paketlerin kurulması gerekiyor:"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:350
 msgid "_Allow restoring without a password"
 msgstr "_Parolasız geri yüklemeye izin ver"
 
-#: deja-dup/AssistantOperation.vala:362
+#: deja-dup/AssistantOperation.vala:356
 msgid "_Password-protect your backup"
 msgstr "_Yedeğinizi parolayla koruyun"
 
-#: deja-dup/AssistantOperation.vala:374
+#: deja-dup/AssistantOperation.vala:368
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -782,11 +802,11 @@ msgstr ""
 "Dosyalarınızı geri yüklemek için parola gereklidir. Bunu bir yere yazmak "
 "isteyebilirsiniz."
 
-#: deja-dup/AssistantOperation.vala:406
+#: deja-dup/AssistantOperation.vala:400
 msgid "Confir_m password"
 msgstr "Parolayı _doğrula"
 
-#: deja-dup/AssistantOperation.vala:445
+#: deja-dup/AssistantOperation.vala:439
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -796,152 +816,160 @@ msgstr ""
 "lütfen şifreleme parolanızı yeniden girin ve kısa bir geri yükleme sınaması "
 "yapın."
 
-#: deja-dup/AssistantOperation.vala:474
+#: deja-dup/AssistantOperation.vala:468
 msgid "Test every two _months"
 msgstr "Her iki _ayda bir sına"
 
-#: deja-dup/AssistantOperation.vala:506
+#: deja-dup/AssistantOperation.vala:500
 msgid "_Grant Access"
 msgstr "_Erişime İzin Ver"
 
-#: deja-dup/AssistantOperation.vala:568
+#: deja-dup/AssistantOperation.vala:562
 msgid "Install Packages"
 msgstr "Paketleri Kur"
 
-#: deja-dup/AssistantOperation.vala:583
+#: deja-dup/AssistantOperation.vala:577
 msgid "Summary"
 msgstr "Özet"
 
-#: deja-dup/AssistantOperation.vala:605
+#: deja-dup/AssistantOperation.vala:599
 msgid "Restore Test"
 msgstr "Geri Yükleme Sınaması"
 
-#: deja-dup/AssistantOperation.vala:613
+#: deja-dup/AssistantOperation.vala:607
 msgid "Grant Access"
 msgstr "Erişime İzin Ver"
 
-#: deja-dup/AssistantOperation.vala:866
+#: deja-dup/AssistantOperation.vala:815
 msgid "Require Password?"
 msgstr "Parola istesin mi?"
 
-#: deja-dup/AssistantOperation.vala:868
+#: deja-dup/AssistantOperation.vala:817
 msgid "Encryption Password Needed"
 msgstr "Şifreleme Parolası Gerekli"
 
-#: deja-dup/AssistantOperation.vala:992
+#: deja-dup/AssistantOperation.vala:866
+msgid "Backups needs your encryption password to continue"
+msgstr "Yedekler, sürmek için şifreleme parolanıza gereksiniyor"
+
+#: deja-dup/AssistantOperation.vala:903
+msgid "Backups needs your input to continue"
+msgstr "Yedekler, sürmek için girdinize gereksiniyor"
+
+#: deja-dup/AssistantOperation.vala:941
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Kur"
 
-#: deja-dup/AssistantRestore.vala:97
-msgid "_Backup location"
-msgstr "_Yedekleme konumu"
+#: deja-dup/AssistantOperation.vala:946
+msgid "Backups needs to install packages to continue"
+msgstr "Yedekler, sürmek için paket kurulumuna gereksiniyor"
 
-#: deja-dup/AssistantRestore.vala:118
-msgid "Restore From Where?"
-msgstr "Nereden Geri Yükleme Yapılacak?"
-
-#: deja-dup/AssistantRestore.vala:185
+#: deja-dup/AssistantRestore.vala:154
 msgid "Restore files to _original locations"
 msgstr "Dosyaları _özgün konumlarına geri yükle"
 
-#: deja-dup/AssistantRestore.vala:195
+#: deja-dup/AssistantRestore.vala:164
 msgid "Restore to _specific folder"
 msgstr "_Belirli bir klasörden geri yükle"
 
-#: deja-dup/AssistantRestore.vala:207
+#: deja-dup/AssistantRestore.vala:176
 msgid "Choose destination for restored files"
 msgstr "Geri yüklenen dosyalar için konum seçin"
 
-#: deja-dup/AssistantRestore.vala:215
+#: deja-dup/AssistantRestore.vala:184
 msgid "Restore _folder"
 msgstr "Geri yükleme _klasörü"
 
-#: deja-dup/AssistantRestore.vala:228
+#: deja-dup/AssistantRestore.vala:197
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Yedekler’in şu dosyaları geri yükleme izni yok:"
 
-#: deja-dup/AssistantRestore.vala:292
+#: deja-dup/AssistantRestore.vala:260
 msgid "Backup location"
 msgstr "Yedekleme konumu"
 
-#: deja-dup/AssistantRestore.vala:307
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore date"
 msgstr "Geri yükleme tarihi"
 
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:283
 msgid "Restore folder"
 msgstr "Klasörü geri yükle"
 
-#: deja-dup/AssistantRestore.vala:345
+#: deja-dup/AssistantRestore.vala:313
 msgid "Checking for Backups…"
 msgstr "Yedekler Denetleniyor…"
 
-#: deja-dup/AssistantRestore.vala:353
+#: deja-dup/AssistantRestore.vala:321
 msgid "Restore From When?"
 msgstr "Hangi Zamandan Geri Yükleme Yapılacak?"
 
-#: deja-dup/AssistantRestore.vala:364
+#: deja-dup/AssistantRestore.vala:332
 msgid "Restore to Where?"
 msgstr "Nereye Geri Yüklensin?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:399
+#: deja-dup/AssistantRestore.vala:367
 msgid "Restoring:"
 msgstr "Geri yükleniyor:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:409
+#: deja-dup/AssistantRestore.vala:377
 msgid "No backups to restore"
 msgstr "Geri yüklenebilecek yedek yok"
 
-#: deja-dup/AssistantRestore.vala:518
+#: deja-dup/AssistantRestore.vala:484
 msgid "Original location"
 msgstr "Özgün konum"
 
-#: deja-dup/AssistantRestore.vala:529
+#: deja-dup/AssistantRestore.vala:495
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Geri yüklenecek dosya(lar)"
 
-#: deja-dup/AssistantRestore.vala:550
+#: deja-dup/AssistantRestore.vala:516
 msgid "Restore Failed"
 msgstr "Geri Yükleme Başarısız"
 
-#: deja-dup/AssistantRestore.vala:552
+#: deja-dup/AssistantRestore.vala:518
 msgid "Restore Finished"
-msgstr "Geri Yükleme Tamamlandı"
+msgstr "Geri Yükleme Bitti"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:555
+#: deja-dup/AssistantRestore.vala:521
 msgid "Your files were successfully restored."
 msgstr "Dosyalarınız başarıyla geri yüklendi."
 
-#: deja-dup/AssistantRestore.vala:558
+#: deja-dup/AssistantRestore.vala:524
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Dosya(ları)nız başarıyla geri yüklendi."
 
-#: deja-dup/AssistantRestore.vala:565 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
 msgid "Restoring…"
 msgstr "Geri Yükleniyor…"
 
-#: deja-dup/Background.vala:48
+#: deja-dup/AssistantRestore.vala:601
+msgid "Restore in progress"
+msgstr "Geri yükleme sürüyor"
+
+#: deja-dup/Background.vala:51
 msgid "Cannot back up automatically"
 msgstr "Kendiliğinden yedeklenemez"
 
-#: deja-dup/Browser.vala:201
+#: deja-dup/Browser.vala:206
 msgid "Click on items to select them"
 msgstr "Seçmek için ögelere tıklayın"
 
-#: deja-dup/Browser.vala:203
+#: deja-dup/Browser.vala:208
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u seçildi"
 
-#: deja-dup/Browser.vala:380
+#: deja-dup/Browser.vala:385
 msgid "Authentication needed"
 msgstr "Kimlik doğrulama gerekli"
 
@@ -1088,7 +1116,11 @@ msgstr "Parolayı _göster"
 
 #: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
-msgstr "Konum geçerli değil"
+msgstr "Konum uygun değil"
+
+#: deja-dup/MountOperationAssistant.vala:80
+msgid "Backups needs your password to continue"
+msgstr "Yedekler, sürmek için parolanıza gereksiniyor"
 
 #: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
@@ -1103,11 +1135,39 @@ msgstr "_Kullanıcı olarak bağlan"
 msgid "_Domain"
 msgstr "_Alan Adı"
 
-#: deja-dup/Prompt.vala:18
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "Zamanlanmış yedekleme başlatılıyor"
+
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "Zamanlanmış yedekleme ertelendi"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "Yedekleme tamamlandı"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "Yedekleme bitti"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "Ama tüm dosyalar başarıyla yedeklenmedi."
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "Yedekleme başarısız"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "Geri yükleme başarısız"
+
+#: deja-dup/Notifications.vala:71
 msgid "Keep your files safe by backing up regularly"
 msgstr "Dosyalarınızı düzenli olarak yedekleyerek güvende tutun"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
@@ -1116,30 +1176,13 @@ msgstr ""
 "Önemli belgeler, bilgiler ve ayarlar yedeklenerek depolanabilir. Bir çökme "
 "durumunda yedeklemelerle verilerinizi kurtarabilirsiniz."
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "_Yeniden Görüntüleme"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "Yeniden Gösterme"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "Yedekleme Ayarlarını _Aç"
-
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "Yedekleme tamamlandı"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "Yedekleme tamamlandı"
-
-#: deja-dup/StatusIcon.vala:51
-msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr "Tüm dosyalar yedeklenemedi. Ayrıntılar için iletişim kutusuna bakın."
-
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "Zamanlanmış yedekleme başlatılıyor"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "Yedekleri Aç"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1150,32 +1193,32 @@ msgstr "Zamanlanmış yedekleme başlatılıyor"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:22
+#: deja-dup/WidgetUtils.vala:31
 #, c-format
 msgid "Could not display %s"
 msgstr "Gösterilemiyor: %s"
 
-#: deja-dup/main.vala:20 monitor/monitor.vala:24
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Sürümü göster"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Belirtilen dosyaları geri yükle"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Hemen yedekleme başlat"
 
-#: deja-dup/main.vala:81 deja-dup/main.vala:96
+#: deja-dup/main.vala:80 deja-dup/main.vala:98
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: deja-dup/main.vala:213
-msgid "Scheduled backup delayed"
-msgstr "Zamanlanmış yedekleme ertelendi"
+#: deja-dup/main.vala:85
+msgid "Please list files to restore"
+msgstr "Lütfen geri yüklenecek dosyaları listeleyin"
 
-#: deja-dup/main.vala:247
+#: deja-dup/main.vala:248
 msgid "translator-credits"
 msgstr ""
 "Emin Tufan Çetin <etcetin@gmail.com>\n"
@@ -1209,7 +1252,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s üzerinde %1$s"
@@ -1217,7 +1260,7 @@ msgstr "%2$s üzerinde %1$s"
 #: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
-msgstr "%s bağlıyken yedekleme işlemi başlayacaktır."
+msgstr "%s bağlandığında yedekleme başlayacaktır."
 
 #: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
@@ -1226,7 +1269,7 @@ msgstr "Depolama konumu kullanılabilir değil"
 #: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "'%s'in bağlanılabilirliği bekleniyor..."
+msgstr "‘%s’ bağlanması bekleniyor…"
 
 #: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
 #: monitor/monitor.vala:72
@@ -1237,7 +1280,7 @@ msgstr "Ağ bağlantısı kullanılabildiğinde yedekleme başlayacak."
 #: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
-msgstr "Google Drive üstündeki %s dizini"
+msgstr "Google Drive’daki %s dizini"
 
 #: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
@@ -1271,31 +1314,31 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba ağ konumları, hem ana bilgisayar adı hem de paylaşım adı içermelidir."
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:451
 msgid "Access Granted"
 msgstr "Erişim İzni Verildi"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:452
 msgid "Backups will now continue. You can close this page."
 msgstr "Yedekler şimdi sürecek. Bu sayfayı kapatabilirsiniz."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:537
+#: libdeja/CommonUtils.vala:531
 #, c-format
 msgid "Home (%s)"
 msgstr "Ev dizini (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:542
+#: libdeja/CommonUtils.vala:536
 msgid "Home"
 msgstr "Ev Dizini"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:541
 msgid "Trash"
 msgstr "Çöp"
 
-#: libdeja/CommonUtils.vala:609
+#: libdeja/CommonUtils.vala:603
 msgid "Backup encryption password"
 msgstr "Yedek şifreleme parolası"
 
@@ -1320,9 +1363,9 @@ msgid "Listing files…"
 msgstr "Dosyalar listeleniyor…"
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:383
-#: libdeja/tools/duplicity/DuplicityJob.vala:394
-#: libdeja/tools/duplicity/DuplicityJob.vala:430
+#: libdeja/tools/duplicity/DuplicityJob.vala:388
+#: libdeja/tools/duplicity/DuplicityJob.vala:399
+#: libdeja/tools/duplicity/DuplicityJob.vala:435
 msgid "Preparing…"
 msgstr "Hazırlanıyor…"
 
@@ -1342,18 +1385,18 @@ msgstr ""
 "Yedeklemeniz bozulmuş gibi görünüyor. Yedeği silip yeniden denemeniz "
 "gerekiyor."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:79
+#: libdeja/tools/duplicity/DuplicityJob.vala:78
 #: libdeja/tools/duplicity/DuplicityJob.vala:162
 msgid "Paused (no network)"
 msgstr "Duraklatıldı (ağ yok)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:540
+#: libdeja/tools/duplicity/DuplicityJob.vala:545
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "Yedekleme konumu çok küçük. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:565
+#: libdeja/tools/duplicity/DuplicityJob.vala:570
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1361,15 +1404,15 @@ msgid ""
 msgstr ""
 "Yedekleme konumunda yeterli boş alan yok. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:586
-#: libdeja/tools/duplicity/DuplicityJob.vala:600
+#: libdeja/tools/duplicity/DuplicityJob.vala:591
+#: libdeja/tools/duplicity/DuplicityJob.vala:605
 msgid "Cleaning up…"
 msgstr "Temizleniyor…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:680
+#: libdeja/tools/duplicity/DuplicityJob.vala:685
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1379,7 +1422,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:696
+#: libdeja/tools/duplicity/DuplicityJob.vala:701
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1393,25 +1436,25 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: libdeja/tools/duplicity/DuplicityJob.vala:716
-#: libdeja/tools/duplicity/DuplicityJob.vala:1100
+#: libdeja/tools/duplicity/DuplicityJob.vala:721
+#: libdeja/tools/duplicity/DuplicityJob.vala:1105
 msgid "Failed with an unknown error."
 msgstr "Bilinmeyen nedenden dolayı başarısız."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:919
+#: libdeja/tools/duplicity/DuplicityJob.vala:924
 msgid "Bad encryption password."
 msgstr "Kötü şifreleme parolası."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:964
+#: libdeja/tools/duplicity/DuplicityJob.vala:969
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
-msgstr "'%s' geri yüklenemedi: Dosya yedek içerisinde bulunamadı"
+msgstr "‘%s’ geri yüklenemedi: Dosya, yedek içerisinde bulunamadı"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:975
+#: libdeja/tools/duplicity/DuplicityJob.vala:980
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1421,57 +1464,57 @@ msgstr ""
 "Var olan yedek %s adında bilgisayarın, ama şu anki bilgisayarın adı %s. Eğer "
 "bu beklenmedikse başka konuma yedeklemelisiniz."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:978
+#: libdeja/tools/duplicity/DuplicityJob.vala:983
 msgid "Computer name changed"
 msgstr "Bilgisayar adı değişmiş"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1013
+#: libdeja/tools/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ oluşturmaya çalışılırken izin verilmedi."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1017
-#: libdeja/tools/duplicity/DuplicityJob.vala:1021
+#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/tools/duplicity/DuplicityJob.vala:1026
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ okunmaya çalışılırken izin verilmedi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1025
+#: libdeja/tools/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ silinmeye çalışılırken izin verilmedi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1032
+#: libdeja/tools/duplicity/DuplicityJob.vala:1037
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ yedekleme konumu yok."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1038
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/tools/duplicity/DuplicityJob.vala:1076
 msgid "No space left."
 msgstr "Boş alan kalmadı."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1060
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Error reading file ‘%s’."
-msgstr "'%s' dosyası okunurken hata."
+msgstr "‘%s’ dosyası okunurken hata."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1062
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Error writing file ‘%s’."
-msgstr "'%s' dosyası yazılırken hata."
+msgstr "‘%s’ dosyası yazılırken hata."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1073
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ içerisinde boş alan kalmadı."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1081
+#: libdeja/tools/duplicity/DuplicityJob.vala:1086
 msgid "No backup files found"
 msgstr "Yedekleme dosyası bulunamadı"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1131
+#: libdeja/tools/duplicity/DuplicityJob.vala:1136
 msgid "Uploading…"
 msgstr "Yükleniyor…"
 
@@ -1497,6 +1540,14 @@ msgstr ""
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
+
+#~ msgid "_Open Backup Settings"
+#~ msgstr "Yedekleme Ayarlarını _Aç"
+
+#~ msgid ""
+#~ "Not all files were successfully backed up.  See dialog for more details."
+#~ msgstr ""
+#~ "Tüm dosyalar yedeklenemedi. Ayrıntılar için iletişim kutusuna bakın."
 
 #~ msgid "Connect to Server"
 #~ msgstr "Sunucuya Bağlan"
