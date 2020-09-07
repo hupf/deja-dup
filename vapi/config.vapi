@@ -17,6 +17,8 @@ namespace Config {
 	public const string APPLICATION_ID;
 	public const string ICON_NAME;
 
+	public const string DUPLICITY_COMMAND;
+
 	public const string DUPLICITY_PACKAGES;
 	public const string GVFS_PACKAGES;
 	public const string PYDRIVE_PACKAGES;

@@ -84,7 +84,7 @@ internal class DuplicityInstance : Object
       argv.append("--num-retries=1");
 
     // Finally, actual duplicity command
-    argv.prepend("duplicity");
+    argv.prepend(DuplicityPlugin.duplicity_command());
 
     // Grab version of command line to show user
     string user_cmd = null;

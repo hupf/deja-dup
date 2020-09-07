@@ -26,10 +26,11 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   void do_initial_setup () throws Error
   {
     string output;
-    Process.spawn_command_line_sync("duplicity --version", out output, null, null);
+    Process.spawn_sync(null, {duplicity_command(), "--version"}, null,
+                       SpawnFlags.SEARCH_PATH, null, out output);
 
     var tokens = output.split(" ");
-    if (tokens == null || tokens.length < 2 )
+    if (tokens == null || tokens.length < 2)
       throw new SpawnError.FAILED(_("Could not understand duplicity version."));
 
     // In version 0.6.25, the output from duplicity --version changed and the
@@ -56,5 +57,14 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
       has_been_setup = true;
     }
     return new DuplicityJob();
+  }
+
+  public static string duplicity_command()
+  {
+    var testing_str = Environment.get_variable("DEJA_DUP_TESTING");
+    if (testing_str != null && int.parse(testing_str) > 0)
+      return "duplicity";
+    else
+      return Config.DUPLICITY_COMMAND;
   }
 }

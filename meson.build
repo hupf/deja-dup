@@ -67,6 +67,7 @@ common_vflags = [
 common_cflags = [
     '-DHANDY_USE_UNSTABLE_API',
     '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
+    '-DDUPLICITY_COMMAND="@0@"'.format(get_option('duplicity_command')),
     '-DDUPLICITY_PACKAGES="@0@"'.format(get_option('duplicity_pkgs')),
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
     '-DPYDRIVE_PACKAGES="@0@"'.format(get_option('pydrive_pkgs')),
