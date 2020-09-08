@@ -3,6 +3,24 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.3
+- Fix support for scheduled backups for encrypted drives
+- On a fresh install, use the browse & restore interface when restoring from
+  a previous backup (rather than requiring a full restore)
+- Show desktop notifications if we need user attention during a backup, rather
+  than trying to mark window as visible and urgent, since that works in more
+  desktop environments
+- Inhibit suspend and logout during manual backups and restores
+- Add debug info screen, visible from the About dialog
+- Don't warn user about folders that are explicitly excluded
+- Exclude /dev by default
+- Update Basque, Brazilian Portuguese, Catalan, Finnish, German, Japanese,
+  Polish, Spanish, Turkish, and Ukrainian translations
+
+##### Packaging
+- Add new -Dduplicity_command argument (defaulting to "duplicity"), useful if
+  you have a duplicity install isn't normally in PATH
+
 # 42.2
 - Mount partitions specified in /etc/fstab if necessary
 - When selecting an internal drive as a Local Folder, treat it as a removable
