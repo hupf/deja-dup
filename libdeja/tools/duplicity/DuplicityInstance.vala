@@ -14,7 +14,6 @@ internal class DuplicityInstance : Object
   public signal void message(string[] control_line, List<string>? data_lines,
                              string user_text);
 
-  public bool verbose {get; private set; default = false;}
   public string forced_cache_dir {get; set; default = null;}
 
   public async void start(List<string> argv_in, List<string>? envp_in)
@@ -40,10 +39,6 @@ internal class DuplicityInstance : Object
 
   async bool start_internal(List<string> argv_in, List<string>? envp_in) throws Error
   {
-    var verbose_str = Environment.get_variable("DEJA_DUP_DEBUG");
-    if (verbose_str != null && int.parse(verbose_str) > 0)
-      verbose = true;
-
     // Copy current environment, add custom variables
     var myenv = Environment.list_variables();
     int myenv_len = 0;
@@ -167,11 +162,9 @@ internal class DuplicityInstance : Object
   uint watch_id;
   Pid child_pid;
   int[] pipes;
-  DataInputStream reader;
-  IOStream logstream;
+  DejaDup.DuplicityLogger logger;
   bool process_done;
   int status;
-  bool processed_a_message;
   construct {
     pipes = new int[2];
     pipes[0] = pipes[1] = -1;
@@ -200,271 +193,21 @@ internal class DuplicityInstance : Object
     Posix.kill((Posix.pid_t)child_pid, Posix.Signal.CONT);
   }
 
-  async void read_log_lines()
-  {
-    // Process data from stream that is returned by read_log
-    //
-    // As reader returns lines that are outputed by duplicity, read_log_lines makes sure
-    // that data is processed at right speed and passes that data along the chain of functions.
-    List<string> stanza = new List<string>();
-    while (reader != null) {
-      try {
-        var line = yield reader.read_line_async(Priority.DEFAULT, null, null);
-        if (line == null) { // EOF
-          if (process_done) {
-            send_done_for_status();
-            break;
-          }
-          else {
-            // We're reading faster than duplicity can provide.  Wait a bit
-            // before trying again.
-            Timeout.add_seconds(1, () => {read_log_lines.begin(); return false;});
-            return; // skip cleanup at bottom of this function
-          }
-        }
-        if (line != "") {
-          if (verbose)
-            print("DUPLICITY: %s\n", line);
-          stanza.append(line);
-        }
-        else if (stanza != null) {
-          if (verbose)
-            print("\n"); // breather
-
-          process_stanza(stanza);
-          stanza = new List<string>();
-        }
-      }
-      catch (Error err) {
-        warning("%s\n", err.message);
-        break;
-      }
-    }
-
-    reader = null;
-    unref();
-  }
-
   async void read_log()
   {
-    // Asynchronous reading of duplicity's log via stream.
-    // Stream initiated either from log file or pipe.
-    InputStream stream;
+    logger = new DejaDup.DuplicityLogger.for_fd(pipes[0]);
+    logger.message.connect((l, c, d, t) => message(c, d, t));
 
-    if (logstream != null)
-      stream = logstream.get_input_stream();
-    else
-      stream = new UnixInputStream(pipes[0], true);
+    var verbose_str = Environment.get_variable("DEJA_DUP_DEBUG");
+    if (verbose_str != null && int.parse(verbose_str) > 0)
+      logger.print_to_console = true;
 
-    reader = new DataInputStream(stream);
-
-    // This loop goes on while rest of class is doing its work.  We ref
+    // This read goes on while rest of class is doing its work.  We ref
     // it to make sure that the rest of the class doesn't drop from under us.
     ref();
-    yield read_log_lines();
-  }
-
-  // If start is < 0, starts at word.length - 1.
-  static int num_suffix(string word, char ch, long start = -1)
-  {
-    int rv = 0;
-
-    if (start < 0)
-      start = (long)word.length - 1;
-
-    for (long i = start; i >= 0; --i, ++rv)
-      if (word[i] != ch)
-        break;
-
-    return rv;
-  }
-
-  static string validated_string(string s)
-  {
-    var rv = new StringBuilder();
-    weak string p = s;
-
-    while (p[0] != 0) {
-      unichar ch = p.get_char_validated();
-      if (ch == (unichar)(-1) || ch == (unichar)(-2)) {
-        rv.append("�"); // the 'replacement character' in unicode
-        p = (string)((char*)p + 1);
-      }
-      else {
-        rv.append_unichar(ch);
-        p = p.next_char();
-      }
-    }
-
-    return rv.str;
-  }
-
-  static string compress_string(string s_in)
-  {
-    var rv = new StringBuilder.sized(s_in.length);
-    weak char[] s = (char[])s_in;
-
-    int i = 0;
-    while (s[i] != 0) {
-      if (s[i] == '\\' && s[i + 1] != 0) {
-        bool bare_escape = false;
-
-        // http://docs.python.org/reference/lexical_analysis.html
-        switch (s[i + 1]) {
-        case 'b': rv.append_c('\b'); i += 2; break; // backspace
-        case 'f': rv.append_c('\f'); i += 2; break; // form feed
-        case 't': rv.append_c('\t'); i += 2; break; // tab
-        case 'n': rv.append_c('\n'); i += 2; break; // line feed
-        case 'r': rv.append_c('\r'); i += 2; break; // carriage return
-        case 'v': rv.append_c('\xb'); i += 2; break; // vertical tab
-        case 'a': rv.append_c('\x7'); i += 2; break; // bell
-        case 'U': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i + 2, 8), null, 16);
-          rv.append_unichar((unichar)val);
-          i += 10;
-          break;
-        case 'u': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i + 2, 4), null, 16);
-          rv.append_unichar((unichar)val);
-          i += 6;
-          break;
-        case 'x': // start of a hex number
-          var val = DejaDup.strtoull(((string)s).substring(i + 2, 2), null, 16);
-          rv.append_unichar((unichar)val);
-          i += 4;
-          break;
-        case '0':
-        case '1':
-        case '2':
-        case '3':
-        case '4':
-        case '5':
-        case '6':
-        case '7':
-          // start of an octal number
-          if (s[i + 2] != 0 && s[i + 3] != 0 && s[i + 4] != 0) {
-            char[] tmpstr = new char[4];
-            tmpstr[0] = s[i + 2];
-            tmpstr[1] = s[i + 3];
-            tmpstr[2] = s[i + 4];
-            var val = DejaDup.strtoull((string)tmpstr, null, 8);
-            rv.append_unichar((unichar)val);
-            i += 5;
-          }
-          else
-            bare_escape = true;
-          break;
-        default:
-          bare_escape = true; break;
-        }
-        if (bare_escape) {
-          rv.append_c(s[i + 1]); i += 2;
-        }
-      }
-      else
-        rv.append_c(s[i++]);
-    }
-
-    return rv.str;
-  }
-
-  static void split_line(string line, out string[] split)
-  {
-    var firstsplit = line.split(" ");
-    var splitlist = new List<string>();
-
-    int i;
-    bool in_group = false;
-    string group_word = "";
-    for (i = 0; firstsplit[i] != null; ++i) {
-      string word = firstsplit[i];
-
-      if (firstsplit[i + 1] == null)
-        word = word.chomp();
-
-      // Merge word groupings like 'hello \'goodbye' as one word.
-      // Assumes that duplicity isn't a dick and gives us well formed groupings
-      // so we only check for apostrophe at beginning and end of words.  We
-      // won't crash if duplicity is a dick, but we won't correctly group words.
-      if (!in_group && word.has_prefix("\'"))
-        in_group = true;
-
-      if (in_group) {
-        if (word.has_suffix("\'") &&
-            // OK, word ends with '...  But is it a *real* ' or a fake one?
-            // i.e. is it escaped or not?  Test this by seeing if it has an even
-            // number of backslashes before it.
-            num_suffix(word, '\\', (long)word.length - 2) % 2 == 0)
-          in_group = false;
-        // Else...  If it ends with just a backslash, the backslash was
-        // supposed to be for the space.  So just drop it.
-        else if (num_suffix(word, '\\') % 2 == 1)
-          // Chop off last backslash.
-          word = word.substring(0, word.length - 2);
-
-        // get rid of any other escaping backslashes and translate octals
-        word = compress_string(word);
-
-        // Now join to rest of group.
-        if (group_word == "")
-          group_word = word;
-        else
-          group_word += " " + word;
-
-        if (!in_group) {
-          // add to list, but drop single quotes
-          splitlist.append(group_word.substring(1, group_word.length - 2));
-          group_word = "";
-        }
-      }
-      else
-        splitlist.append(word);
-    }
-
-    // Now make it nice array for ease of random access
-    split = new string[splitlist.length()];
-    i = 0;
-    foreach (string s in splitlist)
-      split[i++] = s;
-  }
-
-  void process_stanza(List<string> stanza)
-  {
-    // Split the line/stanza that was echoed by stream and pass it forward in a
-    // more structured way via a signal.
-    string[] control_line;
-    split_line(stanza.data, out control_line);
-
-    var data = grab_stanza_data(stanza);
-
-    var text = grab_stanza_text(stanza);
-
-    processed_a_message = true;
-    message(control_line, data, text);
-  }
-
-  List<string> grab_stanza_data(List<string> stanza)
-  {
-    // Return only data from stanza that was returned by stream
-    var list = new List<string>();
-    stanza = stanza.next; // skip first control line
-    foreach (string line in stanza) {
-      if (!line.has_prefix(". "))
-        list.append(validated_string(line.chomp())); // drop endline
-    }
-    return list;
-  }
-
-  string grab_stanza_text(List<string> stanza)
-  {
-    string text = "";
-    foreach (string line in stanza) {
-      if (line.has_prefix(". ")) {
-        var split = line.split(". ", 2);
-        text = "%s%s\n".printf(text, validated_string(split[1]));
-      }
-    }
-    return text.chomp();
+    yield logger.read();
+    logger.write_tail_to_cache();
+    unref();
   }
 
   void spawn_finished(Pid pid, int status)
@@ -483,8 +226,7 @@ internal class DuplicityInstance : Object
     Process.close_pid(pid);
 
     process_done = true;
-    if (reader == null)
-      send_done_for_status();
+    send_done_for_status();
   }
 
   void send_done_for_status()

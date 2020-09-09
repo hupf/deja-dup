@@ -12,7 +12,7 @@ using GLib;
 public class DebugInfo : BuilderWidget
 {
   public Gtk.Window parent {get; construct;}
-  HashTable<string, string> replacements;
+  DejaDup.LogObscurer obscurer;
 
   public DebugInfo(Gtk.Window? parent)
   {
@@ -22,7 +22,7 @@ public class DebugInfo : BuilderWidget
   construct {
     adopt_name("debug-window");
 
-    replacements = new HashTable<string, string>(str_hash, str_equal);
+    obscurer = new DejaDup.LogObscurer();
 
     var window = builder.get_object("debug-window") as Gtk.Window;
     window.transient_for = parent;
@@ -43,58 +43,10 @@ public class DebugInfo : BuilderWidget
   void copy_to_clipboard(Gtk.Button button)
   {
     var debug_info = builder.get_object("debug-info") as Gtk.Label;
-    var text = "```\n%s```".printf(debug_info.label);
+    var text = "```\n%s\n```".printf(debug_info.label);
 
     var clipboard = Gtk.Clipboard.get_default(button.get_display());
     clipboard.set_text(text, -1);
-  }
-
-  string random_str(string input)
-  {
-    var str = "";
-    for (int i = 0; i < input.length; i++) {
-      var sub = input[i];
-      if (sub.isalnum())
-        sub = (char)Random.int_range((int)'a', (int)'z');
-      str = "%s%c".printf(str, sub);
-    }
-    return str;
-  }
-
-  string replace_path(string path)
-  {
-    var pieces = path.split("/");
-    for (int i = 0; i < pieces.length; i++) {
-      var piece = pieces[i];
-      if (piece == "home" || piece == "" || piece[0] == '$')
-        continue;
-
-      var replacement = replacements.lookup(piece);
-      if (replacement == null) {
-        replacement = random_str(piece);
-        replacements.insert(piece, replacement);
-      }
-      pieces[i] = replacement;
-    }
-
-    return string.joinv("/", pieces);
-  }
-
-  string[] replace_paths(string[] paths)
-  {
-    for (int i = 0; i < paths.length; i++) {
-      paths[i] = replace_path(paths[i]);
-    }
-    return paths;
-  }
-
-  string replace_uri(string uri)
-  {
-    var scheme = Uri.parse_scheme(uri);
-    if (scheme == null)
-      return replace_path(uri);
-
-    return scheme + replace_path(uri.substring(scheme.length));
   }
 
   string get_debug_info()
@@ -105,7 +57,14 @@ public class DebugInfo : BuilderWidget
     if (gsettings != null)
       text += "\nGSettings:\n%s".printf(gsettings);
 
-    return text;
+    var dup_logger = DejaDup.DuplicityLogger.from_cache_log();
+    if (dup_logger != null) {
+      dup_logger.read_sync();
+      var log = dup_logger.get_obscured_tail(obscurer);
+      text += "\nLatest Duplicity Log:\n%s".printf(log);
+    }
+
+    return text.chomp();
   }
 
   string get_system_info()
@@ -119,7 +78,7 @@ public class DebugInfo : BuilderWidget
     text += "OS=%s\n".printf(Environment.get_os_info(OsInfoKey.PRETTY_NAME));
     text += "Desktop=%s\n".printf(Environment.get_variable("XDG_SESSION_DESKTOP"));
     text += "Locale=%s\n".printf(Intl.setlocale(LocaleCategory.MESSAGES, null));
-    text += "Home=%s\n".printf(replace_path(Environment.get_home_dir()));
+    text += "Home=%s\n".printf(obscurer.replace_path(Environment.get_home_dir()));
     text += "Version=%s\n".printf(version);
     text += DejaDup.InstallEnv.instance().get_debug_info();
 
@@ -141,14 +100,14 @@ public class DebugInfo : BuilderWidget
         var val_str = val.print(false);
 
         if (key == "folder" || key == "name") {
-          val_str = "'%s'".printf(replace_path(val.get_string()));
+          val_str = "'%s'".printf(obscurer.replace_path(val.get_string()));
         }
         else if (key == "include-list" || key == "exclude-list") {
-          var inner = string.joinv("', '", replace_paths(val.dup_strv()));
+          var inner = string.joinv("', '", obscurer.replace_paths(val.dup_strv()));
           val_str = "['%s']".printf(inner);
         }
         else if (key == "uri") {
-          val_str = "'%s'".printf(replace_uri(val.get_string()));
+          val_str = "'%s'".printf(obscurer.replace_uri(val.get_string()));
         }
 
         text += "%s=%s\n".printf(key, val_str);
