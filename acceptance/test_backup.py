@@ -7,6 +7,7 @@
 import os
 import stat
 from contextlib import contextmanager
+from time import sleep
 
 import ddt
 from dogtail.predicate import GenericPredicate
@@ -67,6 +68,7 @@ class BackupTest(BaseTest):
 
         self.monitor()
         keyCombo("<Super>v")
+        sleep(1)
         keyCombo("Enter")
         app = self.get_app()
 

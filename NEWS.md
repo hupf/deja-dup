@@ -8,8 +8,8 @@ SPDX-FileCopyrightText: Michael Terry
 - On a fresh install, use the browse & restore interface when restoring from
   a previous backup (rather than requiring a full restore)
 - Show desktop notifications if we need user attention during a backup, rather
-  than trying to mark window as visible and urgent, since that works in more
-  desktop environments
+  than trying to mark window as visible and urgent, since notifications work in
+  more desktop environments and wayland
 - Inhibit suspend and logout during manual backups and restores
 - Add debug info screen, visible from the About dialog
 - Don't warn user about folders that are explicitly excluded
