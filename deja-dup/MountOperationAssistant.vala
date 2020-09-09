@@ -260,7 +260,7 @@ public class MountOperationAssistant : MountOperation
     }
   }
 
-  void do_close(AssistantOperation op, bool success)
+  void do_close(AssistantOperation op)
   {
     send_reply(MountOperationResult.ABORTED);
   }

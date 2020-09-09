@@ -27,9 +27,7 @@ public abstract class AssistantOperation : Assistant
    * 7. Summary
    */
   protected Gtk.Widget confirm_page {get; private set;}
-  public signal void closing(bool success);
-
-  protected bool succeeded = false;
+  public signal void closing();
 
   protected Gtk.Widget backend_install_page {get; private set;}
   Gtk.Label backend_install_desc;
@@ -97,9 +95,10 @@ public abstract class AssistantOperation : Assistant
     });
 
     canceled.connect(do_cancel);
-    closed.connect(do_close);
+    closed.connect(do_delete);
+    resumed.connect(do_delete);
+    delete_event.connect(() => {do_delete(); return true;});
     prepare.connect(do_prepare);
-    delete_event.connect(do_minimize_to_tray);
   }
 
   /*
@@ -629,8 +628,6 @@ public abstract class AssistantOperation : Assistant
       do_close();
     }
     else if (success) {
-      succeeded = true;
-
       if (detail != null) {
         // Expect one paragraph followed by a blank line.  The first paragraph
         // is an explanation before the full detail content.  So split it out
@@ -760,14 +757,13 @@ public abstract class AssistantOperation : Assistant
       do_close();
   }
 
-  bool do_minimize_to_tray(Gdk.EventAny event)
+  void do_delete()
   {
-    if (is_interrupted() || op == null)
-      do_cancel(); // instead, do the normal cancel operation
+    hide_everything();
+    if (op != null)
+      op.stop();
     else
-      hide();
-
-    return true;
+      do_close();
   }
 
   protected virtual void do_close()
@@ -777,7 +773,7 @@ public abstract class AssistantOperation : Assistant
       timeout_id = 0;
     }
 
-    closing(succeeded);
+    closing();
 
     DejaDup.destroy_widget(this);
   }

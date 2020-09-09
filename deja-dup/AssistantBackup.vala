@@ -19,9 +19,7 @@ public class AssistantBackup : AssistantOperation
   construct
   {
     default_title = C_("back up is verb", "Back Up");
-
     can_resume = true;
-    resumed.connect(do_resume);
   }
 
   Gtk.Widget include_exclude_page;
@@ -116,17 +114,6 @@ public class AssistantBackup : AssistantOperation
     });
 
     return rv;
-  }
-
-  void do_resume()
-  {
-    hide_everything();
-    if (op != null)
-      op.stop();
-    else {
-      succeeded = true; // fake it
-      do_close();
-    }
   }
 
   protected override string get_progress_file_prefix()
