@@ -2,14 +2,15 @@
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # SPDX-License-Identifier: GPL-3.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# Rodrigo Lledó <rodhos92@gmail.com>, 2020.
 # Daniel Mustieles <daniel.mustieles@gmail.com>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-13 01:06+0000\n"
-"PO-Revision-Date: 2020-08-13 11:23+0200\n"
+"POT-Creation-Date: 2020-09-09 14:33+0000\n"
+"PO-Revision-Date: 2020-09-10 08:29+0200\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Spanish - Spain <gnome-es-list@gnome.org>\n"
 "Language: es_ES\n"
@@ -41,7 +42,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:341
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:360
 msgid "Déjà Dup Backups"
 msgstr "Copias de seguridad Déjà Dup"
 
@@ -73,8 +74,8 @@ msgstr "Cifra y comprime sus datos de manera segura"
 #: data/org.gnome.DejaDup.appdata.xml.in:22
 msgid "Incrementally backs up, letting you restore from any particular backup"
 msgstr ""
-"Realiza copias de seguridad de forma incremental, lo que le permite "
-"restaurar desde cualquier respaldo"
+"Realiza respaldos de forma incremental, lo que le permite restaurar desde "
+"cualquier respaldo"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:23
 msgid "Schedules regular backups"
@@ -97,7 +98,7 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
 msgid "Backups"
-msgstr "Copias de seguridad"
+msgstr "Respaldos"
 
 #: data/org.gnome.DejaDup.desktop.in:7
 msgid "Change your backup settings"
@@ -193,11 +194,11 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:38
 msgid "Whether to periodically back up"
-msgstr "¿Respaldar periódicamente?"
+msgstr "Indica si respaldar periódicamente"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:39
 msgid "Whether to automatically back up on a regular schedule."
-msgstr "Si se ha de realizar las copias de respaldo según una planificación."
+msgstr "Indica si respaldar automáticamente según una planificación."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:43
 msgid "How often to periodically back up"
@@ -265,12 +266,12 @@ msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
 msgstr ""
-"Déjà Dup necesita de vez en cuando hacer copias de seguridad completas "
-"nuevas. Esto es el número de días entre cada una de ellas."
+"De vez en cuando Déjà Dup necesita realizar respaldos completos nuevos. Este "
+"es el número de días entre cada respaldo completo."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:68
 msgid "Whether to use metered networks"
-msgstr "Si usar redes limitadas"
+msgstr "Indica si usar redes limitadas"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:69
 msgid ""
@@ -278,7 +279,7 @@ msgid ""
 "connections (like 4G)."
 msgstr ""
 "Si es falso, Déjà Dup rechazará ejecutar el respaldo programado sobre redes "
-"limitadas (similar a 4G)."
+"limitadas (como redes 4G)."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:88
 msgid "Type of location to store backup"
@@ -297,15 +298,15 @@ msgstr ""
 #: data/org.gnome.DejaDup.gschema.xml.in:136
 #: data/org.gnome.DejaDup.gschema.xml.in:144
 msgid "The folder where backups are stored"
-msgstr "La carpeta donde se almacenan las copias de seguridad"
+msgstr "La carpeta donde se almacenan los respaldos"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:101
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
-"Jerarquía de carpetas en la que se almacenan las copias de seguridad. Las "
-"rutas pueden ser absolutas o relativas a su carpeta personal."
+"Jerarquía de carpetas en la que se almacenan los respaldos. Las rutas pueden "
+"ser absolutas o relativas a su carpeta personal."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:108
 msgid "UUID"
@@ -340,8 +341,8 @@ msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
-"Jerarquía de carpetas en la que se almacenan las copias de seguridad. Las "
-"rutas son relativas al disco."
+"Jerarquía de carpetas en la que se almacenan los respaldos. Las rutas son "
+"relativas al disco."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:131
 msgid "The server address"
@@ -356,16 +357,28 @@ msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr ""
-"Jerarquía de carpetas en la que se almacenan las copias de seguridad. Las "
-"rutas pueden ser absolutas o relativas al equipo."
+"Jerarquía de carpetas en la que se almacenan los respaldos. Las rutas pueden "
+"ser absolutas o relativas al equipo."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:145
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
-"La ruta de la carpeta donde se almacenan las copias de seguridad. Las rutas "
-"pueden ser absolutas o relativas al equipo."
+"La ruta de la carpeta donde se almacenan los respaldos. Las rutas pueden ser "
+"absolutas o relativas al equipo."
+
+#: data/ui/debug.ui:11 deja-dup/main.vala:251
+msgid "Debug Information"
+msgstr "Información de depuración"
+
+#: data/ui/debug.ui:35
+msgid "_Copy"
+msgstr "_Copiar"
+
+#: data/ui/debug.ui:68
+msgid "All identifying information has been obscured."
+msgstr "Toda la información de identificación se ha ocultado."
 
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
@@ -407,98 +420,98 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Ir atrás"
 
-#: data/ui/main.ui:46
+#: data/ui/main.ui:47
 msgid "Back"
 msgstr "Atrás"
 
-#: data/ui/main.ui:86
+#: data/ui/main.ui:87
 msgid "Select"
 msgstr "Seleccionar"
 
-#: data/ui/main.ui:112 data/ui/main.ui:184
+#: data/ui/main.ui:113 data/ui/main.ui:185
 msgid "Search"
 msgstr "Buscar"
 
-#: data/ui/main.ui:156 data/ui/main.ui:772 deja-dup/Assistant.vala:338
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
 msgid "_Cancel"
 msgstr "_Cancelar"
 
-#: data/ui/main.ui:250
+#: data/ui/main.ui:252
 msgid "Keep your important files safe in a backup."
 msgstr "Mantenga a salvo sus archivos importantes con un respaldo."
 
-#: data/ui/main.ui:262
+#: data/ui/main.ui:264
 msgid "Create My First _Backup"
 msgstr "Crear mi primer _respaldo"
 
-#: data/ui/main.ui:278
+#: data/ui/main.ui:280
 msgid "_Restore From a Previous Backup"
 msgstr "_Restaurar de un respaldo anterior"
 
-#: data/ui/main.ui:311 data/ui/preferences.ui:117
+#: data/ui/main.ui:313 data/ui/preferences.ui:117
 msgid "Automatic backup"
 msgstr "Respaldo automático"
 
-#: data/ui/main.ui:326
+#: data/ui/main.ui:328
 msgid "Back up _automatically"
 msgstr "Respaldar _automáticamente"
 
-#: data/ui/main.ui:353
+#: data/ui/main.ui:355
 msgid "_Back Up Now"
 msgstr "Res_paldar ahora"
 
-#: data/ui/main.ui:382
+#: data/ui/main.ui:384
 msgid "Overview"
 msgstr "Vista general"
 
-#: data/ui/main.ui:396 deja-dup/AssistantRestore.vala:70
+#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:68
 msgid "_Restore"
 msgstr "_Restaurar"
 
-#: data/ui/main.ui:414 deja-dup/AssistantRestore.vala:139
+#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:108
 msgid "_Date"
 msgstr "_Fecha"
 
-#: data/ui/main.ui:534
+#: data/ui/main.ui:536
 msgid "Scanning backup files…"
 msgstr "Analizando archivos de respaldo…"
 
-#: data/ui/main.ui:568
+#: data/ui/main.ui:570
 msgid "_Retry"
 msgstr "_Reintentar"
 
-#: data/ui/main.ui:607
+#: data/ui/main.ui:609
 msgid "_Connect"
 msgstr "_Conectar"
 
-#: data/ui/main.ui:636
+#: data/ui/main.ui:638
 msgid "Encryption password needed"
 msgstr "Se necesita contraseña de cifrado"
 
-#: data/ui/main.ui:647
+#: data/ui/main.ui:649
 msgid "_Enter Password"
 msgstr "_Introduzca la contraseña"
 
-#: data/ui/main.ui:751 deja-dup/AssistantRestore.vala:66
+#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:64
 msgid "Restore"
 msgstr "Restaurar"
 
-#: data/ui/main.ui:781
+#: data/ui/main.ui:783
 msgid "Con_tinue"
 msgstr "Con_tinuar"
 
-#: data/ui/main.ui:849 deja-dup/AssistantOperation.vala:389
-#: deja-dup/AssistantOperation.vala:460
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:382
+#: deja-dup/AssistantOperation.vala:453
 msgid "E_ncryption password"
 msgstr "_Contraseña cifrada"
 
-#: data/ui/main.ui:860 deja-dup/AssistantOperation.vala:419
-#: deja-dup/AssistantOperation.vala:469
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:412
+#: deja-dup/AssistantOperation.vala:462
 msgid "_Show password"
 msgstr "_Mostrar contraseña"
 
-#: data/ui/main.ui:875 deja-dup/AssistantOperation.vala:426
-#: deja-dup/MountOperationAssistant.vala:27
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:419
+#: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "_Recordar contraseña"
 
@@ -543,6 +556,8 @@ msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space."
 msgstr ""
+"Los respaldos más antiguos se seguirán eliminando antes de tiempo si la "
+"ubicación tiene poco espacio."
 
 #: data/ui/preferences.ui:101
 msgid "Schedule"
@@ -554,7 +569,7 @@ msgstr "Respaldar _automáticamente"
 
 #: data/ui/preferences.ui:129
 msgid "Automatic Backup _Frequency"
-msgstr ""
+msgstr "_Frecuencia de los respaldos automáticos"
 
 #: data/ui/preferences.ui:147
 msgid "Folders to Back Up"
@@ -599,10 +614,12 @@ msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
 msgstr ""
+"Esta ubicación de almacenamiento ya no es compatible. Aún puede utilizar "
+"duplicity directamente para respaldar o restaurar sus archivos."
 
 #: data/ui/preferences.ui:475
 msgid "_Choose Folder…"
-msgstr "_Escoger carpeta..."
+msgstr "_Escoger carpeta…"
 
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
@@ -668,52 +685,54 @@ msgstr "sftp:// o ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// o davs://"
 
-#: deja-dup/Assistant.vala:282
+#: deja-dup/Assistant.vala:284
 msgid "Co_ntinue"
 msgstr "Co_ntinuar"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:290
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Probar"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "Continua_r después"
 
-#: deja-dup/Assistant.vala:330
+#: deja-dup/Assistant.vala:332
 msgid "_Back"
 msgstr "_Atrás"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:334
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:351
 msgid "_Forward"
 msgstr "_Adelante"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Respaldar"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Respaldar"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:91
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
 msgstr ""
+"No se pueden respaldar las siguientes carpetas porque Respaldos no tiene "
+"acceso a ellas:"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:107
 msgid "Creating the first backup.  This may take a while."
 msgstr "Creando la primera copia de seguridad. Esto puede tardar un rato."
 
-#: deja-dup/AssistantBackup.vala:106
+#: deja-dup/AssistantBackup.vala:108
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -723,52 +742,79 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:137
+#: deja-dup/AssistantBackup.vala:123
 msgid "Backing up:"
 msgstr "Respaldando:"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:132
 msgid "Backup Failed"
 msgstr "Fallo en la copia de seguridad"
 
-#: deja-dup/AssistantBackup.vala:149
+#: deja-dup/AssistantBackup.vala:135
 msgid "Backup Finished"
 msgstr "Copia de seguridad finalizada"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:153
+#: deja-dup/AssistantBackup.vala:139
 msgid "Your files were successfully backed up and tested."
 msgstr "Sus archivos se respaldaron correctamente y se comprobaron."
 
-#: deja-dup/AssistantBackup.vala:160
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backing Up…"
-msgstr "Respaldando..."
+msgstr "Respaldando…"
 
-#: deja-dup/AssistantOperation.vala:165
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:152 deja-dup/AssistantOperation.vala:899
+msgid "Backups needs your input to continue"
+msgstr "Respaldos necesita su entrada para continuar"
+
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:179
+msgid "Backup in progress"
+msgstr "Respaldo en progreso"
+
+#: deja-dup/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "¿Desde dónde restaurar?"
+
+#: deja-dup/AssistantLocation.vala:26
+msgid "_Backup location"
+msgstr "_Ubicación de copia de seguridad"
+
+#: deja-dup/AssistantLocation.vala:33
+msgid "_Search"
+msgstr "_Buscar"
+
+#: deja-dup/AssistantOperation.vala:158
 msgid "Scanning:"
 msgstr "Explorando:"
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning…"
 msgstr "Explorando…"
 
-#: deja-dup/AssistantOperation.vala:274
+#: deja-dup/AssistantOperation.vala:267
 msgid "_Details"
 msgstr "_Detalles"
 
-#: deja-dup/AssistantOperation.vala:320
+#: deja-dup/AssistantOperation.vala:313
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Para continuar se deben instalar los siguientes paquetes:"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:349
 msgid "_Allow restoring without a password"
 msgstr "Permitir rest_aurar sin contraseña"
 
-#: deja-dup/AssistantOperation.vala:362
+#: deja-dup/AssistantOperation.vala:355
 msgid "_Password-protect your backup"
 msgstr "_Proteger el respaldo con contraseña"
 
-#: deja-dup/AssistantOperation.vala:374
+#: deja-dup/AssistantOperation.vala:367
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -776,11 +822,11 @@ msgstr ""
 "Necesitará su contraseña para restaurar sus archivos. Le recomendamos que la "
 "escriba y guarde en un lugar seguro."
 
-#: deja-dup/AssistantOperation.vala:406
+#: deja-dup/AssistantOperation.vala:399
 msgid "Confir_m password"
 msgstr "Confir_mar contraseña"
 
-#: deja-dup/AssistantOperation.vala:445
+#: deja-dup/AssistantOperation.vala:438
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -790,157 +836,159 @@ msgstr ""
 "emergencia, introduzca de nuevo su contraseña de cifrado para realizar un "
 "breve simulacro de restauración."
 
-#: deja-dup/AssistantOperation.vala:474
+#: deja-dup/AssistantOperation.vala:467
 msgid "Test every two _months"
 msgstr "Probar cada dos _meses"
 
-#: deja-dup/AssistantOperation.vala:506
+#: deja-dup/AssistantOperation.vala:499
 msgid "_Grant Access"
 msgstr "C_onceder acceso"
 
-#: deja-dup/AssistantOperation.vala:568
+#: deja-dup/AssistantOperation.vala:561
 msgid "Install Packages"
 msgstr "Instalar paquetes"
 
-#: deja-dup/AssistantOperation.vala:583
+#: deja-dup/AssistantOperation.vala:576
 msgid "Summary"
 msgstr "Resumen"
 
-#: deja-dup/AssistantOperation.vala:605
+#: deja-dup/AssistantOperation.vala:598
 msgid "Restore Test"
 msgstr "Prueba de restauración"
 
-#: deja-dup/AssistantOperation.vala:613
+#: deja-dup/AssistantOperation.vala:606
 msgid "Grant Access"
 msgstr "Conceder acceso"
 
-#: deja-dup/AssistantOperation.vala:866
+#: deja-dup/AssistantOperation.vala:811
 msgid "Require Password?"
 msgstr "¿Requiere contraseña?"
 
-#: deja-dup/AssistantOperation.vala:868
+#: deja-dup/AssistantOperation.vala:813
 msgid "Encryption Password Needed"
 msgstr "Se necesita la contraseña de cifrado"
 
-#: deja-dup/AssistantOperation.vala:992
+#: deja-dup/AssistantOperation.vala:862
+msgid "Backups needs your encryption password to continue"
+msgstr "Respaldos necesita su contraseña de cifrado para continuar"
+
+#: deja-dup/AssistantOperation.vala:937
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalar"
 
-#: deja-dup/AssistantRestore.vala:97
-msgid "_Backup location"
-msgstr "_Ubicación de copia de seguridad"
+#: deja-dup/AssistantOperation.vala:942
+msgid "Backups needs to install packages to continue"
+msgstr "Respaldos necesita instalar paquetes para continuar"
 
-#: deja-dup/AssistantRestore.vala:118
-msgid "Restore From Where?"
-msgstr "¿Desde dónde restaurar?"
-
-#: deja-dup/AssistantRestore.vala:185
+#: deja-dup/AssistantRestore.vala:154
 msgid "Restore files to _original locations"
 msgstr "Recuperar archivos a la _ubicación original"
 
-#: deja-dup/AssistantRestore.vala:195
+#: deja-dup/AssistantRestore.vala:164
 msgid "Restore to _specific folder"
 msgstr "Restaurar a una carpeta e_specífica"
 
-#: deja-dup/AssistantRestore.vala:207
+#: deja-dup/AssistantRestore.vala:176
 msgid "Choose destination for restored files"
 msgstr "Elegir destino para archivos restaurados"
 
-#: deja-dup/AssistantRestore.vala:215
+#: deja-dup/AssistantRestore.vala:184
 msgid "Restore _folder"
 msgstr "Restaurar _carpeta"
 
-#: deja-dup/AssistantRestore.vala:228
+#: deja-dup/AssistantRestore.vala:197
 msgid "Backups does not have permission to restore the following files:"
-msgstr ""
+msgstr "Respaldos no tiene permiso para restaurar los siguientes archivos:"
 
-#: deja-dup/AssistantRestore.vala:292
+#: deja-dup/AssistantRestore.vala:260
 msgid "Backup location"
-msgstr "Ubicación de la copia de seguridad"
+msgstr "Ubicación del respaldo"
 
-#: deja-dup/AssistantRestore.vala:307
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore date"
 msgstr "Fecha de restauración"
 
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:283
 msgid "Restore folder"
 msgstr "Carpeta de restauración"
 
-#: deja-dup/AssistantRestore.vala:345
+#: deja-dup/AssistantRestore.vala:313
 msgid "Checking for Backups…"
-msgstr "Comprobando respaldos..."
+msgstr "Comprobando respaldos…"
 
-#: deja-dup/AssistantRestore.vala:353
+#: deja-dup/AssistantRestore.vala:321
 msgid "Restore From When?"
 msgstr "¿Desde cuándo restaurar?"
 
-#: deja-dup/AssistantRestore.vala:364
+#: deja-dup/AssistantRestore.vala:332
 msgid "Restore to Where?"
 msgstr "¿Restaurar a dónde?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:399
+#: deja-dup/AssistantRestore.vala:367
 msgid "Restoring:"
 msgstr "Restaurando:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:409
+#: deja-dup/AssistantRestore.vala:377
 msgid "No backups to restore"
 msgstr "No hay respaldos que restaurar"
 
-#: deja-dup/AssistantRestore.vala:518
+#: deja-dup/AssistantRestore.vala:484
 msgid "Original location"
 msgstr "Ubicación original"
 
-#: deja-dup/AssistantRestore.vala:529
+#: deja-dup/AssistantRestore.vala:495
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Archivo a restaurar"
 msgstr[1] "Archivos a restaurar"
 
-#: deja-dup/AssistantRestore.vala:550
+#: deja-dup/AssistantRestore.vala:516
 msgid "Restore Failed"
 msgstr "Restauración fallida"
 
-#: deja-dup/AssistantRestore.vala:552
+#: deja-dup/AssistantRestore.vala:518
 msgid "Restore Finished"
 msgstr "Restauración finalizada"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:555
+#: deja-dup/AssistantRestore.vala:521
 msgid "Your files were successfully restored."
 msgstr "Sus archivos fueron restaurados satisfactoriamente."
 
-#: deja-dup/AssistantRestore.vala:558
+#: deja-dup/AssistantRestore.vala:524
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Su archivo se ha restaurado correctamente."
 msgstr[1] "Sus archivos se han restaurado correctamente."
 
-#: deja-dup/AssistantRestore.vala:565 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
 msgid "Restoring…"
-msgstr "Restaurando..."
+msgstr "Restaurando…"
 
-#: deja-dup/Background.vala:48
-#, fuzzy
-#| msgid "A backup automatically starts every day."
+#: deja-dup/AssistantRestore.vala:601
+msgid "Restore in progress"
+msgstr "Restauración en progreso"
+
+#: deja-dup/Background.vala:51
 msgid "Cannot back up automatically"
-msgstr "Cada día se inicia automáticamente un respaldo."
+msgstr "No se puede respaldar automáticamente"
 
-#: deja-dup/Browser.vala:201
+#: deja-dup/Browser.vala:206
 msgid "Click on items to select them"
-msgstr ""
+msgstr "Pulse sobre los elementos para seleccionarlos"
 
-#: deja-dup/Browser.vala:203
+#: deja-dup/Browser.vala:208
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u seleccionado"
+msgstr[1] "%u seleccionados"
 
-#: deja-dup/Browser.vala:380
+#: deja-dup/Browser.vala:385
 msgid "Authentication needed"
 msgstr "Se necesita autenticación"
 
@@ -971,6 +1019,7 @@ msgstr "Eliminar"
 msgid ""
 "This folder cannot be backed up because Backups does not have access to it."
 msgstr ""
+"No se puede respaldar esta carpeta porque Respaldos no tiene acceso a ella."
 
 #: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
@@ -1078,44 +1127,71 @@ msgid "No backup scheduled."
 msgstr "No hay respaldos planificados."
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "Conectar con el servidor"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "_Usuario"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "_Contraseña"
 
-#: deja-dup/MountOperationAssistant.vala:26
+#: deja-dup/MountOperationAssistant.vala:25
 msgid "S_how password"
 msgstr "M_ostrar contraseña"
 
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
 msgstr "La ubicación no está disponible"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:80
+msgid "Backups needs your password to continue"
+msgstr "Respaldos necesita su contraseña para continuar"
+
+#: deja-dup/MountOperationAssistant.vala:146
 msgid "Connect _anonymously"
 msgstr "Conectar de forma _anónima"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:150
 msgid "Connect as u_ser"
 msgstr "Conectar como u_suario"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:193
 msgid "_Domain"
 msgstr "_Dominio"
 
-#: deja-dup/Prompt.vala:18
-msgid "Keep your files safe by backing up regularly"
-msgstr ""
-"Mantenga sus archivos seguros haciendo copias de seguridad frecuentemente"
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "Iniciando el respaldo programado"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "Copia de seguridad programada retrasada"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "Respaldo completado"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "Copia de seguridad finalizada"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "Pero no todos los archivos se respaldaron correctamente."
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "El respaldo falló"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "La restauración falló"
+
+#: deja-dup/Notifications.vala:71
+msgid "Keep your files safe by backing up regularly"
+msgstr "Mantenga sus archivos seguros haciendo respaldos frecuentemente"
+
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
@@ -1125,31 +1201,13 @@ msgstr ""
 "copia de seguridad de los mismos. En caso de accidente, podrá recuperarlos "
 "de dicha copia de seguridad."
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "_No mostrar de nuevo"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "No mostrar de nuevo"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "_Abrir configuración de copia de seguridad"
-
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "Respaldo completado"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "Copia de seguridad finalizada"
-
-#: deja-dup/StatusIcon.vala:51
-msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr ""
-"No se respaldaron todos los archivos. Vea el diálogo para tener más detalles"
-
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "Iniciando el respaldo programado"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "Abrir respaldos"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1160,32 +1218,32 @@ msgstr "Iniciando el respaldo programado"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:22
+#: deja-dup/WidgetUtils.vala:31
 #, c-format
 msgid "Could not display %s"
 msgstr "No se pudo mostrar %s"
 
-#: deja-dup/main.vala:20 monitor/monitor.vala:24
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Mostrar versión"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Restaurando los archivos"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Comenzar el respaldo inmediatamente"
 
-#: deja-dup/main.vala:92 deja-dup/main.vala:107
+#: deja-dup/main.vala:80 deja-dup/main.vala:98
 msgid "An operation is already in progress"
 msgstr "Ya hay una operación en curso"
 
-#: deja-dup/main.vala:224
-msgid "Scheduled backup delayed"
-msgstr "Copia de seguridad programada retrasada"
+#: deja-dup/main.vala:85
+msgid "Please list files to restore"
+msgstr "Liste los archivos que restaurar"
 
-#: deja-dup/main.vala:260
+#: deja-dup/main.vala:248
 msgid "translator-credits"
 msgstr ""
 "Daniel Mustieles <daniel.mustieles@gmail.com>, 2020\n"
@@ -1237,29 +1295,29 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:68 libdeja/CommonUtils.vala:486
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s en %2$s"
 
-#: libdeja/BackendDrive.vala:75
+#: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "El respaldo comenzará cuando %s esté conectado."
 
-#: libdeja/BackendDrive.vala:190 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Ubicación de almacenamiento no disponible"
 
-#: libdeja/BackendDrive.vala:190
+#: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "Esperando que «%s» se conecte..."
+msgstr "Esperando que «%s» se conecte…"
 
 #: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
 #: monitor/monitor.vala:72
 msgid "Backup will begin when a network connection becomes available."
-msgstr ""
+msgstr "Respaldos comenzará cuando haya una conexión de red disponible."
 
 #. Translators: %s is a folder.
 #: libdeja/BackendGoogle.vala:89
@@ -1277,7 +1335,7 @@ msgstr "Credenciales de Google para Déjà Dup"
 
 #: libdeja/BackendGoogle.vala:321
 msgid "You first need to allow Backups to access your Google account."
-msgstr ""
+msgstr "Primero debe permitir que Respaldos acceda a su cuenta de Google."
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
@@ -1300,31 +1358,31 @@ msgstr ""
 "Las ubicaciones de red de Samba deben incluir un nombre de anfitrión y un "
 "nombre compartido."
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:451
 msgid "Access Granted"
 msgstr "Acceso concedido"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:452
 msgid "Backups will now continue. You can close this page."
-msgstr ""
+msgstr "Respaldos continuará. Puede cerrar esta página."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:537
+#: libdeja/CommonUtils.vala:531
 #, c-format
 msgid "Home (%s)"
 msgstr "Home (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:542
+#: libdeja/CommonUtils.vala:536
 msgid "Home"
 msgstr "Carpeta personal"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:541
 msgid "Trash"
 msgstr "Papelera"
 
-#: libdeja/CommonUtils.vala:609
+#: libdeja/CommonUtils.vala:603
 msgid "Backup encryption password"
 msgstr "Contraseña de cifrado de la copia de seguridad"
 
@@ -1333,25 +1391,27 @@ msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
 msgstr ""
+"Asegúrese de que Respaldos tenga permiso para ejecutarse en segundo plano en "
+"Configuración → Aplicaciones → Respaldos y vuelva a intentarlo."
 
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
-msgstr "Respaldando..."
+msgstr "Respaldando…"
 
 #: libdeja/Operation.vala:47
 msgid "Checking for backups…"
-msgstr "Comprobando copias de seguridad..."
+msgstr "Comprobando respaldos…"
 
 #: libdeja/Operation.vala:49
 msgid "Listing files…"
-msgstr "Listando archivos..."
+msgstr "Listando archivos…"
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:383
-#: libdeja/tools/duplicity/DuplicityJob.vala:394
-#: libdeja/tools/duplicity/DuplicityJob.vala:430
+#: libdeja/tools/duplicity/DuplicityJob.vala:388
+#: libdeja/tools/duplicity/DuplicityJob.vala:399
+#: libdeja/tools/duplicity/DuplicityJob.vala:435
 msgid "Preparing…"
-msgstr "Preparando..."
+msgstr "Preparando…"
 
 #: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
 msgid "Verifying backup…"
@@ -1359,7 +1419,7 @@ msgstr "Verificando respaldo…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
-msgstr "Restaurando archivos..."
+msgstr "Restaurando archivos…"
 
 #: libdeja/OperationVerify.vala:78
 msgid ""
@@ -1369,20 +1429,20 @@ msgstr ""
 "Su copia de seguridad parece estar dañada. Debería eliminar dicha copia y "
 "empezar de nuevo."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:79
+#: libdeja/tools/duplicity/DuplicityJob.vala:78
 #: libdeja/tools/duplicity/DuplicityJob.vala:162
 msgid "Paused (no network)"
 msgstr "Pausado (sin red)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:540
+#: libdeja/tools/duplicity/DuplicityJob.vala:545
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "La ubicación del respaldo es demasiado pequeña. Intente usar una con al "
 "menos %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:565
+#: libdeja/tools/duplicity/DuplicityJob.vala:570
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1391,15 +1451,15 @@ msgstr ""
 "La ubicación del respaldo no tiene suficiente espacio disponible. Intente "
 "usar una con al menos %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:586
-#: libdeja/tools/duplicity/DuplicityJob.vala:600
+#: libdeja/tools/duplicity/DuplicityJob.vala:591
+#: libdeja/tools/duplicity/DuplicityJob.vala:605
 msgid "Cleaning up…"
-msgstr "Limpiando..."
+msgstr "Limpiando…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:680
+#: libdeja/tools/duplicity/DuplicityJob.vala:685
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1410,7 +1470,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:696
+#: libdeja/tools/duplicity/DuplicityJob.vala:701
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1424,27 +1484,27 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: libdeja/tools/duplicity/DuplicityJob.vala:716
-#: libdeja/tools/duplicity/DuplicityJob.vala:1100
+#: libdeja/tools/duplicity/DuplicityJob.vala:721
+#: libdeja/tools/duplicity/DuplicityJob.vala:1105
 msgid "Failed with an unknown error."
 msgstr "Falló con un error desconocido."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:919
+#: libdeja/tools/duplicity/DuplicityJob.vala:924
 msgid "Bad encryption password."
 msgstr "Contraseña de cifrado errónea."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:964
+#: libdeja/tools/duplicity/DuplicityJob.vala:969
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "No se puede restaurar «%s»: El archivo no se encuentra en la copia de "
 "seguridad"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:975
+#: libdeja/tools/duplicity/DuplicityJob.vala:980
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1455,81 +1515,95 @@ msgstr ""
 "del equipo actual es %s. Si esto es inesperado, debería realizar la copia en "
 "una ubicación distinta."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:978
+#: libdeja/tools/duplicity/DuplicityJob.vala:983
 msgid "Computer name changed"
 msgstr "El nombre del equipo ha cambiado"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1013
+#: libdeja/tools/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Permiso denegado cuando se intenta crear «%s»."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1017
-#: libdeja/tools/duplicity/DuplicityJob.vala:1021
+#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/tools/duplicity/DuplicityJob.vala:1026
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Permiso denegado cuando se intenta leer «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1025
+#: libdeja/tools/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Permiso denegado cuando se intenta eliminar «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1032
+#: libdeja/tools/duplicity/DuplicityJob.vala:1037
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "La localización del respaldo «%s» no existe."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1038
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/tools/duplicity/DuplicityJob.vala:1076
 msgid "No space left."
 msgstr "No queda espacio."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1060
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Error al leer el archivo «%s»"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1062
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Error al escribir el archivo «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1073
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "No queda espacio en «%s»."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1081
+#: libdeja/tools/duplicity/DuplicityJob.vala:1086
 msgid "No backup files found"
-msgstr "No se han encontrado archivos de copia de seguridad"
+msgstr "No se han encontrado archivos de respaldo"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1131
+#: libdeja/tools/duplicity/DuplicityJob.vala:1136
 msgid "Uploading…"
-msgstr "Cargando..."
+msgstr "Subiendo…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:34
 msgid "Could not understand duplicity version."
 msgstr "No se pudo procesar la versión de Duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:44
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "No se pudo procesar la versión «%s» de Duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:47
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr ""
+"Respaldos necesita al menos la versión %d.%d.%.2d de duplicity, pero sólo se "
+"encontró la versión %d.%d.%.2d"
 
 #: monitor/monitor.vala:75
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
-"Respaldo comenzará cuando una conexión de red no limitada esté disponible."
+"El respaldo comenzará cuando una conexión de red no limitada esté disponible."
+
+#~ msgid "Connect to Server"
+#~ msgstr "Conectar con el servidor"
+
+#~ msgid "_Open Backup Settings"
+#~ msgstr "_Abrir configuración de copia de seguridad"
+
+#~ msgid ""
+#~ "Not all files were successfully backed up.  See dialog for more details."
+#~ msgstr ""
+#~ "No se respaldaron todos los archivos. Vea el diálogo para tener más "
+#~ "detalles"
 
 #~ msgid "Folder"
 #~ msgstr "Carpeta"
