@@ -6,17 +6,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-06-21 21:37-0400\n"
-"PO-Revision-Date: 2020-05-20 08:15+0000\n"
-"Last-Translator: Michael Terry <mike@mterry.name>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
+"POT-Creation-Date: 2020-08-30 17:21+0000\n"
+"PO-Revision-Date: 2020-09-10 14:03+0200\n"
+"Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
+"Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Launchpad (build 1cbd0aa39df153c901321817f9b57cf3f232b507)\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -27,25 +28,25 @@ msgstr "Monitor zálohovania"
 
 #: data/org.gnome.DejaDup.Monitor.desktop.in:7
 msgid "Schedules backups at regular intervals"
-msgstr "V pravidelných intervaloch spúšťa naplánované zálohovania"
+msgstr "Plánuje zálohovania v pravidelných intervaloch"
 
 #: data/org.gnome.DejaDup.Monitor.desktop.in:9
 #: data/org.gnome.DejaDup.desktop.in:9
 msgid "@icon@"
-msgstr ""
+msgstr "@icon@"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:325
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:360
 msgid "Déjà Dup Backups"
-msgstr ""
+msgstr "Zálohy Déjà Dup"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:16
 msgid "Keep your important documents safe from disaster"
-msgstr ""
+msgstr "Uchovajte vaše dôležité dokumenty v bezpečí pred nešťastím"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:18
 msgid ""
@@ -53,28 +54,34 @@ msgid ""
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
 "backend."
 msgstr ""
+"Aplikácia Déjà Dup je jednoduchý nástroj na zálohovanie. Zakrýva zložitosť "
+"správneho zálohovania (šifrované, uložené na vzdialenom mieste a pravidelné) "
+"a využíva nástroj duplicity ako podporný program."
 
 #: data/org.gnome.DejaDup.appdata.xml.in:20
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
+"Podpora pre miestne, vzdialené alebo cloudové umiestnenia záloh, ako je Disk "
+"Google"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:21
 msgid "Securely encrypts and compresses your data"
-msgstr ""
+msgstr "Bezpečné šifrovanie a komprimácia vašich údajov"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:22
-msgid ""
-"Incrementally backs up, letting you restore from any particular backup"
+msgid "Incrementally backs up, letting you restore from any particular backup"
 msgstr ""
+"Postupné zálohovanie, ktoré vám umožňuje vykonať obnovu z ktorejkoľvek "
+"čiastočnej zálohy"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:23
 msgid "Schedules regular backups"
-msgstr ""
+msgstr "Plánovanie pravidelných zálohovaní"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:24
 msgid "Integrates well into your GNOME desktop"
-msgstr ""
+msgstr "Dobrá integrácia do vášho pracovného prostredia GNOME"
 
 #: data/org.gnome.DejaDup.appdata.xml.in:26
 msgid ""
@@ -82,10 +89,13 @@ msgid ""
 "data loss. If you need a full system backup or an archival program, you may "
 "prefer other backup apps."
 msgstr ""
+"Aplikácia Déjà Dup je zameraná na jednoduchosť používanie a na obnovu "
+"osobných, neúmyselne stratených údajov. Ak potrebujete zálohovať celý "
+"systém, musíte sa rozhodnúť pre iné zálohovacie aplikácie."
 
 #: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
 msgid "Backups"
-msgstr ""
+msgstr "Zálohy"
 
 #: data/org.gnome.DejaDup.desktop.in:7
 msgid "Change your backup settings"
@@ -99,11 +109,11 @@ msgstr "déjà;deja;dup;zaloha;záloha;zálohovanie;zalohovanie;"
 
 #: data/org.gnome.DejaDup.desktop.in:28
 msgid "Back Up"
-msgstr ""
+msgstr "Zálohovať"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:13
 msgid "Folders to save"
-msgstr ""
+msgstr "Priečinky na uloženie"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:14
 msgid ""
@@ -114,10 +124,18 @@ msgid ""
 "by the user’s username and can be anywhere in the path. Relative entries are "
 "relative to the user’s home directory."
 msgstr ""
+"Adresáre v tomto zozname budú zálohované. Rezervované hodnoty $HOME (Domov), "
+"$DESKTOP (Pracovná plocha), $DOCUMENTS (Dokumenty), $DOWNLOAD (Stiahnuté), "
+"$MUSIC (Hudba), $PICTURES (Obrázky), $PUBLIC_SHARE (Verejné), $TEMPLATES "
+"(Šablóny), $TRASH (Kôs), a $VIDEOS (Videá) sú rozpoznané ako špeciálne "
+"adresáre používateľa a môžu byť na začiatku dlhšej cesty ($HOME/podadresár). "
+"Rezervovaná hodnota $USER (Používateľ) je nahradená používateľským menom a "
+"môže sa nachádzať kdekoľvek v ceste. Relatívne záznamy sú relatívne k "
+"domovskému priečinku používateľa."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
-msgstr "Priečinky na preskočenie"
+msgstr "Priečinky na vynechanie"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:19
 msgid ""
@@ -128,6 +146,14 @@ msgid ""
 "Reserved value $USER is replaced by the user’s username and can be anywhere "
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr ""
+"Adresáre v tomto zozname nebudú zálohované. Rezervované hodnoty $HOME "
+"(Domov), $DESKTOP (Pracovná plocha), $DOCUMENTS (Dokumenty), $DOWNLOAD "
+"(Stiahnuté), $MUSIC (Hudba), $PICTURES (Obrázky), $PUBLIC_SHARE (Verejné), "
+"$TEMPLATES (Šablóny), $TRASH (Kôs), a $VIDEOS (Videá) sú rozpoznané ako "
+"špeciálne adresáre používateľa a môžu byť na začiatku dlhšej cesty ($HOME/"
+"podadresár). Rezervovaná hodnota $USER (Používateľ) je nahradená "
+"používateľským menom a môže sa nachádzať kdekoľvek v ceste. Relatívne "
+"záznamy sú relatívne k domovskému priečinku používateľa."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:23
 msgid "The last time Déjà Dup was run"
@@ -185,6 +211,8 @@ msgstr "Počet dní medzi zálohami."
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr ""
+"Kedy naposledy aplikácia Déjà Dup kontrolovala, či by sa mala opýtať na "
+"zálohovanie "
 
 #: data/org.gnome.DejaDup.gschema.xml.in:49
 msgid ""
@@ -203,6 +231,8 @@ msgstr ""
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
+"Kedy naposledy aplikácia Déjà Dup kontrolovala, či by sa mala opýtať na vaše "
+"heslo"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:54
 msgid ""
@@ -210,6 +240,10 @@ msgid ""
 "occasionally notify you to confirm the password. This time should be either "
 "‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr ""
+"Aby sa predišlo zabudnutiu vašich hesiel, aplikácia Déjà Dup vás bude "
+"príležitostne upozorňovať o potvrdení hesla. Táto hodnota by mala byť buď "
+"„disabled“ (zakázané) na vypnutie tejto kontroly, alebo čas vo formáte ISO "
+"8601."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:58
 msgid "How long to keep backup files"
@@ -226,23 +260,27 @@ msgstr ""
 
 #: data/org.gnome.DejaDup.gschema.xml.in:63
 msgid "How long to wait between full backups"
-msgstr ""
+msgstr "Ako dlho čakať medzi úplnými zálohami"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:64
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
 msgstr ""
+"Aplikácia Déjà Dup požaduje príležitostne vytvárať čerstvé úplné zálohy. "
+"Toto je počet dní, koľko sa má čakať medzi úplnými zálohami."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:68
 msgid "Whether to use metered networks"
-msgstr ""
+msgstr "Či použiť obmedzené siete"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:69
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
 msgstr ""
+"Ak je nastavené na hodnotu false, aplikácia Déjà Dup zamietne spustenie "
+"plánovaných záloh cez obmedzené sieťové pripojenia (ako je 4G)."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:88
 msgid "Type of location to store backup"
@@ -261,208 +299,229 @@ msgstr ""
 #: data/org.gnome.DejaDup.gschema.xml.in:136
 #: data/org.gnome.DejaDup.gschema.xml.in:144
 msgid "The folder where backups are stored"
-msgstr ""
+msgstr "Priečinok, kde sú ukladané zálohy"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:101
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr ""
+"Hierarchia priečinkov, kde sú ukladané zálohy. Cesty môžu byť úplné alebo "
+"relatívne k vášmu domovskému priečinku."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:108
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:109
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr ""
+"Unikátny identifikátor súborového systému pre jednotku, použitý na "
+"rozpoznanie jednotky po jej pripojení."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:113
 msgid "Name"
-msgstr ""
+msgstr "Názov"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:114
 msgid "The name of the external drive."
-msgstr ""
+msgstr "Názov externej jednotky."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid "The icon of the external drive, as a serialized GIcon."
-msgstr ""
+msgstr "Ikona externej jednotky, ako serializovaná ikona GIcon."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr ""
+"Hierarchia priečinkov, kde sú ukladané zálohy. Cesty sú relatívne k jednotke."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:131
 msgid "The server address"
-msgstr ""
+msgstr "Adresa servera"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:132
 msgid "The URI of the remote server location."
-msgstr ""
+msgstr "URI umiestnenia vzdialeného servera."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:137
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr ""
+"Hierarchia priečinkov, kde sú ukladané zálohy. Cesty môžu byť úplné alebo "
+"relatívne k hostiteľovi."
 
 #: data/org.gnome.DejaDup.gschema.xml.in:145
 msgid ""
 "The folder path where backups are stored. Paths can be absolute or relative "
 "to the host."
 msgstr ""
+"Cesta k priečinku, kde sú ukladané zálohy. Cesty môžu byť úplné alebo "
+"relatívne k hostiteľovi."
+
+#: data/ui/debug.ui:11 deja-dup/main.vala:251
+msgid "Debug Information"
+msgstr "Ladiace informácie"
+
+#: data/ui/debug.ui:35
+msgid "_Copy"
+msgstr "_Kopírovať"
+
+#: data/ui/debug.ui:68
+msgid "All identifying information has been obscured."
+msgstr "Všetky identifikujúce informácie boli utajené."
 
 #: data/ui/help-overlay.ui:19
 msgctxt "shortcut window"
 msgid "General"
-msgstr ""
+msgstr "Všeobecné"
 
 #: data/ui/help-overlay.ui:24
 msgctxt "shortcut window"
 msgid "Show help"
-msgstr ""
+msgstr "Zobrazenie pomocníka"
 
 #: data/ui/help-overlay.ui:31
 msgctxt "shortcut window"
 msgid "Open menu"
-msgstr ""
+msgstr "Otvorenie ponuky"
 
 #: data/ui/help-overlay.ui:38
 msgctxt "shortcut window"
 msgid "Quit"
-msgstr ""
+msgstr "Ukončenie"
 
 #: data/ui/help-overlay.ui:45
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
-msgstr ""
+msgstr "Klávesové skratky"
 
 #: data/ui/help-overlay.ui:53
 msgctxt "shortcut window"
 msgid "Browsing Backed Up Files"
-msgstr ""
+msgstr "Prehliadanie zálohovaných súborov"
 
 #: data/ui/help-overlay.ui:58
 msgctxt "shortcut window"
 msgid "Search"
-msgstr ""
+msgstr "Hľadanie"
 
 #: data/ui/help-overlay.ui:65
 msgctxt "shortcut window"
 msgid "Go back"
-msgstr ""
+msgstr "Prejdenie späť"
 
-#: data/ui/main.ui:46
+#: data/ui/main.ui:47
 msgid "Back"
-msgstr ""
+msgstr "Späť"
 
-#: data/ui/main.ui:86
+#: data/ui/main.ui:87
 msgid "Select"
-msgstr ""
+msgstr "Vybrať"
 
-#: data/ui/main.ui:112 data/ui/main.ui:184
+#: data/ui/main.ui:113 data/ui/main.ui:185
 msgid "Search"
-msgstr ""
+msgstr "Hľadať"
 
-#: data/ui/main.ui:156 data/ui/main.ui:771 deja-dup/Assistant.vala:338
+#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
 msgid "_Cancel"
-msgstr ""
+msgstr "_Zrušiť"
 
-#: data/ui/main.ui:249
+#: data/ui/main.ui:252
 msgid "Keep your important files safe in a backup."
-msgstr ""
+msgstr "Uchovajte vaše dôležité súbory pomocou zálohy."
 
-#: data/ui/main.ui:261
+#: data/ui/main.ui:264
 msgid "Create My First _Backup"
-msgstr ""
+msgstr "Vytvoriť moju _prvú zálohu"
 
-#: data/ui/main.ui:277
+#: data/ui/main.ui:280
 msgid "_Restore From a Previous Backup"
-msgstr ""
+msgstr "_Obnoviť z predchádzajúcej zálohy"
 
-#: data/ui/main.ui:310 data/ui/preferences.ui:117
+#: data/ui/main.ui:313 data/ui/preferences.ui:117
 msgid "Automatic backup"
-msgstr ""
+msgstr "Automatická záloha"
 
-#: data/ui/main.ui:325
+#: data/ui/main.ui:328
 msgid "Back up _automatically"
-msgstr ""
+msgstr "Zálohovať _automaticky"
 
-#: data/ui/main.ui:352
+#: data/ui/main.ui:355
 msgid "_Back Up Now"
-msgstr ""
+msgstr "_Zálohovať teraz"
 
-#: data/ui/main.ui:381
+#: data/ui/main.ui:384
 msgid "Overview"
 msgstr "Prehľad"
 
-#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:70
+#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:68
 msgid "_Restore"
 msgstr "O_bnoviť"
 
-#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:139
+#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:108
 msgid "_Date"
 msgstr "_Dátum"
 
-#: data/ui/main.ui:533
+#: data/ui/main.ui:536
 msgid "Scanning backup files…"
-msgstr ""
+msgstr "Prehľadávajú sa súbory záloh…"
 
-#: data/ui/main.ui:567
+#: data/ui/main.ui:570
 msgid "_Retry"
-msgstr ""
+msgstr "_Skúsiť znovu"
 
-#: data/ui/main.ui:606
+#: data/ui/main.ui:609
 msgid "_Connect"
-msgstr ""
+msgstr "_Pripojiť"
 
-#: data/ui/main.ui:635
+#: data/ui/main.ui:638
 msgid "Encryption password needed"
-msgstr ""
+msgstr "Požaduje sa šifrovacie heslo"
 
-#: data/ui/main.ui:646
+#: data/ui/main.ui:649
 msgid "_Enter Password"
-msgstr ""
+msgstr "Za_dať heslo"
 
-#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:66
+#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:64
 msgid "Restore"
-msgstr "Obnoviť"
+msgstr "Obnovenie"
 
-#: data/ui/main.ui:780
+#: data/ui/main.ui:783
 msgid "Con_tinue"
-msgstr ""
+msgstr "_Pokračovať"
 
-#: data/ui/main.ui:848 deja-dup/AssistantOperation.vala:384
-#: deja-dup/AssistantOperation.vala:455
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
+#: deja-dup/AssistantOperation.vala:454
 msgid "E_ncryption password"
 msgstr "Šifrovacie _heslo"
 
-#: data/ui/main.ui:859 deja-dup/AssistantOperation.vala:414
-#: deja-dup/AssistantOperation.vala:464
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
+#: deja-dup/AssistantOperation.vala:463
 msgid "_Show password"
 msgstr "_Zobraziť heslo"
 
-#: data/ui/main.ui:874 deja-dup/AssistantOperation.vala:421
-#: deja-dup/MountOperationAssistant.vala:27
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
+#: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "Zapa_mätať si heslo"
 
 #: data/ui/menus.ui:12
 msgid "_Preferences"
-msgstr ""
+msgstr "_Predvoľby"
 
 #: data/ui/menus.ui:16
 msgid "_Keyboard Shortcuts"
-msgstr ""
+msgstr "_Klávesové skratky"
 
 #: data/ui/menus.ui:20
 msgid "_Help"
@@ -470,15 +529,15 @@ msgstr "_Pomocník"
 
 #: data/ui/menus.ui:24
 msgid "_About Backups"
-msgstr ""
+msgstr "_O aplikácii Zálohy"
 
 #: data/ui/menus.ui:32
 msgid "Select _All"
-msgstr ""
+msgstr "Vybrať _všetko"
 
 #: data/ui/menus.ui:36
 msgid "Select _None"
-msgstr ""
+msgstr "_Zrušiť výber"
 
 #: data/ui/preferences.ui:27
 msgid "Storage"
@@ -486,17 +545,17 @@ msgstr "Úložisko"
 
 #: data/ui/preferences.ui:32
 msgid "_Location"
-msgstr ""
+msgstr "_Umiestnenie"
 
 #: data/ui/preferences.ui:78
 msgid "_Keep Backups"
-msgstr ""
+msgstr "U_chovať zálohy"
 
 #: data/ui/preferences.ui:87
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space."
-msgstr ""
+msgstr "Najstaršie zálohy budú v prípade nedostatku miesta odstránené skôr."
 
 #: data/ui/preferences.ui:101
 msgid "Schedule"
@@ -504,27 +563,27 @@ msgstr "Plánovanie"
 
 #: data/ui/preferences.ui:107
 msgid "Back Up _Automatically"
-msgstr ""
+msgstr "Zálohovať _automaticky"
 
 #: data/ui/preferences.ui:129
 msgid "Automatic Backup _Frequency"
-msgstr ""
+msgstr "Interval a_utomatického zálohovania"
 
 #: data/ui/preferences.ui:147
 msgid "Folders to Back Up"
-msgstr ""
+msgstr "Priečinky na zálohovanie"
 
 #: data/ui/preferences.ui:153
 msgid "Includes"
-msgstr ""
+msgstr "Vrátane"
 
 #: data/ui/preferences.ui:162
 msgid "Folders to Ignore"
-msgstr ""
+msgstr "Priečinky na vynechanie"
 
 #: data/ui/preferences.ui:168
 msgid "Excludes"
-msgstr ""
+msgstr "Okrem"
 
 #: data/ui/preferences.ui:177
 msgid "Preferences"
@@ -533,7 +592,7 @@ msgstr "Predvoľby"
 #. Translators: storage as in "where to store the backup"
 #: data/ui/preferences.ui:233
 msgid "_Storage Location"
-msgstr ""
+msgstr "U_miestnenie úložiska"
 
 #: data/ui/preferences.ui:270 data/ui/preferences.ui:354
 #: data/ui/preferences.ui:392 data/ui/preferences.ui:459
@@ -542,25 +601,28 @@ msgstr "Pri_ečinok"
 
 #: data/ui/preferences.ui:294
 msgid "_Reset Account Access"
-msgstr ""
+msgstr "O_bnoviť prístup k účtu"
 
 #: data/ui/preferences.ui:326
 msgid "_Network Location"
-msgstr ""
+msgstr "_Sieťové umiestnenie"
 
 #: data/ui/preferences.ui:433 libdeja/BackendUnsupported.vala:29
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
 msgstr ""
+"Toto umiestnenie úložiska už viac nie je podporované. Aj naďalej môžete "
+"používať nástroj duplicity priamo na zálohovanie alebo obnovenie vašich "
+"súborov."
 
 #: data/ui/preferences.ui:475
 msgid "_Choose Folder…"
-msgstr "_Vybrať priečinok..."
+msgstr "Zv_oliť priečinok…"
 
 #: data/ui/server-hint.ui:21
 msgid "Network Locations"
-msgstr ""
+msgstr "Sieťové umiestnenia"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
 #: data/ui/server-hint.ui:34
@@ -568,30 +630,32 @@ msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
 msgstr ""
+"Sieťové umiestnenia sú tvorené z predpony protokolu, adresy a niekedy z "
+"cesty v závislosti od protokolu. Príklady:"
 
 #: data/ui/server-hint.ui:69
 msgid "Available Protocols"
-msgstr ""
+msgstr "Dostupné protokoly"
 
 #: data/ui/server-hint.ui:83
 msgid "AppleTalk"
-msgstr ""
+msgstr "AppleTalk"
 
 #: data/ui/server-hint.ui:94
 msgid "File Transfer Protocol"
-msgstr ""
+msgstr "Protokol prenosu súborov (FTP)"
 
 #: data/ui/server-hint.ui:105
 msgid "Network File System"
-msgstr ""
+msgstr "Sieťový súborový systém"
 
 #: data/ui/server-hint.ui:116
 msgid "Samba"
-msgstr ""
+msgstr "Samba"
 
 #: data/ui/server-hint.ui:127
 msgid "SSH File Transfer Protocol"
-msgstr ""
+msgstr "Protokol prenosu súborov SSH"
 
 #: data/ui/server-hint.ui:138
 msgid "WebDAV"
@@ -599,67 +663,75 @@ msgstr "WebDAV"
 
 #: data/ui/server-hint.ui:149
 msgid "Prefix"
-msgstr ""
+msgstr "Predpona"
 
 #. Translators: do not translate ftp:// and ftps://
 #: data/ui/server-hint.ui:174
 msgid "ftp:// or ftps://"
-msgstr ""
+msgstr "ftp:// alebo ftps://"
 
 #: data/ui/server-hint.ui:196
 msgid "smb://"
-msgstr ""
+msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
 #: data/ui/server-hint.ui:207
 msgid "sftp:// or ssh://"
-msgstr ""
+msgstr "sftp:// alebo ssh://"
 
 #. Translators: do not translate dav:// and davs://
 #: data/ui/server-hint.ui:218
 msgid "dav:// or davs://"
-msgstr ""
+msgstr "dav:// alebo davs://"
 
-#: deja-dup/Assistant.vala:282
+#: deja-dup/Assistant.vala:284
 msgid "Co_ntinue"
 msgstr "_Pokračovať"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:290
 msgctxt "verb"
 msgid "_Test"
-msgstr ""
+msgstr "Od_skúšať"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "Po_kračovať neskôr"
 
-#: deja-dup/Assistant.vala:330
-msgid "_Back"
-msgstr ""
-
 #: deja-dup/Assistant.vala:332
+msgid "_Back"
+msgstr "_Späť"
+
+#: deja-dup/Assistant.vala:334
 msgid "_Close"
-msgstr ""
+msgstr "_Zavrieť"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:351
 msgid "_Forward"
-msgstr ""
+msgstr "_Dopredu"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Zálohovať"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Zálohovať"
 
-#: deja-dup/AssistantBackup.vala:81
+#: deja-dup/AssistantBackup.vala:91
+msgid ""
+"The following folders cannot be backed up because Backups does not have "
+"access to them:"
+msgstr ""
+"Nasledovné priečinky sa nedajú zálohovať, pretože aplikácia Zálohy nemá k "
+"nim prístup:"
+
+#: deja-dup/AssistantBackup.vala:107
 msgid "Creating the first backup.  This may take a while."
 msgstr "Vytvára sa prvá záloha. Môže to chvíľu trvať."
 
-#: deja-dup/AssistantBackup.vala:82
+#: deja-dup/AssistantBackup.vala:108
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -669,230 +741,253 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:113
+#: deja-dup/AssistantBackup.vala:134
 msgid "Backing up:"
 msgstr "Zálohuje sa:"
 
-#: deja-dup/AssistantBackup.vala:122
+#: deja-dup/AssistantBackup.vala:143
 msgid "Backup Failed"
 msgstr "Zálohovanie zlyhalo"
 
-#: deja-dup/AssistantBackup.vala:125
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup Finished"
 msgstr "Záloha dokončená"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:129
+#: deja-dup/AssistantBackup.vala:150
 msgid "Your files were successfully backed up and tested."
-msgstr ""
+msgstr "Vaše súbory boli úspešne zálohované a odskúšané."
 
-#: deja-dup/AssistantBackup.vala:136
+#: deja-dup/AssistantBackup.vala:157
 msgid "Backing Up…"
-msgstr "Zálohuje sa..."
+msgstr "Zálohuje sa…"
 
-#: deja-dup/AssistantOperation.vala:165
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:184
+msgid "Backup in progress"
+msgstr "Prebieha zálohovanie"
+
+#: deja-dup/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "Odkiaľ sa má obnoviť?"
+
+#: deja-dup/AssistantLocation.vala:26
+msgid "_Backup location"
+msgstr "_Umiestnenie zálohy"
+
+#: deja-dup/AssistantLocation.vala:33
+msgid "_Search"
+msgstr "_Hľadať"
+
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning:"
 msgstr "Prehľadáva sa:"
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning…"
-msgstr "Prehľadáva sa..."
+msgstr "Prehľadáva sa…"
 
-#: deja-dup/AssistantOperation.vala:270
+#: deja-dup/AssistantOperation.vala:268
 msgid "_Details"
 msgstr "_Podrobnosti"
 
-#: deja-dup/AssistantOperation.vala:315
+#: deja-dup/AssistantOperation.vala:314
 msgid "In order to continue, the following packages need to be installed:"
-msgstr ""
+msgstr "Pre pokračovanie je potrebné nainštalovať nasledovné balíky:"
 
-#: deja-dup/AssistantOperation.vala:351
+#: deja-dup/AssistantOperation.vala:350
 msgid "_Allow restoring without a password"
 msgstr "_Umožniť obnovu bez hesla"
 
-#: deja-dup/AssistantOperation.vala:357
+#: deja-dup/AssistantOperation.vala:356
 msgid "_Password-protect your backup"
 msgstr "_Chrániť zálohu heslom"
 
-#: deja-dup/AssistantOperation.vala:369
+#: deja-dup/AssistantOperation.vala:368
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
-msgstr ""
-"Pre obnovenie súborov bude potrebné vaše heslo. Môžete ho teraz zadať."
+msgstr "Pre obnovenie súborov bude potrebné vaše heslo. Môžete ho teraz zadať."
 
-#: deja-dup/AssistantOperation.vala:401
+#: deja-dup/AssistantOperation.vala:400
 msgid "Confir_m password"
 msgstr "Po_tvrdenie hesla"
 
-#: deja-dup/AssistantOperation.vala:440
+#: deja-dup/AssistantOperation.vala:439
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
 "brief restore test."
 msgstr ""
+"Kvôli kontrole, či budete schopný obnoviť vaše súbory v prípade núdze, "
+"prosím, zadajte vaše šifrovacie heslo znovu, na vykonanie krátkeho testu "
+"obnovenia."
 
-#: deja-dup/AssistantOperation.vala:469
+#: deja-dup/AssistantOperation.vala:468
 msgid "Test every two _months"
-msgstr ""
+msgstr "Odskúšať každé dva _mesiace"
 
-#: deja-dup/AssistantOperation.vala:501
+#: deja-dup/AssistantOperation.vala:500
 msgid "_Grant Access"
-msgstr ""
+msgstr "_Udeliť prístup"
 
-#: deja-dup/AssistantOperation.vala:563
+#: deja-dup/AssistantOperation.vala:562
 msgid "Install Packages"
-msgstr ""
+msgstr "Inštalácia balíkov"
 
-#: deja-dup/AssistantOperation.vala:578
+#: deja-dup/AssistantOperation.vala:577
 msgid "Summary"
 msgstr "Súhrn"
 
-#: deja-dup/AssistantOperation.vala:600
+#: deja-dup/AssistantOperation.vala:599
 msgid "Restore Test"
-msgstr ""
+msgstr "Skúška obnovenia"
 
-#: deja-dup/AssistantOperation.vala:608
+#: deja-dup/AssistantOperation.vala:607
 msgid "Grant Access"
-msgstr ""
+msgstr "Udelenie prístupu"
 
-#. For most, don't do anything special.  Show generic 'unknown error'
-#. message, but provide the exception text for better bug reports.
-#. Plus, sometimes it may clue the user in to what's wrong.
-#. But first, try to restart without a cache, since that seems to quite
-#. frequently fix odd metadata errors with duplicity.  If we hit an error
-#. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:707
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Failed with an unknown error."
-msgstr "Zlyhanie s neznámou chybou."
-
-#: deja-dup/AssistantOperation.vala:863
+#: deja-dup/AssistantOperation.vala:815
 msgid "Require Password?"
-msgstr "Požadovať heslo?"
+msgstr "Má sa vyžadovať heslo?"
 
-#: deja-dup/AssistantOperation.vala:865
+#: deja-dup/AssistantOperation.vala:817
 msgid "Encryption Password Needed"
 msgstr "Vyžaduje sa šifrovacie heslo"
 
-#: deja-dup/AssistantOperation.vala:989
+#: deja-dup/AssistantOperation.vala:866
+msgid "Backups needs your encryption password to continue"
+msgstr "Aplikácia Zálohy potrebuje pre pokračovanie vaše šifrovacie heslo"
+
+#: deja-dup/AssistantOperation.vala:903
+msgid "Backups needs your input to continue"
+msgstr "Aplikácia Zálohy potrebuje pre pokračovanie váš vstup"
+
+#: deja-dup/AssistantOperation.vala:941
 msgctxt "verb"
 msgid "_Install"
-msgstr ""
+msgstr "_Inštalovať"
 
-#: deja-dup/AssistantRestore.vala:97
-msgid "_Backup location"
-msgstr "_Umiestnenie zálohy"
+#: deja-dup/AssistantOperation.vala:946
+msgid "Backups needs to install packages to continue"
+msgstr "Aplikácia Zálohy potrebuje pre pokračovanie nainštalovať balíky"
 
-#: deja-dup/AssistantRestore.vala:118
-msgid "Restore From Where?"
-msgstr "Odkiaľ obnoviť?"
-
-#: deja-dup/AssistantRestore.vala:185
+#: deja-dup/AssistantRestore.vala:154
 msgid "Restore files to _original locations"
-msgstr "Obnoviť súbory na _pôvodné miesta"
+msgstr "Obnoviť súbory na _pôvodné umiestnenia"
 
-#: deja-dup/AssistantRestore.vala:195
+#: deja-dup/AssistantRestore.vala:164
 msgid "Restore to _specific folder"
 msgstr "Obnoviť súbory do _určeného priečinka"
 
-#: deja-dup/AssistantRestore.vala:207
+#: deja-dup/AssistantRestore.vala:176
 msgid "Choose destination for restored files"
 msgstr "Vyberte cieľ pre obnovu súborov"
 
-#: deja-dup/AssistantRestore.vala:215
+#: deja-dup/AssistantRestore.vala:184
 msgid "Restore _folder"
 msgstr "Obnoviť p_riečinok"
 
-#: deja-dup/AssistantRestore.vala:228
+#: deja-dup/AssistantRestore.vala:197
 msgid "Backups does not have permission to restore the following files:"
-msgstr ""
+msgstr "Aplikácia Zálohy nemá oprávnenie na obnovenie nasledovných súborov:"
 
-#: deja-dup/AssistantRestore.vala:292
+#: deja-dup/AssistantRestore.vala:260
 msgid "Backup location"
 msgstr "Umiestnenie zálohy"
 
-#: deja-dup/AssistantRestore.vala:307
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore date"
 msgstr "Dátum obnovy"
 
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:283
 msgid "Restore folder"
-msgstr "Obnoviť priečinok"
+msgstr "Priečinok obnovy"
 
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:313
 msgid "Checking for Backups…"
-msgstr "Hľadajú sa zálohy..."
+msgstr "Kontrolujú sa zálohy…"
 
-#: deja-dup/AssistantRestore.vala:349
+#: deja-dup/AssistantRestore.vala:321
 msgid "Restore From When?"
-msgstr "Z akého dátumu obnoviť?"
+msgstr "Od akého dátumu obnoviť?"
 
-#: deja-dup/AssistantRestore.vala:360
+#: deja-dup/AssistantRestore.vala:332
 msgid "Restore to Where?"
-msgstr "Obnoiť kam?"
+msgstr "Kam sa má obnoviť?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:395
+#: deja-dup/AssistantRestore.vala:367
 msgid "Restoring:"
 msgstr "Obnovuje sa:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:405
+#: deja-dup/AssistantRestore.vala:377
 msgid "No backups to restore"
-msgstr "Žiadna záloha na obnovenie"
+msgstr "Žiadna zálohy na obnovenie"
 
-#: deja-dup/AssistantRestore.vala:514
+#: deja-dup/AssistantRestore.vala:484
 msgid "Original location"
 msgstr "Pôvodné umiestnenie"
 
-#: deja-dup/AssistantRestore.vala:525
+#: deja-dup/AssistantRestore.vala:495
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Súbory na obnovenie"
 msgstr[1] "Súbor na obnovenie"
 msgstr[2] "Súbory na obnovenie"
 
-#: deja-dup/AssistantRestore.vala:546
+#: deja-dup/AssistantRestore.vala:516
 msgid "Restore Failed"
-msgstr "Obnova zlyhala"
+msgstr "Obnovenie zlyhalo"
 
-#: deja-dup/AssistantRestore.vala:548
+#: deja-dup/AssistantRestore.vala:518
 msgid "Restore Finished"
-msgstr "Obnova dokončená"
+msgstr "Obnovenie je hotové"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:551
+#: deja-dup/AssistantRestore.vala:521
 msgid "Your files were successfully restored."
 msgstr "Vaše súbory boli úspešne obnovené."
 
-#: deja-dup/AssistantRestore.vala:554
+#: deja-dup/AssistantRestore.vala:524
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Vaše súbory boli úspešne obnovené."
-msgstr[1] "Vaš súbor bol úspešne obnovený."
+msgstr[1] "Váš súbor bol úspešne obnovený."
 msgstr[2] "Vaše súbory boli úspešne obnovené."
 
-#: deja-dup/AssistantRestore.vala:561 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
 msgid "Restoring…"
-msgstr "Obnovuje sa..."
+msgstr "Obnovuje sa…"
 
-#: deja-dup/Browser.vala:201
+#: deja-dup/AssistantRestore.vala:601
+msgid "Restore in progress"
+msgstr "Prebieha obnovovanie"
+
+#: deja-dup/Background.vala:51
+msgid "Cannot back up automatically"
+msgstr "Nedá sa vykonať automatické zálohovanie"
+
+#: deja-dup/Browser.vala:206
 msgid "Click on items to select them"
-msgstr ""
+msgstr "Kliknutím na položky ich vyberiete"
 
-#: deja-dup/Browser.vala:203
+#: deja-dup/Browser.vala:208
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%u vybraných"
+msgstr[1] "%u vybraná"
+msgstr[2] "%u vybrané"
 
-#: deja-dup/Browser.vala:380
+#: deja-dup/Browser.vala:385
 msgid "Authentication needed"
-msgstr ""
+msgstr "Je potrebné overenie totožnosti"
 
 #: deja-dup/ConfigDelete.vala:16
 msgid "At least six months"
@@ -914,59 +1009,66 @@ msgstr[0] "Najmenej %d dní"
 msgstr[1] "Najmenej %d deň"
 msgstr[2] "Najmenej %d dni"
 
-#: deja-dup/ConfigFolderList.vala:51
+#: deja-dup/ConfigFolderList.vala:54
 msgid "Remove"
 msgstr "Odobrať"
 
-#: deja-dup/ConfigFolderList.vala:69
+#: deja-dup/ConfigFolderList.vala:67
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr ""
+"Tento priečinok sa nedá zálohovať, pretože aplikácia Zálohy nemá k nemu "
+"prístup."
+
+#: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
 msgstr "Pridať"
 
-#: deja-dup/ConfigFolderList.vala:79
+#: deja-dup/ConfigFolderList.vala:90
 msgid "Choose folders"
 msgstr "Vybrať priečinky"
 
-#: deja-dup/ConfigFolderList.vala:81
+#: deja-dup/ConfigFolderList.vala:92
 msgid "_Add"
 msgstr "_Pridať"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: deja-dup/ConfigLocationCombo.vala:70 deja-dup/ConfigLocationCombo.vala:264
 #: libdeja/BackendGoogle.vala:86
 msgid "Google Drive"
-msgstr ""
+msgstr "Disk Google"
 
-#: deja-dup/ConfigLocationCombo.vala:73
+#: deja-dup/ConfigLocationCombo.vala:71
 msgid "Local Folder"
 msgstr "Miestny priečinok"
 
-#: deja-dup/ConfigLocationCombo.vala:74
+#: deja-dup/ConfigLocationCombo.vala:72
 msgid "Network Server"
-msgstr ""
+msgstr "Sieťový server"
 
-#: deja-dup/ConfigLocationCombo.vala:264
+#: deja-dup/ConfigLocationCombo.vala:262
 msgid "Google Cloud Storage"
-msgstr ""
+msgstr "Cloudové úložisko spoločnosti Google"
+
+#: deja-dup/ConfigLocationCombo.vala:266
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
 
 #: deja-dup/ConfigLocationCombo.vala:268
-msgid "OpenStack Swift"
-msgstr ""
+msgid "Rackspace Cloud Files"
+msgstr "Súbory v cloude služby Rackspace"
 
 #: deja-dup/ConfigLocationCombo.vala:270
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/ConfigLocationCombo.vala:272
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
 #: deja-dup/ConfigLocationGrid.vala:109
 msgid "Choose Folder"
-msgstr "Vybrať priečinok"
+msgstr "Výber priečinku"
 
 #: deja-dup/ConfigLocationGrid.vala:112
 msgid "_OK"
-msgstr ""
+msgstr "_OK"
 
 #: deja-dup/ConfigPeriod.vala:24
 msgid "Daily"
@@ -987,115 +1089,126 @@ msgstr[2] "Každé %d dni"
 #. Check for some really simple/common friendly names
 #: deja-dup/ConfigStatusLabel.vala:46
 msgid "Next backup is today."
-msgstr ""
+msgstr "Nasledujúca záloha bude dnes."
 
 #: deja-dup/ConfigStatusLabel.vala:48
 msgid "Next backup is tomorrow."
-msgstr ""
+msgstr "Nasledujúce zálohovanie bude zajtra."
 
 #: deja-dup/ConfigStatusLabel.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Nasledujúce zálohovanie bude o %d dní."
+msgstr[1] "Nasledujúce zálohovanie bude o %d deň."
+msgstr[2] "Nasledujúce zálohovanie bude o %d dni."
 
 #. Check for some really simple/common friendly names
 #: deja-dup/ConfigStatusLabel.vala:73
 msgid "Last backup was today."
-msgstr ""
+msgstr "Posledné zálohovanie bolo dnes."
 
 #: deja-dup/ConfigStatusLabel.vala:75
 msgid "Last backup was yesterday."
-msgstr ""
+msgstr "Posledné zálohovanie bola včera."
 
 #: deja-dup/ConfigStatusLabel.vala:83
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Posledná zálohovanie bolo pred %d dňami."
+msgstr[1] "Posledné zálohovanie bolo pred %d dňom."
+msgstr[2] "Posledné zálohovanie bolo pred %d dňami."
 
 #: deja-dup/ConfigStatusLabel.vala:96
 msgid "No recent backups."
-msgstr ""
+msgstr "Žiadne nedávne zálohovania."
 
 #: deja-dup/ConfigStatusLabel.vala:102
 msgid "No backup scheduled."
-msgstr ""
+msgstr "Nie je naplánované žiadne zálohovanie."
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "Pripojiť k serveru"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "_Používateľské meno"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "_Heslo"
 
-#: deja-dup/MountOperationAssistant.vala:26
+#: deja-dup/MountOperationAssistant.vala:25
 msgid "S_how password"
-msgstr "_Ukázať heslo"
+msgstr "Zobraziť h_eslo"
 
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:65
 msgid "Location not available"
 msgstr "Umiestnenie je nedostupné"
 
-#: deja-dup/MountOperationAssistant.vala:148
-msgid "Connect _anonymously"
-msgstr "_Anonymné prihlásenie"
+#: deja-dup/MountOperationAssistant.vala:80
+msgid "Backups needs your password to continue"
+msgstr "Aplikácia Zálohy potrebuje pre pokračovanie vaše heslo"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:146
+msgid "Connect _anonymously"
+msgstr "Prihlásiť sa _anonymne"
+
+#: deja-dup/MountOperationAssistant.vala:150
 msgid "Connect as u_ser"
 msgstr "P_ripojiť sa ako používateľ"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:193
 msgid "_Domain"
 msgstr "_Doména"
 
-#: deja-dup/Prompt.vala:18
-msgid "Keep your files safe by backing up regularly"
-msgstr "Ochránte svoje súbory pravidelným zálohovaním"
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "Spúšťa sa naplánované zálohovanie"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "Naplánovaná záloha bola odložená"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "Zálohovanie je dokončené"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "Zálohovanie je hotové"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "Ale nie všetky súbory boli úspešne zálohované."
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "Zálohovanie zlyhalo"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "Obnovovanie zlyhalo"
+
+#: deja-dup/Notifications.vala:71
+msgid "Keep your files safe by backing up regularly"
+msgstr "Uchovajte vaše súbory v bezpečí pravidelným zálohovaním"
+
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
 "that backup."
 msgstr ""
-"Dôležité dokumenty, údaje a nastavenia sa dajú chrániť uložením do zálohy. V "
-"prípade nešťastia si ich budete môcť zo zálohy obnoviť."
+"Dôležité dokumenty, údaje a nastavenia môžu byť ochránené uložením do "
+"zálohy. V prípade nešťastia si ich budete môcť z tejto zálohy obnoviť."
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "_Znova nezobrazovať"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "Nezobrazovať znovu"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "_Otvoriť nastavenia zálohovania"
-
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "Zálohovanie dokončené"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "Zálohovanie dokončené"
-
-#: deja-dup/StatusIcon.vala:51
-msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr ""
-"Nie všetky súbory boli úspešne zálohované. Pre viac podrobností pozrite "
-"dialógové okno."
-
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "Spúšťa sa naplánované zálohovanie"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "Otvoriť aplikáciu Zálohy"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1106,36 +1219,37 @@ msgstr "Spúšťa sa naplánované zálohovanie"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:22
+#: deja-dup/WidgetUtils.vala:31
 #, c-format
 msgid "Could not display %s"
 msgstr "Nepodarilo sa zobraziť %s"
 
-#: deja-dup/main.vala:20 monitor/monitor.vala:24
+#: deja-dup/main.vala:21 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Zobrazí verziu"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:22
 msgid "Restore given files"
 msgstr "Obnoví určené súbory"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:23
 msgid "Immediately start a backup"
 msgstr "Ihneď spustí zálohovanie"
 
-#: deja-dup/main.vala:81 deja-dup/main.vala:96
+#: deja-dup/main.vala:80 deja-dup/main.vala:98
 msgid "An operation is already in progress"
-msgstr ""
+msgstr "Operácia už prebieha"
 
-#: deja-dup/main.vala:213
-msgid "Scheduled backup delayed"
-msgstr "Naplánovaná záloha bola odložená"
+#: deja-dup/main.vala:85
+msgid "Please list files to restore"
+msgstr "Prosím, vytvorte zoznam súborov na obnovenie"
 
-#: deja-dup/main.vala:244
+#: deja-dup/main.vala:248
 msgid "translator-credits"
 msgstr ""
-"Launchpad Contributions:\n"
-"  Dusan Kazik https://launchpad.net/~prescott66\n"
+"Dušan Kazik <prescott66@gmail.com>\n"
+"\n"
+"Prispievatelia zo služby Launchpad:\n"
 "  Ivan Kmeťo https://launchpad.net/~ivo-kmeto\n"
 "  Marián Bača https://launchpad.net/~majoobaca-deactivatedaccount\n"
 "  Michael Terry https://launchpad.net/~mterry\n"
@@ -1147,24 +1261,24 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:484
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s na %2$s"
 
-#: libdeja/BackendDrive.vala:85
+#: libdeja/BackendDrive.vala:81
 #, c-format
 msgid "Backup will begin when %s is connected."
-msgstr ""
+msgstr "Zálohovanie začne po pripojení účtu %s."
 
-#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
-msgstr ""
+msgstr "Umiestnenie úložiska nie je dostupné"
 
-#: libdeja/BackendDrive.vala:174
+#: libdeja/BackendDrive.vala:215
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "Čaká sa na pripojenie „%s“ …"
+msgstr "Čaká sa na pripojenie jednotky „%s“…"
 
 #: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
 #: monitor/monitor.vala:72
@@ -1175,128 +1289,142 @@ msgstr "Zálohovanie sa začne, keď bude dostupné sieťové pripojenie."
 #: libdeja/BackendGoogle.vala:89
 #, c-format
 msgid "%s on Google Drive"
-msgstr ""
+msgstr "%s na Disku Google"
 
 #: libdeja/BackendGoogle.vala:132
 msgid "Could not log into Google servers."
-msgstr ""
+msgstr "Nepodarilo sa prihlásiť na servery spoločnosti Google."
 
 #: libdeja/BackendGoogle.vala:220
 msgid "Google credentials for Déjà Dup"
-msgstr ""
+msgstr "Poverenia účtu Google pre aplikáciu Déjà Dup"
 
 #: libdeja/BackendGoogle.vala:321
 msgid "You first need to allow Backups to access your Google account."
-msgstr ""
+msgstr "Najskôr musíte umožniť aplikácii Zálohy prístup k vášmu účtu Google."
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
-msgstr ""
+msgstr "Sieťový server nie je dostupný"
 
 #: libdeja/BackendRemote.vala:142
 msgid "Waiting for a network connection…"
-msgstr "Čaká sa na pripojenie do siete...."
+msgstr "Čaká sa na pripojenie k sieti…"
 
 #: libdeja/BackendRemote.vala:155
 msgid "Could not mount storage location."
-msgstr ""
+msgstr "Nepodarilo sa pripojiť umiestnenie úložiska."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
 #: libdeja/BackendRemote.vala:161
-msgid ""
-"Samba network locations must include both a hostname and a share name."
+msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
+"Sieťové umiestnenia Samba musia zahŕňať názov hostiteľa aj názov zdieľania."
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:451
 msgid "Access Granted"
-msgstr ""
+msgstr "Prístup udelený"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:452
 msgid "Backups will now continue. You can close this page."
-msgstr ""
+msgstr "Aplikácia Zálohy bude teraz pokračovať. Môžete zavrieť túto stránku."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:535
+#: libdeja/CommonUtils.vala:531
 #, c-format
 msgid "Home (%s)"
 msgstr "Domov (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:540
+#: libdeja/CommonUtils.vala:536
 msgid "Home"
 msgstr "Domov"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:545
+#: libdeja/CommonUtils.vala:541
 msgid "Trash"
 msgstr "Kôš"
 
-#: libdeja/CommonUtils.vala:607
+#: libdeja/CommonUtils.vala:603
 msgid "Backup encryption password"
 msgstr "Šifrovacie heslo pre zálohovanie"
 
+#: libdeja/InstallEnvFlatpak.vala:92
+msgid ""
+"Make sure Backups has permission to run in the background in Settings → "
+"Applications → Backups and try again."
+msgstr ""
+"Uistite sa, že aplikácia Zálohy má oprávnenie na spúšťanie na pozadí v "
+"ponuke Nastavenia → Aplikácie → Zálohy a skúste to znovu."
+
 #: libdeja/Operation.vala:43
 msgid "Backing up…"
-msgstr "Zálohuje sa..."
+msgstr "Zálohuje sa…"
 
 #: libdeja/Operation.vala:47
 msgid "Checking for backups…"
-msgstr "Hľadajú sa zálohy..."
+msgstr "Kontrolujú sa zálohy…"
 
 #: libdeja/Operation.vala:49
 msgid "Listing files…"
-msgstr "Vytvára sa zoznam súborov..."
+msgstr "Vytvára sa zoznam súborov…"
 
 #: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:381
-#: libdeja/tools/duplicity/DuplicityJob.vala:392
-#: libdeja/tools/duplicity/DuplicityJob.vala:428
+#: libdeja/tools/duplicity/DuplicityJob.vala:388
+#: libdeja/tools/duplicity/DuplicityJob.vala:399
+#: libdeja/tools/duplicity/DuplicityJob.vala:435
 msgid "Preparing…"
-msgstr "Pripravuje sa..."
+msgstr "Pripravuje sa…"
 
 #: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
 msgid "Verifying backup…"
-msgstr ""
+msgstr "Overuje sa záloha…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
-msgstr "Obnovujú sa súbory..."
+msgstr "Obnovujú sa súbory…"
 
 #: libdeja/OperationVerify.vala:78
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
 msgstr ""
+"Zdá sa, že vaša záloha je poškodená. Mali by ste túto zálohu odstrániť a "
+"skúsiť to znovu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:79
+#: libdeja/tools/duplicity/DuplicityJob.vala:78
 #: libdeja/tools/duplicity/DuplicityJob.vala:162
 msgid "Paused (no network)"
 msgstr "Pozastavené (bez siete)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:538
+#: libdeja/tools/duplicity/DuplicityJob.vala:545
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
+"Umiestnenie pre zálohu je príliš malé. Skúste použiť iné aspoň s veľkosťou "
+"%s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:563
+#: libdeja/tools/duplicity/DuplicityJob.vala:570
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
+"Umiestnenie pre zálohu nemá dostatok voľného miesta. Skúste použiť iné s "
+"veľkosťou aspoň %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:584
-#: libdeja/tools/duplicity/DuplicityJob.vala:598
+#: libdeja/tools/duplicity/DuplicityJob.vala:591
+#: libdeja/tools/duplicity/DuplicityJob.vala:605
 msgid "Cleaning up…"
-msgstr "Čistí sa..."
+msgstr "Čistí sa…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:671
+#: libdeja/tools/duplicity/DuplicityJob.vala:685
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1307,7 +1435,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:687
+#: libdeja/tools/duplicity/DuplicityJob.vala:701
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1315,20 +1443,31 @@ msgstr ""
 "Nepodarilo sa obnoviť nasledujúce súbory. Uistite sa, prosím, že sú "
 "zapisovateľné."
 
+#. For most, don't do anything special.  Show generic 'unknown error'
+#. message, but provide the exception text for better bug reports.
+#. Plus, sometimes it may clue the user in to what's wrong.
+#. But first, try to restart without a cache, since that seems to quite
+#. frequently fix odd metadata errors with duplicity.  If we hit an error
+#. a second time, we'll show the unknown error message.
+#: libdeja/tools/duplicity/DuplicityJob.vala:721
+#: libdeja/tools/duplicity/DuplicityJob.vala:1105
+msgid "Failed with an unknown error."
+msgstr "Zlyhanie s neznámou chybou."
+
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:909
+#: libdeja/tools/duplicity/DuplicityJob.vala:924
 msgid "Bad encryption password."
 msgstr "Nesprávne šifrovacie heslo."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:954
+#: libdeja/tools/duplicity/DuplicityJob.vala:969
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Nepodarilo sa obnoviť „%s“: Súbor nebol nájdený v zálohe"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:965
+#: libdeja/tools/duplicity/DuplicityJob.vala:980
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1338,68 +1477,68 @@ msgstr ""
 "Existujúca záloha je z počítača z názvom %s, no aktuálny názov počítača je "
 "%s.  Ak je to neočakávané, mali by ste zálohovať na iné miesto."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:968
+#: libdeja/tools/duplicity/DuplicityJob.vala:983
 msgid "Computer name changed"
 msgstr "Názov počítača bol zmenený"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1003
+#: libdeja/tools/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
-msgstr "Prístupm zamietnutý pri pokuse o vytvorenie „%s“"
+msgstr "Prístup zamietnutý pri pokuse o vytvorenie súboru „%s“."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1007
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/tools/duplicity/DuplicityJob.vala:1026
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
-msgstr "Prístupm zamietnutý pri pokuse o čítanie „%s“"
+msgstr "Prístup zamietnutý pri pokuse o čítanie súboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1015
+#: libdeja/tools/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
-msgstr "Prístupm zamietnutý pri pokuse o odstránenie „%s“"
+msgstr "Prístup zamietnutý pri pokuse o odstránenie súboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/tools/duplicity/DuplicityJob.vala:1037
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
-msgstr "Miesto pre zálohu „%s“ neexistuje"
+msgstr "Umiestnenie zálohy „%s“ neexistuje."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1028
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/tools/duplicity/DuplicityJob.vala:1076
 msgid "No space left."
-msgstr "Žiadne voľné miesto."
+msgstr "Nezostalo žiadne voľné miesto."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Chyba pri čítaní súboru „%s“."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1052
+#: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Chyba pri zapisovaní do súboru „%s“’."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
 msgid "No space left in ‘%s’."
-msgstr "Žiadne voľné miesto v „%s“."
+msgstr "V umiestnení „%s“ nezostalo žiadne voľné miesto."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
+#: libdeja/tools/duplicity/DuplicityJob.vala:1086
 msgid "No backup files found"
-msgstr "Záložné súbory neboli nájdené"
+msgstr "Nenašli sa žiadne záložné súbory"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1121
+#: libdeja/tools/duplicity/DuplicityJob.vala:1136
 msgid "Uploading…"
-msgstr "Nahráva sa..."
+msgstr "Odovzdáva sa…"
 
 #: libdeja/tools/duplicity/DuplicityPlugin.vala:33
 msgid "Could not understand duplicity version."
-msgstr ""
+msgstr "Nepodarilo sa porozumieť verzii nástroja duplicity."
 
 #: libdeja/tools/duplicity/DuplicityPlugin.vala:43
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
-msgstr ""
+msgstr "Nepodarilo sa porozumieť verzii „%s“ nástroja duplicity."
 
 #: libdeja/tools/duplicity/DuplicityPlugin.vala:46
 #, c-format
@@ -1407,11 +1546,17 @@ msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr ""
+"Aplikácia Zálohy vyžaduje aspoň verziu %d.%d.%.2d nástroja duplicity, ale "
+"bola nájdená iba verzia %d.%d.%.2d"
 
 #: monitor/monitor.vala:75
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
+"Zálohovanie sa začne, keď bude dostupné neobmedzené sieťové pripojenie."
+
+#~ msgid "Connect to Server"
+#~ msgstr "Pripojiť k serveru"
 
 #~ msgid "Folder"
 #~ msgstr "Priečinok"
@@ -1428,7 +1573,6 @@ msgstr ""
 #~ msgid "Ubuntu One"
 #~ msgstr "Ubuntu One"
 
-#, c-format
 #~ msgid "Could not restore ‘%s’: Not a valid file location"
 #~ msgstr "Nepodarilo sa obnoviť „%s“: Nie je to platné umiestnenie súboru"
 
@@ -1466,8 +1610,8 @@ msgstr ""
 #~ "Which Amazon S3 bucket to store files in. This does not need to exist "
 #~ "already. Only legal hostname strings are valid."
 #~ msgstr ""
-#~ "Oblasť na Amazon S3, do ktorej sa budú ukladať zálohy. Ak neexistuje, bude "
-#~ "vytvorená. Platné sú len reťazce so správnymi názvami hostiteľov."
+#~ "Oblasť na Amazon S3, do ktorej sa budú ukladať zálohy. Ak neexistuje, "
+#~ "bude vytvorená. Platné sú len reťazce so správnymi názvami hostiteľov."
 
 #~ msgid "The Amazon S3 folder"
 #~ msgstr "Priečinok Amazon S3"
@@ -1483,8 +1627,8 @@ msgstr ""
 #~ msgstr "Kontajner Rackspace Cloud Files"
 
 #~ msgid ""
-#~ "Which Rackspace Cloud Files container to store files in. This does not need "
-#~ "to exist already. Only legal hostname strings are valid."
+#~ "Which Rackspace Cloud Files container to store files in. This does not "
+#~ "need to exist already. Only legal hostname strings are valid."
 #~ msgstr ""
 #~ "Kontajner na Rackspace Cloud Files, do ktorého sa budú ukladať zálohy. Ak "
 #~ "neexistuje, bude vytvorený. Platné sú len reťazce so správnymi názvami "
@@ -1529,14 +1673,12 @@ msgstr ""
 #~ msgid "Scanning for files from up to a month ago…"
 #~ msgstr "Hľadajú sa mesiac staré súbory...."
 
-#, c-format
 #~ msgid "Scanning for files from about a month ago…"
 #~ msgid_plural "Scanning for files from about %d months ago…"
 #~ msgstr[0] "Hľadajú sa %d mesiacov staré súbory...."
 #~ msgstr[1] "Hľadajú sa mesiac staré súbory...."
 #~ msgstr[2] "Hľadajú sa %d mesiace staré súbory...."
 
-#, c-format
 #~ msgid "Scanning for files from about a year ago…"
 #~ msgid_plural "Scanning for files from about %d years ago…"
 #~ msgstr[0] "Hľadajú sa %d rokov staré súbory...."
@@ -1567,17 +1709,15 @@ msgstr ""
 #~ msgid "S3 Access Key I_D"
 #~ msgstr "_Identifikátor prístupového kľúča pre S3"
 
-#, c-format
 #~ msgid "%s on Rackspace Cloud Files"
 #~ msgstr "%s na Rackspace Cloud Files"
 
 #~ msgid "Permission denied"
 #~ msgstr "Prístup zamietnutý"
 
-#, c-format
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a "
-#~ "href=\"%s\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
+#~ "\">online</a>."
 #~ msgstr ""
 #~ "Môžete sa <a href=\"%s\">zaregistrovať a získať účet Rackspace Cloud "
 #~ "Files</a>."
@@ -1594,11 +1734,9 @@ msgstr ""
 #~ msgid "_Remember API access key"
 #~ msgstr "_Zapamätať prístupvý kľúč rozhrania API"
 
-#, c-format
 #~ msgid "%s on Amazon S3"
 #~ msgstr "%s na Amazon S3"
 
-#, c-format
 #~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
 #~ msgstr "Môžete sa <a href=\"%s\">zaregistrovať a získať účet Amazon S3</a>."
 
@@ -1623,16 +1761,16 @@ msgstr ""
 #~ msgid "Invalid secret key."
 #~ msgstr "Neplatný tajný kľúč."
 
-#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgid ""
+#~ "Your Amazon Web Services account is not signed up for the S3 service."
 #~ msgstr "Váš účet pre Amazon Web Services nie je registrovaný pre službu S3."
 
 #~ msgid "S3 bucket name is not available."
 #~ msgstr "Názov S3 oblasti nie je k dispozícii."
 
-#, c-format
 #~ msgid ""
-#~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
-#~ "only found version %d.%d.%.2d"
+#~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, "
+#~ "but only found version %d.%d.%.2d"
 #~ msgstr ""
 #~ "Nástroj na zálohovanie Déjà Dup vyžaduje aspoň verziu %d.%d.%.2d programu "
 #~ "duplicity, no našiel iba verziu %d.%d.%.2d"
