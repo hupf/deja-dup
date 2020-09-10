@@ -35,12 +35,16 @@ devshell:
 		--env=PKG_CONFIG_PATH=`pwd`/builddir/dev/lib/pkgconfig \
 		--env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share:`pwd`/builddir/dev/share \
 		--filesystem=host \
+		--own-name=org.gnome.DejaDup \
+		--own-name=org.gnome.DejaDupDevel \
+		--socket=fallback-x11 \
+		--socket=wayland \
 		org.gnome.Sdk//master
 
 .PHONY: devshell-setup
 devshell-setup:
 	flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-	flatpak install --or-update gnome-nightly flatpak org.gnome.Sdk//master
+	flatpak install --or-update gnome-nightly org.gnome.Sdk//master
 	mkdir -p builddir
 	rm -rf builddir/libhandy
 	git clone --depth=1 --branch=libhandy-0-0 https://gitlab.gnome.org/GNOME/libhandy.git builddir/libhandy
