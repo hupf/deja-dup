@@ -156,6 +156,7 @@ public class DejaDupApp : Gtk.Application
   {
     base.startup();
 
+    Hdy.init();
     DejaDup.gui_initialize();
 
     add_action_entries(ACTIONS, this);
@@ -371,8 +372,6 @@ int main(string[] args)
   Gtk.Window.set_default_icon_name(Config.ICON_NAME);
 
   resources_get_resource()._register();
-
-  Hdy.init(ref args);
 
   return DejaDupApp.get_instance().run(args);
 }

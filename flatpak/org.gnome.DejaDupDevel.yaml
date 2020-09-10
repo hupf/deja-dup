@@ -31,17 +31,6 @@ modules:
   - ./pydrive2.yaml
 
 
-  - name: libhandy
-    buildsystem: meson
-    config-opts:
-      - -Dexamples=false
-      - -Dtests=false
-    sources:
-      - type: git
-        url: https://gitlab.gnome.org/GNOME/libhandy.git
-        tag: v0.0.13
-        commit: 7a193d7692c9c76a1a94f17c4d30b585f77d177c
-
   - name: deja-dup
     buildsystem: meson
     builddir: true
