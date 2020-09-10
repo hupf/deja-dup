@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-30 17:21+0000\n"
-"PO-Revision-Date: 2020-09-10 14:03+0200\n"
+"POT-Creation-Date: 2020-09-10 12:04+0000\n"
+"PO-Revision-Date: 2020-09-10 14:16+0200\n"
 "Last-Translator: Dušan Kazik <prescott66@gmail.com>\n"
 "Language-Team: Slovak <sk@li.org>\n"
 "Language: sk\n"
@@ -54,9 +54,9 @@ msgid ""
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
 "backend."
 msgstr ""
-"Aplikácia Déjà Dup je jednoduchý nástroj na zálohovanie. Zakrýva zložitosť "
-"správneho zálohovania (šifrované, uložené na vzdialenom mieste a pravidelné) "
-"a využíva nástroj duplicity ako podporný program."
+"Aplikácia Déjà Dup je jednoduchý nástroj na zálohovanie. Zjednodušuje "
+"správne zálohovanie (šifrované, uložené na vzdialenom mieste a pravidelné) a "
+"využíva nástroj duplicity ako podporný program."
 
 #: data/org.gnome.DejaDup.appdata.xml.in:20
 msgid ""
@@ -500,17 +500,17 @@ msgstr "Obnovenie"
 msgid "Con_tinue"
 msgstr "_Pokračovať"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
-#: deja-dup/AssistantOperation.vala:454
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:382
+#: deja-dup/AssistantOperation.vala:453
 msgid "E_ncryption password"
 msgstr "Šifrovacie _heslo"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
-#: deja-dup/AssistantOperation.vala:463
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:412
+#: deja-dup/AssistantOperation.vala:462
 msgid "_Show password"
 msgstr "_Zobraziť heslo"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:419
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "Zapa_mätať si heslo"
@@ -741,32 +741,39 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:134
+#: deja-dup/AssistantBackup.vala:123
 msgid "Backing up:"
 msgstr "Zálohuje sa:"
 
-#: deja-dup/AssistantBackup.vala:143
+#: deja-dup/AssistantBackup.vala:132
 msgid "Backup Failed"
 msgstr "Zálohovanie zlyhalo"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:135
 msgid "Backup Finished"
 msgstr "Záloha dokončená"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:150
+#: deja-dup/AssistantBackup.vala:139
 msgid "Your files were successfully backed up and tested."
 msgstr "Vaše súbory boli úspešne zálohované a odskúšané."
 
-#: deja-dup/AssistantBackup.vala:157
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backing Up…"
 msgstr "Zálohuje sa…"
+
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:152 deja-dup/AssistantOperation.vala:899
+msgid "Backups needs your input to continue"
+msgstr "Aplikácia Zálohy potrebuje pre pokračovanie váš vstup"
 
 #. At time of writing, gnome-shell still warns the user on logout even
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:184
+#: deja-dup/AssistantBackup.vala:179
 msgid "Backup in progress"
 msgstr "Prebieha zálohovanie"
 
@@ -782,41 +789,41 @@ msgstr "_Umiestnenie zálohy"
 msgid "_Search"
 msgstr "_Hľadať"
 
-#: deja-dup/AssistantOperation.vala:159
+#: deja-dup/AssistantOperation.vala:158
 msgid "Scanning:"
 msgstr "Prehľadáva sa:"
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning…"
 msgstr "Prehľadáva sa…"
 
-#: deja-dup/AssistantOperation.vala:268
+#: deja-dup/AssistantOperation.vala:267
 msgid "_Details"
 msgstr "_Podrobnosti"
 
-#: deja-dup/AssistantOperation.vala:314
+#: deja-dup/AssistantOperation.vala:313
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Pre pokračovanie je potrebné nainštalovať nasledovné balíky:"
 
-#: deja-dup/AssistantOperation.vala:350
+#: deja-dup/AssistantOperation.vala:349
 msgid "_Allow restoring without a password"
 msgstr "_Umožniť obnovu bez hesla"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:355
 msgid "_Password-protect your backup"
 msgstr "_Chrániť zálohu heslom"
 
-#: deja-dup/AssistantOperation.vala:368
+#: deja-dup/AssistantOperation.vala:367
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "Pre obnovenie súborov bude potrebné vaše heslo. Môžete ho teraz zadať."
 
-#: deja-dup/AssistantOperation.vala:400
+#: deja-dup/AssistantOperation.vala:399
 msgid "Confir_m password"
 msgstr "Po_tvrdenie hesla"
 
-#: deja-dup/AssistantOperation.vala:439
+#: deja-dup/AssistantOperation.vala:438
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -826,52 +833,48 @@ msgstr ""
 "prosím, zadajte vaše šifrovacie heslo znovu, na vykonanie krátkeho testu "
 "obnovenia."
 
-#: deja-dup/AssistantOperation.vala:468
+#: deja-dup/AssistantOperation.vala:467
 msgid "Test every two _months"
 msgstr "Odskúšať každé dva _mesiace"
 
-#: deja-dup/AssistantOperation.vala:500
+#: deja-dup/AssistantOperation.vala:499
 msgid "_Grant Access"
 msgstr "_Udeliť prístup"
 
-#: deja-dup/AssistantOperation.vala:562
+#: deja-dup/AssistantOperation.vala:561
 msgid "Install Packages"
 msgstr "Inštalácia balíkov"
 
-#: deja-dup/AssistantOperation.vala:577
+#: deja-dup/AssistantOperation.vala:576
 msgid "Summary"
 msgstr "Súhrn"
 
-#: deja-dup/AssistantOperation.vala:599
+#: deja-dup/AssistantOperation.vala:598
 msgid "Restore Test"
 msgstr "Skúška obnovenia"
 
-#: deja-dup/AssistantOperation.vala:607
+#: deja-dup/AssistantOperation.vala:606
 msgid "Grant Access"
 msgstr "Udelenie prístupu"
 
-#: deja-dup/AssistantOperation.vala:815
+#: deja-dup/AssistantOperation.vala:811
 msgid "Require Password?"
 msgstr "Má sa vyžadovať heslo?"
 
-#: deja-dup/AssistantOperation.vala:817
+#: deja-dup/AssistantOperation.vala:813
 msgid "Encryption Password Needed"
 msgstr "Vyžaduje sa šifrovacie heslo"
 
-#: deja-dup/AssistantOperation.vala:866
+#: deja-dup/AssistantOperation.vala:862
 msgid "Backups needs your encryption password to continue"
 msgstr "Aplikácia Zálohy potrebuje pre pokračovanie vaše šifrovacie heslo"
 
-#: deja-dup/AssistantOperation.vala:903
-msgid "Backups needs your input to continue"
-msgstr "Aplikácia Zálohy potrebuje pre pokračovanie váš vstup"
-
-#: deja-dup/AssistantOperation.vala:941
+#: deja-dup/AssistantOperation.vala:937
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Inštalovať"
 
-#: deja-dup/AssistantOperation.vala:946
+#: deja-dup/AssistantOperation.vala:942
 msgid "Backups needs to install packages to continue"
 msgstr "Aplikácia Zálohy potrebuje pre pokračovanie nainštalovať balíky"
 
@@ -1531,16 +1534,16 @@ msgstr "Nenašli sa žiadne záložné súbory"
 msgid "Uploading…"
 msgstr "Odovzdáva sa…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:34
 msgid "Could not understand duplicity version."
 msgstr "Nepodarilo sa porozumieť verzii nástroja duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:44
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Nepodarilo sa porozumieť verzii „%s“ nástroja duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:47
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
