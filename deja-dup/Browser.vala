@@ -64,7 +64,7 @@ class Browser : BuilderWidget
     stack.notify["visible-child-name"].connect(() => {
       if (stack.visible_child_name == "restore") {
         main_window.insert_action_group("restore", action_group);
-        start_operation();
+        maybe_start_operation();
       } else {
         main_window.insert_action_group("restore", null);
       }
@@ -73,12 +73,7 @@ class Browser : BuilderWidget
       if (application.operation != null)
         stop_operation(); // get out of way of a real backup/restore op
     });
-    application.window_removed.connect((win) => {
-      unowned var windows = application.get_windows();
-      var only_main_window = windows.length() == 1;
-      if (only_main_window && stack.visible_child_name == "restore")
-        start_operation();
-    });
+    application.window_removed.connect(maybe_start_operation);
 
     // Connect file store and icon view
     var icon_view = builder.get_object("restore-icon-view") as Gtk.IconView;
@@ -147,7 +142,7 @@ class Browser : BuilderWidget
     });
 
     var retry_button = builder.get_object("restore-error-retry-button") as Gtk.Button;
-    retry_button.clicked.connect(start_operation);
+    retry_button.clicked.connect(maybe_start_operation);
 
     var auth_button = builder.get_object("restore-auth-button") as Gtk.Button;
     auth_button.clicked.connect(start_auth);
@@ -171,11 +166,7 @@ class Browser : BuilderWidget
     watcher = new DejaDup.BackendWatcher();
     watcher.changed.connect(clear_operation);
     watcher.new_backup.connect(clear_operation);
-    application.notify["custom-backend"].connect(() => {
-      clear_operation();
-      if (application.custom_backend != null)
-        start_operation();
-    });
+    application.notify["custom-backend"].connect(clear_operation);
 
     // Set up passphrase dialog
     passphrase_loop = new MainLoop(null); // not started yet, but will be
@@ -419,7 +410,7 @@ class Browser : BuilderWidget
     if (auth_url == null) {
       var main_window = builder.get_object("main-window") as Gtk.Window;
       mount_op = new Gtk.MountOperation(main_window);
-      start_operation();
+      maybe_start_operation();
     } else {
       var main_window = builder.get_object("main-window") as Gtk.Window;
       DejaDup.show_uri(main_window, auth_url);
@@ -510,11 +501,19 @@ class Browser : BuilderWidget
     files_filled = false;
     store.clear();
     timecombo.clear();
+
+    maybe_start_operation();
   }
 
-  void start_operation()
+  void maybe_start_operation()
   {
     if (operation != null)
+      return;
+
+    var stack = builder.get_object("stack") as Gtk.Stack;
+    unowned var windows = application.get_windows();
+    var only_main_window = windows.length() == 1;
+    if (!only_main_window || stack.visible_child_name != "restore")
       return;
 
     if (!time_filled)

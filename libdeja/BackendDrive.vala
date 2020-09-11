@@ -155,7 +155,11 @@ public class BackendDrive : BackendFile
 
     settings.delay();
 
-    settings.set_string(DRIVE_UUID_KEY, vol_uuid);
+    // We're updating to vol UUID here in case we are migrating from a past
+    // release that set a filesystem UUID. But only do it if we are going to
+    // change it, since writing this key notifies BackendWatcher.
+    if (settings.get_string(DRIVE_UUID_KEY) != vol_uuid)
+      settings.set_string(DRIVE_UUID_KEY, vol_uuid);
     settings.set_string(DRIVE_NAME_KEY, volume.get_name());
     settings.set_string(DRIVE_ICON_KEY, volume.get_icon().to_string());
 
