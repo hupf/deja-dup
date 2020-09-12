@@ -3,6 +3,10 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.4
+- Fix regression in 42.3 that prevented restoring from removable drives
+- Update Japanese, Slovak, and Spanish translations
+
 # 42.3
 - Fix support for scheduled backups for encrypted drives
 - On a fresh install, use the browse & restore interface when restoring from
