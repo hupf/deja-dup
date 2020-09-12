@@ -6,7 +6,8 @@
 
 
 
-##### Version (found in About menu)
+##### Debug Information
+(go to the About menu item, click on Debug Information, and copy that here)
 
 
 
