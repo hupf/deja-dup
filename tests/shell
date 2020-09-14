@@ -25,6 +25,10 @@ export DEJA_DUP_TEST_ROOT="${ROOTDIR}"
 
 export G_ENABLE_DIAGNOSTIC=1
 
+# Else we'll use the gtk backend, which won't believe we're installed
+export GNOTIFICATION_BACKEND=freedesktop
+export DEJA_DUP_NOTIFICATION_ICON="${TOPDIR}/data/icons/org.gnome.DejaDup-symbolic.svg"
+
 RUN_CMD=
 ARGS=$@
 if [ -n "$ARGS" ]; then

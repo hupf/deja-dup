@@ -91,7 +91,19 @@ public class Notifications : Object
     var note = new Notification(title);
     if (body != null)
       note.set_body(body);
-    note.set_icon(new ThemedIcon(Config.ICON_NAME));
+
+    // Allow overriding themed icon, because the notification daemon can't
+    // always find it (e.g. snaps or local dev)
+    var icon_env = Environment.get_variable("DEJA_DUP_NOTIFICATION_ICON");
+    if (icon_env != null)
+      note.set_icon(new FileIcon(File.new_for_path(icon_env)));
+    else
+      note.set_icon(new ThemedIcon(Config.ICON_NAME));
+
+    // Set default action, otherwise the freedesktop notification backend
+    // will ignore clicking on the body of a notification.
+    note.set_default_action("app.show");
+
     return note;
   }
 

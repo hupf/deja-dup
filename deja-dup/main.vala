@@ -39,6 +39,8 @@ public class DejaDupApp : Gtk.Application
     {"menu", menu},
     {"about", about},
     {"quit", quit},
+    // redundant with default activation usually, but is used by notifications
+    {"show", show},
   };
 
   static DejaDupApp instance;
@@ -137,6 +139,11 @@ public class DejaDupApp : Gtk.Application
       });
       main_window.show_all();
     }
+  }
+
+  void show()
+  {
+    activate();
   }
 
   bool exit_cleanly()
