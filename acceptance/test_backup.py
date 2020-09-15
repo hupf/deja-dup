@@ -61,15 +61,13 @@ class BackupTest(BaseTest):
             self.walk_incremental_backup(app)
 
     def test_from_monitor(self):
-        if os.environ["DD_MODE"] == "dev":
-            self.skipTest("dev can't do notifications")
-
         self.set_boolean("periodic", True)
 
         self.monitor()
         keyCombo("<Super>v")
         sleep(1)
         keyCombo("Enter")
+        keyCombo("<Super>v")
         app = self.get_app()
 
         with self.new_files():
