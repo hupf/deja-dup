@@ -21,7 +21,7 @@ public class ConfigLocationRow : BuilderWidget
 
     update_text();
 
-    var location = builder.get_object("location") as Hdy.ActionRow;
+    unowned var location = get_object("location") as Hdy.ActionRow;
     location.activated.connect(show_location_options);
 
     new ConfigLocationGrid(builder);
@@ -29,12 +29,12 @@ public class ConfigLocationRow : BuilderWidget
 
   void update_text() {
     var backend = DejaDup.Backend.get_default();
-    var description = builder.get_object("location_description") as Gtk.Label;
+    unowned var description = get_object("location_description") as Gtk.Label;
     description.label = backend.get_location_pretty();
   }
 
   void show_location_options() {
-    var dialog = builder.get_object("location_dialog") as Gtk.Dialog;
+    unowned var dialog = get_object("location_dialog") as Gtk.Dialog;
     dialog.show();
   }
 }

@@ -12,28 +12,15 @@ public class PreferencesWindow : BuilderWidget
   {
     var window = new PreferencesWindow();
 
-    var widget = window.builder.get_object("preferences") as Gtk.Window;
+    unowned var widget = window.get_object("preferences") as Gtk.Window;
     widget.set_transient_for(parent);
-
-    // Emulate Gtk.Dialog's default closing on an Escape press
-    widget.key_press_event.connect((w, e) => {
-      uint modifiers = Gtk.accelerator_get_default_mod_mask();
-
-      if (e.keyval == Gdk.Key.Escape && (e.state & modifiers) == 0) {
-        w.destroy();
-        return true;
-      }
-      else
-        return false;
-    });
-
-    DejaDupApp.get_instance().add_window(widget);
+    widget.application = DejaDupApp.get_instance();
     widget.show();
   }
 
   public PreferencesWindow()
   {
-    Object(builder: new Builder("preferences"));
+    Object(builder: DejaDup.make_builder("preferences"));
   }
 
   construct

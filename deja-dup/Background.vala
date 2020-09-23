@@ -28,19 +28,22 @@ public class Background : Object
 {
   string get_window_handle(Gtk.Window window)
   {
-    var gdk_window = window.get_window();
 #if HAS_X11
-    var x11_window = gdk_window as Gdk.X11.Window;
-    if (x11_window != null)
-      return "x11:%x".printf((uint)x11_window.get_xid());
+    // TODO: gtk4 https://gitlab.gnome.org/GNOME/vala/-/issues/1112
+/*
+    var surface = window.get_surface();
+    var x11_surface = surface as Gdk.X11.Surface;
+    if (x11_surface != null)
+      return "x11:%x".printf((uint)x11_surface.get_xid());
+*/
 #endif
-    // TODO: support wayland windows too, once we have easy vala bindings
+    // TODO: support wayland windows too
     return "";
   }
 
   public bool request_autostart(Gtk.Widget widget)
   {
-    var window = widget.get_toplevel() as Gtk.Window;
+    var window = widget.get_root() as Gtk.Window;
 
     string? mitigation;
     var install_env = DejaDup.InstallEnv.instance();

@@ -19,31 +19,24 @@ public void run_error_dialog(Gtk.Window? parent, string header, string message)
     "%s", header
   );
   dlg.format_secondary_text("%s", message);
-  dlg.run();
-  destroy_widget(dlg);
+  dlg.response.connect(dlg.destroy);
+  dlg.present();
 }
 
-public void show_uri(Gtk.Window? parent, string link)
+public Gtk.Builder make_builder(string name)
 {
-  try {
-    Gtk.show_uri_on_window(parent, link, Gtk.get_current_event_time());
-  } catch (Error e) {
-    run_error_dialog(parent, _("Could not display %s").printf(link), e.message);
-  }
+  var path = "/org/gnome/DejaDup%s/%s.ui".printf(Config.PROFILE, name);
+  return new Gtk.Builder.from_resource(path);
 }
 
-public void destroy_widget(Gtk.Widget w)
+// Convenience call that sets each side margin to the same value.
+// Used as a porting aid from gtk3, to replace border-width.
+public void set_margins(Gtk.Widget w, int margin)
 {
-  // We destroy in the idle loop for two reasons:
-  // 1) Vala likes to unref local dialogs (like file choosers) after we call
-  //    destroy, which is odd.  This avoids issues that arise from that.
-  // 2) When running in accessiblity mode (as we do during test suites),
-  //    GailButtons tend to do odd things with queued events during idle calls.
-  //    This avoids destroying objects before gail is done with them, which led
-  //    to crashes.
-  w.hide();
-  w.ref();
-  Idle.add(() => {w.destroy(); return false;});
+  w.margin_start = margin;
+  w.margin_end = margin;
+  w.margin_top = margin;
+  w.margin_bottom = margin;
 }
 
 bool start_monitor_if_needed(FilteredSettings settings)

@@ -9,37 +9,48 @@ using GLib;
 public class MainWindow : BuilderWidget
 {
   public DejaDupApp application {get; construct;}
-  public Gtk.ApplicationWindow app_window {get; construct;}
-  public Gtk.MenuButton menu_button {get; construct;}
 
   public MainWindow(DejaDupApp app)
   {
-    Object(application: app, builder: new Builder("main"));
+    Object(application: app, builder: DejaDup.make_builder("main"));
+  }
+
+  public unowned Gtk.ApplicationWindow get_app_window()
+  {
+    return get_object("main-window") as Gtk.ApplicationWindow;
+  }
+
+  public unowned Gtk.MenuButton get_menu_button()
+  {
+    return get_object("primary-menu-button") as Gtk.MenuButton;
   }
 
   construct {
     adopt_name("main-window");
 
-    app_window = builder.get_object("main-window") as Gtk.ApplicationWindow;
+    unowned var app_window = get_app_window();
     app_window.application = application;
     app_window.title = _("Backups");
 
-    menu_button = builder.get_object("primary-menu-button") as Gtk.MenuButton;
+    unowned var menu_button = get_menu_button();
     menu_button.set_menu_model(application.get_menu_by_id("primary-menu"));
 
-    var app_logo = builder.get_object("app-logo") as Gtk.Image;
+    // Set a few icons that are hardcoded in ui files
+    unowned var backups_page = get_object("backups-page") as Gtk.StackPage;
+    unowned var app_logo = get_object("app-logo") as Gtk.Image;
     app_logo.icon_name = Config.ICON_NAME;
+    backups_page.icon_name = Config.ICON_NAME + "-symbolic";
 
-    var backup_button = builder.get_object("backup-button") as Gtk.Button;
+    unowned var backup_button = get_object("backup-button") as Gtk.Button;
     backup_button.clicked.connect(application.backup);
 
-    var initial_backup_button = builder.get_object("initial-backup-button") as Gtk.Button;
+    unowned var initial_backup_button = get_object("initial-backup-button") as Gtk.Button;
     initial_backup_button.clicked.connect(application.backup);
 
-    var initial_restore_button = builder.get_object("initial-restore-button") as Gtk.Button;
+    unowned var initial_restore_button = get_object("initial-restore-button") as Gtk.Button;
     initial_restore_button.clicked.connect(application.start_custom_restore);
 
-    var overview_stack = builder.get_object("overview-stack") as Gtk.Stack;
+    unowned var overview_stack = get_object("overview-stack") as Gtk.Stack;
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(DejaDup.LAST_RUN_KEY, overview_stack, "visible-child-name",
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
@@ -47,7 +58,7 @@ public class MainWindow : BuilderWidget
 
     // If a custom restore backend is set, we switch to restore.
     // If we switch away, we undo the custom restore backend.
-    var stack = builder.get_object("stack") as Gtk.Stack;
+    unowned var stack = get_object("stack") as Gtk.Stack;
     stack.notify["visible-child-name"].connect(() => {
       if (stack.visible_child_name != "restore")
         application.custom_backend = null;
@@ -61,8 +72,6 @@ public class MainWindow : BuilderWidget
     new Browser(builder, application);
     new ConfigAutoBackup(builder);
     new ConfigStatusLabel(builder);
-
-    DejaDupApp.get_instance().add_window(app_window);
   }
 
   static bool get_visible_child(Value val, Variant variant, void *data)

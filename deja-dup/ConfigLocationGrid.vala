@@ -31,7 +31,6 @@ public class ConfigLocationGrid : BuilderWidget
     return DejaDup.Backend.get_for_type(name, sub_settings);
   }
 
-  Gtk.Popover hint;
   DejaDup.FilteredSettings settings;
   DejaDup.FilteredSettings drive_settings;
   DejaDup.FilteredSettings google_settings;
@@ -51,24 +50,20 @@ public class ConfigLocationGrid : BuilderWidget
 
     local_settings = new DejaDup.FilteredSettings(DejaDup.LOCAL_ROOT, read_only);
     bind_folder(local_settings, DejaDup.LOCAL_FOLDER_KEY, "local_folder", true);
-    var local_browse = builder.get_object("local_browse") as Gtk.Button;
+    unowned var local_browse = get_object("local_browse") as Gtk.Button;
     local_browse.clicked.connect(local_browse_clicked);
 
     remote_settings = new DejaDup.FilteredSettings(DejaDup.REMOTE_ROOT, read_only);
     bind_folder(remote_settings, DejaDup.REMOTE_FOLDER_KEY, "remote_folder", true);
-    remote_settings.bind(DejaDup.REMOTE_URI_KEY, builder.get_object("remote_address"),
-                        "text", SettingsBindFlags.DEFAULT);
-
-    var remote_address = builder.get_object("remote_address") as Gtk.Entry;
-    hint = create_hint(remote_address);
-    remote_address.icon_press.connect(show_hint);
+    remote_settings.bind(DejaDup.REMOTE_URI_KEY, get_object("remote_address"),
+                         "text", SettingsBindFlags.DEFAULT);
 
     new ConfigLocationCombo(builder, settings, drive_settings);
   }
 
   void bind_folder(Settings settings, string key, string widget_id, bool allow_abs)
   {
-    settings.bind_with_mapping(key, builder.get_object(widget_id), "text",
+    settings.bind_with_mapping(key, get_object(widget_id), "text",
       SettingsBindFlags.DEFAULT, get_folder_mapping, set_identity_mapping,
       ((int)allow_abs).to_pointer(), null);
   }
@@ -87,55 +82,46 @@ public class ConfigLocationGrid : BuilderWidget
     return new Variant.string(val.get_string());
   }
 
-  void show_hint(Gtk.Entry entry, Gtk.EntryIconPosition icon_pos, Gdk.Event event)
-  {
-    Gdk.Rectangle rect = entry.get_icon_area(icon_pos);
-    hint.set_pointing_to(rect);
-    hint.show_all();
-  }
-
-  Gtk.Popover create_hint(Gtk.Entry parent)
-  {
-    var hint_builder = new Builder("server-hint");
-    var popover = hint_builder.get_object("server_adresses_popover") as Gtk.Popover;
-    popover.relative_to = parent;
-    return popover;
-  }
-
   void local_browse_clicked()
   {
-    var entry = builder.get_object("local_folder") as Gtk.Entry;
+    unowned var entry = get_object("local_folder") as Gtk.Entry;
 
     var dlg = new Gtk.FileChooserNative(_("Choose Folder"),
-                                        entry.get_toplevel() as Gtk.Window,
+                                        entry.get_root() as Gtk.Window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
-                                        _("_OK"), null);
+                                        null, null);
+    dlg.modal = true;
 
     var current = DejaDup.BackendLocal.get_file_for_path(entry.text);
     if (current != null) {
       try {
-        dlg.set_current_folder_file(current);
+        dlg.set_current_folder(current);
       }
       catch (Error e) {
         warning("%s\n", e.message);
       }
     }
 
-    if (dlg.run() == Gtk.ResponseType.ACCEPT) {
-      var file = dlg.get_file();
-      if (DejaDup.BackendDrive.set_volume_info_from_file(file, drive_settings)) {
-        settings.set_string(DejaDup.BACKEND_KEY, "drive");
-      } else {
-        var path = DejaDup.BackendLocal.get_path_from_file(file);
-        if (path != null)
-          entry.text = path;
+    dlg.response.connect((response) => {
+      if (response == Gtk.ResponseType.ACCEPT) {
+        var file = dlg.get_file();
+        if (DejaDup.BackendDrive.set_volume_info_from_file(file, drive_settings)) {
+          settings.set_string(DejaDup.BACKEND_KEY, "drive");
+        } else {
+          var path = DejaDup.BackendLocal.get_path_from_file(file);
+          if (path != null)
+            entry.text = path;
+        }
       }
-    }
+      dlg.destroy();
+    });
+
+    dlg.show();
   }
 
   async void set_up_google_reset()
   {
-    var google_reset = builder.get_object("google_reset") as Gtk.Button;
+    unowned var google_reset = get_object("google_reset") as Gtk.Button;
     google_reset.clicked.connect(() => {
       DejaDup.BackendGoogle.clear_refresh_token.begin();
       google_reset.visible = false;

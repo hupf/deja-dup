@@ -5,13 +5,19 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <gresources>
+  <!-- intentionally not using profile, to make it easier to reference from vala -->
+  <gresource prefix="/org/gnome/DejaDup">
+    <file compressed="true">ConfigServerEntry.ui</file>
+    <file compressed="true">ServerHintPopover.ui</file>
+  </gresource>
+
   <gresource prefix="/org/gnome/DejaDup@profile@">
 
     <!-- ui files -->
-    <file compressed="true">debug.ui</file>
     <file compressed="true">main.ui</file>
     <file compressed="true">preferences.ui</file>
-    <file compressed="true">server-hint.ui</file>
+    <file compressed="true" alias="gtk/help-overlay.ui">help-overlay.ui</file>
+    <file compressed="true" alias="gtk/menus.ui">menus.ui</file>
 
     <!-- files used for OAuth consent screens !-->
     <file>access-granted.html</file>
@@ -21,14 +27,10 @@ SPDX-FileCopyrightText: Michael Terry
     <file>pydrive-settings.yaml</file>
 
     <!-- icons -->
-    <file>icons/deja-dup-google-drive.png</file>
+    <file alias="icons/48x48/places/deja-dup-google-drive.png">icons/deja-dup-google-drive.png</file>
     <!-- add our main app icons as fallbacks of last resort -->
-    <file compressed="true" alias="icons/@icon@.svg">icons/org.gnome.DejaDup.svg</file>
-    <file compressed="true" alias="icons/@icon@-symbolic.svg">icons/org.gnome.DejaDup-symbolic.svg</file>
+    <file compressed="true" alias="icons/scalable/apps/@icon@.svg">icons/@icon@.svg</file>
+    <file compressed="true" alias="icons/scalable/apps/@icon@-symbolic.svg">icons/org.gnome.DejaDup-symbolic.svg</file>
 
-  </gresource>
-  <gresource prefix="/org/gnome/DejaDup@profile@/gtk">
-    <file compressed="true">help-overlay.ui</file>
-    <file compressed="true">menus.ui</file>
   </gresource>
 </gresources>

@@ -9,6 +9,7 @@ sdk: org.gnome.Sdk
 command: deja-dup
 
 finish-args:
+  - --device=dri
   - --filesystem=host
   - --filesystem=~/.var/app/
   - --share=ipc
@@ -29,6 +30,17 @@ modules:
   - ./setuptools-scm.yaml
   - ./duplicity.yaml
   - ./pydrive2.yaml
+
+
+  - name: libhandy
+    buildsystem: meson
+    config-opts:
+      - -Dexamples=false
+      - -Dtests=false
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/exalm/libhandy.git
+        branch: gtk4
 
 
   - name: deja-dup

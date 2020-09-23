@@ -22,21 +22,20 @@ public class MountOperationAssistant : MountOperation
   public string label_help {get; set;}
   public string label_username {get; set; default = _("_Username");}
   public string label_password {get; set; default = _("_Password");}
-  public string label_show_password {get; set; default = _("S_how password");}
   public string label_remember_password {get; set; default = _("_Remember password");}
   public bool go_forward {get; set; default = false;} // set by backends if they want to move on
   public bool retry_mode {get; set; default = false;} // skip any questions, send existing data back
 
   public AssistantOperation assist {get; construct;}
-  Gtk.Bin password_page;
+  Gtk.Box password_page;
   Gtk.Box layout;
   Gtk.Grid table;
-  Gtk.RadioButton anonymous_w;
+  Gtk.CheckButton anonymous_w;
   Gtk.CheckButton remember_w;
   Gtk.Entry username_w;
   Gtk.Entry domain_w;
-  Gtk.Entry password_w;
-  bool looping = false;
+  Gtk.PasswordEntry password_w;
+  MainLoop loop;
 
   public MountOperationAssistant(AssistantOperation assist)
   {
@@ -75,10 +74,10 @@ public class MountOperationAssistant : MountOperation
 
     flesh_out_password_page(message, default_user, default_domain, flags);
     assist.interrupt(password_page);
-    looping = true;
+    loop = new MainLoop(null);
     check_valid_inputs();
     Notifications.attention_needed(assist, _("Backups needs your password to continue"));
-    Gtk.main(); // enter new loop so that we don't return until user hits next
+    loop.run(); // enter new loop so that we don't return until user hits next
   }
 
   public override void ask_question(string message,
@@ -91,14 +90,14 @@ public class MountOperationAssistant : MountOperation
       choice = t.choice;
       send_reply(r);
     });
-    looping = true;
+    loop = new MainLoop(null);
     t.ask_question(message, choices);
-    Gtk.main(); // enter new loop so that we don't return until user hits next
+    loop.run(); // enter new loop so that we don't return until user hits next
   }
 
   void add_password_page()
   {
-    var page = new Gtk.EventBox();
+    var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
     assist.append_page(page, Assistant.Type.INTERRUPT);
     password_page = page;
   }
@@ -110,13 +109,15 @@ public class MountOperationAssistant : MountOperation
       password_page.remove(layout);
 
     layout = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    layout.set("border-width", 12);
 
     table = new Gtk.Grid();
-    table.set("row-spacing", 6,
-              "column-spacing", 6);
+    table.hexpand = true;
+    table.vexpand = true;
+    table.row_spacing = 6;
+    table.column_spacing = 6;
+    DejaDup.set_margins(table, 12);
 
-    password_page.add(layout);
+    password_page.append(layout);
 
     int rows = 0;
     int ucol = 0;
@@ -128,42 +129,42 @@ public class MountOperationAssistant : MountOperation
     label.xalign = 0.0f;
     label.wrap = true;
     label.max_width_chars = 25;
-    layout.pack_start(label, false, false, 0);
+    layout.append(label);
 
     if (label_help != null) {
       label = new Gtk.Label(label_help);
       label.use_markup = true;
-      label.track_visited_links = false;
-      label.set("xalign", 0f);
-      layout.pack_start(label, false, false, 0);
+      label.xalign = 0;
+      layout.append(label);
     }
 
     // Buffer
     label = new Gtk.Label("");
-    layout.pack_start(label, false, false, 0);
+    layout.append(label);
 
     if ((flags & AskPasswordFlags.ANONYMOUS_SUPPORTED) != 0) {
-      anonymous_w = new Gtk.RadioButton.with_mnemonic(null, _("Connect _anonymously"));
+      anonymous_w = new Gtk.CheckButton.with_mnemonic(_("Connect _anonymously"));
       anonymous_w.toggled.connect((b) => {check_valid_inputs();});
-      layout.pack_start(anonymous_w, false, false, 0);
+      layout.append(anonymous_w);
 
-      var w = new Gtk.RadioButton.with_mnemonic_from_widget(anonymous_w, _("Connect as u_ser"));
+      var w = new Gtk.CheckButton.with_mnemonic(_("Connect as u_ser"));
+      w.group = anonymous_w;
       anonymous_w.toggled.connect((b) => {
         table.sensitive = !b.active;
       });
       table.sensitive = false; // starts inactive
-      layout.pack_start(w, false, false, 0);
+      layout.append(w);
 
       var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
-      hbox.pack_start(new Gtk.Label("    "), false, false, 0);
-      hbox.pack_start(table, true, true, 0);
-      layout.pack_start(hbox, false, false, 0);
+      hbox.append(new Gtk.Label("    "));
+      hbox.append(table);
+      layout.append(hbox);
 
       ucol = 1;
     }
     else {
       anonymous_w = null;
-      layout.pack_start(table, false, false, 0);
+      layout.append(table);
     }
 
     if ((flags & AskPasswordFlags.NEED_USERNAME) != 0) {
@@ -202,9 +203,9 @@ public class MountOperationAssistant : MountOperation
       domain_w = null;
 
     if ((flags & AskPasswordFlags.NEED_PASSWORD) != 0) {
-      password_w = new Gtk.Entry();
-      password_w.input_purpose = Gtk.InputPurpose.PASSWORD;
-      password_w.set("activates-default", true);
+      password_w = new Gtk.PasswordEntry();
+      password_w.activates_default = true;
+      password_w.show_peek_icon = true;
       password_w.hexpand = true;
       label = new Gtk.Label(label_password);
       label.set("mnemonic-widget", password_w,
@@ -212,11 +213,6 @@ public class MountOperationAssistant : MountOperation
                 "xalign", 1.0f);
       table.attach(label, ucol, rows, 1, 1);
       table.attach(password_w, ucol + 1, rows, 2 - ucol, 1);
-      ++rows;
-
-      var w = new Gtk.CheckButton.with_mnemonic(label_show_password);
-      w.bind_property("active", password_w, "visibility", BindingFlags.SYNC_CREATE);
-      table.attach(w, ucol + 1, rows, 2 - ucol, 1);
       ++rows;
     }
     else
@@ -229,8 +225,6 @@ public class MountOperationAssistant : MountOperation
     }
     else
       remember_w = null;
-
-    password_page.show_all();
   }
 
   bool is_valid_entry(Gtk.Entry? e)
@@ -253,9 +247,9 @@ public class MountOperationAssistant : MountOperation
 
   void send_reply(MountOperationResult result)
   {
-    if (looping) {
-      Gtk.main_quit();
-      looping = false;
+    if (loop != null) {
+      loop.quit();
+      loop = null;
       reply(result);
     }
   }
@@ -276,7 +270,7 @@ public class MountOperationAssistant : MountOperation
 
   void do_prepare(Assistant assist, Gtk.Widget page)
   {
-    if (looping) {
+    if (loop != null) {
       // This signal happens before a prepare, when going forward
       if (username_w != null) {
         var txt = username_w.get_text();

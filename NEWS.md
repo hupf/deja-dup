@@ -5,7 +5,8 @@ SPDX-FileCopyrightText: Michael Terry
 
 # 43.alpha
 ##### Packaging
-- Switch from libhandy0 to libhandy1
+- Switch from gtk3 to gtk4
+- Switch from libhandy0 to libhandy4
 
 # 42.6
 - Fix possible crash when searching backup files with unicode filenames

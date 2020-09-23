@@ -13,7 +13,7 @@ public class ConfigPeriod : ConfigChoice
   }
 
   construct {
-    var row = builder.get_object(combo_name()) as Hdy.ComboRow;
+    unowned var row = get_object(combo_name()) as Hdy.ComboRow;
     var settings = DejaDup.get_settings();
     settings.bind(DejaDup.PERIODIC_KEY,
                   row, "sensitive",

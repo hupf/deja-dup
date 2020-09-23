@@ -21,21 +21,31 @@ public class ConfigFolderList : BuilderWidget
   }
 
   DejaDup.FilteredSettings settings;
+  List<Gtk.Widget> rows;
+  Gtk.Widget add_row;
   construct {
     adopt_name(builder_id);
-    var group = builder.get_object(builder_id) as Hdy.PreferencesGroup;
+    unowned var group = get_object(builder_id) as Hdy.PreferencesGroup;
+
+    rows = new List<Gtk.Widget>();
 
     settings = DejaDup.get_settings();
     settings.changed[settings_key].connect(() => {update_list_items.begin();});
     settings.bind_writable(settings_key, group, "sensitive", false);
+
+    // Make add row separately, and make sure it never gets deleted, since
+    // I've hit a bug with depleting a HdyPreferenceGroup completely, then
+    // adding a new item, which results in a crash.
+    add_row = make_add_row();
 
     update_list_items.begin();
   }
 
   async void update_list_items()
   {
-    var group = builder.get_object(builder_id) as Hdy.PreferencesGroup;
-    group.foreach((item) => {item.destroy();});
+    unowned var group = get_object(builder_id) as Hdy.PreferencesGroup;
+    rows.foreach((item) => {group.remove(item);});
+    rows = new List<Gtk.Widget>();
 
     var folder_value = settings.get_value(settings_key);
     var folder_list = folder_value.get_strv();
@@ -47,72 +57,74 @@ public class ConfigFolderList : BuilderWidget
       var row = new Hdy.ActionRow();
       row.activatable = false;
       row.title = yield DejaDup.get_nickname(file);
-      row.visible = true;
       group.add(row);
+      rows.append(row);
 
       var install_env = DejaDup.InstallEnv.instance();
       if (check_availability && !install_env.is_file_available(file)) {
-        var icon = new Gtk.Image.from_icon_name("dialog-warning", Gtk.IconSize.LARGE_TOOLBAR);
-        icon.visible = true;
+        var icon = new Gtk.Image.from_icon_name("dialog-warning");
         icon.tooltip_text = _("This folder cannot be backed up because Backups does not have access to it.");
-        row.add(icon);
+        row.add_suffix(icon);
       }
 
-      var button = new Gtk.Button.from_icon_name("list-remove-symbolic", Gtk.IconSize.BUTTON);
-      button.get_accessible().set_name(_("Remove"));
+      var button = new Gtk.Button.from_icon_name("list-remove-symbolic");
+      button.update_property(Gtk.AccessibleProperty.LABEL, _("Remove"), -1);
       button.valign = Gtk.Align.CENTER;
-      button.visible = true;
       button.set_data("folder", folder);
       button.clicked.connect(() => {
         handle_remove(button.get_data("folder"));
       });
-      row.add(button);
+      row.add_suffix(button);
     }
 
-    // Now the "add item" row
+    // Now the "add item" row, which moves it to the end if it already exists
+    group.add(add_row);
+  }
+
+  Gtk.Widget make_add_row()
+  {
     var row = new Hdy.PreferencesRow();
     row.height_request = 50; // same as Hdy.ActionRow
-    row.visible = true;
-    group.add(row);
 
-    var button = new Gtk.Button.from_icon_name("list-add-symbolic",
-                                               Gtk.IconSize.LARGE_TOOLBAR);
-    button.get_accessible().set_name(_("Add"));
-    button.relief = Gtk.ReliefStyle.NONE;
-    button.visible = true;
+    var button = new Gtk.Button.from_icon_name("list-add-symbolic");
+    button.update_property(Gtk.AccessibleProperty.LABEL, _("Add"), -1);
+    button.has_frame = false;
     button.clicked.connect(handle_add);
-    row.add(button);
+    row.child = button;
+
+    return row;
   }
 
   void handle_add()
   {
-    var window = builder.get_object("preferences") as Gtk.Window;
+    unowned var window = get_object("preferences") as Gtk.Window;
     var dlg = new Gtk.FileChooserNative(_("Choose folders"), window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
-                                        _("_Add"), null);
-    dlg.local_only = true;
+                                        null, null);
+    dlg.modal = true;
     dlg.select_multiple = true;
 
-    if (dlg.run() != Gtk.ResponseType.ACCEPT) {
-      return;
-    }
+    dlg.response.connect((response) => {
+      if (response == Gtk.ResponseType.ACCEPT) {
+        add_files(dlg.get_files());
+      }
+    });
 
-    add_files(dlg.get_filenames());
+    dlg.show();
   }
 
-  bool add_files(SList<string>? files)
+  bool add_files(ListModel files)
   {
-    if (files == null)
-      return false;
-
     // Explicitly do not call get_file_list here, because we want to avoid
     // modifying existing entries at all when we write the string list back.
     var slist_val = settings.get_value(settings_key);
     string*[] slist = slist_val.get_strv();
     bool changed = false;
 
-    foreach (string file in files) {
-      var folder = File.new_for_path(file);
+    for (int i = 0; i < files.get_n_items(); i++) {
+      var folder = files.get_item(i) as File;
+      if (folder.get_path() == null)
+        continue;
 
       // Strip any leading root path in case the user somehow navigated to the
       // read root. We'll prefix it again when backing up.

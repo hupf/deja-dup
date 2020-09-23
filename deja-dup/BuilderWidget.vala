@@ -9,7 +9,6 @@ using GLib;
 public class BuilderWidget : Object
 {
   public Gtk.Builder builder {get; construct;}
-  protected Gtk.Widget adopted;
 
   protected void adopt_name(string name)
   {
@@ -20,10 +19,14 @@ public class BuilderWidget : Object
   protected void adopt_widget(Gtk.Widget widget)
   {
     ref();
-    adopted = widget;
-    widget.destroy.connect(() => {
-      adopted = null;
+    widget.unrealize.connect(() => {
       unref();
     });
+  }
+
+  // minor convenience to save typing `builder.`
+  public unowned Object? get_object(string id)
+  {
+    return builder.get_object(id);
   }
 }

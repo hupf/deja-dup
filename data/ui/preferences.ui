@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 -->
 <!--
 SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
+
 <interface>
-  <requires lib="gtk+" version="3.20"/>
-  <requires lib="libhandy" version="0.0"/>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libhandy" version="4.0"/>
   <object class="HdyPreferencesWindow" id="preferences">
     <property name="width_request">300</property>
     <property name="can_focus">False</property>
@@ -16,57 +16,51 @@ SPDX-FileCopyrightText: Michael Terry
     <property name="destroy_with_parent">True</property>
     <child>
       <object class="HdyPreferencesPage">
-        <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="icon_name">emblem-system-symbolic</property>
         <property name="title">General</property>
         <child>
           <object class="HdyPreferencesGroup" id="storage_group">
-            <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="title" translatable="yes">Storage</property>
             <child>
               <object class="HdyActionRow" id="location">
-                <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="activatable_widget">storage_row_grid</property>
                 <property name="title" translatable="yes">_Location</property>
                 <property name="use_underline">True</property>
                 <child>
                   <object class="GtkGrid" id="storage_row_grid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">0</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="column_spacing">6</property>
                     <child>
                       <object class="GtkLabel" id="location_description">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">0</property>
                         <property name="ellipsize">middle</property>
                         <style>
                           <class name="dim-label"/>
                         </style>
+                        <layout>
+                          <property name="column">0</property>
+                          <property name="row">0</property>
+                        </layout>
                       </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
                     </child>
                     <child>
                       <object class="GtkImage">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
+                        <property name="can_focus">0</property>
                         <property name="valign">end</property>
                         <property name="icon_name">go-next-symbolic</property>
                         <style>
                           <class name="dim-label"/>
                         </style>
+                        <layout>
+                          <property name="column">1</property>
+                          <property name="row">0</property>
+                        </layout>
                       </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
                     </child>
                   </object>
                 </child>
@@ -74,7 +68,6 @@ SPDX-FileCopyrightText: Michael Terry
             </child>
             <child>
               <object class="HdyComboRow" id="keep">
-                <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="title" translatable="yes">_Keep Backups</property>
                 <property name="use_underline">True</property>
@@ -82,14 +75,13 @@ SPDX-FileCopyrightText: Michael Terry
             </child>
             <child>
               <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">0</property>
                 <property name="margin_top">8</property>
                 <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
-                <property name="wrap">True</property>
+                <property name="wrap">1</property>
                 <property name="xalign">0</property>
                 <attributes>
-                  <attribute name="style" value="italic"/>
+                  <attribute name="style" value="italic"></attribute>
                 </attributes>
               </object>
             </child>
@@ -97,34 +89,25 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="HdyPreferencesGroup">
-            <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="title" translatable="yes">Schedule</property>
             <child>
               <object class="HdyActionRow">
-                <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="activatable_widget">auto_backup</property>
                 <property name="title" translatable="yes">Back Up _Automatically</property>
                 <property name="use_underline">True</property>
                 <child>
                   <object class="GtkSwitch" id="auto_backup">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
+                    <property name="can_focus">0</property>
                     <property name="halign">end</property>
                     <property name="valign">center</property>
-                    <child internal-child="accessible">
-                      <object class="AtkObject" id="auto_backup-atkobject">
-                        <property name="AtkObject::accessible-name" translatable="yes">Automatic backup</property>
-                      </object>
-                    </child>
                   </object>
                 </child>
               </object>
             </child>
             <child>
               <object class="HdyComboRow" id="frequency">
-                <property name="visible">True</property>
                 <property name="sensitive">False</property>
                 <property name="can_focus">True</property>
                 <property name="title" translatable="yes">Automatic Backup _Frequency</property>
@@ -137,390 +120,323 @@ SPDX-FileCopyrightText: Michael Terry
     </child>
     <child>
       <object class="HdyPreferencesPage" id="folders_page">
-        <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="icon_name">folder-symbolic</property>
         <property name="title">Folders</property>
         <child>
           <object class="HdyPreferencesGroup" id="includes">
-            <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="title" translatable="yes">Folders to Back Up</property>
             <child>
               <placeholder/>
             </child>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="includes-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes">Includes</property>
-              </object>
-            </child>
           </object>
         </child>
         <child>
           <object class="HdyPreferencesGroup" id="excludes">
-            <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="title" translatable="yes">Folders to Ignore</property>
             <child>
               <placeholder/>
             </child>
-            <child internal-child="accessible">
-              <object class="AtkObject" id="excludes-atkobject">
-                <property name="AtkObject::accessible-name" translatable="yes">Excludes</property>
-              </object>
-            </child>
           </object>
         </child>
       </object>
     </child>
-    <child internal-child="accessible">
-      <object class="AtkObject" id="preferences-atkobject">
-        <property name="AtkObject::accessible-name" translatable="yes">Preferences</property>
-      </object>
-    </child>
   </object>
   <object class="GtkDialog" id="location_dialog">
-    <property name="height_request">400</property>
-    <property name="can_focus">False</property>
-    <property name="modal">True</property>
-    <property name="type_hint">dialog</property>
+    <property name="can_focus">0</property>
+    <property name="modal">1</property>
     <property name="transient_for">preferences</property>
-    <signal name="delete-event" handler="gtk_widget_hide_on_delete" swapped="no"/>
+    <property name="hide_on_close">1</property>
     <child type="titlebar">
       <object class="GtkHeaderBar">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="show_close_button">True</property>
+        <property name="can_focus">0</property>
         <child>
           <placeholder/>
         </child>
       </object>
     </child>
-    <child internal-child="vbox">
+    <child internal-child="content_area">
       <object class="GtkBox">
-        <property name="can_focus">False</property>
+        <property name="can_focus">0</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
-        <child internal-child="action_area">
-          <object class="GtkButtonBox">
-            <property name="can_focus">False</property>
-            <property name="layout_style">end</property>
-            <child>
-              <placeholder/>
-            </child>
-            <child>
-              <placeholder/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">False</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
         <child>
           <object class="GtkGrid" id="location_grid">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
-            <property name="border_width">18</property>
+            <property name="can_focus">0</property>
+            <property name="hexpand">1</property>
+            <property name="vexpand">1</property>
+            <property name="margin_start">12</property>
+            <property name="margin_end">12</property>
+            <property name="margin_top">12</property>
+            <property name="margin_bottom">12</property>
             <property name="row_spacing">6</property>
             <property name="column_spacing">12</property>
             <child>
               <object class="GtkLabel" id="location_label">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
+                <property name="can_focus">0</property>
                 <property name="label" translatable="yes" comments="Translators: storage as in &quot;where to store the backup&quot;">_Storage Location</property>
-                <property name="use_underline">True</property>
+                <property name="use_underline">1</property>
                 <property name="mnemonic_widget">location_combo</property>
                 <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
               </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkComboBox" id="location_combo">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="hexpand">True</property>
+                <property name="can_focus">0</property>
+                <property name="hexpand">1</property>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">0</property>
+                </layout>
               </object>
-              <packing>
-                <property name="left_attach">1</property>
-                <property name="top_attach">0</property>
-              </packing>
             </child>
             <child>
               <object class="GtkStack" id="location_stack">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
+                <property name="can_focus">0</property>
+                <property name="hexpand">1</property>
+                <property name="vexpand">1</property>
                 <child>
-                  <object class="GtkGrid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="row_spacing">6</property>
-                    <property name="column_spacing">12</property>
-                    <child>
-                      <object class="GtkLabel" id="google_folder_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Folder</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">google_folder</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="google_folder">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkButton" id="google_reset">
-                        <property name="label" translatable="yes">_Reset Account Access</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="no_show_all">True</property>
-                        <property name="halign">start</property>
-                        <property name="valign">start</property>
-                        <property name="margin_top">12</property>
-                        <property name="use_underline">True</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                  </object>
-                  <packing>
+                  <object class="GtkStackPage">
                     <property name="name">google</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="row_spacing">6</property>
-                    <property name="column_spacing">12</property>
-                    <child>
-                      <object class="GtkLabel" id="remote_address_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Network Location</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">remote_address</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="remote_address">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="secondary_icon_name">dialog-question-symbolic</property>
-                        <property name="input_purpose">url</property>
-                        <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkLabel" id="remote_folder_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Folder</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">remote_folder</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="remote_folder">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="name">remote</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="row_spacing">6</property>
-                    <property name="column_spacing">12</property>
-                    <child>
-                      <object class="GtkLabel" id="drive_folder_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Folder</property>
-                        <property name="use_underline">True</property>
-                        <property name="mnemonic_widget">drive_folder</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="drive_folder">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="hexpand">True</property>
-                        <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="name">drive</property>
-                    <property name="position">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="row_spacing">6</property>
-                    <property name="column_spacing">12</property>
-                    <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="margin_top">12</property>
-                        <property name="hexpand">True</property>
-                        <property name="vexpand">True</property>
-                        <property name="label" translatable="yes">This storage location is no longer supported. You can still use duplicity directly to back up or restore your files.</property>
-                        <property name="wrap">True</property>
-                        <property name="max_width_chars">40</property>
-                        <property name="yalign">0</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="name">unsupported</property>
-                    <property name="position">3</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkGrid">
-                    <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="row_spacing">6</property>
-                    <property name="column_spacing">12</property>
-                    <child>
-                      <object class="GtkLabel" id="local_folder_label">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes">_Folder</property>
-                        <property name="use_underline">True</property>
-                        <property name="xalign">1</property>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
-                    <child>
+                    <property name="child">
                       <object class="GtkGrid">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="column_spacing">6</property>
+                        <property name="can_focus">0</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
                         <child>
-                          <object class="GtkButton" id="local_browse">
-                            <property name="label" translatable="yes">_Choose Folder…</property>
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="receives_default">True</property>
-                            <property name="use_underline">True</property>
+                          <object class="GtkLabel" id="google_folder_label">
+                            <property name="can_focus">0</property>
+                            <property name="label" translatable="yes">_Folder</property>
+                            <property name="use_underline">1</property>
+                            <property name="mnemonic_widget">google_folder</property>
+                            <property name="xalign">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
                           </object>
-                          <packing>
-                            <property name="left_attach">1</property>
-                            <property name="top_attach">0</property>
-                          </packing>
                         </child>
                         <child>
-                          <object class="GtkEntry" id="local_folder">
-                            <property name="visible">True</property>
-                            <property name="can_focus">True</property>
-                            <property name="hexpand">True</property>
+                          <object class="GtkEntry" id="google_folder">
+                            <property name="hexpand">1</property>
                             <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
                           </object>
-                          <packing>
-                            <property name="left_attach">0</property>
-                            <property name="top_attach">0</property>
-                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkButton" id="google_reset">
+                            <property name="visible">0</property>
+                            <property name="label" translatable="yes">_Reset Account Access</property>
+                            <property name="receives_default">1</property>
+                            <property name="halign">start</property>
+                            <property name="valign">start</property>
+                            <property name="margin_top">12</property>
+                            <property name="use_underline">1</property>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <placeholder/>
                         </child>
                       </object>
-                      <packing>
-                        <property name="left_attach">1</property>
-                        <property name="top_attach">0</property>
-                      </packing>
-                    </child>
+                    </property>
                   </object>
-                  <packing>
-                    <property name="name">local</property>
-                    <property name="position">4</property>
-                  </packing>
                 </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">remote</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="can_focus">0</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
+                        <child>
+                          <object class="GtkLabel" id="remote_address_label">
+                            <property name="can_focus">0</property>
+                            <property name="label" translatable="yes">_Network Location</property>
+                            <property name="use_underline">1</property>
+                            <property name="mnemonic_widget">remote_address</property>
+                            <property name="xalign">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="ConfigServerEntry" id="remote_address">
+                            <property name="hexpand">1</property>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkLabel" id="remote_folder_label">
+                            <property name="can_focus">0</property>
+                            <property name="label" translatable="yes">_Folder</property>
+                            <property name="use_underline">1</property>
+                            <property name="mnemonic_widget">remote_folder</property>
+                            <property name="xalign">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="remote_folder">
+                            <property name="hexpand">1</property>
+                            <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">1</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">drive</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="can_focus">0</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
+                        <child>
+                          <object class="GtkLabel" id="drive_folder_label">
+                            <property name="can_focus">0</property>
+                            <property name="label" translatable="yes">_Folder</property>
+                            <property name="use_underline">1</property>
+                            <property name="mnemonic_widget">drive_folder</property>
+                            <property name="xalign">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkEntry" id="drive_folder">
+                            <property name="hexpand">1</property>
+                            <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">unsupported</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="can_focus">0</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
+                        <child>
+                          <object class="GtkLabel">
+                            <property name="can_focus">0</property>
+                            <property name="margin_top">12</property>
+                            <property name="hexpand">1</property>
+                            <property name="vexpand">1</property>
+                            <property name="label" translatable="yes">This storage location is no longer supported. You can still use duplicity directly to back up or restore your files.</property>
+                            <property name="wrap">1</property>
+                            <property name="max_width_chars">40</property>
+                            <property name="yalign">0</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkStackPage">
+                    <property name="name">local</property>
+                    <property name="child">
+                      <object class="GtkGrid">
+                        <property name="can_focus">0</property>
+                        <property name="row_spacing">6</property>
+                        <property name="column_spacing">12</property>
+                        <child>
+                          <object class="GtkLabel" id="local_folder_label">
+                            <property name="can_focus">0</property>
+                            <property name="label" translatable="yes">_Folder</property>
+                            <property name="use_underline">1</property>
+                            <property name="xalign">1</property>
+                            <layout>
+                              <property name="column">0</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                        <child>
+                          <object class="GtkGrid">
+                            <property name="can_focus">0</property>
+                            <property name="column_spacing">6</property>
+                            <child>
+                              <object class="GtkButton" id="local_browse">
+                                <property name="label" translatable="yes">_Choose Folder…</property>
+                                <property name="receives_default">1</property>
+                                <property name="use_underline">1</property>
+                                <layout>
+                                  <property name="column">1</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="local_folder">
+                                <property name="hexpand">1</property>
+                                <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK | GTK_INPUT_HINT_NONE</property>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <layout>
+                              <property name="column">1</property>
+                              <property name="row">0</property>
+                            </layout>
+                          </object>
+                        </child>
+                      </object>
+                    </property>
+                  </object>
+                </child>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">1</property>
+                  <property name="column-span">2</property>
+                </layout>
               </object>
-              <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">1</property>
-                <property name="width">2</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
         </child>
       </object>
     </child>

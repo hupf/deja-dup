@@ -7,12 +7,9 @@
 
 using GLib;
 
-extern unowned Resource resources_get_resource();
-
 public class DejaDupApp : Gtk.Application
 {
-  Gtk.ApplicationWindow main_window = null;
-  Gtk.MenuButton menu_button = null;
+  WeakRef main_window;
   SimpleAction quit_action = null;
   public AssistantOperation operation {get; private set; default = null;}
   public DejaDup.Backend custom_backend {get; set; default = null;}
@@ -122,23 +119,31 @@ public class DejaDupApp : Gtk.Application
     base.activate();
 
     if (operation != null) {
-      operation.show_all(); // might have never been shown before
-      operation.present_with_time(Gtk.get_current_event_time());
+      operation.present();
     }
-    else if (main_window != null)
-      main_window.present_with_time(Gtk.get_current_event_time());
+    else if (get_app_window() != null)
+      get_app_window().present();
     else {
-      // We're first instance.  Yay!
-
-      var window = new MainWindow(this);
-      main_window = window.app_window;
-      menu_button = window.menu_button;
-      main_window.destroy.connect(() => {
-        this.main_window = null;
-        this.menu_button = null;
-      });
-      main_window.show_all();
+      // We're the first instance.  Yay!
+      main_window.set(new MainWindow(this));
+      get_app_window().present();
     }
+  }
+
+  unowned Gtk.ApplicationWindow? get_app_window()
+  {
+    var win = main_window.get() as MainWindow;
+    if (win == null)
+      return null;
+    return win.get_app_window();
+  }
+
+  unowned Gtk.MenuButton? get_menu_button()
+  {
+    var win = main_window.get() as MainWindow;
+    if (win == null)
+      return null;
+    return win.get_menu_button();
   }
 
   void show()
@@ -162,7 +167,7 @@ public class DejaDupApp : Gtk.Application
     add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
     set_accels_for_action("app.menu", {"F10"});
-    set_accels_for_action("app.quit", {"<Primary>q"});
+    set_accels_for_action("app.quit", {"<Control>q"});
     quit_action = lookup_action("quit") as SimpleAction;
 
     notify["custom-backend"].connect(() => {
@@ -197,28 +202,24 @@ public class DejaDupApp : Gtk.Application
     }
 
     operation = op;
-    operation.destroy.connect(clear_op);
+    ((Gtk.Widget)operation).destroy.connect(clear_op);
     quit_action.set_enabled(false);
 
-    if (main_window != null) {
-      operation.transient_for = main_window;
+    if (get_app_window() != null) {
+      operation.transient_for = get_app_window();
       operation.modal = true;
       operation.destroy_with_parent = true;
-      operation.type_hint = Gdk.WindowTypeHint.DIALOG;
-      main_window.present_with_time(Gtk.get_current_event_time());
+      get_app_window().present();
     }
 
     // We show operation window if the main window is open, because that would
     // just cause confusion to have a hidden operation window. This does steal
     // focus by surfacing a new window though...
-    if (automatic && main_window == null) {
+    if (automatic && get_app_window() == null) {
       Notifications.automatic_backup_started();
     } else {
-      operation.show_all();
-      operation.present_with_time(Gtk.get_current_event_time());
+      operation.present();
     }
-
-    Gdk.notify_startup_complete();
   }
 
   public void delay(GLib.SimpleAction action, GLib.Variant? parameter)
@@ -230,18 +231,22 @@ public class DejaDupApp : Gtk.Application
 
   void preferences()
   {
-    PreferencesWindow.show(main_window);
+    PreferencesWindow.show(get_app_window());
   }
 
   void help()
   {
-    DejaDup.show_uri(main_window, "help:" + Config.PACKAGE);
+    Gtk.show_uri(get_app_window(), "help:" + Config.PACKAGE, Gdk.CURRENT_TIME);
   }
 
   void menu()
   {
-    if (menu_button != null)
-      menu_button.clicked();
+    if (get_menu_button() == null)
+      return;
+    if (get_menu_button().popover.visible)
+      get_menu_button().popdown();
+    else
+      get_menu_button().popup();
   }
 
   void about()
@@ -252,23 +257,13 @@ public class DejaDupApp : Gtk.Application
     dialog.authors = {"Michael Terry"};
     dialog.license_type = Gtk.License.GPL_3_0;
     dialog.logo_icon_name = Config.ICON_NAME;
-    dialog.transient_for = main_window;
+    dialog.modal = true;
+    dialog.system_information = DebugInfo.get_debug_info();
+    dialog.transient_for = get_app_window();
     dialog.translator_credits = _("translator-credits");
     dialog.version = Config.VERSION;
-    dialog.website = "debug";
-    dialog.website_label = _("Debug Information");
-
-    dialog.activate_link.connect((uri) => {
-      if (uri != "debug") {
-        DejaDup.show_uri(dialog, uri);
-      } else {
-        var debug = new DebugInfo(dialog);
-        debug.run();
-      }
-      return true;
-    });
-    dialog.run();
-    DejaDup.destroy_widget(dialog);
+    dialog.website = "https://wiki.gnome.org/Apps/DejaDup";
+    dialog.present();
   }
 
   public void backup()
@@ -305,8 +300,8 @@ public class DejaDupApp : Gtk.Application
   public void start_custom_restore()
   {
     var assist = new AssistantLocation();
-    assist.transient_for = main_window;
-    assist.show_all();
+    assist.transient_for = get_app_window();
+    assist.present();
   }
 
   public void search_custom_restore(DejaDup.Backend backend)
@@ -341,16 +336,16 @@ public class DejaDupApp : Gtk.Application
     // dialogs. These should be closed if we're about to do something new like
     // a backup or restore operation.
     if (operation != null && !operation.has_active_op()) {
-      DejaDup.destroy_widget(operation);
+      operation.destroy();
       clear_op();
     }
 
-    if (operation != null || main_window == null)
+    if (operation != null || get_app_window() == null)
       return; // not safe or needed to continue closing modals
 
     foreach (var window in Gtk.Window.list_toplevels()) {
-      if (window.transient_for == main_window && window.modal && window.visible) {
-        DejaDup.destroy_widget(window);
+      if (window.transient_for == get_app_window() && window.modal && window.visible) {
+        window.destroy();
       }
     }
   }
@@ -371,7 +366,8 @@ int main(string[] args)
   Environment.set_prgname(Config.APPLICATION_ID);
   Gtk.Window.set_default_icon_name(Config.ICON_NAME);
 
-  resources_get_resource()._register();
+  // FIXME: there must be a better way than this?
+  typeof(ConfigServerEntry).ensure();
 
   return DejaDupApp.get_instance().run(args);
 }

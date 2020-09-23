@@ -28,11 +28,11 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-gdk_x11_dep = dependency('gdk-x11-3.0', required: false)
 gio_dep = dependency('gio-2.0', version: '>= 2.64')
 gio_unix_dep = dependency('gio-unix-2.0')
-gtk_dep = dependency('gtk+-3.0', version: '>= 3.22')
-handy_dep = dependency('libhandy-1')
+gtk_dep = dependency('gtk4')
+gtk_x11_dep = dependency('gtk4-x11', required: false)
+handy_dep = dependency('libhandy-4')
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
@@ -83,7 +83,7 @@ common_cflags = [
     '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)
 ]
 
-if gdk_x11_dep.found()
+if gtk_x11_dep.found()
 common_vflags += ['--define=HAS_X11']
 endif
 

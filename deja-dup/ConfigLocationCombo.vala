@@ -33,7 +33,6 @@ public class ConfigLocationCombo : BuilderWidget
     LOCAL,
   }
 
-  Gtk.ComboBox combo;
   Gtk.ListStore store;
   Gtk.TreeModelSort sort_model;
   construct {
@@ -41,7 +40,7 @@ public class ConfigLocationCombo : BuilderWidget
 
     // *** Combo Box UI setup ***
 
-    combo = builder.get_object("location_combo") as Gtk.ComboBox;
+    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
 
     // Here we have a model wrapped inside a sortable model.  This is so we
     // can keep indices around for the inner model while the outer model appears
@@ -295,6 +294,8 @@ public class ConfigLocationCombo : BuilderWidget
 
   void update_stack()
   {
+    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
+
     Gtk.TreeIter sort_iter;
     if (!combo.get_active_iter(out sort_iter))
       return;
@@ -305,12 +306,14 @@ public class ConfigLocationCombo : BuilderWidget
     string page;
     store.get(iter, Col.PAGE, out page);
 
-    var stack = builder.get_object("location_stack") as Gtk.Stack;
+    unowned var stack = get_object("location_stack") as Gtk.Stack;
     stack.visible_child_name = page;
   }
 
   void handle_drive_uuid_change()
   {
+    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
+
     var uuid = drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
     if (uuid != "")
       combo.active_id = "drive:" + uuid;
