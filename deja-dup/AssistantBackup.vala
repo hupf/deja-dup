@@ -31,7 +31,7 @@ public class AssistantBackup : AssistantOperation
   protected override void add_custom_config_pages()
   {
     var settings = DejaDup.get_settings();
-    var last_backup = settings.get_string(DejaDup.LAST_BACKUP_KEY);
+    var last_backup = settings.get_string(DejaDup.LAST_RUN_KEY);
 
     // If we've never backed up before, let's prompt for settings
     if (last_backup == "") {

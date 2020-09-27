@@ -130,7 +130,7 @@ static async void kickoff()
 
   if (DejaDup.in_testing_mode()) {
     // fake successful and schedule next run
-    DejaDup.update_last_run_timestamp(DejaDup.TimestampType.BACKUP);
+    DejaDup.update_last_run_timestamp(DejaDup.LAST_BACKUP_KEY);
   }
   else {
     DejaDup.run_deja_dup({"--backup", "--auto"});

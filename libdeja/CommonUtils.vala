@@ -14,7 +14,7 @@ namespace DejaDup {
 public const string INCLUDE_LIST_KEY = "include-list";
 public const string EXCLUDE_LIST_KEY = "exclude-list";
 public const string BACKEND_KEY = "backend";
-public const string LAST_RUN_KEY = "last-run";
+public const string LAST_RUN_KEY = "last-run"; // started a backup
 public const string LAST_BACKUP_KEY = "last-backup";
 public const string LAST_RESTORE_KEY = "last-restore";
 public const string PROMPT_CHECK_KEY = "prompt-check";
@@ -30,12 +30,6 @@ public errordomain BackupError {
   ALREADY_RUNNING
 }
 
-public enum TimestampType {
-  NONE,
-  BACKUP,
-  RESTORE
-}
-
 public bool in_testing_mode()
 {
   var testing_str = Environment.get_variable("DEJA_DUP_TESTING");
@@ -48,18 +42,10 @@ string current_time_as_iso8601()
   return now.format_iso8601();
 }
 
-public void update_last_run_timestamp(TimestampType type)
+public void update_last_run_timestamp(string key)
 {
-  var cur_time_str = current_time_as_iso8601();
-
   var settings = get_settings();
-  settings.delay();
-  settings.set_string(LAST_RUN_KEY, cur_time_str);
-  if (type == TimestampType.BACKUP)
-    settings.set_string(LAST_BACKUP_KEY, cur_time_str);
-  else if (type == TimestampType.RESTORE)
-    settings.set_string(LAST_RESTORE_KEY, cur_time_str);
-  settings.apply();
+  settings.set_string(key, current_time_as_iso8601());
 }
 
 // We manually reference this method, because Vala does not give us (as of
@@ -210,19 +196,6 @@ DateTime most_recent_scheduled_date(TimeSpan period)
   return cur_date.add(-1 * mod);
 }
 
-public string last_run_date(TimestampType type)
-{
-  var settings = DejaDup.get_settings();
-  string last_run_string = null;
-  if (type == TimestampType.BACKUP)
-    last_run_string = settings.get_string(DejaDup.LAST_BACKUP_KEY);
-  else if (type == TimestampType.RESTORE)
-    last_run_string = settings.get_string(DejaDup.LAST_RESTORE_KEY);
-  if (last_run_string == null || last_run_string == "")
-    last_run_string = settings.get_string(DejaDup.LAST_RUN_KEY);
-  return last_run_string;
-}
-
 /* Seems silly, but helpful for testing */
 public TimeSpan get_day()
 {
@@ -237,8 +210,7 @@ public DateTime? next_run_date()
   var settings = DejaDup.get_settings();
   var periodic = settings.get_boolean(DejaDup.PERIODIC_KEY);
   var period_days = settings.get_int(DejaDup.PERIODIC_PERIOD_KEY);
-
-  var last_run_string = last_run_date(TimestampType.BACKUP);
+  var last_run_string = settings.get_string(DejaDup.LAST_BACKUP_KEY);
 
   if (!periodic)
     return null;
@@ -270,11 +242,6 @@ public int get_prompt_delay()
   return (int)(span / TimeSpan.SECOND);
 }
 
-public bool has_seen_settings()
-{
-  return last_run_date(TimestampType.NONE) != "";
-}
-
 // This makes the check of whether we should tell user about backing up.
 // For example, if a user has installed their OS and doesn't know about backing
 // up, we might notify them after a month.
@@ -289,7 +256,7 @@ public bool make_prompt_check()
     update_prompt_time();
     return false;
   }
-  else if (has_seen_settings())
+  else if (settings.get_string(LAST_RUN_KEY) != "")
     return false;
 
   // OK, monitor has run before but user hasn't yet backed up or restored.
@@ -353,7 +320,7 @@ public bool is_nag_time()
 {
   var settings = DejaDup.get_settings();
   var nag = settings.get_string(NAG_CHECK_KEY);
-  var last_run_string = last_run_date(TimestampType.BACKUP);
+  var last_run_string = settings.get_string(LAST_BACKUP_KEY);
 
   if (nag == "disabled" || last_run_string == "")
     return false;

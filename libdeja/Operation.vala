@@ -19,7 +19,11 @@ public abstract class Operation : Object
    * but it is provided to provide easier development and an abstraction layer
    * in case Deja Dup project ever replaces its backend.
    */
+
+  // success is true for normal successful finish or stop()
+  // cancelled is true for stop() and cancel()
   public signal void done(bool success, bool cancelled, string? detail);
+
   public signal void raise_error(string errstr, string? detail);
   public signal void action_desc_changed(string action);
   public signal void action_file_changed(File file, bool actual);

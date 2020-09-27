@@ -103,6 +103,9 @@ class BackupTest(BaseTest):
             app = self.cmd("--backup")
             self.walk_initial_backup(app, password="t")
 
+        last_backup = self.get_string("last-backup")
+        last_run = self.get_string("last-run")
+
         self.randomize_srcdir()
         app = self.cmd("--backup")
         if initial:
@@ -124,6 +127,9 @@ class BackupTest(BaseTest):
             self.wait_for(mid_progress)
             app.button("Resume Later").click()
             self.wait_for(lambda: window.dead)
+
+        assert last_backup == self.get_string("last-backup")
+        assert last_run != self.get_string("last-run")
 
         app = self.cmd("--backup")
         window = app.window("Backing Up…")

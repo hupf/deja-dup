@@ -41,7 +41,7 @@ public class MainWindow : BuilderWidget
 
     var overview_stack = builder.get_object("overview-stack") as Gtk.Stack;
     var settings = DejaDup.get_settings();
-    settings.bind_with_mapping(DejaDup.LAST_BACKUP_KEY, overview_stack, "visible-child-name",
+    settings.bind_with_mapping(DejaDup.LAST_RUN_KEY, overview_stack, "visible-child-name",
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
                                null, null);
 

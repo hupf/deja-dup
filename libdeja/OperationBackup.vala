@@ -14,11 +14,17 @@ public class DejaDup.OperationBackup : Operation
     Object(mode: ToolJob.Mode.BACKUP, backend: backend);
   }
 
+  public async override void start()
+  {
+    DejaDup.update_last_run_timestamp(DejaDup.LAST_RUN_KEY);
+    yield base.start();
+  }
+
   internal async override void operation_finished(bool success, bool cancelled, string? detail)
   {
     /* If successfully completed, update time of last backup and run base operation_finished */
-    if (success)
-      DejaDup.update_last_run_timestamp(DejaDup.TimestampType.BACKUP);
+    if (success && !cancelled)
+      DejaDup.update_last_run_timestamp(DejaDup.LAST_BACKUP_KEY);
 
     if (metadir != null)
       new RecursiveDelete(metadir).start();

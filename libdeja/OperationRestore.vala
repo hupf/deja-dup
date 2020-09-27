@@ -47,8 +47,8 @@ public class DejaDup.OperationRestore : Operation
 
   internal async override void operation_finished(bool success, bool cancelled, string? detail)
   {
-    if (success)
-      DejaDup.update_last_run_timestamp(DejaDup.TimestampType.RESTORE);
+    if (success && !cancelled)
+      DejaDup.update_last_run_timestamp(DejaDup.LAST_RESTORE_KEY);
 
     yield base.operation_finished(success, cancelled, detail);
   }

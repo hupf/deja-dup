@@ -90,7 +90,7 @@ public class ConfigStatusLabel : BuilderWidget
     string last_label;
     string next_label;
 
-    var last = DejaDup.last_run_date(DejaDup.TimestampType.BACKUP);
+    var last = settings.get_string(DejaDup.LAST_BACKUP_KEY);
     var last_time = new DateTime.from_iso8601(last, new TimeZone.utc());
     if (last_time == null)
       last_label = _("No recent backups.");
