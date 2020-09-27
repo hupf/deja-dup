@@ -272,6 +272,7 @@ public class AssistantRestore : AssistantOperation
     page.attach(grid, 1, rows, 1, 1);
     ++rows;
 
+    // Translators: label for the date from which we are restoring
     confirm_date_label = new Gtk.Label(_("Restore date"));
     confirm_date_label.set("xalign", 1.0f);
     confirm_date = new Gtk.Label("");
@@ -280,6 +281,7 @@ public class AssistantRestore : AssistantOperation
     page.attach(confirm_date, 1, rows, 1, 1);
     ++rows;
 
+    // Translators: label for the folder into which we putting restored files
     confirm_location_label = new Gtk.Label(_("Restore folder"));
     confirm_location_label.set("xalign", 1.0f);
     confirm_location = new Gtk.Label("");
