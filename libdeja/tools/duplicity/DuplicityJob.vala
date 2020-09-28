@@ -63,7 +63,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   bool checked_backup_space = false;
 
-  const int MINIMUM_FULL = 2;
+  const int MINIMUM_FULL = 1;
   bool deleted_files = false;
   int delete_age = 0;
 

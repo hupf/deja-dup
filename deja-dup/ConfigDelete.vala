@@ -13,6 +13,7 @@ public class ConfigDelete : ConfigChoice
   }
 
   protected override void fill_store() {
+    add_item(90, _("At least three months"));
     add_item(182, _("At least six months"));
     add_item(365, _("At least a year"));
     add_item(0, _("Forever"));

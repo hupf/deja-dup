@@ -3,8 +3,7 @@
 
 [Operation]
 Type=backup
-Settings=delete-after=500;
-IsFull=true
+Settings=delete-after=10;
 
 [Duplicity]
 Runs=status;dry;backup;status-restore;verify;
@@ -12,5 +11,5 @@ Runs=status;dry;backup;status-restore;verify;
 [Duplicity status]
 #echo "INFO 3"
 #echo "chain-complete"
-#echo " full $(date --utc --date='1000 days ago' +%Y%m%dT%H%M%SZ) 1 noenc"
+#echo " full $(date --utc --date='12 days ago' +%Y%m%dT%H%M%SZ) 1 noenc"
 OutputScript=true
