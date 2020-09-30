@@ -25,8 +25,17 @@ public class BackendLocal : BackendFile
   {
     var root = File.new_for_path(Environment.get_home_dir());
 
+    if (path == "~") {
+      return root;
+    }
+
+    var child = path;
+    if (child.has_prefix("~/")) {
+      child = child.substring(2);
+    }
+
     try {
-      return root.get_child_for_display_name(path);
+      return root.get_child_for_display_name(child);
     } catch (Error e) {
       warning("%s", e.message);
       return null;
