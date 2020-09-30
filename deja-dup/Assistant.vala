@@ -285,7 +285,7 @@ public abstract class Assistant : Gtk.Window
       }
       break;
     case Type.CHECK:
-      show_close = true;
+      show_cancel = true;
       show_forward = true;
       forward_text = C_("verb", "_Test");
       break;

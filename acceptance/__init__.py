@@ -144,7 +144,8 @@ class BaseTest(unittest.TestCase):
             kwargs["label"] = obj.labeler.name
         return obj.parent.child(**kwargs)
 
-    def walk_initial_backup(self, app, error=False, password=None, wait=True):
+    def walk_initial_backup(self, app, error=False, password=None, wait=True,
+                            remember=False):
         window = app.window("Back Up")
         window.button("Forward").click()  # folders
         window.button("Forward").click()  # storage location
@@ -154,6 +155,8 @@ class BaseTest(unittest.TestCase):
         if password:
             window.child(roleName="text", label="Encryption password").text = password
             window.child(roleName="text", label="Confirm password").text = password
+            if remember:
+                window.child(roleName="check box", name="Remember password").click()
         else:
             window.child(
                 roleName="radio button", name="Allow restoring without a password"
@@ -168,8 +171,8 @@ class BaseTest(unittest.TestCase):
             window.childNamed("Backup Failed")
             window.button("Close").click()
 
-    def walk_incremental_backup(self, app, password=None, wait=True):
-        window = app.window("Backing Up…")
+    def walk_incremental_backup(self, app, password=None, wait=True, title=None):
+        window = app.window(title or "Backing Up…")
 
         if password:
             window.child(roleName="text", label="Encryption password").text = password

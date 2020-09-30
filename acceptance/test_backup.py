@@ -173,3 +173,23 @@ class BackupTest(BaseTest):
         app = self.cmd("--backup")
         self.walk_incremental_backup(app, password="nope", wait=False)
         self.walk_incremental_backup(app, password="t")
+
+    def test_nag_check(self):
+        app = self.cmd("--backup")
+        self.walk_initial_backup(app, password="t", remember=True)
+
+        # One backup just to confirm we don't need password
+        app = self.cmd("--backup")
+        self.walk_incremental_backup(app)
+
+        months_ago = GLib.DateTime.new_now_utc().add_months(-2).format_iso8601()
+        self.set_string("nag-check", months_ago)
+
+        app = self.cmd("--backup")
+        # Wait for prompt (a little longer to appear than normal dogtail timeouts)
+        self.wait_for(lambda: app.isChild(roleName="text", label="Encryption password"))
+        self.walk_incremental_backup(app, password="nope", title="Restore Test", wait=False)
+        self.walk_incremental_backup(app, password="t", title="Restore Test", wait=False)
+        app.button("Close").click()  # we have a confirmation screen after nag
+
+        assert self.get_string("nag-check") != months_ago
