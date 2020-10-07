@@ -284,6 +284,8 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   string prefix_local(string path)
   {
+    if (path == "/")
+      return local.get_path();
     return Path.build_filename(local.get_path(), path);
   }
 
