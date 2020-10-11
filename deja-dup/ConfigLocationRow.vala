@@ -21,17 +21,8 @@ public class ConfigLocationRow : BuilderWidget
 
     update_text();
 
-    // TODO: libhandy 1.0 makes this easier with a direct ActionRow "activated" signal
-    var group = builder.get_object("storage_group") as Hdy.PreferencesGroup;
     var location = builder.get_object("location") as Hdy.ActionRow;
-    var listbox = location.get_ancestor(typeof(Gtk.ListBox)) as Gtk.ListBox;
-    if (listbox != null) {
-      listbox.row_activated.connect((row) => {
-        if (row == location) {
-          show_location_options();
-        }
-      });
-    }
+    location.activated.connect(show_location_options);
 
     new ConfigLocationGrid(builder);
   }

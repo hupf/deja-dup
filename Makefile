@@ -44,18 +44,12 @@ devshell:
 .PHONY: devshell-setup
 devshell-setup:
 	flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-	flatpak install --or-update gnome-nightly org.gnome.Sdk//master
-	mkdir -p builddir
-	rm -rf builddir/libhandy
-	git clone --depth=1 --branch=libhandy-0-0 https://gitlab.gnome.org/GNOME/libhandy.git builddir/libhandy
+	flatpak install --or-update -y gnome-nightly org.gnome.Sdk//master
 	flatpak run --filesystem=host --command=make org.gnome.Sdk//master devshell-internal
 	@echo -e '\033[0;36mAll done!\033[0m Run "make devshell" to enter the build environment'
 
 .PHONY: devshell-internal
 devshell-internal:
-	meson -Dtests=false -Dexamples=false --prefix=`pwd`/builddir/dev builddir/libhandy/_build builddir/libhandy
-	ninja -C builddir/libhandy/_build
-	ninja -C builddir/libhandy/_build install
 
 .PHONY: flatpak
 flatpak:
