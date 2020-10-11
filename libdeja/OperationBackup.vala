@@ -74,13 +74,29 @@ public class DejaDup.OperationBackup : Operation
 
   void add_always_excluded_dirs(ref List<File> files, ref List<string> regexps)
   {
+    var cache_dir = Environment.get_user_cache_dir();
+    var home_dir = Environment.get_home_dir();
+
     // User doesn't care about cache
-    string dir = Environment.get_user_cache_dir();
-    if (dir != null) {
-      files.prepend(File.new_for_path(dir));
+    if (cache_dir != null) {
+      var cache = File.new_for_path(cache_dir);
+      files.prepend(cache);
+
+      // Always also exclude ~/.cache because we may be running confined with
+      // a custom cache path, but we still want to exclude the user's normal
+      // cache folder. No way to know if they have an unusual path for that,
+      // though. So we just guess at the default path.
+      if (home_dir != null) {
+        var home = File.new_for_path(home_dir);
+        var home_cache = home.get_child(".cache");
+        if (!cache.equal(home_cache)) {
+          files.prepend(home_cache);
+        }
+      }
+
       // We also add our special cache dir because if the user still especially
       // includes the cache dir, we still won't backup our own metadata.
-      files.prepend(File.new_for_path(Path.build_filename(dir, Config.PACKAGE)));
+      files.prepend(cache.get_child(Config.PACKAGE));
     }
 
     // Likewise, user doesn't care about cache-like directories in $HOME.
@@ -88,19 +104,19 @@ public class DejaDup.OperationBackup : Operation
     // historical reasons or for those apps that are both popular enough to
     // warrant special attention, we add some useful exclusions here.
     // When changing this list, remember to update the help documentation too.
-    dir = Environment.get_home_dir();
-    if (dir != null) {
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".adobe/Flash_Player/AssetCache")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".ccache")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".gvfs")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".Private"))); // encrypted copies of stuff in $HOME
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".recent-applications.xbel")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".recently-used.xbel")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".steam/root")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".thumbnails")));
-      files.prepend(File.new_for_path(Path.build_filename(dir, ".xsession-errors")));
-      regexps.prepend(Path.build_filename(dir, ".var/app/*/cache")); // flatpak
-      regexps.prepend(Path.build_filename(dir, "snap/*/*/.cache"));
+    if (home_dir != null) {
+      var home = File.new_for_path(home_dir);
+      files.prepend(home.resolve_relative_path(".adobe/Flash_Player/AssetCache"));
+      files.prepend(home.resolve_relative_path(".ccache"));
+      files.prepend(home.resolve_relative_path(".gvfs"));
+      files.prepend(home.resolve_relative_path(".Private")); // encrypted copies of stuff in $HOME
+      files.prepend(home.resolve_relative_path(".recent-applications.xbel"));
+      files.prepend(home.resolve_relative_path(".recently-used.xbel"));
+      files.prepend(home.resolve_relative_path(".steam/root"));
+      files.prepend(home.resolve_relative_path(".thumbnails"));
+      files.prepend(home.resolve_relative_path(".xsession-errors"));
+      regexps.prepend(Path.build_filename(home_dir, ".var/app/*/cache")); // flatpak
+      regexps.prepend(Path.build_filename(home_dir, "snap/*/*/.cache"));
     }
 
     // Skip all of our temporary directories

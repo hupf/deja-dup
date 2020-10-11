@@ -171,7 +171,7 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
 
     string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails",
                           "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache",
-                          "~/.adobe/Flash_Player/AssetCache"};
+                           "~/.cache", "~/.adobe/Flash_Player/AssetCache"};
     foreach (string ex in excludes1) {
       ex = ex.replace("~", Environment.get_home_dir());
       if (FileUtils.test (ex, FileTest.IS_SYMLINK | FileTest.EXISTS))
