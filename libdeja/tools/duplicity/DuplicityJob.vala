@@ -1193,7 +1193,14 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   File make_file_obj(string file)
   {
-    // All files are relative to root.
+    // If we're restoring a file, then everything will be relative to our
+    // --file-to-restore argument.
+    if (restore_files != null) {
+      var local_file = make_local_rel_path(restore_files.data);
+      return local_file.resolve_relative_path(file);
+    }
+
+    // Else everything is relative to root.
     return slash.resolve_relative_path(file);
   }
 
