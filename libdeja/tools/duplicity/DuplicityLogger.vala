@@ -336,18 +336,24 @@ class Stanza : Object
 
   static void split_line(string line, out bool[] is_path, out string[] split)
   {
-    var firstsplit = line.split(" ");
+    var firstsplit = line.chomp().split(" ");
     var splitlist = new List<string>();
     bool[] splitlist_is_path = {};
+
+    // Special workaround for a duplicity issue. Not ideal, as it only covers
+    // one instance of it, but it's the most important instance: file stat.
+    // https://gitlab.com/duplicity/duplicity/-/issues/21
+    int group_ends_on = -1;
+    if (line.has_prefix("INFO 10 ")) {
+      // format is INFO 10 <date> <file name> <filetype>
+      group_ends_on = firstsplit.length - 2; // second to last word
+    }
 
     int i;
     bool in_group = false;
     string group_word = "";
     for (i = 0; firstsplit[i] != null; ++i) {
       string word = firstsplit[i];
-
-      if (firstsplit[i + 1] == null)
-        word = word.chomp();
 
       // Merge word groupings like 'hello \'goodbye' as one word.
       // Assumes that duplicity is helpful and gives us well formed groupings
@@ -357,7 +363,9 @@ class Stanza : Object
         in_group = true;
 
       if (in_group) {
-        if (word.has_suffix("\'") &&
+        if (group_ends_on >= 0 && group_ends_on == i)
+          in_group = false;
+        else if (group_ends_on < 0 && word.has_suffix("\'") &&
             // OK, word ends with '...  But is it a *real* ' or a fake one?
             // i.e. is it escaped or not?  Test this by seeing if it has an even
             // number of backslashes before it.

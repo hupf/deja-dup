@@ -21,6 +21,8 @@ class RestoreTest(BaseTest):
         self.folder = self.get_config(
             "default", "folder", fallback="deja-dup-test", required=False
         )
+        self.filename = self.srcdir + "/[t](e?s*)' t.\"txt"
+        open(self.filename, "w").write("hello")
 
     def walk_backup(self, app):
         window = app.window("Back Up")
@@ -81,7 +83,7 @@ class RestoreTest(BaseTest):
         )
         window.button("Close").click()
 
-        test_file = open(self.srcdir + "/test.txt", "r")
+        test_file = open(self.filename, "r")
         assert test_file.read(None) == "hello"
 
     def test_simple_cycle(self):
@@ -90,7 +92,7 @@ class RestoreTest(BaseTest):
         app.button("Create My First Backup").click()
         self.walk_backup(app)
 
-        self.set_string("last-backup", "")  # to go back to welcome screen
+        self.set_string("last-run", "")  # to go back to welcome screen
         app.button("Restore From a Previous Backup").click()
         self.walk_restore(app)
 

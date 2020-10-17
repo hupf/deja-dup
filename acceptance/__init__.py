@@ -38,8 +38,6 @@ class BaseTest(unittest.TestCase):
         shutil.rmtree(self.rootdir, ignore_errors=True)
         os.mkdir(self.rootdir)
         os.mkdir(self.srcdir)
-        test_file = open(self.srcdir + "/test.txt", "w")
-        test_file.write("hello")
 
         # Point at that root
         self.set_strv("include-list", [self.srcdir])
