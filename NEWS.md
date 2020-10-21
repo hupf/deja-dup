@@ -3,6 +3,20 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 42.5
+- Fix "Resume later" from resetting your backup schedule
+- Fix difficulty in selecting an internal drive as your storage location when
+  using the file browser dialog
+- Fix using "/" as an included folder being ignored
+- Fix silently refusing to restore filenames with illegal characters to a FAT
+  filesystem; we now show an error
+- Fix restoring filenames with an apostrophe followed by a space (`' `) in them
+- Always exclude ~/.cache, even if its not our current cache folder
+- Clarify deletion policy (that it can take up to three months longer than
+  you might think) and allow a deletion policy of 3 months (previously 6 months
+  was earliest allowed policy, which could mean up to 9 months)
+- Update French, Friulian, Indonesian, Polish, and Ukranian translations
+
 # 42.4
 - Fix regression in 42.3 that prevented restoring from removable drives
 - Update Japanese, Slovak, and Spanish translations
