@@ -3,6 +3,10 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.alpha
+##### Packaging
+- Switch from libhandy0 to libhandy1
+
 # 42.5
 - Fix "Resume later" from resetting your backup schedule
 - Fix difficulty in selecting an internal drive as your storage location when
