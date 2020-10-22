@@ -20,7 +20,7 @@ class IntegrationTest(BaseTest):
             self.skipTest("dev mode")
 
     def test_translations(self):
-        app = self.cmd(env="LANG=fr_FR.UTF-8")
+        app = self.cmd(env="LANG=fr_FR.UTF-8 LANGUAGE=fr")
         assert app.childNamed("Restaurer")
 
     def test_help(self):
@@ -28,7 +28,7 @@ class IntegrationTest(BaseTest):
             self.skipTest("snap removes help")
 
         # Also test that help is translated by passing LANG
-        app = self.cmd(env="LANG=fr_FR.UTF-8")
+        app = self.cmd(env="LANG=fr_FR.UTF-8 LANGUAGE=fr")
         app.childNamed("Menu").click()
 
         self.addCleanup(self.kill_bus, "org.gnome.Yelp")

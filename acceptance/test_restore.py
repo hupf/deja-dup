@@ -72,8 +72,6 @@ class RestoreTest(BaseTest):
             window.child(roleName="text", label="Encryption password").text = password
             window.button("Forward").click()
 
-        window.childNamed("Restoring…")
-
         title = "Restore Failed" if error else "Restore Finished"
         self.wait_for(
             lambda: window.findChild(

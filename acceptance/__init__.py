@@ -204,7 +204,10 @@ class BaseTest(unittest.TestCase):
                 group += "/" + child
             if func == "get_int":
                 func = "get_int32"
-            strvalue = keyfile.get_value(group, key)
+            try:
+                strvalue = keyfile.get_value(group, key)
+            except GLib.GError:
+                return self.get_settings(child=child).get_default_value(key)
             varvalue = GLib.Variant.parse(None, strvalue)
             return getattr(varvalue, func)()
 

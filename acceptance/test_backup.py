@@ -67,8 +67,11 @@ class BackupTest(BaseTest):
         keyCombo("<Super>v")
         sleep(1)
         keyCombo("Enter")
-        keyCombo("<Super>v")
         app = self.get_app()
+
+        # ensure window has focus (different modes either get rid of
+        # notification drawer or not...)
+        app.child(name="Includes").click()
 
         with self.new_files():
             self.walk_initial_backup(app)

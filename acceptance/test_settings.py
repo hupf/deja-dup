@@ -20,9 +20,9 @@ class PreferencesTest(BaseTest):
         # Test that there's a special first time welcome screen
         self.app.button("Create My First Backup")
 
-        # Grab switch from main window, set last-backup time so the switch shows up
+        # Grab switch from main window, set last-run time so the switch shows up
         now = GLib.DateTime.new_now_utc().format_iso8601()
-        self.set_string("last-backup", now)
+        self.set_string("last-run", now)
         periodic_main = self.app.window("Backups").child(name="Automatic backup")
 
         prefs = self.app.window("Preferences")
