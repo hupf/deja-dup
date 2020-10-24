@@ -85,7 +85,7 @@ public class TimeCombo : BuilderWidget
         format = _("%x %X");
       }
 
-      var user_str = datetime.format(format);
+      var user_str = datetime.to_local().format(format);
       Gtk.TreeIter iter;
       store.prepend(out iter);
       store.@set(iter, 0, user_str, 1, datetime.format_iso8601());
