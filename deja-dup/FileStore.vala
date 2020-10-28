@@ -120,7 +120,7 @@ public class FileStore : Gtk.ListStore
         for (int i = 0; i < unicode_tokens.length; i++)
           all_tokens[i] = unicode_tokens[i];
         for (int i = 0; i < ascii_tokens.length; i++)
-          ascii_tokens[unicode_tokens.length + i] = ascii_tokens[i];
+          all_tokens[unicode_tokens.length + i] = ascii_tokens[i];
         child.search_tokens = all_tokens;
       }
 
