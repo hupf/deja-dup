@@ -9,6 +9,7 @@ using GLib;
 public class DuplicityPlugin : DejaDup.ToolPlugin
 {
   bool has_been_setup = false;
+  string version = null;
 
   construct
   {
@@ -25,6 +26,9 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   const int REQUIRED_MICRO = 14;
   void do_initial_setup () throws Error
   {
+    if (has_been_setup)
+      return;
+
     string output;
     Process.spawn_sync(null, {duplicity_command(), "--version"}, null,
                        SpawnFlags.SEARCH_PATH, null, out output);
@@ -37,25 +41,30 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     // string "duplicity major.minor.micro" is now preceded by a deprecation
     // warning.  As a consequence, the substring "major.minor.micro" is now
     // always the penultimate token (the last one always being null).
-    var version_string = tokens[tokens.length - 1].strip();
+    this.version = tokens[tokens.length - 1].strip();
 
     int major, minor, micro;
-    if (!DejaDup.parse_version(version_string, out major, out minor, out micro))
-      throw new SpawnError.FAILED(_("Could not understand duplicity version ‘%s’.").printf(version_string));
+    if (!DejaDup.parse_version(version, out major, out minor, out micro))
+      throw new SpawnError.FAILED(_("Could not understand duplicity version ‘%s’.").printf(version));
 
     if (!DejaDup.meets_version(major, minor, micro, REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO)) {
       var msg = _("Backups requires at least version %d.%d.%.2d of duplicity, " +
                   "but only found version %d.%d.%.2d");
       throw new SpawnError.FAILED(msg.printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
     }
+
+    has_been_setup = true;
+  }
+
+  public override string get_version() throws Error
+  {
+    do_initial_setup();
+    return this.version;
   }
 
   public override DejaDup.ToolJob create_job () throws Error
   {
-    if (!has_been_setup) {
-      do_initial_setup();
-      has_been_setup = true;
-    }
+    do_initial_setup();
     return new DuplicityJob();
   }
 

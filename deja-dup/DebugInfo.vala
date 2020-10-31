@@ -80,6 +80,12 @@ public class DebugInfo : BuilderWidget
     text += "Locale=%s\n".printf(Intl.setlocale(LocaleCategory.MESSAGES, null));
     text += "Home=%s\n".printf(obscurer.replace_path(Environment.get_home_dir()));
     text += "Version=%s\n".printf(version);
+    text += "Tool Name=%s\n".printf(DejaDup.get_tool().name);
+    try {
+      text += "Tool Version=%s\n".printf(DejaDup.get_tool().get_version());
+    } catch (Error e) {
+      text += "Tool Version=(unknown)\n";
+    }
     text += DejaDup.InstallEnv.instance().get_debug_info();
 
     return text;
