@@ -167,6 +167,8 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     args += "collection-status ";
 
   if (mode == Mode.STATUS || mode == Mode.NONE || mode == Mode.DRY || mode == Mode.BACKUP) {
+    args += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
+    args += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
     args += "'--include=%s/deja-dup/metadata' ".printf(cachedir);
 
     string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails",
@@ -218,9 +220,6 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     // with the simple logic of just appending the two lists.
     args += exclude_args;
     args += sys_sym_excludes;
-
-    args += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
-    args += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
 
     args += "'--exclude=**' ";
     args += "'--exclude-if-present=CACHEDIR.TAG' ";
