@@ -65,6 +65,8 @@ common_vflags = [
     '--vapidir', vapidir,
 ]
 common_cflags = [
+    '-DG_LOG_DOMAIN="deja-dup"',
+    '-DG_LOG_USE_STRUCTURED',
     '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
     '-DDUPLICITY_COMMAND="@0@"'.format(get_option('duplicity_command')),
     '-DDUPLICITY_PACKAGES="@0@"'.format(get_option('duplicity_pkgs')),
@@ -78,7 +80,8 @@ common_cflags = [
     '-DAPPLICATION_ID="@0@"'.format(application_id),
     '-DICON_NAME="@0@"'.format(application_id),
     '-DLOCALE_DIR="@0@"'.format(localedir),
-    '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)]
+    '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)
+]
 
 if gdk_x11_dep.found()
 common_vflags += ['--define=HAS_X11']
