@@ -16,8 +16,9 @@ public string get_trash_path()
 // The path of the canary metadata dir we insert into our backups (with a "README" file)
 public File get_metadir()
 {
-  var cachedir = try_realpath(Environment.get_user_cache_dir());
-  return File.new_for_path(Path.build_filename(cachedir, Config.PACKAGE, "metadata"));
+  var cachedir = Environment.get_user_cache_dir();
+  var pkgdir = try_realpath(Path.build_filename(cachedir, Config.PACKAGE));
+  return File.new_for_path(Path.build_filename(pkgdir, "metadata"));
 }
 
 public string? parse_keywords(string dir)
