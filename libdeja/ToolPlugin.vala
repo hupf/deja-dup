@@ -51,6 +51,7 @@ public abstract class ToolJob : Object
   public string encrypt_password {get; set;}
 
   public List<File> includes; // BACKUP
+  public List<File> includes_priority; // BACKUP
   public List<File> excludes; // BACKUP
   public List<string> exclude_regexps; // BACKUP
 

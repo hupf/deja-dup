@@ -292,6 +292,7 @@ internal class DuplicityJob : DejaDup.ToolJob
   void process_include_excludes()
   {
     expand_links_in_list(ref includes, true);
+    expand_links_in_list(ref includes_priority, true);
     expand_links_in_list(ref excludes, false);
 
     // We need to make sure that the most specific includes/excludes will
@@ -299,6 +300,14 @@ internal class DuplicityJob : DejaDup.ToolJob
     // will be preferred if the same dir is present in both lists.
     includes.sort((CompareFunc)cmp_prefix);
     excludes.sort((CompareFunc)cmp_prefix);
+
+    // The includes_priority list is used for things like our canary metadata
+    // file. Paths that must be included no matter what. And in practice, paths
+    // that might be excluded by exclude_regexps, which would otherwise come
+    // first.
+    foreach (File i in includes_priority) {
+      saved_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
+    }
 
     // TODO: Figure out a more reasonable way to order regexps and files.
     // For now, just stick regexps near the beginning, to make sure they get
@@ -325,6 +334,10 @@ internal class DuplicityJob : DejaDup.ToolJob
     saved_argv.append("--exclude=**");
     saved_argv.append("--exclude-if-present=CACHEDIR.TAG");
     saved_argv.append("--exclude-if-present=.deja-dup-ignore");
+
+    // Add priority includes into our main includes list so that the rest of
+    // the code doesn't have to know about both lists.
+    includes.concat(includes_priority.copy_deep((CopyFunc)Object.ref));
   }
 
   public override void cancel() {

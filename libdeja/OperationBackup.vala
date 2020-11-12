@@ -61,7 +61,7 @@ public class DejaDup.OperationBackup : Operation
     try {
       metadir = get_metadir();
       fill_metadir();
-      job.includes.prepend(metadir);
+      job.includes_priority.prepend(metadir);
     }
     catch (Error e) {
       warning("%s\n", e.message);
