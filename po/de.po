@@ -8,17 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-30 17:21+0000\n"
-"PO-Revision-Date: 2020-09-06 12:39+0200\n"
-"Last-Translator: Johannes Maibaum <jmaibaum@gmail.com>\n"
+"POT-Creation-Date: 2020-09-28 00:25+0000\n"
+"PO-Revision-Date: 2020-11-11 15:09+0100\n"
+"Last-Translator: Christian Kirbach <christian.kirbach@gmail.com>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Gtranslator 3.36.0\n"
+"X-Generator: Poedit 2.4.1\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:360
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:367
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Datensicherungen"
 
@@ -367,7 +367,7 @@ msgstr ""
 "Der Ordnerpfad des Backupziels. Dieser kann absolut oder relativ zum Host "
 "sein."
 
-#: data/ui/debug.ui:11 deja-dup/main.vala:251
+#: data/ui/debug.ui:11 deja-dup/main.vala:258
 msgid "Debug Information"
 msgstr "Informationen zur Fehlerbehebung"
 
@@ -499,17 +499,17 @@ msgstr "Wiederherstellen"
 msgid "Con_tinue"
 msgstr "Fort_fahren"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
-#: deja-dup/AssistantOperation.vala:454
+#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:382
+#: deja-dup/AssistantOperation.vala:453
 msgid "E_ncryption password"
 msgstr "Passwort zum Verschlüssel_n"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
-#: deja-dup/AssistantOperation.vala:463
+#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:412
+#: deja-dup/AssistantOperation.vala:462
 msgid "_Show password"
 msgstr "Passwort an_zeigen"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
+#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:419
 #: deja-dup/MountOperationAssistant.vala:26
 msgid "_Remember password"
 msgstr "Passwort _merken"
@@ -553,10 +553,11 @@ msgstr "Datensicherungen _behalten"
 #: data/ui/preferences.ui:87
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
-"space."
+"space or kept up to three months longer to avoid deleting related backups."
 msgstr ""
-"Die ältesten Datensicherungen werden möglicherweise früher gelöscht, falls "
-"am Zielort zu wenig Speicherplatz verfügbar ist."
+"Die ältesten Datensicherungen werden dennoch früher gelöscht, falls am "
+"Zielort wenig Speicherplatz verfügbar steht. Oder sie werden drei Monate "
+"länger aufbewahrt, um das Löschen zugehöriger Sicherungen zu vermeiden."
 
 #: data/ui/preferences.ui:101
 msgid "Schedule"
@@ -742,33 +743,39 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:134
+#: deja-dup/AssistantBackup.vala:123
 msgid "Backing up:"
 msgstr "Sicherung läuft:"
 
-#: deja-dup/AssistantBackup.vala:143
+#: deja-dup/AssistantBackup.vala:132
 msgid "Backup Failed"
 msgstr "Datensicherung fehlgeschlagen"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:135
 msgid "Backup Finished"
 msgstr "Datensicherung beendet"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:150
+#: deja-dup/AssistantBackup.vala:139
 msgid "Your files were successfully backed up and tested."
 msgstr "Ihre Dateien wurden erfolgreich gesichert und überprüft."
 
-#: deja-dup/AssistantBackup.vala:157
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backing Up…"
 msgstr "Sicherung läuft …"
+
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:152 deja-dup/AssistantOperation.vala:899
+msgid "Backups needs your input to continue"
+msgstr "Datensicherungen benötigt Ihre Eingabe um fortzufahren"
 
 #. At time of writing, gnome-shell still warns the user on logout even
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:184
-#| msgid "Backup Monitor"
+#: deja-dup/AssistantBackup.vala:179
 msgid "Backup in progress"
 msgstr "Datensicherung läuft"
 
@@ -784,31 +791,31 @@ msgstr "_Ort der Datensicherung"
 msgid "_Search"
 msgstr "_Suchen"
 
-#: deja-dup/AssistantOperation.vala:159
+#: deja-dup/AssistantOperation.vala:158
 msgid "Scanning:"
 msgstr "Einlesevorgang:"
 
-#: deja-dup/AssistantOperation.vala:160
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning…"
 msgstr "Einlesen läuft …"
 
-#: deja-dup/AssistantOperation.vala:268
+#: deja-dup/AssistantOperation.vala:267
 msgid "_Details"
 msgstr "_Details"
 
-#: deja-dup/AssistantOperation.vala:314
+#: deja-dup/AssistantOperation.vala:313
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Zum Fortfahren müssen die folgenden Pakete installiert werden:"
 
-#: deja-dup/AssistantOperation.vala:350
+#: deja-dup/AssistantOperation.vala:349
 msgid "_Allow restoring without a password"
 msgstr "Wiederherstellung ohne Passwort _erlauben"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:355
 msgid "_Password-protect your backup"
 msgstr "Datensicherung mit _Passwort verschlüsseln"
 
-#: deja-dup/AssistantOperation.vala:368
+#: deja-dup/AssistantOperation.vala:367
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -816,11 +823,11 @@ msgstr ""
 "Sie werden Ihr Passwort benötigen, um Ihre Dateien wiederherstellen zu "
 "können. Daher wird Ihnen empfohlen, es aufzuschreiben."
 
-#: deja-dup/AssistantOperation.vala:400
+#: deja-dup/AssistantOperation.vala:399
 msgid "Confir_m password"
 msgstr "Passwort _bestätigen"
 
-#: deja-dup/AssistantOperation.vala:439
+#: deja-dup/AssistantOperation.vala:438
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -830,53 +837,48 @@ msgstr ""
 "Sie bitte Ihr Verschlüsselungspasswort erneut ein, um einen kurzen "
 "Wiederherstellungstest durchzuführen."
 
-#: deja-dup/AssistantOperation.vala:468
+#: deja-dup/AssistantOperation.vala:467
 msgid "Test every two _months"
 msgstr "Alle zwei _Monate überprüfen"
 
-#: deja-dup/AssistantOperation.vala:500
+#: deja-dup/AssistantOperation.vala:499
 msgid "_Grant Access"
 msgstr "_Zugriff gewähren"
 
-#: deja-dup/AssistantOperation.vala:562
+#: deja-dup/AssistantOperation.vala:561
 msgid "Install Packages"
 msgstr "Pakete installieren"
 
-#: deja-dup/AssistantOperation.vala:577
+#: deja-dup/AssistantOperation.vala:576
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: deja-dup/AssistantOperation.vala:599
+#: deja-dup/AssistantOperation.vala:598
 msgid "Restore Test"
 msgstr "Wiederherstellungstest"
 
-#: deja-dup/AssistantOperation.vala:607
+#: deja-dup/AssistantOperation.vala:606
 msgid "Grant Access"
 msgstr "Zugriff gewähren"
 
-#: deja-dup/AssistantOperation.vala:815
+#: deja-dup/AssistantOperation.vala:811
 msgid "Require Password?"
 msgstr "Passwort verlangen?"
 
-#: deja-dup/AssistantOperation.vala:817
+#: deja-dup/AssistantOperation.vala:813
 msgid "Encryption Password Needed"
 msgstr "Verschlüsselungspasswort erforderlich"
 
-#: deja-dup/AssistantOperation.vala:866
-#| msgid "Backup encryption password"
+#: deja-dup/AssistantOperation.vala:862
 msgid "Backups needs your encryption password to continue"
 msgstr "Datensicherungen benötigt Ihr Verschlüsselungspasswort um fortzufahren"
 
-#: deja-dup/AssistantOperation.vala:903
-msgid "Backups needs your input to continue"
-msgstr "Datensicherungen benötigt Ihre Eingabe um fortzufahren"
-
-#: deja-dup/AssistantOperation.vala:941
+#: deja-dup/AssistantOperation.vala:937
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installieren"
 
-#: deja-dup/AssistantOperation.vala:946
+#: deja-dup/AssistantOperation.vala:942
 msgid "Backups needs to install packages to continue"
 msgstr "Datensicherungen muss Software installieren, um fortzufahren"
 
@@ -906,108 +908,112 @@ msgstr ""
 msgid "Backup location"
 msgstr "Ort der Datensicherung"
 
-#: deja-dup/AssistantRestore.vala:275
+#. Translators: label for the date from which we are restoring
+#: deja-dup/AssistantRestore.vala:276
 msgid "Restore date"
 msgstr "Wiederherstellungsdatum"
 
-#: deja-dup/AssistantRestore.vala:283
+#. Translators: label for the folder into which we putting restored files
+#: deja-dup/AssistantRestore.vala:285
 msgid "Restore folder"
 msgstr "Ordner der Wiederherstellung"
 
-#: deja-dup/AssistantRestore.vala:313
+#: deja-dup/AssistantRestore.vala:315
 msgid "Checking for Backups…"
 msgstr "Auf Sicherungen wird geprüft …"
 
-#: deja-dup/AssistantRestore.vala:321
+#: deja-dup/AssistantRestore.vala:323
 msgid "Restore From When?"
 msgstr "Von wann wiederherstellen?"
 
-#: deja-dup/AssistantRestore.vala:332
+#: deja-dup/AssistantRestore.vala:334
 msgid "Restore to Where?"
 msgstr "Wohin soll die Datensicherung wiederhergestellt werden?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:367
+#: deja-dup/AssistantRestore.vala:369
 msgid "Restoring:"
 msgstr "Wiederherstellung läuft:"
 
 #. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:377
+#: deja-dup/AssistantRestore.vala:379
 msgid "No backups to restore"
 msgstr "Keine Datensicherungen zur Wiederherstellung gefunden"
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:486
 msgid "Original location"
 msgstr "Ursprünglicher Ort"
 
-#: deja-dup/AssistantRestore.vala:495
+#: deja-dup/AssistantRestore.vala:497
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datei, die wiederhergestellt werden soll"
 msgstr[1] "Dateien, die wiederhergestellt werden sollen"
 
-#: deja-dup/AssistantRestore.vala:516
+#: deja-dup/AssistantRestore.vala:518
 msgid "Restore Failed"
 msgstr "Wiederherstellung fehlgeschlagen"
 
-#: deja-dup/AssistantRestore.vala:518
+#: deja-dup/AssistantRestore.vala:520
 msgid "Restore Finished"
 msgstr "Wiederherstellung abgeschlossen"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:521
+#: deja-dup/AssistantRestore.vala:523
 msgid "Your files were successfully restored."
 msgstr "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: deja-dup/AssistantRestore.vala:524
+#: deja-dup/AssistantRestore.vala:526
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Ihre Datei wurde erfolgreich wiederhergestellt."
 msgstr[1] "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:533 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Datenwiederherstellung …"
 
-#: deja-dup/AssistantRestore.vala:601
-#| msgid "Restore given files"
+#: deja-dup/AssistantRestore.vala:603
 msgid "Restore in progress"
 msgstr "Wiederherstellung läuft"
 
 #: deja-dup/Background.vala:51
-#| msgid "A backup automatically starts every day."
 msgid "Cannot back up automatically"
 msgstr "Automatische Datensicherungen können nicht erstellt werden"
 
-#: deja-dup/Browser.vala:206
+#: deja-dup/Browser.vala:197
 msgid "Click on items to select them"
 msgstr "Elemente zum Auswählen anklicken"
 
-#: deja-dup/Browser.vala:208
+#: deja-dup/Browser.vala:199
 #, c-format
 msgid "%u selected"
 msgid_plural "%u selected"
 msgstr[0] "%u ausgewählt"
 msgstr[1] "%u ausgewählt"
 
-#: deja-dup/Browser.vala:385
+#: deja-dup/Browser.vala:376
 msgid "Authentication needed"
 msgstr "Authentifizierung nötig"
 
 #: deja-dup/ConfigDelete.vala:16
+msgid "At least three months"
+msgstr "Mindestens drei Monate"
+
+#: deja-dup/ConfigDelete.vala:17
 msgid "At least six months"
 msgstr "Mindestens sechs Monate"
 
-#: deja-dup/ConfigDelete.vala:17
+#: deja-dup/ConfigDelete.vala:18
 msgid "At least a year"
 msgstr "Mindestens ein Jahr"
 
-#: deja-dup/ConfigDelete.vala:18
+#: deja-dup/ConfigDelete.vala:19
 msgid "Forever"
 msgstr "Für immer"
 
-#: deja-dup/ConfigDelete.vala:27
+#: deja-dup/ConfigDelete.vala:28
 #, c-format
 msgid "At least %d day"
 msgid_plural "At least %d days"
@@ -1180,17 +1186,14 @@ msgid "Backup finished"
 msgstr "Sicherung abgeschlossen"
 
 #: deja-dup/Notifications.vala:31
-#| msgid "Your files were successfully backed up and tested."
 msgid "But not all files were successfully backed up."
 msgstr "Es konnten nicht alle Dateien erfolgreich gesichert werden."
 
 #: deja-dup/Notifications.vala:38
-#| msgid "Backup Failed"
 msgid "Backup failed"
 msgstr "Datensicherung fehlgeschlagen"
 
 #: deja-dup/Notifications.vala:50
-#| msgid "Restore Failed"
 msgid "Restore failed"
 msgstr "Wiederherstellung fehlgeschlagen"
 
@@ -1209,12 +1212,10 @@ msgstr ""
 "der Sicherung wieder herstellen."
 
 #: deja-dup/Notifications.vala:77
-#| msgid "_Don't Show Again"
 msgid "Don’t Show Again"
 msgstr "_Nicht erneut zeigen"
 
 #: deja-dup/Notifications.vala:78
-#| msgid "Backups"
 msgid "Open Backups"
 msgstr "Datensicherungen öffnen"
 
@@ -1244,17 +1245,15 @@ msgstr "Angegebene Dateien wiederherstellen"
 msgid "Immediately start a backup"
 msgstr "Eine Sicherung direkt starten"
 
-#: deja-dup/main.vala:80 deja-dup/main.vala:98
+#: deja-dup/main.vala:82 deja-dup/main.vala:100
 msgid "An operation is already in progress"
 msgstr "Ein Vorgang läuft bereits"
 
-#: deja-dup/main.vala:85
-#| msgid "File to restore"
-#| msgid_plural "Files to restore"
+#: deja-dup/main.vala:87
 msgid "Please list files to restore"
 msgstr "Bitte wiederherzustellende Dateien auflisten"
 
-#: deja-dup/main.vala:248
+#: deja-dup/main.vala:255
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1311,7 +1310,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:447
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s auf %2$s"
@@ -1321,11 +1320,11 @@ msgstr "%1$s auf %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "Die Datensicherung wird durchgeführt, sobald %s verbunden wurde."
 
-#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:219 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Speicherort nicht verfügbar"
 
-#: libdeja/BackendDrive.vala:215
+#: libdeja/BackendDrive.vala:219
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Auf Verbindung mit »%s« wird gewartet …"
@@ -1376,32 +1375,32 @@ msgstr ""
 "Samba-Netzwerkorte müssen sowohl einen Rechnernamen als auch einen "
 "Freigabenamen enthalten."
 
-#: libdeja/CommonUtils.vala:451
+#: libdeja/CommonUtils.vala:418
 msgid "Access Granted"
 msgstr "Zugriffsversuch erfolgreich"
 
-#: libdeja/CommonUtils.vala:452
+#: libdeja/CommonUtils.vala:419
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 "Datensicherungen werden jetzt fortgesetzt. Sie können diese Seite schließen."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:531
+#: libdeja/CommonUtils.vala:498
 #, c-format
 msgid "Home (%s)"
 msgstr "Persönlicher Ordner (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:536
+#: libdeja/CommonUtils.vala:503
 msgid "Home"
 msgstr "Persönlicher Ordner"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:541
+#: libdeja/CommonUtils.vala:508
 msgid "Trash"
 msgstr "Papierkorb"
 
-#: libdeja/CommonUtils.vala:603
+#: libdeja/CommonUtils.vala:570
 msgid "Backup encryption password"
 msgstr "Passwort für die Verschlüsselung der Sicherung"
 
@@ -1414,26 +1413,26 @@ msgstr ""
 "Datensicherungen die Berechtigung erteilt wurde, im Hintergrund laufen zu "
 "dürfen, und versuchen Sie es erneut."
 
-#: libdeja/Operation.vala:43
+#: libdeja/Operation.vala:47
 msgid "Backing up…"
 msgstr "Daten werden gesichert …"
 
-#: libdeja/Operation.vala:47
+#: libdeja/Operation.vala:51
 msgid "Checking for backups…"
 msgstr "Auf Sicherungen wird geprüft …"
 
-#: libdeja/Operation.vala:49
+#: libdeja/Operation.vala:53
 msgid "Listing files…"
 msgstr "Dateien werden aufgelistet …"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
+#: libdeja/Operation.vala:55 libdeja/Operation.vala:85
 #: libdeja/tools/duplicity/DuplicityJob.vala:388
 #: libdeja/tools/duplicity/DuplicityJob.vala:399
 #: libdeja/tools/duplicity/DuplicityJob.vala:435
 msgid "Preparing…"
 msgstr "Vorbereitung läuft …"
 
-#: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
+#: libdeja/OperationBackup.vala:33 libdeja/OperationVerify.vala:41
 msgid "Verifying backup…"
 msgstr "Sicherung wird überprüft …"
 
@@ -1589,16 +1588,16 @@ msgstr "Keine Datensicherungsdateien gefunden"
 msgid "Uploading…"
 msgstr "Hochladen läuft …"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:34
 msgid "Could not understand duplicity version."
 msgstr "Duplicity-Version wurde nicht erkannt."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:44
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Duplicity-Version »%s« wurde nicht erkannt."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:47
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
