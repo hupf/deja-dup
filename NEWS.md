@@ -7,6 +7,13 @@ SPDX-FileCopyrightText: Michael Terry
 ##### Packaging
 - Switch from libhandy0 to libhandy1
 
+# 42.6
+- Fix possible crash when searching backup files with unicode filenames
+- Exclude snap and flatpak cache files (fixed regression that stopped doing this)
+- Show backup times in local timezone, not UTC
+- Handle a symlinked ~/.cache/deja-dup folder
+- Update Danish, Esperanto, Friulian, and German translations
+
 # 42.5
 - Fix "Resume later" from resetting your backup schedule
 - Fix difficulty in selecting an internal drive as your storage location when
