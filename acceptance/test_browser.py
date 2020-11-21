@@ -270,11 +270,11 @@ class BrowserTest(BaseTest):
                 lambda x: x.roleName == "menu item", showingOnly=False
             )
         ]
-        assert ["06/07/20 19:33:07", "06/07/20 19:29:40", "06/05/20"] == dates
+        assert ["06/07/20 09:33:07", "06/07/20 09:29:40", "06/04/20"] == dates
 
         # click oldest date, it should have an extra item in it
         dates_combo.click()
-        dates_combo.child(roleName="menu item", name="06/05/20").click()
+        dates_combo.child(roleName="menu item", name="06/04/20").click()
         search = self.app.child(roleName="toggle button", name="Search")
         self.wait_for(lambda: search.sensitive)
         assert len(view.children) == 4

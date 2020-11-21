@@ -165,19 +165,27 @@ class BaseTest(unittest.TestCase):
         if not error:
             if wait:
                 self.wait_for(lambda: window.dead, timeout=60)
+                return None
+            else:
+                return window
         else:
             window.childNamed("Backup Failed")
             window.button("Close").click()
+            return None
 
     def walk_incremental_backup(self, app, password=None, wait=True, title=None):
-        window = app.window(title or "Backing Up…")
-
         if password:
+            window = app.window(title or "Encryption Password Needed")
             window.child(roleName="text", label="Encryption password").text = password
             window.button("Forward").click()
+        else:
+            window = app.window(title or "Backing Up…")
 
         if wait:
             self.wait_for(lambda: window.dead)
+            return None
+        else:
+            return window
 
     def get_config(self, section, option, fallback=None, required=True):
         if not self.config:
@@ -206,9 +214,9 @@ class BaseTest(unittest.TestCase):
                 func = "get_int32"
             try:
                 strvalue = keyfile.get_value(group, key)
+                varvalue = GLib.Variant.parse(None, strvalue)
             except GLib.GError:
-                return self.get_settings(child=child).get_default_value(key)
-            varvalue = GLib.Variant.parse(None, strvalue)
+                varvalue = self.get_settings(child=child).get_default_value(key)
             return getattr(varvalue, func)()
 
         settings = self.get_settings(child=child)
@@ -227,9 +235,27 @@ class BaseTest(unittest.TestCase):
         return self.get_value("get_int", key, child=child)
 
     def set_value(self, func, key, value, child=None):
-        settings = self.get_settings(child=child)
-        getattr(settings, func)(key, value)
-        settings.sync()
+        if "DD_KEYFILE" in os.environ:
+            # I was seeing failures because writing one entry would wipe out
+            # other entries, when using the normal GSettings interface.
+            # So much like when reading, we write directly to the keyfile.
+            keyfile = GLib.KeyFile()
+            keyfile.load_from_file(os.environ["DD_KEYFILE"], 0)
+            group = "org/gnome/" + os.environ["DD_KEYFILE_GROUPNAME"]
+            if child:
+                group += "/" + child
+            if func == "set_int":
+                func = "new_int32"
+            else:
+                func = func.replace("set_", "new_")
+            varvalue = getattr(GLib.Variant, func)(value)
+            keyfile.set_value(group, key, varvalue.print_(False))
+            keyfile.save_to_file(os.environ["DD_KEYFILE"])
+        else:
+            settings = self.get_settings(child=child)
+            getattr(settings, func)(key, value)
+
+        Gio.Settings.sync()
 
     def set_strv(self, key, value, child=None):
         self.set_value("set_strv", key, value, child=child)

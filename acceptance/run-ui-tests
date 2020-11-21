@@ -10,7 +10,7 @@ if [ -n "$EXISTING" ]; then
 fi
 
 export LANG=C.UTF
-export TZ=EST+5
+export TZ=HST # hawaii time zone
 export DEJA_DUP_TEST_FAST_FAIL=1
 
 if [ "$1" = "--snap" ]; then
@@ -27,10 +27,10 @@ elif [ "$1" = "--flatpak" ]; then
   shift
   export GSETTINGS_BACKEND=keyfile
   export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDup/config
-  export XDG_DATA_DIRS="$(flatpak info --user org.gnome.DejaDup -l)/files/share":$XDG_DATA_DIRS
+  export XDG_DATA_DIRS="$(flatpak info org.gnome.DejaDup -l)/files/share":$XDG_DATA_DIRS
   export DD_MODE="flatpak"
-  export DD_EXEC="flatpak run --user --filesystem=/tmp -p org.gnome.DejaDup"
-  export DD_MONITOR_EXEC="flatpak run --user -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup"
+  export DD_EXEC="flatpak run --filesystem=/tmp -p org.gnome.DejaDup"
+  export DD_MONITOR_EXEC="flatpak run -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup"
   export DD_CACHE_DIR=$HOME/.var/app/org.gnome.DejaDup/cache/deja-dup
   export DD_APPID=org.gnome.DejaDup
   export DD_DESKTOP="X-Flatpak=org.gnome.DejaDup"
