@@ -128,7 +128,7 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
   var tempdir = Path.build_filename(test_home, "tmp");
   var archive = tmp_archive ? "%s/duplicity-?".printf(tempdir) : "%s/deja-dup".printf(cachedir);
 
-  var end_str = "%s'--verbosity=9' '--archive-dir=%s' '--tempdir=%s' '--log-fd=?'"
+  var end_str = "%s'--verbosity=9' '--timeout=120' '--archive-dir=%s' '--tempdir=%s' '--log-fd=?'"
     .printf(enc_str, archive, tempdir);
 
   if (mode == Mode.CLEANUP)

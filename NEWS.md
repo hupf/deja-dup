@@ -12,7 +12,9 @@ SPDX-FileCopyrightText: Michael Terry
 - Exclude snap and flatpak cache files (fixed regression that stopped doing this)
 - Show backup times in local timezone, not UTC
 - Handle a symlinked ~/.cache/deja-dup folder
-- Update Danish, Esperanto, Friulian, and German translations
+- Bump default network timeout to cover flaky connections/services better
+- Update Brazilian Portuguese, Danish, Esperanto, Friulian, and German
+  translations
 
 # 42.5
 - Fix "Resume later" from resetting your backup schedule

@@ -60,6 +60,9 @@ internal class DuplicityInstance : Object
 
     argv.append("--verbosity=9");
 
+    // default timeout is 30s, but bump it to cover flaky connections better
+    argv.append("--timeout=120");
+
     // Cache signature files
     var cache_dir = forced_cache_dir;
     if (cache_dir == null)
