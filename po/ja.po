@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
 "POT-Creation-Date: 2020-08-31 02:54+0000\n"
-"PO-Revision-Date: 2020-08-31 22:19+0900\n"
+"PO-Revision-Date: 2020-10-15 21:28+0900\n"
 "Last-Translator: Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo."
 "co.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -539,9 +539,11 @@ msgstr "バックアップの保持(_K)"
 #: data/ui/preferences.ui:87
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
-"space."
+"space or kept up to three months longer to avoid deleting related backups."
 msgstr ""
-"保存先の空き容量が少ない場合、最も古いバックアップから順に削除されます。"
+"古いバックアップは関連性のあるバックアップの削除を避けるために 3 ヵ月は"
+"保持されますが、保存先の空き容量が少ない場合は最も古いものから順に削除"
+"されます。"
 
 #: data/ui/preferences.ui:101
 msgid "Schedule"
@@ -819,7 +821,7 @@ msgstr ""
 
 #: deja-dup/AssistantOperation.vala:468
 msgid "Test every two _months"
-msgstr "2ヶ月おきにテストする(_M)"
+msgstr "2 ヶ月おきにテストする(_M)"
 
 #: deja-dup/AssistantOperation.vala:500
 msgid "_Grant Access"
@@ -970,13 +972,17 @@ msgstr[0] "%u 件選択"
 msgid "Authentication needed"
 msgstr "認証が必要です"
 
+#: deja-dup/ConfigDelete.vala
+msgid "At least three months"
+msgstr "最低 3 ヵ月"
+
 #: deja-dup/ConfigDelete.vala:16
 msgid "At least six months"
-msgstr "最低6か月"
+msgstr "最低 6 ヵ月"
 
 #: deja-dup/ConfigDelete.vala:17
 msgid "At least a year"
-msgstr "最低1年"
+msgstr "最低 1 年"
 
 #: deja-dup/ConfigDelete.vala:18
 msgid "Forever"
@@ -995,7 +1001,7 @@ msgstr "削除"
 #: deja-dup/ConfigFolderList.vala:67
 msgid ""
 "This folder cannot be backed up because Backups does not have access to it."
-msgstr "このフォルダーはアクセス権がないためバックアップできません。"
+msgstr "アクセス権がないため、このフォルダーはバックアップできません。"
 
 #: deja-dup/ConfigFolderList.vala:80
 msgid "Add"
@@ -1059,7 +1065,7 @@ msgstr "毎週"
 #, c-format
 msgid "Every %d day"
 msgid_plural "Every %d days"
-msgstr[0] "%d 日毎"
+msgstr[0] "%d 日ごと"
 
 #. Check for some really simple/common friendly names
 #: deja-dup/ConfigStatusLabel.vala:46
@@ -1393,7 +1399,7 @@ msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr ""
-"バックアップの保存場所に十分な空き領域がありません。%s 以上の場所を試してみて"
+"バックアップの保存場所に十分な空き容量がありません。%s 以上の場所を試してみて"
 "ください。"
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:591
@@ -1490,12 +1496,12 @@ msgstr "空き容量がありません。"
 #: libdeja/tools/duplicity/DuplicityJob.vala:1065
 #, c-format
 msgid "Error reading file ‘%s’."
-msgstr "ファイル ‘%s’ を読み込み中にエラー。"
+msgstr "ファイル ‘%s’ の読み込み中にエラーが発生しました。"
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:1067
 #, c-format
 msgid "Error writing file ‘%s’."
-msgstr "ファイル ‘%s’ を書き込み中にエラー。"
+msgstr "ファイル ‘%s’ の書き込み中にエラーが発生しました。"
 
 #: libdeja/tools/duplicity/DuplicityJob.vala:1078
 #, c-format
