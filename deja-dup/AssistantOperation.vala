@@ -34,10 +34,10 @@ public abstract class AssistantOperation : Assistant
   Gtk.Label backend_install_packages;
   Gtk.ProgressBar backend_install_progress;
 
-  Gtk.Entry nag_entry;
-  Gtk.Entry encrypt_entry;
-  Gtk.Entry encrypt_confirm_entry;
-  Gtk.RadioButton encrypt_enabled;
+  Gtk.PasswordEntry nag_entry;
+  Gtk.PasswordEntry encrypt_entry;
+  Gtk.PasswordEntry confirm_entry;
+  Gtk.CheckButton encrypt_enabled;
   Gtk.CheckButton encrypt_remember;
   protected Gtk.Widget password_page {get; private set;}
   protected Gtk.Widget nag_page {get; private set;}
@@ -73,6 +73,7 @@ public abstract class AssistantOperation : Assistant
 
   const int LOGS_LINES_TO_KEEP = 10000;
   bool adjustment_at_end = true;
+  bool adjusting_text = false;
 
   construct
   {
@@ -97,7 +98,7 @@ public abstract class AssistantOperation : Assistant
     canceled.connect(do_cancel);
     closed.connect(do_delete);
     resumed.connect(do_delete);
-    delete_event.connect(() => {do_delete(); return true;});
+    close_request.connect(() => {do_delete(); return true;});
     prepare.connect(do_prepare);
   }
 
@@ -132,9 +133,9 @@ public abstract class AssistantOperation : Assistant
   void show_progress(DejaDup.Operation op, double percent)
   {
     /*
-     * Updates prograss bar
+     * Updates progress bar
      *
-     * Updates progress bar with percet provided.
+     * Updates progress bar with percent provided.
      */
     progress_bar.fraction = percent;
     gives_progress = true;
@@ -160,13 +161,9 @@ public abstract class AssistantOperation : Assistant
       progress_file_label.label = "";
     }
 
-    string log_line = prefix + " " + file.get_parse_name();
+    adjusting_text = true;
 
-    Gtk.Adjustment adjust = progress_scroll.get_vadjustment();
-    if (adjust.value >= adjust.upper - adjust.page_size ||
-        adjust.page_size == 0 || // means never been set, means not realized
-        !progress_expander.expanded)
-      adjustment_at_end = true;
+    string log_line = prefix + " " + file.get_parse_name();
 
     var buffer = progress_text.buffer;
     if (buffer.get_char_count() > 0)
@@ -184,6 +181,9 @@ public abstract class AssistantOperation : Assistant
       buffer.delete(ref start, ref cutoff);
     }
 
+    maybe_autoscroll();
+    adjusting_text = false;
+
     progress_expander.visible = true;
     progress_scroll.visible = true;
     progress_text.visible = true;
@@ -199,23 +199,24 @@ public abstract class AssistantOperation : Assistant
       secondary_label.hide();
   }
 
-  void update_autoscroll()
+  void maybe_autoscroll()
   {
     if (adjustment_at_end)
     {
-        Gtk.Adjustment adjust = progress_scroll.get_vadjustment();
-        adjust.value = adjust.upper - adjust.page_size;
+      var adjust = progress_scroll.vadjustment;
+      adjust.value = adjust.upper - adjust.page_size;
     }
   }
 
-  bool stop_autoscroll()
+  void update_autoscroll()
   {
-    Gtk.Adjustment adjust = progress_scroll.get_vadjustment();
+    if (adjusting_text)
+      return;
 
-    if (adjust.value < adjust.upper - adjust.page_size)
-      adjustment_at_end = false;
-
-    return false;
+    var adjust = progress_scroll.vadjustment;
+    adjustment_at_end = adjust.value >= adjust.upper - adjust.page_size * 2 ||
+                        adjust.page_size == 0 || // unset, i.e. not realized
+                        !progress_expander.expanded;
   }
 
   protected virtual Gtk.Widget make_progress_page()
@@ -242,7 +243,7 @@ public abstract class AssistantOperation : Assistant
     secondary_label.xalign = 0.0f;
     secondary_label.wrap = true;
     secondary_label.max_width_chars = 30;
-    secondary_label.no_show_all = true;
+    secondary_label.visible = false;
     secondary_label.use_markup = true;
     page.attach(secondary_label, 0, row, 2, 1);
     ++row;
@@ -253,25 +254,24 @@ public abstract class AssistantOperation : Assistant
 
     progress_text = new Gtk.TextView();
     progress_text.editable = false;
-    progress_text.size_allocate.connect(update_autoscroll);
-    progress_scroll = new Gtk.ScrolledWindow(null, null);
-    progress_scroll.scroll_event.connect(stop_autoscroll);
-    ((Gtk.Range)progress_scroll.get_vscrollbar()).change_value.connect(stop_autoscroll);
-    progress_scroll.expand = true;
+    progress_scroll = new Gtk.ScrolledWindow();
+    progress_scroll.vadjustment.value_changed.connect(update_autoscroll);
+    progress_scroll.hexpand = true;
+    progress_scroll.vexpand = true;
     progress_scroll.hscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
     progress_scroll.vscrollbar_policy = Gtk.PolicyType.AUTOMATIC;
-    progress_scroll.border_width = 0;
     progress_scroll.min_content_height = 200;
-    progress_scroll.expand = true;
-    progress_scroll.add(progress_text);
+    progress_scroll.child = progress_text;
     progress_expander = new Gtk.Expander.with_mnemonic(_("_Details"));
-    progress_expander.expand = true;
-    progress_expander.no_show_all = true;
-    progress_expander.add(progress_scroll);
+    progress_expander.hexpand = true;
+    progress_expander.vexpand = true;
+    progress_expander.visible = false;
+    progress_expander.child = progress_scroll;
+    progress_scroll.notify["expanded"].connect(update_autoscroll);
     page.attach(progress_expander, 0, row, 2, 1);
     ++row;
 
-    page.border_width = 12;
+    DejaDup.set_margins(page, 12);
 
     // Reserve space for details + labels
     page.set_size_request(-1, 200);
@@ -282,8 +282,7 @@ public abstract class AssistantOperation : Assistant
   void show_detail(string detail)
   {
     page_box.set_size_request(300, 200);
-    detail_widget.no_show_all = false;
-    detail_widget.show_all();
+    detail_widget.visible = true;
     detail_text_view.buffer.set_text(detail, -1);
   }
 
@@ -308,7 +307,7 @@ public abstract class AssistantOperation : Assistant
 
     var page = new Gtk.Grid();
     page.row_spacing = 6;
-    page.border_width = 12;
+    DejaDup.set_margins(page, 12);
 
     l = new Gtk.Label(_("In order to continue, the following packages need to be installed:"));
     l.xalign = 0.0f;
@@ -327,9 +326,8 @@ public abstract class AssistantOperation : Assistant
     backend_install_packages = l;
 
     backend_install_progress = new Gtk.ProgressBar();
-    backend_install_progress.no_show_all = true;
+    backend_install_progress.visible = false;
     backend_install_progress.hexpand = true;
-    backend_install_progress.hide();
     page.attach(backend_install_progress, 0, rows++, 1, 1);
 
     return page;
@@ -341,18 +339,17 @@ public abstract class AssistantOperation : Assistant
     Gtk.Widget w, label;
 
     var page = new Gtk.Grid();
-    page.set("row-spacing", 6,
-             "column-spacing", 6,
-             "border-width", 12);
+    page.row_spacing = 6;
+    page.column_spacing = 6;
+    DejaDup.set_margins(page, 12);
 
-    w = new Gtk.RadioButton.with_mnemonic(null,
-                                          _("_Allow restoring without a password"));
+    w = new Gtk.CheckButton.with_mnemonic(_("_Allow restoring without a password"));
     page.attach(w, 0, rows, 3, 1);
     first_password_widgets.append(w);
     ++rows;
 
-    encrypt_enabled = new Gtk.RadioButton.with_mnemonic_from_widget(w as Gtk.RadioButton,
-                                                                    _("_Password-protect your backup"));
+    encrypt_enabled = new Gtk.CheckButton.with_mnemonic(_("_Password-protect your backup"));
+    encrypt_enabled.group = w as Gtk.CheckButton;
     encrypt_enabled.active = true; // always default to encrypted
     page.attach(encrypt_enabled, 0, rows, 3, 1);
     first_password_widgets.append(encrypt_enabled);
@@ -374,47 +371,38 @@ public abstract class AssistantOperation : Assistant
     first_password_widgets.append(w);
     ++rows;
 
-    w = new Gtk.Entry();
-    w.set("input-purpose", Gtk.InputPurpose.PASSWORD,
-          "hexpand", true,
-          "activates-default", true);
-    ((Gtk.Entry)w).changed.connect(() => {check_password_validity();});
+    encrypt_entry = new Gtk.PasswordEntry();
+    encrypt_entry.hexpand = true;
+    encrypt_entry.activates_default = true;
+    encrypt_entry.show_peek_icon = true;
+    encrypt_entry.changed.connect(check_password_validity);
     label = new Gtk.Label(_("E_ncryption password"));
-    label.set("mnemonic-widget", w,
+    label.set("mnemonic-widget", encrypt_entry,
               "use-underline", true,
               "xalign", 1.0f);
     page.attach(label, 1, rows, 1, 1);
-    page.attach(w, 2, rows, 1, 1);
-    encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
+    page.attach(encrypt_entry, 2, rows, 1, 1);
+    encrypt_enabled.bind_property("active", encrypt_entry, "sensitive", BindingFlags.SYNC_CREATE);
     encrypt_enabled.bind_property("active", label, "sensitive", BindingFlags.SYNC_CREATE);
     ++rows;
-    encrypt_entry = (Gtk.Entry)w;
 
     // Add a confirmation entry if this is user's first time
-    w = new Gtk.Entry();
-    w.set("input-purpose", Gtk.InputPurpose.PASSWORD,
-          "hexpand", true,
-          "activates-default", true);
-    ((Gtk.Entry)w).changed.connect(() => {check_password_validity();});
+    confirm_entry = new Gtk.PasswordEntry();
+    confirm_entry.hexpand = true;
+    confirm_entry.activates_default = true;
+    confirm_entry.show_peek_icon = true;
+    confirm_entry.changed.connect(check_password_validity);
     label = new Gtk.Label(_("Confir_m password"));
-    label.set("mnemonic-widget", w,
+    label.set("mnemonic-widget", confirm_entry,
               "use-underline", true,
               "xalign", 1.0f);
     page.attach(label, 1, rows, 1, 1);
-    page.attach(w, 2, rows, 1, 1);
-    encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
+    page.attach(confirm_entry, 2, rows, 1, 1);
+    encrypt_enabled.bind_property("active", confirm_entry, "sensitive", BindingFlags.SYNC_CREATE);
     encrypt_enabled.bind_property("active", label, "sensitive", BindingFlags.SYNC_CREATE);
     ++rows;
-    encrypt_confirm_entry = (Gtk.Entry)w;
-    first_password_widgets.append(w);
+    first_password_widgets.append(confirm_entry);
     first_password_widgets.append(label);
-
-    w = new Gtk.CheckButton.with_mnemonic(_("_Show password"));
-    w.bind_property("active", encrypt_entry, "visibility", BindingFlags.SYNC_CREATE);
-    w.bind_property("active", encrypt_confirm_entry, "visibility", BindingFlags.SYNC_CREATE);
-    page.attach(w, 2, rows, 1, 1);
-    encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
-    ++rows;
 
     w = new Gtk.CheckButton.with_mnemonic(_("_Remember password"));
     page.attach(w, 2, rows, 1, 1);
@@ -431,9 +419,9 @@ public abstract class AssistantOperation : Assistant
     Gtk.Widget w, label;
 
     var page = new Gtk.Grid();
-    page.set("row-spacing", 6,
-             "column-spacing", 6,
-             "border-width", 12);
+    page.row_spacing = 6;
+    page.column_spacing = 6;
+    DejaDup.set_margins(page, 12);
 
     w = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
                         "of an emergency, please enter your encryption password again to perform a " +
@@ -445,23 +433,17 @@ public abstract class AssistantOperation : Assistant
     w.hide();
     ++rows;
 
-    w = new Gtk.Entry();
-    w.set("input-purpose", Gtk.InputPurpose.PASSWORD,
-          "hexpand", true,
-          "activates-default", true);
-    ((Gtk.Entry)w).changed.connect((entry) => {check_nag_validity();});
+    var nag_entry = new Gtk.PasswordEntry();
+    nag_entry.hexpand = true;
+    nag_entry.activates_default = true;
+    nag_entry.show_peek_icon = true;
+    nag_entry.changed.connect(check_nag_validity);
     label = new Gtk.Label(_("E_ncryption password"));
     label.set("mnemonic-widget", w,
               "use-underline", true,
               "xalign", 1.0f);
     page.attach(label, 1, rows, 1, 1);
-    page.attach(w, 2, rows, 1, 1);
-    nag_entry = w as Gtk.Entry;
-    ++rows;
-
-    w = new Gtk.CheckButton.with_mnemonic(_("_Show password"));
-    w.bind_property("active", nag_entry, "visibility", BindingFlags.SYNC_CREATE);
-    page.attach(w, 2, rows, 1, 1);
+    page.attach(nag_entry, 2, rows, 1, 1);
     ++rows;
 
     w = new Gtk.CheckButton.with_mnemonic(_("Test every two _months"));
@@ -485,8 +467,8 @@ public abstract class AssistantOperation : Assistant
     var page = new Gtk.Grid();
     page.row_spacing = 36;
     page.column_spacing = 6;
-    page.border_width = 12;
     page.halign = Gtk.Align.CENTER;
+    DejaDup.set_margins(page, 12);
 
     var l = new Gtk.Label("");
     l.xalign = 0.0f;
@@ -498,7 +480,7 @@ public abstract class AssistantOperation : Assistant
 
     var b = new Gtk.Button.with_mnemonic(_("_Grant Access"));
     b.clicked.connect(() => {
-      DejaDup.show_uri(get_toplevel() as Gtk.Window, consent_url);
+      Gtk.show_uri(get_root() as Gtk.Window, consent_url, Gdk.CURRENT_TIME);
     });
     page.attach(b, 1, rows, 1, 1);
     ++rows;
@@ -511,9 +493,9 @@ public abstract class AssistantOperation : Assistant
     int rows = 0;
 
     var page = new Gtk.Grid();
-    page.set("row-spacing", 6,
-             "column-spacing", 6,
-             "border-width", 12);
+    page.row_spacing = 6;
+    page.column_spacing = 6;
+    DejaDup.set_margins(page, 12);
 
     var label = new Gtk.Label("");
     label.set("use-underline", true,
@@ -540,16 +522,16 @@ public abstract class AssistantOperation : Assistant
     detail_text_view.wrap_mode = Gtk.WrapMode.WORD;
     detail_text_view.height_request = 150;
 
-    var scroll = new Gtk.ScrolledWindow(null, null);
-    scroll.add(detail_text_view);
+    var scroll = new Gtk.ScrolledWindow();
+    scroll.child = detail_text_view;
     scroll.vexpand = true;
-    scroll.no_show_all = true; // only will be shown if an error occurs
+    scroll.visible = false; // only will be shown if an error occurs
     detail_widget = scroll;
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.border_width = 12;
-    page.add(summary_label);
-    page.add(detail_widget);
+    DejaDup.set_margins(page, 12);
+    page.append(summary_label);
+    page.append(detail_widget);
 
     return page;
   }
@@ -774,8 +756,7 @@ public abstract class AssistantOperation : Assistant
     }
 
     closing();
-
-    DejaDup.destroy_widget(this);
+    destroy();
   }
 
   protected void get_passphrase()
@@ -796,8 +777,8 @@ public abstract class AssistantOperation : Assistant
       return;
     }
 
-    if (encrypt_confirm_entry.visible) {
-      var passphrase2 = encrypt_confirm_entry.get_text();
+    if (confirm_entry.visible) {
+      var passphrase2 = confirm_entry.text;
       var valid = (passphrase == passphrase2);
       allow_forward(valid);
     }
@@ -822,8 +803,7 @@ public abstract class AssistantOperation : Assistant
 
   void check_nag_validity()
   {
-    var passphrase = nag_entry.get_text();
-    if (passphrase == "")
+    if (nag_entry.text == "")
       allow_forward(false);
     else
       allow_forward(true);
@@ -832,7 +812,7 @@ public abstract class AssistantOperation : Assistant
   void configure_nag_page()
   {
     check_nag_validity();
-    nag_entry.set_text("");
+    nag_entry.text = "";
     nag_entry.grab_focus();
   }
 
@@ -879,16 +859,10 @@ public abstract class AssistantOperation : Assistant
       yield DejaDup.store_passphrase(passphrase, remember);
     }
     else {
-      passphrase = DejaDup.process_passphrase(nag_entry.get_text());
+      passphrase = DejaDup.process_passphrase(nag_entry.text);
     }
 
     op.set_passphrase(passphrase);
-  }
-
-  void stop_question(Assistant dlg, int resp)
-  {
-    Gtk.main_quit();
-    response.disconnect(stop_question);
   }
 
   void show_question(DejaDup.Operation op, string title, string message)
@@ -897,8 +871,10 @@ public abstract class AssistantOperation : Assistant
     question_label.label = message;
     interrupt(question_page);
     Notifications.attention_needed(this, _("Backups needs your input to continue"), title);
-    response.connect(stop_question);
-    Gtk.main();
+    var loop = new MainLoop(null);
+    var signal_id = response.connect(loop.quit);
+    loop.run();
+    disconnect(signal_id);
   }
 
 #if HAS_PACKAGEKIT

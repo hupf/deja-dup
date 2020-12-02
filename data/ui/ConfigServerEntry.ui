@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="ConfigServerEntry" parent="GtkEntry">
+    <property name="input_purpose">url</property>
+    <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK</property>
+    <property name="secondary_icon_name">dialog-question-symbolic</property>
+
+    <signal name="icon_press" handler="on_icon_press"/>
+
+    <child>
+      <object class="ServerHintPopover" id="popover">
+        <property name="visible">0</property>
+      </object>
+    </child>
+  </template>
+</interface>

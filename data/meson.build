@@ -74,8 +74,9 @@ test('validate-appstream', appstream_util,
 resources_xml = configure_file(input: 'resources.xml',
     output: 'resources.vars.xml',
     configuration: conf_data)
-resources = gnome.compile_resources('resources', resources_xml,
-    source_dir: ['ui'])
+resources = gnome.compile_resources(application_id, resources_xml,
+    source_dir: ['ui'],
+    c_name: 'resources')
 
 meson.add_install_script('post-install.sh', datadir)
 message('''You may need to recompile your gsettings schemas or regenerate

@@ -31,25 +31,28 @@ clean:
 .PHONY: devshell
 devshell:
 	@flatpak run \
-		--env=LD_LIBRARY_PATH=`pwd`/builddir/dev/lib \
-		--env=PKG_CONFIG_PATH=`pwd`/builddir/dev/lib/pkgconfig \
-		--env=XDG_DATA_DIRS=/app/share:/usr/share:/usr/share/runtime/share:/run/host/user-share:/run/host/share:`pwd`/builddir/dev/share \
-		--filesystem=host \
-		--own-name=org.gnome.DejaDup \
-		--own-name=org.gnome.DejaDupDevel \
-		--socket=fallback-x11 \
-		--socket=wayland \
-		org.gnome.Sdk//master
+		--command=make \
+		--devel \
+		org.gnome.DejaDupDevel//master \
+		devshell-bash
 
-.PHONY: devshell-setup
-devshell-setup:
+.PHONY: devshell-bash
+devshell-bash:
+	@env \
+		LD_LIBRARY_PATH=`pwd`/builddir/dev/lib \
+		PKG_CONFIG_PATH=`pwd`/builddir/dev/lib/pkgconfig \
+		XDG_DATA_DIRS=`pwd`/builddir/dev/share:$$XDG_DATA_DIRS \
+		PS1='[📦 \W]$$ ' \
+		bash --norc
+
+.PHONY: devshell-sdk
+devshell-sdk:
 	flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 	flatpak install --or-update -y gnome-nightly org.gnome.Sdk//master
-	flatpak run --filesystem=host --command=make org.gnome.Sdk//master devshell-internal
-	@echo -e '\033[0;36mAll done!\033[0m Run "make devshell" to enter the build environment'
 
-.PHONY: devshell-internal
-devshell-internal:
+.PHONY: devshell-setup
+devshell-setup: devshell-sdk flatpak
+	@echo -e '\033[0;36mAll done!\033[0m Run "make devshell" to enter the build environment'
 
 .PHONY: flatpak
 flatpak:

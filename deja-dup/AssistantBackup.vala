@@ -45,25 +45,23 @@ public class AssistantBackup : AssistantOperation
 
   Gtk.Widget make_include_exclude_page()
   {
-    var prefs_builder = new Builder("preferences");
+    var prefs_builder = DejaDup.make_builder("preferences");
     new ConfigFolderList(prefs_builder, "includes", DejaDup.INCLUDE_LIST_KEY, true);
     new ConfigFolderList(prefs_builder, "excludes", DejaDup.EXCLUDE_LIST_KEY, false);
 
-    var page = prefs_builder.get_object("folders_page") as Gtk.Widget;
-    page.ref();
-    page.parent.remove(page);
+    var page = prefs_builder.get_object("folders_page") as Hdy.PreferencesPage;
+    page.unparent();
 
     return page;
   }
 
   Gtk.Widget make_location_page()
   {
-    var prefs_builder = new Builder("preferences");
+    var prefs_builder = DejaDup.make_builder("preferences");
     new ConfigLocationGrid(prefs_builder);
 
     var config_location = prefs_builder.get_object("location_grid") as Gtk.Widget;
-    config_location.ref();
-    config_location.parent.remove(config_location);
+    config_location.unparent();
 
     return config_location;
   }

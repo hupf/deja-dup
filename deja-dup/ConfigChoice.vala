@@ -29,12 +29,13 @@ public abstract class ConfigChoice : BuilderWidget
     fill_store();
 
     adopt_name(combo_name());
-    var row = builder.get_object(combo_name()) as Hdy.ComboRow;
-    row.bind_name_model(store, (item) => {return ((Item)item).label;});
+    unowned var row = get_object(combo_name()) as Hdy.ComboRow;
+    row.expression = new Gtk.PropertyExpression(typeof(Item), null, "label");
+    row.model = store;
 
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(setting_name(),
-                               row, "selected-index",
+                               row, "selected",
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                this.ref(), Object.unref);
@@ -77,14 +78,14 @@ public abstract class ConfigChoice : BuilderWidget
       position = choice.add_item(clamped, choice.label_for_value(clamped));
     }
 
-    val.set_int((int)position);
+    val.set_uint(position);
     return true;
   }
 
   static Variant set_mapping(Value val, VariantType expected_type, void *data)
   {
     var store = ((ConfigChoice)data).store;
-    var item = store.get_item(val.get_int()) as Item;
+    var item = store.get_item(val.get_uint()) as Item;
     return new Variant.int32(item.val);
   }
 }

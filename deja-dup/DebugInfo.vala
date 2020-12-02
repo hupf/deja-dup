@@ -9,51 +9,15 @@ using GLib;
 // Most strings in this window are *not* translated, since they are for
 // developers, not the user.
 
-public class DebugInfo : BuilderWidget
+public class DebugInfo
 {
-  public Gtk.Window parent {get; construct;}
-  DejaDup.LogObscurer obscurer;
-
-  public DebugInfo(Gtk.Window? parent)
+  public static string get_debug_info()
   {
-    Object(parent: parent, builder: new Builder("debug"));
-  }
+    var obscurer = new DejaDup.LogObscurer();
 
-  construct {
-    adopt_name("debug-window");
+    var text = "System Details:\n%s".printf(get_system_info(obscurer));
 
-    obscurer = new DejaDup.LogObscurer();
-
-    var window = builder.get_object("debug-window") as Gtk.Window;
-    window.transient_for = parent;
-
-    var debug_info = builder.get_object("debug-info") as Gtk.Label;
-    debug_info.label = get_debug_info();
-
-    var copy_button = builder.get_object("copy-button") as Gtk.Button;
-    copy_button.clicked.connect(copy_to_clipboard);
-  }
-
-  public void run()
-  {
-    var window = builder.get_object("debug-window") as Gtk.Dialog;
-    window.run();
-  }
-
-  void copy_to_clipboard(Gtk.Button button)
-  {
-    var debug_info = builder.get_object("debug-info") as Gtk.Label;
-    var text = "```\n%s\n```".printf(debug_info.label);
-
-    var clipboard = Gtk.Clipboard.get_default(button.get_display());
-    clipboard.set_text(text, -1);
-  }
-
-  string get_debug_info()
-  {
-    var text = "System Details:\n%s".printf(get_system_info());
-
-    var gsettings = get_gsettings(Config.APPLICATION_ID);
+    var gsettings = get_gsettings(obscurer, Config.APPLICATION_ID);
     if (gsettings != null)
       text += "\nGSettings:\n%s".printf(gsettings);
 
@@ -64,10 +28,10 @@ public class DebugInfo : BuilderWidget
       text += "\nLatest Duplicity Log:\n%s".printf(log);
     }
 
-    return text.chomp();
+    return "```\n%s\n```".printf(text.chomp());
   }
 
-  string get_system_info()
+  static string get_system_info(DejaDup.LogObscurer obscurer)
   {
     var version = Config.VERSION;
     var install_env_name = DejaDup.InstallEnv.instance().get_name();
@@ -91,7 +55,7 @@ public class DebugInfo : BuilderWidget
     return text;
   }
 
-  string? get_gsettings(string? schema = null)
+  static string? get_gsettings(DejaDup.LogObscurer obscurer, string? schema = null)
   {
     var settings = new Settings(schema);
     var has_content = false;
@@ -123,7 +87,7 @@ public class DebugInfo : BuilderWidget
 
     // And iterate children
     foreach (var child in settings.list_children()) {
-      var child_text = get_gsettings(settings.get_child(child).schema_id);
+      var child_text = get_gsettings(obscurer, settings.get_child(child).schema_id);
       if (child_text != null) {
         text += "\n%s".printf(child_text);
         has_content = true;

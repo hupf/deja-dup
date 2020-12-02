@@ -15,20 +15,16 @@ public class AssistantLocation : Assistant
     default_title = _("Restore From Where?");
     modal = true;
     destroy_with_parent = true;
-    type_hint = Gdk.WindowTypeHint.DIALOG;
     resizable = false;
-    default_height = 300; // tall enough for network server URL popup height
 
-    var builder = new Builder("preferences");
+    var builder = DejaDup.make_builder("preferences");
     location_grid = new ConfigLocationGrid(builder, true);
 
-    var location_label = builder.get_object("location_label") as Gtk.Label;
+    unowned var location_label = builder.get_object("location_label") as Gtk.Label;
     location_label.label = _("_Backup location");
 
     var config_location = builder.get_object("location_grid") as Gtk.Widget;
-    config_location.ref();
-    config_location.parent.remove(config_location);
-    config_location.show_all();
+    config_location.unparent();
 
     append_page(config_location, Type.NORMAL, _("_Search"));
 
@@ -37,9 +33,12 @@ public class AssistantLocation : Assistant
 
   void handle_response(int resp)
   {
+    var backend = location_grid.get_backend();
+
+    destroy();
+
     if (resp == FORWARD) {
-      DejaDupApp.get_instance().search_custom_restore(location_grid.get_backend());
+      DejaDupApp.get_instance().search_custom_restore(backend);
     }
-    DejaDup.destroy_widget(this);
   }
 }

@@ -37,7 +37,7 @@ public abstract class Assistant : Gtk.Window
   Gtk.Widget close_button;
   Gtk.Widget resume_button;
   Gtk.Widget apply_button;
-  protected Gtk.EventBox page_box;
+  protected Gtk.Box page_box;
   uint inhibit_id;
 
   public class PageInfo {
@@ -67,24 +67,22 @@ public abstract class Assistant : Gtk.Window
 
   construct
   {
+    add_css_class("dialog");
+
+    deletable = false;
     infos = new List<PageInfo>();
 
     header_bar = new Gtk.HeaderBar();
     set_titlebar(header_bar);
 
-    var evbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-
-    page_box = new Gtk.EventBox();
-    evbox.pack_start(page_box, true, true, 0);
-
-    var dlg_vbox = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    dlg_vbox.pack_start(evbox, true, true);
-    dlg_vbox.show_all();
-    add(dlg_vbox);
+    page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+    page_box.hexpand = true;
+    page_box.vexpand = true;
+    child = page_box;
 
     response.connect(handle_response);
 
-    DejaDupApp.get_instance().add_window(this);
+    application = DejaDupApp.get_instance();
   }
 
   ~Assistant()
@@ -224,12 +222,12 @@ public abstract class Assistant : Gtk.Window
       set_buttons();
       set_inhibited(info.type == Type.PROGRESS);
 
-      var child = page_box.get_child();
+      var child = page_box.get_first_child();
       if (child != null) {
         child.hide();
         page_box.remove(child);
       }
-      page_box.add(info.page);
+      page_box.append(info.page);
       info.page.show();
 
       reset_size(info.page);
@@ -243,7 +241,7 @@ public abstract class Assistant : Gtk.Window
   protected Gtk.Button add_button(string label, int response_id)
   {
     var btn = new Gtk.Button.with_mnemonic(label);
-    btn.can_default = true;
+    btn.receives_default = true;
     btn.clicked.connect(() => {this.response(response_id);});
     btn.show();
     if (response_id == CANCEL)
@@ -255,8 +253,9 @@ public abstract class Assistant : Gtk.Window
 
   protected void make_button_default(Gtk.Widget button)
   {
-    button.grab_default();
-    button.get_style_context().add_class(Gtk.STYLE_CLASS_SUGGESTED_ACTION);
+    set_default_widget(button);
+    button.add_css_class("default");
+    button.add_css_class("suggested-action");
   }
 
   protected virtual void set_buttons()
@@ -299,22 +298,19 @@ public abstract class Assistant : Gtk.Window
       break;
     }
 
-    // We call destroy on each so that they are destroyed in the idle loop.
-    // GailButton does weird things with queued events during the idle loop,
-    // so if we wait until then to destroy them, we avoid colliding with it.
     var area = header_bar;
     if (cancel_button != null) {
-      area.remove(cancel_button); DejaDup.destroy_widget(cancel_button); cancel_button = null;}
+      area.remove(cancel_button); cancel_button = null;}
     if (close_button != null) {
-      area.remove(close_button); DejaDup.destroy_widget(close_button); close_button = null;}
+      area.remove(close_button); close_button = null;}
     if (back_button != null) {
-      area.remove(back_button); DejaDup.destroy_widget(back_button); back_button = null;}
+      area.remove(back_button); back_button = null;}
     if (resume_button != null) {
-      area.remove(resume_button); DejaDup.destroy_widget(resume_button); resume_button = null;}
+      area.remove(resume_button); resume_button = null;}
     if (forward_button != null) {
-      area.remove(forward_button); DejaDup.destroy_widget(forward_button); forward_button = null;}
+      area.remove(forward_button); forward_button = null;}
     if (apply_button != null) {
-      area.remove(apply_button); DejaDup.destroy_widget(apply_button); apply_button = null;}
+      area.remove(apply_button); apply_button = null;}
 
     if (show_forward) {
       forward_button = add_button(info.forward_text, FORWARD);
@@ -352,13 +348,15 @@ public abstract class Assistant : Gtk.Window
   {
     var was_empty = infos == null;
 
+    // enforce some sizing rules for pages
+    page.hexpand = true;
+    page.vexpand = true;
+
     var info = new PageInfo();
     info.page = page;
     info.type = type;
     info.forward_text = forward_text;
     infos.append(info);
-
-    page.show_all();
 
     if (was_empty)
       page_box.get_preferred_size(null, out page_box_req);

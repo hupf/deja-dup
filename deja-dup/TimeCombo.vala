@@ -34,7 +34,7 @@ public class TimeCombo : BuilderWidget
 
     date_store = new Gtk.ListStore(2, typeof(string), typeof(string));
 
-    var combo = builder.get_object("restore-date-combo") as Gtk.ComboBox;
+    unowned var combo = get_object("restore-date-combo") as Gtk.ComboBox;
     combo.model = date_store;
     combo.id_column = 1;
     combo.bind_property("active-id", this, "when");
@@ -42,7 +42,7 @@ public class TimeCombo : BuilderWidget
 
   void handle_collection_dates(DejaDup.OperationStatus op, List<string>? dates)
   {
-    var combo = builder.get_object("restore-date-combo") as Gtk.ComboBox;
+    unowned var combo = get_object("restore-date-combo") as Gtk.ComboBox;
     fill_combo_with_dates(combo, dates);
   }
 

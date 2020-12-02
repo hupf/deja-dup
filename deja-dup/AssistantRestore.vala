@@ -50,7 +50,7 @@ public class AssistantRestore : AssistantOperation
   Gtk.Label confirm_date_label;
   Gtk.Label confirm_date;
   Gtk.Label confirm_files_label;
-  Gtk.Grid confirm_files;
+  Gtk.Box confirm_files;
   Gtk.Widget status_progress_page;
   Gtk.Widget date_page;
   Gtk.Widget restore_dest_page;
@@ -93,8 +93,8 @@ public class AssistantRestore : AssistantOperation
     status_progress_bar = new Gtk.ProgressBar();
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.border_width = 12;
-    page.add(status_progress_bar);
+    DejaDup.set_margins(page, 12);
+    page.append(status_progress_bar);
 
     return page;
   }
@@ -111,12 +111,12 @@ public class AssistantRestore : AssistantOperation
                    "xalign", 1.0f);
 
     var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-    hbox.add(date_label);
-    hbox.add(date_combo);
+    hbox.append(date_label);
+    hbox.append(date_combo);
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.border_width = 12;
-    page.add(hbox);
+    DejaDup.set_margins(page, 12);
+    page.append(hbox);
 
     return page;
   }
@@ -150,7 +150,7 @@ public class AssistantRestore : AssistantOperation
 
   Gtk.Widget make_restore_dest_page()
   {
-    var orig_radio = new Gtk.RadioButton(null);
+    var orig_radio = new Gtk.CheckButton();
     orig_radio.set("label", _("Restore files to _original locations"),
                    "use-underline", true);
     orig_radio.toggled.connect((r) => {
@@ -160,13 +160,13 @@ public class AssistantRestore : AssistantOperation
       }
     });
 
-    var cust_radio = new Gtk.RadioButton(null);
+    var cust_radio = new Gtk.CheckButton();
     cust_radio.set("label", _("Restore to _specific folder"),
                    "use-underline", true,
                    "group", orig_radio);
     cust_radio.toggled.connect((r) => {
       if (r.active) {
-        restore_location = cust_button.get_filename();
+        restore_location = cust_button.get_file().get_path();
         restore_location_updated();
       }
       cust_box.sensitive = r.active;
@@ -175,9 +175,8 @@ public class AssistantRestore : AssistantOperation
     cust_button =
       new Gtk.FileChooserButton(_("Choose destination for restored files"),
                                 Gtk.FileChooserAction.SELECT_FOLDER);
-    cust_button.local_only = true;
     cust_button.file_set.connect((b) => {
-      restore_location = b.get_filename();
+      restore_location = b.get_file().get_path();
       restore_location_updated();
     });
 
@@ -188,10 +187,10 @@ public class AssistantRestore : AssistantOperation
 
     cust_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
     cust_box.sensitive = false;
-    cust_box.add(cust_label);
-    cust_box.add(cust_button);
+    cust_box.append(cust_label);
+    cust_box.append(cust_button);
 
-    var bad_icon = new Gtk.Image.from_icon_name("dialog-warning", Gtk.IconSize.LARGE_TOOLBAR);
+    var bad_icon = new Gtk.Image.from_icon_name("dialog-warning");
     bad_icon.valign = Gtk.Align.START;
 
     var bad_header = new Gtk.Label(_("Backups does not have permission to restore the following files:"));
@@ -218,16 +217,16 @@ public class AssistantRestore : AssistantOperation
     bad_files_grid.attach(bad_files_label, 0, 1, 2, 1);
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.border_width = 12;
     page.width_request = 450; // it's a long title, give space for it in header
-    page.add(orig_radio);
-    page.add(cust_radio);
-    page.add(cust_box);
-    page.add(bad_files_grid);
+    DejaDup.set_margins(page, 12);
+    page.append(orig_radio);
+    page.append(cust_radio);
+    page.append(cust_box);
+    page.append(bad_files_grid);
 
-    var scroll = new Gtk.ScrolledWindow(null, null);
+    var scroll = new Gtk.ScrolledWindow();
     scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
-    scroll.add(page);
+    scroll.child = page;
 
     return scroll;
   }
@@ -237,8 +236,8 @@ public class AssistantRestore : AssistantOperation
     files_progress_bar = new Gtk.ProgressBar();
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.border_width = 12;
-    page.add(files_progress_bar);
+    DejaDup.set_margins(page, 12);
+    page.append(files_progress_bar);
 
     return page;
   }
@@ -253,23 +252,22 @@ public class AssistantRestore : AssistantOperation
 
     confirm_table = new Gtk.Grid();
     var page = confirm_table;
-    page.set("row-spacing", 6,
-             "column-spacing", 12,
-             "border-width", 12);
+    page.row_spacing = 6;
+    page.column_spacing = 6;
+    DejaDup.set_margins(page, 12);
 
     label = new Gtk.Label(_("Backup location"));
     label.set("xalign", 1.0f, "yalign", 0.0f);
-    confirm_storage_image = new Gtk.Image.from_icon_name("folder", Gtk.IconSize.MENU);
+    confirm_storage_image = new Gtk.Image.from_icon_name("folder");
     confirm_storage_label = new Gtk.Label("");
     confirm_storage_label.xalign = 0;
     confirm_storage_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
-    var grid = new Gtk.Grid();
-    grid.column_spacing = 6;
-    grid.hexpand = true;
-    grid.add(confirm_storage_image);
-    grid.add(confirm_storage_label);
+    var box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
+    box.hexpand = true;
+    box.append(confirm_storage_image);
+    box.append(confirm_storage_label);
     page.attach(label, 0, rows, 1, 1);
-    page.attach(grid, 1, rows, 1, 1);
+    page.attach(box, 1, rows, 1, 1);
     ++rows;
 
     // Translators: label for the date from which we are restoring
@@ -292,18 +290,12 @@ public class AssistantRestore : AssistantOperation
 
     confirm_files_label = new Gtk.Label("");
     confirm_files_label.set("xalign", 1.0f, "yalign", 0.0f);
-    confirm_files = new Gtk.Grid();
-    confirm_files.orientation = Gtk.Orientation.VERTICAL;
-    confirm_files.row_spacing = 6;
-    confirm_files.column_spacing = 6;
-    confirm_files.row_homogeneous = true;
     page.attach(confirm_files_label, 0, rows, 1, 1);
-    page.attach(confirm_files, 1, rows, 1, 1);
     ++rows;
 
-    var scroll = new Gtk.ScrolledWindow(null, null);
+    var scroll = new Gtk.ScrolledWindow();
     scroll.hscrollbar_policy = Gtk.PolicyType.NEVER;
-    scroll.add(page);
+    scroll.child = page;
 
     return scroll;
   }
@@ -466,9 +458,9 @@ public class AssistantRestore : AssistantOperation
       Icon icon = backend.get_icon();
       confirm_storage_label.label = desc == null ? "" : desc;
       if (icon == null)
-        confirm_storage_image.set_from_icon_name("folder", Gtk.IconSize.MENU);
+        confirm_storage_image.set_from_icon_name("folder");
       else
-        confirm_storage_image.set_from_gicon(icon, Gtk.IconSize.MENU);
+        confirm_storage_image.set_from_gicon(icon);
 
       if (got_dates) {
         confirm_date.label = date_combo.get_active_text();
@@ -487,10 +479,13 @@ public class AssistantRestore : AssistantOperation
         else
           confirm_location.label = DejaDup.get_file_desc(File.new_for_path(restore_location));
 
-        confirm_location_label.show();
-        confirm_location.show();
-        confirm_files_label.hide();
-        confirm_files.hide();
+        confirm_location_label.visible = true;
+        confirm_location.visible = true;
+        confirm_files_label.visible = false;
+        if (confirm_files != null) {
+          confirm_table.remove(confirm_files);
+          confirm_files = null;
+        }
       }
       else {
         confirm_files_label.label = dngettext(Config.GETTEXT_PACKAGE,
@@ -498,19 +493,23 @@ public class AssistantRestore : AssistantOperation
                                               "Files to restore",
                                               restore_files.length());
 
-        confirm_files.foreach((w) => {DejaDup.destroy_widget(w);});
+        if (confirm_files != null)
+          confirm_table.remove(confirm_files);
+        confirm_files = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
+        confirm_files.homogeneous = true;
+        confirm_table.attach_next_to(confirm_files, confirm_files_label,
+                                     Gtk.PositionType.RIGHT, 1, 1);
         foreach (File f in restore_files) {
           var parse_name = f.get_parse_name();
           var file_label = new Gtk.Label(Path.get_basename(parse_name));
           file_label.set_tooltip_text(parse_name);
           file_label.set("xalign", 0.0f);
-          confirm_files.add(file_label);
+          confirm_files.append(file_label);
         }
 
-        confirm_location_label.hide();
-        confirm_location.hide();
-        confirm_files_label.show();
-        confirm_files.show_all();
+        confirm_location_label.visible = false;
+        confirm_location.visible = false;
+        confirm_files_label.visible = true;
       }
     }
     else if (page == summary_page) {

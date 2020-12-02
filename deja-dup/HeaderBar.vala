@@ -17,7 +17,7 @@ public class HeaderBar : BuilderWidget
   construct {
     adopt_name("header-stack");
 
-    var stack = builder.get_object("stack") as Gtk.Stack;
+    unowned var stack = get_object("stack") as Gtk.Stack;
     stack.notify["visible-child-name"].connect(update_header);
 
     settings = DejaDup.get_settings();
@@ -28,11 +28,11 @@ public class HeaderBar : BuilderWidget
 
   void update_header()
   {
-    var stack = builder.get_object("stack") as Gtk.Stack;
-    var previous = builder.get_object("previous-button") as Gtk.Button;
-    var search = builder.get_object("search-button") as Gtk.Button;
-    var selection = builder.get_object("selection-button") as Gtk.Button;
-    var switcher = builder.get_object("switcher") as Hdy.ViewSwitcher;
+    unowned var stack = get_object("stack") as Gtk.Stack;
+    unowned var previous = get_object("previous-button") as Gtk.Button;
+    unowned var search = get_object("search-button") as Gtk.Button;
+    unowned var selection = get_object("selection-button") as Gtk.Button;
+    unowned var switcher = get_object("switcher") as Hdy.ViewSwitcher;
 
     var is_restore = stack.visible_child_name == "restore";
     var welcome_state = settings.get_string(DejaDup.LAST_RUN_KEY) == "";

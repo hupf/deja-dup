@@ -5,43 +5,37 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <requires lib="gtk+" version="3.17"/>
+  <requires lib="gtk" version="4.0"/>
   <object class="GtkShortcutsWindow" id="help_overlay">
     <property name="modal">1</property>
     <child>
       <object class="GtkShortcutsSection">
-        <property name="visible">1</property>
         <property name="section-name">shortcuts</property>
         <property name="max-height">10</property>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="visible">1</property>
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
                 <property name="accelerator">F1</property>
                 <property name="title" translatable="yes" context="shortcut window">Show help</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
                 <property name="accelerator">F10</property>
                 <property name="title" translatable="yes" context="shortcut window">Open menu</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;Primary&gt;Q</property>
+                <property name="accelerator">&lt;Control&gt;Q</property>
                 <property name="title" translatable="yes" context="shortcut window">Quit</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;Primary&gt;question</property>
+                <property name="accelerator">&lt;Control&gt;question</property>
                 <property name="title" translatable="yes" context="shortcut window">Keyboard shortcuts</property>
               </object>
             </child>
@@ -49,19 +43,16 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="GtkShortcutsGroup">
-            <property name="visible">1</property>
             <property name="title" translatable="yes" context="shortcut window">Browsing Backed Up Files</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;Primary&gt;F</property>
+                <property name="accelerator">&lt;Control&gt;F</property>
                 <property name="title" translatable="yes" context="shortcut window">Search</property>
               </object>
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="visible">1</property>
-                <property name="accelerator">&lt;Mod1&gt;Left</property>
+                <property name="accelerator">&lt;Alt&gt;Left</property>
                 <property name="title" translatable="yes" context="shortcut window">Go back</property>
               </object>
             </child>

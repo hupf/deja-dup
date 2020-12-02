@@ -103,7 +103,7 @@ public class ConfigStatusLabel : BuilderWidget
     else
       next_label = pretty_next_name(next);
 
-    var status = builder.get_object("status_label") as Gtk.Label;
+    unowned var status = get_object("status_label") as Gtk.Label;
     status.label = "%s\n%s".printf(last_label, next_label);
   }
 }
