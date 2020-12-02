@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="ConfigFolderPage" parent="HdyPreferencesPage">
+    <property name="icon_name">folder-symbolic</property>
+    <property name="title" translatable="yes">Folders</property>
+    <child>
+      <object class="ConfigFolderList">
+        <property name="title" translatable="yes">Folders to Back Up</property>
+        <property name="key">include-list</property>
+        <property name="check_access">1</property>
+      </object>
+    </child>
+    <child>
+      <object class="ConfigFolderList">
+        <property name="title" translatable="yes">Folders to Ignore</property>
+        <property name="key">exclude-list</property>
+      </object>
+    </child>
+  </template>
+</interface>

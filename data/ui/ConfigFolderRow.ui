@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libhandy" version="4.0"/>
+  <template class="ConfigFolderRow" parent="HdyActionRow">
+    <property name="activatable">0</property>
+
+    <child>
+      <object class="GtkImage" id="access_icon">
+        <property name="visible">0</property>
+        <property name="icon_name">dialog-warning</property>
+        <property name="tooltip_text" translatable="yes">This folder cannot be backed up because Backups does not have access to it.</property>
+      </object>
+    </child>
+
+    <child>
+      <object class="GtkButton">
+        <property name="icon_name">list-remove-symbolic</property>
+        <property name="valign">GTK_ALIGN_CENTER</property>
+
+        <signal name="clicked" handler="on_remove_clicked"/>
+
+        <accessibility>
+          <property name="label" translatable="yes">Remove</property>
+        </accessibility>
+      </object>
+    </child>
+  </template>
+</interface>

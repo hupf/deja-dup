@@ -39,9 +39,7 @@ devshell:
 .PHONY: devshell-bash
 devshell-bash:
 	@env \
-		LD_LIBRARY_PATH=`pwd`/builddir/dev/lib \
-		PKG_CONFIG_PATH=`pwd`/builddir/dev/lib/pkgconfig \
-		XDG_DATA_DIRS=`pwd`/builddir/dev/share:$$XDG_DATA_DIRS \
+		PKG_CONFIG_PATH=/app/lib/pkgconfig \
 		PS1='[📦 \W]$$ ' \
 		bash --norc
 

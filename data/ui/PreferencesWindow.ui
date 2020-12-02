@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libhandy" version="4.0"/>
+  <template class="PreferencesWindow" parent="HdyPreferencesWindow">
+    <property name="modal">1</property>
+    <property name="default_width">500</property>
+    <property name="default_height">500</property>
+    <property name="destroy_with_parent">1</property>
+    <property name="search_enabled">0</property>
+    <child>
+      <object class="HdyPreferencesPage">
+        <property name="icon_name">emblem-system-symbolic</property>
+        <property name="title" translatable="yes">General</property>
+        <child>
+          <object class="HdyPreferencesGroup" id="storage_group">
+            <property name="title" translatable="yes">Storage</property>
+            <child>
+              <object class="HdyExpanderRow" id="location">
+                <property name="title" translatable="yes">_Location</property>
+                <property name="use_underline">1</property>
+                <child type="action">
+                  <object class="GtkLabel" id="location_description">
+                    <property name="ellipsize">middle</property>
+                    <style>
+                      <class name="dim-label"/>
+                    </style>
+                  </object>
+                </child>
+                <child>
+                  <object class="ConfigLocationGrid"/>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ConfigDelete" id="keep">
+                <property name="title" translatable="yes">_Keep Backups</property>
+                <property name="use_underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="margin_top">8</property>
+                <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
+                <property name="wrap">1</property>
+                <property name="xalign">0</property>
+                <attributes>
+                  <attribute name="style" value="italic"></attribute>
+                </attributes>
+              </object>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="HdyPreferencesGroup">
+            <property name="title" translatable="yes">Schedule</property>
+            <child>
+              <object class="HdyActionRow">
+                <property name="activatable_widget">auto_backup</property>
+                <property name="title" translatable="yes">Back Up _Automatically</property>
+                <property name="use_underline">1</property>
+                <child>
+                  <object class="GtkSwitch" id="auto_backup">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="ConfigPeriod" id="frequency">
+                <property name="sensitive">0</property>
+                <property name="title" translatable="yes">Automatic Backup _Frequency</property>
+                <property name="use_underline">1</property>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ConfigFolderPage"/>
+    </child>
+  </template>
+</interface>

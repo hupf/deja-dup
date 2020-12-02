@@ -6,44 +6,37 @@
 
 using GLib;
 
-public class TimeCombo : BuilderWidget
+[GtkTemplate (ui = "/org/gnome/DejaDup/TimeCombo.ui")]
+public class TimeCombo : Gtk.Box
 {
   public string when { get; set; default = null; }
-
-  public TimeCombo(Gtk.Builder builder)
-  {
-    Object(builder: builder);
-  }
 
   public void register_operation(DejaDup.OperationStatus op)
   {
     clear();
-    op.collection_dates.connect(handle_collection_dates);
+    op.collection_dates.connect(fill_combo_with_dates);
+  }
+
+  public string get_active_text()
+  {
+    return combo.get_active_text();
   }
 
   public void clear()
   {
-    date_store.clear();
+    store.clear();
     when = null;
   }
 
-  Gtk.ListStore date_store;
+  [GtkChild]
+  Gtk.ComboBoxText combo;
+  Gtk.ListStore store;
   construct
   {
-    adopt_name("restore-date-combo");
-
-    date_store = new Gtk.ListStore(2, typeof(string), typeof(string));
-
-    unowned var combo = get_object("restore-date-combo") as Gtk.ComboBox;
-    combo.model = date_store;
+    store = new Gtk.ListStore(2, typeof(string), typeof(string));
+    combo.model = store;
     combo.id_column = 1;
     combo.bind_property("active-id", this, "when");
-  }
-
-  void handle_collection_dates(DejaDup.OperationStatus op, List<string>? dates)
-  {
-    unowned var combo = get_object("restore-date-combo") as Gtk.ComboBox;
-    fill_combo_with_dates(combo, dates);
   }
 
   static bool is_same_day(DateTime one, DateTime two)
@@ -52,12 +45,8 @@ public class TimeCombo : BuilderWidget
            one.get_day_of_year() == two.get_day_of_year();
   }
 
-  // Combo needs to have a Gtk.ListStore as the attached model.
-  // That model will have two columns: a visible label (0) and an iso8601 string (1)
-  // Designed to be used after handling a "collection_dates" signal.
-  public static void fill_combo_with_dates(Gtk.ComboBox combo, List<string>? dates)
+  void fill_combo_with_dates(DejaDup.OperationStatus op, List<string>? dates)
   {
-    var store = combo.model as Gtk.ListStore;
     store.clear();
     if (dates.length() == 0)
       return;

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libhandy" version="4.0"/>
+  <template class="MainHeaderBar" parent="GtkBox">
+    <child>
+      <object class="GtkStack" id="header_stack">
+        <property name="hexpand">1</property>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">main</property>
+            <property name="child">
+              <object class="HdyHeaderBar">
+                <child type="title">
+                  <object class="HdyViewSwitcher" id="switcher">
+                    <property name="policy">wide</property>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="previous_button">
+                    <property name="receives_default">1</property>
+                    <property name="action_name">restore.go-up</property>
+                    <property name="icon_name">go-previous-symbolic</property>
+                    <accessibility>
+                      <property name="label" translatable="yes">Back</property>
+                    </accessibility>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkMenuButton" id="primary_menu_button">
+                    <property name="receives_default">1</property>
+                    <property name="icon_name">open-menu-symbolic</property>
+                    <property name="menu_model">primary_menu</property>
+                    <accessibility>
+                      <property name="label" translatable="yes">Menu</property>
+                    </accessibility>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkButton" id="selection_button">
+                    <property name="receives_default">1</property>
+                    <property name="icon_name">object-select-symbolic</property>
+                    <signal name="clicked" handler="on_selection_clicked"/>
+                    <accessibility>
+                      <property name="label" translatable="yes">Select</property>
+                    </accessibility>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkToggleButton" id="search_button">
+                    <property name="receives_default">1</property>
+                    <property name="icon_name">edit-find-symbolic</property>
+                    <accessibility>
+                      <property name="label" translatable="yes">Search</property>
+                    </accessibility>
+                  </object>
+                </child>
+                <style>
+                  <class name="titlebar"/>
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
+            <property name="name">selection</property>
+            <property name="child">
+              <object class="GtkHeaderBar" id="selection-header">
+                <property name="show_title_buttons">0</property>
+                <child type="title">
+                  <object class="GtkMenuButton" id="selection_menu_button">
+                    <property name="focus_on_click">0</property>
+                    <property name="receives_default">1</property>
+                    <property name="menu_model">selection_menu</property>
+                    <accessibility>
+                      <property name="label" translatable="yes">Select</property>
+                    </accessibility>
+                    <style>
+                      <class name="selection-menu"/>
+                    </style>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkButton" id="selection-cancel-button">
+                    <property name="label" translatable="yes">_Cancel</property>
+                    <property name="receives_default">1</property>
+                    <property name="use_underline">1</property>
+                    <signal name="clicked" handler="on_selection_cancel_clicked"/>
+                  </object>
+                </child>
+                <child type="end">
+                  <object class="GtkToggleButton" id="selection_search_button">
+                    <property name="receives_default">1</property>
+                    <property name="icon_name">edit-find-symbolic</property>
+                    <accessibility>
+                      <property name="label" translatable="yes">Search</property>
+                    </accessibility>
+                  </object>
+                </child>
+                <style>
+                  <class name="selection-mode"/>
+                  <class name="titlebar"/>
+                </style>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+  <menu id="primary_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Preferences</attribute>
+        <attribute name="action">app.preferences</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Keyboard Shortcuts</attribute>
+        <attribute name="action">win.show-help-overlay</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Help</attribute>
+        <attribute name="action">app.help</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_About Backups</attribute>
+        <attribute name="action">app.about</attribute>
+      </item>
+    </section>
+  </menu>
+  <menu id="selection_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Select _All</attribute>
+        <attribute name="action">restore.select-all</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Select _None</attribute>
+        <attribute name="action">restore.select-none</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>

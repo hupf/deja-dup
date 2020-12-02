@@ -6,14 +6,16 @@
 
 using GLib;
 
-public class ConfigLocationCombo : BuilderWidget
+public class ConfigLocationCombo : Gtk.Box
 {
+  public Gtk.Stack stack {get; construct;}
   public DejaDup.FilteredSettings settings {get; construct;}
   public DejaDup.FilteredSettings drive_settings {get; construct;}
 
-  public ConfigLocationCombo(Gtk.Builder builder, DejaDup.FilteredSettings settings,
+  public ConfigLocationCombo(Gtk.Stack stack,
+                             DejaDup.FilteredSettings settings,
                              DejaDup.FilteredSettings drive_settings) {
-    Object(builder: builder, settings: settings, drive_settings: drive_settings);
+    Object(stack: stack, settings: settings, drive_settings: drive_settings);
   }
 
   enum Col {
@@ -33,14 +35,14 @@ public class ConfigLocationCombo : BuilderWidget
     LOCAL,
   }
 
+  Gtk.ComboBox combo;
   Gtk.ListStore store;
   Gtk.TreeModelSort sort_model;
   construct {
-    adopt_name("location_combo");
-
     // *** Combo Box UI setup ***
-
-    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
+    combo = new Gtk.ComboBox();
+    combo.hexpand = true;
+    append(combo);
 
     // Here we have a model wrapped inside a sortable model.  This is so we
     // can keep indices around for the inner model while the outer model appears
@@ -294,8 +296,6 @@ public class ConfigLocationCombo : BuilderWidget
 
   void update_stack()
   {
-    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
-
     Gtk.TreeIter sort_iter;
     if (!combo.get_active_iter(out sort_iter))
       return;
@@ -306,14 +306,11 @@ public class ConfigLocationCombo : BuilderWidget
     string page;
     store.get(iter, Col.PAGE, out page);
 
-    unowned var stack = get_object("location_stack") as Gtk.Stack;
     stack.visible_child_name = page;
   }
 
   void handle_drive_uuid_change()
   {
-    unowned var combo = get_object("location_combo") as Gtk.ComboBox;
-
     var uuid = drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
     if (uuid != "")
       combo.active_id = "drive:" + uuid;
