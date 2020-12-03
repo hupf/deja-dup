@@ -6,99 +6,62 @@
 
 using GLib;
 
-public class ConfigFolderList : BuilderWidget
+[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigFolderList.ui")]
+public class ConfigFolderList : Hdy.PreferencesGroup
 {
-  public string builder_id {get; construct;}
-  public string settings_key {get; construct;}
-  public bool check_availability {get; construct;}
-  public string[] folders {get; protected set;}
+  public string key {get; construct;}
+  public bool check_access {get; construct;}
 
-  public ConfigFolderList(Gtk.Builder builder, string builder_id,
-                          string settings_key, bool check_availability)
-  {
-    Object(builder: builder, builder_id: builder_id, settings_key: settings_key,
-           check_availability: check_availability);
-  }
+  [GtkChild]
+  Gtk.Widget add_row;
 
   DejaDup.FilteredSettings settings;
-  List<Gtk.Widget> rows;
-  Gtk.Widget add_row;
+  List<unowned Gtk.Widget> rows;
   construct {
-    adopt_name(builder_id);
-    unowned var group = get_object(builder_id) as Hdy.PreferencesGroup;
-
-    rows = new List<Gtk.Widget>();
-
     settings = DejaDup.get_settings();
-    settings.changed[settings_key].connect(() => {update_list_items.begin();});
-    settings.bind_writable(settings_key, group, "sensitive", false);
+    settings.bind_writable(key, this, "sensitive", false);
 
-    // Make add row separately, and make sure it never gets deleted, since
-    // I've hit a bug with depleting a HdyPreferenceGroup completely, then
-    // adding a new item, which results in a crash.
-    add_row = make_add_row();
-
+    settings.changed[key].connect(() => {update_list_items.begin();});
     update_list_items.begin();
   }
 
   async void update_list_items()
   {
-    unowned var group = get_object(builder_id) as Hdy.PreferencesGroup;
-    rows.foreach((item) => {group.remove(item);});
-    rows = new List<Gtk.Widget>();
+    rows.foreach((item) => {remove(item);});
+    rows = null;
 
-    var folder_value = settings.get_value(settings_key);
+    add_row.ref();
+    remove(add_row);
+
+    var folder_value = settings.get_value(key);
     var folder_list = folder_value.get_strv();
     foreach (var folder in folder_list) {
       var file = DejaDup.parse_dir(folder);
       if (file == null)
         continue;
 
-      var row = new Hdy.ActionRow();
-      row.activatable = false;
-      row.title = yield DejaDup.get_nickname(file);
-      group.add(row);
-      rows.append(row);
-
-      var install_env = DejaDup.InstallEnv.instance();
-      if (check_availability && !install_env.is_file_available(file)) {
-        var icon = new Gtk.Image.from_icon_name("dialog-warning");
-        icon.tooltip_text = _("This folder cannot be backed up because Backups does not have access to it.");
-        row.add_suffix(icon);
-      }
-
-      var button = new Gtk.Button.from_icon_name("list-remove-symbolic");
-      button.update_property(Gtk.AccessibleProperty.LABEL, _("Remove"), -1);
-      button.valign = Gtk.Align.CENTER;
-      button.set_data("folder", folder);
-      button.clicked.connect(() => {
-        handle_remove(button.get_data("folder"));
+      var row = new ConfigFolderRow();
+      row.file = file;
+      row.check_access = check_access;
+      row.set_data("folder", folder);
+      row.remove_clicked.connect((r) => {
+        handle_remove(r.get_data("folder"));
       });
-      row.add_suffix(button);
+
+      rows.append(row);
+      add(row);
     }
 
-    // Now the "add item" row, which moves it to the end if it already exists
-    group.add(add_row);
+    // Now add back the "add item" row
+    add(add_row);
+    add_row.unref();
   }
 
-  Gtk.Widget make_add_row()
+  [GtkCallback]
+  void on_add_clicked()
   {
-    var row = new Hdy.PreferencesRow();
-    row.height_request = 50; // same as Hdy.ActionRow
-
-    var button = new Gtk.Button.from_icon_name("list-add-symbolic");
-    button.update_property(Gtk.AccessibleProperty.LABEL, _("Add"), -1);
-    button.has_frame = false;
-    button.clicked.connect(handle_add);
-    row.child = button;
-
-    return row;
-  }
-
-  void handle_add()
-  {
-    unowned var window = get_object("preferences") as Gtk.Window;
-    var dlg = new Gtk.FileChooserNative(_("Choose folders"), window,
+    var dlg = new Gtk.FileChooserNative(_("Choose folders"),
+                                        this.root as Gtk.Window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
                                         null, null);
     dlg.modal = true;
@@ -108,6 +71,7 @@ public class ConfigFolderList : BuilderWidget
       if (response == Gtk.ResponseType.ACCEPT) {
         add_files(dlg.get_files());
       }
+      dlg.destroy();
     });
 
     dlg.show();
@@ -117,7 +81,7 @@ public class ConfigFolderList : BuilderWidget
   {
     // Explicitly do not call get_file_list here, because we want to avoid
     // modifying existing entries at all when we write the string list back.
-    var slist_val = settings.get_value(settings_key);
+    var slist_val = settings.get_value(key);
     string*[] slist = slist_val.get_strv();
     bool changed = false;
 
@@ -146,14 +110,14 @@ public class ConfigFolderList : BuilderWidget
     }
 
     if (changed) {
-      settings.set_value(settings_key, new Variant.strv(slist));
+      settings.set_value(key, new Variant.strv(slist));
     }
     return changed;
   }
 
   void handle_remove(string folder)
   {
-    var old_value = settings.get_value(settings_key);
+    var old_value = settings.get_value(key);
     var old_list = old_value.get_strv();
     var new_list = new string[0];
 
@@ -162,6 +126,6 @@ public class ConfigFolderList : BuilderWidget
         new_list += old;
     }
 
-    settings.set_value(settings_key, new Variant.strv(new_list));
+    settings.set_value(key, new Variant.strv(new_list));
   }
 }

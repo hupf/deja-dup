@@ -6,32 +6,28 @@
 
 using GLib;
 
-public class PreferencesWindow : BuilderWidget
+[GtkTemplate (ui = "/org/gnome/DejaDup/PreferencesWindow.ui")]
+public class PreferencesWindow : Hdy.PreferencesWindow
 {
-  public static void show(Gtk.Window parent)
-  {
-    var window = new PreferencesWindow();
+  [GtkChild]
+  Gtk.Label location_description;
 
-    unowned var widget = window.get_object("preferences") as Gtk.Window;
-    widget.set_transient_for(parent);
-    widget.application = DejaDupApp.get_instance();
-    widget.show();
-  }
+  [GtkChild]
+  Gtk.Switch auto_backup;
 
-  public PreferencesWindow()
-  {
-    Object(builder: DejaDup.make_builder("preferences"));
-  }
-
+  DejaDup.BackendWatcher watcher;
   construct
   {
-    adopt_name("preferences");
+    watcher = new DejaDup.BackendWatcher();
+    watcher.changed.connect(update_location_description);
+    update_location_description();
 
-    new ConfigAutoBackup(builder);
-    new ConfigDelete(builder);
-    new ConfigFolderList(builder, "includes", DejaDup.INCLUDE_LIST_KEY, true);
-    new ConfigFolderList(builder, "excludes", DejaDup.EXCLUDE_LIST_KEY, false);
-    new ConfigLocationRow(builder);
-    new ConfigPeriod(builder);
+    ConfigAutoBackup.bind(auto_backup);
+  }
+
+  void update_location_description()
+  {
+    var backend = DejaDup.Backend.get_default();
+    location_description.label = backend.get_location_pretty();
   }
 }

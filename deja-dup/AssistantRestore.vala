@@ -38,8 +38,7 @@ public class AssistantRestore : AssistantOperation
   uint files_timeout_id;
   Gtk.ProgressBar status_progress_bar;
   uint status_timeout_id;
-  Gtk.ComboBoxText date_combo;
-  Gtk.ListStore date_store;
+  TimeCombo date_combo;
   Gtk.Box cust_box;
   Gtk.FileChooserButton cust_button;
   Gtk.Grid confirm_table;
@@ -57,7 +56,6 @@ public class AssistantRestore : AssistantOperation
   Gtk.Grid bad_files_grid;
   Gtk.Label bad_files_label;
   Gtk.Widget files_progress_page;
-  bool got_dates;
   bool show_confirm_page = true;
   construct
   {
@@ -101,23 +99,11 @@ public class AssistantRestore : AssistantOperation
 
   Gtk.Widget make_date_page()
   {
-    date_store = new Gtk.ListStore(2, typeof(string), typeof(string));
-    date_combo = new Gtk.ComboBoxText();
-    date_combo.model = date_store;
+    date_combo = new TimeCombo();
 
-    var date_label = new Gtk.Label(_("_Date"));
-    date_label.set("mnemonic-widget", date_combo,
-                   "use-underline", true,
-                   "xalign", 1.0f);
-
-    var hbox = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-    hbox.append(date_label);
-    hbox.append(date_combo);
-
-    var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
+    var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
     DejaDup.set_margins(page, 12);
-    page.append(hbox);
-
+    page.append(date_combo);
     return page;
   }
 
@@ -151,8 +137,9 @@ public class AssistantRestore : AssistantOperation
   Gtk.Widget make_restore_dest_page()
   {
     var orig_radio = new Gtk.CheckButton();
-    orig_radio.set("label", _("Restore files to _original locations"),
-                   "use-underline", true);
+    orig_radio.label = _("Restore files to _original locations");
+    orig_radio.use_underline = true;
+    orig_radio.active = true;
     orig_radio.toggled.connect((r) => {
       if (r.active) {
         restore_location = "/";
@@ -338,10 +325,8 @@ public class AssistantRestore : AssistantOperation
     string date = null;
     if (when != null) {
       date = when;
-    } else if (got_dates) {
-      Gtk.TreeIter iter;
-      if (date_combo.get_active_iter(out iter))
-        date_store.get(iter, 1, out date);
+    } else {
+      date = date_combo.when;
     }
 
     var backend = DejaDupApp.get_instance().get_restore_backend();
@@ -361,16 +346,6 @@ public class AssistantRestore : AssistantOperation
     return _("Restoring:");
   }
 
-  protected virtual void handle_collection_dates(DejaDup.OperationStatus op, List<string>? dates)
-  {
-    got_dates = true;
-    TimeCombo.fill_combo_with_dates(date_combo, dates);
-
-    // If we didn't see any dates...  Must not be any backups on the backend
-    if (date_store.iter_n_children(null) == 0)
-      show_error(_("No backups to restore"), null);
-  }
-
   protected virtual void status_op_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     this.op_state = op.get_state();
@@ -379,8 +354,12 @@ public class AssistantRestore : AssistantOperation
 
     if (cancelled)
       do_close();
-    else if (success)
-      go_forward();
+    else if (success) {
+      if (date_combo.when == null)
+        show_error(_("No backups to restore"), null);
+      else
+        go_forward();
+    }
   }
 
   bool status_pulse()
@@ -396,7 +375,7 @@ public class AssistantRestore : AssistantOperation
 
     connect_operation(status_op);
     status_op.done.connect(status_op_finished);
-    status_op.collection_dates.connect(handle_collection_dates);
+    date_combo.register_operation(status_op);
 
     yield op.start();
   }
@@ -443,15 +422,7 @@ public class AssistantRestore : AssistantOperation
     base.do_prepare(assist, page);
     stop_timers();
 
-    if (page == date_page) {
-      // Hmm, we never got a date from querying the backend, but we also
-      // didn't hit an error (since we're about to show this page, and not
-      // the summary/error page).  Skip the date portion, since the backend
-      // must not be capable of giving us dates (duplicity < 0.5.04 couldn't).
-      if (!got_dates)
-        skip();
-    }
-    else if (page == confirm_page) {
+    if (page == confirm_page) {
       // When we restore from
       var backend = get_backend();
       string desc = backend.get_location_pretty();
@@ -462,15 +433,9 @@ public class AssistantRestore : AssistantOperation
       else
         confirm_storage_image.set_from_gicon(icon);
 
-      if (got_dates) {
-        confirm_date.label = date_combo.get_active_text();
-        confirm_date_label.show();
-        confirm_date.show();
-      }
-      else {
-        confirm_date_label.hide();
-        confirm_date.hide();
-      }
+      confirm_date.label = date_combo.get_active_text();
+      confirm_date_label.show();
+      confirm_date.show();
 
       // Where we restore to
       if (restore_files == null) {

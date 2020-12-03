@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="libhandy" version="4.0"/>
+  <template class="ConfigFolderList" parent="HdyPreferencesGroup">
+    <child>
+      <object class="HdyPreferencesRow" id="add_row">
+        <property name="height_request">50</property> <!-- same as HdyActionRow -->
+
+        <child>
+          <object class="GtkButton">
+            <property name="icon_name">list-add-symbolic</property>
+            <property name="has_frame">0</property>
+
+            <signal name="clicked" handler="on_add_clicked"/>
+
+            <accessibility>
+              <property name="label" translatable="yes">Add</property>
+            </accessibility>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

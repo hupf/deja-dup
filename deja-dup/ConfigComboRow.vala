@@ -6,10 +6,9 @@
 
 using GLib;
 
-public abstract class ConfigChoice : BuilderWidget
+public abstract class ConfigComboRow : Hdy.ComboRow
 {
   protected virtual void fill_store() {}
-  protected abstract string combo_name();
   protected abstract string setting_name();
   protected abstract string label_for_value(int val);
   protected virtual int clamp_value(int val) {return val;}
@@ -28,14 +27,12 @@ public abstract class ConfigChoice : BuilderWidget
     store = new ListStore(typeof(Item));
     fill_store();
 
-    adopt_name(combo_name());
-    unowned var row = get_object(combo_name()) as Hdy.ComboRow;
-    row.expression = new Gtk.PropertyExpression(typeof(Item), null, "label");
-    row.model = store;
+    expression = new Gtk.PropertyExpression(typeof(Item), null, "label");
+    model = store;
 
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(setting_name(),
-                               row, "selected",
+                               this, "selected",
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                this.ref(), Object.unref);
@@ -66,7 +63,7 @@ public abstract class ConfigChoice : BuilderWidget
 
   static bool get_mapping(Value val, Variant variant, void *data)
   {
-    var choice = (ConfigChoice)data;
+    var choice = (ConfigComboRow)data;
     var store = choice.store;
     var clamped = choice.clamp_value(variant.get_int32());
     var needle = new Item(clamped, "");
@@ -84,7 +81,7 @@ public abstract class ConfigChoice : BuilderWidget
 
   static Variant set_mapping(Value val, VariantType expected_type, void *data)
   {
-    var store = ((ConfigChoice)data).store;
+    var store = ((ConfigComboRow)data).store;
     var item = store.get_item(val.get_uint()) as Item;
     return new Variant.int32(item.val);
   }

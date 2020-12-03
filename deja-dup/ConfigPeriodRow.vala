@@ -6,17 +6,12 @@
 
 using GLib;
 
-public class ConfigPeriod : ConfigChoice
+public class ConfigPeriod : ConfigComboRow
 {
-  public ConfigPeriod(Gtk.Builder builder) {
-    Object(builder: builder);
-  }
-
   construct {
-    unowned var row = get_object(combo_name()) as Hdy.ComboRow;
     var settings = DejaDup.get_settings();
     settings.bind(DejaDup.PERIODIC_KEY,
-                  row, "sensitive",
+                  this, "sensitive",
                   SettingsBindFlags.DEFAULT);
   }
 
@@ -24,8 +19,6 @@ public class ConfigPeriod : ConfigChoice
     add_item(1, _("Daily"));
     add_item(7, _("Weekly"));
   }
-
-  protected override string combo_name() {return "frequency";}
 
   protected override string setting_name() {return DejaDup.PERIODIC_PERIOD_KEY;}
 

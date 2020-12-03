@@ -6,17 +6,12 @@
 
 using GLib;
 
-class Browser : BuilderWidget
+[GtkTemplate (ui = "/org/gnome/DejaDup/Browser.ui")]
+class Browser : Gtk.Grid
 {
-  public DejaDupApp application {get; construct;}
   public bool time_filled {get; private set;}
   public bool files_filled {get; private set;}
   public DejaDup.Operation operation {get; private set;}
-
-  public Browser(Gtk.Builder builder, DejaDupApp application)
-  {
-    Object(builder: builder, application: application);
-  }
 
   const ActionEntry[] ACTIONS = {
     {"select-all", select_all},
@@ -25,27 +20,50 @@ class Browser : BuilderWidget
     {"search", activate_search},
   };
 
-  FileStore store;
+  [GtkChild]
+  Gtk.SearchBar search_bar;
+  [GtkChild]
+  Gtk.SearchEntry search_entry;
+  [GtkChild]
+  Gtk.Stack view_stack;
+  [GtkChild]
+  Gtk.Stack overlay_stack;
+  [GtkChild]
+  Gtk.Label auth_label;
+  [GtkChild]
+  Gtk.Label error_label;
+  [GtkChild]
+  Gtk.Label pause_label;
+  [GtkChild]
+  Gtk.IconView icon_view;
+  [GtkChild]
+  Gtk.TreeView list_view;
+  [GtkChild]
+  Gtk.Button restore_button;
+  [GtkChild]
   TimeCombo timecombo;
+
+  DejaDupApp application;
+  FileStore store;
   DejaDup.BackendWatcher watcher;
   string auth_url; // if null, auth button should start mount op vs oauth
   MountOperation mount_op; // normally null
   MainLoop passphrase_loop;
+  Gtk.ApplicationWindow app_window;
+  MainHeaderBar header;
+  SimpleActionGroup action_group;
 
   construct
   {
-    unowned var header_stack = get_object("header-stack") as Gtk.Stack;
-
+    application = DejaDupApp.get_instance();
     store = new FileStore();
 
     // Set up actions
-    unowned var main_window = get_object("main-window") as Gtk.ApplicationWindow;
-    var action_group = new SimpleActionGroup();
+    action_group = new SimpleActionGroup();
     action_group.add_action_entries(ACTIONS, this);
     application.set_accels_for_action("restore.go-up", {"<Alt>Left", "<Alt>Up"});
     application.set_accels_for_action("restore.search", {"<Control>F"});
 
-    timecombo = new TimeCombo(builder);
     timecombo.notify["when"].connect(() => {
       if (time_filled)
         start_files_operation();
@@ -58,25 +76,12 @@ class Browser : BuilderWidget
       passphrase_loop.quit();
     });
 
-    // Notice when we are switched to and away from and notice when we need to
-    // reset operation.
-    unowned var stack = get_object("stack") as Gtk.Stack;
-    stack.notify["visible-child-name"].connect(() => {
-      if (stack.visible_child_name == "restore") {
-        main_window.insert_action_group("restore", action_group);
-        maybe_start_operation();
-      } else {
-        main_window.insert_action_group("restore", null);
-      }
-    });
     application.notify["operation"].connect(() => {
       if (application.operation != null)
         stop_operation(); // get out of way of a real backup/restore op
     });
-    main_window.notify["is-active"].connect(maybe_start_operation);
 
     // Connect file store and icon view
-    unowned var icon_view = get_object("restore-icon-view") as Gtk.IconView;
     bind_property("files-filled", icon_view, "sensitive", BindingFlags.SYNC_CREATE);
     icon_view.model = store;
     icon_view.pixbuf_column = FileStore.Column.ICON;
@@ -96,7 +101,6 @@ class Browser : BuilderWidget
     pixbuf_renderer.icon_size = Gtk.IconSize.LARGE;
 
     // Set up list view as well
-    unowned var list_view = get_object("restore-list-view") as Gtk.TreeView;
     bind_property("files-filled", list_view, "sensitive", BindingFlags.SYNC_CREATE);
     list_view.row_activated.connect((v, p, c) => {go_down(p);});
     list_view.get_selection().changed.connect(selection_changed);
@@ -105,71 +109,12 @@ class Browser : BuilderWidget
     list_click.pressed.connect(handle_list_button_press);
     list_view.add_controller(list_click);
 
-    // Set selection menu
-    unowned var selection_menu = get_object("selection-menu-button") as Gtk.MenuButton;
-    selection_menu.set_menu_model(application.get_menu_by_id("selection-menu"));
-
     // Connect various buttons
 
     var go_up_action = action_group.lookup_action("go-up");
     store.bind_property("can-go-up", go_up_action, "enabled", BindingFlags.SYNC_CREATE);
 
-    unowned var search_button = get_object("search-button") as Gtk.Button;
-    unowned var selection_search_button = get_object("selection-search-button") as Gtk.Button;
-    unowned var search_bar = get_object("search-bar") as Gtk.SearchBar;
-    unowned var search_entry = get_object("search-entry") as Gtk.SearchEntry;
-    bind_property("files-filled", search_button, "sensitive", BindingFlags.SYNC_CREATE);
-    bind_property("files-filled", selection_search_button, "sensitive", BindingFlags.SYNC_CREATE);
-    search_bar.bind_property("search-mode-enabled", search_button, "active",
-                                BindingFlags.BIDIRECTIONAL);
-    search_bar.bind_property("search-mode-enabled", selection_search_button, "active",
-                                BindingFlags.BIDIRECTIONAL);
     search_entry.search_changed.connect(update_search_filter);
-
-    unowned var selection_button = get_object("selection-button") as Gtk.Button;
-    bind_property("files-filled", selection_button, "sensitive", BindingFlags.SYNC_CREATE);
-    selection_button.clicked.connect(() => {
-      header_stack.visible_child_name = "selection";
-    });
-
-    unowned var selection_cancel = get_object("selection-cancel-button") as Gtk.Button;
-    selection_cancel.clicked.connect(() => {
-      header_stack.visible_child_name = "main";
-    });
-
-    // Cancel selection mode if user presses Escape
-    var key_event = new Gtk.EventControllerKey();
-    key_event.key_pressed.connect((val, code, state) => {
-      var modifiers = Gtk.accelerator_get_default_mod_mask();
-      if (val == Gdk.Key.Escape && (state & modifiers) == 0 &&
-          header_stack.visible_child_name == "selection") {
-        header_stack.visible_child_name = "main";
-        return true;
-      }
-      return false;
-    });
-    header_stack.add_controller(key_event);
-
-    unowned var retry_button = get_object("restore-error-retry-button") as Gtk.Button;
-    retry_button.clicked.connect(maybe_start_operation);
-
-    unowned var auth_button = get_object("restore-auth-button") as Gtk.Button;
-    auth_button.clicked.connect(start_auth);
-
-    unowned var passphrase_button = get_object("restore-passphrase-button") as Gtk.Button;
-    passphrase_button.clicked.connect(grab_passphrase);
-
-    unowned var restore_button = get_object("restore-context-button") as Gtk.Button;
-    restore_button.clicked.connect(() => {
-      List<File> files;
-      var treepaths = get_selected_items();
-      foreach (var treepath in treepaths) {
-        var file = store.get_file(treepath);
-        if (file != null)
-          files.append(file);
-      }
-      application.restore_files(files, timecombo.when, store.tree);
-    });
 
     // Watch for backend changes that need to reset us
     watcher = new DejaDup.BackendWatcher();
@@ -177,19 +122,33 @@ class Browser : BuilderWidget
     watcher.new_backup.connect(clear_operation);
     application.notify["custom-backend"].connect(clear_operation);
 
-    // Set up passphrase dialog
+    // Set up passphrase loop
     passphrase_loop = new MainLoop(null); // not started yet, but will be
-    var dialog = new PassphraseDialog(builder);
-    dialog.got_passphrase.connect((passphrase) => {
-      if (operation != null) {
-        operation.set_passphrase(passphrase);
-        switch_overlay_to_spinner(); // quits main loop too
-      }
-    });
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.notify["visible-child-name"].connect(() => {
       if (overlay_stack.visible_child_name != "passphrase")
         passphrase_loop.quit();
+    });
+  }
+
+  public void bind_to_window(Gtk.ApplicationWindow win)
+  {
+    app_window = win;
+    app_window.notify["is-active"].connect(maybe_start_operation);
+
+    header = app_window.get_titlebar() as MainHeaderBar;
+    header.bind_search_bar(search_bar);
+    bind_property("files-filled", header, "actions-sensitive",
+                  BindingFlags.SYNC_CREATE);
+
+    // Notice when we are switched to and away from and notice when we need to
+    // reset operation.
+    header.stack.notify["visible-child"].connect(() => {
+      if (header.stack.visible_child == this) {
+        app_window.insert_action_group("restore", action_group);
+        maybe_start_operation();
+      } else {
+        app_window.insert_action_group("restore", null);
+      }
     });
 
     // Initial setup call
@@ -197,92 +156,60 @@ class Browser : BuilderWidget
   }
 
   void selection_changed() {
-    unowned var restore_button = get_object("restore-context-button") as Gtk.Button;
-    unowned var selection_button = get_object("selection-menu-button") as Gtk.MenuButton;
-
     var count = get_selected_items().length();
     restore_button.sensitive = count > 0;
-    if (count == 0) {
-      selection_button.label = _("Click on items to select them");
-    } else {
-      selection_button.label = ngettext("%u selected", "%u selected",
-                                        count).printf(count);
-    }
+    header.set_selection_count(count);
   }
 
   List<Gtk.TreePath> get_selected_items()
   {
-    unowned var stack = get_object("restore-view-stack") as Gtk.Stack;
-
-    if (stack.visible_child_name == "icons") {
-      unowned var icon_view = get_object("restore-icon-view") as Gtk.IconView;
+    if (view_stack.visible_child_name == "icons") {
       return icon_view.get_selected_items();
     } else {
-      unowned var list_view = get_object("restore-list-view") as Gtk.TreeView;
       return list_view.get_selection().get_selected_rows(null);
     }
   }
 
   void select_all() {
-    unowned var stack = get_object("restore-view-stack") as Gtk.Stack;
-
-    if (stack.visible_child_name == "icons") {
-      unowned var icon_view = get_object("restore-icon-view") as Gtk.IconView;
+    if (view_stack.visible_child_name == "icons") {
       icon_view.select_all();
     } else {
-      unowned var list_view = get_object("restore-list-view") as Gtk.TreeView;
       list_view.get_selection().select_all();
     }
   }
 
   void select_none() {
-    unowned var stack = get_object("restore-view-stack") as Gtk.Stack;
-
-    if (stack.visible_child_name == "icons") {
-      unowned var icon_view = get_object("restore-icon-view") as Gtk.IconView;
+    if (view_stack.visible_child_name == "icons") {
       icon_view.unselect_all();
     } else {
-      unowned var list_view = get_object("restore-list-view") as Gtk.TreeView;
       list_view.get_selection().unselect_all();
     }
   }
 
   void go_up() {
     store.go_up();
-
-    unowned var search_bar = get_object("search-bar") as Gtk.SearchBar;
     search_bar.search_mode_enabled = false;
   }
 
   void go_down(Gtk.TreePath path) {
     store.go_down(path);
-
-    unowned var search_bar = get_object("search-bar") as Gtk.SearchBar;
     search_bar.search_mode_enabled = false;
   }
 
   void activate_search() {
-    unowned var search_bar = get_object("search-bar") as Gtk.SearchBar;
-    unowned var search_entry = get_object("search-entry") as Gtk.SearchEntry;
-
     search_bar.search_mode_enabled = true;
     search_entry.grab_focus();
   }
 
   void update_search_filter() {
-    unowned var search_entry = get_object("search-entry") as Gtk.SearchEntry;
-    unowned var icons = get_object("restore-icon-view") as Gtk.IconView;
-    unowned var list = get_object("restore-list-view") as Gtk.TreeView;
-    unowned var stack = get_object("restore-view-stack") as Gtk.Stack;
-
     if (search_entry.text != "") {
-      stack.visible_child_name = "list";
-      icons.model = null;
-      list.model = store;
+      view_stack.visible_child_name = "list";
+      icon_view.model = null;
+      list_view.model = store;
     } else {
-      stack.visible_child_name = "icons";
-      list.model = null;
-      icons.model = store;
+      view_stack.visible_child_name = "icons";
+      list_view.model = null;
+      icon_view.model = store;
     }
 
     store.search_filter = search_entry.text;
@@ -295,22 +222,20 @@ class Browser : BuilderWidget
     // If we are in selection mode, we want to override normal behavior and
     // simply toggle selected status.
 
-    unowned var header_stack = get_object("header-stack") as Gtk.Stack;
-    if (header_stack.visible_child_name != "selection")
+    if (!header.in_selection_mode())
       return;
 
     // After this point, we are handling this event
     gesture.set_state(Gtk.EventSequenceState.CLAIMED);
 
-    unowned var view = get_object("restore-icon-view") as Gtk.IconView;
-    var path = view.get_path_at_pos((int)x, (int)y);
+    var path = icon_view.get_path_at_pos((int)x, (int)y);
     if (path == null)
       return;
 
-    if (view.path_is_selected(path))
-      view.unselect_path(path);
+    if (icon_view.path_is_selected(path))
+      icon_view.unselect_path(path);
     else
-      view.select_path(path);
+      icon_view.select_path(path);
   }
 
   // Keep this in sync with handle_icon_button_press above
@@ -320,63 +245,61 @@ class Browser : BuilderWidget
     // If we are in selection mode, we want to override normal behavior and
     // simply toggle selected status.
 
-    unowned var header_stack = get_object("header-stack") as Gtk.Stack;
-    if (header_stack.visible_child_name != "selection")
+    if (!header.in_selection_mode())
       return;
 
     // After this point, we are handling this event
     gesture.set_state(Gtk.EventSequenceState.CLAIMED);
 
-    unowned var view = get_object("restore-list-view") as Gtk.TreeView;
     Gtk.TreePath path;
-    if (!view.get_path_at_pos((int)x, (int)y, out path, null, null, null))
+    if (!list_view.get_path_at_pos((int)x, (int)y, out path, null, null, null))
       return;
 
-    var selection = view.get_selection();
+    var selection = list_view.get_selection();
     if (selection.path_is_selected(path))
       selection.unselect_path(path);
     else
       selection.select_path(path);
   }
 
-  void grab_passphrase() {
-    unowned var passphrase_dialog = get_object("passphrase-dialog") as Gtk.Dialog;
-    unowned var passphrase_entry = get_object("passphrase-entry") as Gtk.PasswordEntry;
-    passphrase_entry.text = "";
-    passphrase_dialog.show();
+  [GtkCallback]
+  void grab_passphrase()
+  {
+    var dialog = new PassphraseDialog();
+    dialog.transient_for = app_window;
+    dialog.got_passphrase.connect((passphrase) => {
+      if (operation != null) {
+        operation.set_passphrase(passphrase);
+        switch_overlay_to_spinner(); // quits loop too
+      }
+    });
+    dialog.present();
   }
 
   void switch_overlay_to_spinner() {
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "spinner";
     overlay_stack.visible = true;
   }
 
   void switch_overlay_to_error(string msg) {
-    unowned var error_label = get_object("restore-error-label") as Gtk.Label;
     error_label.label = msg;
 
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "error";
     overlay_stack.visible = true;
   }
 
   void switch_overlay_to_pause(string msg) {
-    unowned var pause_label = get_object("restore-pause-label") as Gtk.Label;
     pause_label.label = msg;
 
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "pause";
     overlay_stack.visible = true;
   }
 
   void switch_overlay_to_mount_needed() {
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "auth";
     overlay_stack.visible = true;
 
-    unowned var overlay_label = get_object("restore-auth-label") as Gtk.Label;
-    overlay_label.label = _("Authentication needed");
+    auth_label.label = _("Authentication needed");
     auth_url = null;
 
     // disconnect error handler, or else we'll switch to that instead when
@@ -385,17 +308,14 @@ class Browser : BuilderWidget
   }
 
   void switch_overlay_to_oauth_needed(string msg, string url) {
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "auth";
     overlay_stack.visible = true;
 
-    unowned var overlay_label = get_object("restore-auth-label") as Gtk.Label;
-    overlay_label.label = msg;
+    auth_label.label = msg;
     auth_url = url;
   }
 
   void switch_overlay_to_passphrase() {
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible_child_name = "passphrase";
     overlay_stack.visible = true;
 
@@ -405,19 +325,30 @@ class Browser : BuilderWidget
   }
 
   void switch_overlay_off() {
-    unowned var overlay_stack = get_object("restore-overlay-stack") as Gtk.Stack;
     overlay_stack.visible = false;
   }
 
+  [GtkCallback]
   void start_auth() {
     if (auth_url == null) {
-      unowned var main_window = get_object("main-window") as Gtk.Window;
-      mount_op = new Gtk.MountOperation(main_window);
+      mount_op = new Gtk.MountOperation(app_window);
       maybe_start_operation();
     } else {
-      unowned var main_window = get_object("main-window") as Gtk.Window;
-      Gtk.show_uri(main_window, auth_url, Gdk.CURRENT_TIME);
+      Gtk.show_uri(app_window, auth_url, Gdk.CURRENT_TIME);
     }
+  }
+
+  [GtkCallback]
+  void start_restore()
+  {
+    List<File> files = null;
+    var treepaths = get_selected_items();
+    foreach (var treepath in treepaths) {
+      var file = store.get_file(treepath);
+      if (file != null)
+        files.append(file);
+    }
+    application.restore_files(files, timecombo.when, store.tree);
   }
 
   void handle_operation_error(DejaDup.Operation op, string error, string? detail)
@@ -508,14 +439,27 @@ class Browser : BuilderWidget
     maybe_start_operation();
   }
 
+  bool app_window_is_active()
+  {
+    if (!app_window.is_active)
+      return false;
+
+    var windows = Gtk.Window.list_toplevels();
+    foreach (var window in windows) {
+      if (window.visible && window != app_window)
+        return false;
+    }
+
+    return true;
+  }
+
+  [GtkCallback]
   void maybe_start_operation()
   {
     if (operation != null)
       return;
 
-    unowned var main_window = get_object("main-window") as Gtk.ApplicationWindow;
-    unowned var stack = get_object("stack") as Gtk.Stack;
-    if (!main_window.is_active || stack.visible_child_name != "restore")
+    if (!app_window_is_active() || header.stack.visible_child != this)
       return;
 
     if (!time_filled)

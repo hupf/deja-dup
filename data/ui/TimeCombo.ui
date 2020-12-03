@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="TimeCombo" parent="GtkBox">
+    <property name="spacing">6</property>
+    <child>
+      <object class="GtkLabel">
+        <property name="label" translatable="yes">_Date</property>
+        <property name="use_underline">1</property>
+        <property name="mnemonic_widget">combo</property>
+        <property name="xalign">1</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkComboBoxText" id="combo">
+      </object>
+    </child>
+  </template>
+</interface>

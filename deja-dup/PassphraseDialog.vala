@@ -6,45 +6,35 @@
 
 using GLib;
 
-class PassphraseDialog : BuilderWidget
+[GtkTemplate (ui = "/org/gnome/DejaDup/PassphraseDialog.ui")]
+class PassphraseDialog : Gtk.Dialog
 {
   public signal void got_passphrase(string passphrase);
 
-  public PassphraseDialog(Gtk.Builder builder)
-  {
-    Object(builder: builder);
-  }
+  [GtkChild]
+  Gtk.PasswordEntry entry;
+  [GtkChild]
+  Gtk.CheckButton remember;
 
   construct {
-    adopt_name("passphrase-dialog");
+    use_header_bar = 1; // setting this in the ui file doesn't seem to work
 
-    unowned var cancel = get_object("passphrase-cancel") as Gtk.Button;
-    cancel.clicked.connect(handle_cancel);
-
-    unowned var forward = get_object("passphrase-forward") as Gtk.Button;
-    forward.clicked.connect(() => {handle_forward.begin();});
-
-    unowned var entry = get_object("passphrase-entry") as Gtk.PasswordEntry;
-    entry.notify["text"].connect(() => {
-      forward.sensitive = (entry.text != "");
+    entry.changed.connect(() => {
+      set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
     });
   }
 
-  void handle_cancel() {
-    unowned var dialog = get_object("passphrase-dialog") as Gtk.Dialog;
-    dialog.hide();
+  public override void response(int response_id)
+  {
+    if (response_id == Gtk.ResponseType.OK && entry.text != "")
+      handle_ok.begin();
+    destroy();
   }
 
-  async void handle_forward() {
-    unowned var dialog = get_object("passphrase-dialog") as Gtk.Dialog;
-    unowned var entry = get_object("passphrase-entry") as Gtk.PasswordEntry;
-    unowned var remember = get_object("passphrase-remember") as Gtk.CheckButton;
-
+  async void handle_ok()
+  {
     var passphrase = DejaDup.process_passphrase(entry.text);
     yield DejaDup.store_passphrase(passphrase, remember.active);
-
     got_passphrase(passphrase);
-
-    dialog.hide();
   }
 }

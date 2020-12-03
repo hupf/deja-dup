@@ -6,20 +6,14 @@
 
 using GLib;
 
-public class ConfigDelete : ConfigChoice
+public class ConfigDelete : ConfigComboRow
 {
-  public ConfigDelete(Gtk.Builder builder) {
-    Object(builder: builder);
-  }
-
   protected override void fill_store() {
     add_item(90, _("At least three months"));
     add_item(182, _("At least six months"));
     add_item(365, _("At least a year"));
     add_item(0, _("Forever"));
   }
-
-  protected override string combo_name() {return "keep";}
 
   protected override string setting_name() {return DejaDup.DELETE_AFTER_KEY;}
 

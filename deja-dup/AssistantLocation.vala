@@ -17,16 +17,9 @@ public class AssistantLocation : Assistant
     destroy_with_parent = true;
     resizable = false;
 
-    var builder = DejaDup.make_builder("preferences");
-    location_grid = new ConfigLocationGrid(builder, true);
-
-    unowned var location_label = builder.get_object("location_label") as Gtk.Label;
-    location_label.label = _("_Backup location");
-
-    var config_location = builder.get_object("location_grid") as Gtk.Widget;
-    config_location.unparent();
-
-    append_page(config_location, Type.NORMAL, _("_Search"));
+    location_grid = new ConfigLocationGrid(true);
+    location_grid.set_location_label(_("_Backup location"));
+    append_page(location_grid, Type.NORMAL, _("_Search"));
 
     response.connect(handle_response);
   }

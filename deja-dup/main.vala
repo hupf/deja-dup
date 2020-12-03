@@ -125,25 +125,23 @@ public class DejaDupApp : Gtk.Application
       get_app_window().present();
     else {
       // We're the first instance.  Yay!
-      main_window.set(new MainWindow(this));
+      main_window.set(new MainWindow());
+      get_app_window().application = this;
       get_app_window().present();
     }
   }
 
-  unowned Gtk.ApplicationWindow? get_app_window()
+  Gtk.ApplicationWindow? get_app_window()
   {
-    var win = main_window.get() as MainWindow;
-    if (win == null)
-      return null;
-    return win.get_app_window();
+    return main_window.get() as Gtk.ApplicationWindow;
   }
 
-  unowned Gtk.MenuButton? get_menu_button()
+  unowned MainHeaderBar? get_header()
   {
     var win = main_window.get() as MainWindow;
     if (win == null)
       return null;
-    return win.get_menu_button();
+    return win.get_titlebar() as MainHeaderBar;
   }
 
   void show()
@@ -231,7 +229,10 @@ public class DejaDupApp : Gtk.Application
 
   void preferences()
   {
-    PreferencesWindow.show(get_app_window());
+    var window = new PreferencesWindow();
+    window.set_transient_for(get_app_window());
+    window.application = this;
+    window.present();
   }
 
   void help()
@@ -241,12 +242,9 @@ public class DejaDupApp : Gtk.Application
 
   void menu()
   {
-    if (get_menu_button() == null)
+    if (get_header() == null)
       return;
-    if (get_menu_button().popover.visible)
-      get_menu_button().popdown();
-    else
-      get_menu_button().popup();
+    get_header().open_menu();
   }
 
   void about()
@@ -367,7 +365,16 @@ int main(string[] args)
   Gtk.Window.set_default_icon_name(Config.ICON_NAME);
 
   // FIXME: there must be a better way than this?
+  typeof(Browser).ensure();
+  typeof(ConfigAutoBackup).ensure();
+  typeof(ConfigDelete).ensure();
+  typeof(ConfigFolderList).ensure();
+  typeof(ConfigFolderPage).ensure();
+  typeof(ConfigLocationGrid).ensure();
+  typeof(ConfigPeriod).ensure();
   typeof(ConfigServerEntry).ensure();
+  typeof(ConfigStatusLabel).ensure();
+  typeof(MainHeaderBar).ensure();
 
   return DejaDupApp.get_instance().run(args);
 }

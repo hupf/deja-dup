@@ -31,39 +31,13 @@ public class AssistantBackup : AssistantOperation
   protected override void add_custom_config_pages()
   {
     var settings = DejaDup.get_settings();
-    var last_backup = settings.get_string(DejaDup.LAST_RUN_KEY);
+    var last_run = settings.get_string(DejaDup.LAST_RUN_KEY);
 
     // If we've never backed up before, let's prompt for settings
-    if (last_backup == "") {
-      include_exclude_page = make_include_exclude_page();
-      append_page(include_exclude_page);
-
-      var page = make_location_page();
-      append_page(page);
+    if (last_run == "") {
+      append_page(new ConfigFolderPage());
+      append_page(new ConfigLocationGrid());
     }
-  }
-
-  Gtk.Widget make_include_exclude_page()
-  {
-    var prefs_builder = DejaDup.make_builder("preferences");
-    new ConfigFolderList(prefs_builder, "includes", DejaDup.INCLUDE_LIST_KEY, true);
-    new ConfigFolderList(prefs_builder, "excludes", DejaDup.EXCLUDE_LIST_KEY, false);
-
-    var page = prefs_builder.get_object("folders_page") as Hdy.PreferencesPage;
-    page.unparent();
-
-    return page;
-  }
-
-  Gtk.Widget make_location_page()
-  {
-    var prefs_builder = DejaDup.make_builder("preferences");
-    new ConfigLocationGrid(prefs_builder);
-
-    var config_location = prefs_builder.get_object("location_grid") as Gtk.Widget;
-    config_location.unparent();
-
-    return config_location;
   }
 
   async string[] get_unavailable_includes()
