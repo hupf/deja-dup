@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-02 03:09+0000\n"
-"PO-Revision-Date: 2020-12-02 10:07+0200\n"
+"POT-Creation-Date: 2020-12-03 00:54+0000\n"
+"PO-Revision-Date: 2020-12-03 09:45+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:363
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:361
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -96,7 +96,7 @@ msgstr ""
 "всієї системи або програма для архівації, ви можете віддати перевагу іншим "
 "програмам резервного копіювання."
 
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:33
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:14
 msgid "Backups"
 msgstr "Резервні копії"
 
@@ -365,6 +365,216 @@ msgstr ""
 "Шлях до теки, де зберігаються резервні копії. Шляхи можуть бути абсолютними "
 "або відносними щодо основної системи."
 
+#: data/ui/Browser.ui:91
+msgid "Scanning backup files…"
+msgstr "Шукаємо файли резервних копій…"
+
+#: data/ui/Browser.ui:124
+msgid "_Retry"
+msgstr "_Повторити"
+
+#: data/ui/Browser.ui:161
+msgid "_Connect"
+msgstr "З'_єднатись"
+
+#: data/ui/Browser.ui:188
+msgid "Encryption password needed"
+msgstr "Потрібен пароль для доступу"
+
+#: data/ui/Browser.ui:199
+msgid "_Enter Password"
+msgstr "_Ввести пароль"
+
+#: data/ui/Browser.ui:298 deja-dup/AssistantRestore.vala:66
+msgid "_Restore"
+msgstr "_Відновити"
+
+#: data/ui/ConfigFolderList.ui:23
+msgid "Add"
+msgstr "Додати"
+
+#: data/ui/ConfigFolderPage.ui:10
+#| msgid "_Folder"
+msgid "Folders"
+msgstr "Теки"
+
+#: data/ui/ConfigFolderPage.ui:13
+msgid "Folders to Back Up"
+msgstr "Теки резервного копіювання"
+
+#: data/ui/ConfigFolderPage.ui:20
+msgid "Folders to Ignore"
+msgstr "Теки, які буде проігноровано"
+
+#: data/ui/ConfigFolderRow.ui:17
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr ""
+"Не вдалося створити резервну копію даних у цій теці, оскільки «Резервним "
+"копіям» не вдалося отримати до неї доступ."
+
+#: data/ui/ConfigFolderRow.ui:29
+msgid "Remove"
+msgstr "Вилучити"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/ConfigLocationGrid.ui:21
+msgid "_Storage Location"
+msgstr "_Місце сховища"
+
+#: data/ui/ConfigLocationGrid.ui:46 data/ui/ConfigLocationGrid.ui:119
+#: data/ui/ConfigLocationGrid.ui:154 data/ui/ConfigLocationGrid.ui:217
+msgid "_Folder"
+msgstr "_Каталог"
+
+#: data/ui/ConfigLocationGrid.ui:69
+msgid "_Reset Account Access"
+msgstr "С_кинути доступ до облікового запису"
+
+#: data/ui/ConfigLocationGrid.ui:97
+msgid "_Network Location"
+msgstr "_Мережеве розташування"
+
+#: data/ui/ConfigLocationGrid.ui:192 libdeja/BackendUnsupported.vala:29
+msgid ""
+"This storage location is no longer supported. You can still use duplicity "
+"directly to back up or restore your files."
+msgstr ""
+"Підтримки цього місця зберігання даних більше не передбачено. Ви можете "
+"скористатися duplicity безпосередньо, щоб створити або відновити резервну "
+"копію."
+
+#: data/ui/ConfigLocationGrid.ui:232
+msgid "_Choose Folder…"
+msgstr "_Виберіть теку..."
+
+#: data/ui/MainHeaderBar.ui:30
+msgid "Back"
+msgstr "Назад"
+
+#: data/ui/MainHeaderBar.ui:40
+msgid "Menu"
+msgstr "Меню"
+
+#: data/ui/MainHeaderBar.ui:50 data/ui/MainHeaderBar.ui:82
+msgid "Select"
+msgstr "Вибрати"
+
+#: data/ui/MainHeaderBar.ui:59 data/ui/MainHeaderBar.ui:102
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/MainHeaderBar.ui:91 data/ui/PassphraseDialog.ui:16
+#: deja-dup/Assistant.vala:336
+msgid "_Cancel"
+msgstr "_Скасувати"
+
+#: data/ui/MainHeaderBar.ui:120
+msgid "_Preferences"
+msgstr "_Налаштування"
+
+#: data/ui/MainHeaderBar.ui:124
+msgid "_Keyboard Shortcuts"
+msgstr "_Сполучення клавіш"
+
+#: data/ui/MainHeaderBar.ui:128
+msgid "_Help"
+msgstr "_Довідка"
+
+#: data/ui/MainHeaderBar.ui:132
+msgid "_About Backups"
+msgstr "_Про Резервні копії"
+
+#: data/ui/MainHeaderBar.ui:140
+msgid "Select _All"
+msgstr "Позначити _всі"
+
+#: data/ui/MainHeaderBar.ui:144
+msgid "Select _None"
+msgstr "За_брати вибір"
+
+#: data/ui/MainWindow.ui:27
+msgid "Overview"
+msgstr "Огляд"
+
+#: data/ui/MainWindow.ui:64
+msgid "Keep your important files safe in a backup."
+msgstr "Виконуйте резервне копіювання важливих для вас файлів."
+
+#: data/ui/MainWindow.ui:76
+msgid "Create My First _Backup"
+msgstr "Створити першу _резервну копію"
+
+#: data/ui/MainWindow.ui:91
+msgid "_Restore From a Previous Backup"
+msgstr "_Відновити дані зі створеної резервної копії"
+
+#: data/ui/MainWindow.ui:131
+msgid "Back up _automatically"
+msgstr "Створювати резервні копії _автоматично"
+
+#: data/ui/MainWindow.ui:152
+msgid "_Back Up Now"
+msgstr "Створити _резервну копію зараз"
+
+#: data/ui/MainWindow.ui:182 deja-dup/AssistantRestore.vala:62
+msgid "Restore"
+msgstr "Відновити зі збереженої копії"
+
+#: data/ui/PassphraseDialog.ui:23
+msgid "Con_tinue"
+msgstr "П_родовжити"
+
+#: data/ui/PassphraseDialog.ui:50 deja-dup/AssistantOperation.vala:379
+#: deja-dup/AssistantOperation.vala:441
+msgid "E_ncryption password"
+msgstr "Пароль шифрування"
+
+#: data/ui/PassphraseDialog.ui:72 deja-dup/AssistantOperation.vala:407
+#: deja-dup/MountOperationAssistant.vala:25
+msgid "_Remember password"
+msgstr "_Запам’ятати пароль"
+
+#: data/ui/PreferencesWindow.ui:19
+#, fuzzy
+#| msgctxt "shortcut window"
+#| msgid "General"
+msgid "General"
+msgstr "Загальні"
+
+#: data/ui/PreferencesWindow.ui:22
+msgid "Storage"
+msgstr "Сховище"
+
+#: data/ui/PreferencesWindow.ui:25
+msgid "_Location"
+msgstr "_Місце"
+
+#: data/ui/PreferencesWindow.ui:42
+msgid "_Keep Backups"
+msgstr "З_берігати резервні копії"
+
+#: data/ui/PreferencesWindow.ui:49
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space or kept up to three months longer to avoid deleting related backups."
+msgstr ""
+"Найдавніші резервні копії усе одно буде вилучено, якщо на диску лишиться "
+"надто мало місця, або зберігатимуться до трьох місяців довше, щоб уникнути "
+"вилучення пов'язаних резервних копій."
+
+#: data/ui/PreferencesWindow.ui:61
+msgid "Schedule"
+msgstr "Розклад"
+
+#: data/ui/PreferencesWindow.ui:65
+msgid "Back Up _Automatically"
+msgstr "Створювати резервні копії _автоматично"
+
+#: data/ui/PreferencesWindow.ui:78
+msgid "Automatic Backup _Frequency"
+msgstr "_Частота автоматичного резервного копіювання"
+
 #: data/ui/ServerHintPopover.ui:18
 msgid "Network Locations"
 msgstr "Мережеві розташування"
@@ -429,6 +639,10 @@ msgstr "sftp:// або ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// або davs://"
 
+#: data/ui/TimeCombo.ui:13
+msgid "_Date"
+msgstr "_Дата"
+
 #: data/ui/help-overlay.ui:17
 msgctxt "shortcut window"
 msgid "General"
@@ -469,192 +683,6 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Повернутися"
 
-#: data/ui/main.ui:36
-msgid "Back"
-msgstr "Назад"
-
-#: data/ui/main.ui:54
-msgid "Menu"
-msgstr "Меню"
-
-#: data/ui/main.ui:62 data/ui/main.ui:111
-msgid "Select"
-msgstr "Вибрати"
-
-#: data/ui/main.ui:79 data/ui/main.ui:133
-msgid "Search"
-msgstr "Пошук"
-
-#: data/ui/main.ui:121 data/ui/main.ui:662 deja-dup/Assistant.vala:336
-msgid "_Cancel"
-msgstr "_Скасувати"
-
-#: data/ui/main.ui:163
-msgid "Overview"
-msgstr "Огляд"
-
-#: data/ui/main.ui:200
-msgid "Keep your important files safe in a backup."
-msgstr "Виконуйте резервне копіювання важливих для вас файлів."
-
-#: data/ui/main.ui:212
-msgid "Create My First _Backup"
-msgstr "Створити першу _резервну копію"
-
-#: data/ui/main.ui:226
-msgid "_Restore From a Previous Backup"
-msgstr "_Відновити дані зі створеної резервної копії"
-
-#: data/ui/main.ui:265
-msgid "Back up _automatically"
-msgstr "Створювати резервні копії _автоматично"
-
-#: data/ui/main.ui:291
-msgid "_Back Up Now"
-msgstr "Створити _резервну копію зараз"
-
-#: data/ui/main.ui:320 deja-dup/AssistantRestore.vala:64
-msgid "Restore"
-msgstr "Відновити зі збереженої копії"
-
-#: data/ui/main.ui:330 deja-dup/AssistantRestore.vala:68
-msgid "_Restore"
-msgstr "_Відновити"
-
-#: data/ui/main.ui:353 deja-dup/AssistantRestore.vala:108
-msgid "_Date"
-msgstr "_Дата"
-
-#: data/ui/main.ui:444
-msgid "Scanning backup files…"
-msgstr "Шукаємо файли резервних копій…"
-
-#: data/ui/main.ui:477
-msgid "_Retry"
-msgstr "_Повторити"
-
-#: data/ui/main.ui:513
-msgid "_Connect"
-msgstr "З'_єднатись"
-
-#: data/ui/main.ui:539
-msgid "Encryption password needed"
-msgstr "Потрібен пароль для доступу"
-
-#: data/ui/main.ui:550
-msgid "_Enter Password"
-msgstr "_Ввести пароль"
-
-#: data/ui/main.ui:669
-msgid "Con_tinue"
-msgstr "П_родовжити"
-
-#: data/ui/main.ui:710 deja-dup/AssistantOperation.vala:379
-#: deja-dup/AssistantOperation.vala:441
-msgid "E_ncryption password"
-msgstr "Пароль шифрування"
-
-#: data/ui/main.ui:721 deja-dup/AssistantOperation.vala:407
-#: deja-dup/MountOperationAssistant.vala:25
-msgid "_Remember password"
-msgstr "_Запам’ятати пароль"
-
-#: data/ui/menus.ui:12
-msgid "_Preferences"
-msgstr "_Налаштування"
-
-#: data/ui/menus.ui:16
-msgid "_Keyboard Shortcuts"
-msgstr "_Сполучення клавіш"
-
-#: data/ui/menus.ui:20
-msgid "_Help"
-msgstr "_Довідка"
-
-#: data/ui/menus.ui:24
-msgid "_About Backups"
-msgstr "_Про Резервні копії"
-
-#: data/ui/menus.ui:32
-msgid "Select _All"
-msgstr "Позначити _всі"
-
-#: data/ui/menus.ui:36
-msgid "Select _None"
-msgstr "За_брати вибір"
-
-#: data/ui/preferences.ui:25
-msgid "Storage"
-msgstr "Сховище"
-
-#: data/ui/preferences.ui:30
-msgid "_Location"
-msgstr "_Місце"
-
-#: data/ui/preferences.ui:72
-msgid "_Keep Backups"
-msgstr "З_берігати резервні копії"
-
-#: data/ui/preferences.ui:80
-msgid ""
-"The oldest backups will still be deleted earlier if the location is low on "
-"space or kept up to three months longer to avoid deleting related backups."
-msgstr ""
-"Найдавніші резервні копії усе одно буде вилучено, якщо на диску лишиться "
-"надто мало місця, або зберігатимуться до трьох місяців довше, щоб уникнути "
-"вилучення пов'язаних резервних копій."
-
-#: data/ui/preferences.ui:93
-msgid "Schedule"
-msgstr "Розклад"
-
-#: data/ui/preferences.ui:98
-msgid "Back Up _Automatically"
-msgstr "Створювати резервні копії _автоматично"
-
-#: data/ui/preferences.ui:113
-msgid "Automatic Backup _Frequency"
-msgstr "_Частота автоматичного резервного копіювання"
-
-#: data/ui/preferences.ui:129
-msgid "Folders to Back Up"
-msgstr "Теки резервного копіювання"
-
-#: data/ui/preferences.ui:138
-msgid "Folders to Ignore"
-msgstr "Теки, які буде проігноровано"
-
-#. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:179
-msgid "_Storage Location"
-msgstr "_Місце сховища"
-
-#: data/ui/preferences.ui:215 data/ui/preferences.ui:290
-#: data/ui/preferences.ui:325 data/ui/preferences.ui:388
-msgid "_Folder"
-msgstr "_Каталог"
-
-#: data/ui/preferences.ui:238
-msgid "_Reset Account Access"
-msgstr "С_кинути доступ до облікового запису"
-
-#: data/ui/preferences.ui:268
-msgid "_Network Location"
-msgstr "_Мережеве розташування"
-
-#: data/ui/preferences.ui:363 libdeja/BackendUnsupported.vala:29
-msgid ""
-"This storage location is no longer supported. You can still use duplicity "
-"directly to back up or restore your files."
-msgstr ""
-"Підтримки цього місця зберігання даних більше не передбачено. Ви можете "
-"скористатися duplicity безпосередньо, щоб створити або відновити резервну "
-"копію."
-
-#: data/ui/preferences.ui:403
-msgid "_Choose Folder…"
-msgstr "_Виберіть теку..."
-
 #: deja-dup/Assistant.vala:283
 msgid "Co_ntinue"
 msgstr "Про_довжити"
@@ -690,7 +718,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Резервна копія"
 
-#: deja-dup/AssistantBackup.vala:89
+#: deja-dup/AssistantBackup.vala:63
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -698,11 +726,11 @@ msgstr ""
 "Не вдалося створити резервні копії даних у вказаних нижче теках, оскільки "
 "«Резервним копіям» не вдалося отримати до них доступ:"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:79
 msgid "Creating the first backup.  This may take a while."
 msgstr "Створення першої резервної копії. Це може зайняти деякий час."
 
-#: deja-dup/AssistantBackup.vala:106
+#: deja-dup/AssistantBackup.vala:80
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -712,31 +740,31 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:121
+#: deja-dup/AssistantBackup.vala:95
 msgid "Backing up:"
 msgstr "Резервне копіювання:"
 
-#: deja-dup/AssistantBackup.vala:130
+#: deja-dup/AssistantBackup.vala:104
 msgid "Backup Failed"
 msgstr "Збереження провалено"
 
-#: deja-dup/AssistantBackup.vala:133
+#: deja-dup/AssistantBackup.vala:107
 msgid "Backup Finished"
 msgstr "Збереження завершено"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:137
+#: deja-dup/AssistantBackup.vala:111
 msgid "Your files were successfully backed up and tested."
 msgstr "Резервну копію файлів успішно створено й перевірено."
 
-#: deja-dup/AssistantBackup.vala:144
+#: deja-dup/AssistantBackup.vala:118
 msgid "Backing Up…"
 msgstr "Резервування..."
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: deja-dup/AssistantBackup.vala:150 deja-dup/AssistantOperation.vala:873
+#: deja-dup/AssistantBackup.vala:124 deja-dup/AssistantOperation.vala:873
 msgid "Backups needs your input to continue"
 msgstr "«Резервним копіям» потрібне ваше рішення, щоб продовжувати"
 
@@ -744,7 +772,7 @@ msgstr "«Резервним копіям» потрібне ваше рішен
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:177
+#: deja-dup/AssistantBackup.vala:151
 msgid "Backup in progress"
 msgstr "Виконуємо резервне копіювання"
 
@@ -752,11 +780,11 @@ msgstr "Виконуємо резервне копіювання"
 msgid "Restore From Where?"
 msgstr "Звідки відновити?"
 
-#: deja-dup/AssistantLocation.vala:24
+#: deja-dup/AssistantLocation.vala:21
 msgid "_Backup location"
 msgstr "_Місце збереження"
 
-#: deja-dup/AssistantLocation.vala:29
+#: deja-dup/AssistantLocation.vala:22
 msgid "_Search"
 msgstr "_Шукати"
 
@@ -850,99 +878,98 @@ msgstr "_Встановити"
 msgid "Backups needs to install packages to continue"
 msgstr "«Резервним копіям» слід встановити пакунки, щоб продовжувати"
 
-#: deja-dup/AssistantRestore.vala:154
+#: deja-dup/AssistantRestore.vala:140
 msgid "Restore files to _original locations"
 msgstr "Відновити файли до _початкових місць"
 
-#: deja-dup/AssistantRestore.vala:164
+#: deja-dup/AssistantRestore.vala:151
 msgid "Restore to _specific folder"
 msgstr "Відновити в _спеціальну теку"
 
-#: deja-dup/AssistantRestore.vala:176
+#: deja-dup/AssistantRestore.vala:163
 msgid "Choose destination for restored files"
 msgstr "Виберіть місце призначення для відновлення файлів"
 
-#: deja-dup/AssistantRestore.vala:183
+#: deja-dup/AssistantRestore.vala:170
 msgid "Restore _folder"
 msgstr "Тека _збереження"
 
-#: deja-dup/AssistantRestore.vala:196
+#: deja-dup/AssistantRestore.vala:183
 msgid "Backups does not have permission to restore the following files:"
 msgstr "«Резервні копії» не мають прав доступу для відновлення таких файлів:"
 
-#: deja-dup/AssistantRestore.vala:259
+#: deja-dup/AssistantRestore.vala:246
 msgid "Backup location"
 msgstr "Розміщення резервних копій"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:274
+#: deja-dup/AssistantRestore.vala:261
 msgid "Restore date"
 msgstr "Дата відновлення"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:283
+#: deja-dup/AssistantRestore.vala:270
 msgid "Restore folder"
 msgstr "Тека відновлення"
 
-#: deja-dup/AssistantRestore.vala:307
+#: deja-dup/AssistantRestore.vala:294
 msgid "Checking for Backups…"
 msgstr "Перевірка резервних копій..."
 
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:302
 msgid "Restore From When?"
 msgstr "З якого часу відновити?"
 
-#: deja-dup/AssistantRestore.vala:326
+#: deja-dup/AssistantRestore.vala:313
 msgid "Restore to Where?"
 msgstr "Куди відновлювати?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:361
+#: deja-dup/AssistantRestore.vala:346
 msgid "Restoring:"
 msgstr "Відновлення:"
 
-#. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:371
+#: deja-dup/AssistantRestore.vala:359
 msgid "No backups to restore"
 msgstr "Немає копій для відновлення"
 
-#: deja-dup/AssistantRestore.vala:478
+#: deja-dup/AssistantRestore.vala:443
 msgid "Original location"
 msgstr "Оригінальне розташування"
 
-#: deja-dup/AssistantRestore.vala:492
+#: deja-dup/AssistantRestore.vala:457
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Файл для відновлення"
 msgstr[1] "Файли для відновлення"
 msgstr[2] "Файлів для відновлення"
 
-#: deja-dup/AssistantRestore.vala:517
+#: deja-dup/AssistantRestore.vala:482
 msgid "Restore Failed"
 msgstr "Відновлення провалено"
 
-#: deja-dup/AssistantRestore.vala:519
+#: deja-dup/AssistantRestore.vala:484
 msgid "Restore Finished"
 msgstr "Відновлення завершено"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:522
+#: deja-dup/AssistantRestore.vala:487
 msgid "Your files were successfully restored."
 msgstr "Ваші файли були успішно відновлені."
 
-#: deja-dup/AssistantRestore.vala:525
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Файл успішно відновлено."
 msgstr[1] "Файли успішно відновлено."
 msgstr[2] "Файли успішно відновлено."
 
-#: deja-dup/AssistantRestore.vala:532 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:497 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Відновлення…"
 
-#: deja-dup/AssistantRestore.vala:602
+#: deja-dup/AssistantRestore.vala:567
 msgid "Restore in progress"
 msgstr "Виконуємо відновлення"
 
@@ -950,39 +977,27 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: deja-dup/Browser.vala:206
-msgid "Click on items to select them"
-msgstr "Щоб вибрати елементи, натисніть на них"
-
-#: deja-dup/Browser.vala:208
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u вибрано"
-msgstr[1] "%u вибрано"
-msgstr[2] "%u вибрано"
-
-#: deja-dup/Browser.vala:379
+#: deja-dup/Browser.vala:302
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: deja-dup/ConfigDelete.vala:16
+#: deja-dup/ConfigDeleteRow.vala:12
 msgid "At least three months"
 msgstr "Принаймні три місяці"
 
-#: deja-dup/ConfigDelete.vala:17
+#: deja-dup/ConfigDeleteRow.vala:13
 msgid "At least six months"
 msgstr "Раз на півроку"
 
-#: deja-dup/ConfigDelete.vala:18
+#: deja-dup/ConfigDeleteRow.vala:14
 msgid "At least a year"
 msgstr "Раз на рік"
 
-#: deja-dup/ConfigDelete.vala:19
+#: deja-dup/ConfigDeleteRow.vala:15
 msgid "Forever"
 msgstr "Завжди"
 
-#: deja-dup/ConfigDelete.vala:28
+#: deja-dup/ConfigDeleteRow.vala:22
 #, c-format
 msgid "At least %d day"
 msgid_plural "At least %d days"
@@ -990,68 +1005,53 @@ msgstr[0] "Раз на %d день"
 msgstr[1] "Раз на %d дні"
 msgstr[2] "Раз на %d днів"
 
-#: deja-dup/ConfigFolderList.vala:66
-msgid ""
-"This folder cannot be backed up because Backups does not have access to it."
-msgstr ""
-"Не вдалося створити резервну копію даних у цій теці, оскільки «Резервним "
-"копіям» не вдалося отримати до неї доступ."
-
-#: deja-dup/ConfigFolderList.vala:71
-msgid "Remove"
-msgstr "Вилучити"
-
-#: deja-dup/ConfigFolderList.vala:90
-msgid "Add"
-msgstr "Додати"
-
-#: deja-dup/ConfigFolderList.vala:101
+#: deja-dup/ConfigFolderList.vala:63
 msgid "Choose folders"
 msgstr "Оберіть каталоги"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:69 deja-dup/ConfigLocationCombo.vala:263
+#: deja-dup/ConfigLocationCombo.vala:71 deja-dup/ConfigLocationCombo.vala:265
 #: libdeja/BackendGoogle.vala:86
 msgid "Google Drive"
 msgstr "Диск Google"
 
-#: deja-dup/ConfigLocationCombo.vala:70
+#: deja-dup/ConfigLocationCombo.vala:72
 msgid "Local Folder"
 msgstr "Локальна тека"
 
-#: deja-dup/ConfigLocationCombo.vala:71
+#: deja-dup/ConfigLocationCombo.vala:73
 msgid "Network Server"
 msgstr "Мережевий сервер"
 
-#: deja-dup/ConfigLocationCombo.vala:261
+#: deja-dup/ConfigLocationCombo.vala:263
 msgid "Google Cloud Storage"
 msgstr "Хмарне сховище Google"
 
-#: deja-dup/ConfigLocationCombo.vala:265
+#: deja-dup/ConfigLocationCombo.vala:267
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: deja-dup/ConfigLocationCombo.vala:267
+#: deja-dup/ConfigLocationCombo.vala:269
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace файли в хмаринках"
 
-#: deja-dup/ConfigLocationCombo.vala:269
+#: deja-dup/ConfigLocationCombo.vala:271
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/ConfigLocationGrid.vala:89
+#: deja-dup/ConfigLocationGrid.vala:114
 msgid "Choose Folder"
 msgstr "Обрати каталог"
 
-#: deja-dup/ConfigPeriod.vala:24
+#: deja-dup/ConfigPeriodRow.vala:19
 msgid "Daily"
 msgstr "Кожного дня"
 
-#: deja-dup/ConfigPeriod.vala:25
+#: deja-dup/ConfigPeriodRow.vala:20
 msgid "Weekly"
 msgstr "Щотижня"
 
-#: deja-dup/ConfigPeriod.vala:34
+#: deja-dup/ConfigPeriodRow.vala:27
 #, c-format
 msgid "Every %d day"
 msgid_plural "Every %d days"
@@ -1060,15 +1060,15 @@ msgstr[1] "Кожен %d дні"
 msgstr[2] "Кожен %d днів"
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:46
+#: deja-dup/ConfigStatusLabel.vala:48
 msgid "Next backup is today."
 msgstr "Чергове резервне копіювання - сьогодні."
 
-#: deja-dup/ConfigStatusLabel.vala:48
+#: deja-dup/ConfigStatusLabel.vala:50
 msgid "Next backup is tomorrow."
 msgstr "Чергове резервне копіювання - завтра."
 
-#: deja-dup/ConfigStatusLabel.vala:56
+#: deja-dup/ConfigStatusLabel.vala:58
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -1077,15 +1077,15 @@ msgstr[1] "Чергове резервне копіювання через %d д
 msgstr[2] "Чергове резервне копіювання через %d днів."
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:73
+#: deja-dup/ConfigStatusLabel.vala:75
 msgid "Last backup was today."
 msgstr "Останнє резервне копіювання було сьогодні."
 
-#: deja-dup/ConfigStatusLabel.vala:75
+#: deja-dup/ConfigStatusLabel.vala:77
 msgid "Last backup was yesterday."
 msgstr "Останнє резервне копіювання було вчора."
 
-#: deja-dup/ConfigStatusLabel.vala:83
+#: deja-dup/ConfigStatusLabel.vala:85
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
@@ -1093,13 +1093,25 @@ msgstr[0] "Останнє резервне копіювання було %d де
 msgstr[1] "Останнє резервне копіювання було %d дні тому."
 msgstr[2] "Останнє резервне копіювання було %d днів тому."
 
-#: deja-dup/ConfigStatusLabel.vala:96
+#: deja-dup/ConfigStatusLabel.vala:98
 msgid "No recent backups."
 msgstr "Недавні резервні копії відсутні."
 
-#: deja-dup/ConfigStatusLabel.vala:102
+#: deja-dup/ConfigStatusLabel.vala:104
 msgid "No backup scheduled."
 msgstr "Створення резервних копій не заплановано."
+
+#: deja-dup/MainHeaderBar.vala:31
+msgid "Click on items to select them"
+msgstr "Щоб вибрати елементи, натисніть на них"
+
+#: deja-dup/MainHeaderBar.vala:33
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u вибрано"
+msgstr[1] "%u вибрано"
+msgstr[2] "%u вибрано"
 
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "_Username"
@@ -1183,7 +1195,7 @@ msgstr "Відкрити «Резервні копії»"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:85
+#: deja-dup/TimeCombo.vala:74
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
@@ -1208,7 +1220,7 @@ msgstr "Операція вже виконується"
 msgid "Please list files to restore"
 msgstr "Будь ласка, вкажіть список файлів для відновлення"
 
-#: deja-dup/main.vala:263
+#: deja-dup/main.vala:261
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
