@@ -7,8 +7,15 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainWindow.ui")]
-public class MainWindow : Gtk.ApplicationWindow
+public class MainWindow : Hdy.ApplicationWindow
 {
+  public MainHeaderBar get_header()
+  {
+    return header;
+  }
+
+  [GtkChild]
+  MainHeaderBar header;
   [GtkChild]
   Gtk.Stack stack;
   [GtkChild]

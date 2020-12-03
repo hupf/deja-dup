@@ -136,12 +136,12 @@ public class DejaDupApp : Gtk.Application
     return main_window.get() as Gtk.ApplicationWindow;
   }
 
-  unowned MainHeaderBar? get_header()
+  MainHeaderBar? get_header()
   {
     var win = main_window.get() as MainWindow;
     if (win == null)
       return null;
-    return win.get_titlebar() as MainHeaderBar;
+    return win.get_header();
   }
 
   void show()

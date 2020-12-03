@@ -130,12 +130,12 @@ class Browser : Gtk.Grid
     });
   }
 
-  public void bind_to_window(Gtk.ApplicationWindow win)
+  public void bind_to_window(MainWindow win)
   {
     app_window = win;
     app_window.notify["is-active"].connect(maybe_start_operation);
 
-    header = app_window.get_titlebar() as MainHeaderBar;
+    header = win.get_header();
     header.bind_search_bar(search_bar);
     bind_property("files-filled", header, "actions-sensitive",
                   BindingFlags.SYNC_CREATE);
