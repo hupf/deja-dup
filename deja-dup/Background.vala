@@ -26,7 +26,7 @@ using GLib;
 
 public class Background : Object
 {
-  string get_window_handle(Gtk.Window window)
+  static string get_window_handle(Gtk.Window window)
   {
 #if HAS_X11
     // TODO: gtk4 https://gitlab.gnome.org/GNOME/vala/-/issues/1112
@@ -41,14 +41,14 @@ public class Background : Object
     return "";
   }
 
-  public bool request_autostart(Gtk.Widget widget)
+  public static async bool request_autostart(Gtk.Widget widget)
   {
     var window = widget.get_root() as Gtk.Window;
 
     string? mitigation;
     var install_env = DejaDup.InstallEnv.instance();
-    var allowed = install_env.request_autostart(get_window_handle(window),
-                                                out mitigation);
+    var allowed = yield install_env.request_autostart(get_window_handle(window),
+                                                      out mitigation);
 
     if (!allowed && mitigation != null)
       DejaDup.run_error_dialog(window, _("Cannot back up automatically"),

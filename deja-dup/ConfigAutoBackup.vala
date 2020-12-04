@@ -24,15 +24,24 @@ public class ConfigAutoBackup
   static bool on_state_set(Gtk.Switch auto_switch, bool state)
   {
     if (state) {
-      var bg = new Background();
-      if (!bg.request_autostart(auto_switch)) {
-        auto_switch.active = false;
-        return true; // don't change state, skip default handler
-      }
+      Background.request_autostart.begin(auto_switch, (obj, res) => {
+        if (Background.request_autostart.end(res)) {
+          auto_switch.state = true; // finish state set
+          set_periodic(true);
+        } else {
+          auto_switch.active = false; // flip switch back to unset mode
+        }
+      });
+      return true; // delay setting of state
     }
 
+    set_periodic(false);
+    return false;
+  }
+
+  static void set_periodic(bool state)
+  {
     var settings = DejaDup.get_settings();
     settings.set_boolean(DejaDup.PERIODIC_KEY, state);
-    return false;
   }
 }

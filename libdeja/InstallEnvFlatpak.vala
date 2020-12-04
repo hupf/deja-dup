@@ -26,10 +26,10 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
     return {};
   }
 
-  public override bool request_autostart(string handle, out string? mitigation)
+  public override async bool request_autostart(string handle, out string? mitigation)
   {
     var request = new FlatpakAutostartRequest();
-    return request.request_autostart(handle, out mitigation);
+    return yield request.request_autostart(handle, out mitigation);
   }
 
   FileMonitor update_monitor;
@@ -83,23 +83,20 @@ class DejaDup.FlatpakAutostartRequest : Object
   const string REQUEST_IFACE = "org.freedesktop.portal.Request";
 
   bool autostart_allowed;
-  MainLoop loop;
+  SourceFunc resume_callback;
   DBusConnection connection;
   uint signal_id;
 
-  public bool request_autostart(string handle, out string? mitigation)
+  public async bool request_autostart(string handle, out string? mitigation)
   {
     mitigation = _("Make sure Backups has permission to run in " +
                    "the background in Settings → Applications → " +
                    "Backups and try again.");
 
-    loop = new MainLoop(null, false);
+    send_request.begin(handle);
 
-    request_autostart_helper.begin(handle);
-
-    // And wait for response (loop is quit in got_response)
-    loop.run();
-    loop = null;
+    resume_callback = request_autostart.callback;
+    yield; // resumed by 'got_response'
 
     if (signal_id > 0) {
       connection.signal_unsubscribe(signal_id);
@@ -129,15 +126,13 @@ class DejaDup.FlatpakAutostartRequest : Object
       autostart_allowed = autostart;
     }
 
-    loop.quit();
+    // resume initial call
+    Idle.add((owned) resume_callback);
   }
 
-  async void request_autostart_helper(string handle)
+  async void send_request(string handle)
   {
-    // When we can rely on xdg-desktop-portal >=1.5.0, we can specify our own handle_token.
-    // (Before then, there is a bug that prevents it noticing our handle_token.)
-    // For now, just re-specify the default token.
-    var token = "t"; // "deja_dup_%u".printf(Random.next_int());
+    var token = "deja_dup_%u".printf(Random.next_int());
 
     var options = new HashTable<string, Variant>(str_hash, str_equal);
     options.insert("autostart", new Variant.boolean(true));
@@ -158,7 +153,7 @@ class DejaDup.FlatpakAutostartRequest : Object
       yield iface.request_background(handle, options);
     }
     catch (Error e) { // no portal support :(
-      loop.quit();
+      Idle.add((owned) resume_callback);
     }
   }
 }

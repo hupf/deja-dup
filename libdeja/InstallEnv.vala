@@ -29,7 +29,7 @@ public class DejaDup.InstallEnv : Object
 
   // handle is the string version of a window handle (in flatpak format)
   // mitigation is a user-presentable explanation of how to fix a failed request
-  public virtual bool request_autostart(string handle, out string? mitigation) {
+  public virtual async bool request_autostart(string handle, out string? mitigation) {
     mitigation = null;
     return true;
   }
