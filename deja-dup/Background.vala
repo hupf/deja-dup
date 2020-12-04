@@ -26,29 +26,50 @@ using GLib;
 
 public class Background : Object
 {
-  static string get_window_handle(Gtk.Window window)
+  static async string export_handle(Gtk.Window window)
   {
-#if HAS_X11
-    // TODO: gtk4 https://gitlab.gnome.org/GNOME/vala/-/issues/1112
-/*
     var surface = window.get_surface();
-    var x11_surface = surface as Gdk.X11.Surface;
+#if HAS_WAYLAND
+    var wayland_surface = surface as GdkFixes.Wayland.Toplevel;
+    if (wayland_surface != null) {
+      var handle = "";
+      var success = wayland_surface.export_handle((t, h) => {
+        handle = h;
+        export_handle.callback();
+      });
+      if (success) {
+        yield;
+        return "wayland:%s".printf(handle);
+      }
+    }
+#endif
+#if HAS_X11
+    var x11_surface = surface as GdkFixes.X11.Surface;
     if (x11_surface != null)
       return "x11:%x".printf((uint)x11_surface.get_xid());
-*/
 #endif
-    // TODO: support wayland windows too
     return "";
+  }
+
+  static void unexport_handle(Gtk.Window window)
+  {
+    var surface = window.get_surface();
+#if HAS_WAYLAND
+    var wayland_surface = surface as GdkFixes.Wayland.Toplevel;
+    if (wayland_surface != null)
+      wayland_surface.unexport_handle();
+#endif
   }
 
   public static async bool request_autostart(Gtk.Widget widget)
   {
-    var window = widget.get_root() as Gtk.Window;
+    var window = widget.root as Gtk.Window;
 
     string? mitigation;
     var install_env = DejaDup.InstallEnv.instance();
-    var allowed = yield install_env.request_autostart(get_window_handle(window),
-                                                      out mitigation);
+    var handle = yield export_handle(window);
+    var allowed = yield install_env.request_autostart(handle, out mitigation);
+    unexport_handle(window);
 
     if (!allowed && mitigation != null)
       DejaDup.run_error_dialog(window, _("Cannot back up automatically"),

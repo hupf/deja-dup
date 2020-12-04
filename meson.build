@@ -31,6 +31,7 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 gio_dep = dependency('gio-2.0', version: '>= 2.64')
 gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk4')
+gtk_wayland_dep = dependency('gtk4-wayland', required: false)
 gtk_x11_dep = dependency('gtk4-x11', required: false)
 handy_dep = dependency('libhandy-4')
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
@@ -82,6 +83,10 @@ common_cflags = [
     '-DLOCALE_DIR="@0@"'.format(localedir),
     '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)
 ]
+
+if gtk_wayland_dep.found()
+common_vflags += ['--define=HAS_WAYLAND']
+endif
 
 if gtk_x11_dep.found()
 common_vflags += ['--define=HAS_X11']

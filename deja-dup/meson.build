@@ -38,6 +38,7 @@ deja_dup = executable('deja-dup',
     ] + resources,
     vala_args: [
         '--gresourcesdir=@0@/data/ui'.format(meson.source_root()),
+        '--pkg=gtk4-fixes',
     ] + common_vflags,
     c_args: common_cflags,
     dependencies: [
