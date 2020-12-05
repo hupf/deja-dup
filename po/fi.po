@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-08-30 17:21+0000\n"
-"PO-Revision-Date: 2020-09-05 12:40+0300\n"
+"POT-Creation-Date: 2020-12-03 00:54+0000\n"
+"PO-Revision-Date: 2020-12-05 12:11+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -40,7 +40,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:360
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:361
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup -varmuuskopiot"
 
@@ -95,7 +95,7 @@ msgstr ""
 "järjestelmän varmuuskopion tai arkistointiohjelman, voit mieluummin käyttää "
 "muita varmuuskopiointisovelluksia."
 
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:14
 msgid "Backups"
 msgstr "Varmuuskopiot"
 
@@ -366,248 +366,76 @@ msgstr ""
 "Kansiopolku, johon varmuuskopiot tallennetaan. Polut voivat olla "
 "absoluuttisia tai suhteessa isäntään."
 
-#: data/ui/debug.ui:11 deja-dup/main.vala:251
-msgid "Debug Information"
-msgstr "Vianjäljityksen tiedot"
-
-#: data/ui/debug.ui:35
-msgid "_Copy"
-msgstr "_Kopioi"
-
-#: data/ui/debug.ui:68
-msgid "All identifying information has been obscured."
-msgstr "Kaikki henkilökohtaiset tiedot on piilotettu."
-
-#: data/ui/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Yleiset"
-
-#: data/ui/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Näytä ohje"
-
-#: data/ui/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Avaa valikko"
-
-#: data/ui/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Lopeta"
-
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Pikanäppäimet"
-
-#: data/ui/help-overlay.ui:53
-msgctxt "shortcut window"
-msgid "Browsing Backed Up Files"
-msgstr "Varmuuskopioiden selaaminen"
-
-#: data/ui/help-overlay.ui:58
-msgctxt "shortcut window"
-msgid "Search"
-msgstr "Hae"
-
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Siirry takaisin"
-
-#: data/ui/main.ui:47
-msgid "Back"
-msgstr "Takaisin"
-
-#: data/ui/main.ui:87
-msgid "Select"
-msgstr "Valitse"
-
-#: data/ui/main.ui:113 data/ui/main.ui:185
-msgid "Search"
-msgstr "Etsi"
-
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
-msgid "_Cancel"
-msgstr "_Peru"
-
-#: data/ui/main.ui:252
-msgid "Keep your important files safe in a backup."
-msgstr "Säilytä tärkeät tiedosto tallessa varmuuskopiossa."
-
-#: data/ui/main.ui:264
-msgid "Create My First _Backup"
-msgstr "Luo _ensimmäinen varmuuskopio"
-
-#: data/ui/main.ui:280
-msgid "_Restore From a Previous Backup"
-msgstr "_Palauta aiemmasta varmuuskopiosta"
-
-#: data/ui/main.ui:313 data/ui/preferences.ui:117
-msgid "Automatic backup"
-msgstr "Automaattinen varmuuskopio"
-
-#: data/ui/main.ui:328
-msgid "Back up _automatically"
-msgstr "Varmuuskopioi _automaattisesti"
-
-#: data/ui/main.ui:355
-msgid "_Back Up Now"
-msgstr "_Varmuuskopioi nyt"
-
-#: data/ui/main.ui:384
-msgid "Overview"
-msgstr "Yhteenveto"
-
-#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:68
-msgid "_Restore"
-msgstr "_Palauta"
-
-#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:108
-msgid "_Date"
-msgstr "_Päivämäärä"
-
-#: data/ui/main.ui:536
+#: data/ui/Browser.ui:91
 msgid "Scanning backup files…"
 msgstr "Kartoitetaan varmuuskopiotiedostoja…"
 
-#: data/ui/main.ui:570
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Yritä uudelleen"
 
-#: data/ui/main.ui:609
+#: data/ui/Browser.ui:161
 msgid "_Connect"
 msgstr "_Yhdistä"
 
-#: data/ui/main.ui:638
+#: data/ui/Browser.ui:188
 msgid "Encryption password needed"
 msgstr "Tarvitaan kryptauksen salasana"
 
-#: data/ui/main.ui:649
+#: data/ui/Browser.ui:199
 msgid "_Enter Password"
 msgstr "_Kirjoita salasana"
 
-#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:64
-msgid "Restore"
-msgstr "Palauta"
+#: data/ui/Browser.ui:298 deja-dup/AssistantRestore.vala:66
+msgid "_Restore"
+msgstr "_Palauta"
 
-#: data/ui/main.ui:783
-msgid "Con_tinue"
-msgstr "_Jatka"
+#: data/ui/ConfigFolderList.ui:23
+msgid "Add"
+msgstr "Lisää"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:383
-#: deja-dup/AssistantOperation.vala:454
-msgid "E_ncryption password"
-msgstr "_Salauksen salasana"
+#: data/ui/ConfigFolderPage.ui:10
+msgid "Folders"
+msgstr "Kansiot"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:413
-#: deja-dup/AssistantOperation.vala:463
-msgid "_Show password"
-msgstr "_Näytä salasana"
-
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:420
-#: deja-dup/MountOperationAssistant.vala:26
-msgid "_Remember password"
-msgstr "_Muista salasana"
-
-#: data/ui/menus.ui:12
-msgid "_Preferences"
-msgstr "_Asetukset"
-
-#: data/ui/menus.ui:16
-msgid "_Keyboard Shortcuts"
-msgstr "_Pikanäppäimet"
-
-#: data/ui/menus.ui:20
-msgid "_Help"
-msgstr "_Ohje"
-
-#: data/ui/menus.ui:24
-msgid "_About Backups"
-msgstr "_Tietoja - Varmuuskopiot"
-
-#: data/ui/menus.ui:32
-msgid "Select _All"
-msgstr "Valitse _kaikki"
-
-#: data/ui/menus.ui:36
-msgid "Select _None"
-msgstr "Älä valitse _mitään"
-
-#: data/ui/preferences.ui:27
-msgid "Storage"
-msgstr "Tallennus"
-
-#: data/ui/preferences.ui:32
-msgid "_Location"
-msgstr "_Sijainti"
-
-#: data/ui/preferences.ui:78
-msgid "_Keep Backups"
-msgstr "_Säilytä varmuuskopiot"
-
-#: data/ui/preferences.ui:87
-msgid ""
-"The oldest backups will still be deleted earlier if the location is low on "
-"space."
-msgstr ""
-"Vanhimmat varmuuskopiot poistetaan silti aiemmin, jos sijainnissa on tila "
-"vähissä."
-
-#: data/ui/preferences.ui:101
-msgid "Schedule"
-msgstr "Aikataulu"
-
-#: data/ui/preferences.ui:107
-msgid "Back Up _Automatically"
-msgstr "Varmuuskopioi _automaattisesti"
-
-#: data/ui/preferences.ui:129
-msgid "Automatic Backup _Frequency"
-msgstr "Automaattisen varmuuskopioinnin _tiheys"
-
-#: data/ui/preferences.ui:147
+#: data/ui/ConfigFolderPage.ui:13
 msgid "Folders to Back Up"
 msgstr "Varmuuskopioitavat tiedostot"
 
-#: data/ui/preferences.ui:153
-msgid "Includes"
-msgstr "Sisältäen"
-
-#: data/ui/preferences.ui:162
+#: data/ui/ConfigFolderPage.ui:20
 msgid "Folders to Ignore"
 msgstr "Ohitettavat kansiot"
 
-#: data/ui/preferences.ui:168
-msgid "Excludes"
-msgstr "Ohittaen"
+#: data/ui/ConfigFolderRow.ui:17
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr ""
+"Tätä kansiota ei voi varmuuskopioida, koska varmuuskopiointisovelluksella ei "
+"pääsyä siihen."
 
-#: data/ui/preferences.ui:177
-msgid "Preferences"
-msgstr "Asetukset"
+#: data/ui/ConfigFolderRow.ui:29
+msgid "Remove"
+msgstr "Poista"
 
 #. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:233
+#: data/ui/ConfigLocationGrid.ui:21
 msgid "_Storage Location"
 msgstr "_Tallennustilan sijainti"
 
-#: data/ui/preferences.ui:270 data/ui/preferences.ui:354
-#: data/ui/preferences.ui:392 data/ui/preferences.ui:459
+#: data/ui/ConfigLocationGrid.ui:46 data/ui/ConfigLocationGrid.ui:119
+#: data/ui/ConfigLocationGrid.ui:154 data/ui/ConfigLocationGrid.ui:217
 msgid "_Folder"
 msgstr "_Kansio"
 
-#: data/ui/preferences.ui:294
+#: data/ui/ConfigLocationGrid.ui:69
 msgid "_Reset Account Access"
 msgstr "_Nollaa tilin pääsy"
 
-#: data/ui/preferences.ui:326
+#: data/ui/ConfigLocationGrid.ui:97
 msgid "_Network Location"
 msgstr "_Verkkosijainti"
 
-#: data/ui/preferences.ui:433 libdeja/BackendUnsupported.vala:29
+#: data/ui/ConfigLocationGrid.ui:192 libdeja/BackendUnsupported.vala:29
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -615,16 +443,140 @@ msgstr ""
 "Tämä tallennustilan sijainti ei ole enää tuettu. Voit silti käyttää edelleen "
 "duplicitya varmuuskopioidaksesi tai palauttaaksesi tiedostoja."
 
-#: data/ui/preferences.ui:475
+#: data/ui/ConfigLocationGrid.ui:232
 msgid "_Choose Folder…"
 msgstr "_Valitse kansio…"
 
-#: data/ui/server-hint.ui:21
+#: data/ui/MainHeaderBar.ui:30
+msgid "Back"
+msgstr "Takaisin"
+
+#: data/ui/MainHeaderBar.ui:40
+msgid "Menu"
+msgstr "Valikko"
+
+#: data/ui/MainHeaderBar.ui:50 data/ui/MainHeaderBar.ui:82
+msgid "Select"
+msgstr "Valitse"
+
+#: data/ui/MainHeaderBar.ui:59 data/ui/MainHeaderBar.ui:102
+msgid "Search"
+msgstr "Etsi"
+
+#: data/ui/MainHeaderBar.ui:91 data/ui/PassphraseDialog.ui:16
+#: deja-dup/Assistant.vala:336
+msgid "_Cancel"
+msgstr "_Peru"
+
+#: data/ui/MainHeaderBar.ui:120
+msgid "_Preferences"
+msgstr "_Asetukset"
+
+#: data/ui/MainHeaderBar.ui:124
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: data/ui/MainHeaderBar.ui:128
+msgid "_Help"
+msgstr "_Ohje"
+
+#: data/ui/MainHeaderBar.ui:132
+msgid "_About Backups"
+msgstr "_Tietoja - Varmuuskopiot"
+
+#: data/ui/MainHeaderBar.ui:140
+msgid "Select _All"
+msgstr "Valitse _kaikki"
+
+#: data/ui/MainHeaderBar.ui:144
+msgid "Select _None"
+msgstr "Älä valitse _mitään"
+
+#: data/ui/MainWindow.ui:27
+msgid "Overview"
+msgstr "Yhteenveto"
+
+#: data/ui/MainWindow.ui:64
+msgid "Keep your important files safe in a backup."
+msgstr "Säilytä tärkeät tiedosto tallessa varmuuskopiossa."
+
+#: data/ui/MainWindow.ui:76
+msgid "Create My First _Backup"
+msgstr "Luo _ensimmäinen varmuuskopio"
+
+#: data/ui/MainWindow.ui:91
+msgid "_Restore From a Previous Backup"
+msgstr "_Palauta aiemmasta varmuuskopiosta"
+
+#: data/ui/MainWindow.ui:131
+msgid "Back up _automatically"
+msgstr "Varmuuskopioi _automaattisesti"
+
+#: data/ui/MainWindow.ui:152
+msgid "_Back Up Now"
+msgstr "_Varmuuskopioi nyt"
+
+#: data/ui/MainWindow.ui:182 deja-dup/AssistantRestore.vala:62
+msgid "Restore"
+msgstr "Palauta"
+
+#: data/ui/PassphraseDialog.ui:23
+msgid "Con_tinue"
+msgstr "_Jatka"
+
+#: data/ui/PassphraseDialog.ui:50 deja-dup/AssistantOperation.vala:379
+#: deja-dup/AssistantOperation.vala:441
+msgid "E_ncryption password"
+msgstr "_Salauksen salasana"
+
+#: data/ui/PassphraseDialog.ui:72 deja-dup/AssistantOperation.vala:407
+#: deja-dup/MountOperationAssistant.vala:25
+msgid "_Remember password"
+msgstr "_Muista salasana"
+
+#: data/ui/PreferencesWindow.ui:19
+msgid "General"
+msgstr "Yleiset"
+
+#: data/ui/PreferencesWindow.ui:22
+msgid "Storage"
+msgstr "Tallennus"
+
+#: data/ui/PreferencesWindow.ui:25
+msgid "_Location"
+msgstr "_Sijainti"
+
+#: data/ui/PreferencesWindow.ui:42
+msgid "_Keep Backups"
+msgstr "_Säilytä varmuuskopiot"
+
+#: data/ui/PreferencesWindow.ui:49
+msgid ""
+"The oldest backups will still be deleted earlier if the location is low on "
+"space or kept up to three months longer to avoid deleting related backups."
+msgstr ""
+"Vanhimmat varmuuskopiot poistetaan silti aiemmin, jos sijainnissa on tila "
+"vähissä, tai säilytetään kolme kuukautta kauemmin, jotta vältytään toisiinsa "
+"liittyvien varmuuskopioiden poistamiselta."
+
+#: data/ui/PreferencesWindow.ui:61
+msgid "Schedule"
+msgstr "Aikataulu"
+
+#: data/ui/PreferencesWindow.ui:65
+msgid "Back Up _Automatically"
+msgstr "Varmuuskopioi _automaattisesti"
+
+#: data/ui/PreferencesWindow.ui:78
+msgid "Automatic Backup _Frequency"
+msgstr "Automaattisen varmuuskopioinnin _tiheys"
+
+#: data/ui/ServerHintPopover.ui:18
 msgid "Network Locations"
 msgstr "Verkkosijainnit"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/server-hint.ui:34
+#: data/ui/ServerHintPopover.ui:30
 msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
@@ -632,79 +584,123 @@ msgstr ""
 "Verkkosijainnit koostuvat protokollan etuliitteestä, osoitteesta ja "
 "toisinaan myös polusta riippuen protokollasta. Esimerkkejä:"
 
-#: data/ui/server-hint.ui:69
+#: data/ui/ServerHintPopover.ui:56
 msgid "Available Protocols"
 msgstr "Käytettävissä olevat protokollat"
 
-#: data/ui/server-hint.ui:83
+#: data/ui/ServerHintPopover.ui:69
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/server-hint.ui:94
+#: data/ui/ServerHintPopover.ui:79
 msgid "File Transfer Protocol"
 msgstr "File Transfer Protocol (FTP)"
 
-#: data/ui/server-hint.ui:105
+#: data/ui/ServerHintPopover.ui:89
 msgid "Network File System"
 msgstr "Network File System (NFS)"
 
-#: data/ui/server-hint.ui:116
+#: data/ui/ServerHintPopover.ui:99
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/server-hint.ui:127
+#: data/ui/ServerHintPopover.ui:109
 msgid "SSH File Transfer Protocol"
 msgstr "SSH File Transfer Protocol"
 
-#: data/ui/server-hint.ui:138
+#: data/ui/ServerHintPopover.ui:119
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/server-hint.ui:149
+#: data/ui/ServerHintPopover.ui:129
 msgid "Prefix"
 msgstr "Etuliite"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/server-hint.ui:174
+#: data/ui/ServerHintPopover.ui:152
 msgid "ftp:// or ftps://"
 msgstr "ftp:// tai ftps://"
 
-#: data/ui/server-hint.ui:196
+#: data/ui/ServerHintPopover.ui:172
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/server-hint.ui:207
+#: data/ui/ServerHintPopover.ui:182
 msgid "sftp:// or ssh://"
 msgstr "sftp:// tai ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/server-hint.ui:218
+#: data/ui/ServerHintPopover.ui:192
 msgid "dav:// or davs://"
 msgstr "dav:// tai davs://"
 
-#: deja-dup/Assistant.vala:284
+#: data/ui/TimeCombo.ui:13
+msgid "_Date"
+msgstr "_Päivämäärä"
+
+#: data/ui/help-overlay.ui:17
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Yleiset"
+
+#: data/ui/help-overlay.ui:21
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Näytä ohje"
+
+#: data/ui/help-overlay.ui:27
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Avaa valikko"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Lopeta"
+
+#: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Pikanäppäimet"
+
+#: data/ui/help-overlay.ui:46
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr "Varmuuskopioiden selaaminen"
+
+#: data/ui/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Hae"
+
+#: data/ui/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Siirry takaisin"
+
+#: deja-dup/Assistant.vala:283
 msgid "Co_ntinue"
 msgstr "_Jatka"
 
-#: deja-dup/Assistant.vala:290
+#: deja-dup/Assistant.vala:289
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Testaa"
 
-#: deja-dup/Assistant.vala:326
+#: deja-dup/Assistant.vala:322
 msgid "_Resume Later"
 msgstr "_Jatka myöhemmin"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:328
 msgid "_Back"
 msgstr "_Edellinen"
 
-#: deja-dup/Assistant.vala:334
+#: deja-dup/Assistant.vala:330
 msgid "_Close"
 msgstr "_Sulje"
 
-#: deja-dup/Assistant.vala:351
+#: deja-dup/Assistant.vala:347
 msgid "_Forward"
 msgstr "_Seuraava"
 
@@ -718,7 +714,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Va_rmuuskopioi"
 
-#: deja-dup/AssistantBackup.vala:91
+#: deja-dup/AssistantBackup.vala:63
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -726,11 +722,11 @@ msgstr ""
 "Seuraavia kansioita ei voida varmuuskopioida, koska "
 "varmuuskopiointisovelluksella ei ole pääsyä niihin:"
 
-#: deja-dup/AssistantBackup.vala:107
+#: deja-dup/AssistantBackup.vala:79
 msgid "Creating the first backup.  This may take a while."
 msgstr "Tehdään ensimmäinen varmuuskopio. Tämä saattaa kestää hetken."
 
-#: deja-dup/AssistantBackup.vala:108
+#: deja-dup/AssistantBackup.vala:80
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -740,32 +736,39 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:134
+#: deja-dup/AssistantBackup.vala:95
 msgid "Backing up:"
 msgstr "Varmuuskopioidaan:"
 
-#: deja-dup/AssistantBackup.vala:143
+#: deja-dup/AssistantBackup.vala:104
 msgid "Backup Failed"
 msgstr "Varmuuskopiointi epäonnistui"
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:107
 msgid "Backup Finished"
 msgstr "Varmuuskopio on valmis"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:150
+#: deja-dup/AssistantBackup.vala:111
 msgid "Your files were successfully backed up and tested."
 msgstr "Tiedostosi varmuuskopioitiin ja testattiin onnistuneesti."
 
-#: deja-dup/AssistantBackup.vala:157
+#: deja-dup/AssistantBackup.vala:118
 msgid "Backing Up…"
 msgstr "Varmuuskopioidaan…"
+
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:124 deja-dup/AssistantOperation.vala:873
+msgid "Backups needs your input to continue"
+msgstr "Varmuuskopiot vaatii syötettäsi jatkaakseen"
 
 #. At time of writing, gnome-shell still warns the user on logout even
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:184
+#: deja-dup/AssistantBackup.vala:151
 msgid "Backup in progress"
 msgstr "Varmuuskopiointi on meneillään"
 
@@ -773,11 +776,11 @@ msgstr "Varmuuskopiointi on meneillään"
 msgid "Restore From Where?"
 msgstr "Mistä palautetaan?"
 
-#: deja-dup/AssistantLocation.vala:26
+#: deja-dup/AssistantLocation.vala:21
 msgid "_Backup location"
 msgstr "_Varmuuskopion sijainti"
 
-#: deja-dup/AssistantLocation.vala:33
+#: deja-dup/AssistantLocation.vala:22
 msgid "_Search"
 msgstr "_Etsi"
 
@@ -789,23 +792,23 @@ msgstr "Kartoitetaan:"
 msgid "Scanning…"
 msgstr "Kartoitetaan…"
 
-#: deja-dup/AssistantOperation.vala:268
+#: deja-dup/AssistantOperation.vala:265
 msgid "_Details"
 msgstr "_Yksityiskohdat"
 
-#: deja-dup/AssistantOperation.vala:314
+#: deja-dup/AssistantOperation.vala:312
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Seuraavat paketit tulee asentaa, jotta toimintaa voidaan jatkaa:"
 
-#: deja-dup/AssistantOperation.vala:350
+#: deja-dup/AssistantOperation.vala:346
 msgid "_Allow restoring without a password"
 msgstr "Salli _palautus ilman salasanaa"
 
-#: deja-dup/AssistantOperation.vala:356
+#: deja-dup/AssistantOperation.vala:351
 msgid "_Password-protect your backup"
 msgstr "_Suojaa varmuuskopio salasanalla"
 
-#: deja-dup/AssistantOperation.vala:368
+#: deja-dup/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -813,11 +816,11 @@ msgstr ""
 "Tarvitset salasanan palautusta varten. Varmista siis, että salasana on "
 "varmassa tallessa tai pysyy muistissasi."
 
-#: deja-dup/AssistantOperation.vala:400
+#: deja-dup/AssistantOperation.vala:395
 msgid "Confir_m password"
 msgstr "Va_hvista salasana"
 
-#: deja-dup/AssistantOperation.vala:439
+#: deja-dup/AssistantOperation.vala:426
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -826,256 +829,223 @@ msgstr ""
 "Anna salaamiseen käyttämäsi salasana uudelleen, jotta varmuuskopioiden "
 "palauttamista on mahdollista testata."
 
-#: deja-dup/AssistantOperation.vala:468
+#: deja-dup/AssistantOperation.vala:449
 msgid "Test every two _months"
 msgstr "Testaa _kahden kuukauden välein"
 
-#: deja-dup/AssistantOperation.vala:500
+#: deja-dup/AssistantOperation.vala:481
 msgid "_Grant Access"
 msgstr "_Salli pääsy"
 
-#: deja-dup/AssistantOperation.vala:562
+#: deja-dup/AssistantOperation.vala:543
 msgid "Install Packages"
 msgstr "Asenna paketit"
 
-#: deja-dup/AssistantOperation.vala:577
+#: deja-dup/AssistantOperation.vala:558
 msgid "Summary"
 msgstr "Yhteenveto"
 
-#: deja-dup/AssistantOperation.vala:599
+#: deja-dup/AssistantOperation.vala:580
 msgid "Restore Test"
 msgstr "Palautustesti"
 
-#: deja-dup/AssistantOperation.vala:607
+#: deja-dup/AssistantOperation.vala:588
 msgid "Grant Access"
 msgstr "Salli pääsy"
 
-#: deja-dup/AssistantOperation.vala:815
+#: deja-dup/AssistantOperation.vala:792
 msgid "Require Password?"
 msgstr "Vaaditaanko salasana?"
 
-#: deja-dup/AssistantOperation.vala:817
+#: deja-dup/AssistantOperation.vala:794
 msgid "Encryption Password Needed"
 msgstr "Salauksen salasana vaaditaan"
 
-#: deja-dup/AssistantOperation.vala:866
+#: deja-dup/AssistantOperation.vala:842
 msgid "Backups needs your encryption password to continue"
 msgstr "Varmuuskopion salauksen salasana vaaditaan"
 
-#: deja-dup/AssistantOperation.vala:903
-msgid "Backups needs your input to continue"
-msgstr "Varmuuskopiot vaatii syötettäsi jatkaakseen"
-
-#: deja-dup/AssistantOperation.vala:941
+#: deja-dup/AssistantOperation.vala:913
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Asenna"
 
-#: deja-dup/AssistantOperation.vala:946
+#: deja-dup/AssistantOperation.vala:918
 msgid "Backups needs to install packages to continue"
 msgstr "Varmuuskopiot vaatii paketteja asennettavaksi jatkaakseen"
 
-#: deja-dup/AssistantRestore.vala:154
+#: deja-dup/AssistantRestore.vala:140
 msgid "Restore files to _original locations"
 msgstr "Palauta tiedostot  _niiden alkuperäisiin sijainteihin"
 
-#: deja-dup/AssistantRestore.vala:164
+#: deja-dup/AssistantRestore.vala:151
 msgid "Restore to _specific folder"
 msgstr "Palauta _tiettyyn kansioon"
 
-#: deja-dup/AssistantRestore.vala:176
+#: deja-dup/AssistantRestore.vala:163
 msgid "Choose destination for restored files"
 msgstr "Valitse kohde palautetuille tiedostoille"
 
-#: deja-dup/AssistantRestore.vala:184
+#: deja-dup/AssistantRestore.vala:170
 msgid "Restore _folder"
 msgstr "Palauta _kansio"
 
-#: deja-dup/AssistantRestore.vala:197
+#: deja-dup/AssistantRestore.vala:183
 msgid "Backups does not have permission to restore the following files:"
 msgstr ""
 "Varmuuskopiosovelluksella ei ole oikeutta palauttaa seuraavia tiedostoja:"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:246
 msgid "Backup location"
 msgstr "Varmuuskopion sijainti"
 
-#: deja-dup/AssistantRestore.vala:275
+#. Translators: label for the date from which we are restoring
+#: deja-dup/AssistantRestore.vala:261
 msgid "Restore date"
 msgstr "Palauta päivämäärä"
 
-#: deja-dup/AssistantRestore.vala:283
+#. Translators: label for the folder into which we putting restored files
+#: deja-dup/AssistantRestore.vala:270
 msgid "Restore folder"
 msgstr "Palautuskansio"
 
-#: deja-dup/AssistantRestore.vala:313
+#: deja-dup/AssistantRestore.vala:294
 msgid "Checking for Backups…"
 msgstr "Tarkistetaan varmuuskopioita…"
 
-#: deja-dup/AssistantRestore.vala:321
+#: deja-dup/AssistantRestore.vala:302
 msgid "Restore From When?"
 msgstr "Palautetaan ajankohdasta?"
 
-#: deja-dup/AssistantRestore.vala:332
+#: deja-dup/AssistantRestore.vala:313
 msgid "Restore to Where?"
 msgstr "Minne palautetaan?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:367
+#: deja-dup/AssistantRestore.vala:346
 msgid "Restoring:"
 msgstr "Palautetaan tiedostoa:"
 
-#. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:377
+#: deja-dup/AssistantRestore.vala:359
 msgid "No backups to restore"
 msgstr "Ei palautettavia varmuuskopioita"
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:443
 msgid "Original location"
 msgstr "Alkuperäinen sijainti"
 
-#: deja-dup/AssistantRestore.vala:495
+#: deja-dup/AssistantRestore.vala:457
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Palautettava tiedosto"
 msgstr[1] "Palautettavat tiedostot"
 
-#: deja-dup/AssistantRestore.vala:516
+#: deja-dup/AssistantRestore.vala:482
 msgid "Restore Failed"
 msgstr "Palauttaminen epäonnistui"
 
-#: deja-dup/AssistantRestore.vala:518
+#: deja-dup/AssistantRestore.vala:484
 msgid "Restore Finished"
 msgstr "Palauttaminen suoritettu"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:521
+#: deja-dup/AssistantRestore.vala:487
 msgid "Your files were successfully restored."
 msgstr "Tiedostojesi palauttaminen onnistui."
 
-#: deja-dup/AssistantRestore.vala:524
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Tiedosto palautettiin onnistuneesti."
 msgstr[1] "Tiedostot palautettiin onnistuneesti."
 
-#: deja-dup/AssistantRestore.vala:531 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:497 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Palautetaan…"
 
-#: deja-dup/AssistantRestore.vala:601
+#: deja-dup/AssistantRestore.vala:567
 msgid "Restore in progress"
 msgstr "Palauttaminen on meneillään"
 
-#: deja-dup/Background.vala:51
+#: deja-dup/Background.vala:54
 msgid "Cannot back up automatically"
 msgstr "Automaattinen varmuuskopiointi ei onnistu"
 
-#: deja-dup/Browser.vala:206
-msgid "Click on items to select them"
-msgstr "Napsauta kohteita valitaksesi ne"
-
-#: deja-dup/Browser.vala:208
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u valittu"
-msgstr[1] "%u valittu"
-
-#: deja-dup/Browser.vala:385
+#: deja-dup/Browser.vala:302
 msgid "Authentication needed"
 msgstr "Tunnistautuminen vaaditaan"
 
-#: deja-dup/ConfigDelete.vala:16
+#: deja-dup/ConfigDeleteRow.vala:12
+msgid "At least three months"
+msgstr "Vähintään kolme kuukautta"
+
+#: deja-dup/ConfigDeleteRow.vala:13
 msgid "At least six months"
 msgstr "Vähintään kuusi kuukautta"
 
-#: deja-dup/ConfigDelete.vala:17
+#: deja-dup/ConfigDeleteRow.vala:14
 msgid "At least a year"
 msgstr "Vähintään yksi vuosi"
 
-#: deja-dup/ConfigDelete.vala:18
+#: deja-dup/ConfigDeleteRow.vala:15
 msgid "Forever"
 msgstr "Ikuisesti"
 
-#: deja-dup/ConfigDelete.vala:27
+#: deja-dup/ConfigDeleteRow.vala:22
 #, c-format
 msgid "At least %d day"
 msgid_plural "At least %d days"
 msgstr[0] "Vähintään %d päivä"
 msgstr[1] "Vähintään %d päivää"
 
-#: deja-dup/ConfigFolderList.vala:54
-msgid "Remove"
-msgstr "Poista"
-
-#: deja-dup/ConfigFolderList.vala:67
-msgid ""
-"This folder cannot be backed up because Backups does not have access to it."
-msgstr ""
-"Tätä kansiota ei voi varmuuskopioida, koska varmuuskopiointisovelluksella ei "
-"pääsyä siihen."
-
-#: deja-dup/ConfigFolderList.vala:80
-msgid "Add"
-msgstr "Lisää"
-
-#: deja-dup/ConfigFolderList.vala:90
+#: deja-dup/ConfigFolderList.vala:63
 msgid "Choose folders"
 msgstr "Valitse kansiot"
 
-#: deja-dup/ConfigFolderList.vala:92
-msgid "_Add"
-msgstr "_Lisää"
-
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:70 deja-dup/ConfigLocationCombo.vala:264
+#: deja-dup/ConfigLocationCombo.vala:71 deja-dup/ConfigLocationCombo.vala:265
 #: libdeja/BackendGoogle.vala:86
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: deja-dup/ConfigLocationCombo.vala:71
+#: deja-dup/ConfigLocationCombo.vala:72
 msgid "Local Folder"
 msgstr "Paikallinen kansio"
 
-#: deja-dup/ConfigLocationCombo.vala:72
+#: deja-dup/ConfigLocationCombo.vala:73
 msgid "Network Server"
 msgstr "Verkkopalvelin"
 
-#: deja-dup/ConfigLocationCombo.vala:262
+#: deja-dup/ConfigLocationCombo.vala:263
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: deja-dup/ConfigLocationCombo.vala:266
+#: deja-dup/ConfigLocationCombo.vala:267
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: deja-dup/ConfigLocationCombo.vala:268
+#: deja-dup/ConfigLocationCombo.vala:269
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: deja-dup/ConfigLocationCombo.vala:270
+#: deja-dup/ConfigLocationCombo.vala:271
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/ConfigLocationGrid.vala:109
+#: deja-dup/ConfigLocationGrid.vala:114
 msgid "Choose Folder"
 msgstr "Valitse kansio"
 
-#: deja-dup/ConfigLocationGrid.vala:112
-msgid "_OK"
-msgstr "_OK"
-
-#: deja-dup/ConfigPeriod.vala:24
+#: deja-dup/ConfigPeriodRow.vala:19
 msgid "Daily"
 msgstr "Päivittäin"
 
-#: deja-dup/ConfigPeriod.vala:25
+#: deja-dup/ConfigPeriodRow.vala:20
 msgid "Weekly"
 msgstr "Viikoittain"
 
-#: deja-dup/ConfigPeriod.vala:34
+#: deja-dup/ConfigPeriodRow.vala:27
 #, c-format
 msgid "Every %d day"
 msgid_plural "Every %d days"
@@ -1083,15 +1053,15 @@ msgstr[0] "Joka %d päivä"
 msgstr[1] "%d päivän välein"
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:46
+#: deja-dup/ConfigStatusLabel.vala:48
 msgid "Next backup is today."
 msgstr "Seuraava varmuuskopiointi suoritetaan tänään."
 
-#: deja-dup/ConfigStatusLabel.vala:48
+#: deja-dup/ConfigStatusLabel.vala:50
 msgid "Next backup is tomorrow."
 msgstr "Seuraava varmuuskopiointi suoritetaan huomenna."
 
-#: deja-dup/ConfigStatusLabel.vala:56
+#: deja-dup/ConfigStatusLabel.vala:58
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -1099,28 +1069,39 @@ msgstr[0] "Seuraava varmuuskopiointi suoritetaan %d päivän päästä."
 msgstr[1] "Seuraava varmuuskopiointi suoritetaan %d päivän päästä."
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:73
+#: deja-dup/ConfigStatusLabel.vala:75
 msgid "Last backup was today."
 msgstr "Viimeisin varmuuskopiointi suoritettiin tänään."
 
-#: deja-dup/ConfigStatusLabel.vala:75
+#: deja-dup/ConfigStatusLabel.vala:77
 msgid "Last backup was yesterday."
 msgstr "Viimeisin varmuuskopiointi suoritettiin eilen."
 
-#: deja-dup/ConfigStatusLabel.vala:83
+#: deja-dup/ConfigStatusLabel.vala:85
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
 msgstr[0] "Viimeisin varmuuskopiointi suoritettiin %d päivä sitten."
 msgstr[1] "Viimeisin varmuuskopiointi suoritettiin %d päivää sitten."
 
-#: deja-dup/ConfigStatusLabel.vala:96
+#: deja-dup/ConfigStatusLabel.vala:98
 msgid "No recent backups."
 msgstr "Ei viimeisimpiä varmuuskopioita."
 
-#: deja-dup/ConfigStatusLabel.vala:102
+#: deja-dup/ConfigStatusLabel.vala:104
 msgid "No backup scheduled."
 msgstr "Varmuuskopiointia ei ole ajastettu."
+
+#: deja-dup/MainHeaderBar.vala:31
+msgid "Click on items to select them"
+msgstr "Napsauta kohteita valitaksesi ne"
+
+#: deja-dup/MainHeaderBar.vala:33
+#, c-format
+msgid "%u selected"
+msgid_plural "%u selected"
+msgstr[0] "%u valittu"
+msgstr[1] "%u valittu"
 
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "_Username"
@@ -1130,15 +1111,11 @@ msgstr "_Käyttäjätunnus"
 msgid "_Password"
 msgstr "_Salasana"
 
-#: deja-dup/MountOperationAssistant.vala:25
-msgid "S_how password"
-msgstr "Näy_tä salasana"
-
-#: deja-dup/MountOperationAssistant.vala:65
+#: deja-dup/MountOperationAssistant.vala:64
 msgid "Location not available"
 msgstr "Sijainti ei saatavilla"
 
-#: deja-dup/MountOperationAssistant.vala:80
+#: deja-dup/MountOperationAssistant.vala:79
 msgid "Backups needs your password to continue"
 msgstr "Varmuuskopiot vaatii salasanan jatkaakseen"
 
@@ -1151,7 +1128,7 @@ msgid "Connect as u_ser"
 msgstr "Yhdistä _käyttäjänä"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:193
+#: deja-dup/MountOperationAssistant.vala:194
 msgid "_Domain"
 msgstr "_Toimialue"
 
@@ -1208,37 +1185,32 @@ msgstr "Avaa varmuuskopiosovellus"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:85
+#: deja-dup/TimeCombo.vala:74
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:31
-#, c-format
-msgid "Could not display %s"
-msgstr "Ei voinut näyttää %s"
-
-#: deja-dup/main.vala:21 monitor/monitor.vala:24
+#: deja-dup/main.vala:18 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Näytä versiotiedot"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:19
 msgid "Restore given files"
 msgstr "Palauta valitut tiedostot"
 
-#: deja-dup/main.vala:23
+#: deja-dup/main.vala:20
 msgid "Immediately start a backup"
 msgstr "Aloita varmuuskopiointi välittömästi"
 
-#: deja-dup/main.vala:80 deja-dup/main.vala:98
+#: deja-dup/main.vala:79 deja-dup/main.vala:97
 msgid "An operation is already in progress"
 msgstr "Toimenpide on jo meneillään"
 
-#: deja-dup/main.vala:85
+#: deja-dup/main.vala:84
 msgid "Please list files to restore"
 msgstr "Luettele palautettavat tiedostot"
 
-#: deja-dup/main.vala:248
+#: deja-dup/main.vala:261
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos\n"
@@ -1261,7 +1233,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:480
+#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:447
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%s palvelimella %s"
@@ -1271,11 +1243,11 @@ msgstr "%s palvelimella %s"
 msgid "Backup will begin when %s is connected."
 msgstr "Varmuuskopiointi aloitetaan, kun %s yhdistetään."
 
-#: libdeja/BackendDrive.vala:215 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:220 libdeja/BackendRemote.vala:141
 msgid "Storage location not available"
 msgstr "Tallennustilan sijainti ei ole käytettävissä"
 
-#: libdeja/BackendDrive.vala:215
+#: libdeja/BackendDrive.vala:220
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Odotetaan yhteyttä kohteeseen '%s'…"
@@ -1324,31 +1296,31 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba-verkkosijaintien tulee sisältää sekä isäntänimen että jaon nimen."
 
-#: libdeja/CommonUtils.vala:451
+#: libdeja/CommonUtils.vala:418
 msgid "Access Granted"
 msgstr "Pääsy sallittu"
 
-#: libdeja/CommonUtils.vala:452
+#: libdeja/CommonUtils.vala:419
 msgid "Backups will now continue. You can close this page."
 msgstr "Varmuuskopiointisovellus jatkaa nyt. Voit sulkea tämän sivun."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:531
+#: libdeja/CommonUtils.vala:498
 #, c-format
 msgid "Home (%s)"
 msgstr "Käyttäjän %s kotihakemisto"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:536
+#: libdeja/CommonUtils.vala:503
 msgid "Home"
 msgstr "Kotihakemisto"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:541
+#: libdeja/CommonUtils.vala:508
 msgid "Trash"
 msgstr "Roskakori"
 
-#: libdeja/CommonUtils.vala:603
+#: libdeja/CommonUtils.vala:570
 msgid "Backup encryption password"
 msgstr "Varmuuskopion salauksen salasana"
 
@@ -1360,26 +1332,26 @@ msgstr ""
 "Varmista, että varmuuskopiointisovelluksella on oikeus tulla suoritetuksi "
 "taustalla; katso Asetukset → Sovellukset → Varmuuskopiot ja yritä uuudelleen."
 
-#: libdeja/Operation.vala:43
+#: libdeja/Operation.vala:47
 msgid "Backing up…"
 msgstr "Varmuuskopioidaan…"
 
-#: libdeja/Operation.vala:47
+#: libdeja/Operation.vala:51
 msgid "Checking for backups…"
 msgstr "Tarkistetaan varmuuskopioita…"
 
-#: libdeja/Operation.vala:49
+#: libdeja/Operation.vala:53
 msgid "Listing files…"
 msgstr "Listataan tiedostoja…"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:388
-#: libdeja/tools/duplicity/DuplicityJob.vala:399
-#: libdeja/tools/duplicity/DuplicityJob.vala:435
+#: libdeja/Operation.vala:55 libdeja/Operation.vala:85
+#: libdeja/tools/duplicity/DuplicityJob.vala:405
+#: libdeja/tools/duplicity/DuplicityJob.vala:416
+#: libdeja/tools/duplicity/DuplicityJob.vala:452
 msgid "Preparing…"
 msgstr "Valmistellaan…"
 
-#: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
+#: libdeja/OperationBackup.vala:33 libdeja/OperationVerify.vala:41
 msgid "Verifying backup…"
 msgstr "Varmistetaan varmuuskopiota…"
 
@@ -1401,14 +1373,14 @@ msgid "Paused (no network)"
 msgstr "Pysäytetty (ei verkkoyhteyttä)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:545
+#: libdeja/tools/duplicity/DuplicityJob.vala:562
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Varmuuskopion sijainti on liian pieni. Käytä sijaintia, jossa on tilaa "
 "vähintään %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:570
+#: libdeja/tools/duplicity/DuplicityJob.vala:587
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1417,15 +1389,15 @@ msgstr ""
 "Varmuskopion sijainnissa ei ole riittävästi vapaata tilaa. Käytä sijaintia, "
 "josa on tilaa vähintään %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:591
-#: libdeja/tools/duplicity/DuplicityJob.vala:605
+#: libdeja/tools/duplicity/DuplicityJob.vala:608
+#: libdeja/tools/duplicity/DuplicityJob.vala:622
 msgid "Cleaning up…"
 msgstr "Siivotaan jälkiä…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:685
+#: libdeja/tools/duplicity/DuplicityJob.vala:702
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1436,7 +1408,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:701
+#: libdeja/tools/duplicity/DuplicityJob.vala:718
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1450,25 +1422,25 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: libdeja/tools/duplicity/DuplicityJob.vala:721
-#: libdeja/tools/duplicity/DuplicityJob.vala:1105
+#: libdeja/tools/duplicity/DuplicityJob.vala:738
+#: libdeja/tools/duplicity/DuplicityJob.vala:1122
 msgid "Failed with an unknown error."
 msgstr "Epäonnistui tuntemattomasta syystä."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:924
+#: libdeja/tools/duplicity/DuplicityJob.vala:941
 msgid "Bad encryption password."
 msgstr "Virheellinen salauksen salasana."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:969
+#: libdeja/tools/duplicity/DuplicityJob.vala:986
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Tiedostoa '%s' ei voitu palauttaa: tiedostosta ei löydy varmuuskopiota"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:980
+#: libdeja/tools/duplicity/DuplicityJob.vala:997
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1479,70 +1451,70 @@ msgstr ""
 "tietokoneen nimi on %s. Jos tämä on odottamaton tilanne, varmuuskopioi eri "
 "sijaintiin."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:983
+#: libdeja/tools/duplicity/DuplicityJob.vala:1000
 msgid "Computer name changed"
 msgstr "Tietokoneen nimi on vaihtunut"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1018
+#: libdeja/tools/duplicity/DuplicityJob.vala:1035
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Pääsy evätty kohdetta ‘%s’ luotaessa."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1022
-#: libdeja/tools/duplicity/DuplicityJob.vala:1026
+#: libdeja/tools/duplicity/DuplicityJob.vala:1039
+#: libdeja/tools/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Oikeutesi eivät riitä kohteen ‘%s’ lukemiseksi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1030
+#: libdeja/tools/duplicity/DuplicityJob.vala:1047
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Oikeutesi eivät riitä kohteen ‘%s’ poistamiseksi."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1037
+#: libdeja/tools/duplicity/DuplicityJob.vala:1054
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Varmuuskopiointisijaintia ‘%s’ ei ole olemassa."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1043
-#: libdeja/tools/duplicity/DuplicityJob.vala:1076
+#: libdeja/tools/duplicity/DuplicityJob.vala:1060
+#: libdeja/tools/duplicity/DuplicityJob.vala:1093
 msgid "No space left."
 msgstr "Tilaa ei ole jäljellä."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1065
+#: libdeja/tools/duplicity/DuplicityJob.vala:1082
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Virhe luettaessa tiedostoa '%s'."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1067
+#: libdeja/tools/duplicity/DuplicityJob.vala:1084
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Virhe kirjoitettaessa tiedostoa '%s'."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1078
+#: libdeja/tools/duplicity/DuplicityJob.vala:1095
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Kohteessa ‘%s’ ei ole vapaata tilaa."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1086
+#: libdeja/tools/duplicity/DuplicityJob.vala:1103
 msgid "No backup files found"
 msgstr "Varmuuskopiotiedostoja ei löytynyt"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1136
+#: libdeja/tools/duplicity/DuplicityJob.vala:1153
 msgid "Uploading…"
 msgstr "Lähetetään…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:38
 msgid "Could not understand duplicity version."
 msgstr "Duplicityn versiota ei kyetty käsittämään."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:48
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Duplicityn versiota ‘%s’ ei kyetty käsittämään."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/tools/duplicity/DuplicityPlugin.vala:51
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1557,6 +1529,42 @@ msgid ""
 msgstr ""
 "Varmuuskopiointi aloitetaan, kun siirtorajaton verkkoyhteys on käytettävissä."
 
+#~ msgid "Debug Information"
+#~ msgstr "Vianjäljityksen tiedot"
+
+#~ msgid "_Copy"
+#~ msgstr "_Kopioi"
+
+#~ msgid "All identifying information has been obscured."
+#~ msgstr "Kaikki henkilökohtaiset tiedot on piilotettu."
+
+#~ msgid "Automatic backup"
+#~ msgstr "Automaattinen varmuuskopio"
+
+#~ msgid "_Show password"
+#~ msgstr "_Näytä salasana"
+
+#~ msgid "Includes"
+#~ msgstr "Sisältäen"
+
+#~ msgid "Excludes"
+#~ msgstr "Ohittaen"
+
+#~ msgid "Preferences"
+#~ msgstr "Asetukset"
+
+#~ msgid "_Add"
+#~ msgstr "_Lisää"
+
+#~ msgid "_OK"
+#~ msgstr "_OK"
+
+#~ msgid "S_how password"
+#~ msgstr "Näy_tä salasana"
+
+#~ msgid "Could not display %s"
+#~ msgstr "Ei voinut näyttää %s"
+
 #~ msgid "Connect to Server"
 #~ msgstr "Yhdistä palvelimeen"
 
@@ -1567,9 +1575,6 @@ msgstr ""
 #~ "Not all files were successfully backed up.  See dialog for more details."
 #~ msgstr ""
 #~ "Kaikkia tiedostoja ei varmuuskopioitu onnistuneesti. Katso lisätiedot."
-
-#~ msgid "Folder"
-#~ msgstr "Kansio"
 
 #~ msgid "File"
 #~ msgstr "Tiedosto"
