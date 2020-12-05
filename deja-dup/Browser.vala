@@ -49,8 +49,8 @@ class Browser : Gtk.Grid
   string auth_url; // if null, auth button should start mount op vs oauth
   MountOperation mount_op; // normally null
   MainLoop passphrase_loop;
-  Gtk.ApplicationWindow app_window;
-  MainHeaderBar header;
+  unowned Gtk.ApplicationWindow app_window;
+  unowned MainHeaderBar header;
   SimpleActionGroup action_group;
 
   construct
@@ -76,9 +76,8 @@ class Browser : Gtk.Grid
       passphrase_loop.quit();
     });
 
-    application.notify["operation"].connect(() => {
-      if (application.operation != null)
-        stop_operation(); // get out of way of a real backup/restore op
+    application.operation_started.connect(() => {
+      stop_operation(); // get out of way of a real backup/restore op
     });
 
     // Connect file store and icon view

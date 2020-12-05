@@ -14,7 +14,7 @@ using GLib;
  * continuing to work when hidden is important for us, this is a
  * reimplementation of just the bits we use.
  */
-public abstract class Assistant : Hdy.Window
+public class Assistant : Hdy.Window
 {
   public signal void response(int response);
   public signal void canceled();
@@ -76,6 +76,7 @@ public abstract class Assistant : Hdy.Window
     set_child(dialog_box);
 
     header_bar = new Hdy.HeaderBar();
+    header_bar.show_title_buttons = false;
     dialog_box.append(header_bar);
 
     page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
@@ -90,6 +91,7 @@ public abstract class Assistant : Hdy.Window
 
   ~Assistant()
   {
+    debug("Finalizing Assistant\n");
     set_inhibited(false);
   }
 
@@ -240,13 +242,17 @@ public abstract class Assistant : Hdy.Window
         ((Gtk.Label)w).select_region(-1, -1);
     }
   }
+  void button_clicked(Gtk.Button button)
+  {
+    response(button.get_data("response-id"));
+  }
 
   protected Gtk.Button add_button(string label, int response_id)
   {
     var btn = new Gtk.Button.with_mnemonic(label);
     btn.receives_default = true;
-    btn.clicked.connect(() => {this.response(response_id);});
-    btn.show();
+    btn.set_data("response-id", response_id);
+    btn.clicked.connect(button_clicked);
     if (response_id == CANCEL)
       header_bar.pack_start(btn);
     else

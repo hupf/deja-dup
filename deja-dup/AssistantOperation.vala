@@ -353,7 +353,7 @@ public abstract class AssistantOperation : Assistant
     encrypt_enabled.active = true; // always default to encrypted
     page.attach(encrypt_enabled, 0, rows, 3, 1);
     first_password_widgets.append(encrypt_enabled);
-    encrypt_enabled.toggled.connect(() => {check_password_validity();});
+    encrypt_enabled.toggled.connect(check_password_validity);
     ++rows;
 
     w = new Gtk.Label("    "); // indent
@@ -479,8 +479,8 @@ public abstract class AssistantOperation : Assistant
     consent_label = l;
 
     var b = new Gtk.Button.with_mnemonic(_("_Grant Access"));
-    b.clicked.connect(() => {
-      Gtk.show_uri(get_root() as Gtk.Window, consent_url, Gdk.CURRENT_TIME);
+    b.clicked.connect((button) => {
+      Gtk.show_uri(button.root as Gtk.Window, consent_url, Gdk.CURRENT_TIME);
     });
     page.attach(b, 1, rows, 1, 1);
     ++rows;

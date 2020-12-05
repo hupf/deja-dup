@@ -9,10 +9,12 @@ using GLib;
 
 public class DejaDupApp : Gtk.Application
 {
-  WeakRef main_window;
-  SimpleAction quit_action = null;
-  public AssistantOperation operation {get; private set; default = null;}
   public DejaDup.Backend custom_backend {get; set; default = null;}
+  public signal void operation_started();
+
+  WeakRef main_window;
+  WeakRef operation;
+  SimpleAction quit_action = null;
 
   const OptionEntry[] OPTIONS = {
     {"version", 0, 0, OptionArg.NONE, null, N_("Show version"), null},
@@ -75,7 +77,7 @@ public class DejaDupApp : Gtk.Application
     }
 
     if (options.contains("restore")) {
-      if (operation != null) {
+      if (get_operation() != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
@@ -93,7 +95,7 @@ public class DejaDupApp : Gtk.Application
       restore_files(file_list);
     }
     else if (options.contains("backup")) {
-      if (operation != null) {
+      if (get_operation() != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
@@ -118,8 +120,8 @@ public class DejaDupApp : Gtk.Application
   {
     base.activate();
 
-    if (operation != null) {
-      operation.present();
+    if (get_operation() != null) {
+      get_operation().present();
     }
     else if (get_app_window() != null)
       get_app_window().present();
@@ -142,6 +144,11 @@ public class DejaDupApp : Gtk.Application
     if (win == null)
       return null;
     return win.get_header();
+  }
+
+  AssistantOperation? get_operation()
+  {
+    return operation.get() as AssistantOperation;
   }
 
   void show()
@@ -181,32 +188,32 @@ public class DejaDupApp : Gtk.Application
 
   public override void shutdown()
   {
-    if (operation != null)
-      operation.stop();
+    if (get_operation() != null)
+      get_operation().stop();
     base.shutdown();
   }
 
-  void clear_op()
+  void operation_closed()
   {
-    operation = null;
     quit_action.set_enabled(true);
   }
 
   void assign_op(AssistantOperation op, bool automatic)
   {
-    if (operation != null) {
+    if (get_operation() != null) {
       warning("Trying to override operation! This shouldn't happen.");
       return;
     }
 
-    operation = op;
-    ((Gtk.Widget)operation).destroy.connect(clear_op);
+    operation.set(op);
+    ((Gtk.Widget)op).destroy.connect(operation_closed);
     quit_action.set_enabled(false);
+    operation_started();
 
     if (get_app_window() != null) {
-      operation.transient_for = get_app_window();
-      operation.modal = true;
-      operation.destroy_with_parent = true;
+      op.transient_for = get_app_window();
+      op.modal = true;
+      op.destroy_with_parent = true;
       get_app_window().present();
     }
 
@@ -216,7 +223,7 @@ public class DejaDupApp : Gtk.Application
     if (automatic && get_app_window() == null) {
       Notifications.automatic_backup_started();
     } else {
-      operation.present();
+      op.present();
     }
   }
 
@@ -266,7 +273,7 @@ public class DejaDupApp : Gtk.Application
 
   public void backup()
   {
-    if (operation != null) {
+    if (get_operation() != null) {
       activate();
     } else {
       backup_full(false);
@@ -275,7 +282,7 @@ public class DejaDupApp : Gtk.Application
 
   public void backup_auto()
   {
-    if (operation == null) {
+    if (get_operation() == null) {
       backup_full(true);
     }
   }
@@ -310,7 +317,7 @@ public class DejaDupApp : Gtk.Application
   public void restore_files(List<File> file_list, string? when = null, DejaDup.FileTree? tree = null)
   {
     close_excess_modals();
-    if (operation != null) {
+    if (get_operation() != null) {
       activate();
     } else {
       assign_op(new AssistantRestore.with_files(file_list, when, tree), false);
@@ -333,12 +340,11 @@ public class DejaDupApp : Gtk.Application
     // Things like the about or preference dialogs or no-longer-active progress
     // dialogs. These should be closed if we're about to do something new like
     // a backup or restore operation.
-    if (operation != null && !operation.has_active_op()) {
-      operation.destroy();
-      clear_op();
+    if (get_operation() != null && !get_operation().has_active_op()) {
+      get_operation().destroy();
     }
 
-    if (operation != null || get_app_window() == null)
+    if (get_operation() != null || get_app_window() == null)
       return; // not safe or needed to continue closing modals
 
     foreach (var window in Gtk.Window.list_toplevels()) {

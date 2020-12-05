@@ -25,6 +25,11 @@ public class PreferencesWindow : Hdy.PreferencesWindow
     ConfigAutoBackup.bind(auto_backup);
   }
 
+  ~PreferencesWindow()
+  {
+    debug("Finalizing PreferencesWindow \n");
+  }
+
   void update_location_description()
   {
     var backend = DejaDup.Backend.get_default();

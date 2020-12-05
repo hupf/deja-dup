@@ -9,7 +9,7 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainWindow.ui")]
 public class MainWindow : Hdy.ApplicationWindow
 {
-  public MainHeaderBar get_header()
+  public unowned MainHeaderBar get_header()
   {
     return header;
   }
@@ -43,17 +43,28 @@ public class MainWindow : Hdy.ApplicationWindow
 
     // If a custom restore backend is set, we switch to restore.
     // If we switch away, we undo the custom restore backend.
-    stack.notify["visible-child-name"].connect(() => {
-      if (stack.visible_child_name != "restore")
-        deja_app.custom_backend = null;
-    });
-    deja_app.notify["custom-backend"].connect(() => {
-      if (deja_app.custom_backend != null)
-        stack.visible_child_name = "restore";
-    });
+    stack.notify["visible-child-name"].connect(on_stack_child_changed);
+    deja_app.notify["custom-backend"].connect(on_custom_backend_changed);
 
     ConfigAutoBackup.bind(auto_backup);
     browser.bind_to_window(this);
+  }
+
+  ~MainWindow()
+  {
+    debug("Finalizing MainWindow\n");
+  }
+
+  void on_stack_child_changed()
+  {
+    if (stack.visible_child_name != "restore")
+      DejaDupApp.get_instance().custom_backend = null;
+  }
+
+  void on_custom_backend_changed()
+  {
+    if (DejaDupApp.get_instance().custom_backend != null)
+      stack.visible_child_name = "restore";
   }
 
   [GtkCallback]
