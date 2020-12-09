@@ -380,6 +380,7 @@ int main(string[] args)
   typeof(ConfigPeriod).ensure();
   typeof(ConfigServerEntry).ensure();
   typeof(ConfigStatusLabel).ensure();
+  typeof(FolderChooserButton).ensure();
   typeof(MainHeaderBar).ensure();
 
   return DejaDupApp.get_instance().run(args);

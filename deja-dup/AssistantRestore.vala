@@ -39,8 +39,9 @@ public class AssistantRestore : AssistantOperation
   Gtk.ProgressBar status_progress_bar;
   uint status_timeout_id;
   TimeCombo date_combo;
-  Gtk.Box cust_box;
-  Gtk.FileChooserButton cust_button;
+  Gtk.CheckButton cust_radio;
+  Gtk.Label cust_label;
+  FolderChooserButton cust_button;
   Gtk.Grid confirm_table;
   Gtk.Image confirm_storage_image;
   Gtk.Label confirm_storage_label;
@@ -147,35 +148,40 @@ public class AssistantRestore : AssistantOperation
       }
     });
 
-    var cust_radio = new Gtk.CheckButton();
-    cust_radio.set("label", _("Restore to _specific folder"),
-                   "use-underline", true,
-                   "group", orig_radio);
+    cust_radio = new Gtk.CheckButton();
+    cust_radio.label = _("Restore to _specific folder");
+    cust_radio.use_underline = true;
+    cust_radio.group = orig_radio;
     cust_radio.toggled.connect((r) => {
       if (r.active) {
-        restore_location = cust_button.get_file().get_path();
+        restore_location = cust_button.file.get_path();
         restore_location_updated();
       }
-      cust_box.sensitive = r.active;
+      cust_button.sensitive = r.active;
     });
 
-    cust_button =
-      new Gtk.FileChooserButton(_("Choose destination for restored files"),
-                                Gtk.FileChooserAction.SELECT_FOLDER);
-    cust_button.file_set.connect((b) => {
-      restore_location = b.get_file().get_path();
+    cust_label = new Gtk.Label("");
+    cust_label.ellipsize = Pango.EllipsizeMode.MIDDLE;
+    cust_label.hexpand = true;
+    cust_label.xalign = 0;
+    var attrs = new Pango.AttrList();
+    attrs.insert(Pango.attr_weight_new(Pango.Weight.BOLD));
+    cust_label.attributes = attrs;
+
+    var cust_radio_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 0);
+    cust_radio_box.append(cust_radio);
+    cust_radio_box.append(cust_label);
+
+    cust_button = new FolderChooserButton();
+    cust_button.margin_start = 24;
+    cust_button.halign = Gtk.Align.START;
+    cust_button.sensitive = false;
+    cust_button.file_selected.connect(() => {
+      cust_radio.label = _("Restore to _specific folder:") + " ";
+      cust_label.label = cust_button.path;
+      restore_location = cust_button.file.get_path();
       restore_location_updated();
     });
-
-    var cust_label = new Gtk.Label("    " + _("Restore _folder"));
-    cust_label.set("mnemonic-widget", cust_button,
-                   "use-underline", true,
-                   "xalign", 1.0f);
-
-    cust_box = new Gtk.Box(Gtk.Orientation.HORIZONTAL, 6);
-    cust_box.sensitive = false;
-    cust_box.append(cust_label);
-    cust_box.append(cust_button);
 
     var bad_icon = new Gtk.Image.from_icon_name("dialog-warning");
     bad_icon.valign = Gtk.Align.START;
@@ -207,8 +213,8 @@ public class AssistantRestore : AssistantOperation
     page.width_request = 450; // it's a long title, give space for it in header
     DejaDup.set_margins(page, 12);
     page.append(orig_radio);
-    page.append(cust_radio);
-    page.append(cust_box);
+    page.append(cust_radio_box);
+    page.append(cust_button);
     page.append(bad_files_grid);
 
     var scroll = new Gtk.ScrolledWindow();

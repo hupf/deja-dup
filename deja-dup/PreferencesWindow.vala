@@ -27,7 +27,7 @@ public class PreferencesWindow : Hdy.PreferencesWindow
 
   ~PreferencesWindow()
   {
-    debug("Finalizing PreferencesWindow \n");
+    debug("Finalizing PreferencesWindow\n");
   }
 
   void update_location_description()

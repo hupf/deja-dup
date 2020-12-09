@@ -43,6 +43,7 @@ public class ConfigLocationCombo : Gtk.Box
     combo = new Gtk.ComboBox();
     combo.hexpand = true;
     append(combo);
+    mnemonic_activate.connect(combo.mnemonic_activate);
 
     // Here we have a model wrapped inside a sortable model.  This is so we
     // can keep indices around for the inner model while the outer model appears

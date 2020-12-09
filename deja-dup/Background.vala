@@ -30,7 +30,7 @@ public class Background : Object
   {
     var surface = window.get_surface();
 #if HAS_WAYLAND
-    var wayland_surface = surface as GdkFixes.Wayland.Toplevel;
+    var wayland_surface = surface as Gdk.Wayland.Toplevel;
     if (wayland_surface != null) {
       var handle = "";
       var success = wayland_surface.export_handle((t, h) => {
@@ -44,7 +44,7 @@ public class Background : Object
     }
 #endif
 #if HAS_X11
-    var x11_surface = surface as GdkFixes.X11.Surface;
+    var x11_surface = surface as Gdk.X11.Surface;
     if (x11_surface != null)
       return "x11:%x".printf((uint)x11_surface.get_xid());
 #endif
@@ -55,7 +55,7 @@ public class Background : Object
   {
     var surface = window.get_surface();
 #if HAS_WAYLAND
-    var wayland_surface = surface as GdkFixes.Wayland.Toplevel;
+    var wayland_surface = surface as Gdk.Wayland.Toplevel;
     if (wayland_surface != null)
       wayland_surface.unexport_handle();
 #endif

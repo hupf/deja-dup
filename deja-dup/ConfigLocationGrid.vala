@@ -57,6 +57,8 @@ public class ConfigLocationGrid : Gtk.Grid
 
   [GtkChild]
   Gtk.Entry local_folder;
+  [GtkChild]
+  FolderChooserButton local_browse;
 
   DejaDup.FilteredSettings settings;
   DejaDup.FilteredSettings drive_settings;
@@ -109,39 +111,13 @@ public class ConfigLocationGrid : Gtk.Grid
   }
 
   [GtkCallback]
-  void on_local_browse_clicked()
+  void on_local_file_selected()
   {
-    var dlg = new Gtk.FileChooserNative(_("Choose Folder"),
-                                        this.root as Gtk.Window,
-                                        Gtk.FileChooserAction.SELECT_FOLDER,
-                                        null, null);
-    dlg.modal = true;
-
-    var current = DejaDup.BackendLocal.get_file_for_path(local_folder.text);
-    if (current != null) {
-      try {
-        dlg.set_current_folder(current);
-      }
-      catch (Error e) {
-        warning("%s\n", e.message);
-      }
+    if (DejaDup.BackendDrive.set_volume_info_from_file(local_browse.file, drive_settings)) {
+      settings.set_string(DejaDup.BACKEND_KEY, "drive");
+    } else {
+      local_folder.text = local_browse.path;
     }
-
-    dlg.response.connect((response) => {
-      if (response == Gtk.ResponseType.ACCEPT) {
-        var file = dlg.get_file();
-        if (DejaDup.BackendDrive.set_volume_info_from_file(file, drive_settings)) {
-          settings.set_string(DejaDup.BACKEND_KEY, "drive");
-        } else {
-          var path = DejaDup.BackendLocal.get_path_from_file(file);
-          if (path != null)
-            local_folder.text = path;
-        }
-      }
-      dlg.destroy();
-    });
-
-    dlg.show();
   }
 
   [GtkCallback]
