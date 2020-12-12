@@ -34,9 +34,9 @@ class Browser : Gtk.Grid
   [GtkChild]
   Gtk.Label pause_label;
   [GtkChild]
-  Gtk.IconView icon_view;
+  Gtk.GridView icon_view;
   [GtkChild]
-  Gtk.TreeView list_view;
+  Gtk.ColumnView list_view;
   [GtkChild]
   Gtk.Button restore_button;
   [GtkChild]
@@ -44,6 +44,7 @@ class Browser : Gtk.Grid
 
   DejaDupApp application;
   FileStore store;
+  Gtk.MultiSelection selection;
   DejaDup.BackendWatcher watcher;
   string auth_url; // if null, auth button should start mount op vs oauth
   MountOperation mount_op; // normally null
@@ -55,7 +56,6 @@ class Browser : Gtk.Grid
   construct
   {
     application = DejaDupApp.get_instance();
-    store = new FileStore();
 
     // Set up actions
     action_group = new SimpleActionGroup();
@@ -80,25 +80,18 @@ class Browser : Gtk.Grid
       stop_operation(); // get out of way of a real backup/restore op
     });
 
-    // Connect file store and icon view
-    bind_property("files-filled", icon_view, "sensitive", BindingFlags.SYNC_CREATE);
-    icon_view.model = store;
-    icon_view.pixbuf_column = FileStore.Column.ICON;
-    icon_view.text_column = FileStore.Column.FILENAME;
-    icon_view.item_activated.connect((v, p) => {go_down(p);});
-    icon_view.selection_changed.connect(selection_changed);
+    // Set up store
+    store = new FileStore();
+    selection = new Gtk.MultiSelection(store);
+    selection.selection_changed.connect(selection_changed);
 
-    // Manually tweak some aspects of the icon view (we should maybe switch to
-    // a different widget like Gtk.FlowBox?)
-    var cells = icon_view.get_cells();
-    var pixbuf_renderer = cells.data as Gtk.CellRendererPixbuf;
-    icon_view.set_attributes(pixbuf_renderer, "gicon", FileStore.Column.GICON);
-    pixbuf_renderer.icon_size = Gtk.IconSize.LARGE;
-
-    // Set up list view as well
+    // Connect file store and views
     bind_property("files-filled", list_view, "sensitive", BindingFlags.SYNC_CREATE);
-    list_view.row_activated.connect((v, p, c) => {go_down(p);});
-    list_view.get_selection().changed.connect(selection_changed);
+    bind_property("files-filled", icon_view, "sensitive", BindingFlags.SYNC_CREATE);
+    icon_view.model = selection;
+    icon_view.factory = new Gtk.BuilderListItemFactory.from_resource(
+      null, "/org/gnome/DejaDup/BrowserGridItem.ui"
+    );
 
     // Connect various buttons
 
@@ -150,35 +143,29 @@ class Browser : Gtk.Grid
   }
 
   void selection_changed() {
-    var count = get_selected_items().length();
-    restore_button.sensitive = count > 0;
-  }
-
-  List<Gtk.TreePath> get_selected_items()
-  {
-    if (view_stack.visible_child_name == "icons") {
-      return icon_view.get_selected_items();
-    } else {
-      return list_view.get_selection().get_selected_rows(null);
-    }
+    var bitset = selection.get_selection();
+    restore_button.sensitive = !bitset.is_empty();
   }
 
   void select_all() {
-    if (view_stack.visible_child_name == "icons") {
-      icon_view.select_all();
-    } else {
-      list_view.get_selection().select_all();
-    }
+    selection.select_all();
+  }
+
+  void folder_changed() {
+    search_bar.search_mode_enabled = false;
+    // selection-changed doesn't emit automatically on clear for some reason
+    restore_button.sensitive = false;
   }
 
   void go_up() {
-    store.go_up();
-    search_bar.search_mode_enabled = false;
+    if (store.go_up())
+      folder_changed();
   }
 
-  void go_down(Gtk.TreePath path) {
-    if (store.go_down(path))
-      search_bar.search_mode_enabled = false;
+  [GtkCallback]
+  void go_down(uint position) {
+    if (store.go_down(position))
+      folder_changed();
   }
 
   void activate_search() {
@@ -190,11 +177,11 @@ class Browser : Gtk.Grid
     if (search_entry.text != "") {
       view_stack.visible_child_name = "list";
       icon_view.model = null;
-      list_view.model = store;
+      list_view.model = selection;
     } else {
       view_stack.visible_child_name = "icons";
       list_view.model = null;
-      icon_view.model = store;
+      icon_view.model = selection;
     }
 
     store.search_filter = search_entry.text;
@@ -279,13 +266,18 @@ class Browser : Gtk.Grid
   [GtkCallback]
   void start_restore()
   {
+    var bitset = selection.get_selection();
+    Gtk.BitsetIter iter;
+    uint position;
+    if (!Gtk.BitsetIter.init_first(out iter, bitset, out position))
+      return;
+
     List<File> files = null;
-    var treepaths = get_selected_items();
-    foreach (var treepath in treepaths) {
-      var file = store.get_file(treepath);
-      if (file != null)
-        files.append(file);
+    files.append(store.get_file(position));
+    while (iter.next(out position)) {
+      files.append(store.get_file(position));
     }
+
     application.restore_files(files, timecombo.when, store.tree);
   }
 

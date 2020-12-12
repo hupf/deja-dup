@@ -6,41 +6,29 @@
 
 using GLib;
 
-public class FileStore : Gtk.ListStore
+public class FileStore : Object, ListModel
 {
   public DejaDup.FileTree tree {get; private set; default = null;}
   public bool can_go_up {get; private set; default = false;}
   public string search_filter {get; set; default = null;}
 
-  // If you reorder these, you might need to update the ui files that hardcode
-  // these column numbers.
-  public enum Column {
-    FILENAME = 0,
-    SORT_KEY,
-    ICON, // never set, but left blank as an aid to Browser, which does some iconview tricks
-    GICON,
-    PATH,
-    NODE,
+  public void clear() {
+    var removed = clear_full();
+    items_changed(0, removed, 0);
   }
 
   public void register_operation(DejaDup.OperationFiles op)
   {
     current = null;
     tree = null;
-    clear();
 
+    clear();
     op.listed_current_files.connect(handle_listed_files);
   }
 
-  public bool go_down(Gtk.TreePath path)
+  public bool go_down(uint position)
   {
-    Gtk.TreeIter iter;
-    if (!get_iter(out iter, path))
-      return false;
-
-    DejaDup.FileTree.Node child;
-    @get(iter, Column.NODE, out child);
-
+    var child = items.get(position).node;
     if (child.kind != "dir")
       return false;
 
@@ -48,53 +36,73 @@ public class FileStore : Gtk.ListStore
     return true;
   }
 
-  public void go_up()
+  public bool go_up()
   {
-    if (can_go_up)
-      set_current(current.parent);
+    if (!can_go_up)
+      return false;
+
+    set_current(current.parent);
+    return true;
   }
 
-  public File? get_file(Gtk.TreePath path)
+  public File get_file(uint position)
   {
-    var filepath = get_full_path_from_path(path);
-    if (filepath == null)
-      return null;
-    return File.new_for_path("/" + filepath);
+    return File.new_for_path(get_full_path(position));
+  }
+
+  // ListModel interface
+
+  public Type get_item_type() {
+    return typeof(DejaDup.FileTree.Node);
+  }
+
+  public uint get_n_items() {
+    return items.length;
+  }
+
+  public GLib.Object? get_item(uint position) {
+    return items.get(position);
+  }
+
+  public class Item : Object {
+    public DejaDup.FileTree.Node node {get; construct;}
+    public string filename {get { return node.filename; }}
+    public string collate_key {get; construct;}
+    public string path {get; construct;}
+    public Icon icon {get; construct;}
+
+    internal Item(DejaDup.FileTree.Node node, string collate_key,
+                  string? path, Icon icon)
+    {
+      Object(node: node, collate_key: collate_key, icon: icon, path: path);
+    }
   }
 
   ////
 
   DejaDup.FileTree.Node current;
+  GenericArray<Item> items;
 
   construct {
-    set_column_types({typeof(string), typeof(string), typeof(Gdk.Pixbuf),
-                      typeof(Icon), typeof(string),
-                      typeof(DejaDup.FileTree.Node)});
-
-    set_sort_column_id(Column.FILENAME, Gtk.SortType.ASCENDING);
-    set_sort_func(Column.FILENAME, (m, a, b) => {
-      string akey, bkey;
-      @get(a, Column.SORT_KEY, out akey);
-      @get(b, Column.SORT_KEY, out bkey);
-      return strcmp(akey, bkey);
-    });
+    items = new GenericArray<Item>();
 
     notify["search-filter"].connect(update_search);
   }
 
-  string? get_full_path_from_path(Gtk.TreePath path)
+  int clear_full() {
+    var old_len = items.length;
+    items.remove_range(0, old_len);
+    return old_len;
+  }
+
+  string get_full_path(uint position)
   {
-    Gtk.TreeIter iter;
-    if (!get_iter(out iter, path))
-      return null;
-
-    string filename, rel_path;
-    @get(iter, Column.FILENAME, out filename, Column.PATH, out rel_path);
-
-    if (rel_path == null)
-      return Path.build_filename(tree.node_to_path(current), filename);
+    var item = items.get(position);
+    var node_path = tree.node_to_path(current);
+    if (item.path == null)
+      return Path.build_filename("/", node_path, item.filename);
     else
-      return Path.build_filename(tree.node_to_path(current), rel_path, filename);
+      return Path.build_filename("/", node_path, item.path, item.filename);
   }
 
   void update_search()
@@ -106,8 +114,10 @@ public class FileStore : Gtk.ListStore
 
     var needle_tokens = search_filter.tokenize_and_fold("", null);
 
-    clear();
+    var removed = clear_full();
     recursive_search(needle_tokens, current);
+    sort();
+    items_changed(0, removed, items.length);
   }
 
   void recursive_search(string[] needle_tokens, DejaDup.FileTree.Node node)
@@ -149,34 +159,40 @@ public class FileStore : Gtk.ListStore
 
   void set_current(DejaDup.FileTree.Node node)
   {
-    clear();
+    var removed = clear_full();
     current = node;
     can_go_up = current != tree.root;
     current.children.for_each((name, child) => {
       insert_file(child);
     });
+    sort();
+    items_changed(0, removed, items.length);
   }
 
-  string collate_key(DejaDup.FileTree.Node node) {
-    var prefix = node.kind == "dir" ? "0:" : "1:";
-    var key = node.filename.collate_key_for_filename();
-    return prefix + key;
+  void sort() {
+    items.sort((a, b) => {
+      return strcmp(a.collate_key, b.collate_key);
+    });
   }
 
   void insert_file(DejaDup.FileTree.Node node)
   {
-    var content_type = node.kind == "dir" ? ContentType.from_mime_type("inode/directory")
-                                          : ContentType.guess(node.filename, null, null);
-    var gicon = ContentType.get_icon(content_type);
+    var prefix = node.kind == "dir" ? "0:" : "1:";
+    var key = node.filename.casefold().collate_key_for_filename();
+    var collate_key = prefix + key;
 
-    // Add symbolic link emblem if appropriate
-    if (node.kind == "sym") {
+    // icon
+    var content_type = node.kind == "dir" ?
+                       ContentType.from_mime_type("inode/directory") :
+                       ContentType.guess(node.filename, null, null);
+    var icon = ContentType.get_icon(content_type);
+    if (node.kind == "sym") { // symbolic link
       var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
-      gicon = new EmblemedIcon(gicon, emblem);
+      icon = new EmblemedIcon(icon, emblem);
     }
 
     // Get relative path to current node
-    DejaDup.FileTree.Node iter = node;
+    unowned var iter = node;
     string path = null;
     while (iter.parent != current) {
       if (path == null)
@@ -186,16 +202,10 @@ public class FileStore : Gtk.ListStore
       iter = iter.parent;
     }
 
-    insert_with_values(null, -1,
-                       Column.FILENAME, node.filename,
-                       Column.SORT_KEY, collate_key(node),
-                       Column.GICON, gicon,
-                       Column.PATH, path,
-                       Column.NODE, node);
+    items.add(new Item(node, collate_key, path, icon));
   }
 
-  void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree)
-  {
+  void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree) {
     this.tree = tree;
     set_current(tree.root);
   }
