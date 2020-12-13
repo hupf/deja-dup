@@ -176,8 +176,8 @@ class Browser : Gtk.Grid
   }
 
   void go_down(Gtk.TreePath path) {
-    store.go_down(path);
-    search_bar.search_mode_enabled = false;
+    if (store.go_down(path))
+      search_bar.search_mode_enabled = false;
   }
 
   void activate_search() {

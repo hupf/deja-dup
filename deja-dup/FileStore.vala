@@ -20,6 +20,7 @@ public class FileStore : Gtk.ListStore
     ICON, // never set, but left blank as an aid to Browser, which does some iconview tricks
     GICON,
     PATH,
+    NODE,
   }
 
   public void register_operation(DejaDup.OperationFiles op)
@@ -37,11 +38,10 @@ public class FileStore : Gtk.ListStore
     if (!get_iter(out iter, path))
       return false;
 
-    string filename;
-    @get(iter, Column.FILENAME, out filename);
+    DejaDup.FileTree.Node child;
+    @get(iter, Column.NODE, out child);
 
-    var child = current.children.lookup(filename);
-    if (child == null || child.kind != "dir")
+    if (child.kind != "dir")
       return false;
 
     set_current(child);
@@ -68,7 +68,8 @@ public class FileStore : Gtk.ListStore
 
   construct {
     set_column_types({typeof(string), typeof(string), typeof(Gdk.Pixbuf),
-                      typeof(Icon), typeof(string)});
+                      typeof(Icon), typeof(string),
+                      typeof(DejaDup.FileTree.Node)});
 
     set_sort_column_id(Column.FILENAME, Gtk.SortType.ASCENDING);
     set_sort_func(Column.FILENAME, (m, a, b) => {
@@ -189,7 +190,8 @@ public class FileStore : Gtk.ListStore
                        Column.FILENAME, node.filename,
                        Column.SORT_KEY, collate_key(node),
                        Column.GICON, gicon,
-                       Column.PATH, path);
+                       Column.PATH, path,
+                       Column.NODE, node);
   }
 
   void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree)
