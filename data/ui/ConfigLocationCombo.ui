@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <template class="ConfigLocationCombo" parent="GtkBox">
+    <signal name="mnemonic-activate" handler="on_mnemonic_activate"/>
+    <child>
+      <object class="GtkDropDown" id="combo">
+        <property name="hexpand">1</property>
+        <property name="factory">
+          <object class="GtkBuilderListItemFactory">
+            <property name="bytes"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkListItem">
+    <property name="child">
+      <object class="GtkBox">
+        <property name="spacing">6</property>
+        <child>
+          <object class="GtkImage">
+            <property name="icon-size">normal</property>
+            <property name="use-fallback">1</property>
+            <binding name="gicon">
+              <lookup name="icon" type="ConfigLocationComboItem">
+                <lookup name="item">GtkListItem</lookup>
+              </lookup>
+            </binding>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel">
+            <property name="ellipsize">end</property>
+            <property name="xalign">0</property>
+            <binding name="label">
+              <lookup name="text" type="ConfigLocationComboItem">
+                <lookup name="item">GtkListItem</lookup>
+              </lookup>
+            </binding>
+          </object>
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
+            ]]></property>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>

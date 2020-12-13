@@ -7,6 +7,7 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="TimeCombo" parent="GtkBox">
+    <property name="visible">0</property>
     <property name="spacing">6</property>
     <child>
       <object class="GtkLabel">
@@ -17,7 +18,10 @@ SPDX-FileCopyrightText: Michael Terry
       </object>
     </child>
     <child>
-      <object class="GtkComboBoxText" id="combo">
+      <object class="GtkDropDown" id="combo">
+        <property name="expression">
+          <lookup name="label" type="TimeComboItem"/>
+        </property>
       </object>
     </child>
   </template>

@@ -382,6 +382,8 @@ int main(string[] args)
   typeof(ConfigStatusLabel).ensure();
   typeof(FolderChooserButton).ensure();
   typeof(MainHeaderBar).ensure();
+  typeof(TimeCombo).ensure();
+  typeof(TimeCombo.Item).ensure();
 
   return DejaDupApp.get_instance().run(args);
 }

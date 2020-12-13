@@ -6,6 +6,7 @@
 
 using GLib;
 
+[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationCombo.ui")]
 public class ConfigLocationCombo : Gtk.Box
 {
   public Gtk.Stack stack {get; construct;}
@@ -18,16 +19,6 @@ public class ConfigLocationCombo : Gtk.Box
     Object(stack: stack, settings: settings, drive_settings: drive_settings);
   }
 
-  enum Col {
-    ICON = 0,
-    TEXT,
-    SORT,
-    ID,
-    PAGE,
-    GROUP,
-    NUM,
-  }
-
   enum Group {
     CLOUD,
     REMOTE,
@@ -35,37 +26,32 @@ public class ConfigLocationCombo : Gtk.Box
     LOCAL,
   }
 
-  Gtk.ComboBox combo;
-  Gtk.ListStore store;
-  Gtk.TreeModelSort sort_model;
-  construct {
-    // *** Combo Box UI setup ***
-    combo = new Gtk.ComboBox();
-    combo.hexpand = true;
-    append(combo);
-    mnemonic_activate.connect(combo.mnemonic_activate);
+  class Item : Object {
+    public Icon icon {get; set;}
+    public string text {get; set;}
+    public string sort_key {get; construct;}
+    public string id {get; construct;}
+    public string page {get; construct;}
+    public Group group {get; construct;}
 
+    public Item(Icon? icon, string text, string sort_key, string id,
+                string page, Group group)
+    {
+      Object(icon: icon, text: text, sort_key: sort_key, id: id, page: page,
+             group: group);
+    }
+  }
+
+  [GtkChild]
+  Gtk.DropDown combo;
+
+  ListStore store;
+  construct {
     // Here we have a model wrapped inside a sortable model.  This is so we
     // can keep indices around for the inner model while the outer model appears
     // nice and sorted to users.
-    store = new Gtk.ListStore(Col.NUM, typeof(Icon), typeof(string), typeof(string),
-                              typeof(string), typeof(string), typeof(int), typeof(string));
-    sort_model = new Gtk.TreeModelSort.with_model(store);
-    sort_model.set_sort_column_id(Col.SORT, Gtk.SortType.ASCENDING);
-    combo.model = sort_model;
-    combo.id_column = Col.ID;
-
-    var pixrenderer = new Gtk.CellRendererPixbuf();
-    combo.pack_start(pixrenderer, false);
-    combo.add_attribute(pixrenderer, "gicon", Col.ICON);
-
-    var textrenderer = new Gtk.CellRendererText();
-    textrenderer.xpad = 6;
-    textrenderer.ellipsize = Pango.EllipsizeMode.END;
-    textrenderer.ellipsize_set = true;
-    textrenderer.max_width_chars = 10;
-    combo.pack_start(textrenderer, false);
-    combo.add_attribute(textrenderer, "markup", Col.TEXT);
+    store = new ListStore(typeof(Item));
+    combo.model = store;
 
     // *** Basic entries ***
 
@@ -88,13 +74,18 @@ public class ConfigLocationCombo : Gtk.Box
 
     // *** Now bind our combo to settings ***
     settings.bind_with_mapping(DejaDup.BACKEND_KEY,
-                               combo, "active-id",
+                               combo, "selected",
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                this.ref(), Object.unref);
 
-    combo.notify["active-id"].connect(update_stack);
+    combo.notify["selected-item"].connect(update_stack);
     update_stack();
+  }
+
+  [GtkCallback]
+  bool on_mnemonic_activate(bool group_cycling) {
+    return combo.mnemonic_activate(group_cycling);
   }
 
   bool is_allowed_volume(Volume vol)
@@ -144,38 +135,34 @@ public class ConfigLocationCombo : Gtk.Box
     add_entry_full(id, new ThemedIcon(icon), label, category, null);
   }
 
-  void add_entry_full(string id, Icon? icon, string label, Group category,
+  uint add_entry_full(string id, Icon? icon, string label, Group group,
                       string? page)
   {
-    var index = store.iter_n_children(null);
     var calculated_page = page == null ? id : page;
-    store.insert_with_values(null, index, Col.ICON, icon, Col.TEXT, label,
-                             Col.SORT, "%d%s".printf((int)category, label),
-                             Col.ID, id, Col.PAGE, calculated_page,
-                             Col.GROUP, category);
+    var sort_key = "%d%s".printf((int)group, label.casefold().collate_key());
+    var item = new Item(icon, label, sort_key, id, calculated_page, group);
+    return store.insert_sorted(item, (CompareDataFunc)itemcmp);
+  }
+
+  static int itemcmp(Item a, Item b) {
+    return strcmp(a.sort_key, b.sort_key);
   }
 
   // A null id is a wildcard, will return first valid result
-  bool lookup_id(string? prefix, string? id, out Gtk.TreeIter iter_in)
+  Item? lookup_id(string? prefix, string? id, out uint position)
   {
-    iter_in = Gtk.TreeIter();
-
+    position = uint.MAX;
     var full_id = (prefix != null && id != null) ? prefix + ":" + id : id;
 
-    Gtk.TreeIter iter;
-    if (store.get_iter_first(out iter)) {
-      do {
-        string iter_id;
-        store.get(iter, Col.ID, out iter_id);
-        if (full_id == null || iter_id == full_id)
-        {
-          iter_in = iter;
-          return true;
-        }
-      } while (store.iter_next(ref iter));
+    for (uint i = 0; i < store.get_n_items(); i++) {
+      var item = (Item)store.get_item(i);
+      if (full_id == null || item.id == full_id) {
+        position = i;
+        return item;
+      }
     }
 
-    return false;
+    return null;
   }
 
   void add_volume(VolumeMonitor monitor, Volume v)
@@ -186,12 +173,13 @@ public class ConfigLocationCombo : Gtk.Box
     }
   }
 
-  void add_volume_full(string uuid, string name, Icon icon)
+  uint add_volume_full(string uuid, string name, Icon icon)
   {
-    if (update_volume_full(uuid, name, icon))
-      return;
+    var position = update_volume_full(uuid, name, icon);
+    if (position != uint.MAX)
+      return position;
 
-    add_entry_full("drive:" + uuid, icon, name, Group.VOLUMES, "drive");
+    return add_entry_full("drive:" + uuid, icon, name, Group.VOLUMES, "drive");
   }
 
   void update_volume(VolumeMonitor monitor, Volume v)
@@ -199,14 +187,16 @@ public class ConfigLocationCombo : Gtk.Box
     update_volume_full(DejaDup.BackendDrive.get_uuid(v), v.get_name(), v.get_icon());
   }
 
-  bool update_volume_full(string uuid, string name, Icon icon)
+  uint update_volume_full(string uuid, string name, Icon icon)
   {
-    Gtk.TreeIter iter;
-    if (!lookup_id("drive", uuid, out iter))
-      return false;
+    uint position;
+    var item = lookup_id("drive", uuid, out position);
+    if (item == null)
+      return uint.MAX;
 
-    store.set(iter, Col.ICON, icon, Col.TEXT, name);
-    return true;
+    item.icon = icon;
+    item.text = name;
+    return position;
   }
 
   void remove_volume(VolumeMonitor monitor, Volume v)
@@ -216,8 +206,9 @@ public class ConfigLocationCombo : Gtk.Box
 
   void remove_volume_full(string uuid)
   {
-    Gtk.TreeIter iter;
-    if (!lookup_id("drive", uuid, out iter))
+    uint position;
+    var item = lookup_id("drive", uuid, out position);
+    if (item == null)
       return;
 
     // Make sure it isn't the saved volume; we never want to remove that
@@ -225,40 +216,43 @@ public class ConfigLocationCombo : Gtk.Box
     if (uuid == saved_uuid)
       return;
 
-    store.remove(ref iter);
+    store.remove(position);
   }
 
-  void add_saved_volume()
+  // returns saved volume item position, if any
+  uint add_saved_volume()
   {
-    // And add an entry for any saved volume
     var uuid = drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
     if (uuid == "")
-      return;
+      return uint.MAX;
+
+    uint position;
+    var item = lookup_id("drive", uuid, out position);
+    if (item != null)
+      return position;
 
     Icon vol_icon = null;
     try {
-      vol_icon = Icon.new_for_string(drive_settings.get_string(DejaDup.DRIVE_ICON_KEY));
+      var icon_string = drive_settings.get_string(DejaDup.DRIVE_ICON_KEY);
+      vol_icon = Icon.new_for_string(icon_string);
     }
     catch (Error e) {warning("%s\n", e.message);}
 
     var vol_name = drive_settings.get_string(DejaDup.DRIVE_NAME_KEY);
 
-    add_volume_full(uuid, vol_name, vol_icon);
+    return add_volume_full(uuid, vol_name, vol_icon);
   }
 
   static bool get_mapping(Value val, Variant variant, void *data)
   {
     var self = (ConfigLocationCombo)data;
+    uint position;
 
     var id = variant.get_string();
     if (id == "drive") {
-      id = "drive:" + self.drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
-      if (!self.lookup_id(null, id, null))
-        self.add_saved_volume();
+      position = self.add_saved_volume();
     }
-
-    var found = self.lookup_id(null, id, null);
-    if (!found) {
+    else if (self.lookup_id(null, id, out position) == null) {
       var label = id;
       if (id == "gcs")
         label = _("Google Cloud Storage");
@@ -273,17 +267,22 @@ public class ConfigLocationCombo : Gtk.Box
 
       // Assume that we should group with clouds, but not enough to assign
       // a cloud icon.
-      self.add_entry_full(id, null, label, Group.CLOUD, "unsupported");
+      position = self.add_entry_full(id, null, label, Group.CLOUD, "unsupported");
     }
 
-    val.set_string(id);
+    if (position == uint.MAX)
+      return false; // odd - maybe a drive backend, but without a saved uuid?
+
+    val.set_uint(position);
     return true;
   }
 
   static Variant set_mapping(Value val, VariantType expected_type, void *data)
   {
     var self = (ConfigLocationCombo)data;
-    var id = val.get_string();
+    var position = val.get_uint();
+    var item = (Item)self.store.get_item(position);
+    var id = item.id;
 
     var parts = id.split(":", 2);
     if (parts.length == 2) {
@@ -297,24 +296,15 @@ public class ConfigLocationCombo : Gtk.Box
 
   void update_stack()
   {
-    Gtk.TreeIter sort_iter;
-    if (!combo.get_active_iter(out sort_iter))
-      return;
-
-    Gtk.TreeIter iter;
-    sort_model.convert_iter_to_child_iter(out iter, sort_iter);
-
-    string page;
-    store.get(iter, Col.PAGE, out page);
-
-    stack.visible_child_name = page;
+    if (combo.selected_item != null)
+      stack.visible_child_name = ((Item)combo.selected_item).page;
   }
 
   void handle_drive_uuid_change()
   {
-    var uuid = drive_settings.get_string(DejaDup.DRIVE_UUID_KEY);
-    if (uuid != "")
-      combo.active_id = "drive:" + uuid;
+    var position = add_saved_volume();
+    if (position != uint.MAX)
+      combo.selected = position;
   }
 
   void set_volume_info(string uuid)

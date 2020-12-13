@@ -9,7 +9,7 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/TimeCombo.ui")]
 public class TimeCombo : Gtk.Box
 {
-  public string when { get; set; default = null; }
+  public string when { get; private set; default = null; }
 
   public void register_operation(DejaDup.OperationStatus op)
   {
@@ -19,24 +19,40 @@ public class TimeCombo : Gtk.Box
 
   public string get_active_text()
   {
-    return combo.get_active_text();
+    var item = (Item)combo.selected_item;
+    return item == null ? null : item.label;
   }
 
   public void clear()
   {
-    store.clear();
+    store.remove_all();
     when = null;
+    visible = false;
   }
 
   [GtkChild]
-  Gtk.ComboBoxText combo;
-  Gtk.ListStore store;
+  Gtk.DropDown combo;
+
+  ListStore store;
   construct
   {
-    store = new Gtk.ListStore(2, typeof(string), typeof(string));
+    store = new ListStore(typeof(Item));
     combo.model = store;
-    combo.id_column = 1;
-    combo.bind_property("active-id", this, "when");
+    combo.notify["selected-item"].connect(update_when);
+  }
+
+  public class Item : Object {
+    public string label {get; construct;}
+    public string tag {get; construct;}
+
+    public Item(string label, string tag) {
+      Object(label: label, tag: tag);
+    }
+  }
+
+  void update_when() {
+    var item = (Item)combo.selected_item;
+    when = item == null ? null : item.tag;
   }
 
   static bool is_same_day(DateTime one, DateTime two)
@@ -47,7 +63,7 @@ public class TimeCombo : Gtk.Box
 
   void fill_combo_with_dates(DejaDup.OperationStatus op, List<string>? dates)
   {
-    store.clear();
+    clear();
     if (dates.length() == 0)
       return;
 
@@ -75,11 +91,10 @@ public class TimeCombo : Gtk.Box
       }
 
       var user_str = datetime.to_local().format(format);
-      Gtk.TreeIter iter;
-      store.prepend(out iter);
-      store.@set(iter, 0, user_str, 1, datetime.format_iso8601());
-      if (i.next == null)
-        combo.set_active_iter(iter);
+      store.insert(0, new Item(user_str, datetime.format_iso8601()));
     }
+
+    combo.selected = 0;
+    visible = true;
   }
 }
