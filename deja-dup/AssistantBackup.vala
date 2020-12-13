@@ -55,8 +55,6 @@ public class AssistantBackup : AssistantOperation
 
   protected override async DejaDup.Operation? create_op()
   {
-    realize();
-
     // First, check that we aren't trying to back up any unavailable files
     var unavailable = yield get_unavailable_includes();
     if (unavailable.length > 0) {
@@ -111,7 +109,7 @@ public class AssistantBackup : AssistantOperation
           summary_label.label = _("Your files were successfully backed up and tested.");
         // If we don't have a special message to show the user, just bail.
         else if (!detail_widget.get_visible())
-          Idle.add(() => {do_close(); return false;});
+          do_delete();
       }
     }
     else if (page == progress_page) {

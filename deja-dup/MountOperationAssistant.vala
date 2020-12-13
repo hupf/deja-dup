@@ -26,7 +26,7 @@ public class MountOperationAssistant : MountOperation
   public bool go_forward {get; set; default = false;} // set by backends if they want to move on
   public bool retry_mode {get; set; default = false;} // skip any questions, send existing data back
 
-  public AssistantOperation assist {get; construct;}
+  unowned AssistantOperation assist;
   Gtk.Box password_page;
   Gtk.Box layout;
   Gtk.Grid table;
@@ -39,14 +39,12 @@ public class MountOperationAssistant : MountOperation
 
   public MountOperationAssistant(AssistantOperation assist)
   {
-    Object(assist: assist);
+    this.assist = assist;
     assist.prepare.connect(do_prepare);
     assist.backward.connect(do_backward);
     assist.forward.connect(do_forward);
     assist.closing.connect(do_close);
     add_password_page();
-
-    assist.realize();
   }
 
   construct {

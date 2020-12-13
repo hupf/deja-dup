@@ -31,8 +31,6 @@ public class AssistantRestore : AssistantOperation
     Object(restore_files: files, when: when, tree: tree);
   }
 
-  protected DejaDup.OperationFiles files_op;
-  protected DejaDup.OperationStatus status_op;
   protected DejaDup.Operation.State op_state;
   Gtk.ProgressBar files_progress_bar;
   uint files_timeout_id;
@@ -355,7 +353,6 @@ public class AssistantRestore : AssistantOperation
   protected virtual void status_op_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     this.op_state = op.get_state();
-    this.status_op = null;
     this.op = null;
 
     if (cancelled)
@@ -376,7 +373,7 @@ public class AssistantRestore : AssistantOperation
 
   protected async void do_status_query()
   {
-    status_op = new DejaDup.OperationStatus(get_backend());
+    var status_op = new DejaDup.OperationStatus(get_backend());
     op = status_op;
 
     connect_operation(status_op);
@@ -394,7 +391,6 @@ public class AssistantRestore : AssistantOperation
   protected virtual void files_op_finished(DejaDup.Operation op, bool success, bool cancelled, string? detail)
   {
     this.op_state = op.get_state();
-    this.files_op = null;
     this.op = null;
 
     if (cancelled)
@@ -411,7 +407,7 @@ public class AssistantRestore : AssistantOperation
 
   protected async void do_files_query()
   {
-    files_op = new DejaDup.OperationFiles(get_backend());
+    var files_op = new DejaDup.OperationFiles(get_backend());
     if (this.op_state != null)
       files_op.set_state(this.op_state);
     op = files_op;
@@ -508,11 +504,11 @@ public class AssistantRestore : AssistantOperation
       else {
         status_progress_bar.fraction = 0;
         status_timeout_id = Timeout.add(250, status_pulse);
-        if (status_op != null && status_op.needs_password) {
+        if (op != null && op.needs_password) {
           // Operation is waiting for password
           provide_password.begin();
         }
-        else if (status_op == null)
+        else if (op == null)
           do_status_query.begin();
       }
     }
@@ -522,11 +518,11 @@ public class AssistantRestore : AssistantOperation
       else {
         files_progress_bar.fraction = 0;
         files_timeout_id = Timeout.add(250, files_pulse);
-        if (files_op != null && files_op.needs_password) {
+        if (op != null && op.needs_password) {
           // Operation is waiting for password
           provide_password.begin();
         }
-        else if (files_op == null)
+        else if (op == null)
           do_files_query.begin();
       }
     }

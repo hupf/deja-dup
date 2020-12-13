@@ -86,6 +86,7 @@ class Browser : Gtk.Grid
     icon_view.pixbuf_column = FileStore.Column.ICON;
     icon_view.text_column = FileStore.Column.FILENAME;
     icon_view.item_activated.connect((v, p) => {go_down(p);});
+    icon_view.selection_changed.connect(selection_changed);
 
     // Manually tweak some aspects of the icon view (we should maybe switch to
     // a different widget like Gtk.FlowBox?)

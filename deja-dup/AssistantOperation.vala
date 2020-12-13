@@ -430,7 +430,6 @@ public abstract class AssistantOperation : Assistant
           "max-width-chars", 25,
           "wrap", true);
     page.attach(w, 0, rows, 3, 1);
-    w.hide();
     ++rows;
 
     var nag_entry = new Gtk.PasswordEntry();
@@ -448,7 +447,6 @@ public abstract class AssistantOperation : Assistant
 
     w = new Gtk.CheckButton.with_mnemonic(_("Test every two _months"));
     page.attach(w, 0, rows, 3, 1);
-    w.hide();
     ((Gtk.CheckButton)w).active = true;
     w.vexpand = true;
     w.valign = Gtk.Align.END;
@@ -739,7 +737,7 @@ public abstract class AssistantOperation : Assistant
       do_close();
   }
 
-  void do_delete()
+  protected void do_delete()
   {
     hide_everything();
     if (op != null)
