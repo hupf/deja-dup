@@ -15,7 +15,6 @@ class Browser : Gtk.Grid
 
   const ActionEntry[] ACTIONS = {
     {"select-all", select_all},
-    {"select-none", select_none},
     {"go-up", go_up},
     {"search", activate_search},
   };
@@ -61,6 +60,7 @@ class Browser : Gtk.Grid
     // Set up actions
     action_group = new SimpleActionGroup();
     action_group.add_action_entries(ACTIONS, this);
+    application.set_accels_for_action("restore.select-all", {"<Control>A"});
     application.set_accels_for_action("restore.go-up", {"<Alt>Left", "<Alt>Up"});
     application.set_accels_for_action("restore.search", {"<Control>F"});
 
@@ -86,11 +86,6 @@ class Browser : Gtk.Grid
     icon_view.pixbuf_column = FileStore.Column.ICON;
     icon_view.text_column = FileStore.Column.FILENAME;
     icon_view.item_activated.connect((v, p) => {go_down(p);});
-    icon_view.selection_changed.connect(selection_changed);
-    var icon_click = new Gtk.GestureClick();
-    icon_click.propagation_phase = Gtk.PropagationPhase.CAPTURE;
-    icon_click.pressed.connect(handle_icon_button_press);
-    icon_view.add_controller(icon_click);
 
     // Manually tweak some aspects of the icon view (we should maybe switch to
     // a different widget like Gtk.FlowBox?)
@@ -103,15 +98,14 @@ class Browser : Gtk.Grid
     bind_property("files-filled", list_view, "sensitive", BindingFlags.SYNC_CREATE);
     list_view.row_activated.connect((v, p, c) => {go_down(p);});
     list_view.get_selection().changed.connect(selection_changed);
-    var list_click = new Gtk.GestureClick();
-    list_click.propagation_phase = Gtk.PropagationPhase.CAPTURE;
-    list_click.pressed.connect(handle_list_button_press);
-    list_view.add_controller(list_click);
 
     // Connect various buttons
 
     var go_up_action = action_group.lookup_action("go-up");
     store.bind_property("can-go-up", go_up_action, "enabled", BindingFlags.SYNC_CREATE);
+
+    var select_all_action = action_group.lookup_action("select-all");
+    bind_property("files-filled", select_all_action, "enabled", BindingFlags.SYNC_CREATE);
 
     search_entry.search_changed.connect(update_search_filter);
 
@@ -157,7 +151,6 @@ class Browser : Gtk.Grid
   void selection_changed() {
     var count = get_selected_items().length();
     restore_button.sensitive = count > 0;
-    header.set_selection_count(count);
   }
 
   List<Gtk.TreePath> get_selected_items()
@@ -174,14 +167,6 @@ class Browser : Gtk.Grid
       icon_view.select_all();
     } else {
       list_view.get_selection().select_all();
-    }
-  }
-
-  void select_none() {
-    if (view_stack.visible_child_name == "icons") {
-      icon_view.unselect_all();
-    } else {
-      list_view.get_selection().unselect_all();
     }
   }
 
@@ -212,53 +197,6 @@ class Browser : Gtk.Grid
     }
 
     store.search_filter = search_entry.text;
-  }
-
-  // Keep this in sync with handle_list_button_press below
-  void handle_icon_button_press(Gtk.GestureClick gesture, int n_press,
-                                double x, double y)
-  {
-    // If we are in selection mode, we want to override normal behavior and
-    // simply toggle selected status.
-
-    if (!header.in_selection_mode())
-      return;
-
-    // After this point, we are handling this event
-    gesture.set_state(Gtk.EventSequenceState.CLAIMED);
-
-    var path = icon_view.get_path_at_pos((int)x, (int)y);
-    if (path == null)
-      return;
-
-    if (icon_view.path_is_selected(path))
-      icon_view.unselect_path(path);
-    else
-      icon_view.select_path(path);
-  }
-
-  // Keep this in sync with handle_icon_button_press above
-  void handle_list_button_press(Gtk.GestureClick gesture, int n_press,
-                                double x, double y)
-  {
-    // If we are in selection mode, we want to override normal behavior and
-    // simply toggle selected status.
-
-    if (!header.in_selection_mode())
-      return;
-
-    // After this point, we are handling this event
-    gesture.set_state(Gtk.EventSequenceState.CLAIMED);
-
-    Gtk.TreePath path;
-    if (!list_view.get_path_at_pos((int)x, (int)y, out path, null, null, null))
-      return;
-
-    var selection = list_view.get_selection();
-    if (selection.path_is_selected(path))
-      selection.unselect_path(path);
-    else
-      selection.select_path(path);
   }
 
   [GtkCallback]
