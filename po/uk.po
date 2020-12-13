@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-09 18:28+0000\n"
-"PO-Revision-Date: 2020-12-10 08:57+0200\n"
+"POT-Creation-Date: 2020-12-13 03:36+0000\n"
+"PO-Revision-Date: 2020-12-13 09:07+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -451,42 +451,30 @@ msgstr "Назад"
 msgid "Menu"
 msgstr "Меню"
 
-#: data/ui/MainHeaderBar.ui:50 data/ui/MainHeaderBar.ui:82
-msgid "Select"
-msgstr "Вибрати"
-
-#: data/ui/MainHeaderBar.ui:59 data/ui/MainHeaderBar.ui:102
+#: data/ui/MainHeaderBar.ui:49
 msgid "Search"
 msgstr "Пошук"
 
-#: data/ui/MainHeaderBar.ui:91 data/ui/PassphraseDialog.ui:16
-#: deja-dup/Assistant.vala:345
-msgid "_Cancel"
-msgstr "_Скасувати"
+#: data/ui/MainHeaderBar.ui:66
+#| msgid "Select _All"
+msgid "_Select All"
+msgstr "Позна_чити все"
 
-#: data/ui/MainHeaderBar.ui:120
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/ui/MainHeaderBar.ui:124
+#: data/ui/MainHeaderBar.ui:77
 msgid "_Keyboard Shortcuts"
 msgstr "_Сполучення клавіш"
 
-#: data/ui/MainHeaderBar.ui:128
+#: data/ui/MainHeaderBar.ui:81
 msgid "_Help"
 msgstr "_Довідка"
 
-#: data/ui/MainHeaderBar.ui:132
+#: data/ui/MainHeaderBar.ui:85
 msgid "_About Backups"
 msgstr "_Про Резервні копії"
-
-#: data/ui/MainHeaderBar.ui:140
-msgid "Select _All"
-msgstr "Позначити _всі"
-
-#: data/ui/MainHeaderBar.ui:144
-msgid "Select _None"
-msgstr "За_брати вибір"
 
 #: data/ui/MainWindow.ui:30
 msgid "Overview"
@@ -515,6 +503,10 @@ msgstr "Створити _резервну копію зараз"
 #: data/ui/MainWindow.ui:189 deja-dup/AssistantRestore.vala:63
 msgid "Restore"
 msgstr "Відновити зі збереженої копії"
+
+#: data/ui/PassphraseDialog.ui:16 deja-dup/Assistant.vala:345
+msgid "_Cancel"
+msgstr "_Скасувати"
 
 #: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
@@ -631,7 +623,7 @@ msgstr "sftp:// або ssh://"
 msgid "dav:// or davs://"
 msgstr "dav:// або davs://"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:14
 msgid "_Date"
 msgstr "_Дата"
 
@@ -879,7 +871,6 @@ msgid "Restore to _specific folder"
 msgstr "Відновити в _спеціальну теку"
 
 #: deja-dup/AssistantRestore.vala:180
-#| msgid "Restore to _specific folder"
 msgid "Restore to _specific folder:"
 msgstr "Відновити в спе_ціальну теку:"
 
@@ -966,7 +957,7 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: deja-dup/Browser.vala:301
+#: deja-dup/Browser.vala:239
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
@@ -999,32 +990,32 @@ msgid "Choose folders"
 msgstr "Оберіть каталоги"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
+#: deja-dup/ConfigLocationCombo.vala:58 deja-dup/ConfigLocationCombo.vala:260
 #: libdeja/BackendGoogle.vala:86
 msgid "Google Drive"
 msgstr "Диск Google"
 
-#: deja-dup/ConfigLocationCombo.vala:73
+#: deja-dup/ConfigLocationCombo.vala:59
 msgid "Local Folder"
 msgstr "Локальна тека"
 
-#: deja-dup/ConfigLocationCombo.vala:74
+#: deja-dup/ConfigLocationCombo.vala:60
 msgid "Network Server"
 msgstr "Мережевий сервер"
 
-#: deja-dup/ConfigLocationCombo.vala:264
+#: deja-dup/ConfigLocationCombo.vala:258
 msgid "Google Cloud Storage"
 msgstr "Хмарне сховище Google"
 
-#: deja-dup/ConfigLocationCombo.vala:268
+#: deja-dup/ConfigLocationCombo.vala:262
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: deja-dup/ConfigLocationCombo.vala:270
+#: deja-dup/ConfigLocationCombo.vala:264
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace файли в хмаринках"
 
-#: deja-dup/ConfigLocationCombo.vala:272
+#: deja-dup/ConfigLocationCombo.vala:266
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -1093,18 +1084,6 @@ msgstr "_Виберіть теку..."
 #: deja-dup/FolderChooserButton.vala:26
 msgid "Choose Folder"
 msgstr "Обрати каталог"
-
-#: deja-dup/MainHeaderBar.vala:31
-msgid "Click on items to select them"
-msgstr "Щоб вибрати елементи, натисніть на них"
-
-#: deja-dup/MainHeaderBar.vala:33
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u вибрано"
-msgstr[1] "%u вибрано"
-msgstr[2] "%u вибрано"
 
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "_Username"
@@ -1188,7 +1167,7 @@ msgstr "Відкрити «Резервні копії»"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:74
+#: deja-dup/TimeCombo.vala:90
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
@@ -1534,6 +1513,21 @@ msgid ""
 msgstr ""
 "Резервне копіювання почнеться, коли стане доступним нелімітоване мережеве "
 "з'єднання."
+
+#~ msgid "Select"
+#~ msgstr "Вибрати"
+
+#~ msgid "Select _None"
+#~ msgstr "За_брати вибір"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Щоб вибрати елементи, натисніть на них"
+
+#~ msgid "%u selected"
+#~ msgid_plural "%u selected"
+#~ msgstr[0] "%u вибрано"
+#~ msgstr[1] "%u вибрано"
+#~ msgstr[2] "%u вибрано"
 
 #~ msgid "Choose destination for restored files"
 #~ msgstr "Виберіть місце призначення для відновлення файлів"
