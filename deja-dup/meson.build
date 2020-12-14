@@ -35,6 +35,7 @@ deja_dup = executable('deja-dup',
      'RestoreFileTester.vala',
      'ServerHintPopover.vala',
      'TimeCombo.vala',
+     'TooltipBox.vala',
      'WidgetUtils.vala',
     ] + resources,
     vala_args: [

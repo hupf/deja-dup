@@ -7,7 +7,8 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="GtkListItem">
     <property name="child">
-      <object class="GtkBox">
+      <object class="TooltipBox">
+        <property name="label">label</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkImage">
@@ -21,7 +22,7 @@ SPDX-FileCopyrightText: Michael Terry
           </object>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="label">
             <property name="ellipsize">middle</property>
             <property name="justify">center</property>
             <property name="lines">3</property>

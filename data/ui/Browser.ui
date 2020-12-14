@@ -226,7 +226,8 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="GtkListItem">
     <property name="child">
-      <object class="GtkBox">
+      <object class="TooltipBox">
+        <property name="label">label</property>
         <property name="spacing">6</property>
         <child>
           <object class="GtkImage">
@@ -240,7 +241,7 @@ SPDX-FileCopyrightText: Michael Terry
           </object>
         </child>
         <child>
-          <object class="GtkLabel">
+          <object class="GtkLabel" id="label">
             <property name="ellipsize">middle</property>
             <property name="xalign">0</property>
             <binding name="label">
@@ -270,14 +271,19 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="GtkListItem">
     <property name="child">
-      <object class="GtkLabel">
-        <property name="ellipsize">middle</property>
-        <property name="xalign">0</property>
-        <binding name="label">
-          <lookup name="path" type="FileStoreItem">
-            <lookup name="item">GtkListItem</lookup>
-          </lookup>
-        </binding>
+      <object class="TooltipBox">
+        <property name="label">label</property>
+        <child>
+          <object class="GtkLabel" id="label">
+            <property name="ellipsize">middle</property>
+            <property name="xalign">0</property>
+            <binding name="label">
+              <lookup name="path" type="FileStoreItem">
+                <lookup name="item">GtkListItem</lookup>
+              </lookup>
+            </binding>
+          </object>
+        </child>
       </object>
     </property>
   </template>

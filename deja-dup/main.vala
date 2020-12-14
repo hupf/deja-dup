@@ -384,6 +384,7 @@ int main(string[] args)
   typeof(MainHeaderBar).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();
+  typeof(TooltipBox).ensure();
 
   return DejaDupApp.get_instance().run(args);
 }
