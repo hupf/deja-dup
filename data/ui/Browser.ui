@@ -7,10 +7,8 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <requires lib="gtk" version="4.0"/>
   <template class="Browser" parent="GtkGrid">
-    <property name="can_focus">0</property>
     <child>
       <object class="GtkSearchBar" id="search_bar">
-        <property name="can_focus">0</property>
         <property name="child">
           <object class="GtkSearchEntry" id="search_entry">
             <property name="width_chars">30</property>
@@ -24,7 +22,6 @@ SPDX-FileCopyrightText: Michael Terry
     </child>
     <child>
       <object class="GtkStack" id="view_stack">
-        <property name="can_focus">0</property>
         <property name="hexpand">1</property>
         <property name="vexpand">1</property>
         <child>
@@ -32,7 +29,6 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="name">icons</property>
             <property name="child">
               <object class="GtkOverlay">
-                <property name="can_focus">0</property>
                 <property name="child">
                   <object class="GtkScrolledWindow">
                     <property name="hscrollbar_policy">never</property>
@@ -47,7 +43,6 @@ SPDX-FileCopyrightText: Michael Terry
                 </property>
                 <child type="overlay">
                   <object class="GtkStack" id="overlay_stack">
-                    <property name="can_focus">0</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <child>
@@ -55,7 +50,6 @@ SPDX-FileCopyrightText: Michael Terry
                         <property name="name">pause</property>
                         <property name="child">
                           <object class="GtkLabel" id="pause_label">
-                            <property name="can_focus">0</property>
                             <property name="wrap">1</property>
                             <property name="max_width_chars">50</property>
                           </object>
@@ -67,14 +61,12 @@ SPDX-FileCopyrightText: Michael Terry
                         <property name="name">spinner</property>
                         <property name="child">
                           <object class="GtkGrid">
-                            <property name="can_focus">0</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <child>
                               <object class="GtkSpinner">
                                 <property name="width_request">64</property>
                                 <property name="height_request">64</property>
-                                <property name="can_focus">0</property>
                                 <property name="halign">center</property>
                                 <property name="valign">center</property>
                                 <property name="spinning">1</property>
@@ -86,7 +78,6 @@ SPDX-FileCopyrightText: Michael Terry
                             </child>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can_focus">0</property>
                                 <property name="label" translatable="yes">Scanning backup files…</property>
                                 <layout>
                                   <property name="column">0</property>
@@ -103,13 +94,11 @@ SPDX-FileCopyrightText: Michael Terry
                         <property name="name">error</property>
                         <property name="child">
                           <object class="GtkGrid">
-                            <property name="can_focus">0</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="row_spacing">12</property>
                             <child>
                               <object class="GtkLabel" id="error_label">
-                                <property name="can_focus">0</property>
                                 <property name="wrap">1</property>
                                 <property name="max_width_chars">50</property>
                                 <layout>
@@ -140,13 +129,11 @@ SPDX-FileCopyrightText: Michael Terry
                         <property name="name">auth</property>
                         <property name="child">
                           <object class="GtkGrid">
-                            <property name="can_focus">0</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="row_spacing">12</property>
                             <child>
                               <object class="GtkLabel" id="auth_label">
-                                <property name="can_focus">0</property>
                                 <property name="wrap">1</property>
                                 <property name="max_width_chars">50</property>
                                 <layout>
@@ -177,13 +164,11 @@ SPDX-FileCopyrightText: Michael Terry
                         <property name="name">passphrase</property>
                         <property name="child">
                           <object class="GtkGrid">
-                            <property name="can_focus">0</property>
                             <property name="halign">center</property>
                             <property name="valign">center</property>
                             <property name="row_spacing">12</property>
                             <child>
                               <object class="GtkLabel">
-                                <property name="can_focus">0</property>
                                 <property name="label" translatable="yes">Encryption password needed</property>
                                 <property name="wrap">1</property>
                                 <property name="max_width_chars">50</property>
@@ -316,7 +301,6 @@ SPDX-FileCopyrightText: Michael Terry
     </child>
     <child>
       <object class="GtkActionBar">
-        <property name="can_focus">0</property>
         <child>
           <object class="GtkButton" id="restore_button">
             <property name="label" translatable="yes">_Restore</property>

@@ -8,7 +8,6 @@ SPDX-FileCopyrightText: Michael Terry
   <requires lib="gtk" version="4.0"/>
   <requires lib="libhandy" version="4.0"/>
   <template class="MainWindow" parent="HdyApplicationWindow">
-    <property name="can_focus">0</property>
     <property name="default_width">770</property>
     <property name="default_height">400</property>
     <property name="title" translatable="yes">Backups</property>
@@ -22,7 +21,6 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="GtkStack" id="stack">
-            <property name="can_focus">0</property>
             <property name="transition_type">crossfade</property>
             <child>
               <object class="GtkStackPage" id="backups_page">
@@ -31,7 +29,6 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="icon_name">org.gnome.DejaDup-symbolic</property>
                 <property name="child">
                   <object class="GtkGrid" id="backups-grid">
-                    <property name="can_focus">0</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
                     <property name="margin_start">12</property>
@@ -43,7 +40,6 @@ SPDX-FileCopyrightText: Michael Terry
                     <property name="column_spacing">6</property>
                     <child>
                       <object class="GtkImage" id="app_logo">
-                        <property name="can_focus">0</property>
                         <property name="pixel_size">256</property>
                         <property name="icon_name">org.gnome.DejaDup</property>
                         <layout>
@@ -54,20 +50,17 @@ SPDX-FileCopyrightText: Michael Terry
                     </child>
                     <child>
                       <object class="GtkStack" id="overview_stack">
-                        <property name="can_focus">0</property>
                         <child>
                           <object class="GtkStackPage">
                             <property name="name">initial</property>
                             <property name="child">
                               <object class="GtkGrid">
-                                <property name="can_focus">0</property>
                                 <property name="valign">start</property>
                                 <property name="margin_top">18</property>
                                 <property name="hexpand">1</property>
                                 <property name="row_spacing">36</property>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="can_focus">0</property>
                                     <property name="label" translatable="yes">Keep your important files safe in a backup.</property>
                                     <property name="wrap">1</property>
                                     <property name="max_width_chars">30</property>
@@ -114,7 +107,6 @@ SPDX-FileCopyrightText: Michael Terry
                             <property name="name">normal</property>
                             <property name="child">
                               <object class="GtkGrid">
-                                <property name="can_focus">0</property>
                                 <property name="valign">start</property>
                                 <property name="margin_top">18</property>
                                 <property name="hexpand">1</property>
@@ -132,7 +124,6 @@ SPDX-FileCopyrightText: Michael Terry
                                 </child>
                                 <child>
                                   <object class="GtkLabel">
-                                    <property name="can_focus">0</property>
                                     <property name="halign">start</property>
                                     <property name="hexpand">1</property>
                                     <property name="label" translatable="yes">Back up _automatically</property>
