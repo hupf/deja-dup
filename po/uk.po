@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-13 03:36+0000\n"
-"PO-Revision-Date: 2020-12-13 09:07+0200\n"
+"POT-Creation-Date: 2020-12-14 02:06+0000\n"
+"PO-Revision-Date: 2020-12-14 10:04+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -318,7 +318,7 @@ msgstr ""
 "Унікальний ідентифікатор файлової системи для накопичувача, який "
 "використовується для розпізнавання диска під час його підключення."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Назва"
 
@@ -365,27 +365,32 @@ msgstr ""
 "Шлях до теки, де зберігаються резервні копії. Шляхи можуть бути абсолютними "
 "або відносними щодо основної системи."
 
-#: data/ui/Browser.ui:91
+#: data/ui/Browser.ui:90
 msgid "Scanning backup files…"
 msgstr "Шукаємо файли резервних копій…"
 
-#: data/ui/Browser.ui:124
+#: data/ui/Browser.ui:123
 msgid "_Retry"
 msgstr "_Повторити"
 
-#: data/ui/Browser.ui:161
+#: data/ui/Browser.ui:160
 msgid "_Connect"
 msgstr "З'_єднатись"
 
-#: data/ui/Browser.ui:188
+#: data/ui/Browser.ui:187
 msgid "Encryption password needed"
 msgstr "Потрібен пароль для доступу"
 
-#: data/ui/Browser.ui:199
+#: data/ui/Browser.ui:198
 msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
-#: data/ui/Browser.ui:298 deja-dup/AssistantRestore.vala:67
+#: data/ui/Browser.ui:280
+#| msgid "_Location"
+msgid "Location"
+msgstr "Місце"
+
+#: data/ui/Browser.ui:322 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "_Відновити"
 
@@ -456,7 +461,6 @@ msgid "Search"
 msgstr "Пошук"
 
 #: data/ui/MainHeaderBar.ui:66
-#| msgid "Select _All"
 msgid "_Select All"
 msgstr "Позна_чити все"
 
@@ -500,7 +504,7 @@ msgstr "Створювати резервні копії _автоматично
 msgid "_Back Up Now"
 msgstr "Створити _резервну копію зараз"
 
-#: data/ui/MainWindow.ui:189 deja-dup/AssistantRestore.vala:63
+#: data/ui/MainWindow.ui:192 deja-dup/AssistantRestore.vala:61
 msgid "Restore"
 msgstr "Відновити зі збереженої копії"
 
@@ -513,7 +517,7 @@ msgid "Con_tinue"
 msgstr "П_родовжити"
 
 #: data/ui/PassphraseDialog.ui:50 deja-dup/AssistantOperation.vala:379
-#: deja-dup/AssistantOperation.vala:441
+#: deja-dup/AssistantOperation.vala:440
 msgid "E_ncryption password"
 msgstr "Пароль шифрування"
 
@@ -702,7 +706,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Резервна копія"
 
-#: deja-dup/AssistantBackup.vala:63
+#: deja-dup/AssistantBackup.vala:61
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -710,11 +714,11 @@ msgstr ""
 "Не вдалося створити резервні копії даних у вказаних нижче теках, оскільки "
 "«Резервним копіям» не вдалося отримати до них доступ:"
 
-#: deja-dup/AssistantBackup.vala:79
+#: deja-dup/AssistantBackup.vala:77
 msgid "Creating the first backup.  This may take a while."
 msgstr "Створення першої резервної копії. Це може зайняти деякий час."
 
-#: deja-dup/AssistantBackup.vala:80
+#: deja-dup/AssistantBackup.vala:78
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -724,31 +728,31 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:95
+#: deja-dup/AssistantBackup.vala:93
 msgid "Backing up:"
 msgstr "Резервне копіювання:"
 
-#: deja-dup/AssistantBackup.vala:104
+#: deja-dup/AssistantBackup.vala:102
 msgid "Backup Failed"
 msgstr "Збереження провалено"
 
-#: deja-dup/AssistantBackup.vala:107
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Finished"
 msgstr "Збереження завершено"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:111
+#: deja-dup/AssistantBackup.vala:109
 msgid "Your files were successfully backed up and tested."
 msgstr "Резервну копію файлів успішно створено й перевірено."
 
-#: deja-dup/AssistantBackup.vala:118
+#: deja-dup/AssistantBackup.vala:116
 msgid "Backing Up…"
 msgstr "Резервування..."
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: deja-dup/AssistantBackup.vala:124 deja-dup/AssistantOperation.vala:873
+#: deja-dup/AssistantBackup.vala:122 deja-dup/AssistantOperation.vala:871
 msgid "Backups needs your input to continue"
 msgstr "«Резервним копіям» потрібне ваше рішення, щоб продовжувати"
 
@@ -756,7 +760,7 @@ msgstr "«Резервним копіям» потрібне ваше рішен
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:151
+#: deja-dup/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Виконуємо резервне копіювання"
 
@@ -817,139 +821,139 @@ msgstr ""
 "ситуації, будь ласка, знову введіть пароль для доступу до зашифрованих "
 "даних, щоб виконати тест на відновлення."
 
-#: deja-dup/AssistantOperation.vala:449
+#: deja-dup/AssistantOperation.vala:448
 msgid "Test every two _months"
 msgstr "Перевіряти кожні два _місяці"
 
-#: deja-dup/AssistantOperation.vala:481
+#: deja-dup/AssistantOperation.vala:479
 msgid "_Grant Access"
 msgstr "_Надати доступ"
 
-#: deja-dup/AssistantOperation.vala:543
+#: deja-dup/AssistantOperation.vala:541
 msgid "Install Packages"
 msgstr "Встановити пакунки"
 
-#: deja-dup/AssistantOperation.vala:558
+#: deja-dup/AssistantOperation.vala:556
 msgid "Summary"
 msgstr "Підсумок"
 
-#: deja-dup/AssistantOperation.vala:580
+#: deja-dup/AssistantOperation.vala:578
 msgid "Restore Test"
 msgstr "Перевірка відновлення"
 
-#: deja-dup/AssistantOperation.vala:588
+#: deja-dup/AssistantOperation.vala:586
 msgid "Grant Access"
 msgstr "Надати доступ"
 
-#: deja-dup/AssistantOperation.vala:792
+#: deja-dup/AssistantOperation.vala:790
 msgid "Require Password?"
 msgstr "Потрібен пароль?"
 
-#: deja-dup/AssistantOperation.vala:794
+#: deja-dup/AssistantOperation.vala:792
 msgid "Encryption Password Needed"
 msgstr "Потрібен пароль шифрування"
 
-#: deja-dup/AssistantOperation.vala:842
+#: deja-dup/AssistantOperation.vala:840
 msgid "Backups needs your encryption password to continue"
 msgstr "«Резервним копіям» потрібен ваш пароль шифрування, щоб продовжувати"
 
-#: deja-dup/AssistantOperation.vala:913
+#: deja-dup/AssistantOperation.vala:911
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Встановити"
 
-#: deja-dup/AssistantOperation.vala:918
+#: deja-dup/AssistantOperation.vala:916
 msgid "Backups needs to install packages to continue"
 msgstr "«Резервним копіям» слід встановити пакунки, щоб продовжувати"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:139
 msgid "Restore files to _original locations"
 msgstr "Відновити файли до _початкових місць"
 
-#: deja-dup/AssistantRestore.vala:152
+#: deja-dup/AssistantRestore.vala:150
 msgid "Restore to _specific folder"
 msgstr "Відновити в _спеціальну теку"
 
-#: deja-dup/AssistantRestore.vala:180
+#: deja-dup/AssistantRestore.vala:178
 msgid "Restore to _specific folder:"
 msgstr "Відновити в спе_ціальну теку:"
 
-#: deja-dup/AssistantRestore.vala:189
+#: deja-dup/AssistantRestore.vala:187
 msgid "Backups does not have permission to restore the following files:"
 msgstr "«Резервні копії» не мають прав доступу для відновлення таких файлів:"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Розміщення резервних копій"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:267
+#: deja-dup/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Дата відновлення"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:276
+#: deja-dup/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Тека відновлення"
 
-#: deja-dup/AssistantRestore.vala:300
+#: deja-dup/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Перевірка резервних копій..."
 
-#: deja-dup/AssistantRestore.vala:308
+#: deja-dup/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "З якого часу відновити?"
 
-#: deja-dup/AssistantRestore.vala:319
+#: deja-dup/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Куди відновлювати?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:352
+#: deja-dup/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Відновлення:"
 
-#: deja-dup/AssistantRestore.vala:365
+#: deja-dup/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Немає копій для відновлення"
 
-#: deja-dup/AssistantRestore.vala:449
+#: deja-dup/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Оригінальне розташування"
 
-#: deja-dup/AssistantRestore.vala:463
+#: deja-dup/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Файл для відновлення"
 msgstr[1] "Файли для відновлення"
 msgstr[2] "Файлів для відновлення"
 
-#: deja-dup/AssistantRestore.vala:488
+#: deja-dup/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Відновлення провалено"
 
-#: deja-dup/AssistantRestore.vala:490
+#: deja-dup/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Відновлення завершено"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:493
+#: deja-dup/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Ваші файли були успішно відновлені."
 
-#: deja-dup/AssistantRestore.vala:496
+#: deja-dup/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Файл успішно відновлено."
 msgstr[1] "Файли успішно відновлено."
 msgstr[2] "Файли успішно відновлено."
 
-#: deja-dup/AssistantRestore.vala:503 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Відновлення…"
 
-#: deja-dup/AssistantRestore.vala:573
+#: deja-dup/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Виконуємо відновлення"
 
@@ -957,7 +961,7 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: deja-dup/Browser.vala:239
+#: deja-dup/Browser.vala:227
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
@@ -1093,24 +1097,24 @@ msgstr "_Ім'я користувача"
 msgid "_Password"
 msgstr "_Пароль"
 
-#: deja-dup/MountOperationAssistant.vala:64
+#: deja-dup/MountOperationAssistant.vala:62
 msgid "Location not available"
 msgstr "Сховище недоступне"
 
-#: deja-dup/MountOperationAssistant.vala:79
+#: deja-dup/MountOperationAssistant.vala:77
 msgid "Backups needs your password to continue"
 msgstr "«Резервним копіям» потрібен ваш пароль, щоб продовжувати"
 
-#: deja-dup/MountOperationAssistant.vala:146
+#: deja-dup/MountOperationAssistant.vala:144
 msgid "Connect _anonymously"
 msgstr "З'єднатися _анонімно"
 
-#: deja-dup/MountOperationAssistant.vala:150
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect as u_ser"
 msgstr "З'єднатися _як"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:194
+#: deja-dup/MountOperationAssistant.vala:192
 msgid "_Domain"
 msgstr "_Домен"
 
