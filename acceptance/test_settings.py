@@ -14,7 +14,7 @@ class PreferencesTest(BaseTest):
         super().setUp()
         self.app = self.cmd()
         self.app.childNamed("Menu").click()
-        self.app.button("Preferences").click()
+        self.app.childNamed("Preferences").click()
 
     def test_general(self):
         # Test that there's a special first time welcome screen
@@ -23,12 +23,12 @@ class PreferencesTest(BaseTest):
         # Grab switch from main window, set last-run time so the switch shows up
         now = GLib.DateTime.new_now_utc().format_iso8601()
         self.set_string("last-run", now)
-        periodic_main = self.app.window("Backups").child(name="Automatic backup")
+        periodic_main = self.app.window("Backups").child(name="Back up automatically")
 
         prefs = self.app.window("Preferences")
 
         # Periodic to settings
-        periodic = prefs.child(name="Automatic backup")
+        periodic = prefs.child(label="Back Up Automatically")
         self.assertFalse(periodic.checked)
         self.assertFalse(periodic_main.checked)
         periodic.click()

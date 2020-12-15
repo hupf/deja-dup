@@ -43,7 +43,7 @@ class RestoreTest(BaseTest):
             return
 
         window.child(
-            roleName="radio button", name="Allow restoring without a password"
+            roleName="check box", name="_Allow restoring without a password"
         ).click()
         window.button("Forward").click()
         self.wait_for(lambda: window.dead, timeout=60)

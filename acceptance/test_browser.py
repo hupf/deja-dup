@@ -42,7 +42,7 @@ class BrowserTest(BaseTest):
         self.set_string("folder", backupdir, child="local")
 
     def switch_to_restore(self):
-        self.app.child(roleName="radio button", name="Restore").click()
+        self.app.child(roleName="check box", name="Restore").click()
 
     def scan(self, password=None, error=None):
         self.switch_to_restore()
@@ -95,7 +95,7 @@ class BrowserTest(BaseTest):
     def select_location(self, where):
         self.addCleanup(shutil.rmtree, where, ignore_errors=True)
         self.window.child(
-            roleName="radio button", name="Restore to specific folder"
+            roleName="check box", name="Restore to specific folder"
         ).click()
         self.window.child(roleName="push button", label="    Restore folder").click()
         self.window.child(roleName="menu item", name="Other…").click()

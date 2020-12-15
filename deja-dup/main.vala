@@ -377,7 +377,7 @@ int main(string[] args)
   typeof(ConfigFolderList).ensure();
   typeof(ConfigFolderPage).ensure();
   typeof(ConfigLocationGrid).ensure();
-  typeof(ConfigPeriod).ensure();
+  typeof(ConfigPeriodRow).ensure();
   typeof(ConfigServerEntry).ensure();
   typeof(ConfigStatusLabel).ensure();
   typeof(FolderChooserButton).ensure();

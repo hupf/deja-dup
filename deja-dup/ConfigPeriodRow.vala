@@ -6,13 +6,13 @@
 
 using GLib;
 
-public class ConfigPeriod : ConfigComboRow
+public class ConfigPeriodRow : ConfigComboRow
 {
   construct {
     var settings = DejaDup.get_settings();
     settings.bind(DejaDup.PERIODIC_KEY,
                   this, "sensitive",
-                  SettingsBindFlags.DEFAULT);
+                  SettingsBindFlags.GET);
   }
 
   protected override void fill_store() {

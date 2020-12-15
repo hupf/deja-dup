@@ -22,6 +22,8 @@ from dogtail import tree
 from dogtail.utils import run
 from gi.repository import Gio, GLib
 
+from .gtk4 import Gtk4Node
+
 
 class BaseTest(unittest.TestCase):
     def setUp(self):
@@ -120,7 +122,7 @@ class BaseTest(unittest.TestCase):
                               dumb=True, timeout=1)
 
     def get_app(self):
-        return tree.root.application(os.environ["DD_APPID"])
+        return Gtk4Node(tree.root.application(os.environ["DD_APPID"]))
 
     def reset_gsettings(self, settings):
         schema = settings.get_property("settings-schema")
@@ -157,7 +159,7 @@ class BaseTest(unittest.TestCase):
                 window.child(roleName="check box", name="Remember password").click()
         else:
             window.child(
-                roleName="radio button", name="Allow restoring without a password"
+                roleName="check box", name="_Allow restoring without a password"
             ).click()
 
         window.button("Forward").click()
