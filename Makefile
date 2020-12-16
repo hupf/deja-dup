@@ -28,6 +28,20 @@ acceptance-snap:
 clean:
 	rm -rf builddir
 
+.PHONY: run
+run:
+	@flatpak run \
+		--command=make \
+		--devel \
+		org.gnome.DejaDupDevel//master \
+		run-bash
+
+.PHONY: run-bash
+run-bash:
+	@env \
+		PKG_CONFIG_PATH=/app/lib/pkgconfig \
+		make && ./tests/shell deja-dup
+
 .PHONY: devshell
 devshell:
 	@flatpak run \
@@ -45,8 +59,8 @@ devshell-bash:
 
 .PHONY: devshell-sdk
 devshell-sdk:
-	flatpak remote-add --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-	flatpak install --or-update -y gnome-nightly org.gnome.Sdk//master
+	flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
+	flatpak install --or-update -y gnome-nightly org.gnome.Platform//master org.gnome.Sdk//master
 
 .PHONY: devshell-setup
 devshell-setup: devshell-sdk flatpak
@@ -54,12 +68,12 @@ devshell-setup: devshell-sdk flatpak
 
 .PHONY: flatpak
 flatpak:
-	flatpak-builder --repo=$(HOME)/repo \
+	flatpak-builder --install \
+	                --user \
 	                --force-clean \
 	                --state-dir=builddir/.flatpak-builder \
 	                builddir/flatpak \
 	                flatpak/org.gnome.DejaDupDevel.yaml
-	flatpak install --or-update --user -y org.gnome.DejaDupDevel//master
 
 .PHONY: flatpak-update
 flatpak-update:
