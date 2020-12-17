@@ -329,8 +329,12 @@ class Browser : Gtk.Grid
         return;
       operation = null;
       if (success) {
-        time_filled = true;
-        start_files_operation();
+        if (timecombo.when == null) {
+          switch_overlay_to_error(_("No backup files found"));
+        } else {
+          time_filled = true;
+          start_files_operation();
+        }
       }
     });
     timecombo.register_operation(operation as DejaDup.OperationStatus);
