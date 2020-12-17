@@ -345,6 +345,7 @@ class Browser : Gtk.Grid
   {
     stop_operation();
     files_filled = false;
+    folder_changed();
 
     var backend = application.get_restore_backend();
     operation = new DejaDup.OperationFiles(backend, timecombo.when);
