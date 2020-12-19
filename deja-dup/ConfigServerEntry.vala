@@ -24,6 +24,12 @@ class ConfigServerEntry : Gtk.Entry
     popover.popup();
   }
 
+  public override void dispose()
+  {
+    popover.unparent();
+    base.dispose();
+  }
+
   public override void size_allocate(int width, int height, int baseline)
   {
     base.size_allocate(width, height, baseline);
