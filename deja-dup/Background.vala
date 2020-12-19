@@ -64,6 +64,8 @@ public class Background : Object
   public static async bool request_autostart(Gtk.Widget widget)
   {
     var window = widget.root as Gtk.Window;
+    if (window == null)
+      return false; // can happen if a switch wasn't finalized
 
     string? mitigation;
     var install_env = DejaDup.InstallEnv.instance();

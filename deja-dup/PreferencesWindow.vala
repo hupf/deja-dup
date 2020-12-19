@@ -12,17 +12,12 @@ public class PreferencesWindow : Hdy.PreferencesWindow
   [GtkChild]
   Gtk.Label location_description;
 
-  [GtkChild]
-  Gtk.Switch auto_backup;
-
   DejaDup.BackendWatcher watcher;
   construct
   {
     watcher = new DejaDup.BackendWatcher();
     watcher.changed.connect(update_location_description);
     update_location_description();
-
-    ConfigAutoBackup.bind(auto_backup);
   }
 
   ~PreferencesWindow()

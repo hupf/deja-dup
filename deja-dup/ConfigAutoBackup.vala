@@ -6,30 +6,38 @@
 
 using GLib;
 
-// Not really a widget, because:
-// (A) GtkSwitch is "final" and can't be subclassed and
-// (B) Vala doesn't seem to have a way to mark a custom widget as activatable
-//     (https://discourse.gnome.org/t/how-to-mark-a-custom-widget-as-activatable-in-vala/4924)
-// So instead, this is just a shell of a class that provides one utility method
-// to bind a switch like we need.
-public class ConfigAutoBackup
+public class ConfigAutoBackup: Gtk.Box
 {
-  public static void bind(Gtk.Switch auto_switch) {
-    var settings = DejaDup.get_settings();
-    settings.bind(DejaDup.PERIODIC_KEY, auto_switch, "active", SettingsBindFlags.GET);
+  public signal void activate_signal();
 
-    auto_switch.state_set.connect(on_state_set);
+  unowned Gtk.Switch toggle;
+  construct {
+    var owned_toggle = new Gtk.Switch();
+    append(owned_toggle);
+    toggle = owned_toggle;
+
+    set_activate_signal_from_name("activate-signal");
+    activate_signal.connect(do_activate);
+
+    var settings = DejaDup.get_settings();
+    settings.bind(DejaDup.PERIODIC_KEY, toggle, "active", SettingsBindFlags.GET);
+    toggle.state_set.connect(on_state_set);
   }
 
-  static bool on_state_set(Gtk.Switch auto_switch, bool state)
+  void do_activate()
+  {
+    toggle.activate();
+  }
+
+  bool on_state_set(bool state)
   {
     if (state) {
-      Background.request_autostart.begin(auto_switch, (obj, res) => {
+      Background.request_autostart.begin(toggle, (obj, res) => {
         if (Background.request_autostart.end(res)) {
-          auto_switch.state = true; // finish state set
+          toggle.state = true; // finish state set
           set_periodic(true);
         } else {
-          auto_switch.active = false; // flip switch back to unset mode
+          toggle.active = false; // flip switch back to unset mode
         }
       });
       return true; // delay setting of state

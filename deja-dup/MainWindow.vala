@@ -25,8 +25,6 @@ public class MainWindow : Hdy.ApplicationWindow
   [GtkChild]
   Gtk.Image app_logo;
   [GtkChild]
-  Gtk.Switch auto_backup;
-  [GtkChild]
   Browser browser;
 
   construct {
@@ -46,7 +44,6 @@ public class MainWindow : Hdy.ApplicationWindow
     stack.notify["visible-child-name"].connect(on_stack_child_changed);
     deja_app.notify["custom-backend"].connect(on_custom_backend_changed);
 
-    ConfigAutoBackup.bind(auto_backup);
     browser.bind_to_window(this);
   }
 
