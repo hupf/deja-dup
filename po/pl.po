@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-13 03:36+0000\n"
-"PO-Revision-Date: 2020-12-13 16:57+0100\n"
+"POT-Creation-Date: 2020-12-14 02:06+0000\n"
+"PO-Revision-Date: 2020-12-20 12:52+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -319,7 +319,7 @@ msgstr ""
 "Unikalny identyfikator systemu plików dla dysku, używany do rozpoznawania go "
 "po podłączeniu."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Nazwa"
 
@@ -367,27 +367,31 @@ msgstr ""
 "Ścieżka do katalogu do przechowywania kopii zapasowych. Ścieżki mogą być "
 "bezwzględne lub względne wobec adresu."
 
-#: data/ui/Browser.ui:91
+#: data/ui/Browser.ui:90
 msgid "Scanning backup files…"
 msgstr "Wyszukiwanie plików w kopii zapasowej…"
 
-#: data/ui/Browser.ui:124
+#: data/ui/Browser.ui:123
 msgid "_Retry"
 msgstr "Po_nów"
 
-#: data/ui/Browser.ui:161
+#: data/ui/Browser.ui:160
 msgid "_Connect"
 msgstr "P_ołącz"
 
-#: data/ui/Browser.ui:188
+#: data/ui/Browser.ui:187
 msgid "Encryption password needed"
 msgstr "Wymagane jest hasło szyfrowania"
 
-#: data/ui/Browser.ui:199
+#: data/ui/Browser.ui:198
 msgid "_Enter Password"
 msgstr "_Wprowadź hasło"
 
-#: data/ui/Browser.ui:298 deja-dup/AssistantRestore.vala:67
+#: data/ui/Browser.ui:280
+msgid "Location"
+msgstr "Położenie"
+
+#: data/ui/Browser.ui:322 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "P_rzywróć"
 
@@ -501,7 +505,7 @@ msgstr "_Automatyczne kopie zapasowe"
 msgid "_Back Up Now"
 msgstr "_Wykonaj kopię zapasową"
 
-#: data/ui/MainWindow.ui:189 deja-dup/AssistantRestore.vala:63
+#: data/ui/MainWindow.ui:192 deja-dup/AssistantRestore.vala:61
 msgid "Restore"
 msgstr "Przywracanie"
 
@@ -514,7 +518,7 @@ msgid "Con_tinue"
 msgstr "_Kontynuuj"
 
 #: data/ui/PassphraseDialog.ui:50 deja-dup/AssistantOperation.vala:379
-#: deja-dup/AssistantOperation.vala:441
+#: deja-dup/AssistantOperation.vala:440
 msgid "E_ncryption password"
 msgstr "Hasło _szyfrowania"
 
@@ -703,7 +707,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Wykonaj kopię zapasową"
 
-#: deja-dup/AssistantBackup.vala:63
+#: deja-dup/AssistantBackup.vala:61
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -711,11 +715,11 @@ msgstr ""
 "Nie można wykonać kopii zapasowej następujących katalogów, ponieważ "
 "narzędzie do tworzenia kopii zapasowych nie ma do nich dostępu:"
 
-#: deja-dup/AssistantBackup.vala:79
+#: deja-dup/AssistantBackup.vala:77
 msgid "Creating the first backup.  This may take a while."
 msgstr "Wykonywanie pierwszej kopii zapasowej. To może chwilę zająć."
 
-#: deja-dup/AssistantBackup.vala:80
+#: deja-dup/AssistantBackup.vala:78
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -725,31 +729,31 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:95
+#: deja-dup/AssistantBackup.vala:93
 msgid "Backing up:"
 msgstr "Wykonywanie kopii zapasowej:"
 
-#: deja-dup/AssistantBackup.vala:104
+#: deja-dup/AssistantBackup.vala:102
 msgid "Backup Failed"
 msgstr "Wykonanie kopii zapasowej się nie powiodło"
 
-#: deja-dup/AssistantBackup.vala:107
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Finished"
 msgstr "Wykonano kopię zapasową"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:111
+#: deja-dup/AssistantBackup.vala:109
 msgid "Your files were successfully backed up and tested."
 msgstr "Przywrócono i przetestowano pliki."
 
-#: deja-dup/AssistantBackup.vala:118
+#: deja-dup/AssistantBackup.vala:116
 msgid "Backing Up…"
 msgstr "Wykonywanie kopii zapasowej…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: deja-dup/AssistantBackup.vala:124 deja-dup/AssistantOperation.vala:873
+#: deja-dup/AssistantBackup.vala:122 deja-dup/AssistantOperation.vala:871
 msgid "Backups needs your input to continue"
 msgstr "Do kontynuacji wymagane jest działanie użytkownika"
 
@@ -757,7 +761,7 @@ msgstr "Do kontynuacji wymagane jest działanie użytkownika"
 #. with just a suspend inhibit. So let's avoid annoying the user and just
 #. not bother inhibiting for automatic backups at all until that's fixed.
 #. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:151
+#: deja-dup/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Trwa wykonywanie kopii zapasowej"
 
@@ -816,141 +820,141 @@ msgstr ""
 "Aby upewnić się, że będzie można pobrać pliki w razie potrzeby, proszę "
 "wprowadzić hasło szyfrowania ponownie, aby wykonać krótki test przywracania."
 
-#: deja-dup/AssistantOperation.vala:449
+#: deja-dup/AssistantOperation.vala:448
 msgid "Test every two _months"
 msgstr "Testowanie co dwa _miesiące"
 
-#: deja-dup/AssistantOperation.vala:481
+#: deja-dup/AssistantOperation.vala:479
 msgid "_Grant Access"
 msgstr "_Udziel dostępu"
 
-#: deja-dup/AssistantOperation.vala:543
+#: deja-dup/AssistantOperation.vala:541
 msgid "Install Packages"
 msgstr "Instalacja pakietów"
 
-#: deja-dup/AssistantOperation.vala:558
+#: deja-dup/AssistantOperation.vala:556
 msgid "Summary"
 msgstr "Podsumowanie"
 
-#: deja-dup/AssistantOperation.vala:580
+#: deja-dup/AssistantOperation.vala:578
 msgid "Restore Test"
 msgstr "Test przywracania"
 
-#: deja-dup/AssistantOperation.vala:588
+#: deja-dup/AssistantOperation.vala:586
 msgid "Grant Access"
 msgstr "Udzielenie dostępu"
 
-#: deja-dup/AssistantOperation.vala:792
+#: deja-dup/AssistantOperation.vala:790
 msgid "Require Password?"
 msgstr "Wymagać hasła?"
 
-#: deja-dup/AssistantOperation.vala:794
+#: deja-dup/AssistantOperation.vala:792
 msgid "Encryption Password Needed"
 msgstr "Wymagane jest hasło szyfrowania"
 
-#: deja-dup/AssistantOperation.vala:842
+#: deja-dup/AssistantOperation.vala:840
 msgid "Backups needs your encryption password to continue"
 msgstr "Do kontynuacji wymagane jest hasło szyfrowania"
 
-#: deja-dup/AssistantOperation.vala:913
+#: deja-dup/AssistantOperation.vala:911
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Zainstaluj"
 
-#: deja-dup/AssistantOperation.vala:918
+#: deja-dup/AssistantOperation.vala:916
 msgid "Backups needs to install packages to continue"
 msgstr "Do kontynuacji wymagana jest instalacja pakietów"
 
-#: deja-dup/AssistantRestore.vala:141
+#: deja-dup/AssistantRestore.vala:139
 msgid "Restore files to _original locations"
 msgstr "Przywrócenie plików do pierw_otnych położeń"
 
-#: deja-dup/AssistantRestore.vala:152
+#: deja-dup/AssistantRestore.vala:150
 msgid "Restore to _specific folder"
 msgstr "Przywrócenie do podanego _katalogu"
 
-#: deja-dup/AssistantRestore.vala:180
+#: deja-dup/AssistantRestore.vala:178
 msgid "Restore to _specific folder:"
 msgstr "Przywrócenie do podanego _katalogu:"
 
-#: deja-dup/AssistantRestore.vala:189
+#: deja-dup/AssistantRestore.vala:187
 msgid "Backups does not have permission to restore the following files:"
 msgstr ""
 "Narzędzie do tworzenia kopii zapasowych nie ma uprawnienia do przywrócenia "
 "tych plików:"
 
-#: deja-dup/AssistantRestore.vala:252
+#: deja-dup/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Położenie kopii zapasowej"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:267
+#: deja-dup/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Data przywrócenia"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:276
+#: deja-dup/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Przywrócenie katalogu"
 
-#: deja-dup/AssistantRestore.vala:300
+#: deja-dup/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Sprawdzanie kopii zapasowych…"
 
-#: deja-dup/AssistantRestore.vala:308
+#: deja-dup/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Od kiedy przywracać?"
 
-#: deja-dup/AssistantRestore.vala:319
+#: deja-dup/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Gdzie przywrócić?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:352
+#: deja-dup/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Przywracanie:"
 
-#: deja-dup/AssistantRestore.vala:365
+#: deja-dup/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Brak kopii zapasowych do przywrócenia"
 
-#: deja-dup/AssistantRestore.vala:449
+#: deja-dup/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Pierwotne położenie"
 
-#: deja-dup/AssistantRestore.vala:463
+#: deja-dup/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Plik do przywrócenia"
 msgstr[1] "Pliki do przywrócenia"
 msgstr[2] "Pliki do przywrócenia"
 
-#: deja-dup/AssistantRestore.vala:488
+#: deja-dup/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Przywrócenie się nie powiodło"
 
-#: deja-dup/AssistantRestore.vala:490
+#: deja-dup/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Ukończono przywracanie"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:493
+#: deja-dup/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Przywrócono pliki."
 
-#: deja-dup/AssistantRestore.vala:496
+#: deja-dup/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Plik został przywrócony."
 msgstr[1] "Pliki zostały przywrócone."
 msgstr[2] "Pliki zostały przywrócone."
 
-#: deja-dup/AssistantRestore.vala:503 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Przywracanie…"
 
-#: deja-dup/AssistantRestore.vala:573
+#: deja-dup/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Trwa przywracanie z kopii zapasowej"
 
@@ -958,7 +962,7 @@ msgstr "Trwa przywracanie z kopii zapasowej"
 msgid "Cannot back up automatically"
 msgstr "Nie można wykonać automatycznej kopii zapasowej"
 
-#: deja-dup/Browser.vala:239
+#: deja-dup/Browser.vala:227
 msgid "Authentication needed"
 msgstr "Wymagane jest uwierzytelnienie"
 
@@ -1094,24 +1098,24 @@ msgstr "Nazwa _użytkownika"
 msgid "_Password"
 msgstr "_Hasło"
 
-#: deja-dup/MountOperationAssistant.vala:64
+#: deja-dup/MountOperationAssistant.vala:62
 msgid "Location not available"
 msgstr "Położenie jest niedostępne"
 
-#: deja-dup/MountOperationAssistant.vala:79
+#: deja-dup/MountOperationAssistant.vala:77
 msgid "Backups needs your password to continue"
 msgstr "Do kontynuacji wymagane jest hasło"
 
-#: deja-dup/MountOperationAssistant.vala:146
+#: deja-dup/MountOperationAssistant.vala:144
 msgid "Connect _anonymously"
 msgstr "Połącz _anonimowo"
 
-#: deja-dup/MountOperationAssistant.vala:150
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect as u_ser"
 msgstr "Połącz jako _użytkownik"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:194
+#: deja-dup/MountOperationAssistant.vala:192
 msgid "_Domain"
 msgstr "_Domena"
 
