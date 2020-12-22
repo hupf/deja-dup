@@ -8,7 +8,7 @@ if [ -z "$DESTDIR" ]; then
   datadir="$1"
 
   echo "Updating icon cache..."
-  gtk-update-icon-cache -f -t "$datadir/icons/hicolor"
+  gtk4-update-icon-cache -f -t "$datadir/icons/hicolor"
 
   echo "Updating gsettings cache..."
   glib-compile-schemas "$datadir/glib-2.0/schemas"
