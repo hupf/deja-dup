@@ -155,10 +155,16 @@ public class BackendRemote : BackendFile
     if (root == null)
       throw new IOError.FAILED("%s", _("Could not mount storage location."));
 
-    if (root.get_uri() == "")
-      throw new IOError.FAILED("%s", _("The server’s network location needs to be specified in the storage location preferences."));
-    if (root.get_uri_scheme() == null)
-      throw new IOError.FAILED("%s", _("The server’s network location '%s' does not look like a network location.").printf(root.get_uri()));
+    if (root.get_uri() == "") {
+      throw new IOError.FAILED("%s", _(
+        "The server’s network location needs to be specified in the storage location preferences."
+      ));
+    }
+    if (root.get_uri_scheme() == null) {
+      throw new IOError.FAILED("%s", _(
+        "The server’s network location ‘%s’ does not look like a network location."
+      ).printf(root.get_uri()));
+    }
 
     if (root.get_uri_scheme() == "smb" && root.get_uri().split("/").length < 5) {
       // Special sanity check for some edge cases like smb:// where if the user
