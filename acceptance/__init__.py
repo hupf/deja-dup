@@ -156,7 +156,7 @@ class BaseTest(unittest.TestCase):
             window.child(roleName="text", label="Encryption password").text = password
             window.child(roleName="text", label="Confirm password").text = password
             if remember:
-                window.child(roleName="check box", name="Remember password").click()
+                window.child(roleName="check box", name="_Remember password").click()
         else:
             window.child(
                 roleName="check box", name="_Allow restoring without a password"

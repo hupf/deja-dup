@@ -8,8 +8,9 @@ import os
 import shutil
 import stat
 
+from dogtail import tree
 from dogtail.predicate import GenericPredicate
-from dogtail.rawinput import keyCombo, typeText
+from dogtail.rawinput import holdKey, keyCombo, pressKey, releaseKey, typeText
 from gi.repository import GLib
 
 from . import BaseTest
@@ -42,7 +43,13 @@ class BrowserTest(BaseTest):
         self.set_string("folder", backupdir, child="local")
 
     def switch_to_restore(self):
-        self.app.child(roleName="check box", name="Restore").click()
+        widget = self.app.child(roleName="label", name="Restore", showingOnly=False)
+        while widget.parent:
+            widget = widget.parent
+            if widget.name == "HdyViewSwitcherButton":
+                widget.click()
+                return
+        assert False
 
     def scan(self, password=None, error=None):
         self.switch_to_restore()
@@ -58,23 +65,19 @@ class BrowserTest(BaseTest):
             self.app.child(roleName="label", name=error)
             return
 
-        search = self.app.child(roleName="toggle button", name="Search")
+        search = self.app.child(roleName="push button", name="Search")
         self.wait_for(lambda: search.sensitive)
 
     def assert_search_mode(self, searching=True):
-        search = self.app.child(roleName="toggle button", name="Search")
-        assert search.isChecked == searching
+        search = self.app.child(roleName="push button", name="Search")
+        assert search.pressed == searching
 
-        search_entry = self.app.findChild(
-            GenericPredicate(roleName="text", name="Search"),
-            retry=False,
-            requireResult=False,
-        )
+        # The entry is always visible in the accessiblity tree
+        search_entry = self.app.child(roleName="entry", name="Search")
         if searching:
-            assert search_entry
             assert search_entry.focused
         else:
-            assert not search_entry
+            assert search_entry.text == ""
 
     def assert_selection(self, selecting=True):
         predicate = GenericPredicate(
@@ -95,14 +98,15 @@ class BrowserTest(BaseTest):
     def select_location(self, where):
         self.addCleanup(shutil.rmtree, where, ignore_errors=True)
         self.window.child(
-            roleName="check box", name="Restore to specific folder"
+            roleName="check box", name="Restore to _specific folder"
         ).click()
-        self.window.child(roleName="push button", label="    Restore folder").click()
-        self.window.child(roleName="menu item", name="Other…").click()
+        self.window.child(roleName="push button", label="Choose Folder…").click()
         os.makedirs(where, exist_ok=True)
-        dlg = self.app.child(roleName="file chooser")
+        dlg = tree.root.child(roleName="file chooser", name='Choose Folder')
+        # Focus dialog (not always done automatically with portal dialogs)
+        dlg.child(roleName='label', name='Choose Folder').click()
         typeText(where + "\n")
-        dlg.child(name="Open").click()
+        dlg.child(name="Select").click()
 
     def walk_restore(self, password=None, error=False, where=None):
         self.start_restore()
@@ -144,30 +148,29 @@ class BrowserTest(BaseTest):
             assert test_file.read(None).strip() == content
 
     def select(self, *args):
-        need_selection_mode = len(args) > 1
-        if need_selection_mode:
-            self.app.button("Select").click()
-
-        view = self.app.findChild(
-            lambda x: x.roleName == "layered pane", retry=False, requireResult=False
-        )
-        role = "icon"
-        check_selected = True
-        if not view:
-            view = self.app.findChild(lambda x: x.roleName == "table")
-            role = "table cell"
-            check_selected = False
-
-        children = view.findChildren(
-            lambda x: x.roleName == role and x.text, showingOnly=False
-        )
+        children = self.app.findChildren(lambda x: x.roleName == 'table cell')
         for child in children:
-            on = child.text in args
-            if (check_selected and on != child.selected) or (not check_selected and on):
-                child.click()
+            # Skip if this is just a Location column cell
+            if not child.findChild(
+                lambda x: x.roleName == "image", retry=False, requireResult=False
+            ):
+                continue
 
-        if need_selection_mode:
-            self.app.button("Cancel").click()
+            # SKip if this is already in the selection state we want
+            label = child.child(roleName="label")
+            on = label.name in args
+            if on == child.selected:
+                continue
+
+            # Perform a ctrl+click to toggle selection
+            holdKey("Control_L")
+            child.click()
+            releaseKey("Control_L")
+
+            # In a table view, ctrl+click only FOCUSES the row, not
+            # selecting it. So we press space to actually toggle selection.
+            if child.parent.roleName == 'table row':
+                pressKey("space")
 
     def test_enable_search_mode(self):
         self.scan()
@@ -179,48 +182,19 @@ class BrowserTest(BaseTest):
         keyCombo("Escape")
 
         self.assert_search_mode(False)
-        self.app.child(roleName="toggle button", name="Search").click()
+        self.app.child(roleName="push button", name="Search").click()
         self.assert_search_mode()
 
-    def test_selection(self):
+    def test_select_all(self):
         self.scan()
 
-        # Confirm titlebar buttons work
-        self.assert_selection(False)
-        self.app.button("Select").click()
-        self.assert_selection()
-        self.app.button("Cancel").click()
-        self.assert_selection(False)
-        self.app.button("Select").click()
-        self.assert_selection()
-
-        # Select all/none/some
-        view = self.app.findChild(lambda x: x.roleName == "layered pane")
-        icons = view.children
+        icons = self.app.findChildren(lambda x: x.roleName == "table cell")
         assert len(icons) == 4 and len([i for i in icons if i.selected]) == 0
-        menu = self.app.child(
-            roleName="toggle button", name="Click on items to select them"
-        )
-        menu.click()
-        self.app.button("Select All").click()
-        assert len([i for i in icons if i.selected]) == 4
-        menu.click()
-        self.app.button("Select None").click()
-        assert len([i for i in icons if i.selected]) == 0
-        icons[0].click()
-        assert len([i for i in icons if i.selected]) == 1
-        icons[1].click()
-        assert len([i for i in icons if i.selected]) == 2
 
-        # Now test combining selection with search modes
-        self.app.child(roleName="toggle button", name="Search").click()
-        self.assert_search_mode()
-        keyCombo("Escape")
-        self.assert_selection(False)
-        self.assert_search_mode()
-        keyCombo("Escape")
-        self.assert_selection(False)
-        self.assert_search_mode(False)
+        self.app.childNamed("Menu").click()
+        self.app.childNamed("Select All").click()
+
+        assert len([i for i in icons if i.selected]) == 4
 
     def test_successful_restore(self):
         self.scan()
@@ -236,25 +210,23 @@ class BrowserTest(BaseTest):
         self.check_files(("one.txt", "one"), ("two.txt", "two"))
 
         # select multiple from diff dirs (old location)
-        self.app.child(roleName="toggle button", name="Search").click()
+        self.app.child(roleName="push button", name="Search").click()
         typeText("txt")
         self.select("one.txt", "three.txt")
         self.walk_restore()
         self.check_files(("one.txt", "one"), ("dir1/three.txt", "three"))
-        self.app.child(roleName="toggle button", name="Search").click()
+        self.app.child(roleName="push button", name="Search").click()
 
     def test_encrypted_and_dates(self):
         self.use_backup_dir("encrypted")
         self.scan(password="test")  # test password prompt
 
         # test dir navigation (could go in any test, but thrown in here)
-        view = self.app.findChild(lambda x: x.roleName == "layered pane")
-        back = self.app.button("Back")
+        view = self.app.child(roleName="table")
+        back = self.app.child(roleName="push button", name="Back")
         assert not back.sensitive
         assert len(view.children) == 3
-        dir1 = self.app.findChild(
-            lambda x: x.roleName == "icon" and x.text == "dir1", showingOnly=False
-        )
+        dir1 = view.child(roleName="label", name="dir1")
         dir1.doubleClick()
         assert back.sensitive
         assert len(view.children) == 1
@@ -264,18 +236,21 @@ class BrowserTest(BaseTest):
 
         # test time combo
         dates_combo = self.app.child(roleName="combo box", label="Date")
+        dates_combo.click()
+        popover = dates_combo.child(name="GtkPopover")
         dates = [
             x.name
-            for x in dates_combo.findChildren(
-                lambda x: x.roleName == "menu item", showingOnly=False
+            for x in popover.findChildren(
+                lambda x: x.roleName == "label", showingOnly=False
             )
         ]
         assert ["06/07/20 09:33:07", "06/07/20 09:29:40", "06/04/20"] == dates
 
-        # click oldest date, it should have an extra item in it
-        dates_combo.click()
-        dates_combo.child(roleName="menu item", name="06/04/20").click()
-        search = self.app.child(roleName="toggle button", name="Search")
+        # choose oldest date, it should have an extra item in it
+        pressKey("Down")
+        pressKey("Down")
+        pressKey("Return")
+        search = self.app.child(roleName="push button", name="Search")
         self.wait_for(lambda: search.sensitive)
         assert len(view.children) == 4
 

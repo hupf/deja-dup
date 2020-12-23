@@ -4,6 +4,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+from dogtail import tree
 from gi.repository import GLib
 
 from . import BaseTest
@@ -23,12 +24,15 @@ class PreferencesTest(BaseTest):
         # Grab switch from main window, set last-run time so the switch shows up
         now = GLib.DateTime.new_now_utc().format_iso8601()
         self.set_string("last-run", now)
-        periodic_main = self.app.window("Backups").child(name="Back up automatically")
+        main = self.app.window("Backups")
+        periodic_main_box = main.child(roleName="panel", name="Back up automatically")
+        periodic_main = periodic_main_box.child(roleName="check box")
 
         prefs = self.app.window("Preferences")
 
         # Periodic to settings
-        periodic = prefs.child(label="Back Up Automatically")
+        listbox = prefs.child(roleName="list item", name="Back Up Automatically")
+        periodic = listbox.child(roleName="check box")
         self.assertFalse(periodic.checked)
         self.assertFalse(periodic_main.checked)
         periodic.click()
@@ -45,7 +49,8 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.refresh(periodic_main).checked)
 
         # Period to settings
-        period = prefs.child(label="Automatic Backup Frequency")
+        period_box = prefs.child(roleName="list item", name="Automatic Backup Frequency")
+        period = period_box.child(roleName="list")
         period.click()
         prefs.child(name="Daily").click()
         self.assertEqual(self.get_int("periodic-period"), 1)
@@ -59,7 +64,8 @@ class PreferencesTest(BaseTest):
         self.refresh(period).child(name="Every 10 days")  # just test existence
 
         # Delete After to settings
-        delete = prefs.child(label="Keep Backups")
+        delete_box = prefs.child(roleName="list item", name="Keep Backups")
+        delete = delete_box.child(roleName="list")
         delete.click()
         prefs.child(name="At least a year").click()
         self.assertEqual(self.get_int("delete-after"), 365)
@@ -81,11 +87,15 @@ class PreferencesTest(BaseTest):
         objs = table.findChildren(iter, showingOnly=False)
         return [x.name for x in objs]
 
+    def wait_for_table_names(self, table, names):
+        self.wait_for(lambda: self.table_names(table) == names)
+
     def assert_inclusion_table(self, widget, key):
         prefs = self.app.window("Preferences")
         prefs.child(name="Folders").click()
 
-        table = prefs.child(name=widget)
+        label = prefs.child(name=widget)
+        table = label.parent.child(roleName="list")
 
         user = GLib.get_user_name()
         home = GLib.get_home_dir()
@@ -114,7 +124,7 @@ class PreferencesTest(BaseTest):
             "~/Documents/path",
             "~/Downloads",
             "~/Music/path",
-            "Home ({})".format(homename),
+            "~/Public",
             "~/Templates/path",
             "~/Videos",
             "Home ({})".format(homename),
@@ -123,7 +133,7 @@ class PreferencesTest(BaseTest):
             "/absolute/{}/path".format(user),
             "~/Pictures",
         ]
-        self.assertListEqual(self.table_names(table), labels)
+        self.wait_for_table_names(table, labels)
 
         # Remove most
         def remove_buttons(x):
@@ -132,20 +142,20 @@ class PreferencesTest(BaseTest):
         count = len(labels)
         for i in range(len(labels) - 1):
             self.refresh(table).findChild(remove_buttons).click()
-        self.assertListEqual(self.table_names(table), ["~/Pictures"])
+        self.wait_for_table_names(table, ["~/Pictures"])
         self.assertEqual(self.get_strv(key), ["$PICTURES"])
 
         # Add one
         add = table.child(name="Add")
         add.click()
-        dlg = self.app.child(roleName="file chooser")
+        dlg = tree.root.child(roleName="file chooser", name='Choose Folders')
         dlg.child(name="Documents").click()
         dlg.child(name="Add").click()
-        self.assertListEqual(self.table_names(table), ["~/Pictures", "~/Documents"])
+        self.wait_for_table_names(table, ["~/Pictures", "~/Documents"])
         self.assertEqual(self.get_strv(key), ["$PICTURES", home + "/Documents"])
 
     def test_includes(self):
-        self.assert_inclusion_table("Includes", "include-list")
+        self.assert_inclusion_table("Folders to Back Up", "include-list")
 
     def test_excludes(self):
-        self.assert_inclusion_table("Excludes", "exclude-list")
+        self.assert_inclusion_table("Folders to Ignore", "exclude-list")

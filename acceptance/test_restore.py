@@ -55,13 +55,10 @@ class RestoreTest(BaseTest):
         window.button("Search").click()  # from where
 
         # Switched to restore pane. Now select all.
-        search = app.button("Select")
+        search = app.child(roleName="push button", name="Search")
         self.wait_for(lambda: search.sensitive)
-        search.click()
-        app.child(
-            roleName="toggle button", name="Click on items to select them"
-        ).click()
-        app.button("Select All").click()
+        app.childNamed("Menu").click()
+        app.childNamed("Select All").click()
 
         # And start restore
         app.button("Restore").click()

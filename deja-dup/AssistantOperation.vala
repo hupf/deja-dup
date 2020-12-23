@@ -416,7 +416,7 @@ public abstract class AssistantOperation : Assistant
   protected Gtk.Widget make_nag_page()
   {
     int rows = 0;
-    Gtk.Widget w, label;
+    Gtk.Widget w;
 
     var page = new Gtk.Grid();
     page.row_spacing = 6;
@@ -432,15 +432,15 @@ public abstract class AssistantOperation : Assistant
     page.attach(w, 0, rows, 3, 1);
     ++rows;
 
-    var nag_entry = new Gtk.PasswordEntry();
+    nag_entry = new Gtk.PasswordEntry();
     nag_entry.hexpand = true;
     nag_entry.activates_default = true;
     nag_entry.show_peek_icon = true;
     nag_entry.changed.connect(check_nag_validity);
-    label = new Gtk.Label(_("E_ncryption password"));
-    label.set("mnemonic-widget", w,
-              "use-underline", true,
-              "xalign", 1.0f);
+    var label = new Gtk.Label(_("E_ncryption password"));
+    label.mnemonic_widget = nag_entry;
+    label.use_underline = true;
+    label.xalign = 0;
     page.attach(label, 1, rows, 1, 1);
     page.attach(nag_entry, 2, rows, 1, 1);
     ++rows;

@@ -60,10 +60,10 @@ public class ConfigFolderList : Hdy.PreferencesGroup
   [GtkCallback]
   void on_add_clicked()
   {
-    var dlg = new Gtk.FileChooserNative(_("Choose folders"),
+    var dlg = new Gtk.FileChooserNative(_("Choose Folders"),
                                         this.root as Gtk.Window,
                                         Gtk.FileChooserAction.SELECT_FOLDER,
-                                        null, null);
+                                        _("Add"), null);
     dlg.modal = true;
     dlg.select_multiple = true;
 
