@@ -8,7 +8,7 @@ using GLib;
 
 public class RestoreFileTester : Object
 {
-  public static List<string> get_bad_paths(string root, DejaDup.FileTree tree,
+  public static List<string> get_bad_paths(string prefix, DejaDup.FileTree tree,
                                            out bool all_bad, List<File>? files = null)
   {
     all_bad = true;
@@ -27,16 +27,22 @@ public class RestoreFileTester : Object
     // Now look up each and recurse any children if they exist
     var bad_paths = new List<string>();
     foreach (var node in roots) {
-      recurse_node(root, tree, node, ref all_bad, ref bad_paths);
+      recurse_node(prefix, tree, node, ref all_bad, ref bad_paths);
     }
     return bad_paths;
   }
 
-  static void recurse_node(string root, DejaDup.FileTree tree,
+  static void recurse_node(string prefix, DejaDup.FileTree tree,
                            DejaDup.FileTree.Node node, ref bool all_bad,
                            ref List<string> bad_paths)
   {
-    var resolved = Path.build_filename(root, tree.node_to_path(node));
+    string resolved;
+    if (prefix == "/") { // original location
+      resolved = Path.build_filename(prefix, tree.node_to_path(node));
+    } else { // just dumping all files directly into 'prefix' folder
+      resolved = Path.build_filename(prefix, node.filename);
+      prefix = resolved;
+    }
     bool exists;
     if (!can_restore(resolved, out exists))
       bad_paths.append(resolved);
@@ -46,7 +52,7 @@ public class RestoreFileTester : Object
       return;
 
     foreach (var child in node.children.get_values()) {
-      recurse_node(root, tree, child, ref all_bad, ref bad_paths);
+      recurse_node(prefix, tree, child, ref all_bad, ref bad_paths);
     }
   }
 
