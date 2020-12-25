@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-22 04:54+0000\n"
-"PO-Revision-Date: 2020-12-22 13:34+0200\n"
+"POT-Creation-Date: 2020-12-25 03:15+0000\n"
+"PO-Revision-Date: 2020-12-25 08:40+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -318,7 +318,7 @@ msgstr ""
 "Унікальний ідентифікатор файлової системи для накопичувача, який "
 "використовується для розпізнавання диска під час його підключення."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:220
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:223
 msgid "Name"
 msgstr "Назва"
 
@@ -365,35 +365,39 @@ msgstr ""
 "Шлях до теки, де зберігаються резервні копії. Шляхи можуть бути абсолютними "
 "або відносними щодо основної системи."
 
-#: data/ui/Browser.ui:81
+#: data/ui/Browser.ui:16 data/ui/MainHeaderBar.ui:49
+msgid "Search"
+msgstr "Пошук"
+
+#: data/ui/Browser.ui:84
 msgid "Scanning backup files…"
 msgstr "Шукаємо файли резервних копій…"
 
-#: data/ui/Browser.ui:112
+#: data/ui/Browser.ui:115
 msgid "_Retry"
 msgstr "_Повторити"
 
-#: data/ui/Browser.ui:147
+#: data/ui/Browser.ui:150
 msgid "_Connect"
 msgstr "З'_єднатись"
 
-#: data/ui/Browser.ui:172
+#: data/ui/Browser.ui:175
 msgid "Encryption password needed"
 msgstr "Потрібен пароль для доступу"
 
-#: data/ui/Browser.ui:183
+#: data/ui/Browser.ui:186
 msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
-#: data/ui/Browser.ui:266
+#: data/ui/Browser.ui:269
 msgid "Location"
 msgstr "Місце"
 
-#: data/ui/Browser.ui:312 deja-dup/AssistantRestore.vala:65
+#: data/ui/Browser.ui:315 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "_Відновити"
 
-#: data/ui/ConfigFolderList.ui:23
+#: data/ui/ConfigFolderList.ui:23 deja-dup/ConfigFolderList.vala:66
 msgid "Add"
 msgstr "Додати"
 
@@ -445,10 +449,6 @@ msgstr "Назад"
 #: data/ui/MainHeaderBar.ui:40
 msgid "Menu"
 msgstr "Меню"
-
-#: data/ui/MainHeaderBar.ui:49
-msgid "Search"
-msgstr "Пошук"
 
 #: data/ui/MainHeaderBar.ui:66
 msgid "_Select All"
@@ -872,78 +872,78 @@ msgstr "Відновити в спе_ціальну теку:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "«Резервні копії» не мають прав доступу для відновлення таких файлів:"
 
-#: deja-dup/AssistantRestore.vala:250
+#: deja-dup/AssistantRestore.vala:251
 msgid "Backup location"
 msgstr "Розміщення резервних копій"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:265
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore date"
 msgstr "Дата відновлення"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:274
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore folder"
 msgstr "Тека відновлення"
 
-#: deja-dup/AssistantRestore.vala:298
+#: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
 msgstr "Перевірка резервних копій..."
 
-#: deja-dup/AssistantRestore.vala:306
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
 msgstr "З якого часу відновити?"
 
-#: deja-dup/AssistantRestore.vala:317
+#: deja-dup/AssistantRestore.vala:318
 msgid "Restore to Where?"
 msgstr "Куди відновлювати?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:350
+#: deja-dup/AssistantRestore.vala:351
 msgid "Restoring:"
 msgstr "Відновлення:"
 
-#: deja-dup/AssistantRestore.vala:362
+#: deja-dup/AssistantRestore.vala:363
 msgid "No backups to restore"
 msgstr "Немає копій для відновлення"
 
-#: deja-dup/AssistantRestore.vala:445
+#: deja-dup/AssistantRestore.vala:446
 msgid "Original location"
 msgstr "Оригінальне розташування"
 
-#: deja-dup/AssistantRestore.vala:459
+#: deja-dup/AssistantRestore.vala:460
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Файл для відновлення"
 msgstr[1] "Файли для відновлення"
 msgstr[2] "Файлів для відновлення"
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:485
 msgid "Restore Failed"
 msgstr "Відновлення провалено"
 
-#: deja-dup/AssistantRestore.vala:486
+#: deja-dup/AssistantRestore.vala:487
 msgid "Restore Finished"
 msgstr "Відновлення завершено"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:489
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your files were successfully restored."
 msgstr "Ваші файли були успішно відновлені."
 
-#: deja-dup/AssistantRestore.vala:492
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Файл успішно відновлено."
 msgstr[1] "Файли успішно відновлено."
 msgstr[2] "Файли успішно відновлено."
 
-#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Відновлення…"
 
-#: deja-dup/AssistantRestore.vala:569
+#: deja-dup/AssistantRestore.vala:570
 msgid "Restore in progress"
 msgstr "Виконуємо відновлення"
 
@@ -984,8 +984,9 @@ msgstr[1] "Раз на %d дні"
 msgstr[2] "Раз на %d днів"
 
 #: deja-dup/ConfigFolderList.vala:63
-msgid "Choose folders"
-msgstr "Оберіть каталоги"
+#| msgid "Choose Folder"
+msgid "Choose Folders"
+msgstr "Виберіть теки"
 
 #. *** Basic entries ***
 #: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:84
@@ -1273,16 +1274,16 @@ msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr ""
-"Розташування сервера у мережі слід вказати у налаштуваннях розташування"
-" сховища даних."
+"Розташування сервера у мережі слід вказати у налаштуваннях розташування "
+"сховища даних."
 
 #: libdeja/BackendRemote.vala:165
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
 msgstr ""
-"Здається, розташування сервера у мережі «%s» вказано не у форматі адреси"
-" мережі."
+"Здається, розташування сервера у мережі «%s» вказано не у форматі адреси "
+"мережі."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
@@ -1532,6 +1533,9 @@ msgid ""
 msgstr ""
 "Резервне копіювання почнеться, коли стане доступним нелімітоване мережеве "
 "з'єднання."
+
+#~ msgid "Choose folders"
+#~ msgstr "Оберіть каталоги"
 
 #~ msgid "Select"
 #~ msgstr "Вибрати"
