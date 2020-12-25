@@ -200,6 +200,7 @@ public class AssistantRestore : AssistantOperation
 
     bad_files_grid = new Gtk.Grid();
     bad_files_grid.margin_top = 12;
+    bad_files_grid.margin_start = 6;
     bad_files_grid.column_spacing = 6;
     bad_files_grid.row_spacing = 6;
     bad_files_grid.hexpand = true;

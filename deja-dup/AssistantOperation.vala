@@ -419,7 +419,7 @@ public abstract class AssistantOperation : Assistant
     Gtk.Widget w;
 
     var page = new Gtk.Grid();
-    page.row_spacing = 6;
+    page.row_spacing = 12;
     page.column_spacing = 6;
     DejaDup.set_margins(page, 12);
 
@@ -429,7 +429,7 @@ public abstract class AssistantOperation : Assistant
     w.set("xalign", 0.0f,
           "max-width-chars", 25,
           "wrap", true);
-    page.attach(w, 0, rows, 3, 1);
+    page.attach(w, 0, rows, 2, 1);
     ++rows;
 
     nag_entry = new Gtk.PasswordEntry();
@@ -441,12 +441,12 @@ public abstract class AssistantOperation : Assistant
     label.mnemonic_widget = nag_entry;
     label.use_underline = true;
     label.xalign = 0;
-    page.attach(label, 1, rows, 1, 1);
-    page.attach(nag_entry, 2, rows, 1, 1);
+    page.attach(label, 0, rows, 1, 1);
+    page.attach(nag_entry, 1, rows, 1, 1);
     ++rows;
 
     w = new Gtk.CheckButton.with_mnemonic(_("Test every two _months"));
-    page.attach(w, 0, rows, 3, 1);
+    page.attach(w, 0, rows, 2, 1);
     ((Gtk.CheckButton)w).active = true;
     w.vexpand = true;
     w.valign = Gtk.Align.END;
