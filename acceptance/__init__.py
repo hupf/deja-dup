@@ -100,11 +100,7 @@ class BaseTest(unittest.TestCase):
 
     def start_pid(self, cmd, *args, **kwargs):
         commandline = cmd.split(" ") + list(args or [])
-        pid = run(
-            " ".join(commandline),
-            appName=os.environ["DD_APPID"],
-            **kwargs
-        )
+        pid = run(" ".join(commandline), appName=os.environ["DD_APPID"], **kwargs)
         self.addCleanup(self.kill_pid, pid)
         return pid
 
@@ -118,8 +114,9 @@ class BaseTest(unittest.TestCase):
     def monitor(self, *args):
         # Add a cleanup for any spawned deja-dup processes
         self.addCleanup(self.kill_bus, os.environ["DD_APPID"])
-        return self.start_pid(os.environ["DD_MONITOR_EXEC"], "--no-delay",
-                              dumb=True, timeout=1)
+        return self.start_pid(
+            os.environ["DD_MONITOR_EXEC"], "--no-delay", dumb=True, timeout=1
+        )
 
     def get_app(self):
         return Gtk4Node(tree.root.application(os.environ["DD_APPID"]))
@@ -144,8 +141,9 @@ class BaseTest(unittest.TestCase):
             kwargs["label"] = obj.labeler.name
         return obj.parent.child(**kwargs)
 
-    def walk_initial_backup(self, app, error=False, password=None, wait=True,
-                            remember=False):
+    def walk_initial_backup(
+        self, app, error=False, password=None, wait=True, remember=False
+    ):
         window = app.window("Back Up")
         window.button("Forward").click()  # folders
         window.button("Forward").click()  # storage location

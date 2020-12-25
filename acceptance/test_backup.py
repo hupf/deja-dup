@@ -187,12 +187,20 @@ class BackupTest(BaseTest):
 
         app = self.cmd("--backup")
         # Wait for prompt (a little longer to appear than normal dogtail timeouts)
-        self.wait_for(lambda: app.findChild(
-            lambda x: x.roleName == "password text" and x.name == "Encryption password",
-            requireResult=False, retry=False,
-        ))
-        self.walk_incremental_backup(app, password="nope", title="Restore Test", wait=False)
-        self.walk_incremental_backup(app, password="t", title="Restore Test", wait=False)
+        self.wait_for(
+            lambda: app.findChild(
+                lambda x: x.roleName == "password text"
+                and x.name == "Encryption password",
+                requireResult=False,
+                retry=False,
+            )
+        )
+        self.walk_incremental_backup(
+            app, password="nope", title="Restore Test", wait=False
+        )
+        self.walk_incremental_backup(
+            app, password="t", title="Restore Test", wait=False
+        )
         app.button("Close").click()  # we have a confirmation screen after nag
 
         assert self.get_string("nag-check") != months_ago

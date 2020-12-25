@@ -34,7 +34,7 @@ class Gtk4Node:
         if showingOnly is None:
             showingOnly = config.searchShowingOnly
         if showingOnly is True:
-            if kwargs.get('requireResult', True):
+            if kwargs.get("requireResult", True):
                 assert c.showing
             elif not c.showing:
                 return None
@@ -43,8 +43,9 @@ class Gtk4Node:
     def button(self, name, *args, **kwargs):
         # Buttons with mnemonics seem to show up with their mnemonic and normal
         # labels jammed together. So look for the label instead, not name.
-        return self._wrapShowingMethod(self.node.child, label=name,
-                                       roleName='push button', *args, **kwargs)
+        return self._wrapShowingMethod(
+            self.node.child, label=name, roleName="push button", *args, **kwargs
+        )
 
     def child(self, *args, **kwargs):
         return self._wrapShowingMethod(self.node.child, *args, **kwargs)
@@ -75,12 +76,13 @@ class Gtk4Node:
         if self.coords:
             return
 
-        top = self.node.findAncestor(GenericPredicate(roleName='frame'))
+        top = self.node.findAncestor(GenericPredicate(roleName="frame"))
         if not top:
-            top = self.node.findAncestor(GenericPredicate(roleName='dialog'))
+            top = self.node.findAncestor(GenericPredicate(roleName="dialog"))
         assert top
 
         from Xlib import X, display, Xutil
+
         d = display.Display()
         r = d.screen().root
         t = r.query_tree()
@@ -90,7 +92,7 @@ class Gtk4Node:
         else:
             raise Exception(f"Couldn't find window {top.name}")
 
-        root_coords = r.translate_coords(win, 0, 0);
+        root_coords = r.translate_coords(win, 0, 0)
 
         # Fix coords to take into account client side decorations.
         # Hardcoding this is super gross, I'd love a better way.
@@ -101,8 +103,8 @@ class Gtk4Node:
         # If we can avoid the vagaries of coordinates, let's do that. This is
         # useful in particular with popup menu items, whose coordinates need
         # some further adjustment than I've made here...
-        if 'click' in self.node.actions:
-            self.node.doActionNamed('click')
+        if "click" in self.node.actions:
+            self.node.doActionNamed("click")
             return
 
         self._ensure_coords()
@@ -124,46 +126,61 @@ class Gtk4Node:
     @property
     def checked(self):
         return self.node.checked
+
     @property
     def children(self):
         return self.node.children
+
     @property
     def dead(self):
         return self.node.dead
+
     def dump(self):
         self.node.dump()
+
     @property
     def focused(self):
         return self.node.focused
+
     @property
     def labeler(self):
         return self.node.labeler and Gtk4Node(self.node.labeler, self.coords)
+
     @property
     def name(self):
         return self.node.name
+
     @property
     def parent(self):
         return self.node.parent and Gtk4Node(self.node.parent, self.coords)
+
     @property
     def roleName(self):
         return self.node.roleName
+
     @property
     def selected(self):
         return self.node.getState().contains(pyatspi.STATE_SELECTED)
+
     @property
     def sensitive(self):
         return self.node.sensitive
+
     @property
     def showing(self):
         return self.node.visible
+
     @property
     def text(self):
         return self.node.text
+
     @text.setter
     def text(self, text):
         self.node.text = text
+
     def typeText(self, text):
         return self.node.typeText(text)
+
     @property
     def value(self):
         return self.node.value

@@ -49,7 +49,9 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.refresh(periodic_main).checked)
 
         # Period to settings
-        period_box = prefs.child(roleName="list item", name="Automatic Backup Frequency")
+        period_box = prefs.child(
+            roleName="list item", name="Automatic Backup Frequency"
+        )
         period = period_box.child(roleName="list")
         period.click()
         prefs.child(name="Daily").click()
@@ -148,7 +150,7 @@ class PreferencesTest(BaseTest):
         # Add one
         add = table.child(name="Add")
         add.click()
-        dlg = tree.root.child(roleName="file chooser", name='Choose Folders')
+        dlg = tree.root.child(roleName="file chooser", name="Choose Folders")
         dlg.child(name="Documents").click()
         dlg.child(name="Add").click()
         self.wait_for_table_names(table, ["~/Pictures", "~/Documents"])

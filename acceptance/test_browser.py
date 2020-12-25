@@ -102,9 +102,9 @@ class BrowserTest(BaseTest):
         ).click()
         self.window.child(roleName="push button", label="Choose Folder…").click()
         os.makedirs(where, exist_ok=True)
-        dlg = tree.root.child(roleName="file chooser", name='Choose Folder')
+        dlg = tree.root.child(roleName="file chooser", name="Choose Folder")
         # Focus dialog (not always done automatically with portal dialogs)
-        dlg.child(roleName='label', name='Choose Folder').click()
+        dlg.child(roleName="label", name="Choose Folder").click()
         typeText(where + "\n")
         dlg.child(name="Select").click()
 
@@ -148,7 +148,7 @@ class BrowserTest(BaseTest):
             assert test_file.read(None).strip() == content
 
     def select(self, *args):
-        children = self.app.findChildren(lambda x: x.roleName == 'table cell')
+        children = self.app.findChildren(lambda x: x.roleName == "table cell")
         for child in children:
             # Skip if this is just a Location column cell
             if not child.findChild(
@@ -169,7 +169,7 @@ class BrowserTest(BaseTest):
 
             # In a table view, ctrl+click only FOCUSES the row, not
             # selecting it. So we press space to actually toggle selection.
-            if child.parent.roleName == 'table row':
+            if child.parent.roleName == "table row":
                 pressKey("space")
 
     def test_enable_search_mode(self):
