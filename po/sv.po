@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-17 01:47+0000\n"
-"PO-Revision-Date: 2020-12-20 19:35+0100\n"
+"POT-Creation-Date: 2020-12-25 03:15+0000\n"
+"PO-Revision-Date: 2020-12-25 12:22+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -317,7 +317,7 @@ msgstr ""
 "Den unika filsystemsidentifieraren för enheten, används för att känna igen "
 "enheten när den är ansluten."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:220
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:223
 msgid "Name"
 msgstr "Namn"
 
@@ -365,35 +365,39 @@ msgstr ""
 "Mappsökvägen där säkerhetskopior lagras. Sökvägar kan vara absoluta eller "
 "relativa till värden."
 
-#: data/ui/Browser.ui:81
+#: data/ui/Browser.ui:16 data/ui/MainHeaderBar.ui:49
+msgid "Search"
+msgstr "Sök"
+
+#: data/ui/Browser.ui:84
 msgid "Scanning backup files…"
 msgstr "Söker av säkerhetskopior…"
 
-#: data/ui/Browser.ui:112
+#: data/ui/Browser.ui:115
 msgid "_Retry"
 msgstr "Försök _igen"
 
-#: data/ui/Browser.ui:147
+#: data/ui/Browser.ui:150
 msgid "_Connect"
 msgstr "A_nslut"
 
-#: data/ui/Browser.ui:172
+#: data/ui/Browser.ui:175
 msgid "Encryption password needed"
 msgstr "Lösenord för kryptering krävs"
 
-#: data/ui/Browser.ui:183
+#: data/ui/Browser.ui:186
 msgid "_Enter Password"
 msgstr "_Ange lösenord"
 
-#: data/ui/Browser.ui:266
+#: data/ui/Browser.ui:269
 msgid "Location"
 msgstr "Plats"
 
-#: data/ui/Browser.ui:312 deja-dup/AssistantRestore.vala:65
+#: data/ui/Browser.ui:315 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "Å_terställ"
 
-#: data/ui/ConfigFolderList.ui:23
+#: data/ui/ConfigFolderList.ui:23 deja-dup/ConfigFolderList.vala:66
 msgid "Add"
 msgstr "Lägg till"
 
@@ -425,16 +429,16 @@ msgstr "Ta bort"
 msgid "_Storage Location"
 msgstr "_Lagringsplats"
 
-#: data/ui/ConfigLocationGrid.ui:42 data/ui/ConfigLocationGrid.ui:112
-#: data/ui/ConfigLocationGrid.ui:145 data/ui/ConfigLocationGrid.ui:203
+#: data/ui/ConfigLocationGrid.ui:42 data/ui/ConfigLocationGrid.ui:114
+#: data/ui/ConfigLocationGrid.ui:148 data/ui/ConfigLocationGrid.ui:207
 msgid "_Folder"
 msgstr "_Mapp"
 
-#: data/ui/ConfigLocationGrid.ui:65
+#: data/ui/ConfigLocationGrid.ui:66
 msgid "_Reset Account Access"
 msgstr "Å_terställ kontoåtkomst"
 
-#: data/ui/ConfigLocationGrid.ui:91
+#: data/ui/ConfigLocationGrid.ui:92
 msgid "_Network Location"
 msgstr "_Nätverksplats"
 
@@ -445,10 +449,6 @@ msgstr "Bakåt"
 #: data/ui/MainHeaderBar.ui:40
 msgid "Menu"
 msgstr "Meny"
-
-#: data/ui/MainHeaderBar.ui:49
-msgid "Search"
-msgstr "Sök"
 
 #: data/ui/MainHeaderBar.ui:66
 msgid "_Select All"
@@ -873,86 +873,90 @@ msgstr "Återställ till _specifik mapp:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Säkerhetskopior har inte behörighet att återställa följande filer:"
 
-#: deja-dup/AssistantRestore.vala:250
+#: deja-dup/AssistantRestore.vala:251
 msgid "Backup location"
 msgstr "Plats för säkerhetskopior"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:265
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore date"
 msgstr "Datum för återställande"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:274
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore folder"
 msgstr "Återställningsmapp"
 
-#: deja-dup/AssistantRestore.vala:298
+#: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
 msgstr "Letar efter säkerhetskopior…"
 
-#: deja-dup/AssistantRestore.vala:306
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
 msgstr "Återställ från när?"
 
-#: deja-dup/AssistantRestore.vala:317
+#: deja-dup/AssistantRestore.vala:318
 msgid "Restore to Where?"
 msgstr "Återställ till vilken plats?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:350
+#: deja-dup/AssistantRestore.vala:351
 msgid "Restoring:"
 msgstr "Återställer:"
 
-#: deja-dup/AssistantRestore.vala:362
+#: deja-dup/AssistantRestore.vala:363
 msgid "No backups to restore"
 msgstr "Inga säkerhetskopior att återställa"
 
-#: deja-dup/AssistantRestore.vala:445
+#: deja-dup/AssistantRestore.vala:446
 msgid "Original location"
 msgstr "Ursprunglig plats"
 
-#: deja-dup/AssistantRestore.vala:459
+#: deja-dup/AssistantRestore.vala:460
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fil att återställa"
 msgstr[1] "Filer att återställa"
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:485
 msgid "Restore Failed"
 msgstr "Återställning misslyckades"
 
-#: deja-dup/AssistantRestore.vala:486
+#: deja-dup/AssistantRestore.vala:487
 msgid "Restore Finished"
 msgstr "Återställning färdig"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:489
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your files were successfully restored."
 msgstr "Dina filer har nu återställts."
 
-#: deja-dup/AssistantRestore.vala:492
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Din fil har återställts."
 msgstr[1] "Dina filer har återställts."
 
-#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Återställer…"
 
-#: deja-dup/AssistantRestore.vala:569
+#: deja-dup/AssistantRestore.vala:570
 msgid "Restore in progress"
 msgstr "Återställning pågår"
 
-#: deja-dup/Background.vala:75
+#: deja-dup/Background.vala:77
 msgid "Cannot back up automatically"
 msgstr "Det går inte att säkerhetskopiera automatiskt"
 
 #: deja-dup/Browser.vala:227
 msgid "Authentication needed"
 msgstr "Autentisering krävs"
+
+#: deja-dup/Browser.vala:333 libdeja/duplicity/DuplicityJob.vala:1111
+msgid "No backup files found"
+msgstr "Inga säkerhetskopior hittades"
 
 #: deja-dup/ConfigDeleteRow.vala:12
 msgid "At least three months"
@@ -978,7 +982,7 @@ msgstr[0] "Minst %d dag"
 msgstr[1] "Minst %d dagar"
 
 #: deja-dup/ConfigFolderList.vala:63
-msgid "Choose folders"
+msgid "Choose Folders"
 msgstr "Välj mappar"
 
 #. *** Basic entries ***
@@ -1260,10 +1264,23 @@ msgstr "Väntar på en nätverksanslutning…"
 msgid "Could not mount storage location."
 msgstr "Kunde inte montera lagringsplats."
 
+#: libdeja/BackendRemote.vala:160
+msgid ""
+"The server’s network location needs to be specified in the storage location "
+"preferences."
+msgstr ""
+"Serverns nätverksplats behöver anges i inställningarna för lagringsplats."
+
+#: libdeja/BackendRemote.vala:165
+#, c-format
+msgid ""
+"The server’s network location ‘%s’ does not look like a network location."
+msgstr "Serverns nätverksplats ”%s” ser inte ut som en nätverksplats."
+
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:162
+#: libdeja/BackendRemote.vala:173
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba-nätverksplatser måste inkludera både värdnamn och delningsnamn."
 
@@ -1467,10 +1484,6 @@ msgstr "Fel vid skrivning av filen ”%s”."
 msgid "No space left in ‘%s’."
 msgstr "Inget ledigt utrymme på ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1111
-msgid "No backup files found"
-msgstr "Inga säkerhetskopior hittades"
-
 #: libdeja/duplicity/DuplicityJob.vala:1161
 msgid "Uploading…"
 msgstr "Skickar…"
@@ -1507,3 +1520,6 @@ msgid ""
 msgstr ""
 "Säkerhetskopiering startar när en nätverksanslutning utan datakostnader blir "
 "tillgänglig."
+
+#~ msgid "Choose folders"
+#~ msgstr "Välj mappar"
