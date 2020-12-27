@@ -187,6 +187,11 @@ internal class DuplicityJob : DejaDup.ToolJob
       return "pydrive://google/%s".printf(google_backend.get_folder());
     }
 
+    var microsoft_backend = backend as DejaDup.BackendMicrosoft;
+    if (microsoft_backend != null) {
+      return "onedrive://%s".printf(microsoft_backend.get_folder());
+    }
+
     return "invalid://"; // shouldn't happen! We should probably complain louder...
   }
 

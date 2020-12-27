@@ -13,6 +13,7 @@ public abstract class DejaDup.Backend : Object
     LOCAL,
     GVFS,
     GOOGLE,
+    MICROSOFT,
   }
   public Kind kind {get; construct; default=Kind.UNKNOWN;}
 
@@ -56,6 +57,8 @@ public abstract class DejaDup.Backend : Object
       return new BackendAuto();
     else if (key == "google")
       return new BackendGoogle(settings);
+    else if (key == "microsoft")
+      return new BackendMicrosoft(settings);
     else if (key == "drive")
       return new BackendDrive(settings);
     else if (key == "remote")

@@ -112,6 +112,17 @@ class GoogleRestoreTest(RestoreTest):
         self.set_string("folder", self.folder, child="google")
 
 
+class MicrosoftRestoreTest(RestoreTest):
+    __test__ = True
+
+    def setUp(self):
+        super().setUp()
+        if not int(self.get_config("microsoft", "enabled", fallback="0")):
+            self.skipTest("Microsoft not enabled")
+        self.set_string("backend", "microsoft")
+        self.set_string("folder", self.folder, child="microsoft")
+
+
 class RemoteRestoreTest(RestoreTest):
     __test__ = True
 

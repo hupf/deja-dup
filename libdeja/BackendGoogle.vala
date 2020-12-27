@@ -21,24 +21,21 @@ public const string GOOGLE_FOLDER_KEY = "folder";
 
 public const string GOOGLE_SERVER = "google.com";
 
-public class BackendGoogle : Backend
+public class BackendGoogle : BackendOAuth
 {
-  Soup.Server server;
-  Soup.Session session;
-  string local_address;
-  string pkce;
-  string credentials_dir;
-  string access_token;
-  string refresh_token;
-
   public BackendGoogle(Settings? settings) {
     Object(kind: Kind.GOOGLE,
            settings: (settings != null ? settings : get_settings(GOOGLE_ROOT)));
   }
 
+  string credentials_dir;
   construct {
-    session = new Soup.Session();
-    session.user_agent = "%s/%s ".printf(Config.PACKAGE, Config.VERSION);
+    // OAuth class properties
+    brand_name = "Google";
+    client_id = Config.GOOGLE_CLIENT_ID;
+    auth_url = "https://accounts.google.com/o/oauth2/v2/auth";
+    token_url = "https://www.googleapis.com/oauth2/v4/token";
+    scope = "https://www.googleapis.com/auth/drive.file";
   }
 
   public override async void cleanup() {
@@ -54,13 +51,8 @@ public class BackendGoogle : Backend
     }
   }
 
-  public override string[] get_dependencies()
-  {
+  public override string[] get_dependencies() {
     return Config.PYDRIVE_PACKAGES.split(",");
-  }
-
-  public override bool is_native() {
-    return false;
   }
 
   public override Icon? get_icon() {
@@ -72,8 +64,7 @@ public class BackendGoogle : Backend
     return yield Network.get().can_reach("https://%s/".printf(GOOGLE_SERVER));
   }
 
-  internal string get_folder()
-  {
+  internal string get_folder() {
     return get_folder_key(settings, GOOGLE_FOLDER_KEY);
   }
 
@@ -90,9 +81,7 @@ public class BackendGoogle : Backend
   public override async uint64 get_space(bool free = true)
   {
     var message = Soup.Form.request_new(
-      "GET",
-      "https://www.googleapis.com/drive/v3/about",
-      "access_token", access_token,
+      "GET", "https://www.googleapis.com/drive/v3/about",
       "fields", "storageQuota"
     );
     Json.Reader reader;
@@ -117,227 +106,8 @@ public class BackendGoogle : Backend
     return free ? limit - usage : limit;
   }
 
-  static Secret.Schema get_secret_schema()
+  protected override void got_credentials() throws Error
   {
-    return new Secret.Schema(
-      Config.APPLICATION_ID + ".Google", Secret.SchemaFlags.NONE,
-      "client_id", Secret.SchemaAttributeType.STRING
-    );
-  }
-
-  void stop_login(string? reason)
-  {
-    var full_reason = _("Could not log into Google servers.");
-    if (reason != null)
-      full_reason = "%s %s".printf(full_reason, reason);
-
-    envp_ready(false, null, full_reason);
-  }
-
-  async Json.Reader? send_message_raw(Soup.Message message) throws Error
-  {
-    var response = yield session.send_async(message);
-    if (message.status_code != Soup.Status.OK)
-      return null;
-    var data = new uint8[5000]; // assume anything we read will be 5k or smaller
-    yield response.read_all_async(data, GLib.Priority.DEFAULT, null, null);
-    return new Json.Reader(Json.from_string((string)data));
-  }
-
-  async Json.Reader send_message(Soup.Message message) throws Error
-  {
-    var reader = yield send_message_raw(message);
-    if (reader == null)
-      throw new IOError.FAILED(message.reason_phrase);
-    return reader;
-  }
-
-  async void get_tokens(Soup.Message message) throws Error
-  {
-    Json.Reader reader;
-
-    try {
-      reader = yield send_message_raw(message);
-    }
-    catch (Error e) {
-      stop_login(e.message);
-      return;
-    }
-
-    if (reader == null) {
-      // Problem with authorization -- maybe we were revoked?
-      // Let's restart the auth process.
-      start_authorization();
-      return;
-    }
-
-    // Parse token
-    reader.read_member("access_token");
-    access_token = reader.get_string_value();
-    reader.end_member();
-    if (reader.read_member("refresh_token")) {
-      refresh_token = reader.get_string_value();
-      yield store_credentials();
-    }
-    reader.end_member();
-
-    got_credentials();
-  }
-
-  public static async string? lookup_refresh_token()
-  {
-    var schema = get_secret_schema();
-    try {
-      return Secret.password_lookup_sync(schema,
-                                                  null,
-                                                  "client_id",
-                                                  Config.GOOGLE_CLIENT_ID);
-    } catch (Error e) {
-      // Ignore, just act like we didn't find it
-      return null;
-    }
-  }
-
-  public static async void clear_refresh_token()
-  {
-    var schema = get_secret_schema();
-    try {
-      Secret.password_clear_sync(schema, null,
-                                 "client_id", Config.GOOGLE_CLIENT_ID);
-    } catch (Error e) {
-      // Ignore
-    }
-  }
-
-  async void store_credentials()
-  {
-    var schema = get_secret_schema();
-    try {
-      Secret.password_store_sync(schema,
-                                 Secret.COLLECTION_DEFAULT,
-                                 _("Google credentials for Déjà Dup"),
-                                 refresh_token,
-                                 null,
-                                 "client_id", Config.GOOGLE_CLIENT_ID);
-    } catch (Error e) {
-      warning("%s\n", e.message);
-    }
-  }
-
-  string get_consent_location()
-  {
-    var message = Soup.Form.request_new(
-      "GET",
-      "https://accounts.google.com/o/oauth2/v2/auth",
-      "client_id", Config.GOOGLE_CLIENT_ID,
-      "redirect_uri", local_address,
-      "response_type", "code",
-      "code_challenge", pkce,
-      "scope", "https://www.googleapis.com/auth/drive.file"
-    );
-    return message.uri.to_string(false);
-  }
-
-  async void get_credentials(string code) throws Error
-  {
-    var message = Soup.Form.request_new(
-      "POST",
-      "https://www.googleapis.com/oauth2/v4/token",
-      "client_id", Config.GOOGLE_CLIENT_ID,
-      "redirect_uri", local_address,
-      "grant_type", "authorization_code",
-      "code_verifier", pkce,
-      "code", code
-    );
-    yield get_tokens(message);
-  }
-
-  async void refresh_credentials() throws Error
-  {
-    var message = Soup.Form.request_new(
-      "POST",
-      "https://www.googleapis.com/oauth2/v4/token",
-      "client_id", Config.GOOGLE_CLIENT_ID,
-      "refresh_token", refresh_token,
-      "grant_type", "refresh_token"
-    );
-    yield get_tokens(message);
-  }
-
-  void oauth_server_request_received(Soup.Server server, Soup.Message message,
-                                     string path,
-                                     HashTable<string, string>? query,
-                                     Soup.ClientContext client)
-  {
-    if (path != "/") {
-      message.status_code = Soup.Status.NOT_FOUND;
-      return;
-    }
-
-    message.status_code = Soup.Status.ACCEPTED;
-    server = null;
-
-    string? error = query == null ? null : query.lookup("error");
-    if (error != null) {
-      stop_login(error);
-      return;
-    }
-
-    string? code = query == null ? null : query.lookup("code");
-    if (code == null) {
-      stop_login(null);
-      return;
-    }
-
-    // Show consent granted screen
-    var html = DejaDup.get_access_granted_html();
-    message.response_body.append_take(html.data);
-
-    show_oauth_consent_page(null, null); // continue on from paused screen
-    get_credentials.begin(code);
-  }
-
-  void start_authorization() throws Error
-  {
-    // Start a server and listen on it
-    server = new Soup.Server("server-header",
-                             "%s/%s ".printf(Config.PACKAGE, Config.VERSION));
-    server.listen_local(0, Soup.ServerListenOptions.IPV4_ONLY);
-    local_address = server.get_uris().data.to_string(false);
-
-    // Prepare to handle requests that finish the consent process
-    server.add_handler(null, oauth_server_request_received);
-
-    // We need a random string between 43 and 128 chars. UUIDs are an easy way
-    // to get random strings, but they are only 37 chars long. So just add two.
-    pkce = Uuid.string_random() + Uuid.string_random();
-
-    // And show the oauth consent page finally
-    var location = get_consent_location();
-    if (location != null)
-      show_oauth_consent_page(
-        _("You first need to allow Backups to access your Google account."),
-        location
-      );
-  }
-
-  public override async void get_envp() throws Error
-  {
-    refresh_token = yield lookup_refresh_token();
-    if (refresh_token == null)
-      start_authorization();
-    else {
-      // We refresh the tokens ourselves (rather than duplicity) for two reasons:
-      // 1) We can snapshot the current access/refresh tokens into libsecret
-      // 2) We'll have a valid access token for our own get_space calls
-      // Duplicity might refresh the token on its own if it goes longer than
-      // an hour. And we won't have an up to date token, but that's OK. Ours
-      // should still work.
-      yield refresh_credentials();
-    }
-  }
-
-  void got_credentials() {
     // Pydrive only accepts credentials from a file. So we create a temporary
     // directory and put our settings file and credentials both in there.
     // Make sure it's all readable only by the user, and we should delete them

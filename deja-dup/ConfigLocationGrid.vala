@@ -29,6 +29,8 @@ public class ConfigLocationGrid : Gtk.Grid
       sub_settings = drive_settings;
     else if (name == "google")
       sub_settings = google_settings;
+    else if (name == "microsoft")
+      sub_settings = microsoft_settings;
     else if (name == "local")
       sub_settings = local_settings;
     else if (name == "remote")
@@ -46,6 +48,11 @@ public class ConfigLocationGrid : Gtk.Grid
   Gtk.Entry google_folder;
   [GtkChild]
   Gtk.Button google_reset;
+
+  [GtkChild]
+  Gtk.Entry microsoft_folder;
+  [GtkChild]
+  Gtk.Button microsoft_reset;
 
   [GtkChild]
   ConfigServerEntry remote_address;
@@ -66,6 +73,7 @@ public class ConfigLocationGrid : Gtk.Grid
   DejaDup.FilteredSettings settings;
   DejaDup.FilteredSettings drive_settings;
   DejaDup.FilteredSettings google_settings;
+  DejaDup.FilteredSettings microsoft_settings;
   DejaDup.FilteredSettings local_settings;
   DejaDup.FilteredSettings remote_settings;
   ConfigLocationCombo combo;
@@ -78,6 +86,10 @@ public class ConfigLocationGrid : Gtk.Grid
     google_settings = new DejaDup.FilteredSettings(DejaDup.GOOGLE_ROOT, read_only);
     bind_folder(google_settings, DejaDup.GOOGLE_FOLDER_KEY, google_folder, false);
     set_up_google_reset.begin();
+
+    microsoft_settings = new DejaDup.FilteredSettings(DejaDup.MICROSOFT_ROOT, read_only);
+    bind_folder(microsoft_settings, DejaDup.MICROSOFT_FOLDER_KEY, microsoft_folder, false);
+    set_up_microsoft_reset.begin();
 
     local_settings = new DejaDup.FilteredSettings(DejaDup.LOCAL_ROOT, read_only);
     bind_folder(local_settings, DejaDup.LOCAL_FOLDER_KEY, local_folder, true);
@@ -147,15 +159,34 @@ public class ConfigLocationGrid : Gtk.Grid
   [GtkCallback]
   void on_google_reset_clicked()
   {
-    DejaDup.BackendGoogle.clear_refresh_token.begin();
+    var backend = new DejaDup.BackendGoogle(google_settings);
+    backend.clear_refresh_token.begin();
     google_reset.visible = false;
   }
 
   async void set_up_google_reset()
   {
-    var token = yield DejaDup.BackendGoogle.lookup_refresh_token();
+    var backend = new DejaDup.BackendGoogle(google_settings);
+    var token = yield backend.lookup_refresh_token();
     if (token != null) {
       google_reset.visible = true;
+    }
+  }
+
+  [GtkCallback]
+  void on_microsoft_reset_clicked()
+  {
+    var backend = new DejaDup.BackendMicrosoft(microsoft_settings);
+    backend.clear_refresh_token.begin();
+    microsoft_reset.visible = false;
+  }
+
+  async void set_up_microsoft_reset()
+  {
+    var backend = new DejaDup.BackendMicrosoft(microsoft_settings);
+    var token = yield backend.lookup_refresh_token();
+    if (token != null) {
+      microsoft_reset.visible = true;
     }
   }
 }

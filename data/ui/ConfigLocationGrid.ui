@@ -82,6 +82,56 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="GtkStackPage">
+            <property name="name">microsoft</property>
+            <property name="child">
+              <object class="GtkGrid">
+                <property name="row_spacing">6</property>
+                <property name="column_spacing">12</property>
+                <child>
+                  <object class="GtkLabel" id="microsoft_folder_label">
+                    <property name="label" translatable="yes">_Folder</property>
+                    <property name="use_underline">1</property>
+                    <property name="mnemonic_widget">microsoft_folder</property>
+                    <property name="xalign">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="microsoft_folder">
+                    <property name="activates_default">1</property>
+                    <property name="hexpand">1</property>
+                    <property name="input_hints">GTK_INPUT_HINT_NO_SPELLCHECK</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="microsoft_reset">
+                    <property name="visible">0</property>
+                    <property name="label" translatable="yes">_Reset Account Access</property>
+                    <property name="receives_default">1</property>
+                    <property name="halign">start</property>
+                    <property name="valign">start</property>
+                    <property name="margin_top">12</property>
+                    <property name="use_underline">1</property>
+                    <signal name="clicked" handler="on_microsoft_reset_clicked"/>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkStackPage">
             <property name="name">remote</property>
             <property name="child">
               <object class="GtkGrid">
@@ -259,6 +309,7 @@ SPDX-FileCopyrightText: Michael Terry
     <widgets>
       <widget name="location_label"/>
       <widget name="google_folder_label"/>
+      <widget name="microsoft_folder_label"/>
       <widget name="remote_address_label"/>
       <widget name="remote_folder_label"/>
       <widget name="drive_folder_label"/>

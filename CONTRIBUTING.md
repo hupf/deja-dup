@@ -45,5 +45,6 @@ If the maintainers get hit by a bus, these are the various pieces of the adminis
 * [Snap packaging](https://github.com/deja-dup/snap) (plus the store account)
 * [Flathub packaging](https://github.com/flathub/org.gnome.DejaDup)
 * Google Drive API account (client ID is in `meson_options.txt`)
+* Microsoft OneDrive API account (client ID is in `meson_options.txt`)
 * dejadup.org domain (redirects to wiki above, only currently used for our Google API account, which requires a domain)
 * [Old project page](https://launchpad.net/deja-dup)

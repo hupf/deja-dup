@@ -22,6 +22,8 @@ namespace Config {
 	public const string DUPLICITY_PACKAGES;
 	public const string GVFS_PACKAGES;
 	public const string PYDRIVE_PACKAGES;
+	public const string REQUESTS_OAUTHLIB_PACKAGES;
 
 	public const string GOOGLE_CLIENT_ID;
+	public const string MICROSOFT_CLIENT_ID;
 }

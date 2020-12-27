@@ -10,6 +10,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
 {
   bool has_been_setup = false;
   string version = null;
+  bool supports_microsoft = false;
 
   construct
   {
@@ -53,6 +54,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
       throw new SpawnError.FAILED(msg.printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
     }
 
+    supports_microsoft = DejaDup.meets_version(major, minor, micro, 0, 8, 18);
     has_been_setup = true;
   }
 
@@ -72,11 +74,21 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   {
     explanation = null;
 
+    try {
+      do_initial_setup();
+    } catch (Error e) {
+      explanation = e.message;
+      return false;
+    }
+
     switch(kind) {
       case DejaDup.Backend.Kind.LOCAL:
       case DejaDup.Backend.Kind.GVFS:
       case DejaDup.Backend.Kind.GOOGLE:
         return true;
+
+      case DejaDup.Backend.Kind.MICROSOFT:
+        return supports_microsoft;
 
       default:
         explanation = _(

@@ -75,6 +75,7 @@ SPDX-FileCopyrightText: Michael Terry
         <choice value='local'/>
         <choice value='drive'/>
         <choice value='google'/>
+        <choice value='microsoft'/>
         <!-- deprecated -->
         <choice value='file'/>
         <choice value='gcs'/>
@@ -89,6 +90,7 @@ SPDX-FileCopyrightText: Michael Terry
       <description>The type of backup location.  If ‘auto’, a default will be chosen based on what is available.</description>
     </key>
     <child name='google' schema="@appid@.Google"/>
+    <child name='microsoft' schema="@appid@.Microsoft"/>
     <child name='remote' schema="@appid@.Remote"/>
     <child name='local' schema="@appid@.Local"/>
     <child name='drive' schema="@appid@.Drive"/>
@@ -142,7 +144,13 @@ SPDX-FileCopyrightText: Michael Terry
     <key name="folder" type="s">
       <default>'$HOSTNAME'</default>
       <summary>The folder where backups are stored</summary>
-      <description>The folder path where backups are stored. Paths can be absolute or relative to the host.</description>
+    </key>
+  </schema>
+
+  <schema id="@appid@.Microsoft" path="/org/gnome/@gsettingspath@/microsoft/">
+    <key name="folder" type="s">
+      <default>'$HOSTNAME'</default>
+      <summary>The folder where backups are stored</summary>
     </key>
   </schema>
 

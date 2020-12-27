@@ -58,6 +58,8 @@ public class ConfigLocationCombo : Gtk.Box
 
     add_entry("google", "deja-dup-google-drive", _("Google Drive"), Group.CLOUD,
               DejaDup.Backend.Kind.GOOGLE);
+    add_entry("microsoft", "deja-dup-microsoft-onedrive", _("Microsoft OneDrive"), Group.CLOUD,
+              DejaDup.Backend.Kind.MICROSOFT);
     add_entry("local", "folder", _("Local Folder"), Group.LOCAL,
               DejaDup.Backend.Kind.LOCAL);
     add_entry("remote", "network-server", _("Network Server"), Group.REMOTE,
