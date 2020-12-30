@@ -46,8 +46,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-22 04:54+0000\n"
-"PO-Revision-Date: 2020-12-22 15:51-0300\n"
+"POT-Creation-Date: 2020-12-25 03:15+0000\n"
+"PO-Revision-Date: 2020-12-30 16:43-0300\n"
 "Last-Translator: Enrico Nicoletto <liverig@gmail.com>\n"
 "Language-Team: Brazilian Portuguese <gnome-pt_br-list@gnome.org>\n"
 "Language: pt_BR\n"
@@ -355,7 +355,7 @@ msgstr ""
 "O identificador exclusivo do sistema de arquivos da unidade, usado para "
 "reconhecer a unidade quando está conectada."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:220
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:223
 msgid "Name"
 msgstr "Nome"
 
@@ -403,35 +403,39 @@ msgstr ""
 "O caminho da pasta onde os backups são armazenados. Os caminhos podem ser "
 "absolutos ou relativos ao host."
 
-#: data/ui/Browser.ui:81
+#: data/ui/Browser.ui:16 data/ui/MainHeaderBar.ui:49
+msgid "Search"
+msgstr "Pesquisar"
+
+#: data/ui/Browser.ui:84
 msgid "Scanning backup files…"
 msgstr "Verificando arquivos de backup…"
 
-#: data/ui/Browser.ui:112
+#: data/ui/Browser.ui:115
 msgid "_Retry"
 msgstr "_Tentar novamente"
 
-#: data/ui/Browser.ui:147
+#: data/ui/Browser.ui:150
 msgid "_Connect"
 msgstr "_Conectar"
 
-#: data/ui/Browser.ui:172
+#: data/ui/Browser.ui:175
 msgid "Encryption password needed"
 msgstr "Senha de criptografia necessária"
 
-#: data/ui/Browser.ui:183
+#: data/ui/Browser.ui:186
 msgid "_Enter Password"
 msgstr "_Inserir senha"
 
-#: data/ui/Browser.ui:266
+#: data/ui/Browser.ui:269
 msgid "Location"
 msgstr "Local"
 
-#: data/ui/Browser.ui:312 deja-dup/AssistantRestore.vala:65
+#: data/ui/Browser.ui:315 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "_Restaurar"
 
-#: data/ui/ConfigFolderList.ui:23
+#: data/ui/ConfigFolderList.ui:23 deja-dup/ConfigFolderList.vala:66
 msgid "Add"
 msgstr "Adicionar"
 
@@ -482,10 +486,6 @@ msgstr "Voltar"
 #: data/ui/MainHeaderBar.ui:40
 msgid "Menu"
 msgstr "Menu"
-
-#: data/ui/MainHeaderBar.ui:49
-msgid "Search"
-msgstr "Pesquisar"
 
 #: data/ui/MainHeaderBar.ui:66
 msgid "_Select All"
@@ -910,77 +910,77 @@ msgstr "Restaurar para pasta e_specífica:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Os backups não têm permissão para restaurar os seguintes arquivos:"
 
-#: deja-dup/AssistantRestore.vala:250
+#: deja-dup/AssistantRestore.vala:251
 msgid "Backup location"
 msgstr "Local de backup"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:265
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore date"
 msgstr "Restaurar a data"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:274
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore folder"
 msgstr "Restaurar pasta"
 
-#: deja-dup/AssistantRestore.vala:298
+#: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
 msgstr "Verificando por backups…"
 
-#: deja-dup/AssistantRestore.vala:306
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
 msgstr "Restaurar de quando?"
 
-#: deja-dup/AssistantRestore.vala:317
+#: deja-dup/AssistantRestore.vala:318
 msgid "Restore to Where?"
 msgstr "Restaurar para onde?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:350
+#: deja-dup/AssistantRestore.vala:351
 msgid "Restoring:"
 msgstr "Restaurando:"
 
-#: deja-dup/AssistantRestore.vala:362
+#: deja-dup/AssistantRestore.vala:363
 msgid "No backups to restore"
 msgstr "Sem backups para restaurar"
 
-#: deja-dup/AssistantRestore.vala:445
+#: deja-dup/AssistantRestore.vala:446
 msgid "Original location"
 msgstr "Local original"
 
-#: deja-dup/AssistantRestore.vala:459
+#: deja-dup/AssistantRestore.vala:460
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Arquivo para restaurar"
 msgstr[1] "Arquivos para restaurar"
 
-#: deja-dup/AssistantRestore.vala:484
+#: deja-dup/AssistantRestore.vala:485
 msgid "Restore Failed"
 msgstr "A restauração falhou"
 
-#: deja-dup/AssistantRestore.vala:486
+#: deja-dup/AssistantRestore.vala:487
 msgid "Restore Finished"
 msgstr "A restauração foi concluída"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:489
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your files were successfully restored."
 msgstr "Os seus arquivos foram restaurados com sucesso."
 
-#: deja-dup/AssistantRestore.vala:492
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "O seu arquivo foi restaurado com sucesso."
 msgstr[1] "Os seus arquivos foram restaurados com sucesso."
 
-#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Restaurando…"
 
 # Opção de linha de comando -- Rafael
-#: deja-dup/AssistantRestore.vala:569
+#: deja-dup/AssistantRestore.vala:570
 msgid "Restore in progress"
 msgstr "Restauração em progresso"
 
@@ -1020,7 +1020,7 @@ msgstr[0] "Pelo menos %d dia"
 msgstr[1] "Pelo menos %d dias"
 
 #: deja-dup/ConfigFolderList.vala:63
-msgid "Choose folders"
+msgid "Choose Folders"
 msgstr "Escolher pastas"
 
 #. *** Basic entries ***
@@ -1591,6 +1591,9 @@ msgid ""
 msgstr ""
 "O backup será iniciado quando uma conexão de rede não limitada ficar "
 "disponível."
+
+#~ msgid "Choose folders"
+#~ msgstr "Escolher pastas"
 
 #~ msgid "Select"
 #~ msgstr "Selecionar"
