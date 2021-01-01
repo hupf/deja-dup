@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-12-16 03:48+0000\n"
-"PO-Revision-Date: 2020-12-16 20:30+0900\n"
+"POT-Creation-Date: 2020-12-25 03:15+0000\n"
+"PO-Revision-Date: 2021-01-02 00:26+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Language: ja\n"
@@ -964,7 +964,7 @@ msgid_plural "At least %d days"
 msgstr[0] "最低 %d 日"
 
 #: deja-dup/ConfigFolderList.vala:63
-msgid "Choose folders"
+msgid "Choose Folders"
 msgstr "フォルダーを選択"
 
 #. *** Basic entries ***
@@ -1247,10 +1247,23 @@ msgstr "ネットワークの接続を待っています…"
 msgid "Could not mount storage location."
 msgstr "保存場所をマウントできませんでした。"
 
+#: libdeja/BackendRemote.vala:160
+msgid ""
+"The server’s network location needs to be specified in the storage location "
+"preferences."
+msgstr ""
+"設定ダイアログでサーバーのネットワークの場所を指定する必要があります。"
+
+#: libdeja/BackendRemote.vala:165
+#, c-format
+msgid ""
+"The server’s network location ‘%s’ does not look like a network location."
+msgstr "‘%s’ はネットワークの場所ではありません。"
+
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:161
+#: libdeja/BackendRemote.vala:173
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba ネットワークの場所は、ホスト名と共有名の両方を含む必要があります。"
