@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2020-07-09 08:32+0000\n"
-"PO-Revision-Date: 2020-07-10 16:38+0300\n"
+"POT-Creation-Date: 2020-12-25 01:04+0000\n"
+"PO-Revision-Date: 2021-01-02 20:19+0200\n"
 "Last-Translator: Florentina Mușat <florentina.musat.28@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
 "Language: ro\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -41,7 +41,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:337
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:367
 msgid "Déjà Dup Backups"
 msgstr "Copii de rezervă Déjà Dup"
 
@@ -95,7 +95,7 @@ msgstr ""
 "sistemului completă sau un program de arhivare, este posibil să preferați "
 "alte aplicații de copiere de rezervă."
 
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:13
 msgid "Backups"
 msgstr "Copii de siguranță"
 
@@ -326,7 +326,7 @@ msgstr ""
 "Identificatorul de sistem de fișiere unic pentru unitate, utilizat pentru a "
 "recunoaște unitatea când este conectată."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:113 data/ui/Browser.ui:223
 msgid "Name"
 msgstr "Nume"
 
@@ -374,253 +374,200 @@ msgstr ""
 "Calea de dosare unde sunt stocate copiile de rezervă. Căile pot fi absolute "
 "sau relative la gazdă."
 
-#: data/ui/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "General"
-msgstr "Generale"
-
-#: data/ui/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Arată ajutorul"
-
-#: data/ui/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Deschide meniul"
-
-#: data/ui/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Ieșire"
-
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Scurtături de tastatură"
-
-#: data/ui/help-overlay.ui:53
-msgctxt "shortcut window"
-msgid "Browsing Backed Up Files"
-msgstr "Se navighează fișiere copiate de rezervă"
-
-#: data/ui/help-overlay.ui:58
-msgctxt "shortcut window"
+#: data/ui/Browser.ui:16 data/ui/MainHeaderBar.ui:49
 msgid "Search"
 msgstr "Caută"
 
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Navighează înapoi"
-
-#: data/ui/main.ui:46
-msgid "Back"
-msgstr "Înapoi"
-
-#: data/ui/main.ui:86
-msgid "Select"
-msgstr "Selectează"
-
-#: data/ui/main.ui:112 data/ui/main.ui:184
-msgid "Search"
-msgstr "Caută"
-
-#: data/ui/main.ui:156 data/ui/main.ui:771 deja-dup/Assistant.vala:338
-msgid "_Cancel"
-msgstr "_Anulare"
-
-#: data/ui/main.ui:249
-msgid "Keep your important files safe in a backup."
-msgstr "Păstrează fișierele importante în siguranță într-o copie de rezervă."
-
-#: data/ui/main.ui:261
-msgid "Create My First _Backup"
-msgstr "Creează prima _copie de rezervă"
-
-#: data/ui/main.ui:277
-msgid "_Restore From a Previous Backup"
-msgstr "_Restaurează de la o copie de rezervă anterioară"
-
-#: data/ui/main.ui:310 data/ui/preferences.ui:117
-msgid "Automatic backup"
-msgstr "Copie de rezervă automată"
-
-#: data/ui/main.ui:325
-msgid "Back up _automatically"
-msgstr "Copiază de rezervă _automat"
-
-#: data/ui/main.ui:352
-msgid "_Back Up Now"
-msgstr "_Copiază de rezervă acum"
-
-#: data/ui/main.ui:381
-msgid "Overview"
-msgstr "Rezumat"
-
-#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:70
-msgid "_Restore"
-msgstr "_Restaurează"
-
-#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:139
-msgid "_Date"
-msgstr "_Dată"
-
-#: data/ui/main.ui:533
+#: data/ui/Browser.ui:84
 msgid "Scanning backup files…"
 msgstr "Se scanează fișierele copiei de rezervă…"
 
-#: data/ui/main.ui:567
+#: data/ui/Browser.ui:115
 msgid "_Retry"
 msgstr "_Reîncearcă"
 
-#: data/ui/main.ui:606
+#: data/ui/Browser.ui:150
 msgid "_Connect"
 msgstr "_Conectează"
 
-#: data/ui/main.ui:635
+#: data/ui/Browser.ui:175
 msgid "Encryption password needed"
 msgstr "Parola de criptare necesară"
 
-#: data/ui/main.ui:646
+#: data/ui/Browser.ui:186
 msgid "_Enter Password"
 msgstr "_Introduce parola"
 
-#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:66
-msgid "Restore"
-msgstr "Restaurează"
+#: data/ui/Browser.ui:269
+msgid "Location"
+msgstr "Locație"
 
-#: data/ui/main.ui:780
-msgid "Con_tinue"
-msgstr "Con_tinuă"
+#: data/ui/Browser.ui:315 deja-dup/AssistantRestore.vala:65
+msgid "_Restore"
+msgstr "_Restaurează"
 
-#: data/ui/main.ui:848 deja-dup/AssistantOperation.vala:384
-#: deja-dup/AssistantOperation.vala:455
-msgid "E_ncryption password"
-msgstr "Parolă pe_ntru criptare"
+#: data/ui/ConfigFolderList.ui:23 deja-dup/ConfigFolderList.vala:66
+msgid "Add"
+msgstr "Adaugă"
 
-#: data/ui/main.ui:859 deja-dup/AssistantOperation.vala:414
-#: deja-dup/AssistantOperation.vala:464
-msgid "_Show password"
-msgstr "Arată _parola"
+#: data/ui/ConfigFolderPage.ui:10
+msgid "Folders"
+msgstr "Dosare"
 
-#: data/ui/main.ui:874 deja-dup/AssistantOperation.vala:421
-#: deja-dup/MountOperationAssistant.vala:27
-msgid "_Remember password"
-msgstr "_Reține parola"
-
-#: data/ui/menus.ui:12
-msgid "_Preferences"
-msgstr "_Preferințe"
-
-#: data/ui/menus.ui:16
-msgid "_Keyboard Shortcuts"
-msgstr "Scurtături de _tastatură"
-
-#: data/ui/menus.ui:20
-msgid "_Help"
-msgstr "A_jutor"
-
-#: data/ui/menus.ui:24
-msgid "_About Backups"
-msgstr "_Despre copii de rezervă"
-
-#: data/ui/menus.ui:32
-msgid "Select _All"
-msgstr "Selectează to_ate"
-
-#: data/ui/menus.ui:36
-msgid "Select _None"
-msgstr "Selectează _nimic"
-
-#: data/ui/preferences.ui:27
-msgid "Storage"
-msgstr "Stocare"
-
-#: data/ui/preferences.ui:32
-msgid "_Location"
-msgstr "_Locație"
-
-#: data/ui/preferences.ui:78
-msgid "_Keep Backups"
-msgstr "_Păstrează copiile de rezervă"
-
-#: data/ui/preferences.ui:87
-msgid ""
-"The oldest backups will still be deleted earlier if the location is low on "
-"space."
-msgstr ""
-"Cele mai vechi copii de rezervă vor fi încă șterse mai devreme dacă locația "
-"este redusă."
-
-#: data/ui/preferences.ui:101
-msgid "Schedule"
-msgstr "Planificare"
-
-#: data/ui/preferences.ui:107
-msgid "Back Up _Automatically"
-msgstr "Copiază de rezervă _automat"
-
-#: data/ui/preferences.ui:129
-msgid "Automatic Backup _Frequency"
-msgstr "_Frecvență de copiere de rezervă automată"
-
-#: data/ui/preferences.ui:147
+#: data/ui/ConfigFolderPage.ui:13
 msgid "Folders to Back Up"
 msgstr "Dosarele de copiat de rezervă"
 
-#: data/ui/preferences.ui:153
-msgid "Includes"
-msgstr "Include"
-
-#: data/ui/preferences.ui:162
+#: data/ui/ConfigFolderPage.ui:20
 msgid "Folders to Ignore"
 msgstr "Dosare de ignorat"
 
-#: data/ui/preferences.ui:168
-msgid "Excludes"
-msgstr "Exclude"
+#: data/ui/ConfigFolderRow.ui:17
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr ""
+"Nu poate fi creată o copie de rezervă a acestui dosar întrucât Copii de "
+"rezervă nu are acces la el."
 
-#: data/ui/preferences.ui:177
-msgid "Preferences"
-msgstr "Preferințe"
+#: data/ui/ConfigFolderRow.ui:29
+msgid "Remove"
+msgstr "Șterge"
 
 #. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:233
+#: data/ui/ConfigLocationGrid.ui:20
 msgid "_Storage Location"
 msgstr "Locație de _stocare"
 
-#: data/ui/preferences.ui:270 data/ui/preferences.ui:354
-#: data/ui/preferences.ui:392 data/ui/preferences.ui:459
+#: data/ui/ConfigLocationGrid.ui:42 data/ui/ConfigLocationGrid.ui:114
+#: data/ui/ConfigLocationGrid.ui:148 data/ui/ConfigLocationGrid.ui:207
 msgid "_Folder"
 msgstr "_Dosar"
 
-#: data/ui/preferences.ui:294
+#: data/ui/ConfigLocationGrid.ui:66
 msgid "_Reset Account Access"
 msgstr "_Restabilește accesul contului"
 
-#: data/ui/preferences.ui:326
+#: data/ui/ConfigLocationGrid.ui:92
 msgid "_Network Location"
 msgstr "Locație de _rețea"
 
-#: data/ui/preferences.ui:433 libdeja/BackendUnsupported.vala:29
+#: data/ui/MainHeaderBar.ui:30
+msgid "Back"
+msgstr "Înapoi"
+
+#: data/ui/MainHeaderBar.ui:40
+msgid "Menu"
+msgstr "Meniu"
+
+#: data/ui/MainHeaderBar.ui:66
+msgid "_Select All"
+msgstr "Selectează tot"
+
+#: data/ui/MainHeaderBar.ui:73
+msgid "_Preferences"
+msgstr "_Preferințe"
+
+#: data/ui/MainHeaderBar.ui:77
+msgid "_Keyboard Shortcuts"
+msgstr "Scurtături de _tastatură"
+
+#: data/ui/MainHeaderBar.ui:81
+msgid "_Help"
+msgstr "A_jutor"
+
+#: data/ui/MainHeaderBar.ui:85
+msgid "_About Backups"
+msgstr "_Despre copii de rezervă"
+
+#: data/ui/MainWindow.ui:28
+msgid "Overview"
+msgstr "Rezumat"
+
+#: data/ui/MainWindow.ui:64
+msgid "Keep your important files safe in a backup."
+msgstr "Păstrează fișierele importante în siguranță într-o copie de rezervă."
+
+#: data/ui/MainWindow.ui:76
+msgid "Create My First _Backup"
+msgstr "Creează prima _copie de rezervă"
+
+#: data/ui/MainWindow.ui:91
+msgid "_Restore From a Previous Backup"
+msgstr "_Restaurează de la o copie de rezervă anterioară"
+
+#: data/ui/MainWindow.ui:129
+msgid "Back up _automatically"
+msgstr "Copiază de rezervă _automat"
+
+#: data/ui/MainWindow.ui:150
+msgid "_Back Up Now"
+msgstr "_Copiază de rezervă acum"
+
+#: data/ui/MainWindow.ui:183 deja-dup/AssistantRestore.vala:61
+msgid "Restore"
+msgstr "Restaurează"
+
+#: data/ui/PassphraseDialog.ui:16 deja-dup/Assistant.vala:345
+msgid "_Cancel"
+msgstr "_Anulare"
+
+#: data/ui/PassphraseDialog.ui:23
+msgid "Con_tinue"
+msgstr "Con_tinuă"
+
+#: data/ui/PassphraseDialog.ui:50 deja-dup/AssistantOperation.vala:379
+#: deja-dup/AssistantOperation.vala:440
+msgid "E_ncryption password"
+msgstr "Parolă pe_ntru criptare"
+
+#: data/ui/PassphraseDialog.ui:72 deja-dup/AssistantOperation.vala:407
+#: deja-dup/MountOperationAssistant.vala:25
+msgid "_Remember password"
+msgstr "_Reține parola"
+
+#: data/ui/PreferencesWindow.ui:19
+msgid "General"
+msgstr "Generale"
+
+#: data/ui/PreferencesWindow.ui:22
+msgid "Storage"
+msgstr "Stocare"
+
+#: data/ui/PreferencesWindow.ui:25
+msgid "_Location"
+msgstr "_Locație"
+
+#: data/ui/PreferencesWindow.ui:42
+msgid "_Keep Backups"
+msgstr "_Păstrează copiile de rezervă"
+
+#: data/ui/PreferencesWindow.ui:49
 msgid ""
-"This storage location is no longer supported. You can still use duplicity "
-"directly to back up or restore your files."
+"The oldest backups will still be deleted earlier if the location is low on "
+"space or kept up to three months longer to avoid deleting related backups."
 msgstr ""
-"Această locație de stocare nu mai este suportată. Puteți încă utiliza "
-"duplicitatea direct pentru a copia de rezervă sau a vă restaura fișierele."
+"Cele mai vechi copii de siguranță vor fi șterse mai devreme dacă locația are "
+"spațiu redus sau se păstrează cu până la trei luni mai mult pentru a evita "
+"ștergerea copiilor de rezervă aferente."
 
-#: data/ui/preferences.ui:475
-msgid "_Choose Folder…"
-msgstr "_Alege un dosar…"
+#: data/ui/PreferencesWindow.ui:61
+msgid "Schedule"
+msgstr "Planificare"
 
-#: data/ui/server-hint.ui:21
+#: data/ui/PreferencesWindow.ui:65
+msgid "Back Up _Automatically"
+msgstr "Copiază de rezervă _automat"
+
+#: data/ui/PreferencesWindow.ui:81
+msgid "Automatic Backup _Frequency"
+msgstr "_Frecvență de copiere de rezervă automată"
+
+#: data/ui/ServerHintPopover.ui:18
 msgid "Network Locations"
 msgstr "Locații de rețea"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/server-hint.ui:34
+#: data/ui/ServerHintPopover.ui:30
 msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
@@ -628,97 +575,149 @@ msgstr ""
 "Locațiile de rețea sunt făcute dintr-un prefix de protocol, o adresă, și "
 "câteodată o cale în funcție de protocol. Exemple:"
 
-#: data/ui/server-hint.ui:69
+#: data/ui/ServerHintPopover.ui:56
 msgid "Available Protocols"
 msgstr "Protocoale disponibile"
 
-#: data/ui/server-hint.ui:83
+#: data/ui/ServerHintPopover.ui:69
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/server-hint.ui:94
+#: data/ui/ServerHintPopover.ui:79
 msgid "File Transfer Protocol"
 msgstr "Protocol de transfer de fișiere"
 
-#: data/ui/server-hint.ui:105
+#: data/ui/ServerHintPopover.ui:89
 msgid "Network File System"
 msgstr "Sistem de fișiere de rețea"
 
-#: data/ui/server-hint.ui:116
+#: data/ui/ServerHintPopover.ui:99
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/server-hint.ui:127
+#: data/ui/ServerHintPopover.ui:109
 msgid "SSH File Transfer Protocol"
 msgstr "Protocol de transfer de fișiere SSH"
 
-#: data/ui/server-hint.ui:138
+#: data/ui/ServerHintPopover.ui:119
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/server-hint.ui:149
+#: data/ui/ServerHintPopover.ui:129
 msgid "Prefix"
 msgstr "Prefix"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/server-hint.ui:174
+#: data/ui/ServerHintPopover.ui:152
 msgid "ftp:// or ftps://"
 msgstr "ftp:// sau ftps://"
 
-#: data/ui/server-hint.ui:196
+#: data/ui/ServerHintPopover.ui:172
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/server-hint.ui:207
+#: data/ui/ServerHintPopover.ui:182
 msgid "sftp:// or ssh://"
 msgstr "sftp:// sau ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/server-hint.ui:218
+#: data/ui/ServerHintPopover.ui:192
 msgid "dav:// or davs://"
 msgstr "dav:// sau davs://"
 
-#: deja-dup/Assistant.vala:282
+#: data/ui/TimeCombo.ui:14
+msgid "_Date"
+msgstr "_Dată"
+
+#: data/ui/help-overlay.ui:17
+msgctxt "shortcut window"
+msgid "General"
+msgstr "Generale"
+
+#: data/ui/help-overlay.ui:21
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Arată ajutorul"
+
+#: data/ui/help-overlay.ui:27
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Deschide meniul"
+
+#: data/ui/help-overlay.ui:33
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Ieșire"
+
+#: data/ui/help-overlay.ui:39
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Scurtături de tastatură"
+
+#: data/ui/help-overlay.ui:46
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr "Se navighează fișiere copiate de rezervă"
+
+#: data/ui/help-overlay.ui:50
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Caută"
+
+#: data/ui/help-overlay.ui:56
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Navighează înapoi"
+
+#: deja-dup/Assistant.vala:292
 msgid "Co_ntinue"
 msgstr "Co_ntinuă"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:298
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Test"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:331
 msgid "_Resume Later"
 msgstr "_Reia mai târziu"
 
-#: deja-dup/Assistant.vala:330
+#: deja-dup/Assistant.vala:337
 msgid "_Back"
 msgstr "Îna_poi"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:339
 msgid "_Close"
 msgstr "În_chide"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:356
 msgid "_Forward"
 msgstr "Înain_te"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Copie de siguranță"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Copie de si_guranță"
 
-#: deja-dup/AssistantBackup.vala:81
+#: deja-dup/AssistantBackup.vala:61
+msgid ""
+"The following folders cannot be backed up because Backups does not have "
+"access to them:"
+msgstr ""
+"Următoarele dosare nu pot fi copiate de rezervă întrucât Copii de rezervă nu "
+"are acces la ele:"
+
+#: deja-dup/AssistantBackup.vala:77
 msgid "Creating the first backup.  This may take a while."
 msgstr "Se creează prima copie de siguranță. Operația poate fi una de durată."
 
-#: deja-dup/AssistantBackup.vala:82
+#: deja-dup/AssistantBackup.vala:78
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -729,54 +728,81 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:113
+#: deja-dup/AssistantBackup.vala:93
 msgid "Backing up:"
 msgstr "Se realizează copia de siguranță:"
 
-#: deja-dup/AssistantBackup.vala:122
+#: deja-dup/AssistantBackup.vala:102
 msgid "Backup Failed"
 msgstr "Realizarea copiei de siguranță a eșuat"
 
-#: deja-dup/AssistantBackup.vala:125
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Finished"
 msgstr "Copierea de rezervă s-a terminat"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:129
+#: deja-dup/AssistantBackup.vala:109
 msgid "Your files were successfully backed up and tested."
 msgstr ""
 "Fișierele dumneavoastră au fost incluse cu succes în copia de siguranță, "
 "testată deja."
 
-#: deja-dup/AssistantBackup.vala:136
+#: deja-dup/AssistantBackup.vala:116
 msgid "Backing Up…"
 msgstr "Se creează copia de rezervă…"
 
-#: deja-dup/AssistantOperation.vala:165
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:122 deja-dup/AssistantOperation.vala:871
+msgid "Backups needs your input to continue"
+msgstr "Copii de rezervă are nevoie de input pentru a continua"
+
+#. At time of writing, gnome-shell still warns the user on logout even
+#. with just a suspend inhibit. So let's avoid annoying the user and just
+#. not bother inhibiting for automatic backups at all until that's fixed.
+#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
+#: deja-dup/AssistantBackup.vala:149
+msgid "Backup in progress"
+msgstr "Copiere de rezervă în progres"
+
+#: deja-dup/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "Locul de unde se restaurează?"
+
+#: deja-dup/AssistantLocation.vala:21
+msgid "_Backup location"
+msgstr "Locul copiilor de _siguranță"
+
+#: deja-dup/AssistantLocation.vala:22
+msgid "_Search"
+msgstr "Caută"
+
+#: deja-dup/AssistantOperation.vala:159
 msgid "Scanning:"
 msgstr "Se scanează:"
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning…"
 msgstr "Se scanează…"
 
-#: deja-dup/AssistantOperation.vala:270
+#: deja-dup/AssistantOperation.vala:265
 msgid "_Details"
 msgstr "_Detalii"
 
-#: deja-dup/AssistantOperation.vala:315
+#: deja-dup/AssistantOperation.vala:312
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Pentru a continua, următoarele pachete au nevoie să fie instalate:"
 
-#: deja-dup/AssistantOperation.vala:351
+#: deja-dup/AssistantOperation.vala:346
 msgid "_Allow restoring without a password"
 msgstr "Permite rest_aurarea fără solicitarea unei parole"
 
-#: deja-dup/AssistantOperation.vala:357
+#: deja-dup/AssistantOperation.vala:351
 msgid "_Password-protect your backup"
 msgstr "Protejați copia de siguranță cu _parolă"
 
-#: deja-dup/AssistantOperation.vala:369
+#: deja-dup/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -784,11 +810,11 @@ msgstr ""
 "Veți avea nevoie de parolă pentru a restaura copia de siguranță. Ați face "
 "bine să o notați chiar acum."
 
-#: deja-dup/AssistantOperation.vala:401
+#: deja-dup/AssistantOperation.vala:395
 msgid "Confir_m password"
 msgstr "Confir_mare parolă"
 
-#: deja-dup/AssistantOperation.vala:440
+#: deja-dup/AssistantOperation.vala:426
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -797,182 +823,171 @@ msgstr ""
 "Pentru a vă asigura că veți putea extrage fișierele în cazul unei urgențe, "
 "introduceți parola de criptare pentru a realiza un test rapid de restaurare."
 
-#: deja-dup/AssistantOperation.vala:469
+#: deja-dup/AssistantOperation.vala:448
 msgid "Test every two _months"
 msgstr "Testare la fiecare două l_uni"
 
-#: deja-dup/AssistantOperation.vala:501
+#: deja-dup/AssistantOperation.vala:479
 msgid "_Grant Access"
 msgstr "_Acordă accesul"
 
-#: deja-dup/AssistantOperation.vala:563
+#: deja-dup/AssistantOperation.vala:541
 msgid "Install Packages"
 msgstr "Instalează pachete"
 
-#: deja-dup/AssistantOperation.vala:578
+#: deja-dup/AssistantOperation.vala:556
 msgid "Summary"
 msgstr "Rezumat"
 
-#: deja-dup/AssistantOperation.vala:600
+#: deja-dup/AssistantOperation.vala:578
 msgid "Restore Test"
 msgstr "Test de restaurare"
 
-#: deja-dup/AssistantOperation.vala:608
+#: deja-dup/AssistantOperation.vala:586
 msgid "Grant Access"
 msgstr "Acordă accesul"
 
-#. For most, don't do anything special.  Show generic 'unknown error'
-#. message, but provide the exception text for better bug reports.
-#. Plus, sometimes it may clue the user in to what's wrong.
-#. But first, try to restart without a cache, since that seems to quite
-#. frequently fix odd metadata errors with duplicity.  If we hit an error
-#. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:709
-#: libdeja/tools/duplicity/DuplicityJob.vala:1092
-msgid "Failed with an unknown error."
-msgstr "Eșec cu eroare necunoscută."
-
-#: deja-dup/AssistantOperation.vala:863
+#: deja-dup/AssistantOperation.vala:790
 msgid "Require Password?"
 msgstr "Solicită parolă?"
 
-#: deja-dup/AssistantOperation.vala:865
+#: deja-dup/AssistantOperation.vala:792
 msgid "Encryption Password Needed"
 msgstr "Este nevoie de parola de criptare"
 
-#: deja-dup/AssistantOperation.vala:989
+#: deja-dup/AssistantOperation.vala:840
+msgid "Backups needs your encryption password to continue"
+msgstr "Copii de rezervă are nevoie de parola de criptare pentru a continua"
+
+#: deja-dup/AssistantOperation.vala:911
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalează"
 
-#: deja-dup/AssistantRestore.vala:97
-msgid "_Backup location"
-msgstr "Locul copiilor de _siguranță"
+#: deja-dup/AssistantOperation.vala:916
+msgid "Backups needs to install packages to continue"
+msgstr "Copii de rezervă are nevoie să instaleze pachete pentru a continua"
 
-#: deja-dup/AssistantRestore.vala:118
-msgid "Restore From Where?"
-msgstr "Locul de unde se restaurează?"
-
-#: deja-dup/AssistantRestore.vala:185
+#: deja-dup/AssistantRestore.vala:139
 msgid "Restore files to _original locations"
 msgstr "Restaurează fișierele în locurile originale"
 
-#: deja-dup/AssistantRestore.vala:195
+#: deja-dup/AssistantRestore.vala:150
 msgid "Restore to _specific folder"
 msgstr "Re_staurează într-un loc  anume"
 
-#: deja-dup/AssistantRestore.vala:207
-msgid "Choose destination for restored files"
-msgstr "Alegeți destinația pentru fișierele restaurate"
+#: deja-dup/AssistantRestore.vala:178
+msgid "Restore to _specific folder:"
+msgstr "Restaurează la dosarul _specific:"
 
-#: deja-dup/AssistantRestore.vala:215
-msgid "Restore _folder"
-msgstr "Restaurează _fișier"
-
-#: deja-dup/AssistantRestore.vala:228
+#: deja-dup/AssistantRestore.vala:187
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Copii de rezervă nu are permisiunea de a restaura următoarele fișiere:"
 
-#: deja-dup/AssistantRestore.vala:292
+#: deja-dup/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Locul copiilor de siguranță"
 
-#: deja-dup/AssistantRestore.vala:307
+#. Translators: label for the date from which we are restoring
+#: deja-dup/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Dată restaurare"
 
-#: deja-dup/AssistantRestore.vala:315
+#. Translators: label for the folder into which we putting restored files
+#: deja-dup/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Restaurare dosar"
 
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Se verifică după copii de rezervă…"
 
-#: deja-dup/AssistantRestore.vala:349
+#: deja-dup/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Locul de unde se restaurează?"
 
-#: deja-dup/AssistantRestore.vala:360
+#: deja-dup/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Locul în care se restaurează?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:395
+#: deja-dup/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Se restaurează:"
 
-#. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:405
+#: deja-dup/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Nu există fișiere de restaurat"
 
-#: deja-dup/AssistantRestore.vala:514
+#: deja-dup/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Locul original"
 
-#: deja-dup/AssistantRestore.vala:525
+#: deja-dup/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fișier de restaurat"
 msgstr[1] "Fișiere de restaurat"
 msgstr[2] "Fișiere de restaurat"
 
-#: deja-dup/AssistantRestore.vala:546
+#: deja-dup/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Restaurarea a eșuat"
 
-#: deja-dup/AssistantRestore.vala:548
+#: deja-dup/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Restaurarea s-a încheiat"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:551
+#: deja-dup/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Fișierele dumneavoastră au fost restaurate cu succes."
 
-#: deja-dup/AssistantRestore.vala:554
+#: deja-dup/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Fișierul a fost restaurat cu succes."
 msgstr[1] "Fișierele au fost restaurate cu succes."
 msgstr[2] "Fișierele au fost restaurate cu succes."
 
-#: deja-dup/AssistantRestore.vala:561 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Se restaurează…"
 
-#: deja-dup/Browser.vala:201
-msgid "Click on items to select them"
-msgstr "Apăsați clic pe elemente pentru a le selecta"
+#: deja-dup/AssistantRestore.vala:569
+msgid "Restore in progress"
+msgstr "Restaurare în progres"
 
-#: deja-dup/Browser.vala:203
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u selectat"
-msgstr[1] "%u selectate"
-msgstr[2] "%u selectate"
+#: deja-dup/Background.vala:77
+msgid "Cannot back up automatically"
+msgstr "Nu se poate crea o copie de rezervă automat"
 
-#: deja-dup/Browser.vala:380
+#: deja-dup/Browser.vala:227
 msgid "Authentication needed"
 msgstr "Autentificarea necesară"
 
-#: deja-dup/ConfigDelete.vala:16
+#: deja-dup/Browser.vala:333 libdeja/duplicity/DuplicityJob.vala:1111
+msgid "No backup files found"
+msgstr "Nu au fost găsite fișiere care să conțină copii de siguranță"
+
+#: deja-dup/ConfigDeleteRow.vala:12
+msgid "At least three months"
+msgstr "Cel puțin trei luni"
+
+#: deja-dup/ConfigDeleteRow.vala:13
 msgid "At least six months"
 msgstr "Cel puțin șase luni"
 
-#: deja-dup/ConfigDelete.vala:17
+#: deja-dup/ConfigDeleteRow.vala:14
 msgid "At least a year"
 msgstr "Cel puțin un an"
 
-#: deja-dup/ConfigDelete.vala:18
+#: deja-dup/ConfigDeleteRow.vala:15
 msgid "Forever"
 msgstr "Permanent"
 
-#: deja-dup/ConfigDelete.vala:27
+#: deja-dup/ConfigDeleteRow.vala:22
 #, c-format
 msgid "At least %d day"
 msgid_plural "At least %d days"
@@ -980,69 +995,49 @@ msgstr[0] "Cel puțin %d zi"
 msgstr[1] "Cel puțin %d zile"
 msgstr[2] "Cel puțin %d de zile"
 
-#: deja-dup/ConfigFolderList.vala:51
-msgid "Remove"
-msgstr "Șterge"
-
-#: deja-dup/ConfigFolderList.vala:69
-msgid "Add"
-msgstr "Adaugă"
-
-#: deja-dup/ConfigFolderList.vala:79
-msgid "Choose folders"
-msgstr "Specificați dosarele"
-
-#: deja-dup/ConfigFolderList.vala:81
-msgid "_Add"
-msgstr "_Adaugă"
+#: deja-dup/ConfigFolderList.vala:63
+msgid "Choose Folders"
+msgstr "Alegeți dosarele"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
-#: libdeja/BackendGoogle.vala:86
+#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:84
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: deja-dup/ConfigLocationCombo.vala:73
+#: deja-dup/ConfigLocationCombo.vala:61
 msgid "Local Folder"
 msgstr "Dosar local"
 
-#: deja-dup/ConfigLocationCombo.vala:74
+#: deja-dup/ConfigLocationCombo.vala:63
 msgid "Network Server"
 msgstr "Server de rețea"
 
-#: deja-dup/ConfigLocationCombo.vala:264
+#. *** Old deprecated cloud entries, kept just for a kinder migration ***
+#: deja-dup/ConfigLocationCombo.vala:68
 msgid "Google Cloud Storage"
 msgstr "Stocare Google Cloud"
 
-#: deja-dup/ConfigLocationCombo.vala:268
+#: deja-dup/ConfigLocationCombo.vala:70
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: deja-dup/ConfigLocationCombo.vala:270
+#: deja-dup/ConfigLocationCombo.vala:72
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: deja-dup/ConfigLocationCombo.vala:272
+#: deja-dup/ConfigLocationCombo.vala:74
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/ConfigLocationGrid.vala:109
-msgid "Choose Folder"
-msgstr "Alegeți dosarul"
-
-#: deja-dup/ConfigLocationGrid.vala:112
-msgid "_OK"
-msgstr "În re_gulă"
-
-#: deja-dup/ConfigPeriod.vala:24
+#: deja-dup/ConfigPeriodRow.vala:19
 msgid "Daily"
 msgstr "Zilnic"
 
-#: deja-dup/ConfigPeriod.vala:25
+#: deja-dup/ConfigPeriodRow.vala:20
 msgid "Weekly"
 msgstr "Săptămânal"
 
-#: deja-dup/ConfigPeriod.vala:34
+#: deja-dup/ConfigPeriodRow.vala:27
 #, c-format
 msgid "Every %d day"
 msgid_plural "Every %d days"
@@ -1051,15 +1046,15 @@ msgstr[1] "La fiecare %d zile"
 msgstr[2] "La fiecare %d de zile"
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:46
+#: deja-dup/ConfigStatusLabel.vala:48
 msgid "Next backup is today."
 msgstr "Următoarea copie de siguranță este programată astăzi."
 
-#: deja-dup/ConfigStatusLabel.vala:48
+#: deja-dup/ConfigStatusLabel.vala:50
 msgid "Next backup is tomorrow."
 msgstr "Următoarea copie de siguranță este programată mâine."
 
-#: deja-dup/ConfigStatusLabel.vala:56
+#: deja-dup/ConfigStatusLabel.vala:58
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -1071,15 +1066,15 @@ msgstr[2] ""
 "Următoarea copie de siguranță este programată în %d de zile de acum înainte."
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:73
+#: deja-dup/ConfigStatusLabel.vala:75
 msgid "Last backup was today."
 msgstr "Ultima copie de siguranță a fost realizată astăzi."
 
-#: deja-dup/ConfigStatusLabel.vala:75
+#: deja-dup/ConfigStatusLabel.vala:77
 msgid "Last backup was yesterday."
 msgstr "Ultima copie de siguranță a fost realizată ieri."
 
-#: deja-dup/ConfigStatusLabel.vala:83
+#: deja-dup/ConfigStatusLabel.vala:85
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
@@ -1087,54 +1082,86 @@ msgstr[0] "Ultima copie de siguranță a fost realizată acum %d zi."
 msgstr[1] "Ultima copie de siguranță a fost realizată acum %d zile."
 msgstr[2] "Ultima copie de siguranță a fost realizată acum %d de zile."
 
-#: deja-dup/ConfigStatusLabel.vala:96
+#: deja-dup/ConfigStatusLabel.vala:98
 msgid "No recent backups."
 msgstr "Nu există copii de siguranță recente."
 
-#: deja-dup/ConfigStatusLabel.vala:102
+#: deja-dup/ConfigStatusLabel.vala:104
 msgid "No backup scheduled."
 msgstr "Nu există copii de siguranță planificate."
 
-#: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "Conectare la server"
+#: deja-dup/FolderChooserButton.vala:18
+msgid "_Choose Folder…"
+msgstr "_Alege un dosar…"
 
-#: deja-dup/MountOperationAssistant.vala:24
+#: deja-dup/FolderChooserButton.vala:26
+msgid "Choose Folder"
+msgstr "Alegeți dosarul"
+
+#: deja-dup/MountOperationAssistant.vala:23
 msgid "_Username"
 msgstr "Nume _utilizator"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "_Parolă"
 
-#: deja-dup/MountOperationAssistant.vala:26
-msgid "S_how password"
-msgstr "Arată parola"
-
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:62
 msgid "Location not available"
 msgstr "Locul nu este disponibil"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:77
+msgid "Backups needs your password to continue"
+msgstr "Copii de rezervă are nevoie de parolă pentru a continua"
+
+#: deja-dup/MountOperationAssistant.vala:144
 msgid "Connect _anonymously"
 msgstr "Conectare _anonimă"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect as u_ser"
 msgstr "Conectare ca utili_zator"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:192
 msgid "_Domain"
 msgstr "_Domeniu"
 
-#: deja-dup/Prompt.vala:18
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "Se pornește crearea programată a copiei de siguranță"
+
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "Crearea programată a unei copii de siguranță a fost amânată"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "Copie de siguranță realizată"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "Copie de rezervă terminată"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "Dar nu toate fișierele au fost copiate de rezervă cu succes."
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "Copierea de rezervă a eșuat"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "Restaurarea a eșuat"
+
+#: deja-dup/Notifications.vala:71
 msgid "Keep your files safe by backing up regularly"
 msgstr ""
 "Păstrați fișierele în siguranță, prin crearea unor copii de rezervă la "
 "intervale regulate"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
@@ -1144,46 +1171,22 @@ msgstr ""
 "includerea lor într-o copie de siguranță. În cazul unui dezastru, le puteți "
 "restaura din această copie de siguranță."
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "Nu mai afișa _din nou"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "Nu mai arăta din nou"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "Deschide c_onfigurările pentru copiile de siguranță"
-
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "Copie de siguranță realizată"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "Copie de rezervă terminată"
-
-#: deja-dup/StatusIcon.vala:51
-msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr ""
-"Nu au fost create cu succes copii de rezervă pentru toate fișierele. "
-"Consultați dialogul pentru mai multe detalii."
-
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "Se pornește crearea programată a copiei de siguranță"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "Deschide copii de rezervă"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:85
+#: deja-dup/TimeCombo.vala:80
 #, c-format
 msgid "%x %X"
 msgstr "%x la %X"
-
-#: deja-dup/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "Nu se poate afișa %s"
 
 #: deja-dup/main.vala:20 monitor/monitor.vala:24
 msgid "Show version"
@@ -1197,19 +1200,19 @@ msgstr "Restaurează fișierele specificate"
 msgid "Immediately start a backup"
 msgstr "Pornește imediat un proces de creare a unei copii de siguranță"
 
-#: deja-dup/main.vala:93 deja-dup/main.vala:108
+#: deja-dup/main.vala:81 deja-dup/main.vala:99
 msgid "An operation is already in progress"
 msgstr "O operație este deja în progres"
 
-#: deja-dup/main.vala:225
-msgid "Scheduled backup delayed"
-msgstr "Crearea programată a unei copii de siguranță a fost amânată"
+#: deja-dup/main.vala:86
+msgid "Please list files to restore"
+msgstr "Listați fișierele de restaurat"
 
-#: deja-dup/main.vala:256
+#: deja-dup/main.vala:268
 msgid "translator-credits"
 msgstr ""
 "Florentina Mușat <florentina [dot] musat [dot] 28 [at] gmail [dot] com>, "
-"2020\n"
+"2020-2021\n"
 "Launchpad Contributions:\n"
 "  Istrate Sebastian https://launchpad.net/~sebyx87\n"
 "  Marian Vasile https://launchpad.net/~marianvasile-ubuntu\n"
@@ -1218,26 +1221,26 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:484
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:447
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s pe %2$s"
 
-#: libdeja/BackendDrive.vala:85
+#: libdeja/BackendDrive.vala:82
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "Copierea de rezervă va începe când %s este conectat."
 
-#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:221 libdeja/BackendRemote.vala:142
 msgid "Storage location not available"
 msgstr "Locația de stocare nu este disponibilă"
 
-#: libdeja/BackendDrive.vala:174
+#: libdeja/BackendDrive.vala:221
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Se așteaptă ca „%s” să fie conectat…"
 
-#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
+#: libdeja/BackendGoogle.vala:71 libdeja/BackendRemote.vala:117
 #: monitor/monitor.vala:72
 msgid "Backup will begin when a network connection becomes available."
 msgstr ""
@@ -1245,94 +1248,116 @@ msgstr ""
 "conexiune la rețea."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:89
+#: libdeja/BackendGoogle.vala:87
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s pe Google Drive"
 
-#: libdeja/BackendGoogle.vala:132
+#: libdeja/BackendGoogle.vala:130
 msgid "Could not log into Google servers."
 msgstr "Nu s-a putut autentifica la serverele Google."
 
-#: libdeja/BackendGoogle.vala:220
+#: libdeja/BackendGoogle.vala:218
 msgid "Google credentials for Déjà Dup"
 msgstr "Certificările Google pentru Déjà Dup"
 
-#: libdeja/BackendGoogle.vala:321
+#: libdeja/BackendGoogle.vala:319
 msgid "You first need to allow Backups to access your Google account."
 msgstr ""
 "Aveți nevoie mai întâi să permiteți Copii de rezervă să acceseze contul "
 "Google."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:99
 msgid "The network server is not available"
 msgstr "Serverul de rețea nu este disponibil"
 
-#: libdeja/BackendRemote.vala:142
+#: libdeja/BackendRemote.vala:143
 msgid "Waiting for a network connection…"
 msgstr "Se așteaptă pentru o conexiune la rețea…"
 
-#: libdeja/BackendRemote.vala:155
+#: libdeja/BackendRemote.vala:156
 msgid "Could not mount storage location."
 msgstr "Nu s-a putut monta locația stocării."
+
+#: libdeja/BackendRemote.vala:160
+msgid ""
+"The server’s network location needs to be specified in the storage location "
+"preferences."
+msgstr ""
+"Locația pe rețea a serverului trebuie să fie specificată în preferințele "
+"locației de stocare."
+
+#: libdeja/BackendRemote.vala:165
+#, c-format
+msgid ""
+"The server’s network location ‘%s’ does not look like a network location."
+msgstr "Locația pe rețea a serverului „%s” nu arată ca o locație pe rețea."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:161
+#: libdeja/BackendRemote.vala:173
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Locațiile de rețea Samba trebuie să include amândouă un nume de gazdă și un "
 "nume de partajare."
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:418
 msgid "Access Granted"
 msgstr "Acces acordat"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:419
 msgid "Backups will now continue. You can close this page."
 msgstr "Copiile de rezervă vor continua acum. Puteți închide această pagină."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:535
+#: libdeja/CommonUtils.vala:498
 #, c-format
 msgid "Home (%s)"
 msgstr "Dosar personal (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:540
+#: libdeja/CommonUtils.vala:503
 msgid "Home"
 msgstr "Dosar personal"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:545
+#: libdeja/CommonUtils.vala:508
 msgid "Trash"
 msgstr "Coș de gunoi"
 
-#: libdeja/CommonUtils.vala:607
+#: libdeja/CommonUtils.vala:570
 msgid "Backup encryption password"
 msgstr "Parola pentru criptarea copiei de siguranță"
 
-#: libdeja/Operation.vala:43
+#: libdeja/InstallEnvFlatpak.vala:92
+msgid ""
+"Make sure Backups has permission to run in the background in Settings → "
+"Applications → Backups and try again."
+msgstr ""
+"Asigurați-vă că Copii de rezervă are permisiunea de a rula în fundal în "
+"Configurări → Aplicații → Copii de rezervă și încercați din nou."
+
+#: libdeja/Operation.vala:47
 msgid "Backing up…"
 msgstr "Se creează o copie de rezervă…"
 
-#: libdeja/Operation.vala:47
+#: libdeja/Operation.vala:51
 msgid "Checking for backups…"
 msgstr "Se verifică pentru copii de rezervă…"
 
-#: libdeja/Operation.vala:49
+#: libdeja/Operation.vala:53
 msgid "Listing files…"
 msgstr "Se listează fișierele…"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:383
-#: libdeja/tools/duplicity/DuplicityJob.vala:394
-#: libdeja/tools/duplicity/DuplicityJob.vala:430
+#: libdeja/Operation.vala:55 libdeja/Operation.vala:85
+#: libdeja/duplicity/DuplicityJob.vala:413
+#: libdeja/duplicity/DuplicityJob.vala:424
+#: libdeja/duplicity/DuplicityJob.vala:460
 msgid "Preparing…"
 msgstr "Se pregătește…"
 
-#: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
+#: libdeja/OperationBackup.vala:34 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "Se verifică copia de rezervă…"
 
@@ -1340,7 +1365,7 @@ msgstr "Se verifică copia de rezervă…"
 msgid "Restoring files…"
 msgstr "Se restaurează fișierele…"
 
-#: libdeja/OperationVerify.vala:78
+#: libdeja/OperationVerify.vala:81
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
@@ -1348,20 +1373,20 @@ msgstr ""
 "Copia de siguranță este inutilizabilă. Ar trebui să ștergeți această copie "
 "de siguranță și să încercați din nou."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:79
-#: libdeja/tools/duplicity/DuplicityJob.vala:162
+#: libdeja/duplicity/DuplicityJob.vala:78
+#: libdeja/duplicity/DuplicityJob.vala:157
 msgid "Paused (no network)"
 msgstr "În așteptare (nu există conexiune la rețea)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:540
+#: libdeja/duplicity/DuplicityJob.vala:570
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Locația de copiere de rezervă este prea mică. Încercați să utilizați una cu "
 "cel puțin %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:565
+#: libdeja/duplicity/DuplicityJob.vala:595
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1370,15 +1395,15 @@ msgstr ""
 "Locația de copiere de rezervă nu are destul spațiu liber. Încercați să "
 "utilizați una cu cel puțin %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:586
-#: libdeja/tools/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:616
+#: libdeja/duplicity/DuplicityJob.vala:630
 msgid "Cleaning up…"
 msgstr "Se curăță…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:673
+#: libdeja/duplicity/DuplicityJob.vala:710
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1389,7 +1414,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:689
+#: libdeja/duplicity/DuplicityJob.vala:726
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1397,21 +1422,32 @@ msgstr ""
 "Următoarele fișiere nu pot fi restaurate. Asigurați-vă că aveți drepturi de "
 "scriere pentru acestea."
 
+#. For most, don't do anything special.  Show generic 'unknown error'
+#. message, but provide the exception text for better bug reports.
+#. Plus, sometimes it may clue the user in to what's wrong.
+#. But first, try to restart without a cache, since that seems to quite
+#. frequently fix odd metadata errors with duplicity.  If we hit an error
+#. a second time, we'll show the unknown error message.
+#: libdeja/duplicity/DuplicityJob.vala:746
+#: libdeja/duplicity/DuplicityJob.vala:1130
+msgid "Failed with an unknown error."
+msgstr "Eșec cu eroare necunoscută."
+
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:911
+#: libdeja/duplicity/DuplicityJob.vala:949
 msgid "Bad encryption password."
 msgstr "Parola de criptare este greșită."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:956
+#: libdeja/duplicity/DuplicityJob.vala:994
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "„%s” nu poate fi restaurat: fișierul nu a fost găsit în copia de siguranță"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:967
+#: libdeja/duplicity/DuplicityJob.vala:1005
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1423,70 +1459,66 @@ msgstr ""
 "pentru dumneavoastră, ar trebui să utilizați un alt loc pentru copia de "
 "siguranță."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:970
+#: libdeja/duplicity/DuplicityJob.vala:1008
 msgid "Computer name changed"
 msgstr "Numele calculatorului a fost schimbat"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1005
+#: libdeja/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Permisiune refuzată la încercarea de a crea „%s”."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1009
-#: libdeja/tools/duplicity/DuplicityJob.vala:1013
+#: libdeja/duplicity/DuplicityJob.vala:1047
+#: libdeja/duplicity/DuplicityJob.vala:1051
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Permisiune refuzată la încercarea de a citi „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1017
+#: libdeja/duplicity/DuplicityJob.vala:1055
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Permisiune refuzată la încercarea de a șterge „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1062
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Locul „%s” pentru păstrarea copiilor de siguranță nu există."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1030
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/duplicity/DuplicityJob.vala:1068
+#: libdeja/duplicity/DuplicityJob.vala:1101
 msgid "No space left."
 msgstr "Nu mai există spațiu."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1052
+#: libdeja/duplicity/DuplicityJob.vala:1090
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Eroare la citirea fișierului „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/duplicity/DuplicityJob.vala:1092
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Eroare la scrierea fișierului „%s”."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1065
+#: libdeja/duplicity/DuplicityJob.vala:1103
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "„%s” nu mai are spațiu disponibil."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1073
-msgid "No backup files found"
-msgstr "Nu au fost găsite fișiere care să conțină copii de siguranță"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1123
+#: libdeja/duplicity/DuplicityJob.vala:1161
 msgid "Uploading…"
 msgstr "Se încarcă…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/duplicity/DuplicityPlugin.vala:38
 msgid "Could not understand duplicity version."
 msgstr "Nu se poate citi versiunea programului duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/duplicity/DuplicityPlugin.vala:48
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Nu se poate citi versiunea ‘%s’ a programului duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/duplicity/DuplicityPlugin.vala:51
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1495,6 +1527,14 @@ msgstr ""
 "Copiile de rezervă necesită cel puțin versiunea %d.%d.%.2d de duplicitate, "
 "dar s-a găsit doar versiunea %d.%d.%.2d"
 
+#: libdeja/duplicity/DuplicityPlugin.vala:83
+msgid ""
+"This storage location is no longer supported. You can still use duplicity "
+"directly to back up or restore your files."
+msgstr ""
+"Această locație de stocare nu mai este suportată. Puteți încă utiliza "
+"duplicitatea direct pentru a copia de rezervă sau a vă restaura fișierele."
+
 #: monitor/monitor.vala:75
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
@@ -1502,8 +1542,68 @@ msgstr ""
 "Copierea de rezervă va începe când o conexiunea de rețea nemăsurată devine "
 "disponibilă."
 
-#~ msgid "Folder"
-#~ msgstr "Dosar"
+#~ msgid "Select"
+#~ msgstr "Selectează"
+
+#~ msgid "Automatic backup"
+#~ msgstr "Copie de rezervă automată"
+
+#~ msgid "_Show password"
+#~ msgstr "Arată _parola"
+
+#~ msgid "Select _None"
+#~ msgstr "Selectează _nimic"
+
+#~ msgid "Includes"
+#~ msgstr "Include"
+
+#~ msgid "Excludes"
+#~ msgstr "Exclude"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferințe"
+
+#~ msgid "Choose destination for restored files"
+#~ msgstr "Alegeți destinația pentru fișierele restaurate"
+
+#~ msgid "Restore _folder"
+#~ msgstr "Restaurează _fișier"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Apăsați clic pe elemente pentru a le selecta"
+
+#~ msgid "%u selected"
+#~ msgid_plural "%u selected"
+#~ msgstr[0] "%u selectat"
+#~ msgstr[1] "%u selectate"
+#~ msgstr[2] "%u selectate"
+
+#~ msgid "Choose folders"
+#~ msgstr "Specificați dosarele"
+
+#~ msgid "_Add"
+#~ msgstr "_Adaugă"
+
+#~ msgid "_OK"
+#~ msgstr "În re_gulă"
+
+#~ msgid "Connect to Server"
+#~ msgstr "Conectare la server"
+
+#~ msgid "S_how password"
+#~ msgstr "Arată parola"
+
+#~ msgid "_Open Backup Settings"
+#~ msgstr "Deschide c_onfigurările pentru copiile de siguranță"
+
+#~ msgid ""
+#~ "Not all files were successfully backed up.  See dialog for more details."
+#~ msgstr ""
+#~ "Nu au fost create cu succes copii de rezervă pentru toate fișierele. "
+#~ "Consultați dialogul pentru mai multe detalii."
+
+#~ msgid "Could not display %s"
+#~ msgstr "Nu se poate afișa %s"
 
 #~ msgid "File"
 #~ msgstr "Fișier"
