@@ -76,7 +76,8 @@ public class Assistant : Hdy.Window
     set_child(dialog_box);
 
     header_bar = new Hdy.HeaderBar();
-    header_bar.show_title_buttons = false;
+    header_bar.show_start_title_buttons = false;
+    header_bar.show_end_title_buttons = false;
     dialog_box.append(header_bar);
 
     page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
