@@ -47,8 +47,8 @@ class BackupTest(BaseTest):
         with self.new_files():
             self.walk_initial_backup(app)
 
-        app.button("Back Up Now").click()
         with self.new_files():
+            app.button("Back Up Now").click()
             self.walk_incremental_backup(app)
 
     def test_from_commandline(self):
@@ -56,8 +56,8 @@ class BackupTest(BaseTest):
         with self.new_files():
             self.walk_initial_backup(app)
 
-        app = self.cmd("--backup")
         with self.new_files():
+            app = self.cmd("--backup")
             self.walk_incremental_backup(app)
 
     def test_from_monitor(self):

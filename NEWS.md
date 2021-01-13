@@ -6,7 +6,16 @@ SPDX-FileCopyrightText: Michael Terry
 # 43.alpha
 ##### Packaging
 - Switch from gtk3 to gtk4
-- Switch from libhandy0 to libhandy4
+- Switch from libhandy1 to libhandy4
+
+# 42.7
+- Fix descending into a directory while searching in the browse & restore view
+- Update Google Drive logo
+- Update Japanese and Swedish translations
+
+##### Packaging
+- Update to libhandy-1. This is probably an overdue, welcome change, so I'm not
+  bothering to bump our major version for this dependency change.
 
 # 42.6
 - Fix possible crash when searching backup files with unicode filenames
