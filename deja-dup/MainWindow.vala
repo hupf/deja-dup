@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainWindow.ui")]
-public class MainWindow : Hdy.ApplicationWindow
+public class MainWindow : Adw.ApplicationWindow
 {
   public unowned MainHeaderBar get_header()
   {

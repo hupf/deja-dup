@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/ConfigFolderRow.ui")]
-public class ConfigFolderRow : Hdy.ActionRow
+public class ConfigFolderRow : Adw.ActionRow
 {
   public File file {get; set;}
   public bool check_access {get; set;}

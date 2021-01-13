@@ -166,7 +166,7 @@ public class DejaDupApp : Gtk.Application
   {
     base.startup();
 
-    Hdy.init();
+    Adw.init();
     DejaDup.gui_initialize();
 
     add_action_entries(ACTIONS, this);

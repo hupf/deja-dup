@@ -6,7 +6,7 @@
 
 using GLib;
 
-public abstract class ConfigComboRow : Hdy.ComboRow
+public abstract class ConfigComboRow : Adw.ComboRow
 {
   protected virtual void fill_store() {}
   protected abstract string setting_name();

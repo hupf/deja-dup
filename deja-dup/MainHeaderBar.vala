@@ -32,7 +32,7 @@ public class MainHeaderBar : Gtk.Box
   Gtk.MenuButton primary_menu_button;
 
   [GtkChild]
-  Hdy.ViewSwitcher switcher;
+  Adw.ViewSwitcher switcher;
 
   Settings settings;
   construct {

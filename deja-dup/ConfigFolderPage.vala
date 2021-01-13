@@ -7,6 +7,6 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/ConfigFolderPage.ui")]
-public class ConfigFolderPage : Hdy.PreferencesPage
+public class ConfigFolderPage : Adw.PreferencesPage
 {
 }

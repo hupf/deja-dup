@@ -14,7 +14,7 @@ using GLib;
  * continuing to work when hidden is important for us, this is a
  * reimplementation of just the bits we use.
  */
-public class Assistant : Hdy.Window
+public class Assistant : Adw.Window
 {
   public signal void response(int response);
   public signal void canceled();
@@ -30,7 +30,7 @@ public class Assistant : Hdy.Window
   }
 
   protected string default_title;
-  Hdy.HeaderBar header_bar;
+  Adw.HeaderBar header_bar;
   Gtk.Widget back_button;
   protected Gtk.Widget forward_button;
   Gtk.Widget cancel_button;
@@ -75,7 +75,7 @@ public class Assistant : Hdy.Window
     var dialog_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
     set_child(dialog_box);
 
-    header_bar = new Hdy.HeaderBar();
+    header_bar = new Adw.HeaderBar();
     header_bar.show_start_title_buttons = false;
     header_bar.show_end_title_buttons = false;
     dialog_box.append(header_bar);

@@ -5,23 +5,21 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <requires lib="gtk" version="4.0"/>
-  <requires lib="libhandy" version="4.0"/>
-  <template class="PreferencesWindow" parent="HdyPreferencesWindow">
+  <template class="PreferencesWindow" parent="AdwPreferencesWindow">
     <property name="modal">1</property>
     <property name="default_width">500</property>
     <property name="default_height">500</property>
     <property name="destroy_with_parent">1</property>
     <property name="search_enabled">0</property>
     <child>
-      <object class="HdyPreferencesPage">
+      <object class="AdwPreferencesPage">
         <property name="icon_name">emblem-system-symbolic</property>
         <property name="title" translatable="yes">General</property>
         <child>
-          <object class="HdyPreferencesGroup" id="storage_group">
+          <object class="AdwPreferencesGroup" id="storage_group">
             <property name="title" translatable="yes">Storage</property>
             <child>
-              <object class="HdyExpanderRow" id="location">
+              <object class="AdwExpanderRow" id="location">
                 <property name="title" translatable="yes">_Location</property>
                 <property name="use_underline">1</property>
                 <child type="action">
@@ -57,10 +55,10 @@ SPDX-FileCopyrightText: Michael Terry
           </object>
         </child>
         <child>
-          <object class="HdyPreferencesGroup">
+          <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">Schedule</property>
             <child>
-              <object class="HdyActionRow" id="auto_row">
+              <object class="AdwActionRow" id="auto_row">
                 <property name="activatable_widget">auto_backup</property>
                 <property name="title" translatable="yes">Back Up _Automatically</property>
                 <property name="use_underline">1</property>

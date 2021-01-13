@@ -33,15 +33,14 @@ modules:
   - ./requests-oauthlib.yaml
 
 
-  - name: libhandy
+  - name: libadwaita
     buildsystem: meson
     config-opts:
       - -Dexamples=false
       - -Dtests=false
     sources:
       - type: git
-        url: https://gitlab.gnome.org/exalm/libhandy.git
-        branch: gtk4
+        url: https://gitlab.gnome.org/exalm/libadwaita.git
 
 
   - name: deja-dup

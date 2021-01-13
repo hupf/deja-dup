@@ -6,7 +6,7 @@ SPDX-FileCopyrightText: Michael Terry
 # 43.alpha
 ##### Packaging
 - Switch from gtk3 to gtk4
-- Switch from libhandy1 to libhandy4
+- Switch from libhandy1 to libadwaita
 
 # 42.7
 - Fix descending into a directory while searching in the browse & restore view

@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/PreferencesWindow.ui")]
-public class PreferencesWindow : Hdy.PreferencesWindow
+public class PreferencesWindow : Adw.PreferencesWindow
 {
   [GtkChild]
   Gtk.Label location_description;
