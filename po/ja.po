@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
 "POT-Creation-Date: 2020-12-25 03:15+0000\n"
-"PO-Revision-Date: 2021-01-02 00:26+0900\n"
+"PO-Revision-Date: 2021-01-17 10:16+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Language: ja\n"
@@ -973,9 +973,13 @@ msgstr "フォルダーを選択"
 msgid "Google Drive"
 msgstr "Google ドライブ"
 
+#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:60
+msgid "Microsoft OneDrive"
+msgstr "Microsoft OneDrive"
+
 #: deja-dup/ConfigLocationCombo.vala:59
 msgid "Local Folder"
-msgstr "ローカルのフォルダー"
+msgstr "ローカルフォルダー"
 
 #: deja-dup/ConfigLocationCombo.vala:60
 msgid "Network Server"
@@ -1221,19 +1225,35 @@ msgstr "ネットワークが利用可能になるとバックアップが開始
 msgid "%s on Google Drive"
 msgstr "Google ドライブ上の %s"
 
-#: libdeja/BackendGoogle.vala:132
-msgid "Could not log into Google servers."
-msgstr "Google のサーバーにログインできませんでした。"
+#. Translators: %s is a folder.
+#: libdeja/BackendMicrosoft.vala:63
+#, c-format
+msgid "%s on Microsoft OneDrive"
+msgstr "Microsoft OneDrive 上の %s"
 
-#: libdeja/BackendGoogle.vala:220
-msgid "Google credentials for Déjà Dup"
-msgstr "Déjà Dup 用の Google の資格情報"
+#. Duplicity requires a folder, and this is a reasonable restriction.
+#: libdeja/BackendMicrosoft.vala:97
+msgid "You must provide a Microsoft OneDrive folder."
+msgstr "Microsoft OneDrive のフォルダーを指定する必要があります。"
 
-#: libdeja/BackendGoogle.vala:321
-msgid "You first need to allow Backups to access your Google account."
+#. Translators: %s is a brand name like Microsoft or Google
+#: libdeja/BackendOAuth.vala:70
+#, c-format
+msgid "Could not log into %s servers."
+msgstr "%s のサーバーにログインできませんでした。"
+
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:143
+#, c-format
+msgid "%s credentials for Déjà Dup"
+msgstr "Déjà Dup 用の %s の資格情報"
+
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:242
+#, c-format
+msgid "You first need to allow Backups to access your %s account."
 msgstr ""
-"まず“バックアップ”を Google アカウントにアクセスできるようにする必要がありま"
-"す。"
+"まず“バックアップ”を %s アカウントにアクセスできるようにする必要があります。"
 
 #: libdeja/BackendRemote.vala:98
 msgid "The network server is not available"
