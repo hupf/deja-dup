@@ -42,7 +42,7 @@ public class ConfigLocationCombo : Gtk.Box
   }
 
   [GtkChild]
-  Gtk.DropDown combo;
+  unowned Gtk.DropDown combo;
 
   ListStore store;
   construct {

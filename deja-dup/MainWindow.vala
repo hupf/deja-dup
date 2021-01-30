@@ -15,17 +15,17 @@ public class MainWindow : Adw.ApplicationWindow
   }
 
   [GtkChild]
-  MainHeaderBar header;
+  unowned MainHeaderBar header;
   [GtkChild]
-  Gtk.Stack stack;
+  unowned Gtk.Stack stack;
   [GtkChild]
-  Gtk.StackPage backups_page;
+  unowned Gtk.StackPage backups_page;
   [GtkChild]
-  Gtk.Stack overview_stack;
+  unowned Gtk.Stack overview_stack;
   [GtkChild]
-  Gtk.Image app_logo;
+  unowned Gtk.Image app_logo;
   [GtkChild]
-  Browser browser;
+  unowned Browser browser;
 
   construct {
     var deja_app = DejaDupApp.get_instance();

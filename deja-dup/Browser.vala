@@ -20,27 +20,27 @@ class Browser : Gtk.Grid
   };
 
   [GtkChild]
-  Gtk.SearchBar search_bar;
+  unowned Gtk.SearchBar search_bar;
   [GtkChild]
-  Gtk.SearchEntry search_entry;
+  unowned Gtk.SearchEntry search_entry;
   [GtkChild]
-  Gtk.Stack view_stack;
+  unowned Gtk.Stack view_stack;
   [GtkChild]
-  Gtk.Stack overlay_stack;
+  unowned Gtk.Stack overlay_stack;
   [GtkChild]
-  Gtk.Label auth_label;
+  unowned Gtk.Label auth_label;
   [GtkChild]
-  Gtk.Label error_label;
+  unowned Gtk.Label error_label;
   [GtkChild]
-  Gtk.Label pause_label;
+  unowned Gtk.Label pause_label;
   [GtkChild]
-  Gtk.GridView icon_view;
+  unowned Gtk.GridView icon_view;
   [GtkChild]
-  Gtk.ColumnView list_view;
+  unowned Gtk.ColumnView list_view;
   [GtkChild]
-  Gtk.Button restore_button;
+  unowned Gtk.Button restore_button;
   [GtkChild]
-  TimeCombo timecombo;
+  unowned TimeCombo timecombo;
 
   DejaDupApp application;
   FileStore store;

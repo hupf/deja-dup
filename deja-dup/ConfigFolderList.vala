@@ -13,7 +13,7 @@ public class ConfigFolderList : Adw.PreferencesGroup
   public bool check_access {get; construct;}
 
   [GtkChild]
-  Gtk.Widget add_row;
+  unowned Gtk.Widget add_row;
 
   DejaDup.FilteredSettings settings;
   List<unowned Gtk.Widget> rows;

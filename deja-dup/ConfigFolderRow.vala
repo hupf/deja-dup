@@ -15,7 +15,7 @@ public class ConfigFolderRow : Adw.ActionRow
   public signal void remove_clicked();
 
   [GtkChild]
-  Gtk.Image access_icon;
+  unowned Gtk.Image access_icon;
 
   construct {
     notify["file"].connect(() => {update_row.begin();});

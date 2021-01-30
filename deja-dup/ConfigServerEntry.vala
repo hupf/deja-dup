@@ -14,7 +14,7 @@ extern void popover_present(Gtk.Popover popover);
 class ConfigServerEntry : Gtk.Entry
 {
   [GtkChild]
-  ServerHintPopover popover;
+  unowned ServerHintPopover popover;
 
   [GtkCallback]
   void on_icon_press(Gtk.EntryIconPosition icon_pos)

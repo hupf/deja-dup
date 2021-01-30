@@ -24,15 +24,15 @@ public class MainHeaderBar : Gtk.Box
   }
 
   [GtkChild]
-  Gtk.Button previous_button;
+  unowned Gtk.Button previous_button;
   [GtkChild]
-  Gtk.ToggleButton search_button;
+  unowned Gtk.ToggleButton search_button;
 
   [GtkChild]
-  Gtk.MenuButton primary_menu_button;
+  unowned Gtk.MenuButton primary_menu_button;
 
   [GtkChild]
-  Adw.ViewSwitcher switcher;
+  unowned Adw.ViewSwitcher switcher;
 
   Settings settings;
   construct {

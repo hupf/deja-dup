@@ -40,35 +40,35 @@ public class ConfigLocationGrid : Gtk.Grid
   }
 
   [GtkChild]
-  Gtk.Label location_label;
+  unowned Gtk.Label location_label;
   [GtkChild]
-  Gtk.Stack location_stack;
+  unowned Gtk.Stack location_stack;
 
   [GtkChild]
-  Gtk.Entry google_folder;
+  unowned Gtk.Entry google_folder;
   [GtkChild]
-  Gtk.Button google_reset;
+  unowned Gtk.Button google_reset;
 
   [GtkChild]
-  Gtk.Entry microsoft_folder;
+  unowned Gtk.Entry microsoft_folder;
   [GtkChild]
-  Gtk.Button microsoft_reset;
+  unowned Gtk.Button microsoft_reset;
 
   [GtkChild]
-  ConfigServerEntry remote_address;
+  unowned ConfigServerEntry remote_address;
   [GtkChild]
-  Gtk.Entry remote_folder;
+  unowned Gtk.Entry remote_folder;
 
   [GtkChild]
-  Gtk.Entry drive_folder;
+  unowned Gtk.Entry drive_folder;
 
   [GtkChild]
-  Gtk.Entry local_folder;
+  unowned Gtk.Entry local_folder;
   [GtkChild]
-  FolderChooserButton local_browse;
+  unowned FolderChooserButton local_browse;
 
   [GtkChild]
-  Gtk.Label unsupported_label;
+  unowned Gtk.Label unsupported_label;
 
   DejaDup.FilteredSettings settings;
   DejaDup.FilteredSettings drive_settings;

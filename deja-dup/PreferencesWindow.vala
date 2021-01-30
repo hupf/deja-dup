@@ -10,7 +10,7 @@ using GLib;
 public class PreferencesWindow : Adw.PreferencesWindow
 {
   [GtkChild]
-  Gtk.Label location_description;
+  unowned Gtk.Label location_description;
 
   DejaDup.BackendWatcher watcher;
   construct

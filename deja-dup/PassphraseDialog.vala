@@ -12,9 +12,9 @@ class PassphraseDialog : Gtk.Dialog
   public signal void got_passphrase(string passphrase);
 
   [GtkChild]
-  Gtk.PasswordEntry entry;
+  unowned Gtk.PasswordEntry entry;
   [GtkChild]
-  Gtk.CheckButton remember;
+  unowned Gtk.CheckButton remember;
 
   construct {
     use_header_bar = 1; // setting this in the ui file doesn't seem to work
