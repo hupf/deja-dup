@@ -24,6 +24,7 @@ public const string PERIODIC_PERIOD_KEY = "periodic-period";
 public const string DELETE_AFTER_KEY = "delete-after";
 public const string FULL_BACKUP_PERIOD_KEY = "full-backup-period";
 public const string ALLOW_METERED_KEY = "allow-metered";
+public const string TOOL_KEY = "tool";
 
 public errordomain BackupError {
   BAD_CONFIG,
@@ -373,14 +374,35 @@ public FilteredSettings get_settings(string? subdir = null)
 ToolPlugin tool = null;
 public ToolPlugin get_tool()
 {
-  assert(tool != null);
+  var settings = get_settings();
+  var tool_name = settings.get_string(TOOL_KEY);
+
+  // Do we already have a tool ready to go?
+  if (tool != null && tool.name == tool_name)
+    return tool;
+
+  switch(tool_name)
+  {
+#if ENABLE_BORG
+    case "borg":
+      tool = new BorgPlugin();
+      break;
+#endif
+#if ENABLE_RESTIC
+    case "restic":
+      tool = new ResticPlugin();
+      break;
+#endif
+    default:
+      tool = new DuplicityPlugin();
+      break;
+  }
+
   return tool;
 }
 
 public void initialize()
 {
-  tool = new DuplicityPlugin();
-
   /* We do a little trick here.  BackendAuto -- which is the default
      backend on a fresh install of deja-dup -- will do some work to
      automatically suss out which backend should be used instead of it.

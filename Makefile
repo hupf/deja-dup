@@ -12,7 +12,7 @@ all: configure
 
 .PHONY: configure
 configure:
-	@[ -d builddir ] || meson -Dprofile=Devel builddir
+	@[ -d builddir ] || meson -Dprofile=Devel -Denable_restic=true builddir
 
 .PHONY: check
 check: all
@@ -78,7 +78,7 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
-	for p in duplicity pydrive2 requests-oauthlib setuptools-scm wheel; do \
+	for p in borgbackup duplicity pydrive2 requests-oauthlib setuptools-scm wheel; do \
 		../../flatpak-builder-tools/pip/flatpak-pip-generator --output $$p $$p; \
 		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$p.yaml $$p.json; \
 		rm $$p.json; \

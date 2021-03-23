@@ -200,7 +200,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     saved_envp.append("OAUTH2_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
     saved_envp.append("OAUTH2_REFRESH_TOKEN=%s".printf(microsoft_backend.refresh_token));
-    saved_envp.append("ONEDRIVE_ROOT=me/drive/special/approot");
   }
 
   void fill_envp_from_backend() throws Error
@@ -219,8 +218,9 @@ internal class DuplicityJob : DejaDup.ToolJob
     var file_backend = backend as DejaDup.BackendFile;
     if (file_backend != null) {
       var file = file_backend.get_file_from_settings();
-      if (file != null)
+      if (file != null) {
         return "gio+" + file.get_uri();
+      }
     }
 
     var google_backend = backend as DejaDup.BackendGoogle;

@@ -6,38 +6,23 @@
 
 using GLib;
 
-public class ConfigAutoBackup: Gtk.Box
+public class ConfigAutoBackup: ConfigSwitch
 {
-  public signal void activate_signal();
-
-  unowned Gtk.Switch toggle;
   construct {
-    var owned_toggle = new Gtk.Switch();
-    append(owned_toggle);
-    toggle = owned_toggle;
-
-    set_activate_signal_from_name("activate-signal");
-    activate_signal.connect(do_activate);
-
     var settings = DejaDup.get_settings();
-    settings.bind(DejaDup.PERIODIC_KEY, toggle, "active", SettingsBindFlags.GET);
-    toggle.state_set.connect(on_state_set);
-  }
-
-  void do_activate()
-  {
-    toggle.activate();
+    settings.bind(DejaDup.PERIODIC_KEY, this.toggle, "active", SettingsBindFlags.GET);
+    this.toggle.state_set.connect(on_state_set);
   }
 
   bool on_state_set(bool state)
   {
     if (state) {
-      Background.request_autostart.begin(toggle, (obj, res) => {
+      Background.request_autostart.begin(this.toggle, (obj, res) => {
         if (Background.request_autostart.end(res)) {
-          toggle.state = true; // finish state set
+          this.toggle.state = true; // finish state set
           set_periodic(true);
         } else {
-          toggle.active = false; // flip switch back to unset mode
+          this.toggle.active = false; // flip switch back to unset mode
         }
       });
       return true; // delay setting of state

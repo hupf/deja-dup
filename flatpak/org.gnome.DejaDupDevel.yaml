@@ -11,6 +11,7 @@ command: deja-dup
 finish-args:
   - --device=dri
   - --filesystem=host
+  - --filesystem=xdg-run/gvfs
   - --filesystem=xdg-run/gvfsd
   - --filesystem=~/.var/app/
   - --share=ipc
@@ -34,6 +35,13 @@ modules:
 
   # This was for OneDrive support
   # - ./requests-oauthlib.yaml
+
+
+  # - ./borgbackup.yaml
+  - ./restic.yaml
+
+
+  - ./rclone.yaml
 
 
   - name: libsass
@@ -66,6 +74,7 @@ modules:
     builddir: true
     config-opts:
       - -Dprofile=Devel
+      - -Denable_restic=true
     sources:
       - type: git
         branch: main

@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+---
+name: python3-borgbackup
+buildsystem: simple
+build-commands:
+  - pip3 install --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST}
+    "borgbackup"
+sources:
+  - type: file
+    url: https://files.pythonhosted.org/packages/dd/13/5313ccad7f76cd3d13b207e31ca6e3072ca00c0bf7d605f7e8e6bc409b0d/borgbackup-1.1.14.tar.gz
+    sha256: 7dbb0747cc948673f695cd6de284af215f810fed2eb2a615ef26ddc7c691edba

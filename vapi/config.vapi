@@ -17,12 +17,19 @@ namespace Config {
 	public const string APPLICATION_ID;
 	public const string ICON_NAME;
 
+	public const string BORG_COMMAND;
 	public const string DUPLICITY_COMMAND;
+	public const string RESTIC_COMMAND;
 
+	public const string BORG_PACKAGES;
 	public const string DUPLICITY_PACKAGES;
+	public const string RESTIC_PACKAGES;
 	public const string GVFS_PACKAGES;
 	public const string PYDRIVE_PACKAGES;
 	public const string REQUESTS_OAUTHLIB_PACKAGES;
+
+	public const string RCLONE_COMMAND;
+	public const string RCLONE_PACKAGES;
 
 	public const string GOOGLE_CLIENT_ID;
 	public const string MICROSOFT_CLIENT_ID;

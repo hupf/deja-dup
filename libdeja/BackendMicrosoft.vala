@@ -22,18 +22,21 @@ public const string MICROSOFT_SERVER = "microsoft.com";
 
 public class BackendMicrosoft : BackendOAuth
 {
+  public string drive_id {get; private set;}
+
   public BackendMicrosoft(Settings? settings) {
     Object(kind: Kind.MICROSOFT,
            settings: (settings != null ? settings : get_settings(MICROSOFT_ROOT)));
   }
 
+  Rclone rclone;
   construct {
     // OAuth class properties
     brand_name = "Microsoft";
     client_id = Config.MICROSOFT_CLIENT_ID;
     auth_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize";
     token_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/token";
-    scope = "offline_access Files.ReadWrite.AppFolder";
+    scope = "offline_access Files.ReadWrite";
   }
 
   public override string[] get_dependencies() {
@@ -61,6 +64,11 @@ public class BackendMicrosoft : BackendOAuth
     else
       // Translators: %s is a folder.
       return _("%s on Microsoft OneDrive").printf(folder);
+  }
+
+  public override async void cleanup()
+  {
+    rclone = null;
   }
 
   public override async uint64 get_space(bool free = true)
@@ -96,6 +104,16 @@ public class BackendMicrosoft : BackendOAuth
       // Duplicity requires a folder, and this is a reasonable restriction.
       throw new IOError.FAILED("%s", _("You must provide a Microsoft OneDrive folder."));
     }
+
+    // Grab the drive ID in case a tool needs it
+    var message = Soup.Form.request_new(
+      "GET", "https://graph.microsoft.com/v1.0/me/drive",
+      "select", "id"
+    );
+    var reader = yield send_message(message);
+    reader.read_member("id");
+    drive_id = reader.get_string_value();
+    reader.end_member();
   }
 }
 

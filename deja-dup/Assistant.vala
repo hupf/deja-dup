@@ -263,7 +263,8 @@ public class Assistant : Adw.Window
 
   protected void make_button_default(Gtk.Widget button)
   {
-    set_default_widget(button);
+    // FIXME: causes crashes?
+    //set_default_widget(button);
     button.add_css_class("default");
     button.add_css_class("suggested-action");
   }
