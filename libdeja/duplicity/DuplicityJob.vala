@@ -69,6 +69,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   File last_touched_file = null;
   string forced_cache_dir = null;
+  string credentials_dir = null;
 
   void network_changed()
   {
@@ -86,6 +87,16 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   ~DuplicityJob() {
     DejaDup.Network.get().notify["connected"].disconnect(network_changed);
+    clean_credentials_dir(); // possibly defined for google backend
+  }
+
+  void clean_credentials_dir() {
+    if (credentials_dir != null) {
+      FileUtils.remove("%s/settings.yaml".printf(credentials_dir));
+      FileUtils.remove("%s/credentials.json".printf(credentials_dir));
+      FileUtils.remove(credentials_dir);
+      credentials_dir = null;
+    }
   }
 
   public override async void start()
@@ -109,27 +120,11 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     /* Get custom environment from backend, if needed */
     try {
-      backend.envp_ready.connect(continue_with_envp);
-      yield backend.get_envp();
+      yield backend.prepare();
+      fill_envp_from_backend();
     }
     catch (Error e) {
       raise_error(e.message, null);
-      done(false, false, null);
-    }
-  }
-
-  void continue_with_envp(DejaDup.Backend b, bool success, List<string>? envp, string? error)
-  {
-    /*
-     * Starts Duplicity backup with added enviroment variables
-     *
-     * Start Duplicity backup process with costum values for enviroment variables.
-     */
-    backend.envp_ready.disconnect(continue_with_envp);
-
-    if (!success) {
-      if (error != null)
-        raise_error(error, null);
       done(false, false, null);
       return;
     }
@@ -137,15 +132,12 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (mode == DejaDup.ToolJob.Mode.INVALID) // already stopped
       return;
 
-    // Process includes/excludes after envp is ready, so any backup location
+    // Process includes/excludes after backend is prepared, so any location
     // folders that the backend needs are already created.
     if (mode == DejaDup.ToolJob.Mode.BACKUP) {
       backend.add_excludes(ref excludes);
       process_include_excludes();
     }
-
-    foreach (string s in envp)
-      saved_envp.append(s);
 
     if (!restart())
       done(false, false, null);
@@ -170,6 +162,56 @@ internal class DuplicityJob : DejaDup.ToolJob
       return 1;
     else
       return 0;
+  }
+
+  void fill_envp_from_google(DejaDup.BackendGoogle google_backend) throws Error
+  {
+    // Pydrive only accepts credentials from a file. So we create a temporary
+    // directory and put our settings file and credentials both in there.
+    // Make sure it's all readable only by the user, and we should delete them
+    // when we're done.
+
+    clean_credentials_dir();
+
+    credentials_dir = DirUtils.make_tmp("deja-dup-XXXXXX");
+    var prefix = "/org/gnome/DejaDup%s/".printf(Config.PROFILE);
+
+    // Add settings.yaml
+    var yaml_path = prefix + "pydrive-settings.yaml";
+    var yaml_bytes = resources_lookup_data(yaml_path, ResourceLookupFlags.NONE);
+    var yaml = (string)yaml_bytes.get_data();
+    yaml = yaml.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);
+    yaml = yaml.replace("$PATH", credentials_dir);
+    FileUtils.set_contents("%s/settings.yaml".printf(credentials_dir), yaml);
+
+    // Add credentials.json
+    var json_path = prefix + "pydrive-credentials.json";
+    var json_bytes = resources_lookup_data(json_path, ResourceLookupFlags.NONE);
+    var json = (string)json_bytes.get_data();
+    json = json.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);
+    json = json.replace("$ACCESS_TOKEN", google_backend.access_token);
+    json = json.replace("$REFRESH_TOKEN", google_backend.refresh_token);
+    FileUtils.set_contents("%s/credentials.json".printf(credentials_dir), json);
+
+    saved_envp.append("GOOGLE_DRIVE_SETTINGS=%s/settings.yaml".printf(credentials_dir));
+  }
+
+  void fill_envp_from_microsoft(DejaDup.BackendMicrosoft microsoft_backend)
+  {
+    saved_envp.append("OAUTH2_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
+    saved_envp.append("OAUTH2_REFRESH_TOKEN=%s".printf(microsoft_backend.refresh_token));
+    saved_envp.append("ONEDRIVE_ROOT=me/drive/special/approot");
+  }
+
+  void fill_envp_from_backend() throws Error
+  {
+    var google_backend = backend as DejaDup.BackendGoogle;
+    if (google_backend != null)
+      fill_envp_from_google(google_backend);
+
+    var microsoft_backend = backend as DejaDup.BackendMicrosoft;
+    if (microsoft_backend != null)
+      fill_envp_from_microsoft(microsoft_backend);
   }
 
   string get_remote()

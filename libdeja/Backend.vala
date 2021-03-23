@@ -19,7 +19,6 @@ public abstract class DejaDup.Backend : Object
 
   public Settings settings {get; construct;}
 
-  public signal void envp_ready(bool success, List<string>? envp, string? error = null);
   public signal void pause_op(string? header, string? msg);
 
   // This signal might be too specific to the one backend that uses it (Google).
@@ -39,9 +38,8 @@ public abstract class DejaDup.Backend : Object
 
   public virtual async bool is_ready(out string when) {when = null; return true;} // must be callable when nothing is mounted, nothing is prepared
 
-  public virtual async void get_envp() throws Error {
-    envp_ready(true, new List<string>());
-  }
+  // Lets the backend mount itself or whatever else it needs
+  public virtual async void prepare() throws Error {}
 
   public virtual async void cleanup() {}
 

@@ -49,20 +49,6 @@ public abstract class DejaDup.BackendFile : Backend
       excludes.append(file);
   }
 
-  // This doesn't *really* worry about envp, it just is a convenient point to
-  // hook into the operation steps to mount the file.
-  public override async void get_envp() throws Error
-  {
-    this.ref();
-    try {
-      yield do_mount();
-    }
-    catch (Error e) {
-      envp_ready(false, new List<string>(), e.message);
-    }
-    this.unref();
-  }
-
   async bool query_exists_async(File file)
   {
     try {
@@ -76,7 +62,7 @@ public abstract class DejaDup.BackendFile : Backend
     }
   }
 
-  async void do_mount() throws Error
+  public override async void prepare() throws Error
   {
     will_unmount = (yield mount()) || will_unmount;
 
@@ -95,8 +81,6 @@ public abstract class DejaDup.BackendFile : Backend
         // ignore
       }
     }
-
-    envp_ready(true, new List<string>());
   }
 
   // Returns true if it needed to be mounted, false if already mounted

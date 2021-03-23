@@ -90,18 +90,12 @@ public class BackendMicrosoft : BackendOAuth
     return free ? remaining : total;
   }
 
-  protected override void got_credentials() throws Error
+  protected override async void got_credentials() throws Error
   {
     if (get_folder() == "") {
       // Duplicity requires a folder, and this is a reasonable restriction.
       throw new IOError.FAILED("%s", _("You must provide a Microsoft OneDrive folder."));
     }
-
-    List<string> envp = new List<string>();
-    envp.append("OAUTH2_CLIENT_ID=%s".printf(client_id));
-    envp.append("OAUTH2_REFRESH_TOKEN=%s".printf(refresh_token));
-    envp.append("ONEDRIVE_ROOT=me/drive/special/approot");
-    envp_ready(true, envp);
   }
 }
 
