@@ -5,14 +5,14 @@
 
 .PHONY: all
 all: configure
-	ninja -C builddir
+	meson compile -C builddir
 
 %:
-	@[ "$@" = "Makefile" ] || ninja -C builddir $@
+	@[ "$@" = "Makefile" ] || meson compile -C builddir $@
 
 .PHONY: configure
 configure:
-	@[ -f builddir/build.ninja ] || meson -Dprofile=Devel builddir
+	@[ -d builddir ] || meson -Dprofile=Devel builddir
 
 .PHONY: check
 check: all
@@ -98,7 +98,7 @@ reuse:
 builddir/vlint:
 	mkdir -p builddir
 	git clone https://github.com/vala-lang/vala-lint.git builddir/vala-lint
-	cd builddir/vala-lint && meson build && ninja -C build
+	cd builddir/vala-lint && meson build && meson compile -C build
 	ln -s ./vala-lint/build/src/io.elementary.vala-lint builddir/vlint
 
 .PHONY: lint

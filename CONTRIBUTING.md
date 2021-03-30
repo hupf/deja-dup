@@ -10,7 +10,7 @@ This is recommended if you are a downstream packager of stable releases.
 If you have downloaded this source from a tarball release (that is, a file like `.tar.bz2` or `.zip`),
 you can use standard meson commands like:
  * `meson --buildtype=release my-build-directory`
- * `ninja -C my-build-directory`
+ * `meson compile -C my-build-directory`
 
 See the [meson documentation](https://mesonbuild.com/) for more guidance. And look at `meson_options.txt` for all the extra build options you can set.
 
