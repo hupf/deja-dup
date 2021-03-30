@@ -3,7 +3,22 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-# Set Up the GNOME SDK
+# Building from a Source Release
+
+This is recommended if you are a downstream packager of stable releases.
+
+If you have downloaded this source from a tarball release (that is, a file like `.tar.bz2` or `.zip`),
+you can use standard meson commands like:
+ * `meson --buildtype=release my-build-directory`
+ * `ninja -C my-build-directory`
+
+See the [meson documentation](https://mesonbuild.com/) for more guidance. And look at `meson_options.txt` for all the extra build options you can set.
+
+# Building from a Git Clone
+
+This is recommended if you intend to contribute back a patch. Git checkouts include a `Makefile` that make setting up a sandboxed development environment easier.
+
+## Set Up the GNOME SDK
 
 To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
 
@@ -11,9 +26,8 @@ To make sure you can build against the latest GNOME libraries, it helps to insta
 1. `make devshell-setup`
 1. `make devshell`
 
-# Building
+## Building
 
-deja-dup uses meson, but for most development purposes, you can simply use the convenience top-level Makefile:
  * To build: `make`
  * To install: `make install DESTDIR=/tmp/deja-dup`
 
@@ -28,7 +42,7 @@ deja-dup uses meson, but for most development purposes, you can simply use the c
 When manually testing a change, it is helpful to run `./tests/shell` (or `shell-local` if you want a silo'd dbus environment too).
 That will give you a full shell pointing at all your built executables.
 
-* Running all tests: `make check`
+* Running all tests: `meson test -C builddir`
 * Running one test: `meson test script-threshold-inc -C builddir/ -v`
 
 # Copyright
