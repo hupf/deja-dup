@@ -46,7 +46,7 @@ class BrowserTest(BaseTest):
         widget = self.app.child(roleName="label", name="Restore", showingOnly=False)
         while widget.parent:
             widget = widget.parent
-            if widget.name == "HdyViewSwitcherButton":
+            if widget.roleName == "page tab":
                 widget.click()
                 return
         assert False

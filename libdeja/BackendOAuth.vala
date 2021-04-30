@@ -12,6 +12,10 @@ using GLib;
 
 public abstract class DejaDup.BackendOAuth : Backend
 {
+  public string full_token {get; private set;}
+  public string access_token {get; private set;}
+  public string refresh_token {get; private set;}
+
   public async string? lookup_refresh_token()
   {
     var schema = get_secret_schema();
@@ -42,11 +46,6 @@ public abstract class DejaDup.BackendOAuth : Backend
   protected string token_url;
   protected string scope;
 
-  // subclasses can read but should not set these tokens
-  protected string access_token;
-  protected string refresh_token;
-
-  Soup.Server server;
   Soup.Session session;
   string local_address;
   string pkce;
@@ -60,18 +59,18 @@ public abstract class DejaDup.BackendOAuth : Backend
     return false;
   }
 
-  // This will be called during envp gathering, once access_token has been set.
-  // Should either call stop_login or envp_ready.
-  protected abstract void got_credentials() throws Error;
+  // This will be called during prepare(), once access_token has been set.
+  // Call stop_login() if you like for a nicer error message.
+  protected virtual async void got_credentials() throws Error {}
 
-  protected void stop_login(string? reason)
+  protected void stop_login(string? reason) throws Error
   {
     // Translators: %s is a brand name like Microsoft or Google
     var full_reason = _("Could not log into %s servers.").printf(brand_name);
-    if (reason != null)
+    if (reason != null && reason != "")
       full_reason = "%s %s".printf(full_reason, reason);
 
-    envp_ready(false, null, full_reason);
+    throw new IOError.FAILED(full_reason);
   }
 
   async Json.Reader? send_message_raw(Soup.Message message) throws Error
@@ -108,9 +107,12 @@ public abstract class DejaDup.BackendOAuth : Backend
     if (reader == null) {
       // Problem with authorization -- maybe we were revoked?
       // Let's restart the auth process.
-      start_authorization();
+      yield start_authorization();
       return;
     }
+
+    // Save the full token
+    full_token = Json.to_string(reader.root, false);
 
     // Parse token
     reader.read_member("access_token");
@@ -122,7 +124,7 @@ public abstract class DejaDup.BackendOAuth : Backend
     }
     reader.end_member();
 
-    got_credentials();
+    yield got_credentials();
   }
 
   Secret.Schema get_secret_schema()
@@ -186,69 +188,83 @@ public abstract class DejaDup.BackendOAuth : Backend
     yield get_tokens(message);
   }
 
-  void oauth_server_request_received(Soup.Server server, Soup.Message message,
-                                     string path,
-                                     HashTable<string, string>? query,
-                                     Soup.ClientContext client)
+  // Returns true if are done with consent flow
+  bool process_server_request(Soup.Message message, string path,
+                              HashTable<string, string>? query,
+                              out string code, out string error_msg)
   {
+    code = null;
+    error_msg = null;
+
     if (path != "/") {
       message.status_code = Soup.Status.NOT_FOUND;
-      return;
+      return false;
     }
 
     message.status_code = Soup.Status.ACCEPTED;
-    server = null;
 
     string? error = query == null ? null : query.lookup("error");
     if (error != null) {
-      stop_login(error);
-      return;
+      error_msg = error;
+      return true;
     }
 
-    string? code = query == null ? null : query.lookup("code");
+    code = query == null ? null : query.lookup("code");
     if (code == null) {
-      stop_login(null);
-      return;
+      error_msg = ""; // non-null but we don't have any extra context
+      return true;
     }
 
     // Show consent granted screen
     var html = DejaDup.get_access_granted_html();
     message.response_body.append_take(html.data);
-
-    show_oauth_consent_page(null, null); // continue on from paused screen
-    get_credentials.begin(code);
+    return true;
   }
 
-  void start_authorization() throws Error
+  async void start_authorization() throws Error
   {
     // Start a server and listen on it
-    server = new Soup.Server("server-header",
-                             "%s/%s ".printf(Config.PACKAGE, Config.VERSION));
+    var server = new Soup.Server("server-header",
+                                 "%s/%s ".printf(Config.PACKAGE, Config.VERSION));
     server.listen_local(0, Soup.ServerListenOptions.IPV4_ONLY);
     local_address = server.get_uris().data.to_string(false);
 
     // Prepare to handle requests that finish the consent process
-    server.add_handler(null, oauth_server_request_received);
+    string error_msg = null;
+    string code = null;
+    server.add_handler(null, (s, msg, path, query) => {
+      if (process_server_request(msg, path, query, out code, out error_msg))
+        Idle.add(start_authorization.callback);
+    });
 
     // We need a random string between 43 and 128 chars. UUIDs are an easy way
     // to get random strings, but they are only 37 chars long. So just add two.
     pkce = Uuid.string_random() + Uuid.string_random();
 
     // And show the oauth consent page finally
-    var location = get_consent_location();
-    if (location != null)
-      show_oauth_consent_page(
-        // Translators: %s is a brand name like Google or Microsoft
-        _("You first need to allow Backups to access your %s account.").printf(brand_name),
-        location
-      );
+    show_oauth_consent_page(
+      // Translators: %s is a brand name like Google or Microsoft
+      _("You first need to allow Backups to access your %s account.").printf(brand_name),
+      get_consent_location()
+    );
+
+    yield;
+
+    if (error_msg != null) {
+      stop_login(error_msg);
+      return;
+    }
+
+    server = null;
+    show_oauth_consent_page(null, null); // continue on from paused screen
+    yield get_credentials(code);
   }
 
-  public override async void get_envp() throws Error
+  public override async void prepare() throws Error
   {
     refresh_token = yield lookup_refresh_token();
     if (refresh_token == null)
-      start_authorization();
+      yield start_authorization();
     else {
       // We refresh the tokens ourselves (rather than duplicity) for two reasons:
       // 1) We can snapshot the current access/refresh tokens into libsecret
