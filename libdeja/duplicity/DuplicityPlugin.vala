@@ -87,8 +87,13 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
       case DejaDup.Backend.Kind.GOOGLE:
         return true;
 
-      case DejaDup.Backend.Kind.MICROSOFT:
-        return supports_microsoft;
+      // Unfortunately, Microsoft's API does not let us permanently delete
+      // files. Which means we can't clear space as it fills. Disable support
+      // until we figure out a solution for that.
+      // https://docs.microsoft.com/en-us/graph/api/driveitem-delete
+      //
+      // case DejaDup.Backend.Kind.MICROSOFT:
+      //   return supports_microsoft;
 
       default:
         explanation = _(

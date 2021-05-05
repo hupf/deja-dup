@@ -4,8 +4,6 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.alpha
-- Add support for Microsoft OneDrive
-
 ##### Packaging
 - Switch from gtk3 to gtk4
 - Switch from libhandy1 to libadwaita
