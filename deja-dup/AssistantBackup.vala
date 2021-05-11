@@ -139,12 +139,6 @@ public class AssistantBackup : AssistantOperation
     // be a surprising addition to the logout dialog.
     if (!automatic)
       flags |= Gtk.ApplicationInhibitFlags.LOGOUT;
-    else
-      // At time of writing, gnome-shell still warns the user on logout even
-      // with just a suspend inhibit. So let's avoid annoying the user and just
-      // not bother inhibiting for automatic backups at all until that's fixed.
-      // https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-      return 0;
 
     return app.inhibit(this, flags, _("Backup in progress"));
   }
