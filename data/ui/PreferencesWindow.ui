@@ -86,5 +86,44 @@ SPDX-FileCopyrightText: Michael Terry
     <child>
       <object class="ConfigFolderPage"/>
     </child>
+    <child>
+      <object class="AdwPreferencesPage" id="labs_page">
+        <property name="visible">0</property>
+        <property name="icon_name">applications-science-symbolic</property>
+        <property name="title" translatable="yes">Labs</property>
+        <child>
+          <object class="AdwPreferencesGroup" id="restic_group">
+            <property name="visible">0</property>
+            <property name="title" translatable="yes">Restic</property>
+            <child>
+              <object class="AdwActionRow" id="restic_row">
+                <property name="activatable_widget">use_restic</property>
+                <property name="title" translatable="yes">Use _Restic instead of Duplicity</property>
+                <property name="use_underline">1</property>
+                <child>
+                  <object class="ConfigRestic" id="use_restic">
+                    <property name="halign">end</property>
+                    <property name="valign">center</property>
+                    <accessibility>
+                      <relation name="labelled-by">restic_row</relation>
+                    </accessibility>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel" id="restic_description">
+                <property name="margin_top">8</property>
+                <property name="wrap">1</property>
+                <property name="xalign">0</property>
+                <attributes>
+                  <attribute name="style" value="italic"></attribute>
+                </attributes>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
   </template>
 </interface>

@@ -50,7 +50,7 @@ public class BackendGoogle : BackendOAuth
     return yield Network.get().can_reach("https://%s/".printf(GOOGLE_SERVER));
   }
 
-  internal string get_folder() {
+  public string get_folder() {
     return get_folder_key(settings, GOOGLE_FOLDER_KEY);
   }
 

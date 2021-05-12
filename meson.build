@@ -74,6 +74,12 @@ common_cflags = [
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
     '-DPYDRIVE_PACKAGES="@0@"'.format(get_option('pydrive_pkgs')),
     '-DREQUESTS_OAUTHLIB_PACKAGES="@0@"'.format(get_option('requests_oauthlib_pkgs')),
+    '-DRESTIC_COMMAND="@0@"'.format(get_option('restic_command')),
+    '-DRESTIC_PACKAGES="@0@"'.format(get_option('restic_pkgs')),
+    '-DRCLONE_COMMAND="@0@"'.format(get_option('rclone_command')),
+    '-DRCLONE_PACKAGES="@0@"'.format(get_option('rclone_pkgs')),
+    '-DBORG_COMMAND="@0@"'.format(get_option('borg_command')),
+    '-DBORG_PACKAGES="@0@"'.format(get_option('borg_pkgs')),
     '-DGOOGLE_CLIENT_ID="@0@"'.format(get_option('google_client_id')),
     '-DMICROSOFT_CLIENT_ID="@0@"'.format(get_option('microsoft_client_id')),
     '-DPACKAGE="@0@"'.format(meson.project_name()),
@@ -96,6 +102,14 @@ endif
 
 if packagekit_dep.found()
 common_vflags += ['--define=HAS_PACKAGEKIT']
+endif
+
+if get_option('enable_borg')
+common_vflags += ['--define=ENABLE_BORG']
+endif
+
+if get_option('enable_restic')
+common_vflags += ['--define=ENABLE_RESTIC']
 endif
 
 subdir('data')

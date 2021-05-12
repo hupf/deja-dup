@@ -1,0 +1,16 @@
+# -*- Mode: YAML; indent-tabs-mode: nil; tab-width: 2 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+---
+name: rclone
+modules:
+  - name: rclone
+    buildsystem: simple
+    build-commands:
+      - cp rclone /app/bin/rclone
+    sources:
+      - type: archive
+        only-arches: [x86_64]
+        url: https://downloads.rclone.org/v1.55.0/rclone-v1.55.0-linux-amd64.zip
+        sha256: 7bf403c3f26cd1d4728905738a501dc137973227c5b64eb9a54f324c96664107

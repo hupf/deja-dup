@@ -14,7 +14,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
 
   construct
   {
-    name = "Duplicity";
+    name = "duplicity";
   }
 
   public override string[] get_dependencies()

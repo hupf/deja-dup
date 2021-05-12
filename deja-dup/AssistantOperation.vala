@@ -42,6 +42,7 @@ public abstract class AssistantOperation : Assistant
   protected Gtk.Widget password_page {get; private set;}
   protected Gtk.Widget nag_page {get; private set;}
   protected bool nagged;
+  List<Gtk.Widget> encryption_choice_widgets;
   List<Gtk.Widget> first_password_widgets;
   MainLoop password_ask_loop;
 
@@ -345,20 +346,20 @@ public abstract class AssistantOperation : Assistant
 
     w = new Gtk.CheckButton.with_mnemonic(_("_Allow restoring without a password"));
     page.attach(w, 0, rows, 3, 1);
-    first_password_widgets.append(w);
+    encryption_choice_widgets.append(w);
     ++rows;
 
     encrypt_enabled = new Gtk.CheckButton.with_mnemonic(_("_Password-protect your backup"));
     encrypt_enabled.group = w as Gtk.CheckButton;
     encrypt_enabled.active = true; // always default to encrypted
     page.attach(encrypt_enabled, 0, rows, 3, 1);
-    first_password_widgets.append(encrypt_enabled);
+    encryption_choice_widgets.append(encrypt_enabled);
     encrypt_enabled.toggled.connect(check_password_validity);
     ++rows;
 
     w = new Gtk.Label("    "); // indent
     page.attach(w, 0, rows, 1, 1);
-    first_password_widgets.append(w);
+    encryption_choice_widgets.append(w);
 
     w = new Gtk.Label("<i>%s</i>".printf(
       _("You will need your password to restore your files. You might want to write it down.")));
@@ -786,11 +787,15 @@ public abstract class AssistantOperation : Assistant
 
   void configure_password_page(bool first)
   {
-    if (first)
+    if (first && DejaDup.get_tool().requires_encryption)
+      set_page_title(password_page, _("Set Encryption Password"));
+    else if (first)
       set_page_title(password_page, _("Require Password?"));
     else
       set_page_title(password_page, _("Encryption Password Needed"));
 
+    foreach (Gtk.Widget w in encryption_choice_widgets)
+      w.visible = first && !DejaDup.get_tool().requires_encryption;
     foreach (Gtk.Widget w in first_password_widgets)
       w.visible = first;
 
@@ -816,12 +821,11 @@ public abstract class AssistantOperation : Assistant
 
   void stop_password_loop(Assistant dlg, int resp)
   {
-    Idle.add(() => {
+    if (resp != FORWARD) {
       password_ask_loop.quit();
       password_ask_loop = null;
-      return false;
-    });
-    response.disconnect(stop_password_loop);
+      response.disconnect(stop_password_loop);
+    }
   }
 
   protected void ask_passphrase(bool first = false)
@@ -861,6 +865,7 @@ public abstract class AssistantOperation : Assistant
     }
 
     op.set_passphrase(passphrase);
+    stop_password_loop(this, CLOSE);
   }
 
   void show_question(DejaDup.Operation op, string title, string message)

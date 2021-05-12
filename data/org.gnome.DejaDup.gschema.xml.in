@@ -68,6 +68,14 @@ SPDX-FileCopyrightText: Michael Terry
       <summary>Whether to use metered networks</summary>
       <description>If false, Déjà Dup will refuse to run scheduled backups over metered network connections (like 4G).</description>
     </key>
+    <key name="tool" type="s">
+      <default>'duplicity'</default>
+      <choices>
+        <choice value='borg'/>
+        <choice value='duplicity'/>
+        <choice value='restic'/>
+      </choices>
+    </key>
     <key name="backend" type="s">
       <choices>
         <choice value='auto'/>
