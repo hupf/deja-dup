@@ -171,11 +171,12 @@ string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = fal
     args += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
     args += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
 
-    string[] excludes1 = {"~/Downloads", "~/.local/share/Trash", "~/.xsession-errors", "~/.thumbnails",
+    string[] excludes1 = {"~/Downloads", "$DATADIR/Trash", "~/.xsession-errors", "~/.thumbnails",
                           "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache",
                            "~/.cache", "~/.adobe/Flash_Player/AssetCache"};
     foreach (string ex in excludes1) {
       ex = ex.replace("~", Environment.get_home_dir());
+      ex = ex.replace("$DATADIR", Environment.get_user_data_dir());
       if (FileUtils.test (ex, FileTest.IS_SYMLINK | FileTest.EXISTS))
         args += "'--exclude=%s' ".printf(ex);
     }
