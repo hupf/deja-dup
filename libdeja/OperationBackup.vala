@@ -108,14 +108,10 @@ public class DejaDup.OperationBackup : Operation
     // When changing this list, remember to update the help documentation too.
     if (home_dir != null) {
       var home = File.new_for_path(home_dir);
-      files.prepend(home.resolve_relative_path(".adobe/Flash_Player/AssetCache"));
       files.prepend(home.resolve_relative_path(".ccache"));
       files.prepend(home.resolve_relative_path(".gvfs"));
       files.prepend(home.resolve_relative_path(".Private")); // encrypted copies of stuff in $HOME
-      files.prepend(home.resolve_relative_path(".recent-applications.xbel"));
-      files.prepend(home.resolve_relative_path(".recently-used.xbel"));
       files.prepend(home.resolve_relative_path(".steam/root"));
-      files.prepend(home.resolve_relative_path(".thumbnails"));
       files.prepend(home.resolve_relative_path(".xsession-errors"));
       regexps.prepend(Path.build_filename(home_dir, ".var/app/*/cache")); // flatpak
       regexps.prepend(Path.build_filename(home_dir, "snap/*/*/.cache"));
