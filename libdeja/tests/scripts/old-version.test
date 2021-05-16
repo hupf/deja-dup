@@ -6,7 +6,10 @@
 [Operation]
 Type=backup
 Success=false
-Error=Backups requires at least version 0.7.14 of duplicity, but only found version 0.7.13
+ErrorRegex=Backups requires at least version [0-9.]+ of [a-z]+, but only found version 0.7.13
 
 [Duplicity]
+Version=0.7.13
+
+[Restic]
 Version=0.7.13

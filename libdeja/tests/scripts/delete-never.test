@@ -6,10 +6,10 @@
 
 [Operation]
 Type=backup
-IsFull=true
 
 [Duplicity]
 Runs=status;dry;backup;status-restore;verify;
+IsFull=true
 
 [Duplicity status]
 #echo "INFO 3"
@@ -24,3 +24,6 @@ Runs=status;dry;backup;status-restore;verify;
 #echo "chain-complete"
 #echo " full $(date --utc --date='1970-1-5' +%Y%m%dT%H%M%SZ) 1 noenc"
 OutputScript=true
+
+# No Restic test
+# Covered by all other tests that don't use a delete-after setting.

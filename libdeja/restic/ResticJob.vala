@@ -243,20 +243,39 @@ internal class ResticBackupJoblet : ResticJoblet
     return false;
   }
 
+  string escape_pattern(string path)
+  {
+    // https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files
+    return path.replace("$", "$$");
+  }
+
+  string escape_path(string path)
+  {
+    // https://golang.org/pkg/path/filepath/#Match
+    var escaped = path.replace("\\", "\\\\");
+    escaped = escaped.replace("*", "\\*");
+    escaped = escaped.replace("?", "\\?");
+    escaped = escaped.replace("[", "\\[");
+    return escape_pattern(escaped);
+  }
+
   void add_include_excludes(ref List<string> argv)
   {
-    // FIXME: ordering, escaping
+    // FIXME: nested folders
     foreach (var regexp in exclude_regexps) {
-      argv.append("--exclude=-" + regexp);
+      argv.append("--exclude=" + escape_pattern(regexp));
     }
     foreach (var file in excludes) {
-      argv.append("--exclude=-" + file.get_path());
+      if (file.query_exists())
+        argv.append("--exclude=" + escape_path(file.get_path()));
     }
     foreach (var file in includes_priority) {
-      argv.append(file.get_path());
+      if (file.query_exists())
+        argv.append(file.get_path());
     }
     foreach (var file in includes) {
-      argv.append(file.get_path());
+      if (file.query_exists())
+        argv.append(file.get_path());
     }
   }
 }
