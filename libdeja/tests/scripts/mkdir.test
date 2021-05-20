@@ -9,3 +9,9 @@ Runs=status;dry;backup;status-restore;verify;
 
 [Duplicity status]
 Script=ls @TEST_HOME@/backup
+
+[Restic]
+Runs=backup;verify;
+
+[Duplicity backup]
+Script=ls @TEST_HOME@/backup

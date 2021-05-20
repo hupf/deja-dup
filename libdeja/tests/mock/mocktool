@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+# -*- Mode: Python; indent-tabs-mode: nil; tab-width: 4; coding: utf-8 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+# This mock tool reads from a given file describing:
+# 1) What arguments to expect
+# 2) What output to give
+#
+# The file location is specified by DEJA_DUP_TEST_MOCKSCRIPT.
+# An example format of the file is:
+
+# ARGS: full --include --exclude --etc --dry-run
+# RETURN: 0
+#
+# First sample output message
+#
+# Second and final sample output message
+#
+# === deja-dup ===
+# ARGS: full --include --exclude --etc
+# RETURN: 0
+#
+# First sample output message
+#
+# Second and final sample output message
+
+# Every time if things go as expected, we will wipe the first stanza from the
+# file.  If it's the last stanza left, we'll delete the file.  That way,
+# any caller can know if we got passed unexpected arguments by testing for the
+# existence of the file.
+
+import sys, os, shlex, getpass, time, subprocess, pathlib
+
+# Where should we spit our messages to?
+logfd = None
+for i in range(len(sys.argv)):
+    split = sys.argv[i].split("=", 1)
+    if len(split) > 1 and split[0] == "--log-fd":
+        logfd = os.fdopen(int(split[1]), "w")
+        sys.argv[i] = "--log-fd=?"
+    elif len(split) > 1 and split[0] == "--log-file":
+        logfd = open(split[1], "a")
+        sys.argv[i] = "--log-file=?"
+
+
+mockscript = os.environ["DEJA_DUP_TEST_MOCKSCRIPT"]
+
+
+def testfail(msg):
+    print("TESTFAIL: " + msg, file=logfd)
+    pathlib.Path(mockscript + ".failed").touch(exist_ok=True)
+    sys.exit(-1)
+
+
+if not os.path.exists(mockscript):
+    testfail("no mockscript")
+
+lines = []
+with open(mockscript) as f:
+    lines = f.readlines()
+
+# In general, don't bother trying to avoid exceptions. If we don't get expected
+# input, that's a test failure too.
+
+
+def skip_whitespace(lineno):
+    while len(lines) > lineno and not lines[lineno].strip():
+        lineno += 1
+    return lineno
+
+
+curline = skip_whitespace(0)
+
+rv = 0
+expected_args = []
+delay = 0
+script = ""
+passphrase = None
+tmp_archive = False
+
+while len(lines) > curline and lines[curline].strip():
+    tokens = lines[curline].split()
+    if tokens[0] == "ARGS:":
+        expected_args = shlex.split(lines[curline])[1:]
+    elif tokens[0] == "RETURN:":
+        rv = int(tokens[1])
+    elif tokens[0] == "DELAY:":
+        delay = int(tokens[1])
+    elif tokens[0] == "SCRIPT:":
+        script = " ".join(tokens[1:])
+    elif tokens[0] == "PASSPHRASE:":
+        passphrase = tokens[1] if len(tokens) > 1 else ""
+    elif lines[curline].strip() == "TMP_ARCHIVE":
+        tmp_archive = True
+    curline += 1
+
+if tmp_archive:
+    for i in range(len(sys.argv)):
+        split = sys.argv[i].split("=", 1)
+        if len(split) > 1 and split[0] == "--archive-dir":
+            if split[1].find("/cache/") != -1:
+                testfail("expected random /tmp archive dir")
+            # Chop off random string at end, for reproducable tests
+            sys.argv[i] = sys.argv[i][:-6] + "?"
+
+if expected_args != sys.argv[1:]:
+    testfail("expected\n%s\nvs\n%s" % (expected_args, sys.argv[1:]))
+
+env_passphrase = os.environ.get("PASSPHRASE")
+if env_passphrase is None:
+    env_passphrase = os.environ.get("RESTIC_PASSWORD")
+if passphrase != env_passphrase:
+    testfail(
+        "expected passphrase '%s', but got '%s'"
+        % (passphrase, env_passphrase)
+    )
+
+curline = skip_whitespace(curline)
+
+while len(lines) > curline and lines[curline] != "=== deja-dup ===\n":
+    print(lines[curline], end="", file=logfd)
+    curline += 1
+
+# Write back mockscript
+if len(lines) <= curline:
+    os.unlink(mockscript)
+else:
+    lines = lines[curline + 1 :]
+    with open(mockscript, "w") as f:
+        f.writelines(lines)
+
+if script:
+    script_rv = subprocess.call(script, shell=True)
+    if script_rv != 0:
+        testfail("expected script success, but got return code %d" % script_rv)
+
+time.sleep(delay)
+
+sys.exit(rv)

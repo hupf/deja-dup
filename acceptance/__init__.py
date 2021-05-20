@@ -138,7 +138,10 @@ class BaseTest(unittest.TestCase):
     def refresh(self, obj):
         kwargs = {"roleName": obj.roleName, "name": obj.name}
         if obj.labeler:
-            kwargs["label"] = obj.labeler.name
+            try:
+                kwargs["label"] = obj.labeler.name
+            except AttributeError:
+                pass
         return obj.parent.child(**kwargs)
 
     def walk_initial_backup(

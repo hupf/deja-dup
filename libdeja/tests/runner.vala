@@ -45,6 +45,20 @@ void setup_gsettings()
   Environment.set_variable("GSETTINGS_BACKEND", "memory", true);
 }
 
+KeyFile load_script()
+{
+  try {
+    var script = Environment.get_variable("DEJA_DUP_TEST_SCRIPT");
+    var keyfile = new KeyFile();
+    keyfile.load_from_file(script, KeyFileFlags.KEEP_COMMENTS);
+    return keyfile;
+  }
+  catch (Error e) {
+    warning("%s\n", e.message);
+    assert_not_reached();
+  }
+}
+
 void backup_setup()
 {
   // Intentionally don't create @TEST_HOME@/backup, as the mkdir test relies
@@ -75,10 +89,17 @@ void backup_teardown()
                            Environment.get_variable("DEJA_DUP_TEST_PATH"),
                            true);
 
-  var file = File.new_for_path(Environment.get_variable("DEJA_DUP_TEST_MOCKSCRIPT"));
+  var mockscript_path = Environment.get_variable("DEJA_DUP_TEST_MOCKSCRIPT");
+  var file = File.new_for_path(mockscript_path);
   if (file.query_exists(null)) {
     // Fail the test, something went wrong
     warning("Mockscript file still exists");
+  }
+
+  file = File.new_for_path(mockscript_path + ".failed");
+  if (file.query_exists(null)) {
+    // Fail the test, something went wrong
+    warning("Mockscript had fatal error");
   }
 
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
@@ -112,9 +133,9 @@ public enum Mode {
   LIST,
 }
 
-string default_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = false,
-                    string extra = "", string include_args = "", string exclude_args = "",
-                    bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null)
+string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = false,
+                      string extra = "", string include_args = "", string exclude_args = "",
+                      bool tmp_archive = false, int remove_n = -1, string? file_to_restore = null)
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
@@ -251,6 +272,7 @@ class BackupRunner : Object
   public bool is_full = false; // we don't often give INFO 3 which triggers is_full()
   public bool is_first = false;
   public int passphrases = 0;
+  public bool default_passphrase = false;
 
   public void run()
   {
@@ -300,6 +322,8 @@ class BackupRunner : Object
     op.progress.connect((percent) => {
     });
 
+    if (default_passphrase)
+      op.set_passphrase("test");
     op.passphrase_required.connect(() => {
       Test.message("Passphrase required");
       if (passphrases == 0)
@@ -566,7 +590,7 @@ void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) t
 
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
-  var dupscript = "ARGS: " + default_args(br, mode, encrypted, extra_args, include_args, exclude_args,
+  var dupscript = "ARGS: " + duplicity_args(br, mode, encrypted, extra_args, include_args, exclude_args,
                                           tmp_archive, remove_n, file_to_restore);
 
   if (tmp_archive)
@@ -622,6 +646,9 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
     version = keyfile.get_string(group, "Version");
   add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
 
+  if (keyfile.has_key(group, "IsFull"))
+    br.is_full = keyfile.get_boolean(group, "IsFull");
+
   if (keyfile.has_key(group, "Runs")) {
     var runs = keyfile.get_string_list(group, "Runs");
     foreach (var run in runs)
@@ -629,13 +656,13 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
   }
 }
 
-void backup_run()
+void duplicity_run()
 {
-  try {
-    var script = Environment.get_variable("DEJA_DUP_TEST_SCRIPT");
-    var keyfile = new KeyFile();
-    keyfile.load_from_file(script, KeyFileFlags.KEEP_COMMENTS);
+  var settings = DejaDup.get_settings();
+  settings.set_string(DejaDup.TOOL_KEY, "duplicity");
 
+  try {
+    var keyfile = load_script();
     var br = new BackupRunner();
 
     var groups = keyfile.get_groups();
@@ -653,6 +680,188 @@ void backup_run()
     assert_not_reached();
   }
 }
+
+#if ENABLE_RESTIC
+string parse_path(string path)
+{
+  return path.replace("$HOME", Environment.get_home_dir())
+             .replace("$DATADIR", Environment.get_user_data_dir())
+             .replace("$CACHEDIR", Environment.get_variable("XDG_CACHE_HOME"));
+}
+
+string? restic_exc(string path, bool must_exist=true)
+{
+  var parsed = parse_path(path);
+
+  if (!must_exist || FileUtils.test(parsed, FileTest.IS_SYMLINK | FileTest.EXISTS))
+    return "'--exclude=%s'".printf(parsed);
+  else
+    return null;
+}
+
+string restic_args(BackupRunner br, string mode, string? exclude_args,
+                   string? include_args, int keep_within = -1)
+{
+  var cachedir = Environment.get_variable("XDG_CACHE_HOME");
+  var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
+  var backupdir = Path.build_filename(test_home, "backup");
+  var tempdir = Path.build_filename(test_home, "tmp");
+
+  string[] args = {};
+  args += "--json";
+  args += "--cleanup-cache";
+  args += "--cache-dir=%s/deja-dup/restic".printf(cachedir);
+  args += "--repo=" + backupdir;
+
+  switch (mode) {
+    case "backup":
+      args += "backup";
+      args += "--exclude-caches";
+      args += "--exclude-if-present=.deja-dup-ignore";
+
+      string[] excludes = {
+        restic_exc("$HOME/snap/*/*/.cache", false),
+        restic_exc("$HOME/.var/app/*/cache", false),
+        restic_exc("$HOME/Downloads"),
+        restic_exc("$DATADIR/Trash"),
+        exclude_args,
+        restic_exc("/sys"),
+        restic_exc("/run"),
+        restic_exc("/proc"),
+        restic_exc("/dev"),
+        restic_exc(tempdir),
+        restic_exc("$HOME/.xsession-errors"),
+        restic_exc("$HOME/.steam/root"),
+        restic_exc("$HOME/.Private"),
+        restic_exc("$HOME/.gvfs"),
+        restic_exc("$HOME/.ccache"),
+        restic_exc("$CACHEDIR/deja-dup", false),
+        restic_exc("$HOME/.cache"),
+        restic_exc("$CACHEDIR", false)
+      };
+      foreach (var path in excludes) {
+        if (path != null)
+          args += path;
+      }
+
+      // includes
+      string[] includes = {
+        "$CACHEDIR/deja-dup/metadata",
+        "$HOME"
+      };
+      foreach (var path in includes) {
+        path = parse_path(path);
+        args += path;
+      }
+      if (include_args != "")
+        args += include_args;
+
+      break;
+
+    case "forget":
+      args += "forget";
+      if (keep_within >= 0)
+        args += "--keep-within=%dd".printf(keep_within);
+      args += "--prune";
+      break;
+
+    case "verify":
+      args += "restore";
+      args += "--target=/";
+      args += "--include=" + parse_path("$CACHEDIR/deja-dup/metadata");
+      args += "latest";
+      break;
+
+    default:
+      assert_not_reached();
+  }
+
+  return string.joinv(" ", args);
+}
+
+void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) throws Error
+{
+  string exclude_args = null;
+  string include_args = null;
+  int keep_within = -1;
+  string script = null;
+
+  var parts = run.split(" ", 2);
+  var mode = parts[0];
+  var group = "Restic " + run;
+
+  if (keyfile.has_group(group)) {
+    if (keyfile.has_key(group, "ExcludeArgs"))
+      exclude_args = get_string_field(keyfile, group, "ExcludeArgs");
+    if (keyfile.has_key(group, "IncludeArgs"))
+      include_args = get_string_field(keyfile, group, "IncludeArgs");
+    if (keyfile.has_key(group, "KeepWithin"))
+      keep_within = keyfile.get_integer(group, "KeepWithin");
+    if (keyfile.has_key(group, "Script"))
+      script = get_string_field(keyfile, group, "Script");
+  }
+
+  var cachedir = Environment.get_variable("XDG_CACHE_HOME");
+
+  var dupscript = "ARGS: " + restic_args(br, mode, exclude_args, include_args, keep_within);
+
+  var verify_script = ("mkdir -p %s/deja-dup/metadata && " +
+                       "echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && " +
+                       "echo -n '0' >> %s/deja-dup/metadata/README").printf(cachedir, cachedir, cachedir);
+  if (mode == "verify")
+    dupscript += "\n" + "SCRIPT: " + verify_script;
+  if (script != null) {
+    if (mode == "verify")
+      dupscript += " && " + script;
+    else
+      dupscript += "\n" + "SCRIPT: " + script;
+  }
+
+  dupscript += "\n" + "PASSPHRASE: test";
+  br.default_passphrase = true;
+
+  add_to_mockscript(dupscript);
+}
+
+void process_restic_block(KeyFile keyfile, string group, BackupRunner br) throws Error
+{
+  var version = "9.9.99";
+  if (keyfile.has_key(group, "Version"))
+    version = keyfile.get_string(group, "Version");
+  add_to_mockscript("ARGS: version\n\nrestic %s compiled with go1.15.8 on linux/amd64\n".printf(version));
+
+  if (keyfile.has_key(group, "Runs")) {
+    var runs = keyfile.get_string_list(group, "Runs");
+    foreach (var run in runs)
+      process_restic_run_block(keyfile, run, br);
+  }
+}
+
+void restic_run()
+{
+  var settings = DejaDup.get_settings();
+  settings.set_string(DejaDup.TOOL_KEY, "restic");
+
+  try {
+    var keyfile = load_script();
+    var br = new BackupRunner();
+
+    var groups = keyfile.get_groups();
+    foreach (var group in groups) {
+      if (group == "Operation")
+        process_operation_block(keyfile, group, br);
+      else if (group == "Restic")
+        process_restic_block(keyfile, group, br);
+    }
+
+    br.run();
+  }
+  catch (Error e) {
+    warning("%s\n", e.message);
+    assert_not_reached();
+  }
+}
+#endif
 
 const OptionEntry[] OPTIONS = {
   {"system", 0, 0, OptionArg.NONE, ref system_mode, "Run against system install", null},
@@ -697,12 +906,28 @@ int main(string[] args)
                            Environment.get_variable("PATH"), true);
 
   var parts = script.split("/");
-  var suitename = parts[parts.length - 2];
   var testname = parts[parts.length - 1].split(".")[0];
+  var keyfile = load_script();
+  var found_group = false;
 
-  var suite = new TestSuite(suitename);
-  suite.add(new TestCase(testname, backup_setup, backup_run, backup_teardown));
-  TestSuite.get_root().add_suite(suite);
+  if (keyfile.has_group("Duplicity")) {
+    var suite = new TestSuite("duplicity");
+    suite.add(new TestCase(testname, backup_setup, duplicity_run, backup_teardown));
+    TestSuite.get_root().add_suite(suite);
+    found_group = true;
+  }
+
+#if ENABLE_RESTIC
+  if (keyfile.has_group("Restic")) {
+    var suite = new TestSuite("restic");
+    suite.add(new TestCase(testname, backup_setup, restic_run, backup_teardown));
+    TestSuite.get_root().add_suite(suite);
+    found_group = true;
+  }
+#endif
+
+  if (!found_group)
+    assert_not_reached();
 
   return Test.run();
 }

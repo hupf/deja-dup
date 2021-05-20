@@ -4,10 +4,10 @@
 [Operation]
 Type=backup
 Settings=delete-after=500;
-IsFull=true
 
 [Duplicity]
 Runs=status;dry;backup;remove;status-restore;verify;
+IsFull=true
 
 [Duplicity status]
 #echo "INFO 3"
@@ -17,3 +17,9 @@ OutputScript=true
 
 [Duplicity remove]
 RemoveButN=1
+
+[Restic]
+Runs=backup;forget;verify;
+
+[Restic forget]
+KeepWithin=500

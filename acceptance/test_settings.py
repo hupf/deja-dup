@@ -49,10 +49,9 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.refresh(periodic_main).checked)
 
         # Period to settings
-        period_box = prefs.child(
-            roleName="list item", name="Automatic Backup Frequency"
+        period = prefs.child(
+            roleName="combo box", name="Automatic Backup Frequency"
         )
-        period = period_box.child(roleName="list")
         period.click()
         prefs.child(name="Daily").click()
         self.assertEqual(self.get_int("periodic-period"), 1)
@@ -66,8 +65,7 @@ class PreferencesTest(BaseTest):
         self.refresh(period).child(name="Every 10 days")  # just test existence
 
         # Delete After to settings
-        delete_box = prefs.child(roleName="list item", name="Keep Backups")
-        delete = delete_box.child(roleName="list")
+        delete = prefs.child(roleName="combo box", name="Keep Backups")
         delete.click()
         prefs.child(name="At least a year").click()
         self.assertEqual(self.get_int("delete-after"), 365)
