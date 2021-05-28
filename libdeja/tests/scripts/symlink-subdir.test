@@ -17,3 +17,9 @@ IncludeArgs='--include=@TEST_HOME@/1' '--include=@TEST_HOME@/a/2' '--include=@TE
 
 [Duplicity backup]
 IncludeArgs='--include=@TEST_HOME@/1' '--include=@TEST_HOME@/a/2' '--include=@TEST_HOME@/a/b/c'
+
+[Restic]
+Runs=backup;verify;
+
+[Restic backup]
+ExtraIncludes=@TEST_HOME@/1;@TEST_HOME@/a/2;@TEST_HOME@/a/b/c;
