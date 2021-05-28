@@ -506,6 +506,16 @@ string get_string_field(KeyFile keyfile, string group, string key) throws Error
     return replace_keywords(field);
 }
 
+string[] get_string_list(KeyFile keyfile, string group, string key) throws Error
+{
+  var list = keyfile.get_string_list(group, key);
+  string[] replaced = {};
+  foreach (var item in list) {
+    replaced += replace_keywords(item);
+  }
+  return replaced;
+}
+
 void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) throws Error
 {
   string outputscript = null;
@@ -689,42 +699,83 @@ string parse_path(string path)
              .replace("$CACHEDIR", Environment.get_variable("XDG_CACHE_HOME"));
 }
 
+string? read_link(string path)
+{
+  if (!FileUtils.test(path, FileTest.IS_SYMLINK) ||
+      !FileUtils.test(path, FileTest.EXISTS))
+    return null;
+
+  try {
+    var sym = FileUtils.read_link(path);
+    sym = Filename.to_utf8(sym, -1, null, null);
+    return sym;
+  }
+  catch (Error e) {
+    assert_not_reached();
+  }
+}
+
 string? restic_exc(string path, bool must_exist=true)
 {
   var parsed = parse_path(path);
 
-  if (!must_exist || FileUtils.test(parsed, FileTest.IS_SYMLINK | FileTest.EXISTS))
-    return "'--exclude=%s'".printf(parsed);
-  else
+  if (must_exist && !FileUtils.test(parsed, FileTest.IS_SYMLINK | FileTest.EXISTS))
     return null;
+
+  return parsed;
 }
 
-string restic_args(BackupRunner br, string mode, string? exclude_args,
-                   string? include_args, int keep_within = -1)
+List<string> restic_exc_list(string[] paths, out List<string> symlinks, bool check_symlinks = true)
+{
+  List<string> args = null;
+  symlinks = null;
+
+  foreach (var path in paths) {
+    if (path == null)
+      continue;
+
+    if (check_symlinks) {
+      var target = read_link(path);
+      if (target != null)
+        symlinks.append("'--exclude=%s'".printf(target));
+    }
+
+    args.append("'--exclude=%s'".printf(path));
+  }
+
+  return args;
+}
+
+string restic_args(BackupRunner br, string mode, string[] extra_excludes,
+                   string[] sym_target_excludes, string[] extra_includes,
+                   int keep_within = -1)
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
   var backupdir = Path.build_filename(test_home, "backup");
   var tempdir = Path.build_filename(test_home, "tmp");
 
-  string[] args = {};
-  args += "--json";
-  args += "--cleanup-cache";
-  args += "--cache-dir=%s/deja-dup/restic".printf(cachedir);
-  args += "--repo=" + backupdir;
+  List<string> args = null;
+  args.append("--json");
+  args.append("--cleanup-cache");
+  args.append("--cache-dir=%s/deja-dup/restic".printf(cachedir));
+  args.append("--repo=" + backupdir);
 
   switch (mode) {
     case "backup":
-      args += "backup";
-      args += "--exclude-caches";
-      args += "--exclude-if-present=.deja-dup-ignore";
+      args.append("backup");
+      args.append("--exclude-caches");
+      args.append("--exclude-if-present=.deja-dup-ignore");
 
-      string[] excludes = {
+      string[] regex_excludes = {
         restic_exc("$HOME/snap/*/*/.cache", false),
-        restic_exc("$HOME/.var/app/*/cache", false),
+        restic_exc("$HOME/.var/app/*/cache", false)
+      };
+      string[] default_excludes = {
         restic_exc("$HOME/Downloads"),
-        restic_exc("$DATADIR/Trash"),
-        exclude_args,
+        restic_exc("$DATADIR/Trash")
+      };
+      string[] builtin_excludes = {
         restic_exc("/sys"),
         restic_exc("/run"),
         restic_exc("/proc"),
@@ -739,10 +790,19 @@ string restic_args(BackupRunner br, string mode, string? exclude_args,
         restic_exc("$HOME/.cache"),
         restic_exc("$CACHEDIR", false)
       };
-      foreach (var path in excludes) {
-        if (path != null)
-          args += path;
-      }
+
+      List<string> default_symlinks = null;
+      List<string> builtin_symlinks = null;
+
+      args.concat(restic_exc_list(regex_excludes, null));
+      args.concat(restic_exc_list(extra_excludes, null));
+      args.concat(restic_exc_list(default_excludes, out default_symlinks));
+      args.concat(restic_exc_list(builtin_excludes, out builtin_symlinks));
+
+      // Now delayed symlink targets
+      args.concat(default_symlinks.copy_deep((CopyFunc) strdup));
+      args.concat(restic_exc_list(sym_target_excludes, null));
+      args.concat(builtin_symlinks.copy_deep((CopyFunc) strdup));
 
       // includes
       string[] includes = {
@@ -750,39 +810,46 @@ string restic_args(BackupRunner br, string mode, string? exclude_args,
         "$HOME"
       };
       foreach (var path in includes) {
-        path = parse_path(path);
-        args += path;
+        args.append(parse_path(path));
       }
-      if (include_args != "")
-        args += include_args;
+      if (extra_includes != null) {
+        foreach (var inc in extra_includes) {
+          args.append("'%s'".printf(inc));
+        }
+      }
 
       break;
 
     case "forget":
-      args += "forget";
+      args.append("forget");
       if (keep_within >= 0)
-        args += "--keep-within=%dd".printf(keep_within);
-      args += "--prune";
+        args.append("--keep-within=%dd".printf(keep_within));
+      args.append("--prune");
       break;
 
     case "verify":
-      args += "restore";
-      args += "--target=/";
-      args += "--include=" + parse_path("$CACHEDIR/deja-dup/metadata");
-      args += "latest";
+      args.append("restore");
+      args.append("--target=/");
+      args.append("--include=" + parse_path("$CACHEDIR/deja-dup/metadata"));
+      args.append("latest");
       break;
 
     default:
       assert_not_reached();
   }
 
-  return string.joinv(" ", args);
+  string command = args.data;
+  foreach(var arg in args.next) {
+    command += " " + arg;
+  }
+  return command;
 }
 
 void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) throws Error
 {
-  string exclude_args = null;
-  string include_args = null;
+  string[] excludes = null;
+  string[] sym_target_excludes = null;
+  string[] includes = null;
   int keep_within = -1;
   string script = null;
 
@@ -791,19 +858,21 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   var group = "Restic " + run;
 
   if (keyfile.has_group(group)) {
-    if (keyfile.has_key(group, "ExcludeArgs"))
-      exclude_args = get_string_field(keyfile, group, "ExcludeArgs");
-    if (keyfile.has_key(group, "IncludeArgs"))
-      include_args = get_string_field(keyfile, group, "IncludeArgs");
+    if (keyfile.has_key(group, "ExtraExcludes"))
+      excludes = get_string_list(keyfile, group, "ExtraExcludes");
+    if (keyfile.has_key(group, "ExtraIncludes"))
+      includes = get_string_list(keyfile, group, "ExtraIncludes");
     if (keyfile.has_key(group, "KeepWithin"))
       keep_within = keyfile.get_integer(group, "KeepWithin");
     if (keyfile.has_key(group, "Script"))
       script = get_string_field(keyfile, group, "Script");
+    if (keyfile.has_key(group, "SymlinkTargetExcludes"))
+      sym_target_excludes = get_string_list(keyfile, group, "SymlinkTargetExcludes");
   }
 
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
-  var dupscript = "ARGS: " + restic_args(br, mode, exclude_args, include_args, keep_within);
+  var dupscript = "ARGS: " + restic_args(br, mode, excludes, sym_target_excludes, includes, keep_within);
 
   var verify_script = ("mkdir -p %s/deja-dup/metadata && " +
                        "echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && " +

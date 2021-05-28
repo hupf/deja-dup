@@ -259,23 +259,45 @@ internal class ResticBackupJoblet : ResticJoblet
     return escape_pattern(escaped);
   }
 
+  bool list_contains_file(List<File> list, File file)
+  {
+    foreach (var f in list) {
+      if (f.equal(file))
+        return true;
+    }
+    return false;
+  }
+
   void add_include_excludes(ref List<string> argv)
   {
-    // FIXME: nested folders
+    // FIXME: nested folders don't work:
+    // https://github.com/restic/restic/issues/3408
+
+    // Expand symlinks and ignore mising targets.
+    // Restic will back up a symlink if specified directly. But if we left
+    // synlinks in parent paths, it will treat them as normal directories.
+    // These calls make sure we include the sym link and the target dirs.
+    // (Which is consistent behavior with our Duplicity tool support.)
+    DejaDup.expand_links_in_list(ref includes, true);
+    DejaDup.expand_links_in_list(ref includes_priority, true);
+    DejaDup.expand_links_in_list(ref excludes, false);
+
     foreach (var regexp in exclude_regexps) {
       argv.append("--exclude=" + escape_pattern(regexp));
     }
     foreach (var file in excludes) {
-      if (file.query_exists())
+      // Avoid duplicating an exclude and an include - restic will choose exclude
+      if (!list_contains_file(includes_priority, file) &&
+          !list_contains_file(includes, file))
+      {
         argv.append("--exclude=" + escape_path(file.get_path()));
+      }
     }
     foreach (var file in includes_priority) {
-      if (file.query_exists())
-        argv.append(file.get_path());
+      argv.append(file.get_path());
     }
     foreach (var file in includes) {
-      if (file.query_exists())
-        argv.append(file.get_path());
+      argv.append(file.get_path());
     }
   }
 }

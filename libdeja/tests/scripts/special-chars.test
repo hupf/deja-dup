@@ -3,7 +3,7 @@
 
 [Operation]
 Type=backup
-Settings=include-list=['@TEST_HOME@/ \\\\[*?]', '$HOME'];exclude-list=['@TEST_HOME@/ \\\\[*?]/ \\\\[*?]', '$TRASH', '$DOWNLOAD'];
+Settings=include-list=['@TEST_HOME@/ \\\\[*?]', '$HOME'];exclude-list=['$TRASH', '$DOWNLOAD', '@TEST_HOME@/ \\\\[*?]/ \\\\[*?]'];
 Script=mkdir -p '@TEST_HOME@/ \\[*?]/ \\[*?]'
 
 [Duplicity]
@@ -22,5 +22,5 @@ IncludeArgs='--exclude=@TEST_HOME@/ \\[[][*][?]]/ \\[[][*][?]]' '--include=@TEST
 Runs=backup;verify;
 
 [Restic backup]
-ExcludeArgs='--exclude=@TEST_HOME@/ \\\\\\[\\*\\?]/ \\\\\\[\\*\\?]'
-IncludeArgs='@TEST_HOME@/ \\[*?]'
+ExtraExcludes=@TEST_HOME@/ \\\\\\[\\*\\?]/ \\\\\\[\\*\\?];
+ExtraIncludes=@TEST_HOME@/ \\[*?];

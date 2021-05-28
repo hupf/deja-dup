@@ -19,3 +19,10 @@ IncludeArgs='--include=@TEST_HOME@/1' '--exclude=@TEST_HOME@/a/b/c' '--include=@
 
 [Duplicity backup]
 IncludeArgs='--include=@TEST_HOME@/1' '--exclude=@TEST_HOME@/a/b/c' '--include=@TEST_HOME@/a/b'
+
+[Restic]
+Runs=backup;verify;
+
+[Restic backup]
+ExtraExcludes=@TEST_HOME@/a/b/c;
+ExtraIncludes=@TEST_HOME@/1;@TEST_HOME@/a/b;
