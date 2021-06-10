@@ -84,6 +84,7 @@ public class ResticPlugin : DejaDup.ToolPlugin
       case DejaDup.Backend.Kind.LOCAL:
       case DejaDup.Backend.Kind.GVFS: // via fuse
       case DejaDup.Backend.Kind.GOOGLE: // via rclone
+      case DejaDup.Backend.Kind.MICROSOFT: // via rclone
         return true;
 
       default:

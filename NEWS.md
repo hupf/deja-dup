@@ -4,9 +4,33 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.alpha
+- Add support for Microsoft OneDrive
+- Add opt-in experimental support for using Restic
+
 ##### Packaging
 - Switch from gtk3 to gtk4
-- Switch from libhandy1 to libadwaita
+- Switch from libhandy1 to libadwaita1
+- For Microsoft OneDrive support:
+  - OneDrive will need to use the `requests_oauthlib` python module. So please
+    either have your packaging depend on it, or define the new
+    `requests_oauthlib_pkgs` config flag if building with packagekit
+    support.
+  - New config flag `microsoft_client_id` (you likely don't want to change this
+    from its default)
+- For experimental Restic support:
+  - New config flag `enable_restic`, which you can set to `true` to turn on
+    the new experimental support for Restic. This will not use Restic by
+    default, but merely expose a new "Labs" panel in the preferences window
+    where users can opt-in.
+  - New config flag `restic_command`, where you can override the path to the
+   `restic` executable (defaults to searching `PATH` for `restic`)
+  - New config flag `restic_pkgs`, if you are building with packagekit support
+    and don't want to depend on the restic package.
+  - New config flag `rclone_command`, where you can override the path to the
+   `rclone` executable (defaults to searching `PATH` for `rclone`). Rclone is
+    used by the new Restic backend to connect to cloud storage providers.
+  - New config flag `rclone_pkgs`, if you are building with packagekit support
+    and don't want to depend on the rclone package.
 
 # 42.7
 - Fix descending into a directory while searching in the browse & restore view
