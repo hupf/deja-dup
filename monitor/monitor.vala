@@ -163,8 +163,8 @@ static void prepare_run(TimeSpan wait_time)
   if (wait_time > 0 && secs > 0) {
     debug("Waiting %ld seconds until next backup.", (long)secs);
     timeout_id = Timeout.add_seconds((uint)secs, () => {
-      kickoff.begin();
       timeout_id = 0;
+      kickoff.begin();
       return false;
     });
   }
