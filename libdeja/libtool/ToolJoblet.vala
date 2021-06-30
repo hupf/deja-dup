@@ -13,7 +13,10 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
 
   public override void cancel() { // with cleanup, no success
     disconnect_inst();
-    done(false, true, null);
+    if (cancel_cleanup())
+      done(true, false, null); // go to next job
+    else
+      done(false, true, null);
   }
   public override void stop() { // no cleanup, with success
     disconnect_inst();
@@ -49,6 +52,11 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
   // Protected interface
   protected abstract ToolInstance make_instance();
   protected abstract void prepare(ref List<string> argv, ref List<string> envp) throws Error;
+
+  // If this returns true, that means you are handling the cancel and you are
+  // responsible for calling done().
+  // The chain can be assumed to be empty by the time this is called.
+  protected virtual bool cancel_cleanup() { return false; }
 
   protected void add_handler(ulong id) {
     handlers.append(id);

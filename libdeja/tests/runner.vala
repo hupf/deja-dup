@@ -364,6 +364,8 @@ class BackupRunner : Object
     }
     if (error_str != null)
       warning("Error str didn't match; expected %s, never got error", error_str);
+    if (error_regex != null)
+      warning("Error regex didn't match; expected %s, never got error", error_regex);
     if (error_detail != null)
       warning("Error detail didn't match; expected %s, never got error", error_detail);
 
@@ -827,6 +829,10 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       args.append("--prune");
       break;
 
+    case "prune":
+      args.append("prune");
+      break;
+
     case "verify":
       args.append("restore");
       args.append("--target=/");
@@ -847,17 +853,22 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
 
 void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) throws Error
 {
+  bool cancel = false;
   string[] excludes = null;
   string[] sym_target_excludes = null;
   string[] includes = null;
   int keep_within = -1;
+  int return_code = 0;
   string script = null;
+  bool stop = false;
 
   var parts = run.split(" ", 2);
   var mode = parts[0];
   var group = "Restic " + run;
 
   if (keyfile.has_group(group)) {
+    if (keyfile.has_key(group, "Cancel"))
+      cancel = keyfile.get_boolean(group, "Cancel");
     if (keyfile.has_key(group, "ExtraExcludes"))
       excludes = get_string_list(keyfile, group, "ExtraExcludes");
     if (keyfile.has_key(group, "ExtraIncludes"))
@@ -866,6 +877,10 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
       keep_within = keyfile.get_integer(group, "KeepWithin");
     if (keyfile.has_key(group, "Script"))
       script = get_string_field(keyfile, group, "Script");
+    if (keyfile.has_key(group, "Return"))
+      return_code = keyfile.get_integer(group, "Return");
+    if (keyfile.has_key(group, "Stop"))
+      stop = keyfile.get_boolean(group, "Stop");
     if (keyfile.has_key(group, "SymlinkTargetExcludes"))
       sym_target_excludes = get_string_list(keyfile, group, "SymlinkTargetExcludes");
   }
@@ -873,6 +888,23 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
   var dupscript = "ARGS: " + restic_args(br, mode, excludes, sym_target_excludes, includes, keep_within);
+
+  if (cancel) {
+    dupscript += "\n" + "DELAY: 10";
+    br.callback = (op) => {
+      op.cancel();
+    };
+  }
+
+  if (stop) {
+    dupscript += "\n" + "DELAY: 10";
+    br.callback = (op) => {
+      op.stop();
+    };
+  }
+
+  if (return_code != 0)
+    dupscript += "\n" + "RETURN: %d".printf(return_code);
 
   var verify_script = ("mkdir -p %s/deja-dup/metadata && " +
                        "echo 'This folder can be safely deleted.' > %s/deja-dup/metadata/README && " +

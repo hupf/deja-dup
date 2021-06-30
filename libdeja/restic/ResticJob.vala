@@ -104,7 +104,7 @@ internal class ResticJoblet : DejaDup.ToolJoblet
   {
     if (ignore_errors)
       success = true;
-    base.handle_done(true, cancelled);
+    base.handle_done(success, cancelled);
   }
 
   protected virtual void handle_fatal_error(string msg)
@@ -166,9 +166,30 @@ internal class ResticInitJoblet : ResticJoblet
   }
 }
 
+internal class ResticPruneJoblet : ResticJoblet
+{
+  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  {
+    base.prepare(ref argv, ref envp);
+    argv.append(get_remote());
+    argv.append("prune");
+  }
+
+  protected override void handle_done(bool success, bool cancelled)
+  {
+    base.handle_done(false, true); // prune is always part of a cancel
+  }
+}
+
 internal class ResticBackupJoblet : ResticJoblet
 {
   int64 seconds_elapsed = -1;
+
+  protected override bool cancel_cleanup()
+  {
+    chain.append_to_chain(new ResticPruneJoblet());
+    return true;
+  }
 
   protected override ToolInstance make_instance() {
     var instance = base.make_instance() as ResticInstance;

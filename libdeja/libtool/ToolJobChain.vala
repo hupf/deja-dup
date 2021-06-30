@@ -8,24 +8,41 @@ using GLib;
 
 internal class DejaDup.ToolJobChain : DejaDup.ToolJob
 {
-  public override async void start() {
+  public override async void start()
+  {
+    if (chain == null) {
+      done(true, false, null);
+      return;
+    }
+
     yield start_first();
   }
-  public override void cancel() {
+
+  public override void cancel()
+  {
+    chain = null;
     if (current != null)
-      current.cancel();
-    clear_all();
+      current.cancel(); // sends done()
+    else
+      done(false, true, null);
   }
-  public override void stop() {
+
+  public override void stop()
+  {
+    chain = null;
     if (current != null)
-      current.stop();
-    clear_all();
+      current.stop(); // sends done()
+    else
+      done(true, true, null);
   }
-  public override void pause(string? reason) {
+
+  public override void pause(string? reason)
+  {
     if (current != null)
       current.pause(reason);
   }
-  public override void resume() {
+  public override void resume()
+  {
     if (current != null)
       current.resume();
   }
@@ -88,19 +105,8 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
     current = null;
   }
 
-  void clear_all()
-  {
-    clear_current();
-    chain = null;
-  }
-
   async void start_first()
   {
-    if (chain == null) {
-      done(true, false, null);
-      return;
-    }
-
     current = chain.data;
     chain.remove_link(chain);
 
@@ -110,8 +116,9 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
 
   void handle_done(bool success, bool cancelled, string? detail)
   {
+    clear_current();
+
     if (success && !cancelled && chain != null) {
-      clear_current();
       start_first.begin();
       return;
     }

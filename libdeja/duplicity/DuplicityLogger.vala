@@ -114,7 +114,7 @@ public class DejaDup.DuplicityLogger : Object
       FileUtils.set_contents(cachefile, contents);
     }
     catch (Error e) {
-      warning("%s\n", e.message);
+      info("%s\n", e.message);
     }
   }
 
