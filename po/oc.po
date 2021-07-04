@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-05-14 09:41+0000\n"
-"PO-Revision-Date: 2021-05-29 16:15+0200\n"
+"POT-Creation-Date: 2021-05-29 14:18+0000\n"
+"PO-Revision-Date: 2021-07-04 19:22+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "Language: oc\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -40,7 +40,7 @@ msgstr "@icon@"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:368
+#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:367
 msgid "Déjà Dup Backups"
 msgstr "Salvagardas Déjà Dup"
 
@@ -94,7 +94,7 @@ msgstr ""
 "salvagarda del sistèma o d’un programa d’archivatge, benlèu que vos "
 "estimariatz mai d’autras aplicacions de salvagarda."
 
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:11
 msgid "Backups"
 msgstr "Salvaments"
 
@@ -281,11 +281,11 @@ msgstr ""
 "Se desactivat, Déjà Dup refusarà d’executar una salvagarda planificada sus "
 "de connexions ret limitadas (coma la 4G)."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:88
+#: data/org.gnome.DejaDup.gschema.xml.in:97
 msgid "Type of location to store backup"
 msgstr "Tipe de destinacion per enregistrar lo salvament"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:89
+#: data/org.gnome.DejaDup.gschema.xml.in:98
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -293,14 +293,15 @@ msgstr ""
 "Lo tipe d'emplaçament de salvament. Se « auto », una causida per defaut serà "
 "facha en foncion de çò qu'es disponible."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:100
-#: data/org.gnome.DejaDup.gschema.xml.in:123
-#: data/org.gnome.DejaDup.gschema.xml.in:136
-#: data/org.gnome.DejaDup.gschema.xml.in:144
+#: data/org.gnome.DejaDup.gschema.xml.in:110
+#: data/org.gnome.DejaDup.gschema.xml.in:133
+#: data/org.gnome.DejaDup.gschema.xml.in:146
+#: data/org.gnome.DejaDup.gschema.xml.in:154
+#: data/org.gnome.DejaDup.gschema.xml.in:161
 msgid "The folder where backups are stored"
 msgstr "Lo repertòri ont son gardadas las salvagardas"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:101
+#: data/org.gnome.DejaDup.gschema.xml.in:111
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -308,11 +309,11 @@ msgstr ""
 "La ierarquia dels dossièrs ont las salvagardas son gardadas. Pòdon èsser "
 "absoluts o relatius los camins a vòstre dossièr personal."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:108
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:109
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -320,23 +321,23 @@ msgstr ""
 "Identificador unic del sistèma de fichièrs del lector, utilizat per "
 "reconéisser lo lector quand es brancat."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:123 data/ui/Browser.ui:222
 msgid "Name"
 msgstr "Nom"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:114
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The name of the external drive."
 msgstr "Lo nom del lector extèrn."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:118
+#: data/org.gnome.DejaDup.gschema.xml.in:128
 msgid "Icon"
 msgstr "Icòna"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "L’icòna del lector extèrn, coma GIcon serializat."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:134
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -344,15 +345,15 @@ msgstr ""
 "La ierarquia dels dossièrs ont las salvagardas son gardadas. Los camins son "
 "relatius al lector."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:131
+#: data/org.gnome.DejaDup.gschema.xml.in:141
 msgid "The server address"
 msgstr "L’adreça del servidor"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:132
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid "The URI of the remote server location."
 msgstr "L’URI de l’emplaçament del servidor distant."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:137
+#: data/org.gnome.DejaDup.gschema.xml.in:147
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -360,198 +361,173 @@ msgstr ""
 "La ierarquia dels dossièrs ont las salvagardas son gardadas. Pòdon èsser "
 "absoluts o relatius a l’òste."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:145
-msgid ""
-"The folder path where backups are stored. Paths can be absolute or relative "
-"to the host."
-msgstr ""
-"Lo camin del dossièr ont las salvagardas son gardadas. Pòdon èsser absoluts "
-"o relatius a l’òste."
-
-#: data/ui/debug.ui:11 deja-dup/main.vala:259
-msgid "Debug Information"
-msgstr "Informacions de desbugatge"
-
-#: data/ui/debug.ui:35
-msgid "_Copy"
-msgstr "_Copiar"
-
-#: data/ui/debug.ui:68
-msgid "All identifying information has been obscured."
-msgstr "Totas las informacions que podon identificar son estadas dissimuladas."
-
-#: data/ui/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "General"
-msgstr "General"
-
-#: data/ui/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "Afichar l'ajuda"
-
-#: data/ui/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "Dobrir lo menú"
-
-#: data/ui/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "Quitar"
-
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "Acorchis clavièr"
-
-#: data/ui/help-overlay.ui:53
-msgctxt "shortcut window"
-msgid "Browsing Backed Up Files"
-msgstr "Percórrer los fichièrs salvagardats"
-
-#: data/ui/help-overlay.ui:58
-msgctxt "shortcut window"
+#: data/ui/Browser.ui:15 data/ui/MainHeaderBar.ui:47
 msgid "Search"
 msgstr "Cercar"
 
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "Tornar en arrièr"
-
-#: data/ui/main.ui:47
-msgid "Back"
-msgstr "Precedenta"
-
-#: data/ui/main.ui:87
-msgid "Select"
-msgstr "Seleccionar"
-
-#: data/ui/main.ui:113 data/ui/main.ui:185
-msgid "Search"
-msgstr "Cercar"
-
-#: data/ui/main.ui:157 data/ui/main.ui:774 deja-dup/Assistant.vala:340
-msgid "_Cancel"
-msgstr "_Anullar"
-
-#: data/ui/main.ui:252
-msgid "Keep your important files safe in a backup."
-msgstr "Servatz vòstres fichièrs importants en seguretat dins una salvagarda."
-
-#: data/ui/main.ui:264
-msgid "Create My First _Backup"
-msgstr "Crear mon primièr salvament"
-
-#: data/ui/main.ui:280
-msgid "_Restore From a Previous Backup"
-msgstr "_Restablir d’una salvagarda precedenta"
-
-#: data/ui/main.ui:313 data/ui/preferences.ui:118
-msgid "Automatic backup"
-msgstr "Salvagarda automatica"
-
-#: data/ui/main.ui:328
-msgid "Back up _automatically"
-msgstr "Salvagardar _automaticament"
-
-#: data/ui/main.ui:355
-msgid "_Back Up Now"
-msgstr "_Salvagardar ara"
-
-#: data/ui/main.ui:384
-msgid "Overview"
-msgstr "Vista d'ensemble"
-
-#: data/ui/main.ui:398 deja-dup/AssistantRestore.vala:68
-msgid "_Restore"
-msgstr "_Restablir"
-
-#: data/ui/main.ui:416 deja-dup/AssistantRestore.vala:108
-msgid "_Date"
-msgstr "_Data"
-
-#: data/ui/main.ui:536
+#: data/ui/Browser.ui:83
 msgid "Scanning backup files…"
 msgstr "Analisi dels fichièrs de salvament…"
 
-#: data/ui/main.ui:570
+#: data/ui/Browser.ui:114
 msgid "_Retry"
 msgstr "_Ensajar tornamai"
 
-#: data/ui/main.ui:609
+#: data/ui/Browser.ui:149
 msgid "_Connect"
 msgstr "Se _connectar"
 
-#: data/ui/main.ui:638
+#: data/ui/Browser.ui:174
 msgid "Encryption password needed"
 msgstr "Senhal de chiframent requesit"
 
-#: data/ui/main.ui:649
+#: data/ui/Browser.ui:185
 msgid "_Enter Password"
 msgstr "_Sasissètz lo senhal"
 
-#: data/ui/main.ui:753 deja-dup/AssistantRestore.vala:64
-msgid "Restore"
-msgstr "Restablir"
+#: data/ui/Browser.ui:268
+msgid "Location"
+msgstr "Emplaçament"
 
-#: data/ui/main.ui:783
-msgid "Con_tinue"
-msgstr "Con_tunhar"
+#: data/ui/Browser.ui:314 deja-dup/AssistantRestore.vala:65
+msgid "_Restore"
+msgstr "_Restablir"
 
-#: data/ui/main.ui:851 deja-dup/AssistantOperation.vala:382
-#: deja-dup/AssistantOperation.vala:453
-msgid "E_ncryption password"
-msgstr "Se_nhal de chiframent"
+#: data/ui/ConfigFolderList.ui:21 deja-dup/ConfigFolderList.vala:66
+msgid "Add"
+msgstr "Apondre"
 
-#: data/ui/main.ui:862 deja-dup/AssistantOperation.vala:412
-#: deja-dup/AssistantOperation.vala:462
-msgid "_Show password"
-msgstr "_Afichar lo senhal"
+#: data/ui/ConfigFolderPage.ui:10
+msgid "Folders"
+msgstr "Dorsièrs"
 
-#: data/ui/main.ui:877 deja-dup/AssistantOperation.vala:419
-#: deja-dup/MountOperationAssistant.vala:26
-msgid "_Remember password"
-msgstr "_Memorizar lo senhal"
+#: data/ui/ConfigFolderPage.ui:13
+msgid "Folders to Back Up"
+msgstr "Repertòri de salvagardar"
 
-#: data/ui/menus.ui:12
+#: data/ui/ConfigFolderPage.ui:20
+msgid "Folders to Ignore"
+msgstr "Repertòris d’ignorar"
+
+#: data/ui/ConfigFolderRow.ui:15
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr "Se pòt pas salvar aqueste dorsièr perque Salvament i a pas accès."
+
+#: data/ui/ConfigFolderRow.ui:27
+msgid "Remove"
+msgstr "Suprimir"
+
+#. Translators: storage as in "where to store the backup"
+#: data/ui/ConfigLocationGrid.ui:19
+msgid "_Storage Location"
+msgstr "Emplaçament de _salvagarda"
+
+#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
+#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
+#: data/ui/ConfigLocationGrid.ui:256
+msgid "_Folder"
+msgstr "_Dorsièr"
+
+#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+msgid "_Reset Account Access"
+msgstr "_Reïnicializar l’accès al compte"
+
+#: data/ui/ConfigLocationGrid.ui:141
+msgid "_Network Location"
+msgstr "_Emplaçament ret"
+
+#: data/ui/MainHeaderBar.ui:28
+msgid "Back"
+msgstr "Precedenta"
+
+#: data/ui/MainHeaderBar.ui:38
+msgid "Menu"
+msgstr "Menú"
+
+#: data/ui/MainHeaderBar.ui:64
+msgid "_Select All"
+msgstr "_Tot seleccionar"
+
+#: data/ui/MainHeaderBar.ui:71
 msgid "_Preferences"
 msgstr "_Preferéncias"
 
-#: data/ui/menus.ui:16
+#: data/ui/MainHeaderBar.ui:75
 msgid "_Keyboard Shortcuts"
 msgstr "Aco_rchis clavièr"
 
-#: data/ui/menus.ui:20
+#: data/ui/MainHeaderBar.ui:79
 msgid "_Help"
 msgstr "_Ajuda"
 
-#: data/ui/menus.ui:24
+#: data/ui/MainHeaderBar.ui:83
 msgid "_About Backups"
 msgstr "_A prepaus de Backups"
 
-#: data/ui/menus.ui:32
-msgid "Select _All"
-msgstr "_Tot seleccionar"
+#: data/ui/MainWindow.ui:26
+msgid "Overview"
+msgstr "Vista d'ensemble"
 
-#: data/ui/menus.ui:36
-msgid "Select _None"
-msgstr "_Ne seleccionar pas cap"
+#: data/ui/MainWindow.ui:62
+msgid "Keep your important files safe in a backup."
+msgstr "Servatz vòstres fichièrs importants en seguretat dins una salvagarda."
 
-#: data/ui/preferences.ui:27
+#: data/ui/MainWindow.ui:74
+msgid "Create My First _Backup"
+msgstr "Crear mon primièr salvament"
+
+#: data/ui/MainWindow.ui:89
+msgid "_Restore From a Previous Backup"
+msgstr "_Restablir d’una salvagarda precedenta"
+
+#: data/ui/MainWindow.ui:127
+msgid "Back up _automatically"
+msgstr "Salvagardar _automaticament"
+
+#: data/ui/MainWindow.ui:148
+msgid "_Back Up Now"
+msgstr "_Salvagardar ara"
+
+#: data/ui/MainWindow.ui:181 deja-dup/AssistantRestore.vala:61
+msgid "Restore"
+msgstr "Restablir"
+
+#: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:347
+msgid "_Cancel"
+msgstr "_Anullar"
+
+#: data/ui/PassphraseDialog.ui:22
+msgid "Con_tinue"
+msgstr "Con_tunhar"
+
+#: data/ui/PassphraseDialog.ui:49 deja-dup/AssistantOperation.vala:380
+#: deja-dup/AssistantOperation.vala:441
+msgid "E_ncryption password"
+msgstr "Se_nhal de chiframent"
+
+#: data/ui/PassphraseDialog.ui:71 deja-dup/AssistantOperation.vala:408
+#: deja-dup/MountOperationAssistant.vala:25
+msgid "_Remember password"
+msgstr "_Memorizar lo senhal"
+
+#: data/ui/PreferencesWindow.ui:17
+msgid "General"
+msgstr "General"
+
+#: data/ui/PreferencesWindow.ui:20
 msgid "Storage"
 msgstr "Emmagazinatge"
 
-#: data/ui/preferences.ui:33
+#: data/ui/PreferencesWindow.ui:23
 msgid "_Location"
 msgstr "_Emplaçament"
 
-#: data/ui/preferences.ui:79
+#: data/ui/PreferencesWindow.ui:40
 msgid "_Keep Backups"
 msgstr "_Servar las salvagardas"
 
-#: data/ui/preferences.ui:88
+#: data/ui/PreferencesWindow.ui:47
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -560,74 +536,38 @@ msgstr ""
 "l'emplaçament manca d'espaci liure o seràn gardadas fins a tres meses per "
 "evitar la supression de salvagardas ligadas."
 
-#: data/ui/preferences.ui:102
+#: data/ui/PreferencesWindow.ui:59
 msgid "Schedule"
 msgstr "Calendièr"
 
-#: data/ui/preferences.ui:108
+#: data/ui/PreferencesWindow.ui:63
 msgid "Back Up _Automatically"
 msgstr "Salvagardar _automaticament"
 
-#: data/ui/preferences.ui:130
+#: data/ui/PreferencesWindow.ui:78
 msgid "Automatic Backup _Frequency"
 msgstr "_Frequéncia de salvagarda automatica"
 
-#: data/ui/preferences.ui:148
-msgid "Folders to Back Up"
-msgstr "Repertòri de salvagardar"
-
-#: data/ui/preferences.ui:154
-msgid "Includes"
-msgstr "Inclutz"
-
-#: data/ui/preferences.ui:163
-msgid "Folders to Ignore"
-msgstr "Repertòris d’ignorar"
-
-#: data/ui/preferences.ui:169
-msgid "Excludes"
-msgstr "Exclutz"
-
-#: data/ui/preferences.ui:178
-msgid "Preferences"
-msgstr "Preferéncias"
-
-#. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:234
-msgid "_Storage Location"
-msgstr "Emplaçament de _salvagarda"
-
-#: data/ui/preferences.ui:271 data/ui/preferences.ui:355
-#: data/ui/preferences.ui:393 data/ui/preferences.ui:460
-msgid "_Folder"
-msgstr "_Dorsièr"
-
-#: data/ui/preferences.ui:295
-msgid "_Reset Account Access"
-msgstr "_Reïnicializar l’accès al compte"
-
-#: data/ui/preferences.ui:327
-msgid "_Network Location"
-msgstr "_Emplaçament ret"
-
-#: data/ui/preferences.ui:434 libdeja/BackendUnsupported.vala:29
-msgid ""
-"This storage location is no longer supported. You can still use duplicity "
-"directly to back up or restore your files."
+#: data/ui/PreferencesWindow.ui:93
+msgid "Labs"
 msgstr ""
-"Aqueste emplaçament d’emmagazinatge es pas pus pres en carga. Podètz totjorn "
-"utilizar dirèctament Duplicity per salvagardar o restaurar vòstres fichièrs."
 
-#: data/ui/preferences.ui:476
-msgid "_Choose Folder…"
-msgstr "_Causir un dorsièr…"
+#: data/ui/PreferencesWindow.ui:97
+#, fuzzy
+#| msgid "Restoring:"
+msgid "Restic"
+msgstr "Restabliment en cors :"
 
-#: data/ui/server-hint.ui:21
+#: data/ui/PreferencesWindow.ui:101
+msgid "Use _Restic instead of Duplicity"
+msgstr ""
+
+#: data/ui/ServerHintPopover.ui:17
 msgid "Network Locations"
 msgstr "Emplaçament ret"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/server-hint.ui:34
+#: data/ui/ServerHintPopover.ui:29
 msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
@@ -635,79 +575,123 @@ msgstr ""
 "Los emplaçaments rets contenon un prefix de protocòl, una adreça e de còps "
 "un camin segon lo protocòl utilizat. Exemple :"
 
-#: data/ui/server-hint.ui:69
+#: data/ui/ServerHintPopover.ui:55
 msgid "Available Protocols"
 msgstr "Protocòls disponibles"
 
-#: data/ui/server-hint.ui:83
+#: data/ui/ServerHintPopover.ui:68
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/server-hint.ui:94
+#: data/ui/ServerHintPopover.ui:78
 msgid "File Transfer Protocol"
 msgstr "Protocòl de transferiment de fichièrs (FTP)"
 
-#: data/ui/server-hint.ui:105
+#: data/ui/ServerHintPopover.ui:88
 msgid "Network File System"
 msgstr "Sistèma de fichièrs ret"
 
-#: data/ui/server-hint.ui:116
+#: data/ui/ServerHintPopover.ui:98
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/server-hint.ui:127
+#: data/ui/ServerHintPopover.ui:108
 msgid "SSH File Transfer Protocol"
 msgstr "Protocòl de transferiment de fichièrs SSH"
 
-#: data/ui/server-hint.ui:138
+#: data/ui/ServerHintPopover.ui:118
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/server-hint.ui:149
+#: data/ui/ServerHintPopover.ui:128
 msgid "Prefix"
 msgstr "Prefixe"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/server-hint.ui:174
+#: data/ui/ServerHintPopover.ui:151
 msgid "ftp:// or ftps://"
 msgstr "ftp:// o ftps://"
 
-#: data/ui/server-hint.ui:196
+#: data/ui/ServerHintPopover.ui:171
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/server-hint.ui:207
+#: data/ui/ServerHintPopover.ui:181
 msgid "sftp:// or ssh://"
 msgstr "sftp:// o ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/server-hint.ui:218
+#: data/ui/ServerHintPopover.ui:191
 msgid "dav:// or davs://"
 msgstr "dav:// o davs://"
 
-#: deja-dup/Assistant.vala:284
+#: data/ui/TimeCombo.ui:13
+msgid "_Date"
+msgstr "_Data"
+
+#: data/ui/help-overlay.ui:16
+msgctxt "shortcut window"
+msgid "General"
+msgstr "General"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "Afichar l'ajuda"
+
+#: data/ui/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "Dobrir lo menú"
+
+#: data/ui/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "Quitar"
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "Acorchis clavièr"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr "Percórrer los fichièrs salvagardats"
+
+#: data/ui/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "Cercar"
+
+#: data/ui/help-overlay.ui:55
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "Tornar en arrièr"
+
+#: deja-dup/Assistant.vala:294
 msgid "Co_ntinue"
 msgstr "Co_ntunhar"
 
-#: deja-dup/Assistant.vala:290
+#: deja-dup/Assistant.vala:300
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Tèst"
 
-#: deja-dup/Assistant.vala:326
+#: deja-dup/Assistant.vala:333
 msgid "_Resume Later"
 msgstr "_Reprene pus tard"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:339
 msgid "_Back"
 msgstr "_Precedent"
 
-#: deja-dup/Assistant.vala:334
+#: deja-dup/Assistant.vala:341
 msgid "_Close"
 msgstr "_Tampar"
 
-#: deja-dup/Assistant.vala:351
+#: deja-dup/Assistant.vala:358
 msgid "_Forward"
 msgstr "_Seguent"
 
@@ -721,17 +705,17 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Salvar"
 
-#: deja-dup/AssistantBackup.vala:91
+#: deja-dup/AssistantBackup.vala:61
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
 msgstr "Se pòt pas salvar aquestes dorsièrs perque Salvament i a pas accès :"
 
-#: deja-dup/AssistantBackup.vala:107
+#: deja-dup/AssistantBackup.vala:77
 msgid "Creating the first backup.  This may take a while."
 msgstr "Creacion del primièr salvament. Aquò pòt prene de temps."
 
-#: deja-dup/AssistantBackup.vala:108
+#: deja-dup/AssistantBackup.vala:78
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -741,39 +725,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:123
+#: deja-dup/AssistantBackup.vala:93
 msgid "Backing up:"
 msgstr "Salvament en cors :"
 
-#: deja-dup/AssistantBackup.vala:132
+#: deja-dup/AssistantBackup.vala:102
 msgid "Backup Failed"
 msgstr "Lo salvament a fracassat"
 
-#: deja-dup/AssistantBackup.vala:135
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Finished"
 msgstr "Lo salvament es acabat"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:139
+#: deja-dup/AssistantBackup.vala:109
 msgid "Your files were successfully backed up and tested."
 msgstr "Vòstres fichièrs son estats salvats e testats amb succès."
 
-#: deja-dup/AssistantBackup.vala:146
+#: deja-dup/AssistantBackup.vala:116
 msgid "Backing Up…"
 msgstr "Salvament en cors…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: deja-dup/AssistantBackup.vala:152 deja-dup/AssistantOperation.vala:899
+#: deja-dup/AssistantBackup.vala:122 deja-dup/AssistantOperation.vala:876
 msgid "Backups needs your input to continue"
 msgstr "Salvament requerís vòstras donadas per contunhar"
 
-#. At time of writing, gnome-shell still warns the user on logout even
-#. with just a suspend inhibit. So let's avoid annoying the user and just
-#. not bother inhibiting for automatic backups at all until that's fixed.
-#. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/3119
-#: deja-dup/AssistantBackup.vala:179
+#: deja-dup/AssistantBackup.vala:143
 msgid "Backup in progress"
 msgstr "Salvament en cors"
 
@@ -781,23 +761,23 @@ msgstr "Salvament en cors"
 msgid "Restore From Where?"
 msgstr "Restablir dempuèi quin emplaçament ?"
 
-#: deja-dup/AssistantLocation.vala:26
+#: deja-dup/AssistantLocation.vala:21
 msgid "_Backup location"
 msgstr "_Emplaçament del salvament"
 
-#: deja-dup/AssistantLocation.vala:33
+#: deja-dup/AssistantLocation.vala:22
 msgid "_Search"
 msgstr "_Cercar"
 
-#: deja-dup/AssistantOperation.vala:158
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning:"
 msgstr "Analisi :"
 
-#: deja-dup/AssistantOperation.vala:159
+#: deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
 msgstr "Analisi en cors…"
 
-#: deja-dup/AssistantOperation.vala:267
+#: deja-dup/AssistantOperation.vala:266
 msgid "_Details"
 msgstr "_Detalhs"
 
@@ -805,15 +785,15 @@ msgstr "_Detalhs"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Per contunhar los paquets seguents devon èsser installats :"
 
-#: deja-dup/AssistantOperation.vala:349
+#: deja-dup/AssistantOperation.vala:347
 msgid "_Allow restoring without a password"
 msgstr "_Autorizar la recuperacion dels fichièrs sens senhal"
 
-#: deja-dup/AssistantOperation.vala:355
+#: deja-dup/AssistantOperation.vala:352
 msgid "_Password-protect your backup"
 msgstr "_Protegissètz vòstre salvament per un senhal"
 
-#: deja-dup/AssistantOperation.vala:367
+#: deja-dup/AssistantOperation.vala:365
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -821,11 +801,11 @@ msgstr ""
 "Vos caldrà vòstre senhal per recuperar vòstres fichièrs. Benlèu que vos lo "
 "caldriá notar endacòm."
 
-#: deja-dup/AssistantOperation.vala:399
+#: deja-dup/AssistantOperation.vala:396
 msgid "Confir_m password"
 msgstr "Confir_mar lo senhal"
 
-#: deja-dup/AssistantOperation.vala:438
+#: deja-dup/AssistantOperation.vala:427
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -835,255 +815,226 @@ msgstr ""
 "picatz tornarmai vòstre senhal de chiframent per efectuar un tèst rapid de "
 "restabliment."
 
-#: deja-dup/AssistantOperation.vala:467
+#: deja-dup/AssistantOperation.vala:449
 msgid "Test every two _months"
 msgstr "Testar cada dos _meses"
 
-#: deja-dup/AssistantOperation.vala:499
+#: deja-dup/AssistantOperation.vala:480
 msgid "_Grant Access"
 msgstr "_Autorizar l’accès"
 
-#: deja-dup/AssistantOperation.vala:561
+#: deja-dup/AssistantOperation.vala:542
 msgid "Install Packages"
 msgstr "Installar los paquets"
 
-#: deja-dup/AssistantOperation.vala:576
+#: deja-dup/AssistantOperation.vala:557
 msgid "Summary"
 msgstr "Resumit"
 
-#: deja-dup/AssistantOperation.vala:598
+#: deja-dup/AssistantOperation.vala:579
 msgid "Restore Test"
 msgstr "Tèst de restabliment"
 
-#: deja-dup/AssistantOperation.vala:606
+#: deja-dup/AssistantOperation.vala:587
 msgid "Grant Access"
 msgstr "Acordar l'accès"
 
-#: deja-dup/AssistantOperation.vala:811
+#: deja-dup/AssistantOperation.vala:791
+msgid "Set Encryption Password"
+msgstr "Definir lo senhal de chiframent"
+
+#: deja-dup/AssistantOperation.vala:793
 msgid "Require Password?"
 msgstr "Demandar un senhal ?"
 
-#: deja-dup/AssistantOperation.vala:813
+#: deja-dup/AssistantOperation.vala:795
 msgid "Encryption Password Needed"
 msgstr "Senhal de chiframent necessari"
 
-#: deja-dup/AssistantOperation.vala:862
+#: deja-dup/AssistantOperation.vala:844
 msgid "Backups needs your encryption password to continue"
 msgstr "Salvament requerís vòstre senhal de chiframent per contunhar"
 
-#: deja-dup/AssistantOperation.vala:937
+#: deja-dup/AssistantOperation.vala:916
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installar"
 
-#: deja-dup/AssistantOperation.vala:942
+#: deja-dup/AssistantOperation.vala:921
 msgid "Backups needs to install packages to continue"
 msgstr "Salvament requerís l'installacion de paquets per contunhar"
 
-#: deja-dup/AssistantRestore.vala:154
+#: deja-dup/AssistantRestore.vala:139
 msgid "Restore files to _original locations"
 msgstr "Restablir los fichièrs cap a lors emplaçaments d'_origina"
 
-#: deja-dup/AssistantRestore.vala:164
+#: deja-dup/AssistantRestore.vala:150
 msgid "Restore to _specific folder"
 msgstr "Restablir cap a un dorsièr e_specific"
 
-#: deja-dup/AssistantRestore.vala:176
-msgid "Choose destination for restored files"
-msgstr "Causissètz una destinacion pels fichièrs restablits"
+#: deja-dup/AssistantRestore.vala:178
+msgid "Restore to _specific folder:"
+msgstr "Restablir cap a un dorsièr e_specific :"
 
-#: deja-dup/AssistantRestore.vala:184
-msgid "Restore _folder"
-msgstr "Restablir lo _dorsièr"
-
-#: deja-dup/AssistantRestore.vala:197
+#: deja-dup/AssistantRestore.vala:187
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Salvaments a pas l’autorizacion de restaurar los fichièrs seguents :"
 
-#: deja-dup/AssistantRestore.vala:260
+#: deja-dup/AssistantRestore.vala:251
 msgid "Backup location"
 msgstr "Emplaçament de salvament"
 
 #. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:276
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore date"
 msgstr "Restablir la data"
 
 #. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:285
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore folder"
 msgstr "Restablir lo dorsièr"
 
-#: deja-dup/AssistantRestore.vala:315
+#: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
 msgstr "Recèrca de salvaments…"
 
-#: deja-dup/AssistantRestore.vala:323
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
 msgstr "Restablir dempuèi quora ?"
 
-#: deja-dup/AssistantRestore.vala:334
+#: deja-dup/AssistantRestore.vala:318
 msgid "Restore to Where?"
 msgstr "Cap a ont restablir ?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:369
+#: deja-dup/AssistantRestore.vala:351
 msgid "Restoring:"
 msgstr "Restabliment en cors :"
 
-#. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:379
+#: deja-dup/AssistantRestore.vala:363
 msgid "No backups to restore"
 msgstr "Cap de salvament pas disponible pel restabliment"
 
-#: deja-dup/AssistantRestore.vala:486
+#: deja-dup/AssistantRestore.vala:446
 msgid "Original location"
 msgstr "Localizacion originala"
 
-#: deja-dup/AssistantRestore.vala:497
+#: deja-dup/AssistantRestore.vala:460
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fichièr de restablir"
 msgstr[1] "Fichièrs de restablir"
 
-#: deja-dup/AssistantRestore.vala:518
+#: deja-dup/AssistantRestore.vala:485
 msgid "Restore Failed"
 msgstr "Lo restabliment a fracassat"
 
-#: deja-dup/AssistantRestore.vala:520
+#: deja-dup/AssistantRestore.vala:487
 msgid "Restore Finished"
 msgstr "Lo restabliment es acabat"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:523
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your files were successfully restored."
 msgstr "Vòstres fichièrs son estats restablits amb succès."
 
-#: deja-dup/AssistantRestore.vala:526
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Vòstre fichièr es estat restablit amb succès."
 msgstr[1] "Vòstres fichièrs son estats restablits amb succès."
 
-#: deja-dup/AssistantRestore.vala:533 libdeja/Operation.vala:49
+#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Restabliment en cors…"
 
-#: deja-dup/AssistantRestore.vala:603
+#: deja-dup/AssistantRestore.vala:570
 msgid "Restore in progress"
 msgstr "Restabliment en cors"
 
-#: deja-dup/Background.vala:51
+#: deja-dup/Background.vala:77
 msgid "Cannot back up automatically"
 msgstr "Salvagarda automatica impossibla"
 
-#: deja-dup/Browser.vala:197
-msgid "Click on items to select them"
-msgstr "Clicar suls elements per los seleccionar"
-
-#: deja-dup/Browser.vala:199
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "%u seleccionat"
-msgstr[1] "%u seleccionats"
-
-#: deja-dup/Browser.vala:376
+#: deja-dup/Browser.vala:227
 msgid "Authentication needed"
 msgstr "Autentificacion requesida"
 
-#: deja-dup/ConfigDelete.vala:16
+#: deja-dup/Browser.vala:333 libdeja/duplicity/DuplicityJob.vala:1080
+msgid "No backup files found"
+msgstr "Cap de fichièr de salvament es pas estat trobat"
+
+#: deja-dup/ConfigDeleteRow.vala:12
 msgid "At least three months"
 msgstr "Al mens sièis meses"
 
-#: deja-dup/ConfigDelete.vala:17
+#: deja-dup/ConfigDeleteRow.vala:13
 msgid "At least six months"
 msgstr "Al mens sièis meses"
 
-#: deja-dup/ConfigDelete.vala:18
+#: deja-dup/ConfigDeleteRow.vala:14
 msgid "At least a year"
 msgstr "Al mens un an"
 
-#: deja-dup/ConfigDelete.vala:19
+#: deja-dup/ConfigDeleteRow.vala:15
 msgid "Forever"
 msgstr "Indefinidament"
 
-#: deja-dup/ConfigDelete.vala:28
+#: deja-dup/ConfigDeleteRow.vala:22
 #, c-format
 msgid "At least %d day"
 msgid_plural "At least %d days"
 msgstr[0] "Al mens %d jorn"
 msgstr[1] "Al mens %d jorns"
 
-#: deja-dup/ConfigFolderList.vala:57
-msgid ""
-"This folder cannot be backed up because Backups does not have access to it."
-msgstr "Se pòt pas salvar aqueste dorsièr perque Salvament i a pas accès."
-
-#: deja-dup/ConfigFolderList.vala:62
-msgid "Remove"
-msgstr "Suprimir"
-
-#: deja-dup/ConfigFolderList.vala:80
-msgid "Add"
-msgstr "Apondre"
-
-#: deja-dup/ConfigFolderList.vala:90
-msgid "Choose folders"
-msgstr "Causissètz los dorsièrs"
-
-#: deja-dup/ConfigFolderList.vala:92
-msgid "_Add"
-msgstr "_Apondre"
+#: deja-dup/ConfigFolderList.vala:63
+msgid "Choose Folders"
+msgstr "Causir un dorsièr"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:70 deja-dup/ConfigLocationCombo.vala:264
-#: libdeja/BackendGoogle.vala:86
+#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:61
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: deja-dup/ConfigLocationCombo.vala:71
+#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:63
+msgid "Microsoft OneDrive"
+msgstr "Microsoft OneDrive"
+
+#: deja-dup/ConfigLocationCombo.vala:63
 msgid "Local Folder"
 msgstr "Dorsièr local"
 
-#: deja-dup/ConfigLocationCombo.vala:72
+#: deja-dup/ConfigLocationCombo.vala:65
 msgid "Network Server"
 msgstr "Servidor ret"
 
-#: deja-dup/ConfigLocationCombo.vala:262
+#. *** Old deprecated cloud entries, kept just for a kinder migration ***
+#: deja-dup/ConfigLocationCombo.vala:70
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: deja-dup/ConfigLocationCombo.vala:266
+#: deja-dup/ConfigLocationCombo.vala:72
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: deja-dup/ConfigLocationCombo.vala:268
+#: deja-dup/ConfigLocationCombo.vala:74
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: deja-dup/ConfigLocationCombo.vala:270
+#: deja-dup/ConfigLocationCombo.vala:76
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
-#: deja-dup/ConfigLocationGrid.vala:109
-msgid "Choose Folder"
-msgstr "Causir un dorsièr"
-
-#: deja-dup/ConfigLocationGrid.vala:112
-msgid "_OK"
-msgstr "_D'acòrdi"
-
-#: deja-dup/ConfigPeriod.vala:24
+#: deja-dup/ConfigPeriodRow.vala:19
 msgid "Daily"
 msgstr "Cada jorn"
 
-#: deja-dup/ConfigPeriod.vala:25
+#: deja-dup/ConfigPeriodRow.vala:20
 msgid "Weekly"
 msgstr "Cada setmana"
 
-#: deja-dup/ConfigPeriod.vala:34
+#: deja-dup/ConfigPeriodRow.vala:27
 #, c-format
 msgid "Every %d day"
 msgid_plural "Every %d days"
@@ -1091,15 +1042,15 @@ msgstr[0] "Cada %d jorn"
 msgstr[1] "Cada %d jorns"
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:46
+#: deja-dup/ConfigStatusLabel.vala:48
 msgid "Next backup is today."
 msgstr "La salvagarda venenta es uèi."
 
-#: deja-dup/ConfigStatusLabel.vala:48
+#: deja-dup/ConfigStatusLabel.vala:50
 msgid "Next backup is tomorrow."
 msgstr "La salvagarda venenta es deman."
 
-#: deja-dup/ConfigStatusLabel.vala:56
+#: deja-dup/ConfigStatusLabel.vala:58
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -1107,28 +1058,36 @@ msgstr[0] "La salvagarda venenta serà d’aquí %d jorn."
 msgstr[1] "La salvagarda venenta serà d’aquí %d jorns."
 
 #. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:73
+#: deja-dup/ConfigStatusLabel.vala:75
 msgid "Last backup was today."
 msgstr "La darrièra salvagarda èra uèi."
 
-#: deja-dup/ConfigStatusLabel.vala:75
+#: deja-dup/ConfigStatusLabel.vala:77
 msgid "Last backup was yesterday."
 msgstr "La darrièra salvagarda èra ièr."
 
-#: deja-dup/ConfigStatusLabel.vala:83
+#: deja-dup/ConfigStatusLabel.vala:85
 #, c-format
 msgid "Last backup was %d day ago."
 msgid_plural "Last backup was %d days ago."
 msgstr[0] "La darrièra salvagarda èra fa %d jorn."
 msgstr[1] "La darrièra salvagarda èra fa %d jorns."
 
-#: deja-dup/ConfigStatusLabel.vala:96
+#: deja-dup/ConfigStatusLabel.vala:98
 msgid "No recent backups."
 msgstr "Pas cap de salvament recent."
 
-#: deja-dup/ConfigStatusLabel.vala:102
+#: deja-dup/ConfigStatusLabel.vala:104
 msgid "No backup scheduled."
 msgstr "Pas cap de salvament de programat."
+
+#: deja-dup/FolderChooserButton.vala:18
+msgid "_Choose Folder…"
+msgstr "_Causir un dorsièr…"
+
+#: deja-dup/FolderChooserButton.vala:26
+msgid "Choose Folder"
+msgstr "Causir un dorsièr"
 
 #: deja-dup/MountOperationAssistant.vala:23
 msgid "_Username"
@@ -1138,28 +1097,24 @@ msgstr "Nom de l'_utilizaire"
 msgid "_Password"
 msgstr "_Senhal"
 
-#: deja-dup/MountOperationAssistant.vala:25
-msgid "S_how password"
-msgstr "Far veire lo se_nhal"
-
-#: deja-dup/MountOperationAssistant.vala:65
+#: deja-dup/MountOperationAssistant.vala:62
 msgid "Location not available"
 msgstr "Emplaçament pas disponible"
 
-#: deja-dup/MountOperationAssistant.vala:80
+#: deja-dup/MountOperationAssistant.vala:77
 msgid "Backups needs your password to continue"
 msgstr "Salvament requerís vòstre senhal per contunhar"
 
-#: deja-dup/MountOperationAssistant.vala:146
+#: deja-dup/MountOperationAssistant.vala:144
 msgid "Connect _anonymously"
 msgstr "Se connectar d'un biais _anonim"
 
-#: deja-dup/MountOperationAssistant.vala:150
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect as u_ser"
 msgstr "Se connectar en tant qu' _utilizaire"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:193
+#: deja-dup/MountOperationAssistant.vala:192
 msgid "_Domain"
 msgstr "_Domeni"
 
@@ -1212,41 +1167,67 @@ msgstr "Afichar pas mai"
 msgid "Open Backups"
 msgstr "Dobrir los salvaments"
 
+#: deja-dup/PreferencesWindow.vala:36
+msgid ""
+"Restic is a another backup tool that can be used under the hood instead of "
+"Duplicity."
+msgstr ""
+
+#: deja-dup/PreferencesWindow.vala:37
+msgid ""
+"It is hoped that Restic will enable new features more easily in the future."
+msgstr ""
+
+#: deja-dup/PreferencesWindow.vala:39
+msgid ""
+"Please note that you must choose a new storage location, rather than convert "
+"an existing backup."
+msgstr ""
+
+#: deja-dup/PreferencesWindow.vala:41
+msgid "This is an experimental feature and may be removed at any time."
+msgstr ""
+
+#: deja-dup/PreferencesWindow.vala:42
+msgid "Use caution, but any testing you can manage is appreciated."
+msgstr ""
+
+#. Translators: the %s formatting is a link start and end.
+#: deja-dup/PreferencesWindow.vala:45
+#, c-format
+msgid "Please %sreport%s successes or failures when enabled."
+msgstr ""
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:85
+#: deja-dup/TimeCombo.vala:80
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:31
-#, c-format
-msgid "Could not display %s"
-msgstr "Impossible d'afichar %s"
-
-#: deja-dup/main.vala:21 monitor/monitor.vala:24
+#: deja-dup/main.vala:20 monitor/monitor.vala:24
 msgid "Show version"
 msgstr "Afichar la version"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:21
 msgid "Restore given files"
 msgstr "Restabliment dels fichièrs seleccionats"
 
-#: deja-dup/main.vala:23
+#: deja-dup/main.vala:22
 msgid "Immediately start a backup"
 msgstr "Aviar immediatament un salvament"
 
-#: deja-dup/main.vala:82 deja-dup/main.vala:100
+#: deja-dup/main.vala:81 deja-dup/main.vala:99
 msgid "An operation is already in progress"
 msgstr "Una operacion es ja en cors"
 
-#: deja-dup/main.vala:87
+#: deja-dup/main.vala:86
 msgid "Please list files to restore"
 msgstr "Listatz los fichièrs de restaurar"
 
-#: deja-dup/main.vala:256
+#: deja-dup/main.vala:268
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1256,95 +1237,127 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:74 libdeja/CommonUtils.vala:447
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:469
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s sus %2$s"
 
-#: libdeja/BackendDrive.vala:81
+#: libdeja/BackendDrive.vala:82
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "Salvaments començarà quand %s siá connectat."
 
-#: libdeja/BackendDrive.vala:220 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:221 libdeja/BackendRemote.vala:142
 msgid "Storage location not available"
 msgstr "L’emplaçament d’emmagazinatge es pas disponible"
 
-#: libdeja/BackendDrive.vala:220
+#: libdeja/BackendDrive.vala:221
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "En espèra de la connexion de « %s »…"
 
-#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
-#: monitor/monitor.vala:72
+#: libdeja/BackendGoogle.vala:49 libdeja/BackendMicrosoft.vala:51
+#: libdeja/BackendRemote.vala:117 monitor/monitor.vala:72
 msgid "Backup will begin when a network connection becomes available."
 msgstr "Lo salvament començarà quand una connexion de ret serà disponibla."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:89
+#: libdeja/BackendGoogle.vala:64
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s sus Google Drive"
 
-#: libdeja/BackendGoogle.vala:132
-msgid "Could not log into Google servers."
-msgstr "Connexion impossibla als servidors de Google."
+#. Translators: %s is a folder.
+#: libdeja/BackendMicrosoft.vala:66
+#, c-format
+msgid "%s on Microsoft OneDrive"
+msgstr "%s sus Microsoft OneDrive"
 
-#: libdeja/BackendGoogle.vala:220
-msgid "Google credentials for Déjà Dup"
-msgstr "Identificants Google per Déjà Dup"
+#. Duplicity requires a folder, and this is a reasonable restriction.
+#: libdeja/BackendMicrosoft.vala:105
+msgid "You must provide a Microsoft OneDrive folder."
+msgstr "Vos cal indicar un dorsièr Microsoft OneDrive."
 
-#: libdeja/BackendGoogle.vala:321
-msgid "You first need to allow Backups to access your Google account."
+#. Translators: %s is a brand name like Microsoft or Google
+#: libdeja/BackendOAuth.vala:69
+#, c-format
+msgid "Could not log into %s servers."
+msgstr "Connexion impossibla als servidors de %s"
+
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:145
+#, c-format
+msgid "%s credentials for Déjà Dup"
+msgstr "Identificants %s per Déjà Dup"
+
+#. We need a random string between 43 and 128 chars. UUIDs are an easy way
+#. to get random strings, but they are only 37 chars long. So just add two.
+#. And show the oauth consent page finally
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:247
+#, c-format
+msgid "You first need to allow Backups to access your %s account."
 msgstr ""
-"Vos cal d’en primièr autorizar Salvaments a accedir a vòstre compte Google."
+"Vos cal d’en primièr autorizar Salvaments a accedir a vòstre compte %s."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:99
 msgid "The network server is not available"
 msgstr "Lo servidor ret es pas disponible"
 
-#: libdeja/BackendRemote.vala:142
+#: libdeja/BackendRemote.vala:143
 msgid "Waiting for a network connection…"
 msgstr "En espèra d'una connexion a la ret…"
 
-#: libdeja/BackendRemote.vala:155
+#: libdeja/BackendRemote.vala:156
 msgid "Could not mount storage location."
 msgstr "Montatge impossible de l’espaci de salvament."
+
+#: libdeja/BackendRemote.vala:160
+msgid ""
+"The server’s network location needs to be specified in the storage location "
+"preferences."
+msgstr ""
+
+#: libdeja/BackendRemote.vala:165
+#, c-format
+msgid ""
+"The server’s network location ‘%s’ does not look like a network location."
+msgstr ""
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:161
+#: libdeja/BackendRemote.vala:173
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Los emplaçaments rets Samba devon comportar a l’encòp lo nom d’òste e lo nom "
 "de partiment."
 
-#: libdeja/CommonUtils.vala:418
+#: libdeja/CommonUtils.vala:440
 msgid "Access Granted"
 msgstr "Accès autorizat"
 
-#: libdeja/CommonUtils.vala:419
+#: libdeja/CommonUtils.vala:441
 msgid "Backups will now continue. You can close this page."
 msgstr "Salvaments contunharà. Podètz tampar aquesta pagina."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:498
+#: libdeja/CommonUtils.vala:520
 #, c-format
 msgid "Home (%s)"
 msgstr "Dorsièr personal (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:503
+#: libdeja/CommonUtils.vala:525
 msgid "Home"
 msgstr "Dorsièr personal"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:508
+#: libdeja/CommonUtils.vala:530
 msgid "Trash"
 msgstr "Escobilhièr"
 
-#: libdeja/CommonUtils.vala:570
+#: libdeja/CommonUtils.vala:592
 msgid "Backup encryption password"
 msgstr "Senhal del chiframent dels salvaments"
 
@@ -1369,13 +1382,13 @@ msgid "Listing files…"
 msgstr "Listatge dels fichièrs…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/tools/duplicity/DuplicityJob.vala:405
-#: libdeja/tools/duplicity/DuplicityJob.vala:416
-#: libdeja/tools/duplicity/DuplicityJob.vala:452
+#: libdeja/duplicity/DuplicityJob.vala:382
+#: libdeja/duplicity/DuplicityJob.vala:393
+#: libdeja/duplicity/DuplicityJob.vala:429
 msgid "Preparing…"
 msgstr "Preparacion…"
 
-#: libdeja/OperationBackup.vala:33 libdeja/OperationVerify.vala:41
+#: libdeja/OperationBackup.vala:34 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "Verificacion del salvament…"
 
@@ -1383,27 +1396,27 @@ msgstr "Verificacion del salvament…"
 msgid "Restoring files…"
 msgstr "Restabliment dels fichièrs…"
 
-#: libdeja/OperationVerify.vala:78
+#: libdeja/OperationVerify.vala:81
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
 msgstr ""
 "Vòstre salvament sembla corromput. Vos lo caldriá suprimir e tornar ensajar."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:78
-#: libdeja/tools/duplicity/DuplicityJob.vala:162
+#: libdeja/duplicity/DuplicityJob.vala:79
+#: libdeja/duplicity/DuplicityJob.vala:149
 msgid "Paused (no network)"
 msgstr "En pausa (pas de connexion)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:539
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "L’emplaçament de salvagarda es tròp pichon. Ensajatz de n’utilizar un amb "
 "almens %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:587
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1412,15 +1425,15 @@ msgstr ""
 "L’emplaçament de salvagarda a pas pro d’espaci liure. Ensajatz de n’utilizar "
 "un amb almens %s."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:608
-#: libdeja/tools/duplicity/DuplicityJob.vala:622
+#: libdeja/duplicity/DuplicityJob.vala:585
+#: libdeja/duplicity/DuplicityJob.vala:599
 msgid "Cleaning up…"
 msgstr "Netejatge…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:702
+#: libdeja/duplicity/DuplicityJob.vala:679
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1431,7 +1444,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:718
+#: libdeja/duplicity/DuplicityJob.vala:695
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1445,25 +1458,26 @@ msgstr ""
 #. But first, try to restart without a cache, since that seems to quite
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
-#: libdeja/tools/duplicity/DuplicityJob.vala:738
-#: libdeja/tools/duplicity/DuplicityJob.vala:1122
+#. Should emit some sort of error...
+#: libdeja/duplicity/DuplicityJob.vala:715
+#: libdeja/duplicity/DuplicityJob.vala:1099 libdeja/libtool/ToolJoblet.vala:105
 msgid "Failed with an unknown error."
 msgstr "Fracàs degut a una error desconeguda."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:941
+#: libdeja/duplicity/DuplicityJob.vala:918
 msgid "Bad encryption password."
 msgstr "Marrit senhal pel chiframent."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:986
+#: libdeja/duplicity/DuplicityJob.vala:963
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Impossible de restablir '%s' : Fichièr introbable dins lo salvament"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:997
+#: libdeja/duplicity/DuplicityJob.vala:974
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1474,71 +1488,67 @@ msgstr ""
 "de l'ordenador actual es %s. S'esperavatz pas aquò, vos caldriá enregistrar "
 "los salvaments a un autre endrech."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1000
+#: libdeja/duplicity/DuplicityJob.vala:977
 msgid "Computer name changed"
 msgstr "Nom de l'ordenador modificat"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1035
+#: libdeja/duplicity/DuplicityJob.vala:1012
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Permission refusada al moment de la temptativa de creacion de \"%s\"."
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1039
-#: libdeja/tools/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1016
+#: libdeja/duplicity/DuplicityJob.vala:1020
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Permission refusada al moment de la temptativa de lectura de \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1047
+#: libdeja/duplicity/DuplicityJob.vala:1024
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr ""
 "Permission refusada al moment de la temptativa de supression de \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1054
+#: libdeja/duplicity/DuplicityJob.vala:1031
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "L'endrech d'emmagazinatge del salvament \"%s\" existís pas."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1060
-#: libdeja/tools/duplicity/DuplicityJob.vala:1093
+#: libdeja/duplicity/DuplicityJob.vala:1037
+#: libdeja/duplicity/DuplicityJob.vala:1070
 msgid "No space left."
 msgstr "Pas d'espaci liure restant."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1082
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Error al moment de la lectura del fichièr '%s'."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1084
+#: libdeja/duplicity/DuplicityJob.vala:1061
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Error al moment de l'escritura del fichièr '%s'."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1095
+#: libdeja/duplicity/DuplicityJob.vala:1072
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Pas d'espaci liure restant dins \"%s\"."
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1103
-msgid "No backup files found"
-msgstr "Cap de fichièr de salvament es pas estat trobat"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1153
+#: libdeja/duplicity/DuplicityJob.vala:1130
 msgid "Uploading…"
 msgstr "Mandadís en cors…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:38
+#: libdeja/duplicity/DuplicityPlugin.vala:39
 msgid "Could not understand duplicity version."
 msgstr "Impossible de comprene la version de duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:48
+#: libdeja/duplicity/DuplicityPlugin.vala:49
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Impossible de comprene la version ‘%s’ de duplicity."
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1547,10 +1557,110 @@ msgstr ""
 "Salvaments requerís almens la version %d.%d.%.2d de duplicitat, mas sonque "
 "la version %d.%d.%.2d es estada trobada"
 
+#: libdeja/duplicity/DuplicityPlugin.vala:100
+msgid ""
+"This storage location is no longer supported. You can still use duplicity "
+"directly to back up or restore your files."
+msgstr ""
+"Aqueste emplaçament d’emmagazinatge es pas pus pres en carga. Podètz totjorn "
+"utilizar dirèctament Duplicity per salvagardar o restaurar vòstres fichièrs."
+
+#: libdeja/restic/ResticPlugin.vala:42
+#, fuzzy
+#| msgid "Could not understand duplicity version."
+msgid "Could not understand restic version."
+msgstr "Impossible de comprene la version de duplicity."
+
+#: libdeja/restic/ResticPlugin.vala:49
+#, fuzzy, c-format
+#| msgid "Could not understand duplicity version ‘%s’."
+msgid "Could not understand restic version ‘%s’."
+msgstr "Impossible de comprene la version ‘%s’ de duplicity."
+
+#: libdeja/restic/ResticPlugin.vala:52
+#, c-format
+msgid ""
+"Backups requires at least version %d.%d.%.2d of restic, but only found "
+"version %d.%d.%.2d"
+msgstr ""
+"Salvaments requerís almens la version %d.%d.%.2d de duplicitat, mas sonque "
+"la version %d.%d.%.2d es estada trobada"
+
+#: libdeja/restic/ResticPlugin.vala:90
+msgid "This storage location is not yet supported."
+msgstr ""
+
 #: monitor/monitor.vala:75
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Salvaments començarà quand una connexion pas limitada siá disponibla."
+
+#~ msgid ""
+#~ "The folder path where backups are stored. Paths can be absolute or "
+#~ "relative to the host."
+#~ msgstr ""
+#~ "Lo camin del dossièr ont las salvagardas son gardadas. Pòdon èsser "
+#~ "absoluts o relatius a l’òste."
+
+#~ msgid "Debug Information"
+#~ msgstr "Informacions de desbugatge"
+
+#~ msgid "_Copy"
+#~ msgstr "_Copiar"
+
+#~ msgid "All identifying information has been obscured."
+#~ msgstr ""
+#~ "Totas las informacions que podon identificar son estadas dissimuladas."
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"
+
+#~ msgid "Automatic backup"
+#~ msgstr "Salvagarda automatica"
+
+#~ msgid "_Show password"
+#~ msgstr "_Afichar lo senhal"
+
+#~ msgid "Select _None"
+#~ msgstr "_Ne seleccionar pas cap"
+
+#~ msgid "Includes"
+#~ msgstr "Inclutz"
+
+#~ msgid "Excludes"
+#~ msgstr "Exclutz"
+
+#~ msgid "Preferences"
+#~ msgstr "Preferéncias"
+
+#~ msgid "Choose destination for restored files"
+#~ msgstr "Causissètz una destinacion pels fichièrs restablits"
+
+#~ msgid "Restore _folder"
+#~ msgstr "Restablir lo _dorsièr"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "Clicar suls elements per los seleccionar"
+
+#~ msgid "%u selected"
+#~ msgid_plural "%u selected"
+#~ msgstr[0] "%u seleccionat"
+#~ msgstr[1] "%u seleccionats"
+
+#~ msgid "Choose folders"
+#~ msgstr "Causissètz los dorsièrs"
+
+#~ msgid "_Add"
+#~ msgstr "_Apondre"
+
+#~ msgid "_OK"
+#~ msgstr "_D'acòrdi"
+
+#~ msgid "S_how password"
+#~ msgstr "Far veire lo se_nhal"
+
+#~ msgid "Could not display %s"
+#~ msgstr "Impossible d'afichar %s"
 
 #~ msgid "Connect to Server"
 #~ msgstr "Connexion al servidor"
@@ -1564,17 +1674,11 @@ msgstr "Salvaments començarà quand una connexion pas limitada siá disponibla.
 #~ "Es pas estat possible de far la còpia de seguretat dels fichièrs "
 #~ "seguents. Consultatz lo dialòg per mai d'entresenhas."
 
-#~ msgid "Folder"
-#~ msgstr "Dorsièr"
-
 #~ msgid "File"
 #~ msgstr "Fichièr"
 
 #~ msgid "Categories"
 #~ msgstr "Categorias"
-
-#~ msgid "You must provide a directory, not a file"
-#~ msgstr "Vos cal indicar un dorsièr e non pas un fichièr"
 
 #~ msgctxt "verb"
 #~ msgid "_Keep"
