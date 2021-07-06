@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Simulates a "wrong password" signal bubbling
+
 [Operation]
 Type=backup
 Passphrases=2
@@ -62,3 +64,14 @@ Passphrase=true
 [Duplicity verify]
 Encrypted=true
 Passphrase=true
+
+[Restic]
+Runs=backup 1;backup 2;backup 3;verify;
+
+# Two different messages result in bad passphrase being detected:
+
+[Restic backup 1]
+Output=Fatal: wrong password or no key found
+
+[Restic backup 2]
+Output=Fatal: an empty password is not a password

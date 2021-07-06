@@ -53,6 +53,11 @@ def testfail(msg):
     pathlib.Path(mockscript + ".failed").touch(exist_ok=True)
     sys.exit(-1)
 
+def testdebug(*args):
+    """Used only when debugging this script, to send a message to a tmpfile"""
+    with open("/tmp/deja-dup-mocktool.log", "a") as logfile:
+        logfile.write(" ".join(args) + "\n")
+
 
 if not os.path.exists(mockscript):
     testfail("no mockscript")

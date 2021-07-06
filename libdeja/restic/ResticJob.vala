@@ -26,7 +26,7 @@ internal class ResticJoblet : DejaDup.ToolJoblet
     return instance;
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     argv.append(ResticPlugin.restic_command());
     argv.append("--json");
@@ -124,9 +124,9 @@ internal class ResticJoblet : DejaDup.ToolJoblet
 
 internal class ResticMakeSpaceJoblet : ResticJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("stats");
     argv.append("--mode=raw-data");
@@ -158,9 +158,9 @@ internal class ResticMakeSpaceJoblet : ResticJoblet
 
 internal class ResticInitJoblet : ResticJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("init");
   }
@@ -168,9 +168,9 @@ internal class ResticInitJoblet : ResticJoblet
 
 internal class ResticPruneJoblet : ResticJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("prune");
   }
@@ -184,6 +184,8 @@ internal class ResticPruneJoblet : ResticJoblet
 internal class ResticBackupJoblet : ResticJoblet
 {
   int64 seconds_elapsed = -1;
+  uint64 free_space = DejaDup.Backend.INFINITE_SPACE;
+  uint64 total_space = DejaDup.Backend.INFINITE_SPACE;
 
   protected override bool cancel_cleanup()
   {
@@ -197,9 +199,23 @@ internal class ResticBackupJoblet : ResticJoblet
     return instance;
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override async void prepare() throws Error
   {
-    base.prepare(ref argv, ref envp);
+    yield base.prepare();
+
+    // grab backend space info - we will compare against size of sources
+    free_space = yield backend.get_space();
+    total_space = yield backend.get_space(false);
+
+    // Sanity check total here, plus this can actually happen if an overflow
+    // occurs (GNOME bug 786177).
+    if (free_space != DejaDup.Backend.INFINITE_SPACE && free_space > total_space)
+      total_space = free_space;
+  }
+
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
+  {
+    base.prepare_args(ref argv, ref envp);
     tag = "latest"; // for the restore check's benefit, at end of backup
 
     argv.append(get_remote());
@@ -223,6 +239,18 @@ internal class ResticBackupJoblet : ResticJoblet
     // (arguably should be done in UI layer)
     if (current_seconds == seconds_elapsed)
       return true;
+
+    // Check the total size
+    reader.read_member("total_bytes");
+    var total_bytes = reader.get_int_value();
+    reader.end_member();
+    if (total_bytes > total_space) {
+      // Tiny backup location.  Suggest they get a larger one.
+      var msg = _("Backup location is too small. Try using one with at least %s.");
+      show_error(msg.printf(format_size(total_bytes)));
+      done(false, false, null);
+      return true;
+    }
 
     // Read the percent
     reader.read_member("percent_done");
@@ -331,9 +359,9 @@ internal class ResticDeleteOldBackupsJoblet : ResticJoblet
     Object(delete_after: delete_after);
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("forget");
     argv.append("--keep-within=%dd".printf(delete_after));
@@ -343,9 +371,9 @@ internal class ResticDeleteOldBackupsJoblet : ResticJoblet
 
 internal class ResticStatusJoblet : ResticJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("snapshots");
   }
@@ -386,9 +414,9 @@ internal class ResticStatusJoblet : ResticJoblet
 
 internal class ResticListJoblet : ResticJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("ls");
     argv.append(tag);
@@ -445,9 +473,9 @@ internal class ResticRestoreJoblet : ResticJoblet
     ignore_errors = true;
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
 
     argv.append(get_remote());
     argv.append("restore");

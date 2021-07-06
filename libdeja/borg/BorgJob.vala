@@ -15,7 +15,7 @@ internal class BorgJoblet : DejaDup.ToolJoblet
     return instance;
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     argv.append(BorgPlugin.borg_command());
     argv.append("--info");
@@ -126,9 +126,9 @@ internal class BorgJoblet : DejaDup.ToolJoblet
 
 internal class BorgInitJoblet : BorgJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append("init");
     argv.append("--encryption=" + (encrypt_password != null ? "repokey-blake2" : "none"));
     argv.append("--make-parent-dirs");
@@ -139,9 +139,9 @@ internal class BorgInitJoblet : BorgJoblet
 
 internal class BorgBackupJoblet : BorgJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
 
     assert(tag == null);
     var now = new DateTime.now_utc();
@@ -257,9 +257,9 @@ BORG: }
 
 internal class BorgStatusJoblet : BorgJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append("list");
     argv.append("--json");
     argv.append(get_remote());
@@ -304,9 +304,9 @@ internal class BorgStatusJoblet : BorgJoblet
 
 internal class BorgListJoblet : BorgJoblet
 {
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
     argv.append("list");
     argv.append("--json-lines");
     argv.append(get_remote());
@@ -344,9 +344,9 @@ internal class BorgRestoreJoblet : BorgJoblet
     Object(restore_file: restore_file);
   }
 
-  protected override void prepare(ref List<string> argv, ref List<string> envp) throws Error
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
-    base.prepare(ref argv, ref envp);
+    base.prepare_args(ref argv, ref envp);
 
     argv.append("extract");
     argv.append("--list");

@@ -467,7 +467,7 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
   if (keyfile.has_key(group, "Path"))
     br.path = replace_keywords(keyfile.get_string(group, "Path"));
   if (keyfile.has_key(group, "Script"))
-    br.script = replace_keywords(keyfile.get_string(group, "Script"));
+    br.script = get_string_field(keyfile, group, "Script");
   if (keyfile.has_key(group, "Settings")) {
     var settings_list = keyfile.get_string_list(group, "Settings");
     foreach (var setting in settings_list) {
@@ -655,7 +655,7 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
 {
   var version = "9.9.99";
   if (keyfile.has_key(group, "Version"))
-    version = keyfile.get_string(group, "Version");
+    version = get_string_field(keyfile, group, "Version");
   add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
 
   if (keyfile.has_key(group, "IsFull"))
@@ -841,6 +841,7 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       break;
 
     default:
+      warning("Got unexpected mode '%s'", mode);
       assert_not_reached();
   }
 
@@ -858,6 +859,7 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   string[] sym_target_excludes = null;
   string[] includes = null;
   int keep_within = -1;
+  string output = null;
   int return_code = 0;
   string script = null;
   bool stop = false;
@@ -875,6 +877,8 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
       includes = get_string_list(keyfile, group, "ExtraIncludes");
     if (keyfile.has_key(group, "KeepWithin"))
       keep_within = keyfile.get_integer(group, "KeepWithin");
+    if (keyfile.has_key(group, "Output"))
+      output = get_string_field(keyfile, group, "Output");
     if (keyfile.has_key(group, "Script"))
       script = get_string_field(keyfile, group, "Script");
     if (keyfile.has_key(group, "Return"))
@@ -921,6 +925,12 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   dupscript += "\n" + "PASSPHRASE: test";
   br.default_passphrase = true;
 
+  if (output != null && output != "") {
+    // GLib prior to 2.59 added an extra \n to output, but we need \n\n
+    // here, so we add them ourselves.
+    dupscript += "\n\n" + output.chomp() + "\n\n";
+  }
+
   add_to_mockscript(dupscript);
 }
 
@@ -928,7 +938,7 @@ void process_restic_block(KeyFile keyfile, string group, BackupRunner br) throws
 {
   var version = "9.9.99";
   if (keyfile.has_key(group, "Version"))
-    version = keyfile.get_string(group, "Version");
+    version = get_string_field(keyfile, group, "Version");
   add_to_mockscript("ARGS: version\n\nrestic %s compiled with go1.15.8 on linux/amd64\n".printf(version));
 
   if (keyfile.has_key(group, "Runs")) {

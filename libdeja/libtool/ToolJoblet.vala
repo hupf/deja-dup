@@ -38,7 +38,8 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
 
     try {
       yield backend.prepare();
-      prepare(ref argv, ref envp); // let subclasses add what they want
+      yield prepare();
+      prepare_args(ref argv, ref envp); // let subclasses add what they want
     }
     catch (Error e) {
       show_error(e.message);
@@ -51,7 +52,8 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
 
   // Protected interface
   protected abstract ToolInstance make_instance();
-  protected abstract void prepare(ref List<string> argv, ref List<string> envp) throws Error;
+  protected abstract void prepare_args(ref List<string> argv, ref List<string> envp) throws Error;
+  protected virtual async void prepare() throws Error {}
 
   // If this returns true, that means you are handling the cancel and you are
   // responsible for calling done().

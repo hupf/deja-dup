@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Test a backup error when writing to storage location
+
 [Operation]
 Type=backup
 Success=false
@@ -12,3 +14,14 @@ Runs=status;dry;backup;
 [Duplicity backup]
 #ERROR 51 put /remote /local
 Output=true
+
+[Restic]
+Runs=backup;
+
+[Restic backup]
+# Not a real error message restic would give. That would look more like:
+# Fatal: unable to save snapshot: OpenFile: open /tmp/restic/snapshots/68244579f8142b9428f43f7fb56634fa47aa610e43f33c960323048f560d912e: permission denied
+# But this works for now, just as proof of bubbling it up, and to match
+# duplicity's format for the test runner's error matching. We don't currently
+# parse restic's error, outside of detecting the leading 'Fatal:'
+Output=Fatal: Permission denied when trying to create ‘/local’.
