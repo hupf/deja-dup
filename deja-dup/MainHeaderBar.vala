@@ -9,7 +9,7 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainHeaderBar.ui")]
 public class MainHeaderBar : Gtk.Box
 {
-  public Gtk.Stack stack {get; set;}
+  public Adw.ViewStack stack {get; set;}
   public bool actions_sensitive {get; set;}
 
   public void bind_search_bar(Gtk.SearchBar search_bar)
