@@ -17,9 +17,9 @@ public class MainWindow : Adw.ApplicationWindow
   [GtkChild]
   unowned MainHeaderBar header;
   [GtkChild]
-  unowned Gtk.Stack stack;
+  unowned Adw.ViewStack stack;
   [GtkChild]
-  unowned Gtk.StackPage backups_page;
+  unowned Adw.ViewStackPage backups_page;
   [GtkChild]
   unowned Gtk.Stack overview_stack;
   [GtkChild]
