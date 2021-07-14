@@ -716,6 +716,8 @@ public abstract class AssistantOperation : Assistant
     Notifications.close_all();
   }
 
+  // Stop operation, does not need to be graceful - used to quickly stop as
+  // we shut down.
   public void stop()
   {
     hide_everything();
@@ -723,9 +725,12 @@ public abstract class AssistantOperation : Assistant
       op.stop();
   }
 
+  // Returns true if there's an operation running that shouldn't be cancelled at will
+  // (used for example, if another backup wants to start and is checking if an
+  // existing backup is running)
   public bool has_active_op()
   {
-    return op != null;
+    return op != null && current != null && !is_interrupt_type(current.data.type);
   }
 
   protected virtual void do_cancel()
@@ -819,13 +824,11 @@ public abstract class AssistantOperation : Assistant
     nag_entry.grab_focus();
   }
 
-  void stop_password_loop(Assistant dlg, int resp)
+  void stop_password_loop()
   {
-    if (resp != FORWARD) {
-      password_ask_loop.quit();
-      password_ask_loop = null;
-      response.disconnect(stop_password_loop);
-    }
+    password_ask_loop.quit();
+    password_ask_loop = null;
+    closing.disconnect(stop_password_loop);
   }
 
   protected void ask_passphrase(bool first = false)
@@ -844,7 +847,7 @@ public abstract class AssistantOperation : Assistant
     Notifications.attention_needed(this, _("Backups needs your encryption password to continue"));
     // pause until we can provide password by entering new main loop
     password_ask_loop = new MainLoop(null);
-    response.connect(stop_password_loop);
+    closing.connect(stop_password_loop);
     password_ask_loop.run();
   }
 
@@ -865,7 +868,7 @@ public abstract class AssistantOperation : Assistant
     }
 
     op.set_passphrase(passphrase);
-    stop_password_loop(this, CLOSE);
+    stop_password_loop();
   }
 
   void show_question(DejaDup.Operation op, string title, string message)
@@ -875,7 +878,7 @@ public abstract class AssistantOperation : Assistant
     interrupt(question_page);
     Notifications.attention_needed(this, _("Backups needs your input to continue"), title);
     var loop = new MainLoop(null);
-    var signal_id = response.connect(loop.quit);
+    var signal_id = closing.connect(loop.quit);
     loop.run();
     disconnect(signal_id);
   }

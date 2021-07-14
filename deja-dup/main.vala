@@ -77,13 +77,14 @@ public class DejaDupApp : Gtk.Application
     }
 
     if (options.contains("restore")) {
-      if (get_operation() != null) {
-        command_line.printerr("%s\n", _("An operation is already in progress"));
+      if (filenames.length == 0) {
+        command_line.printerr("%s\n", _("Please list files to restore"));
         return 1;
       }
 
-      if (filenames.length == 0) {
-        command_line.printerr("%s\n", _("Please list files to restore"));
+      close_excess_modals();
+      if (get_operation() != null) {
+        command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
       }
 
@@ -95,6 +96,7 @@ public class DejaDupApp : Gtk.Application
       restore_files(file_list);
     }
     else if (options.contains("backup")) {
+      close_excess_modals();
       if (get_operation() != null) {
         command_line.printerr("%s\n", _("An operation is already in progress"));
         return 1;
@@ -341,7 +343,8 @@ public class DejaDupApp : Gtk.Application
     // dialogs. These should be closed if we're about to do something new like
     // a backup or restore operation.
     if (get_operation() != null && !get_operation().has_active_op()) {
-      get_operation().destroy();
+      get_operation().closed();
+      operation.set(null);
     }
 
     if (get_operation() != null || get_app_window() == null)

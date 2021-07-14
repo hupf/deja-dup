@@ -130,7 +130,7 @@ public class Assistant : Adw.Window
       go_forward();
   }
 
-  static bool is_interrupt_type(Type type)
+  protected static bool is_interrupt_type(Type type)
   {
     return type == Type.INTERRUPT || type == Type.CHECK;
   }

@@ -47,6 +47,7 @@ devshell:
 	@flatpak run \
 		--command=make \
 		--devel \
+		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
 		devshell-bash
 
