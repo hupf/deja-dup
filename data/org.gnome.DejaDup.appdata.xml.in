@@ -34,6 +34,19 @@ SPDX-FileCopyrightText: Michael Terry
     <kudo>UserDocs</kudo>
   </kudos>
 
+  <recommends>
+    <control>keyboard</control>
+    <control>pointing</control>
+    <!-- I suspect touch works fine, as I don't believe we do any custom input
+         handling, nor use any right-click menus anywhere.
+         But since it's not tested, let's not declare support. -->
+    <!-- <control>touch</control> -->
+  </recommends>
+
+  <requires>
+    <display_length compare="ge">medium</display_length>
+  </requires>
+
   <provides>
     <binary>deja-dup</binary>
     <id>deja-dup.desktop</id>
