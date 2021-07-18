@@ -35,7 +35,10 @@ public class AssistantBackup : AssistantOperation
 
     // If we've never backed up before, let's prompt for settings
     if (last_run == "") {
-      append_page(new ConfigFolderPage());
+      var scroll = new Gtk.ScrolledWindow();
+      scroll.child = new ConfigFolderPage();
+      append_page(scroll);
+
       append_page(new ConfigLocationGrid());
     }
   }
