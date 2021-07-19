@@ -145,7 +145,7 @@ class BaseTest(unittest.TestCase):
         return obj.parent.child(**kwargs)
 
     def walk_initial_backup(
-        self, app, error=False, password=None, wait=True, remember=False
+        self, app, password=None, wait=True, remember=False
     ):
         window = app.window("Back Up")
         window.button("Forward").click()  # folders
@@ -165,16 +165,11 @@ class BaseTest(unittest.TestCase):
 
         window.button("Forward").click()
 
-        if not error:
-            if wait:
-                self.wait_for(lambda: window.dead, timeout=60)
-                return None
-            else:
-                return window
-        else:
-            window.childNamed("Backup Failed")
-            window.button("Close").click()
+        if wait:
+            self.wait_for(lambda: window.dead, timeout=60)
             return None
+        else:
+            return window
 
     def walk_incremental_backup(self, app, password=None, wait=True, title=None):
         if password:

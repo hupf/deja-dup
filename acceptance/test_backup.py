@@ -85,7 +85,11 @@ class BackupTest(BaseTest):
         os.chmod(self.rootdir, stat.S_IRUSR | stat.S_IXUSR)
         app = self.cmd("--backup")
         with self.new_files(False):
-            self.walk_initial_backup(app, error=True)
+            window = app.window("Back Up")
+            window.button("Forward").click()  # folders
+            window.button("Forward").click()  # storage location
+            window.childNamed("Backup Failed")
+            window.button("Close").click()
 
     def test_encrypted(self):
         app = self.cmd("--backup")
