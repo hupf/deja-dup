@@ -7,6 +7,7 @@
 using GLib;
 
 /**
+ * FIXME:
  * - need to delete older as we run out of space
  * - test deleting old backups per preferences
  * - fix restoring multiple files to a single target directory
