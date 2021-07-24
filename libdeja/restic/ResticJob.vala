@@ -11,6 +11,8 @@ using GLib;
  * - need to delete older as we run out of space
  * - test deleting old backups per preferences
  * - fix restoring multiple files to a single target directory
+ * - set TMPDIR (requires async call)
+ * - enable verify operation (blocked by nested includes/excludes)
  */
 
 internal class ResticJoblet : DejaDup.ToolJoblet
@@ -276,13 +278,15 @@ internal class ResticBackupJoblet : ResticJoblet
 
   void handle_no_repository()
   {
-    ignore_errors = true;
+    disconnect_inst(); // otherwise we might run handle_done() during is_full
 
     // We need to notify upper layers that we have a first backup!
     is_full(true); // this will take over main loop to ask user for passphrase
 
     chain.prepend_to_chain(new ResticBackupJoblet());
     chain.prepend_to_chain(new ResticInitJoblet());
+
+    done(true, false, null);
   }
 
   protected override bool process_message(string? msgid, Json.Reader reader)

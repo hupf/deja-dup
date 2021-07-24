@@ -29,7 +29,12 @@ public class DejaDup.OperationBackup : Operation
     if (metadir != null)
       new RecursiveDelete(metadir).start();
 
-    if (success && !cancelled) {
+    // FIXME: hack around restic's issues with verifying (can't nest includes
+    //        and excludes, which breaks our canary file inside the cache)
+    var settings = get_settings();
+    var tool_name = settings.get_string(TOOL_KEY);
+
+    if (success && !cancelled && tool_name != "restic") {
       var verify = new OperationVerify(backend, job.tag);
       yield chain_op(verify, _("Verifying backup…"), detail);
     } else {
