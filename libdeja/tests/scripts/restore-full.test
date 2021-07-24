@@ -1,12 +1,20 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Restore everything at once
+
 [Operation]
 Type=restore
-RestoreDate=20121029T124408Z
+RestoreTag=full-tag
 
 [Duplicity]
 Runs=status-restore;restore;
 
 [Duplicity restore]
-ExtraArgs=--time=20121029T124408Z
+ExtraArgs=--time=full-tag
+
+[Restic]
+Runs=restore;
+
+[Restic restore]
+Snapshot=full-tag

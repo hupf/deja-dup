@@ -1,15 +1,31 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Restore multiple, specific files
+
 [Operation]
 Type=restore
 RestoreFiles=@TEST_HOME@/one;@TEST_HOME@/two;
+RestoreTag=specific-tag
 
 [Duplicity]
 Runs=status-restore;restore 1;restore 2;
 
 [Duplicity restore 1]
+ExtraArgs=--time=specific-tag
 FileToRestore=@TEST_HOME@/one
 
 [Duplicity restore 2]
+ExtraArgs=--time=specific-tag
 FileToRestore=@TEST_HOME@/two
+
+[Restic]
+Runs=restore 1;restore 2;
+
+[Restic restore 1]
+FileToRestore=@TEST_HOME@/one
+Snapshot=specific-tag
+
+[Restic restore 2]
+FileToRestore=@TEST_HOME@/two
+Snapshot=specific-tag

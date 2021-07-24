@@ -36,7 +36,7 @@ tests = [
     'old-version',
     'permission',
     'read-error',
-    'restore-date',
+    'restore-full',
     'restore-specific',
     'special-chars',
     'stop',

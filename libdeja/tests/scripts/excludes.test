@@ -3,7 +3,7 @@
 
 [Operation]
 Type=backup
-Settings=include-list=['@TEST_HOME@/nope', '@TEST_HOME@/a', '@TEST_HOME@/a/b/c', '@TEST_HOME@/one/two', '@TEST_HOME@/one/two/three/four', '$HOME'];exclude-list=['@TEST_HOME@/a/b', '@TEST_HOME@/a/b/c/d', '@TEST_HOME@/one', '@TEST_HOME@/one/two/three', '$TRASH', '$DOWNLOAD'];
+Settings=include-list=['@TEST_HOME@/nope', '@TEST_HOME@/a', '@TEST_HOME@/a/b/c', '@TEST_HOME@/one/two', '@TEST_HOME@/one/two/three/four', '$HOME'];exclude-list=['$TRASH', '$DOWNLOAD', '@TEST_HOME@/a/b', '@TEST_HOME@/a/b/c/d', '@TEST_HOME@/one', '@TEST_HOME@/one/two/three'];
 Script=mkdir -p @TEST_HOME@/a/b/c/d @TEST_HOME@/one/two/three/four
 
 [Duplicity]
@@ -18,3 +18,9 @@ IncludeArgs='--include=@TEST_HOME@/one/two/three/four' '--exclude=@TEST_HOME@/on
 [Duplicity backup]
 IncludeArgs='--include=@TEST_HOME@/one/two/three/four' '--exclude=@TEST_HOME@/one/two/three' '--include=@TEST_HOME@/one/two' '--exclude=@TEST_HOME@/a/b/c/d' '--include=@TEST_HOME@/a/b/c' '--exclude=@TEST_HOME@/a/b' '--include=@TEST_HOME@/a' '--exclude=@TEST_HOME@/one'
 
+[Restic]
+Runs=backup;verify;
+
+[Restic backup]
+ExtraExcludes=@TEST_HOME@/one/two/three;@TEST_HOME@/one;@TEST_HOME@/a/b/c/d;@TEST_HOME@/a/b;
+ExtraIncludes=@TEST_HOME@/one/two/three/four;@TEST_HOME@/one/two;@TEST_HOME@/a/b/c;@TEST_HOME@/a;

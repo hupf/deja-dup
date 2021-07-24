@@ -8,7 +8,7 @@ using GLib;
 
 /**
  * - need to delete older as we run out of space
- * - test deleting old backups
+ * - test deleting old backups per preferences
  * - fix restoring multiple files to a single target directory
  */
 
@@ -457,7 +457,7 @@ internal class ResticListJoblet : ResticJoblet
 internal class ResticRestoreJoblet : ResticJoblet
 {
   public File restore_file {get; construct;}
-  public ResticRestoreJoblet(File restore_file)
+  public ResticRestoreJoblet(File? restore_file)
   {
     Object(restore_file: restore_file);
   }
@@ -469,7 +469,7 @@ internal class ResticRestoreJoblet : ResticJoblet
     // ignoring error for /home: UtimesNano: operation not permitted
     // Fatal: There were 1 errors
     // ```
-    // We need a more nuance approach here.
+    // We need a more nuanced approach here.
     ignore_errors = true;
   }
 
@@ -480,7 +480,8 @@ internal class ResticRestoreJoblet : ResticJoblet
     argv.append(get_remote());
     argv.append("restore");
     argv.append("--target=" + local.get_path());
-    argv.append("--include=" + restore_file.get_path());
+    if (restore_file != null)
+      argv.append("--include=" + restore_file.get_path());
     argv.append(tag);
   }
 }
@@ -501,10 +502,15 @@ internal class ResticJob : DejaDup.ToolJobChain
 
       break;
     case Mode.RESTORE:
-     foreach (var file in restore_files) {
-       append_to_chain(new ResticRestoreJoblet(file));
-     }
-     break;
+      if (restore_files == null) {
+        append_to_chain(new ResticRestoreJoblet(null));
+      }
+      else {
+        foreach (var file in restore_files) {
+          append_to_chain(new ResticRestoreJoblet(file));
+        }
+      }
+      break;
     case Mode.STATUS:
       append_to_chain(new ResticStatusJoblet());
       break;

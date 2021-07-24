@@ -266,7 +266,7 @@ class BackupRunner : Object
   public string? error_str = null;
   public string? error_regex = null;
   public string? error_detail = null;
-  public string restore_date = "now";
+  public string? restore_tag = null;
   public List<File> restore_files = null;
   public OpCallback? callback = null;
   public bool is_full = false; // we don't often give INFO 3 which triggers is_full()
@@ -439,8 +439,8 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     foreach (var file in array)
       br.restore_files.append(File.new_for_path(replace_keywords(file)));
   }
-  if (keyfile.has_key(group, "RestoreDate"))
-    br.restore_date = keyfile.get_string(group, "RestoreDate");
+  if (keyfile.has_key(group, "RestoreTag"))
+    br.restore_tag = keyfile.get_string(group, "RestoreTag");
 
   if (keyfile.has_key(group, "Success"))
     br.success = keyfile.get_boolean(group, "Success");
@@ -490,7 +490,7 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     br.op = new DejaDup.OperationBackup(DejaDup.Backend.get_default());
   else if (type == "restore")
     br.op = new DejaDup.OperationRestore(DejaDup.Backend.get_default(), restoredir,
-                                         null, br.restore_date, br.restore_files);
+                                         null, br.restore_tag, br.restore_files);
   else if (type == "noop")
     br.op = null;
   else
@@ -750,7 +750,7 @@ List<string> restic_exc_list(string[] paths, out List<string> symlinks, bool che
 
 string restic_args(BackupRunner br, string mode, string[] extra_excludes,
                    string[] sym_target_excludes, string[] extra_includes,
-                   int keep_within = -1)
+                   int keep_within, string? file_to_restore, string? snapshot)
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
@@ -833,6 +833,15 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       args.append("prune");
       break;
 
+    case "restore":
+      var restoredir = Path.build_filename(test_home, "restore");
+      args.append("restore");
+      args.append("--target=" + restoredir);
+      if (file_to_restore != null)
+        args.append("--include=" + parse_path(file_to_restore));
+      args.append(snapshot);
+      break;
+
     case "verify":
       args.append("restore");
       args.append("--target=/");
@@ -858,10 +867,12 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   string[] excludes = null;
   string[] sym_target_excludes = null;
   string[] includes = null;
+  string file_to_restore = null;
   int keep_within = -1;
   string output = null;
   int return_code = 0;
   string script = null;
+  string snapshot = null;
   bool stop = false;
 
   var parts = run.split(" ", 2);
@@ -875,6 +886,8 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
       excludes = get_string_list(keyfile, group, "ExtraExcludes");
     if (keyfile.has_key(group, "ExtraIncludes"))
       includes = get_string_list(keyfile, group, "ExtraIncludes");
+    if (keyfile.has_key(group, "FileToRestore"))
+      file_to_restore = get_string_field(keyfile, group, "FileToRestore");
     if (keyfile.has_key(group, "KeepWithin"))
       keep_within = keyfile.get_integer(group, "KeepWithin");
     if (keyfile.has_key(group, "Output"))
@@ -887,11 +900,15 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
       stop = keyfile.get_boolean(group, "Stop");
     if (keyfile.has_key(group, "SymlinkTargetExcludes"))
       sym_target_excludes = get_string_list(keyfile, group, "SymlinkTargetExcludes");
+    if (keyfile.has_key(group, "Snapshot"))
+      snapshot = get_string_field(keyfile, group, "Snapshot");
   }
 
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
 
-  var dupscript = "ARGS: " + restic_args(br, mode, excludes, sym_target_excludes, includes, keep_within);
+  var dupscript = "ARGS: " + restic_args(br, mode, excludes, sym_target_excludes,
+                                         includes, keep_within, file_to_restore,
+                                         snapshot);
 
   if (cancel) {
     dupscript += "\n" + "DELAY: 10";
