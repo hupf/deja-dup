@@ -49,6 +49,7 @@ class Browser : Gtk.Grid
   string auth_url; // if null, auth button should start mount op vs oauth
   MountOperation mount_op; // normally null
   MainLoop passphrase_loop;
+  string saved_passphrase; // most recent successful password
   unowned Gtk.ApplicationWindow app_window;
   unowned MainHeaderBar header;
   SimpleActionGroup action_group;
@@ -307,6 +308,7 @@ class Browser : Gtk.Grid
       }
     });
 
+    operation.set_passphrase(saved_passphrase); // start with remembered password
     operation.passphrase_required.connect(switch_overlay_to_passphrase);
 
     operation.backend.needed_mount_op.connect(switch_overlay_to_mount_needed);
@@ -329,6 +331,7 @@ class Browser : Gtk.Grid
         return;
       operation = null;
       if (success) {
+        saved_passphrase = op.get_state().passphrase;
         if (timecombo.when == null) {
           switch_overlay_to_error(_("No backup files found"));
         } else {
@@ -354,6 +357,7 @@ class Browser : Gtk.Grid
         return;
       operation = null;
       if (success) {
+        saved_passphrase = op.get_state().passphrase;
         files_filled = true;
         switch_overlay_off();
       }

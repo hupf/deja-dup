@@ -6,11 +6,12 @@
 
 import os
 import shutil
+from datetime import datetime
 
 from dogtail.predicate import GenericPredicate
 from gi.repository import GLib
 
-from . import BaseTest
+from . import BaseTest, ResticMixin
 
 
 class RestoreTest(BaseTest):
@@ -22,40 +23,52 @@ class RestoreTest(BaseTest):
             "default", "folder", fallback="deja-dup-test", required=False
         )
         self.filename = self.srcdir + "/[t](e?s*)' t.\"txt"
-        open(self.filename, "w").write("hello")
+        self.contents = datetime.now().isoformat()
+        open(self.filename, "w").write(self.contents)
 
     def walk_backup(self, app):
         window = app.window("Back Up")
         window.button("Forward").click()  # folders
         window.button("Forward").click()  # storage location
 
-        # Prepare for either initial backup or incremental
-        def ready():
-            try:
-                return window.dead or window.findChild(
-                    GenericPredicate(name="Forward"), retry=False, requireResult=False
-                )
-            except GLib.GError:
-                return True
+        window.child(roleName="text", label="Encryption password").text = "test-restore"
 
-        self.wait_for(ready, timeout=120)
-        if window.dead:
-            return
+        # Confirm password if we are doing an initial backup
+        confirm = window.findChild(
+            GenericPredicate(roleName="text", label="Confirm password"), retry=False,
+            requireResult=False
+        )
+        if confirm:
+            confirm.text = "test-restore"
 
-        window.child(
-            roleName="check box", name="_Allow restoring without a password"
-        ).click()
         window.button("Forward").click()
-        self.wait_for(lambda: window.dead, timeout=60)
+        self.wait_for(lambda: window.dead, timeout=300)
 
-    def walk_restore(self, app, password=None, error=False):
+    def walk_restore(self, app):
         shutil.rmtree(self.srcdir)
 
         window = app.window("Restore From Where?")
         window.button("Search").click()  # from where
-
-        # Switched to restore pane. Now select all.
         search = app.child(roleName="push button", name="Search")
+
+        # Switched to restore pane. Enter password if using restic, which
+        # unlike duplicity, does not keep unencrypted metadata locally cached.
+        if self.restic:
+            # I'm having trouble with Enter Password appearing visible to dogtail,
+            # but not really being rendered. So let's click it and see if a dialog appears.
+            def click_and_see():
+                app.button("Enter Password").click()
+                return app.findChild(
+                    GenericPredicate(roleName="text entry", label="Encryption password"), retry=False, requireResult=False
+                )
+            self.wait_for(click_and_see)
+            #app.button("Enter Password").click()
+            app.child(roleName="text entry", label="Encryption password").typeText(
+                "test-restore"
+            )
+            app.button("Continue").click()
+
+        # Now select all.
         self.wait_for(lambda: search.sensitive)
         app.childNamed("Menu").click()
         app.childNamed("Select All").click()
@@ -65,11 +78,10 @@ class RestoreTest(BaseTest):
         window = app.window("Restore to Where?")
         window.button("Restore").click()  # to where
 
-        if password:
-            window.child(roleName="text", label="Encryption password").text = password
-            window.button("Forward").click()
+        window.child(roleName="text", label="Encryption password").text = "test-restore"
+        window.button("Forward").click()
 
-        title = "Restore Failed" if error else "Restore Finished"
+        title = "Restore Finished"
         self.wait_for(
             lambda: window.findChild(
                 GenericPredicate(name=title), retry=False, requireResult=False
@@ -79,13 +91,15 @@ class RestoreTest(BaseTest):
         window.button("Close").click()
 
         test_file = open(self.filename, "r")
-        assert test_file.read(None) == "hello"
+        assert test_file.read(None) == self.contents
 
     def test_simple_cycle(self):
         app = self.cmd()
 
         app.button("Create My First Backup").click()
         self.walk_backup(app)
+
+        os.remove(self.filename)
 
         self.set_string("last-run", "")  # to go back to welcome screen
         app.button("Restore From a Previous Backup").click()
@@ -101,6 +115,12 @@ class LocalRestoreTest(RestoreTest):
         self.set_string("folder", self.rootdir + "/dest", child="local")
 
 
+class ResticLocalRestoreTest(ResticMixin, LocalRestoreTest):
+    def setUp(self):
+        super().setUp()
+        self.set_string("folder", self.rootdir + "/dest-restic", child="local")
+
+
 class GoogleRestoreTest(RestoreTest):
     __test__ = True
 
@@ -110,6 +130,12 @@ class GoogleRestoreTest(RestoreTest):
             self.skipTest("Google not enabled")
         self.set_string("backend", "google")
         self.set_string("folder", self.folder, child="google")
+
+
+class ResticGoogleRestoreTest(ResticMixin, GoogleRestoreTest):
+    def setUp(self):
+        super().setUp()
+        self.set_string("folder", self.folder + "-restic", child="google")
 
 
 class MicrosoftRestoreTest(RestoreTest):
@@ -123,6 +149,12 @@ class MicrosoftRestoreTest(RestoreTest):
         self.set_string("folder", self.folder, child="microsoft")
 
 
+class ResticMicrosoftRestoreTest(ResticMixin, MicrosoftRestoreTest):
+    def setUp(self):
+        super().setUp()
+        self.set_string("folder", self.folder + "-restic", child="microsoft")
+
+
 class RemoteRestoreTest(RestoreTest):
     __test__ = True
 
@@ -132,3 +164,9 @@ class RemoteRestoreTest(RestoreTest):
         self.set_string("backend", "remote")
         self.set_string("uri", uri, child="remote")
         self.set_string("folder", self.folder, child="remote")
+
+
+class ResticRemoteRestoreTest(ResticMixin, RemoteRestoreTest):
+    def setUp(self):
+        super().setUp()
+        self.set_string("folder", self.folder + "-restic", child="remote")

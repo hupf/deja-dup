@@ -28,6 +28,7 @@ from .gtk4 import Gtk4Node
 class BaseTest(unittest.TestCase):
     def setUp(self):
         super().setUp()
+        self.restic = False
         self.dbus = None
         self.reset_gsettings(self.get_settings())
 
@@ -63,7 +64,9 @@ class BaseTest(unittest.TestCase):
         subprocess.run(args, check=True)
 
     def wait_for(self, func, timeout=30):
-        while not func() and timeout:
+        while timeout:
+            if func():
+                return
             timeout -= 1
             sleep(1)
         assert func()
@@ -152,7 +155,11 @@ class BaseTest(unittest.TestCase):
         window.button("Forward").click()  # storage location
 
         # window might have closed if auto-launched, so regrab it
-        window = app.window("Require Password?")
+        if self.restic:
+            window = app.window("Set Encryption Password")
+            password = password or "resticpassword"
+        else:
+            window = app.window("Require Password?")
         if password:
             window.child(roleName="text", label="Encryption password").text = password
             window.child(roleName="text", label="Confirm password").text = password
@@ -172,6 +179,8 @@ class BaseTest(unittest.TestCase):
             return window
 
     def walk_incremental_backup(self, app, password=None, wait=True, title=None):
+        if self.restic:
+            password = password or "resticpassword"
         if password:
             window = app.window(title or "Encryption Password Needed")
             window.child(roleName="text", label="Encryption password").text = password
@@ -266,3 +275,10 @@ class BaseTest(unittest.TestCase):
 
     def set_int(self, key, value, child=None):
         self.set_value("set_int", key, value, child=child)
+
+
+class ResticMixin:
+    def setUp(self):
+        super().setUp()
+        self.set_string("tool", "restic")
+        self.restic = True

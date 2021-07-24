@@ -77,6 +77,12 @@ public bool parse_version(string version_string, out int major, out int minor,
   return true;
 }
 
+public bool equals_version(int major, int minor, int micro,
+                           int req_major, int req_minor, int req_micro)
+{
+  return major == req_major && minor == req_minor && micro == req_micro;
+}
+
 public bool meets_version(int major, int minor, int micro,
                           int req_major, int req_minor, int req_micro)
 {

@@ -15,7 +15,7 @@ from dogtail.predicate import GenericPredicate
 from dogtail.rawinput import keyCombo
 from gi.repository import GLib
 
-from . import BaseTest
+from . import BaseTest, ResticMixin
 
 
 @ddt.ddt
@@ -125,7 +125,7 @@ class BackupTest(BaseTest):
                 retry=False,
                 requireResult=False,
             )
-            return bar and bar.value > 0.6
+            return bar and bar.value >= 0.3
 
         with self.new_files():
             self.wait_for(mid_progress)
@@ -156,11 +156,10 @@ class BackupTest(BaseTest):
                 return False
             except GLib.GError:
                 return True
-        #old_files = self.backup_files
+
         with self.new_files():
             self.wait_for(finish_progress, timeout=120)
             assert window.dead
-        #assert set(self.backup_files) >= set(old_files)
 
     def test_no_passphrase_change_on_full(self):
         """
@@ -206,3 +205,8 @@ class BackupTest(BaseTest):
         app.button("Close").click()  # we have a confirmation screen after nag
 
         assert self.get_string("nag-check") != months_ago
+
+
+class ResticBackupTest(ResticMixin, BackupTest):
+    pass
+    # resume and nag fail

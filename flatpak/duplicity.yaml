@@ -4,15 +4,15 @@
 name: python3-duplicity
 buildsystem: simple
 build-commands:
-  - pip3 install --verbose --exists-action=i --no-index --find-links="file://${PWD}"
-    --prefix=${FLATPAK_DEST} "duplicity" --no-build-isolation
+  - pip3 install --exists-action=i --no-index --find-links="file://${PWD}" --prefix=${FLATPAK_DEST}
+    "duplicity"
 sources:
   - type: file
-    url: https://files.pythonhosted.org/packages/28/e4/2888d41cdbd405828ccdb9a8536c5919939c2f4c6ab9b2ba63e9bd2570d5/fasteners-0.16.3.tar.gz
-    sha256: b1ab4e5adfbc28681ce44b3024421c4f567e705cc3963c732bf1cba3348307de
+    url: https://files.pythonhosted.org/packages/bc/1e/74ff54c7bd574811efcf49098fc0536f4bead513b14d56f019de7bb2e20f/duplicity-0.8.18.tar.gz
+    sha256: 6664424e52f8b9abd94ce1a1ef2a5e373877e23030f515dde91ab424d3d456e1
   - type: file
     url: https://files.pythonhosted.org/packages/45/0b/38b06fd9b92dc2b68d58b75f900e97884c45bedd2ff83203d933cf5851c9/future-0.18.2.tar.gz
     sha256: b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d
   - type: file
-    url: https://files.pythonhosted.org/packages/84/65/5ca97dade5527b6a93757e88455c53b0d7002322f9d47d848c35902ef431/duplicity-0.8.20.tar.gz
-    sha256: 488af2ecadb059214074f2b3ac51bf9d7de55a800e37ccc2f1075cd0a74940e3
+    url: https://files.pythonhosted.org/packages/d1/8f/a6c06f9bce5691a40283e52b92ec1522d6863951e738a31b109bf6bf2002/fasteners-0.16.tar.gz
+    sha256: c995d8c26b017c5d6a6de9ad29a0f9cdd57de61ae1113d28fac26622b06a0933

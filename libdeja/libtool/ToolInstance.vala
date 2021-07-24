@@ -127,8 +127,13 @@ internal abstract class ToolInstance : Object
     Process.spawn_async_with_pipes(null, real_argv, real_envp,
                                    SpawnFlags.SEARCH_PATH |
                                    SpawnFlags.DO_NOT_REAP_CHILD,
-                                   null, out child_pid,
-                                   null, out stdout, out stderr);
+                                   () => {
+                                      // Drop support for /dev/tty inside the tool.
+                                      // Helps duplicity with password handling,
+                                      // and helps restic with rclone support.
+                                      Posix.setsid();
+                                   },
+                                   out child_pid, null, out stdout, out stderr);
 
     debug("Running the following tool (%i) command: %s\n", (int)child_pid, user_cmd);
 
