@@ -61,7 +61,7 @@ public class DejaDup.FileTree : Object
       return Path.build_filename(skipped_root, filename);
   }
 
-  public Node? file_to_node(File file)
+  public Node? file_to_node(File file, bool allow_partial = false)
   {
     string remainder;
     string prefix = "";
@@ -80,9 +80,10 @@ public class DejaDup.FileTree : Object
     // find the node from those parts
     var node = root;
     foreach (var part in parts) {
-      node = node.children.lookup(part);
-      if (node == null)
-        return null;
+      var child = node.children.lookup(part);
+      if (child == null)
+        return allow_partial ? node : null;
+      node = child;
     }
     return node;
   }
@@ -142,7 +143,8 @@ public class DejaDup.FileTree : Object
     var iter = node;
     while (iter.parent != null) {
       var parent = iter.parent;
-      parent.children.remove(iter.filename);
+      if (iter.children.length == 0)
+        parent.children.remove(iter.filename);
       if (parent.children.length > 0)
         break;
       iter = parent;
@@ -151,7 +153,7 @@ public class DejaDup.FileTree : Object
 
   void clear_metadir()
   {
-    var metadir_node = file_to_node(DejaDup.get_metadir());
+    var metadir_node = file_to_node(DejaDup.get_metadir(), true);
     if (metadir_node != null)
       erase_node_and_parents(metadir_node);
   }
