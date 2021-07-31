@@ -26,6 +26,7 @@ internal class ResticJoblet : DejaDup.ToolJoblet
     add_handler(instance.message.connect(handle_message));
     add_handler(instance.bad_password.connect(handle_bad_password));
     add_handler(instance.fatal_error.connect(handle_fatal_error));
+    add_handler(instance.no_repository.connect(handle_no_repository));
     return instance;
   }
 
@@ -80,6 +81,22 @@ internal class ResticJoblet : DejaDup.ToolJoblet
 
   protected virtual bool process_message(string? msgid, Json.Reader reader) { return false; }
 
+  protected string escape_pattern(string path)
+  {
+    // https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files
+    return path.replace("$", "$$");
+  }
+
+  protected string escape_path(string path)
+  {
+    // https://golang.org/pkg/path/filepath/#Match
+    var escaped = path.replace("\\", "\\\\");
+    escaped = escaped.replace("*", "\\*");
+    escaped = escaped.replace("?", "\\?");
+    escaped = escaped.replace("[", "\\[");
+    return escape_pattern(escaped);
+  }
+
   // Private helpers
 
   string? get_msgid(Json.Reader reader)
@@ -102,6 +119,8 @@ internal class ResticJoblet : DejaDup.ToolJoblet
   {
     bad_encryption_password();
   }
+
+  protected virtual void handle_no_repository() {}
 
   protected override void handle_done(bool success, bool cancelled)
   {
@@ -196,12 +215,6 @@ internal class ResticBackupJoblet : ResticJoblet
     return true;
   }
 
-  protected override ToolInstance make_instance() {
-    var instance = base.make_instance() as ResticInstance;
-    add_handler(instance.no_repository.connect(handle_no_repository));
-    return instance;
-  }
-
   protected override async void prepare() throws Error
   {
     yield base.prepare();
@@ -276,7 +289,7 @@ internal class ResticBackupJoblet : ResticJoblet
     return true;
   }
 
-  void handle_no_repository()
+  protected override void handle_no_repository()
   {
     disconnect_inst(); // otherwise we might run handle_done() during is_full
 
@@ -295,22 +308,6 @@ internal class ResticBackupJoblet : ResticJoblet
       return process_status(reader);
 
     return false;
-  }
-
-  string escape_pattern(string path)
-  {
-    // https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files
-    return path.replace("$", "$$");
-  }
-
-  string escape_path(string path)
-  {
-    // https://golang.org/pkg/path/filepath/#Match
-    var escaped = path.replace("\\", "\\\\");
-    escaped = escaped.replace("*", "\\*");
-    escaped = escaped.replace("?", "\\?");
-    escaped = escaped.replace("[", "\\[");
-    return escape_pattern(escaped);
   }
 
   bool list_contains_file(List<File> list, File file)
@@ -383,6 +380,13 @@ internal class ResticStatusJoblet : ResticJoblet
     argv.append("snapshots");
   }
 
+  protected override void handle_no_repository()
+  {
+    var dates = new Tree<DateTime, string>((a, b) => {return a.compare(b);});
+    collection_dates(dates);
+    ignore_errors = true;
+  }
+
   protected override bool process_message(string? msgid, Json.Reader reader)
   {
     if (msgid == null)
@@ -437,12 +441,15 @@ internal class ResticListJoblet : ResticJoblet
 
   bool process_file(Json.Reader reader)
   {
-    reader.read_member("path");
-    var path = reader.get_string_value();
-    reader.end_member();
-
     reader.read_member("type");
     var restic_type = reader.get_string_value();
+    reader.end_member();
+
+    if (restic_type == null)
+      return false; // might be initial snapshot struct_type message
+
+    reader.read_member("path");
+    var path = reader.get_string_value();
     reader.end_member();
 
     var file_type = FileType.UNKNOWN;
@@ -478,16 +485,60 @@ internal class ResticRestoreJoblet : ResticJoblet
     ignore_errors = true;
   }
 
-  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
+  string dump_to_command()
+  {
+    var testing_str = Environment.get_variable("DEJA_DUP_TESTING");
+    if (testing_str != null && int.parse(testing_str) > 0)
+      return "restic-dump-to";
+    else
+      return Path.build_filename(Config.PKG_LIBEXEC_DIR, "restic-dump-to");
+  }
+
+  void prepare_args_to_dir(ref List<string> argv, ref List<string> envp) throws Error
+  {
+    // We use a wrapper script to handle the details of "restic dump" sometimes
+    // giving back a tar file and sometimes a direct file to stdout. Easier to
+    // handle that sort of piping in a shell script. This script wants a few
+    // arguments, including the file type, which we'll look up from the file tree.
+    var include_path = restore_file == null ? "/" : restore_file.get_path();
+    var nodekind = FileType.DIRECTORY;
+    if (restore_file != null) {
+      var node = tree.file_to_node(restore_file);
+      if (node != null)
+        nodekind = node.kind;
+    }
+
+    argv.append(dump_to_command());
+    argv.append(nodekind == FileType.DIRECTORY ? "dir" : "reg");
+    argv.append(local.get_path());
+    argv.append(include_path);
+
+    base.prepare_args(ref argv, ref envp);
+
+    argv.append(get_remote());
+    argv.append("dump");
+    argv.append(tag);
+    argv.append(include_path);
+  }
+
+  void prepare_args_to_original(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
 
     argv.append(get_remote());
     argv.append("restore");
-    argv.append("--target=" + local.get_path());
+    argv.append("--target=/");
     if (restore_file != null)
-      argv.append("--include=" + restore_file.get_path());
+      argv.append("--include=" + escape_path(restore_file.get_path()));
     argv.append(tag);
+  }
+
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
+  {
+    if (local.get_parent() == null)
+      prepare_args_to_original(ref argv, ref envp);
+    else
+      prepare_args_to_dir(ref argv, ref envp);
   }
 }
 

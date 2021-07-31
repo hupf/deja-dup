@@ -488,9 +488,16 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
   var type = keyfile.get_string(group, "Type");
   if (type == "backup")
     br.op = new DejaDup.OperationBackup(DejaDup.Backend.get_default());
-  else if (type == "restore")
+  else if (type == "restore") {
+    // Create a FileTree to pass the restore operation. In the future, we might
+    // want to have scripts also walk us through a list operation. But for now,
+    // just fake it and say all files are directories.
+    var tree = new DejaDup.FileTree();
+    foreach (var file in br.restore_files)
+      tree.add(file.get_path(), FileType.DIRECTORY);
     br.op = new DejaDup.OperationRestore(DejaDup.Backend.get_default(), restoredir,
-                                         null, br.restore_tag, br.restore_files);
+                                         tree, br.restore_tag, br.restore_files);
+  }
   else if (type == "noop")
     br.op = null;
   else
@@ -758,6 +765,16 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
   var tempdir = Path.build_filename(test_home, "tmp");
 
   List<string> args = null;
+
+  switch (mode) {
+    case "restore":
+      args.append("dir"); // runner treats all files as directories for now
+      args.append(Path.build_filename(test_home, "restore"));
+      args.append(file_to_restore == null ? "/" : parse_path(file_to_restore));
+      args.append("restic");
+      break;
+  }
+
   args.append("--json");
   args.append("--cleanup-cache");
   args.append("--cache-dir=%s/deja-dup/restic".printf(cachedir));
@@ -834,12 +851,9 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       break;
 
     case "restore":
-      var restoredir = Path.build_filename(test_home, "restore");
-      args.append("restore");
-      args.append("--target=" + restoredir);
-      if (file_to_restore != null)
-        args.append("--include=" + parse_path(file_to_restore));
+      args.append("dump");
       args.append(snapshot);
+      args.append(file_to_restore == null ? "/" : parse_path(file_to_restore));
       break;
 
     case "verify":

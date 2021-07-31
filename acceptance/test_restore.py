@@ -35,8 +35,9 @@ class RestoreTest(BaseTest):
 
         # Confirm password if we are doing an initial backup
         confirm = window.findChild(
-            GenericPredicate(roleName="text", label="Confirm password"), retry=False,
-            requireResult=False
+            GenericPredicate(roleName="text", label="Confirm password"),
+            retry=False,
+            requireResult=False,
         )
         if confirm:
             confirm.text = "test-restore"
@@ -54,19 +55,7 @@ class RestoreTest(BaseTest):
         # Switched to restore pane. Enter password if using restic, which
         # unlike duplicity, does not keep unencrypted metadata locally cached.
         if self.restic:
-            # I'm having trouble with Enter Password appearing visible to dogtail,
-            # but not really being rendered. So let's click it and see if a dialog appears.
-            def click_and_see():
-                app.button("Enter Password").click()
-                return app.findChild(
-                    GenericPredicate(roleName="text entry", label="Encryption password"), retry=False, requireResult=False
-                )
-            self.wait_for(click_and_see)
-            #app.button("Enter Password").click()
-            app.child(roleName="text entry", label="Encryption password").typeText(
-                "test-restore"
-            )
-            app.button("Continue").click()
+            self.enter_browser_password(app, "test-restore")
 
         # Now select all.
         self.wait_for(lambda: search.sensitive)
@@ -98,8 +87,6 @@ class RestoreTest(BaseTest):
 
         app.button("Create My First Backup").click()
         self.walk_backup(app)
-
-        os.remove(self.filename)
 
         self.set_string("last-run", "")  # to go back to welcome screen
         app.button("Restore From a Previous Backup").click()

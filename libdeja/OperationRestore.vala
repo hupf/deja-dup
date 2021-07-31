@@ -23,7 +23,7 @@ public class DejaDup.OperationRestore : Operation
 
   public OperationRestore(Backend backend,
                           string dest_in,
-                          FileTree? tree = null,
+                          FileTree tree,
                           string tag,
                           List<File>? files_in = null) {
     Object(dest: dest_in, tree: tree, tag: tag, restore_files: files_in,

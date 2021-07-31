@@ -1,0 +1,40 @@
+#!/bin/sh
+# -*- Mode: sh; indent-tabs-mode: nil; tab-width: 2; coding: utf-8 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+
+# Restic does not let us ask it to restore a file to an arbitrary path.
+# Instead, you can only ask it to restore a path into another path.
+# So restoring /a/b into /x/y will result in /x/y/a/b rather than the
+# desired (by deja-dup) /x/y/b.
+#
+# So this wrapper abstracts that by redirecting the output of "restic dump"
+# into a target file, handling directories which come in as tar files, as well
+# as normal files which come in direct.
+#
+# Call this script like so:
+# restic-dump-to reg /working/dir /target/file [restic dump ...]
+# restic-dump-to dir /working/dir /target/dir [restic dump ...]
+#
+# Those commands will drop the target of the dump command into the given
+# directory.
+
+set -e
+
+KIND=$1
+WORKINGDIR=$2
+TARGETFILE=$3
+shift 3
+
+if [ "$KIND" = "dir" ]; then
+  # The ${VAR#/} syntax strips the leading slash
+  SLASHES=$(echo "${TARGETFILE#/}" | tr -cd /)
+
+  # The ${#VAR} syntax gives count of characters
+  exec "$@" | tar x -C "$WORKINGDIR" --strip-components "${#SLASHES}"
+else
+  BASENAME=$(basename "$TARGETFILE")
+  exec "$@" > "$WORKINGDIR/$BASENAME"
+fi
