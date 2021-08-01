@@ -55,7 +55,8 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     }
 
     // 0.8.18 first landed support for OAUTH2_REFRESH_TOKEN, but then it got accidentally reverted.
-    supports_microsoft = DejaDup.equals_version(major, minor, micro, 0, 8, 18);
+    supports_microsoft = DejaDup.equals_version(major, minor, micro, 0, 8, 18) ||
+                         DejaDup.meets_version(major, minor, micro, 0, 8, 21);
 
     has_been_setup = true;
   }
