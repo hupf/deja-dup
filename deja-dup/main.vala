@@ -7,7 +7,7 @@
 
 using GLib;
 
-public class DejaDupApp : Gtk.Application
+public class DejaDupApp : Adw.Application
 {
   public DejaDup.Backend custom_backend {get; set; default = null;}
   public signal void operation_started();
@@ -167,8 +167,6 @@ public class DejaDupApp : Gtk.Application
   public override void startup()
   {
     base.startup();
-
-    Adw.init();
     DejaDup.gui_initialize();
 
     add_action_entries(ACTIONS, this);
