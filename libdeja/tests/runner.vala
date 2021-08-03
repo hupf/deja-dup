@@ -879,6 +879,13 @@ void process_restic_run_block(KeyFile keyfile, string run, BackupRunner br) thro
   var mode = parts[0];
   var group = "Restic " + run;
 
+  if (mode == "verify") {
+    // FIXME: for now, disable verify blocks for restic - we turned them off
+    //        until we can solve the nested inclusion/exclusion issue.
+    //        RESTIC-VERIFY
+    return;
+  }
+
   if (keyfile.has_group(group)) {
     if (keyfile.has_key(group, "Cancel"))
       cancel = keyfile.get_boolean(group, "Cancel");

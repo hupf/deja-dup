@@ -30,7 +30,8 @@ public class DejaDup.OperationBackup : Operation
       new RecursiveDelete(metadir).start();
 
     // FIXME: hack around restic's issues with verifying (can't nest includes
-    //        and excludes, which breaks our canary file inside the cache)
+    //        and excludes, which breaks our canary file inside the cache).
+    //        RESTIC-VERIFY
     var settings = get_settings();
     var tool_name = settings.get_string(TOOL_KEY);
 
