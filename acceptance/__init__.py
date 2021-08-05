@@ -19,6 +19,7 @@ config.logDebugToFile = False
 config.searchShowingOnly = True
 
 from dogtail import tree
+from dogtail.predicate import GenericPredicate
 from dogtail.utils import run
 from gi.repository import Gio, GLib
 
@@ -147,9 +148,7 @@ class BaseTest(unittest.TestCase):
                 pass
         return obj.parent.child(**kwargs)
 
-    def walk_initial_backup(
-        self, app, password=None, wait=True, remember=False
-    ):
+    def walk_initial_backup(self, app, password=None, wait=True, remember=False):
         window = app.window("Back Up")
         window.button("Forward").click()  # folders
         window.button("Forward").click()  # storage location
@@ -193,6 +192,21 @@ class BaseTest(unittest.TestCase):
             return None
         else:
             return window
+
+    def enter_browser_password(self, app, password):
+        # I'm having trouble with Enter Password appearing visible to dogtail,
+        # but not really being rendered. So let's click it and see if a dialog appears.
+        def click_and_see():
+            app.button("Enter Password").click()
+            return app.findChild(
+                GenericPredicate(roleName="text entry", label="Encryption password"),
+                retry=False,
+                requireResult=False,
+            )
+
+        self.wait_for(click_and_see)
+        app.child(roleName="text entry", label="Encryption password").typeText(password)
+        app.button("Continue").click()
 
     def get_config(self, section, option, fallback=None, required=True):
         if not self.config:

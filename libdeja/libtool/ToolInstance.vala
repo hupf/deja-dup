@@ -57,8 +57,6 @@ internal abstract class ToolInstance : Object
 
   protected abstract void _send_error(Error e);
 
-  protected virtual void _prefix_command(ref List<string> argv) {}
-
   // true if we finished the stanza
   protected abstract bool _process_line(string stanza, string line) throws Error;
 
@@ -105,8 +103,6 @@ internal abstract class ToolInstance : Object
     List<string> argv = new List<string>();
     foreach (string arg in argv_in)
       argv.append(arg);
-
-    _prefix_command(ref argv);
 
     // Grab version of command line to show user
     string user_cmd = null;

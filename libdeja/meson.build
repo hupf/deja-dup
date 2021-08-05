@@ -66,4 +66,8 @@ libdeja = shared_library('deja',
 
 libdeja_inc = include_directories('.')
 
+install_data('restic/restic-dump-to',
+    install_dir: pkglibexecdir,
+    install_mode: 'rwxr-xr-x')
+
 subdir('tests')

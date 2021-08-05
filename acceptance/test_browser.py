@@ -13,7 +13,7 @@ from dogtail.predicate import GenericPredicate
 from dogtail.rawinput import holdKey, keyCombo, pressKey, releaseKey, typeText
 from gi.repository import GLib
 
-from . import BaseTest
+from . import BaseTest, ResticMixin
 
 
 class BrowserTest(BaseTest):
@@ -23,14 +23,12 @@ class BrowserTest(BaseTest):
         self.set_string("last-backup", "2000-01-01")  # to skip welcome screen
         self.set_string("last-run", "2000-01-01")
 
-        self.use_backup_dir("unencrypted")
-
         shutil.rmtree(self.rootdir, ignore_errors=True)
         self.srcdir = "/tmp/deja-dup"
         shutil.rmtree(self.srcdir, ignore_errors=True)
 
         self.restoredir = "/tmp/deja-dup.restore"
-
+        self.password = None
         self.app = self.cmd()
 
     def use_backup_dir(self, path):
@@ -51,15 +49,11 @@ class BrowserTest(BaseTest):
                 return
         assert False
 
-    def scan(self, password=None, error=None):
+    def scan(self, error=None):
         self.switch_to_restore()
 
-        if password:
-            self.app.button("Enter Password").click()
-            self.app.child(roleName="text entry", label="Encryption password").typeText(
-                password
-            )
-            self.app.button("Continue").click()
+        if self.password:
+            self.enter_browser_password(self.app, self.password)
 
         if error:
             self.app.child(roleName="label", name=error)
@@ -67,6 +61,41 @@ class BrowserTest(BaseTest):
 
         search = self.app.child(roleName="push button", name="Search")
         self.wait_for(lambda: search.sensitive)
+
+    def scan_dir1(self):
+        """
+        Set up primary backup directory, used for most tests.
+
+        We only look at the most current backup, which must include:
+         dir1/three.txt ("three")
+         four.txt ("four")
+         one.txt ("one")
+         two.txt ("two")
+        """
+        self.use_backup_dir("duplicity1")
+        self.scan()
+
+    def scan_dir2(self):
+        """
+        Set up secondary backup directory.
+
+        If the backup tool supports both encrypted and unencrypted backups,
+        it's useful to have the primary or secondary dirs be different.
+
+        This dir should hold three different snapshots, whose dates should
+        be stored in self.snapshots.
+
+        The most recent snapshot should contain:
+          dir1/three.txt
+          one.txt
+          two.txt
+
+        The oldest snapshot should contain those as well as four.txt.
+        """
+        self.password = "test"
+        self.use_backup_dir("duplicity2")
+        self.scan()
+        self.snapshots = ["06/07/20 09:33:07", "06/07/20 09:29:40", "06/04/20"]
 
     def assert_search_mode(self, searching=True):
         search = self.app.child(roleName="push button", name="Search")
@@ -108,7 +137,7 @@ class BrowserTest(BaseTest):
         typeText(where + "\n")
         dlg.child(name="Select").click()
 
-    def walk_restore(self, password=None, error=False, where=None):
+    def walk_restore(self, error=False, where=None):
         self.start_restore()
         shutil.rmtree(self.srcdir, ignore_errors=True)
 
@@ -117,10 +146,10 @@ class BrowserTest(BaseTest):
 
         self.window.button("Restore").click()  # to where
 
-        if password:
+        if self.password:
             self.window.child(
                 roleName="text", label="Encryption password"
-            ).text = password
+            ).text = self.password
             self.window.button("Forward").click()
 
         title = "Restore Failed" if error else "Restore Finished"
@@ -173,7 +202,7 @@ class BrowserTest(BaseTest):
                 pressKey("space")
 
     def test_enable_search_mode(self):
-        self.scan()
+        self.scan_dir1()
 
         self.assert_search_mode(False)
         keyCombo("<Control>f")
@@ -186,7 +215,7 @@ class BrowserTest(BaseTest):
         self.assert_search_mode()
 
     def test_select_all(self):
-        self.scan()
+        self.scan_dir1()
 
         icons = self.app.findChildren(lambda x: x.roleName == "table cell")
         assert len(icons) == 4 and len([i for i in icons if i.selected]) == 0
@@ -197,7 +226,7 @@ class BrowserTest(BaseTest):
         assert len([i for i in icons if i.selected]) == 4
 
     def test_successful_restore(self):
-        self.scan()
+        self.scan_dir1()
 
         # select one (new location)
         self.select("four.txt")
@@ -218,8 +247,7 @@ class BrowserTest(BaseTest):
         self.app.child(roleName="push button", name="Search").click()
 
     def test_encrypted_and_dates(self):
-        self.use_backup_dir("encrypted")
-        self.scan(password="test")  # test password prompt
+        self.scan_dir2()
 
         # test dir navigation (could go in any test, but thrown in here)
         view = self.app.child(roleName="table")
@@ -244,7 +272,7 @@ class BrowserTest(BaseTest):
                 lambda x: x.roleName == "label", showingOnly=False
             )
         ]
-        assert ["06/07/20 09:33:07", "06/07/20 09:29:40", "06/04/20"] == dates
+        assert self.snapshots == dates
 
         # choose oldest date, it should have an extra item in it
         pressKey("Down")
@@ -272,7 +300,7 @@ class BrowserTest(BaseTest):
                 == "Backups does not have permission to restore the following files:"
             )
 
-        self.scan()
+        self.scan_dir1()
         self.select("four.txt", "dir1")
         self.start_restore()
         button = self.window.button("Restore")
@@ -293,3 +321,16 @@ class BrowserTest(BaseTest):
         assert button.sensitive
 
         self.window.button("Cancel").click()
+
+
+class ResticBrowserTest(ResticMixin, BrowserTest):
+    def scan_dir1(self):
+        self.password = "test1"
+        self.use_backup_dir("restic1")
+        self.scan()
+
+    def scan_dir2(self):
+        self.password = "test2"
+        self.use_backup_dir("restic2")
+        self.scan()
+        self.snapshots = ["08/02/21 15:34:06", "08/02/21 15:33:43", "07/28/21"]

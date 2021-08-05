@@ -25,14 +25,14 @@ class BackupTest(BaseTest):
 
         # Set up destination
         self.destdir = self.rootdir + "/dest"
-        #os.mkdir(self.destdir)
+        # os.mkdir(self.destdir)
         self.set_string("backend", "local")
         self.set_string("folder", self.destdir, child="local")
 
     @property
     def backup_files(self):
         try:
-            return list(glob.iglob(self.destdir + '/**/*', recursive=True))
+            return list(glob.iglob(self.destdir + "/**/*", recursive=True))
         except FileNotFoundError:
             return []
 
@@ -98,7 +98,7 @@ class BackupTest(BaseTest):
 
         app = self.cmd("--backup")
         # Try once with the wrong password, just for fun
-        #with self.new_files(False):
+        # with self.new_files(False):
         self.walk_incremental_backup(app, password="nope", wait=False)
         with self.new_files():
             self.walk_incremental_backup(app, password="t")
@@ -209,4 +209,4 @@ class BackupTest(BaseTest):
 
 class ResticBackupTest(ResticMixin, BackupTest):
     pass
-    # resume and nag fail
+    # FIXME: test_nag_check and test_resume don't work yet

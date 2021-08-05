@@ -49,9 +49,7 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.refresh(periodic_main).checked)
 
         # Period to settings
-        period = prefs.child(
-            roleName="combo box", name="Automatic Backup Frequency"
-        )
+        period = prefs.child(roleName="combo box", name="Automatic Backup Frequency")
         period.click()
         prefs.child(name="Daily").click()
         self.assertEqual(self.get_int("periodic-period"), 1)
