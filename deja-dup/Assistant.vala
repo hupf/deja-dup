@@ -263,8 +263,7 @@ public class Assistant : Adw.Window
 
   protected void make_button_default(Gtk.Widget button)
   {
-    // FIXME: causes crashes?
-    //set_default_widget(button);
+    set_default_widget(button);
     button.add_css_class("default");
     button.add_css_class("suggested-action");
   }
@@ -308,6 +307,8 @@ public class Assistant : Adw.Window
       show_close = true;
       break;
     }
+
+    set_default_widget(null);
 
     var area = header_bar;
     if (cancel_button != null) {

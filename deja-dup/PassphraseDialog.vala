@@ -20,8 +20,17 @@ class PassphraseDialog : Gtk.Dialog
     use_header_bar = 1; // setting this in the ui file doesn't seem to work
 
     entry.changed.connect(() => {
+      // Because we set use_header_bar, the default widget seems to get unset
+      // after this constructor. So make sure it's set here. Must be better way.
+      set_default_response(Gtk.ResponseType.OK);
+
       set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
     });
+  }
+
+  ~PassphraseDialog()
+  {
+    debug("Finalizing PassphraseDialog\n");
   }
 
   public override void response(int response_id)
