@@ -268,9 +268,9 @@ class Browser : Gtk.Grid
   void start_restore()
   {
     var bitset = selection.get_selection();
-    Gtk.BitsetIter iter;
+    var iter = Gtk.BitsetIter();
     uint position;
-    if (!Gtk.BitsetIter.init_first(out iter, bitset, out position))
+    if (!iter.init_first(bitset, out position))
       return;
 
     List<File> files = null;
