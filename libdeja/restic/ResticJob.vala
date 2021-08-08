@@ -10,8 +10,6 @@ using GLib;
  * FIXME:
  * - need to delete older as we run out of space
  * - test deleting old backups per preferences
- * - fix restoring multiple files to a single target directory
- * - set TMPDIR (requires async call)
  * - enable verify operation (blocked by nested includes/excludes)
  */
 
@@ -19,6 +17,7 @@ internal class ResticJoblet : DejaDup.ToolJoblet
 {
   protected bool ignore_errors = false;
   string rclone_remote = null;
+  string tmpdir = null;
 
   // Joblet interface
   protected override ToolInstance make_instance() {
@@ -28,6 +27,12 @@ internal class ResticJoblet : DejaDup.ToolJoblet
     add_handler(instance.fatal_error.connect(handle_fatal_error));
     add_handler(instance.no_repository.connect(handle_no_repository));
     return instance;
+  }
+
+  protected override async void prepare() throws Error
+  {
+    yield base.prepare();
+    tmpdir = yield DejaDup.get_tempdir(); // save and use in prepare_args
   }
 
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
@@ -53,6 +58,9 @@ internal class ResticJoblet : DejaDup.ToolJoblet
       rclone_remote = Rclone.fill_envp_from_backend(backend, ref envp);
       argv.append("--option=rclone.program=" + Rclone.rclone_command());
     }
+
+    if (DejaDup.ensure_directory_exists(tmpdir))
+      envp.append("TMPDIR=%s".printf(tmpdir));
   }
 
   // Restic helpers
