@@ -32,6 +32,14 @@ SPDX-FileCopyrightText: Michael Terry
   - New config flag `rclone_pkgs`, if you are building with packagekit support
     and don't want to depend on the rclone package.
 
+# 42.8
+- Fix not prompting for the encryption password during a scheduled backup if
+  the previous scheduled backup's prompt was ignored. This would have the
+  practical effect of disabling scheduled backups after the first ignored
+  prompt of each login session, if you don't keep your password saved.
+- Update Basque, Dutch, Hungarian, Indonesian, Italian, Occitan, Romanian,
+  Russian, Serbian, and Spanish translations
+
 # 42.7
 - Fix descending into a directory while searching in the browse & restore view
 - Update Google Drive logo
