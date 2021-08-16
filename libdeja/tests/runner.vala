@@ -783,6 +783,7 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
   switch (mode) {
     case "backup":
       args.append("backup");
+      args.append("--tag=deja-dup");
       args.append("--exclude-caches");
       args.append("--exclude-if-present=.deja-dup-ignore");
 
@@ -841,6 +842,8 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
 
     case "forget":
       args.append("forget");
+      args.append("--tag=deja-dup");
+      args.append("--group-by=tags");
       if (keep_within >= 0)
         args.append("--keep-within=%dd".printf(keep_within));
       args.append("--prune");

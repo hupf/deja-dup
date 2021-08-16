@@ -36,8 +36,6 @@ public class PreferencesWindow : Adw.PreferencesWindow
       _("Restic is a another backup tool that can be used under the hood instead of Duplicity.") + " " +
       _("It is hoped that Restic will enable new features more easily in the future.") +
       "\n\n" +
-      _("Please note that you must choose a new storage location, rather than convert an existing backup.") +
-      "\n\n" +
       _("This is an experimental feature and may be removed at any time.") + " " +
       _("Use caution, but any testing you can manage is appreciated.") +
       "\n\n" +

@@ -9,8 +9,8 @@ using GLib;
 /**
  * FIXME:
  * - need to delete older as we run out of space
- * - test deleting old backups per preferences
  * - enable verify operation (blocked by nested includes/excludes)
+ * - removing old versions of duplicity as we make restic ones (wait until out of beta?)
  */
 
 internal class ResticJoblet : DejaDup.ToolJoblet
@@ -159,6 +159,7 @@ internal class ResticMakeSpaceJoblet : ResticJoblet
     base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("stats");
+    argv.append("--tag=deja-dup");
     argv.append("--mode=raw-data");
   }
 
@@ -244,6 +245,7 @@ internal class ResticBackupJoblet : ResticJoblet
 
     argv.append(get_remote());
     argv.append("backup");
+    argv.append("--tag=deja-dup");
     argv.append("--exclude-caches");
     argv.append("--exclude-if-present=.deja-dup-ignore");
     add_include_excludes(ref argv);
@@ -374,6 +376,8 @@ internal class ResticDeleteOldBackupsJoblet : ResticJoblet
     base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("forget");
+    argv.append("--tag=deja-dup");
+    argv.append("--group-by=tags");
     argv.append("--keep-within=%dd".printf(delete_after));
     argv.append("--prune");
   }
@@ -386,6 +390,7 @@ internal class ResticStatusJoblet : ResticJoblet
     base.prepare_args(ref argv, ref envp);
     argv.append(get_remote());
     argv.append("snapshots");
+    argv.append("--tag=deja-dup");
   }
 
   protected override void handle_no_repository()

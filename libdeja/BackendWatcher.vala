@@ -19,6 +19,7 @@ public class DejaDup.BackendWatcher : Object
   construct {
     var settings = DejaDup.get_settings();
     settings.changed[DejaDup.BACKEND_KEY].connect(handle_change);
+    settings.changed[DejaDup.TOOL_KEY].connect(handle_change);
     settings.changed[DejaDup.LAST_BACKUP_KEY].connect(() => {new_backup();});
     all_settings.prepend(settings);
 
