@@ -92,11 +92,19 @@ public class BackendRemote : BackendFile
     // SMB likes to give back a very generic error when the host is not
     // available ("Invalid argument").  Try to work around that here.
     // TODO: file upstream bug.
-    if (Posix.errno == Posix.EAGAIN &&
-        root.get_uri_scheme() == "smb" &&
-        e.matches(IOError.quark(), 0))
+    if (root.get_uri_scheme() == "smb")
     {
-      return _("The network server is not available");
+      // Presumably when this issue first appeared, the following old_check
+      // approach caught it. These days, we get a more appropriate INVALID_ARGUMENT
+      // error back (appropriate, because that's the message string we get:
+      // "invalid argument"). I'll leave this old check in place, because it
+      // seems harmless. But at some point, I suppose we ought to remove it.
+      // New check works on at least gvfs 1.47.91 and presumably somewhat earlier.
+      var old_check = Posix.errno == Posix.EAGAIN &&
+                      e.matches(IOError.quark(), 0);
+      if (e.matches(IOError.quark(), IOError.INVALID_ARGUMENT) || old_check) {
+        return _("The network server is not available");
+      }
     }
 
     return e.message;
@@ -113,13 +121,27 @@ public class BackendRemote : BackendFile
       // network test). If we do end up mounting it, that's fine.  This is
       // only called right before attempting an operation.
       return yield root.mount_enclosing_volume(MountMountFlags.NONE, mount_op, null);
-    } catch (IOError.ALREADY_MOUNTED e) {
-      when = _("Backup will begin when a network connection becomes available.");
-      return Network.get().connected;
-    } catch (IOError.FAILED_HANDLED e) {
+    }
+    catch (IOError.ALREADY_MOUNTED e) {
+      // We're mounted! Great. However, the remote server might have become
+      // unavailable since being mounted before. Maybe we've walked to a cafe.
+      // So let's just do simple query to confirm it's reachable.
+      try {
+        yield root.query_info_async(FileAttribute.STANDARD_NAME,
+                                    FileQueryInfoFlags.NONE,
+                                    Priority.DEFAULT, null);
+        return true;
+      }
+      catch (Error e) {
+        when = get_unready_message(root, e);
+        return false;
+      }
+    }
+    catch (IOError.FAILED_HANDLED e) {
       // Needed user input, so we know we can reach server
       return true;
-    } catch (Error e) {
+    }
+    catch (Error e) {
       when = get_unready_message(root, e);
       return false;
     }
