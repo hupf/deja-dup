@@ -230,10 +230,10 @@ static void begin_monitoring()
   watch_settings();
 
   // Delay first check to give the network and desktop environment a chance to start up.
+  var delay_time = 120;
   if (no_delay || DejaDup.in_testing_mode())
-    make_first_check();
-  else
-    Timeout.add_seconds(120, () => {make_first_check(); return false;});
+    delay_time = 0;
+  Timeout.add_seconds(delay_time, () => {make_first_check(); return false;});
 }
 
 static int main(string[] args)

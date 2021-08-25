@@ -35,11 +35,11 @@ public class Network : Object
   construct {
     var mon = NetworkMonitor.get_default();
 
-    update_connected();
     mon.notify["network-available"].connect(update_connected);
+    update_connected();
 
-    update_metered();
     mon.notify["network-metered"].connect(update_metered);
+    update_metered();
   }
 
   void update_connected()
