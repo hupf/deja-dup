@@ -107,13 +107,13 @@ public class MountOperationAssistant : MountOperation
       password_page.remove(layout);
 
     layout = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
+    DejaDup.set_margins(layout, 12);
 
     table = new Gtk.Grid();
     table.hexpand = true;
     table.vexpand = true;
     table.row_spacing = 6;
     table.column_spacing = 6;
-    DejaDup.set_margins(table, 12);
 
     password_page.append(layout);
 
@@ -137,12 +137,12 @@ public class MountOperationAssistant : MountOperation
     }
 
     // Buffer
-    label = new Gtk.Label("");
-    layout.append(label);
+    label.margin_bottom = 6;
 
     if ((flags & AskPasswordFlags.ANONYMOUS_SUPPORTED) != 0) {
       anonymous_w = new Gtk.CheckButton.with_mnemonic(_("Connect _anonymously"));
       anonymous_w.toggled.connect((b) => {check_valid_inputs();});
+      anonymous_w.active = true;
       layout.append(anonymous_w);
 
       var w = new Gtk.CheckButton.with_mnemonic(_("Connect as u_ser"));
