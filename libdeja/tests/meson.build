@@ -57,8 +57,8 @@ tests = [
 
 foreach t: tests
     test('script-' + t, dbus_run_session,
-        env: ['top_builddir=' + meson.build_root(),
-              'top_srcdir=' + meson.source_root(),
+        env: ['top_builddir=' + meson.project_build_root(),
+              'top_srcdir=' + meson.project_source_root(),
               'srcdir=' + meson.current_source_dir()],
         args: [test_runner.full_path(),
                join_paths(meson.current_source_dir(), 'scripts', t + '.test')])

@@ -17,4 +17,4 @@ test('po-linguas', validate_po_linguas,
 validate_potfiles = find_program('./validate-potfiles')
 test('potfiles', validate_potfiles,
     env: ['LC_ALL=C.UTF-8'],
-    workdir: meson.source_root())
+    workdir: meson.project_source_root())

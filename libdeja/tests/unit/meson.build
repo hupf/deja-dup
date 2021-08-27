@@ -11,8 +11,8 @@ unit_tests = executable('unit-tests', ['unit-tests.vala'],
     include_directories: [libdeja_inc])
 
 test('unit-tests', dbus_run_session,
-    env: ['top_builddir=' + meson.build_root(),
-          'top_srcdir=' + meson.source_root(),
+    env: ['top_builddir=' + meson.project_build_root(),
+          'top_srcdir=' + meson.project_source_root(),
           'srcdir=' + meson.current_source_dir()],
     args: [unit_tests.full_path()])
 

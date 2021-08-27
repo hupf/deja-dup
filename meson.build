@@ -6,7 +6,7 @@
 project('deja-dup', ['vala', 'c'],
     version: '43.alpha',
     license: 'GPL-3.0-or-later',
-    meson_version: '>= 0.47')
+    meson_version: '>= 0.57')
 
 gnome = import('gnome')
 i18n = import('i18n')

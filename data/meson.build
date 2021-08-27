@@ -78,6 +78,7 @@ resources = gnome.compile_resources(application_id, resources_xml,
     source_dir: ['ui'],
     c_name: 'resources')
 
-meson.add_install_script('post-install.sh', datadir)
-message('''You may need to recompile your gsettings schemas or regenerate
-         your icon cache after installation.''')
+gnome.post_install(
+    glib_compile_schemas: true,
+    gtk_update_icon_cache: true,
+)

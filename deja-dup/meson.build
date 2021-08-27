@@ -41,7 +41,7 @@ deja_dup = executable('deja-dup',
      'WidgetUtils.vala',
     ] + resources,
     vala_args: [
-        '--gresourcesdir=@0@/data/ui'.format(meson.source_root()),
+        '--gresourcesdir=@0@/data/ui'.format(meson.project_source_root()),
     ] + common_vflags,
     c_args: common_cflags,
     dependencies: [
