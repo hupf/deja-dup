@@ -174,10 +174,9 @@ internal class DuplicityJob : DejaDup.ToolJob
     clean_credentials_dir();
 
     credentials_dir = DirUtils.make_tmp("deja-dup-XXXXXX");
-    var prefix = "/org/gnome/DejaDup%s/".printf(Config.PROFILE);
 
     // Add settings.yaml
-    var yaml_path = prefix + "pydrive-settings.yaml";
+    var yaml_path = "/org/gnome/DejaDup/pydrive-settings.yaml";
     var yaml_bytes = resources_lookup_data(yaml_path, ResourceLookupFlags.NONE);
     var yaml = (string)yaml_bytes.get_data();
     yaml = yaml.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);
@@ -185,7 +184,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     FileUtils.set_contents("%s/settings.yaml".printf(credentials_dir), yaml);
 
     // Add credentials.json
-    var json_path = prefix + "pydrive-credentials.json";
+    var json_path = "/org/gnome/DejaDup/pydrive-credentials.json";
     var json_bytes = resources_lookup_data(json_path, ResourceLookupFlags.NONE);
     var json = (string)json_bytes.get_data();
     json = json.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);

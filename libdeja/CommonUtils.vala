@@ -438,8 +438,7 @@ public string get_access_granted_html()
 {
   try {
     // Grabs the html from resources and fills in some strings with calculated content
-    var prefix = "/org/gnome/DejaDup%s/".printf(Config.PROFILE);
-    var html_path = prefix + "access-granted.html";
+    var html_path = "/org/gnome/DejaDup/access-granted.html";
     var html_bytes = resources_lookup_data(html_path, ResourceLookupFlags.NONE);
     var html = (string)html_bytes.get_data();
 
