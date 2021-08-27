@@ -23,6 +23,8 @@ public class DejaDupApp : Adw.Application
     {"auto", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
     {"delay", 0, OptionFlags.HIDDEN, OptionArg.STRING, null, null, null},
     {"prompt", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
+    // debugging option to easily grab the generated access granted html
+    {"access-granted-html", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
     {"", 0, 0, OptionArg.FILENAME_ARRAY, null, null, null}, // remaining
     {null}
   };
@@ -111,7 +113,11 @@ public class DejaDupApp : Adw.Application
     }
     else if (options.contains("prompt")) {
       Notifications.prompt();
-    } else {
+    }
+    else if (options.contains("access-granted-html")) {
+      print(DejaDup.get_access_granted_html());
+    }
+    else {
       activate();
     }
 
