@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>$TITLE</title>
+    <style>
+      /*
+        These dark/light values were taken from Adwaita:
+        https://gitlab.gnome.org/GNOME/libadwaita/-/blob/main/src/stylesheet/_colors.scss
+      */
+      :root {
+        --c-bg: #f6f5f4;
+        --c-fg: #2e3436;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --c-bg: #353535;
+          --c-fg: #eeeeec;
+        }
+      }
+      /* This looks like maybe it will work in the future - but not today.
+      :root {
+        --c-bg: Canvas;
+        --c-fg: CanvasText;
+      }
+      */
+
+      :root {
+        color-scheme: light dark;
+        background-color: var(--c-bg);
+        color: var(--c-fg);
+        font-family: system-ui, Cantarell, sans-serif;
+      }
+      .box {
+        height: 60vh;
+        width: 60vw;
+        margin: 18vh 20vw;
+
+        text-align: center;
+        align-items: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .icons {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        margin-bottom: 1em;
+      }
+      .big svg {
+        height: 8em;
+        width: 8em;
+      }
+      .small svg {
+        height: 3em;
+        width: 3em;
+      }
+      hr.dotted {
+        border: 0;
+        border-bottom: 0.25em dotted var(--c-fg);
+        width: 3em;
+      }
+      .headline {
+        width: 40vw;
+        font-weight: 400;
+      }
+      .text {
+        width: 40vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box">
+      <div class="icons">
+        <span class="big">@svglogo@</span>
+        <hr class="dotted" />
+        <span class="small">@svgcheck@</span>
+        <hr class="dotted" />
+        <span class="big">@svgcloud@</span>
+      </div>
+      <h1 class="headline">$TITLE</h1>
+      <p class="text">$TEXT</p>
+    </div>
+  </body>
+</html>

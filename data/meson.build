@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+fs = import('fs')
+
 conf_data = configuration_data()
 conf_data.set('appid', application_id)
 conf_data.set('bindir', bindir)
@@ -11,6 +13,9 @@ conf_data.set('gsettingspath', profile == '' ? 'deja-dup' : 'deja-dup-' + profil
 conf_data.set('icon', application_id)
 conf_data.set('pkglibexecdir', pkglibexecdir)
 conf_data.set('profile', profile)
+conf_data.set('svgcheck', fs.read('icons/selection-checked-symbolic.svg'))
+conf_data.set('svgcloud', fs.read('icons/cloud-outline-thin-symbolic.svg'))
+conf_data.set('svglogo', fs.read('icons/org.gnome.DejaDup-symbolic.svg'))
 conf_data.set('version', meson.project_version())
 
 install_data(join_paths('icons', '@0@.svg'.format(application_id)),
@@ -71,11 +76,15 @@ deja_dup_appdata = custom_target('org.gnome.DejaDup.appdata.xml',
 test('validate-appstream', appstream_util,
     args: ['--nonet', 'validate-relax', deja_dup_appdata.full_path()])
 
+configure_file(input: 'access-granted.html.in',
+    output: 'access-granted.html',
+    configuration: conf_data)
+
 resources_xml = configure_file(input: 'resources.xml',
     output: 'resources.vars.xml',
     configuration: conf_data)
 resources = gnome.compile_resources(application_id, resources_xml,
-    source_dir: ['ui'],
+    source_dir: ['ui', meson.current_build_dir()],
     c_name: 'resources')
 
 gnome.post_install(
