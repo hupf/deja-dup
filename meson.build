@@ -112,6 +112,11 @@ if get_option('enable_restic')
 common_vflags += ['--define=ENABLE_RESTIC']
 endif
 
+# Check if gio has GPowerProfileMonitor support
+if dependency('gio-2.0', version: '>= 2.70', required: false).found()
+common_vflags += ['--define=HAS_POWER_PROFILE_MONITOR']
+endif
+
 add_test_setup('default', is_default: true, env: {
     'DEJA_DUP_LANGUAGE': 'en',
     'GSETTINGS_BACKEND': 'memory',
