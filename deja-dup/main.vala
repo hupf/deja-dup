@@ -32,6 +32,7 @@ public class DejaDupApp : Adw.Application
   const ActionEntry[] ACTIONS = {
     {"backup", backup},
     {"backup-auto", backup_auto},
+    {"backup-auto-stop", backup_auto_stop},
     {"prompt-ok", prompt_ok},
     {"prompt-cancel", prompt_cancel},
     {"delay", delay, "s"},
@@ -290,6 +291,14 @@ public class DejaDupApp : Adw.Application
   {
     if (get_operation() == null) {
       backup_full(true);
+    }
+  }
+
+  public void backup_auto_stop()
+  {
+    var backup_op = get_operation() as AssistantBackup;
+    if (backup_op != null && backup_op.automatic) {
+      backup_op.stop();
     }
   }
 

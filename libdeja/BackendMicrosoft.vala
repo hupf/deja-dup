@@ -47,8 +47,9 @@ public class BackendMicrosoft : BackendOAuth
     return new ThemedIcon("deja-dup-microsoft-onedrive");
   }
 
-  public override async bool is_ready(out string when) {
-    when = _("Backup will begin when a network connection becomes available.");
+  public override async bool is_ready(out string reason, out string message) {
+    reason = "microsoft-reachable";
+    message = _("Backup will begin when a network connection becomes available.");
     return yield Network.get().can_reach("https://%s/".printf(MICROSOFT_SERVER));
   }
 

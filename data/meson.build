@@ -33,6 +33,13 @@ gschema = configure_file(input: 'org.gnome.DejaDup.gschema.xml.in',
     configuration: conf_data,
     install_dir: join_paths(datadir, 'glib-2.0', 'schemas'))
 
+custom_target('gschema',
+    build_by_default: true,
+    output: 'gschemas.compiled',
+    depend_files: [gschema],
+    command: [glib_compile_schemas, meson.current_build_dir()]
+)
+
 test('validate-gschema', glib_compile_schemas,
     args: ['--strict', '--dry-run', '--schema-file', gschema])
 
@@ -61,7 +68,7 @@ deja_dup_desktop = custom_target('org.gnome.DejaDup.desktop',
     install_dir: join_paths(datadir, 'applications'))
 
 test('validate-desktop', desktop_file_validate,
-    args: [deja_dup_desktop.full_path()])
+    args: [deja_dup_desktop])
 
 vars = configure_file(input: 'org.gnome.DejaDup.appdata.xml.in',
     output: 'org.gnome.DejaDup.vars.appdata.xml.in',
@@ -74,7 +81,7 @@ deja_dup_appdata = custom_target('org.gnome.DejaDup.appdata.xml',
     install_dir: join_paths(datadir, 'metainfo'))
 
 test('validate-appstream', appstream_util,
-    args: ['--nonet', 'validate-relax', deja_dup_appdata.full_path()])
+    args: ['--nonet', 'validate-relax', deja_dup_appdata])
 
 configure_file(input: 'access-granted.html.in',
     output: 'access-granted.html',

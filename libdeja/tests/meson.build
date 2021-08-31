@@ -60,7 +60,7 @@ foreach t: tests
         env: ['top_builddir=' + meson.project_build_root(),
               'top_srcdir=' + meson.project_source_root(),
               'srcdir=' + meson.current_source_dir()],
-        args: [test_runner.full_path(),
+        args: [test_runner,
                join_paths(meson.current_source_dir(), 'scripts', t + '.test')])
 endforeach
 

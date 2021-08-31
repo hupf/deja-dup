@@ -25,7 +25,7 @@ public void run_error_dialog(Gtk.Window? parent, string header, string message)
 
 public Gtk.Builder make_builder(string name)
 {
-  var path = "/org/gnome/DejaDup%s/%s.ui".printf(Config.PROFILE, name);
+  var path = "%s/%s.ui".printf(DejaDup.get_application_path(), name);
   return new Gtk.Builder.from_resource(path);
 }
 

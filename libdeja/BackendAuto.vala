@@ -16,8 +16,8 @@ public class DejaDup.BackendAuto : Backend
     return null;
   }
 
-  public override async bool is_ready(out string when) {
-    when = null;
+  public override async bool is_ready(out string reason, out string message) {
+    yield base.is_ready(out reason, out message);
     return false;
   }
 

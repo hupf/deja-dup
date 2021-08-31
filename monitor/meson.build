@@ -3,7 +3,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-executable('deja-dup-monitor', ['monitor.vala'],
+executable('deja-dup-monitor',
+    [
+        'BackupInterface.vala',
+        'monitor.vala',
+        'ReadyWatcher.vala',
+        'Scheduler.vala',
+    ],
     vala_args: common_vflags,
     c_args: common_cflags,
     dependencies: [gio_dep, secret_dep],
@@ -12,3 +18,5 @@ executable('deja-dup-monitor', ['monitor.vala'],
     install: true,
     install_rpath: pkglibdir,
     install_dir: pkglibexecdir)
+
+subdir('tests')
