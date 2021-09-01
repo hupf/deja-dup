@@ -8,7 +8,10 @@ set -e
 
 test -d .git || exit 0
 
-sources=$(git ls-files | grep -e '\.vala$' -e '^data/ui/' -e '^data/.*\.in$' | grep -v '/tests/')
+sources=$(git ls-files |
+          grep -e '\.vala$' -e '^data/ui/' -e '^data/.*\.in$' |
+          grep -v '/tests/' |
+          grep -v '^data/access-granted.html.in$')
 
 test -e po/POTFILES.in
 echo "$sources" | diff -u -B -I '^#.*' po/POTFILES.in -
