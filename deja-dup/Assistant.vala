@@ -73,7 +73,7 @@ public class Assistant : Adw.Window
     infos = new List<PageInfo>();
 
     var dialog_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
-    set_child(dialog_box);
+    set_content(dialog_box);
 
     header_bar = new Adw.HeaderBar();
     header_bar.show_start_title_buttons = false;
