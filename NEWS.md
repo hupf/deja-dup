@@ -11,6 +11,8 @@ SPDX-FileCopyrightText: Michael Terry
 - Switch from gtk3 to gtk4
 - Switch from libhandy1 to libadwaita1
 - Require meson 0.57+
+- Require gtk4 4.4+
+- Require glib 2.66+
 - For Microsoft OneDrive support:
   - OneDrive will need to use the `requests_oauthlib` python module. So please
     either have your packaging depend on it, or define the new

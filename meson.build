@@ -29,9 +29,9 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
 adwaita_dep = dependency('libadwaita-1')
-gio_dep = dependency('gio-2.0', version: '>= 2.64')
+gio_dep = dependency('gio-2.0', version: '>= 2.66')
 gio_unix_dep = dependency('gio-unix-2.0')
-gtk_dep = dependency('gtk4')
+gtk_dep = dependency('gtk4', version: '>= 4.4')
 gtk_wayland_dep = dependency('gtk4-wayland', required: false)
 gtk_x11_dep = dependency('gtk4-x11', required: false)
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
@@ -62,7 +62,7 @@ endif
 common_vflags = [
     '--pkg=config',
     '--pkg=posix',
-    '--target-glib=2.64',
+    '--target-glib=2.66',
     '--vapidir', vapidir,
 ]
 common_cflags = [
