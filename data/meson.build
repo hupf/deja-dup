@@ -31,17 +31,17 @@ install_man('deja-dup.1')
 gschema = configure_file(input: 'org.gnome.DejaDup.gschema.xml.in',
     output: '@0@.gschema.xml'.format(application_id),
     configuration: conf_data,
-    install_dir: join_paths(datadir, 'glib-2.0', 'schemas'))
-
+    install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
+)
 custom_target('gschema',
     build_by_default: true,
     output: 'gschemas.compiled',
     depend_files: [gschema],
     command: [glib_compile_schemas, meson.current_build_dir()]
 )
-
 test('validate-gschema', glib_compile_schemas,
     args: ['--strict', '--dry-run', '--schema-file', gschema])
+meson.add_devenv({'GSETTINGS_SCHEMA_DIR': meson.current_build_dir()})
 
 configure_file(input: 'org.gnome.DejaDup.service.in',
     output: '@0@.service'.format(application_id),

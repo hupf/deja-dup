@@ -12,7 +12,7 @@ all: configure
 
 .PHONY: configure
 configure:
-	@[ -d builddir ] || meson -Dprofile=Devel -Denable_restic=true builddir
+	@[ -d builddir ] || meson setup -Dprofile=Devel -Denable_restic=true builddir
 
 .PHONY: check
 check: all
@@ -33,6 +33,7 @@ run:
 	@flatpak run \
 		--command=make \
 		--devel \
+		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
 		run-bash
 
@@ -40,32 +41,33 @@ run:
 run-bash:
 	@env \
 		PKG_CONFIG_PATH=/app/lib/pkgconfig \
-		make && ./tests/shell deja-dup
+		make && meson devenv -C builddir deja-dup
 
-.PHONY: devshell
-devshell:
+.PHONY: devenv
+devenv:
 	@flatpak run \
 		--command=make \
 		--devel \
 		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
-		devshell-bash
+		devenv-bash
 
-.PHONY: devshell-bash
-devshell-bash:
-	@env \
+.PHONY: devenv-bash
+devenv-bash:
+	@meson devenv -C builddir env \
+		-C `pwd` \
 		PKG_CONFIG_PATH=/app/lib/pkgconfig \
 		PS1='[📦 \W]$$ ' \
 		bash --norc
 
-.PHONY: devshell-sdk
-devshell-sdk:
+.PHONY: devenv-sdk
+devenv-sdk:
 	flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 	flatpak install --or-update -y gnome-nightly org.gnome.Platform//master org.gnome.Sdk//master
 
-.PHONY: devshell-setup
-devshell-setup: devshell-sdk flatpak
-	@echo -e '\033[0;36mAll done!\033[0m Run "make devshell" to enter the build environment'
+.PHONY: devenv-setup
+devenv-setup: devenv-sdk flatpak
+	@echo -e '\033[0;36mAll done!\033[0m Run "make devenv" to enter the build environment'
 
 .PHONY: flatpak
 flatpak:

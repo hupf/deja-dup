@@ -10,7 +10,7 @@ SPDX-FileCopyrightText: Michael Terry
 ##### Packaging
 - Switch from gtk3 to gtk4
 - Switch from libhandy1 to libadwaita1
-- Require meson 0.57+
+- Require meson 0.58+
 - Require gtk4 4.4+
 - Require glib 2.66+
 - For Microsoft OneDrive support:

@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-executable('deja-dup-monitor',
+monitor = executable('deja-dup-monitor',
     [
         'BackupInterface.vala',
         'monitor.vala',
@@ -17,6 +17,12 @@ executable('deja-dup-monitor',
     include_directories: [libdeja_inc],
     install: true,
     install_rpath: pkglibdir,
-    install_dir: pkglibexecdir)
+    install_dir: pkglibexecdir,
+)
+
+monitor_devenv = environment()
+monitor_devenv.set('DEJA_DUP_MONITOR_EXEC', monitor.full_path())
+monitor_devenv.prepend('PATH', meson.current_build_dir())
+meson.add_devenv(monitor_devenv)
 
 subdir('tests')

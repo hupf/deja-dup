@@ -6,7 +6,7 @@
 project('deja-dup', ['vala', 'c'],
     version: '43.alpha',
     license: 'GPL-3.0-or-later',
-    meson_version: '>= 0.57')
+    meson_version: '>= 0.58')
 
 gnome = import('gnome')
 i18n = import('i18n')
@@ -116,6 +116,15 @@ add_test_setup('default', is_default: true, env: {
     'DEJA_DUP_LANGUAGE': 'en',
     'GSETTINGS_BACKEND': 'memory',
     'GSETTINGS_SCHEMA_DIR': meson.project_build_root() + '/data',
+})
+
+meson.add_devenv({
+    'G_ENABLE_DIAGNOSTIC': '1',
+    'G_MESSAGES_DEBUG': 'deja-dup',
+
+    # Else we'll use the gtk backend, which won't believe we're installed
+    'GNOTIFICATION_BACKEND': 'freedesktop',
+    'DEJA_DUP_NOTIFICATION_ICON': meson.project_build_root() + '/data/icons/org.gnome.DejaDup-symbolic.svg',
 })
 
 subdir('data')

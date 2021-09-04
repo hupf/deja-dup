@@ -23,8 +23,11 @@ This is recommended if you intend to contribute back a patch. Git checkouts incl
 To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
 
 1. [Install flatpak](https://flatpak.org/setup/).
-1. `make devshell-setup`
-1. `make devshell`
+1. `make devenv-setup`
+1. `make devenv`
+
+Now you're inside a flatpak container (org.gnome.DejaDupDevel) with all dependencies installed.
+Plus an environment pointed at any built data and executables.
 
 ## Building
 
@@ -39,11 +42,10 @@ To make sure you can build against the latest GNOME libraries, it helps to insta
 
 # Testing
 
-When manually testing a change, it is helpful to run `./tests/shell` (or `shell-local` if you want a silo'd dbus environment too).
-That will give you a full shell pointing at all your built executables.
+From inside a devenv shell, you can iterate as you develop by just running `deja-dup` directly.
 
-* Running all tests: `meson test -C builddir`
-* Running one test: `meson test script-threshold-inc -C builddir/ -v`
+* Running all unit tests: `meson test -C builddir`
+* Running one unit test: `meson test script-threshold-inc -C builddir/ -v`
 
 # Copyright
 
