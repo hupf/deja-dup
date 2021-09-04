@@ -36,7 +36,12 @@ public abstract class DejaDup.Backend : Object
   // list of what-provides hints
   public virtual string[] get_dependencies() {return {};}
 
-  public virtual async bool is_ready(out string when) {when = null; return true;} // must be callable when nothing is mounted, nothing is prepared
+  // must be callable when nothing is mounted, nothing is prepared
+  public virtual async bool is_ready(out string reason, out string message) {
+    reason = null;
+    message = null;
+    return true;
+  }
 
   // Lets the backend mount itself or whatever else it needs
   public virtual async void prepare() throws Error {}

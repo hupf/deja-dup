@@ -110,10 +110,11 @@ public class BackendRemote : BackendFile
     return e.message;
   }
 
-  public override async bool is_ready(out string when)
+  public override async bool is_ready(out string reason, out string message)
   {
     var root = get_root_from_settings();
-    when = null;
+    reason = "remote-mounted";
+    message = null;
     try {
       // Test if we can mount successfully (this is better than simply
       // testing if network is reachable, since ssh configs and all sorts of
@@ -133,7 +134,7 @@ public class BackendRemote : BackendFile
         return true;
       }
       catch (Error e) {
-        when = get_unready_message(root, e);
+        message = get_unready_message(root, e);
         return false;
       }
     }
@@ -142,7 +143,7 @@ public class BackendRemote : BackendFile
       return true;
     }
     catch (Error e) {
-      when = get_unready_message(root, e);
+      message = get_unready_message(root, e);
       return false;
     }
   }

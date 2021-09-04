@@ -6,79 +6,19 @@
 
 using GLib;
 
-class Monitor : Object {
+MainLoop loop;
+Scheduler scheduler;
+ReadyWatcher ready_watcher;
 
-static MainLoop loop;
-static uint timeout_id;
-static uint netcheck_id;
-static bool reactive_check;
-static bool first_check = false;
-static DejaDup.FilteredSettings settings = null;
-
-static bool testing_delay = true;
-
-static bool no_delay = false;
-static bool show_version = false;
+bool no_delay = false;
+bool show_version = false;
 const OptionEntry[] OPTIONS = {
   {"no-delay", 0, OptionFlags.HIDDEN, OptionArg.NONE, ref no_delay, null, null},
   {"version", 0, 0, OptionArg.NONE, ref show_version, N_("Show version"), null},
   {null}
 };
 
-static bool valid_network()
-{
-  var network = DejaDup.Network.get();
-  return network.connected && !network.metered;
-}
-
-static bool network_check()
-{
-  reactive_check = true;
-  if (valid_network())
-    prepare_next_run(); // in case network manager was blocking us
-  reactive_check = false;
-  return false;
-}
-
-static void network_changed()
-{
-  // Wait a bit so that (a) user isn't bombarded by notifications as soon as
-  // they connect and (b) if this is a transient connection (or a bug as with
-  // LP bug 805140) we don't error out too soon.
-  if (netcheck_id > 0)
-    Source.remove(netcheck_id);
-  netcheck_id = 0;
-  if (valid_network())
-    netcheck_id = Timeout.add_seconds(120, network_check);
-}
-
-static void volume_added(VolumeMonitor vm, Volume vol)
-{
-  reactive_check = true;
-  prepare_next_run(); // in case missing volume was blocking us
-  reactive_check = false;
-}
-
-static async bool is_ready(out string when)
-{
-  if (DejaDup.in_testing_mode() && testing_delay) {
-    testing_delay = false;
-    when = "Testing";
-    return false;
-  }
-  var backend = DejaDup.Backend.get_default();
-  var network = DejaDup.Network.get();
-  if (!backend.is_native() && !network.connected) {
-    when = _("Backup will begin when a network connection becomes available.");
-    return false;
-  } else if (!backend.is_native() && network.metered) {
-    when = _("Backup will begin when an unmetered network connection becomes available.");
-    return false;
-  }
-  return yield backend.is_ready(out when);
-}
-
-static bool handle_options(out int status)
+bool handle_options(out int status)
 {
   status = 0;
 
@@ -90,153 +30,84 @@ static bool handle_options(out int status)
   return true;
 }
 
-static TimeSpan time_until(DateTime date)
+async void kickoff()
 {
-  return date.difference(new DateTime.now_local());
-}
-
-static async void kickoff()
-{
-  TimeSpan wait_time;
-  if (!time_until_next_run(out wait_time))
-    return;
-
-  if (wait_time > 0) {
-    // Huh?  Shouldn't have been called now.
-    prepare_next_run();
-    return;
-  }
-
-  bool was_reactive = reactive_check;
-
-  if (!was_reactive) {
-    // Now we secretly schedule another kickoff tomorrow, in case something
-    // goes wrong with this run (or user chooses to ignore for now)
-    // If this run is successful, it will change 'last-run' key and this will
-    // get rescheduled anyway.
-    prepare_tomorrow();
-  }
-
-  string when;
-  bool ready = yield is_ready(out when);
+  string unready_message;
+  bool ready = yield ready_watcher.is_ready(out unready_message);
   if (!ready) {
-    debug("Postponing the backup.");
-    if (!was_reactive && when != null)
-      DejaDup.run_deja_dup({"--delay", when});
+    if (unready_message != null) {
+      debug("Backup is not ready yet: %s", unready_message);
+      yield BackupInterface.notify_not_ready(unready_message);
+    }
+    else {
+      debug("Backup is not ready yet (no notification)");
+    }
     return;
   }
 
   debug("Running automatic backup.");
+  yield BackupInterface.start_auto();
+}
 
-  if (DejaDup.in_testing_mode()) {
-    // fake successful and schedule next run
-    DejaDup.update_last_run_timestamp(DejaDup.LAST_BACKUP_KEY);
-  }
-  else {
-    DejaDup.run_deja_dup({"--backup", "--auto"});
+// Just a simple wrapper around kickoff that ensures we only are trying to
+// kickoff one at a time. This is because we might have multiple kickoff
+// triggers happening around the same time (Scheduler, network notifications,
+// drives being connected, who knows -- they could happen simultaneously).
+// This is exacerbated by the fact that kickoff might take a moment to check
+// the ready status of the backend.
+bool kicking_off = false;
+async void single_kickoff()
+{
+  if (!kicking_off) {
+    kicking_off = true;
+    yield kickoff();
+    kicking_off = false;
+  } else {
+    debug("Tried to kickoff twice.");
   }
 }
 
-static bool time_until_next_run(out TimeSpan time)
+async void stop_and_quit()
 {
-  time = 0;
-
-  var next_date = DejaDup.next_run_date();
-  if (next_date == null) {
-    debug("Automatic backups disabled. Stopping monitor.");
-    return false;
-  }
-
-  time = time_until(next_date);
-  return true;
+  yield BackupInterface.stop_auto();
+  loop.quit();
 }
 
-static void prepare_run(TimeSpan wait_time)
+void make_first_check()
 {
-  // Stop previous run timeout
-  if (timeout_id != 0) {
-    Source.remove(timeout_id);
-    timeout_id = 0;
-  }
-
-  TimeSpan secs = wait_time / TimeSpan.SECOND + 1;
-  if (wait_time > 0 && secs > 0) {
-    debug("Waiting %ld seconds until next backup.", (long)secs);
-    timeout_id = Timeout.add_seconds((uint)secs, () => {
-      timeout_id = 0;
-      kickoff.begin();
-      return false;
-    });
-  }
-  else {
-    debug("Late by %ld seconds.  Backing up now.", (long)(secs * -1));
-    kickoff.begin();
-  }
-}
-
-static void prepare_tomorrow()
-{
-  var now = new DateTime.now_local();
-  var tomorrow = now.add(DejaDup.get_day());
-  var time = time_until(tomorrow);
-  prepare_run(time);
-}
-
-static void prepare_next_run()
-{
-  if (!first_check) // wait until first official check has happened
-    return;
-
-  TimeSpan wait_time;
-  if (!time_until_next_run(out wait_time)) {
-    // automatic backups are disabled - just quit for now
-    loop.quit();
-    return;
-  }
-
-  prepare_run(wait_time);
-}
-
-static void prepare_if_necessary(string key)
-{
-  if (key == DejaDup.LAST_BACKUP_KEY ||
-      key == DejaDup.PERIODIC_KEY ||
-      key == DejaDup.PERIODIC_PERIOD_KEY)
-    prepare_next_run();
-}
-
-static void make_first_check()
-{
-  first_check = true;
-
   DejaDup.make_prompt_check();
-  prepare_next_run();
+
+  scheduler = new Scheduler();
+  ready_watcher = new ReadyWatcher(no_delay);
+
+  scheduler.backup.connect(() => {
+    ready_watcher.reset_reasons();
+    single_kickoff.begin();
+  });
+
+  scheduler.quit.connect(() => {
+    stop_and_quit.begin();
+  });
+
+  ready_watcher.maybe_ready.connect(() => {
+    if (scheduler.past_due)
+      single_kickoff.begin();
+  });
 }
 
-static void watch_settings()
+void begin_monitoring()
 {
-  settings = DejaDup.get_settings();
-  settings.changed.connect(prepare_if_necessary);
-}
-
-static void begin_monitoring()
-{
-  DejaDup.Network.get().notify["connected"].connect(network_changed);
-  DejaDup.Network.get().notify["metered"].connect(network_changed);
-
-  var mon = DejaDup.get_volume_monitor();
-  mon.volume_added.connect(volume_added);
-
-  watch_settings();
+  // initialize network proxy, just so it can settle by the time we check it
+  DejaDup.Network.get();
 
   // Delay first check to give the network and desktop environment a chance to start up.
   var delay_time = 120;
-  if (no_delay || DejaDup.in_testing_mode())
+  if (no_delay)
     delay_time = 0;
-  Timeout.add_seconds(delay_time, () => {make_first_check(); return false;});
+  Timeout.add_seconds(delay_time, () => {make_first_check(); return Source.REMOVE;});
 }
 
-static int main(string[] args)
+int main(string[] args)
 {
   DejaDup.i18n_setup();
 
@@ -268,12 +139,12 @@ static int main(string[] args)
                  BusNameOwnerFlags.NONE, ()=>{},
                  ()=>{begin_monitoring();},
                  ()=>{loop.quit();});
-    return false;
+    return Source.REMOVE;
   });
   loop.run();
 
+  scheduler = null;
+  ready_watcher = null;
+  loop = null;
   return 0;
 }
-
-} // End of class Monitor
-

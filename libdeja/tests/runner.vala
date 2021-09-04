@@ -515,16 +515,6 @@ string get_string_field(KeyFile keyfile, string group, string key) throws Error
     return replace_keywords(field);
 }
 
-string[] get_string_list(KeyFile keyfile, string group, string key) throws Error
-{
-  var list = keyfile.get_string_list(group, key);
-  string[] replaced = {};
-  foreach (var item in list) {
-    replaced += replace_keywords(item);
-  }
-  return replaced;
-}
-
 void process_duplicity_run_block(KeyFile keyfile, string run, BackupRunner br) throws Error
 {
   string outputscript = null;
@@ -722,6 +712,16 @@ string? read_link(string path)
   catch (Error e) {
     assert_not_reached();
   }
+}
+
+string[] get_string_list(KeyFile keyfile, string group, string key) throws Error
+{
+  var list = keyfile.get_string_list(group, key);
+  string[] replaced = {};
+  foreach (var item in list) {
+    replaced += replace_keywords(item);
+  }
+  return replaced;
 }
 
 string? restic_exc(string path, bool must_exist=true)

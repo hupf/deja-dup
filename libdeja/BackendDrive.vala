@@ -75,14 +75,16 @@ public class BackendDrive : BackendFile
       return _("%1$s on %2$s").printf(folder, name);
   }
 
-  public override async bool is_ready(out string when)
+  public override async bool is_ready(out string reason, out string message)
   {
     if (get_volume() == null) {
       var name = settings.get_string(DRIVE_NAME_KEY);
-      when = _("Backup will begin when %s is connected.").printf(name);
+      reason = "drive-mounted";
+      message = _("Backup will begin when %s is connected.").printf(name);
       return false;
     }
-    when = null;
+    reason = null;
+    message = null;
     return true;
   }
 

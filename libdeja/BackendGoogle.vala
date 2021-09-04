@@ -45,8 +45,9 @@ public class BackendGoogle : BackendOAuth
     return new ThemedIcon("deja-dup-google-drive");
   }
 
-  public override async bool is_ready(out string when) {
-    when = _("Backup will begin when a network connection becomes available.");
+  public override async bool is_ready(out string reason, out string message) {
+    reason = "google-reachable";
+    message = _("Backup will begin when a network connection becomes available.");
     return yield Network.get().can_reach("https://%s/".printf(GOOGLE_SERVER));
   }
 

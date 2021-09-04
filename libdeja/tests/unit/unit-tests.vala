@@ -96,14 +96,6 @@ void prompt()
   assert(DejaDup.make_prompt_check() == true);
 }
 
-string get_top_builddir()
-{
-  var builddir = Environment.get_variable("top_builddir");
-  if (builddir == null)
-    builddir = "../../../builddir";
-  return builddir;
-}
-
 string get_srcdir()
 {
   var srcdir = Environment.get_variable("srcdir");
@@ -141,40 +133,12 @@ int main(string[] args)
                            get_srcdir() + "/../mock:" +
                              Environment.get_variable("PATH"),
                            true);
-  Environment.set_variable("DEJA_DUP_LANGUAGE", "en", true);
-  Environment.set_variable("GSETTINGS_BACKEND", "memory", true);
-  Test.bug_base("https://gitlab.gnome.org/World/deja-dup/-/issues/%s");
 
-  string tmpdir;
-  try {
-    tmpdir = DirUtils.make_tmp("deja-dup-test-XXXXXX");
-  } catch (Error e) {
-    printerr("Could not make temporary dir\n");
-    return 1;
-  }
-
-  var schema_dir = Path.build_filename(tmpdir, "share", "glib-2.0", "schemas");
-  DirUtils.create_with_parents(schema_dir, 0700);
-
-  var data_dirs = Environment.get_variable("XDG_DATA_DIRS");
-  Environment.set_variable("XDG_DATA_DIRS", "%s:%s".printf(Path.build_filename(tmpdir, "share"), data_dirs), true);
-
-  if (Posix.system("cp %s/data/%s.gschema.xml %s".printf(get_top_builddir(), Config.APPLICATION_ID, schema_dir)) != 0)
-    warning("Could not copy schema to %s", schema_dir);
-
-  if (Posix.system("glib-compile-schemas %s".printf(schema_dir)) != 0)
-    warning("Could not compile schemas in %s", schema_dir);
-
-  var unit = new TestSuite("unit");
+  var unit = new TestSuite("libdeja");
   unit.add(new TestCase("parse-dir", setup, parse_dir, teardown));
   unit.add(new TestCase("parse-version", setup, parse_version, teardown));
   unit.add(new TestCase("prompt", setup, prompt, teardown));
   TestSuite.get_root().add_suite(unit);
 
-  int rv = Test.run();
-
-  if (Posix.system("rm -r --interactive=never %s".printf(tmpdir)) != 0)
-    warning("Could not clean %s", tmpdir);
-
-  return rv;
+  return Test.run();
 }

@@ -145,6 +145,11 @@ public string get_monitor_exec()
   return Path.build_filename(Config.PKG_LIBEXEC_DIR, "deja-dup-monitor");
 }
 
+public string get_application_path()
+{
+  return "/org/gnome/DejaDup" + Config.PROFILE;
+}
+
 uint32 machine_id = 0;
 uint32 get_machine_id()
 {
@@ -175,7 +180,7 @@ uint32 get_machine_id()
   return machine_id;
 }
 
-DateTime most_recent_scheduled_date(TimeSpan period)
+public DateTime most_recent_scheduled_date(TimeSpan period)
 {
   // Compare days between epoch and current days.  Mod by period to find
   // scheduled dates.

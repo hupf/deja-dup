@@ -10,7 +10,7 @@ project('deja-dup', ['vala', 'c'],
 
 gnome = import('gnome')
 i18n = import('i18n')
- 
+
 # Source paths
 podir = join_paths(meson.current_source_dir(), 'po')
 vapidir = join_paths(meson.current_source_dir(), 'vapi')
@@ -111,6 +111,12 @@ endif
 if get_option('enable_restic')
 common_vflags += ['--define=ENABLE_RESTIC']
 endif
+
+add_test_setup('default', is_default: true, env: {
+    'DEJA_DUP_LANGUAGE': 'en',
+    'GSETTINGS_BACKEND': 'memory',
+    'GSETTINGS_SCHEMA_DIR': meson.project_build_root() + '/data',
+})
 
 subdir('data')
 subdir('help')
