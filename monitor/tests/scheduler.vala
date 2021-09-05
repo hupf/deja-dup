@@ -171,14 +171,24 @@ void period_change_overdue()
 {
   var settings = new Settings(Config.APPLICATION_ID);
   settings.set_boolean(DejaDup.PERIODIC_KEY, true);
-  settings.set_int(DejaDup.PERIODIC_PERIOD_KEY, 5);
 
-  var recently = new DateTime.now_utc().add(-2 * TimeSpan.DAY);
-  settings.set_string(DejaDup.LAST_BACKUP_KEY, recently.format_iso8601());
+  var recent_backup = new DateTime.now_utc().add(-2 * TimeSpan.DAY);
+  settings.set_string(DejaDup.LAST_BACKUP_KEY, recent_backup.format_iso8601());
+
+  // We want to find a period that will avoid landing within the last two days,
+  // so we can simulate the backup from two days ago satisfying our period.
+  var period = 5;
+  while (true) {
+    var period_boundary = DejaDup.most_recent_scheduled_date(TimeSpan.DAY * period);
+    if (period_boundary.compare(recent_backup) < 0)
+      break;
+    period++;
+  }
+  settings.set_int(DejaDup.PERIODIC_PERIOD_KEY, period);
 
   var scheduler = new Scheduler();
   assert_inactive(scheduler);
-  assert_timer_next_period(scheduler, 5);
+  assert_timer_next_period(scheduler, period);
 
   Idle.add(() => {settings.set_int(DejaDup.PERIODIC_PERIOD_KEY, 1); return Source.REMOVE;});
   assert_backup(scheduler);

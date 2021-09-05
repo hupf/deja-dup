@@ -24,6 +24,6 @@ backup apps.
  * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
  * [Download](https://wiki.gnome.org/Apps/DejaDup/Download)
  * [Get involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
- * [Chat Room](https://matrix.to/#/#deja-dup:gnome.org)
+ * [Chat room](https://matrix.to/#/#deja-dup:gnome.org)
  * [Forums](https://discourse.gnome.org/tags/c/applications/7/deja-dup)
 
