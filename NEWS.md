@@ -5,6 +5,7 @@ SPDX-FileCopyrightText: Michael Terry
 
 # 43.alpha
 - Add support for Microsoft OneDrive
+- Delay scheduled backups when Power Saver mode or GameMode are enabled
 - Add opt-in experimental support for using Restic
 
 ##### Packaging

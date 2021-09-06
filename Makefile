@@ -33,6 +33,7 @@ run:
 	@flatpak run \
 		--command=make \
 		--devel \
+		--talk-name=com.feralinteractive.GameMode \
 		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
 		run-bash
@@ -48,6 +49,7 @@ devenv:
 	@flatpak run \
 		--command=make \
 		--devel \
+		--talk-name=com.feralinteractive.GameMode \
 		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
 		devenv-bash

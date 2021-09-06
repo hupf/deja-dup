@@ -6,6 +6,7 @@
 monitor = executable('deja-dup-monitor',
     [
         'BackupInterface.vala',
+        'GameMode.vala',
         'monitor.vala',
         'ReadyWatcher.vala',
         'Scheduler.vala',

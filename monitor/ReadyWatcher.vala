@@ -87,6 +87,7 @@ class ReadyWatcher : Object
   ///////////
   uint netcheck_id = 0;
   GenericSet<string> unready_reasons = null;
+  GameMode gamemode = null;
 #if HAS_POWER_PROFILE_MONITOR
   PowerProfileMonitor power_monitor = null;
 #endif
@@ -100,6 +101,9 @@ class ReadyWatcher : Object
 
     var mon = DejaDup.get_volume_monitor();
     mon.volume_added.connect(condition_changed);
+
+    gamemode = new GameMode();
+    gamemode.notify["enabled"].connect(gamemode_changed);
 
 #if HAS_POWER_PROFILE_MONITOR
     power_monitor = PowerProfileMonitor.dup_default();
@@ -126,6 +130,12 @@ class ReadyWatcher : Object
   // we need an unmetered connection.
   async bool is_ready_with_reason(out string reason, out string message)
   {
+    if (gamemode.enabled) {
+      reason = "gamemode";
+      message = null;
+      return false;
+    }
+
 #if HAS_POWER_PROFILE_MONITOR
     if (power_monitor.power_saver_enabled) {
       // Don't message about this - battery status will fix itself in time, and
@@ -155,6 +165,13 @@ class ReadyWatcher : Object
 
   void condition_changed()
   {
+    maybe_ready();
+  }
+
+  void gamemode_changed()
+  {
+    if (gamemode.enabled)
+      stop_auto();
     maybe_ready();
   }
 

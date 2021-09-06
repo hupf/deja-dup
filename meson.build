@@ -129,7 +129,7 @@ meson.add_devenv({
 
     # Else we'll use the gtk backend, which won't believe we're installed
     'GNOTIFICATION_BACKEND': 'freedesktop',
-    'DEJA_DUP_NOTIFICATION_ICON': meson.project_build_root() + '/data/icons/org.gnome.DejaDup-symbolic.svg',
+    'DEJA_DUP_NOTIFICATION_ICON': meson.project_source_root() + '/data/icons/org.gnome.DejaDup-symbolic.svg',
 })
 
 subdir('data')
