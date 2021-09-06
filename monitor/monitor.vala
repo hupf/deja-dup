@@ -36,11 +36,7 @@ async void kickoff()
   bool ready = yield ready_watcher.is_ready(out unready_message);
   if (!ready) {
     if (unready_message != null) {
-      debug("Backup is not ready yet: %s", unready_message);
       yield BackupInterface.notify_not_ready(unready_message);
-    }
-    else {
-      debug("Backup is not ready yet (no notification)");
     }
     return;
   }
@@ -92,6 +88,10 @@ void make_first_check()
   ready_watcher.maybe_ready.connect(() => {
     if (scheduler.past_due)
       single_kickoff.begin();
+  });
+
+  ready_watcher.stop_auto.connect(() => {
+    BackupInterface.stop_auto.begin();
   });
 }
 

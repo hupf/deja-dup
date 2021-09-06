@@ -46,7 +46,11 @@ class ReadyWatcher : Object
 {
   public signal void maybe_ready(); // it's *conceivable* ready status changed
 
-  public bool no_delay {get; set;} // used when testing, to avoid any timers
+  // sent if we become so unready, we should stop any auto backup (for example,
+  // low power mode)
+  public signal void stop_auto();
+
+  public bool no_delay {get; set;} // used when manually testing, to avoid timers
 
   public ReadyWatcher(bool no_delay)
   {
@@ -69,6 +73,9 @@ class ReadyWatcher : Object
       message = reason_message;
     }
 
+    if (!ready && reason != null)
+      debug("Backup is not ready yet: %s", reason);
+
     return ready;
   }
 
@@ -80,6 +87,9 @@ class ReadyWatcher : Object
   ///////////
   uint netcheck_id = 0;
   GenericSet<string> unready_reasons = null;
+#if HAS_POWER_PROFILE_MONITOR
+  PowerProfileMonitor power_monitor = null;
+#endif
 
   construct
   {
@@ -90,6 +100,11 @@ class ReadyWatcher : Object
 
     var mon = DejaDup.get_volume_monitor();
     mon.volume_added.connect(condition_changed);
+
+#if HAS_POWER_PROFILE_MONITOR
+    power_monitor = PowerProfileMonitor.dup_default();
+    power_monitor.notify["power-saver-enabled"].connect(power_saver_changed);
+#endif
   }
 
   ~ReadyWatcher()
@@ -111,6 +126,17 @@ class ReadyWatcher : Object
   // we need an unmetered connection.
   async bool is_ready_with_reason(out string reason, out string message)
   {
+#if HAS_POWER_PROFILE_MONITOR
+    if (power_monitor.power_saver_enabled) {
+      // Don't message about this - battery status will fix itself in time, and
+      // is almost certainly more important to the user than the backup. We don't
+      // need to nag them about changing power saver status just for us.
+      reason = "power-saver";
+      message = null;
+      return false;
+    }
+#endif
+
     var backend = DejaDup.Backend.get_default();
     var network = DejaDup.Network.get();
     if (!backend.is_native() && !network.connected) {
@@ -131,6 +157,15 @@ class ReadyWatcher : Object
   {
     maybe_ready();
   }
+
+#if HAS_POWER_PROFILE_MONITOR
+  void power_saver_changed()
+  {
+    if (power_monitor.power_saver_enabled)
+      stop_auto();
+    maybe_ready();
+  }
+#endif
 
   void network_changed()
   {
