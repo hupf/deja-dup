@@ -56,6 +56,7 @@ devenv:
 
 .PHONY: devenv-bash
 devenv-bash:
+	@env PKG_CONFIG_PATH=/app/lib/pkgconfig make configure
 	@meson devenv -C builddir env \
 		-C `pwd` \
 		PKG_CONFIG_PATH=/app/lib/pkgconfig \
