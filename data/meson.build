@@ -114,17 +114,17 @@ test(
 )
 
 
-# APPDATA
+# METAINFO
 
-deja_dup_appdata_vars = configure_file(
-    input: 'org.gnome.DejaDup.appdata.xml.in',
-    output: 'org.gnome.DejaDup.vars.appdata.xml.in',
+deja_dup_metainfo_vars = configure_file(
+    input: 'org.gnome.DejaDup.metainfo.xml.in',
+    output: 'org.gnome.DejaDup.vars.metainfo.xml.in',
     configuration: conf_data,
 )
 
-deja_dup_appdata = i18n.merge_file(
-    input: deja_dup_appdata_vars,
-    output: '@0@.appdata.xml'.format(application_id),
+deja_dup_metainfo = i18n.merge_file(
+    input: deja_dup_metainfo_vars,
+    output: '@0@.metainfo.xml'.format(application_id),
     type: 'xml',
     po_dir: join_paths(meson.project_source_root(), 'po'),
     install: true,
@@ -134,7 +134,7 @@ deja_dup_appdata = i18n.merge_file(
 test(
     'validate-appstream',
     appstream_util,
-    args: ['--nonet', 'validate-relax', deja_dup_appdata],
+    args: ['--nonet', 'validate-relax', deja_dup_metainfo],
 )
 
 

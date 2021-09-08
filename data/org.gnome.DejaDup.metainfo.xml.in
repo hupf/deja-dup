@@ -13,7 +13,7 @@ SPDX-FileCopyrightText: Michael Terry
   <id>@appid@</id>
 
   <name>Déjà Dup Backups</name>
-  <summary>Keep your important documents safe from disaster</summary>
+  <summary>Protect yourself from data loss</summary>
   <description>
     <p>Déjà Dup is a simple backup tool. It hides the complexity of backing up the Right Way (encrypted, off-site, and regular) and uses duplicity as the backend.</p>
     <ul>
@@ -37,14 +37,11 @@ SPDX-FileCopyrightText: Michael Terry
   <recommends>
     <control>keyboard</control>
     <control>pointing</control>
-    <!-- I suspect touch works fine, as I don't believe we do any custom input
-         handling, nor use any right-click menus anywhere.
-         But since it's not tested, let's not declare support. -->
-    <!-- <control>touch</control> -->
+    <control>touch</control>
   </recommends>
 
   <requires>
-    <display_length compare="ge">medium</display_length>
+    <display_length compare="ge">550</display_length>
   </requires>
 
   <provides>
@@ -75,8 +72,10 @@ SPDX-FileCopyrightText: Michael Terry
   <developer_name its:translate="no">Michael Terry</developer_name>
 
   <custom>
-    <!-- This is also the background color used in the below screenshots -->
-    <value key="GnomeSoftware::key-colors">[(40, 90, 80)]</value>
+    <!-- Some blueish colors, which seem like a good background for our gray icon.
+     For dark mode (with light text): dark blue 406785
+     For light mode (with dark text): light blue 7bc9ff-->
+    <value key="GnomeSoftware::key-colors">[(64, 103, 133), (123, 201, 255)]</value>
   </custom>
 
   <screenshots>
