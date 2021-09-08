@@ -48,7 +48,6 @@ appstream_util = find_program('appstream-util', required: false)
 dbus_run_session = find_program('dbus-run-session', required: false)
 desktop_file_validate = find_program('desktop-file-validate', required: false)
 glib_compile_schemas = find_program('glib-compile-schemas')
-msgfmt = find_program('msgfmt')
 
 # Profile support
 profile = get_option('profile')
