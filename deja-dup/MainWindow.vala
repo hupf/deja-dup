@@ -34,6 +34,9 @@ public class MainWindow : Adw.ApplicationWindow
     app_logo.icon_name = Config.ICON_NAME;
     backups_page.icon_name = Config.ICON_NAME + "-symbolic";
 
+    if (Config.PROFILE == "Devel")
+      add_css_class("devel"); // changes look of headerbars usually
+
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(DejaDup.LAST_RUN_KEY, overview_stack, "visible-child-name",
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
