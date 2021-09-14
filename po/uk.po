@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-05-12 00:55+0000\n"
-"PO-Revision-Date: 2021-05-12 09:14+0300\n"
+"POT-Creation-Date: 2021-09-13 01:12+0000\n"
+"PO-Revision-Date: 2021-09-14 08:54+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:246
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:117
 msgid "Backup Monitor"
 msgstr "Спостерігач резервного копіювання"
 
@@ -35,73 +35,15 @@ msgstr "Резервування з регулярним інтервалом"
 msgid "@icon@"
 msgstr "@icon@"
 
-#. Translators: The name is a play on the French phrase "déjà vu" meaning
-#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
-#. context is itself a reference to both the underlying command line tool
-#. "duplicity" and the act of duplicating data for backup.  As a whole, the
-#. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:367
-msgid "Déjà Dup Backups"
-msgstr "«Резервні копії» Déjà Dup"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:16
-msgid "Keep your important documents safe from disaster"
-msgstr "Зберігайте усі ваші важливі документи у безпеці від катастрофи"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:18
-msgid ""
-"Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
-"Right Way (encrypted, off-site, and regular) and uses duplicity as the "
-"backend."
-msgstr ""
-"Déjà Dup — це простий засіб резервного копіювання. Він приховує складність "
-"правильного створення резервних копій (використання шифрування, зберігання "
-"окремо від комп’ютера, регулярність копіювання) й використовує duplicity у "
-"якості внутрішнього інтерфейсу."
-
-#: data/org.gnome.DejaDup.appdata.xml.in:20
-msgid ""
-"Support for local, remote, or cloud backup locations such as Google Drive"
-msgstr ""
-"Підтримка локальних, віддалених або хмарних резервних копій, таких як Google "
-"Drive"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:21
-msgid "Securely encrypts and compresses your data"
-msgstr "Надійно шифрує та стискає дані"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:22
-msgid "Incrementally backs up, letting you restore from any particular backup"
-msgstr ""
-"Поетапне резервне копіювання, що дозволяє вам  відновитися з будь-якої "
-"конкретної резервної копії"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:23
-msgid "Schedules regular backups"
-msgstr "Розклад регулярного резервного копіювання"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:24
-msgid "Integrates well into your GNOME desktop"
-msgstr "Добра інтеграція з вашою стільницею GNOME"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:26
-msgid ""
-"Déjà Dup focuses on ease of use and recovering from personal, accidental "
-"data loss. If you need a full system backup or an archival program, you may "
-"prefer other backup apps."
-msgstr ""
-"Déjà Dup фокусується на простоті використання та відновленні випадкових "
-"втрат особистих даних. Якщо вам потрібна система резервного копіювання  "
-"всієї системи або програма для архівації, ви можете віддати перевагу іншим "
-"програмам резервного копіювання."
-
 #: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:11
 msgid "Backups"
 msgstr "Резервні копії"
 
 #: data/org.gnome.DejaDup.desktop.in:7
-msgid "Change your backup settings"
-msgstr "Змінити параметри резервного копіювання"
+#: data/org.gnome.DejaDup.metainfo.xml.in:16
+msgid "Protect yourself from data loss"
+msgstr ""
+"Захистіть себе від втрати даних"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
@@ -357,6 +299,85 @@ msgstr ""
 "Ієрархія тек, де зберігаються резервні копії. Шляхи можуть бути абсолютними "
 "або відносно основної системи."
 
+#. Translators: The name is a play on the French phrase "déjà vu" meaning
+#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
+#. context is itself a reference to both the underlying command line tool
+#. "duplicity" and the act of duplicating data for backup.  As a whole, the
+#. phrase "Déjà Dup" may not be very translatable.
+#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:383
+msgid "Déjà Dup Backups"
+msgstr "«Резервні копії» Déjà Dup"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:18
+msgid ""
+"Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
+"Right Way (encrypted, off-site, and regular) and uses duplicity as the "
+"backend."
+msgstr ""
+"Déjà Dup — це простий засіб резервного копіювання. Він приховує складність "
+"правильного створення резервних копій (використання шифрування, зберігання "
+"окремо від комп’ютера, регулярність копіювання) й використовує duplicity у "
+"якості внутрішнього інтерфейсу."
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:20
+msgid ""
+"Support for local, remote, or cloud backup locations such as Google Drive"
+msgstr ""
+"Підтримка локальних, віддалених або хмарних резервних копій, таких як Google "
+"Drive"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:21
+msgid "Securely encrypts and compresses your data"
+msgstr "Надійно шифрує та стискає дані"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:22
+msgid "Incrementally backs up, letting you restore from any particular backup"
+msgstr ""
+"Поетапне резервне копіювання, що дозволяє вам  відновитися з будь-якої "
+"конкретної резервної копії"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:23
+msgid "Schedules regular backups"
+msgstr "Розклад регулярного резервного копіювання"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:24
+msgid "Integrates well into your GNOME desktop"
+msgstr "Добра інтеграція з вашою стільницею GNOME"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:26
+msgid ""
+"Déjà Dup focuses on ease of use and recovering from personal, accidental "
+"data loss. If you need a full system backup or an archival program, you may "
+"prefer other backup apps."
+msgstr ""
+"Déjà Dup фокусується на простоті використання та відновленні випадкових "
+"втрат особистих даних. Якщо вам потрібна система резервного копіювання  "
+"всієї системи або програма для архівації, ви можете віддати перевагу іншим "
+"програмам резервного копіювання."
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:92
+msgid "Back up your files automatically. Set it and forget it."
+msgstr ""
+"Створюйте резервні копії ваших файлів автоматично. Налаштуйте програму і позбудьтеся клопоту."
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:96
+msgid "Restoring is a breeze. Browse your files and select which to restore."
+msgstr ""
+"Відновлення даних є надзвичайно простим. Достатньо вибрати файли і каталог для відновлення."
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:100
+msgid ""
+"Back up to the cloud, a network server, or a local drive. Pick a schedule "
+"that works for you."
+msgstr ""
+"Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого комп'ютера. Виберіть бажаний для вас розклад копіювання."
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:104
+msgid ""
+"Take control of your backup by choosing exactly which folders to include."
+msgstr ""
+"Керуйте резервним копіюванням, вибравши саме ті теки, які вам потрібні."
+
 #: data/ui/Browser.ui:15 data/ui/MainHeaderBar.ui:47
 msgid "Search"
 msgstr "Пошук"
@@ -463,35 +484,35 @@ msgstr "_Довідка"
 msgid "_About Backups"
 msgstr "_Про Резервні копії"
 
-#: data/ui/MainWindow.ui:26
+#: data/ui/MainWindow.ui:25
 msgid "Overview"
 msgstr "Огляд"
 
-#: data/ui/MainWindow.ui:62
+#: data/ui/MainWindow.ui:61
 msgid "Keep your important files safe in a backup."
 msgstr "Виконуйте резервне копіювання важливих для вас файлів."
 
-#: data/ui/MainWindow.ui:74
+#: data/ui/MainWindow.ui:73
 msgid "Create My First _Backup"
 msgstr "Створити першу _резервну копію"
 
-#: data/ui/MainWindow.ui:89
+#: data/ui/MainWindow.ui:88
 msgid "_Restore From a Previous Backup"
 msgstr "_Відновити дані зі створеної резервної копії"
 
-#: data/ui/MainWindow.ui:127
+#: data/ui/MainWindow.ui:126
 msgid "Back up _automatically"
 msgstr "Створювати резервні копії _автоматично"
 
-#: data/ui/MainWindow.ui:148
+#: data/ui/MainWindow.ui:147
 msgid "_Back Up Now"
 msgstr "Створити _резервну копію зараз"
 
-#: data/ui/MainWindow.ui:181 deja-dup/AssistantRestore.vala:61
+#: data/ui/MainWindow.ui:180 deja-dup/AssistantRestore.vala:61
 msgid "Restore"
 msgstr "Відновити зі збереженої копії"
 
-#: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:347
+#: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:348
 msgid "_Cancel"
 msgstr "_Скасувати"
 
@@ -548,18 +569,15 @@ msgstr "_Частота автоматичного резервного копі
 
 #: data/ui/PreferencesWindow.ui:93
 msgid "Labs"
-msgstr ""
-"Лабораторія"
+msgstr "Лабораторія"
 
 #: data/ui/PreferencesWindow.ui:97
-#| msgid "Restoring:"
 msgid "Restic"
 msgstr "Restic"
 
 #: data/ui/PreferencesWindow.ui:101
 msgid "Use _Restic instead of Duplicity"
-msgstr ""
-"Скористатися _Restic замість Duplicity"
+msgstr "Скористатися _Restic замість Duplicity"
 
 #: data/ui/ServerHintPopover.ui:17
 msgid "Network Locations"
@@ -669,28 +687,28 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Повернутися"
 
-#: deja-dup/Assistant.vala:294
+#: deja-dup/Assistant.vala:293
 msgid "Co_ntinue"
 msgstr "Про_довжити"
 
-#: deja-dup/Assistant.vala:300
+#: deja-dup/Assistant.vala:299
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Тест"
 
-#: deja-dup/Assistant.vala:333
+#: deja-dup/Assistant.vala:334
 msgid "_Resume Later"
 msgstr "Про_довжити пізніше"
 
-#: deja-dup/Assistant.vala:339
+#: deja-dup/Assistant.vala:340
 msgid "_Back"
 msgstr "_Назад"
 
-#: deja-dup/Assistant.vala:341
+#: deja-dup/Assistant.vala:342
 msgid "_Close"
 msgstr "_Закрити"
 
-#: deja-dup/Assistant.vala:358
+#: deja-dup/Assistant.vala:359
 msgid "_Forward"
 msgstr "_Вперед"
 
@@ -704,7 +722,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Резервна копія"
 
-#: deja-dup/AssistantBackup.vala:61
+#: deja-dup/AssistantBackup.vala:64
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -712,11 +730,11 @@ msgstr ""
 "Не вдалося створити резервні копії даних у вказаних нижче теках, оскільки "
 "«Резервним копіям» не вдалося отримати до них доступ:"
 
-#: deja-dup/AssistantBackup.vala:77
+#: deja-dup/AssistantBackup.vala:80
 msgid "Creating the first backup.  This may take a while."
 msgstr "Створення першої резервної копії. Це може зайняти деякий час."
 
-#: deja-dup/AssistantBackup.vala:78
+#: deja-dup/AssistantBackup.vala:81
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -726,35 +744,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:93
+#: deja-dup/AssistantBackup.vala:96
 msgid "Backing up:"
 msgstr "Резервне копіювання:"
 
-#: deja-dup/AssistantBackup.vala:102
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Failed"
 msgstr "Збереження провалено"
 
-#: deja-dup/AssistantBackup.vala:105
+#: deja-dup/AssistantBackup.vala:108
 msgid "Backup Finished"
 msgstr "Збереження завершено"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:109
+#: deja-dup/AssistantBackup.vala:112
 msgid "Your files were successfully backed up and tested."
 msgstr "Резервну копію файлів успішно створено й перевірено."
 
-#: deja-dup/AssistantBackup.vala:116
+#: deja-dup/AssistantBackup.vala:119
 msgid "Backing Up…"
 msgstr "Резервування..."
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: deja-dup/AssistantBackup.vala:122 deja-dup/AssistantOperation.vala:876
+#: deja-dup/AssistantBackup.vala:125 deja-dup/AssistantOperation.vala:879
 msgid "Backups needs your input to continue"
 msgstr "«Резервним копіям» потрібне ваше рішення, щоб продовжувати"
 
-#: deja-dup/AssistantBackup.vala:143
+#: deja-dup/AssistantBackup.vala:146
 msgid "Backup in progress"
 msgstr "Виконуємо резервне копіювання"
 
@@ -839,29 +857,28 @@ msgstr "Перевірка відновлення"
 msgid "Grant Access"
 msgstr "Надати доступ"
 
-#: deja-dup/AssistantOperation.vala:791
-#| msgid "E_ncryption password"
+#: deja-dup/AssistantOperation.vala:796
 msgid "Set Encryption Password"
 msgstr "Встановити пароль шифрування"
 
-#: deja-dup/AssistantOperation.vala:793
+#: deja-dup/AssistantOperation.vala:798
 msgid "Require Password?"
 msgstr "Потрібен пароль?"
 
-#: deja-dup/AssistantOperation.vala:795
+#: deja-dup/AssistantOperation.vala:800
 msgid "Encryption Password Needed"
 msgstr "Потрібен пароль шифрування"
 
-#: deja-dup/AssistantOperation.vala:844
+#: deja-dup/AssistantOperation.vala:847
 msgid "Backups needs your encryption password to continue"
 msgstr "«Резервним копіям» потрібен ваш пароль шифрування, щоб продовжувати"
 
-#: deja-dup/AssistantOperation.vala:916
+#: deja-dup/AssistantOperation.vala:919
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Встановити"
 
-#: deja-dup/AssistantOperation.vala:921
+#: deja-dup/AssistantOperation.vala:924
 msgid "Backups needs to install packages to continue"
 msgstr "«Резервним копіям» слід встановити пакунки, щоб продовжувати"
 
@@ -960,11 +977,11 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: deja-dup/Browser.vala:227
+#: deja-dup/Browser.vala:228
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: deja-dup/Browser.vala:333 libdeja/duplicity/DuplicityJob.vala:1158
+#: deja-dup/Browser.vala:336 libdeja/duplicity/DuplicityJob.vala:1079
 msgid "No backup files found"
 msgstr "Резервних копій не знайдено"
 
@@ -997,11 +1014,11 @@ msgid "Choose Folders"
 msgstr "Виберіть теки"
 
 #. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:61
+#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
 msgid "Google Drive"
 msgstr "Диск Google"
 
-#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:63
+#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
@@ -1112,7 +1129,7 @@ msgstr "Сховище недоступне"
 msgid "Backups needs your password to continue"
 msgstr "«Резервним копіям» потрібен ваш пароль, щоб продовжувати"
 
-#: deja-dup/MountOperationAssistant.vala:144
+#: deja-dup/MountOperationAssistant.vala:143
 msgid "Connect _anonymously"
 msgstr "З'єднатися _анонімно"
 
@@ -1179,7 +1196,8 @@ msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
 msgstr ""
-"Restic — ще один інструмент для роботи із резервними копіями, який може стати основою програми замість Duplicity."
+"Restic — ще один інструмент для роботи із резервними копіями, який може "
+"стати основою програми замість Duplicity."
 
 #: deja-dup/PreferencesWindow.vala:37
 msgid ""
@@ -1188,28 +1206,23 @@ msgstr ""
 "Є певна надія, що у майбутньому Restic спростить надання нових можливостей."
 
 #: deja-dup/PreferencesWindow.vala:39
-msgid ""
-"Please note that you must choose a new storage location, rather than convert "
-"an existing backup."
-msgstr ""
-"Будь ласка, зауважте, що вам слід вибрати нове місце для резервних копій, а не перетворювати наявні резервні копії."
-
-#: deja-dup/PreferencesWindow.vala:41
 msgid "This is an experimental feature and may be removed at any time."
 msgstr ""
 "Це експериментальна можливість, яку будь-коли може бути вилучено з програми."
 
-#: deja-dup/PreferencesWindow.vala:42
+#: deja-dup/PreferencesWindow.vala:40
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr ""
-"Будьте обережні, але ми будемо раді ознайомитися із результатами вашого тестування."
+"Будьте обережні, але ми будемо раді ознайомитися із результатами вашого "
+"тестування."
 
 #. Translators: the %s formatting is a link start and end.
-#: deja-dup/PreferencesWindow.vala:45
+#: deja-dup/PreferencesWindow.vala:43
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr ""
-"Будь ласка, %sповідомте%s нам про успіхи та помилки, якщо увімкнете цю можливість."
+"Будь ласка, %sповідомте%s нам про успіхи та помилки, якщо увімкнете цю "
+"можливість."
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1220,7 +1233,7 @@ msgstr ""
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/main.vala:20 monitor/monitor.vala:24
+#: deja-dup/main.vala:20 monitor/monitor.vala:17
 msgid "Show version"
 msgstr "Версія програми"
 
@@ -1232,15 +1245,15 @@ msgstr "Відновити дані файли"
 msgid "Immediately start a backup"
 msgstr "Негайно розпочати резервування"
 
-#: deja-dup/main.vala:81 deja-dup/main.vala:99
-msgid "An operation is already in progress"
-msgstr "Операція вже виконується"
-
-#: deja-dup/main.vala:86
+#: deja-dup/main.vala:84
 msgid "Please list files to restore"
 msgstr "Будь ласка, вкажіть список файлів для відновлення"
 
-#: deja-dup/main.vala:268
+#: deja-dup/main.vala:90 deja-dup/main.vala:104
+msgid "An operation is already in progress"
+msgstr "Операція вже виконується"
+
+#: deja-dup/main.vala:275
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1262,44 +1275,44 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:469
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:479
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s на %2$s"
 
-#: libdeja/BackendDrive.vala:82
+#: libdeja/BackendDrive.vala:83
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "Резервне копіювання почнеться, коли %s підключено."
 
-#: libdeja/BackendDrive.vala:221 libdeja/BackendRemote.vala:142
+#: libdeja/BackendDrive.vala:223 libdeja/BackendRemote.vala:165
 msgid "Storage location not available"
 msgstr "Місце зберігання недоступне"
 
-#: libdeja/BackendDrive.vala:221
+#: libdeja/BackendDrive.vala:223
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Очікуємо підключення ‘%s’ …"
 
-#: libdeja/BackendGoogle.vala:49 libdeja/BackendMicrosoft.vala:51
-#: libdeja/BackendRemote.vala:117 monitor/monitor.vala:72
+#: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
+#: monitor/ReadyWatcher.vala:154
 msgid "Backup will begin when a network connection becomes available."
 msgstr "Резервування розпочнеться коли буде доступним мережеве з’єднання ."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:64
+#: libdeja/BackendGoogle.vala:65
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s на Google Drive"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendMicrosoft.vala:66
+#: libdeja/BackendMicrosoft.vala:67
 #, c-format
 msgid "%s on Microsoft OneDrive"
 msgstr "%s на Microsoft OneDrive"
 
 #. Duplicity requires a folder, and this is a reasonable restriction.
-#: libdeja/BackendMicrosoft.vala:105
+#: libdeja/BackendMicrosoft.vala:106
 msgid "You must provide a Microsoft OneDrive folder."
 msgstr "Вам слід вказати теку Microsoft OneDrive."
 
@@ -1326,19 +1339,19 @@ msgstr ""
 "Спочатку вам слід дозволити «Резервним копіям» доступ до вашого облікового "
 "запису %s."
 
-#: libdeja/BackendRemote.vala:99
+#: libdeja/BackendRemote.vala:106
 msgid "The network server is not available"
 msgstr "Мережевий сервер недоступний"
 
-#: libdeja/BackendRemote.vala:143
+#: libdeja/BackendRemote.vala:166
 msgid "Waiting for a network connection…"
 msgstr "Очікування з’єднання з мережею..."
 
-#: libdeja/BackendRemote.vala:156
+#: libdeja/BackendRemote.vala:179
 msgid "Could not mount storage location."
 msgstr "Не вдалося змонтувати місце зберігання."
 
-#: libdeja/BackendRemote.vala:160
+#: libdeja/BackendRemote.vala:183
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
@@ -1346,7 +1359,7 @@ msgstr ""
 "Розташування сервера у мережі слід вказати у налаштуваннях розташування "
 "сховища даних."
 
-#: libdeja/BackendRemote.vala:165
+#: libdeja/BackendRemote.vala:188
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1357,37 +1370,37 @@ msgstr ""
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:173
+#: libdeja/BackendRemote.vala:196
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Мережеві розташування Samba мають містити і назву вузла, і назву спільного "
 "ресурсу."
 
-#: libdeja/CommonUtils.vala:440
+#: libdeja/CommonUtils.vala:450
 msgid "Access Granted"
 msgstr "Доступ надано"
 
-#: libdeja/CommonUtils.vala:441
+#: libdeja/CommonUtils.vala:451
 msgid "Backups will now continue. You can close this page."
 msgstr "«Резервні копії» продовжують роботу. Ви можете закрити цю сторінку."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:520
+#: libdeja/CommonUtils.vala:530
 #, c-format
 msgid "Home (%s)"
 msgstr "Домівка (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:525
+#: libdeja/CommonUtils.vala:535
 msgid "Home"
 msgstr "Домівка"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:530
+#: libdeja/CommonUtils.vala:540
 msgid "Trash"
 msgstr "Смітник"
 
-#: libdeja/CommonUtils.vala:592
+#: libdeja/CommonUtils.vala:602
 msgid "Backup encryption password"
 msgstr "Пароль шифрування резервної копії"
 
@@ -1413,13 +1426,13 @@ msgid "Listing files…"
 msgstr "Перелік файлів..."
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:460
-#: libdeja/duplicity/DuplicityJob.vala:471
-#: libdeja/duplicity/DuplicityJob.vala:507
+#: libdeja/duplicity/DuplicityJob.vala:381
+#: libdeja/duplicity/DuplicityJob.vala:392
+#: libdeja/duplicity/DuplicityJob.vala:428
 msgid "Preparing…"
 msgstr "Підготовка..."
 
-#: libdeja/OperationBackup.vala:34 libdeja/OperationVerify.vala:42
+#: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "Перевірка резервних копій..."
 
@@ -1441,14 +1454,14 @@ msgid "Paused (no network)"
 msgstr "Призупинено (мережа відсутня)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:617
+#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:275
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Місце резервного копіювання занадто мале. Спробуйте використовувати "
 "принаймні %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:642
+#: libdeja/duplicity/DuplicityJob.vala:563
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1457,15 +1470,15 @@ msgstr ""
 "Місце резервного копіювання не має достатньо вільного місця. Спробуйте "
 "використовувати принаймні %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:663
-#: libdeja/duplicity/DuplicityJob.vala:677
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "Очищення..."
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:757
+#: libdeja/duplicity/DuplicityJob.vala:678
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1476,7 +1489,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:773
+#: libdeja/duplicity/DuplicityJob.vala:694
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1491,25 +1504,25 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:793
-#: libdeja/duplicity/DuplicityJob.vala:1177 libdeja/libtool/ToolJoblet.vala:105
+#: libdeja/duplicity/DuplicityJob.vala:714
+#: libdeja/duplicity/DuplicityJob.vala:1098 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Невдача з невідомою помилкою"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:996
+#: libdeja/duplicity/DuplicityJob.vala:917
 msgid "Bad encryption password."
 msgstr "Хибний пароль шифрування."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:962
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Неможливо відновити ‘%s’: Файл не знайдено в резервній копії"
 
-#: libdeja/duplicity/DuplicityJob.vala:1052
+#: libdeja/duplicity/DuplicityJob.vala:973
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1520,53 +1533,53 @@ msgstr ""
 "уникнення непередбачуваних наслідків рекомендується створити резервну копію "
 "на іншому носії."
 
-#: libdeja/duplicity/DuplicityJob.vala:1055
+#: libdeja/duplicity/DuplicityJob.vala:976
 msgid "Computer name changed"
 msgstr "Змінено ім’я комп’ютера"
 
-#: libdeja/duplicity/DuplicityJob.vala:1090
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "В доступі відмовлено при спробі створити ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:1094
-#: libdeja/duplicity/DuplicityJob.vala:1098
+#: libdeja/duplicity/DuplicityJob.vala:1015
+#: libdeja/duplicity/DuplicityJob.vala:1019
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "В доступі відмовлено при спробі прочитати ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1102
+#: libdeja/duplicity/DuplicityJob.vala:1023
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "В доступі відмовлено при спробі вилучити ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1109
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Сховище ‘%s’ не існує."
 
-#: libdeja/duplicity/DuplicityJob.vala:1115
-#: libdeja/duplicity/DuplicityJob.vala:1148
+#: libdeja/duplicity/DuplicityJob.vala:1036
+#: libdeja/duplicity/DuplicityJob.vala:1069
 msgid "No space left."
 msgstr "Не залишилося вільного місця."
 
-#: libdeja/duplicity/DuplicityJob.vala:1137
+#: libdeja/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Помилка читання файлу ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1139
+#: libdeja/duplicity/DuplicityJob.vala:1060
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Помилка запису файлу ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1150
+#: libdeja/duplicity/DuplicityJob.vala:1071
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Не лишилось вільного місця в ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1208
+#: libdeja/duplicity/DuplicityJob.vala:1129
 msgid "Uploading…"
 msgstr "Вивантаження..."
 
@@ -1588,7 +1601,7 @@ msgstr ""
 "Для роботи «Резервних копій» потрібна принаймні версія %d.%d.%.2d duplicity. "
 "Втім, виявлено лише версію %d.%d.%.2d"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:100
+#: libdeja/duplicity/DuplicityPlugin.vala:98
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1598,21 +1611,16 @@ msgstr ""
 "копію."
 
 #: libdeja/restic/ResticPlugin.vala:42
-#| msgid "Could not understand duplicity version."
 msgid "Could not understand restic version."
 msgstr "Не вдалося визначити версію restic."
 
 #: libdeja/restic/ResticPlugin.vala:49
 #, c-format
-#| msgid "Could not understand duplicity version ‘%s’."
 msgid "Could not understand restic version ‘%s’."
 msgstr "Не вдалося обробити дані щодо версії restic «%s»."
 
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
-#| msgid ""
-#| "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
-#| "version %d.%d.%.2d"
 msgid ""
 "Backups requires at least version %d.%d.%.2d of restic, but only found "
 "version %d.%d.%.2d"
@@ -1620,17 +1628,29 @@ msgstr ""
 "Для роботи «Резервних копій» потрібна принаймні версія %d.%d.%.2d restic. "
 "Втім, виявлено лише версію %d.%d.%.2d"
 
-#: libdeja/restic/ResticPlugin.vala:90
+#: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
-msgstr ""
-"Підтримку цього типу місць зберігання даних ще не реалізовано."
+msgstr "Підтримку цього типу місць зберігання даних ще не реалізовано."
 
-#: monitor/monitor.vala:75
+#: monitor/ReadyWatcher.vala:159
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 "Резервне копіювання почнеться, коли стане доступним нелімітоване мережеве "
 "з'єднання."
+
+#~ msgid "Keep your important documents safe from disaster"
+#~ msgstr "Зберігайте усі ваші важливі документи у безпеці від катастрофи"
+
+#~ msgid "Change your backup settings"
+#~ msgstr "Змінити параметри резервного копіювання"
+
+#~ msgid ""
+#~ "Please note that you must choose a new storage location, rather than "
+#~ "convert an existing backup."
+#~ msgstr ""
+#~ "Будь ласка, зауважте, що вам слід вибрати нове місце для резервних копій, "
+#~ "а не перетворювати наявні резервні копії."
 
 #~ msgid ""
 #~ "The folder path where backups are stored. Paths can be absolute or "
