@@ -85,6 +85,7 @@ class Browser : Gtk.Grid
     store = new FileStore();
     selection = new Gtk.MultiSelection(store);
     selection.selection_changed.connect(selection_changed);
+    selection.items_changed.connect(items_changed);
 
     // Connect file store and views
     bind_property("files-filled", list_view, "sensitive", BindingFlags.SYNC_CREATE);
@@ -148,6 +149,11 @@ class Browser : Gtk.Grid
     restore_button.sensitive = !bitset.is_empty();
   }
 
+  void items_changed() {
+    if (files_filled)
+      update_content_view();
+  }
+
   void select_all() {
     selection.select_all();
   }
@@ -174,17 +180,35 @@ class Browser : Gtk.Grid
     search_entry.grab_focus();
   }
 
-  void update_search_filter() {
+  // Shows the right pane - search view, normal view, empty versions of either
+  void update_content_view()
+  {
     if (search_entry.text != "") {
       view_stack.visible_child_name = "list";
       icon_view.model = null;
       list_view.model = selection;
+
+      if (selection.get_n_items() == 0) {
+        switch_overlay_to_empty_search();
+      } else {
+        switch_overlay_off();
+      }
     } else {
       view_stack.visible_child_name = "icons";
       list_view.model = null;
       icon_view.model = selection;
-    }
 
+      if (selection.get_n_items() == 0) {
+        switch_overlay_to_empty_folder();
+      } else {
+        switch_overlay_off();
+      }
+    }
+  }
+
+  void update_search_filter()
+  {
+    update_content_view();
     store.search_filter = search_entry.text;
   }
 
@@ -248,6 +272,17 @@ class Browser : Gtk.Grid
     // Now this signal (passphrase_required) has unfortunate semantics. We need
     // to keep a main loop open until we get the operation its passphrase.
     passphrase_loop.run();
+  }
+
+  void switch_overlay_to_empty_folder() {
+    overlay_stack.visible_child_name = "empty-folder";
+    overlay_stack.visible = true;
+  }
+
+  void switch_overlay_to_empty_search() {
+    view_stack.visible_child_name = "icons";
+    overlay_stack.visible_child_name = "empty-search";
+    overlay_stack.visible = true;
   }
 
   void switch_overlay_off() {
