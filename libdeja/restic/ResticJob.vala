@@ -83,6 +83,10 @@ internal class ResticJoblet : DejaDup.ToolJoblet
 
     if (repo == null)
       repo = "invalid://"; // shouldn't happen! We should probably complain louder...
+    else if (repo.has_suffix("/"))
+      repo += "restic";
+    else
+      repo += "/restic";
 
     return "--repo=" + repo;
   }
