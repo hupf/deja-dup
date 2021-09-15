@@ -761,7 +761,7 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
 {
   var cachedir = Environment.get_variable("XDG_CACHE_HOME");
   var test_home = Environment.get_variable("DEJA_DUP_TEST_HOME");
-  var backupdir = Path.build_filename(test_home, "backup");
+  var backupdir = Path.build_filename(test_home, "backup", "restic");
   var tempdir = Path.build_filename(test_home, "tmp");
 
   List<string> args = null;
