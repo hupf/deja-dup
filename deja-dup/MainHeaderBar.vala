@@ -11,6 +11,7 @@ public class MainHeaderBar : Gtk.Box
 {
   public Adw.ViewStack stack {get; set;}
   public bool actions_sensitive {get; set;}
+  public bool title_visible {get; private set;}
 
   public void bind_search_bar(Gtk.SearchBar search_bar)
   {
@@ -32,7 +33,7 @@ public class MainHeaderBar : Gtk.Box
   unowned Gtk.MenuButton primary_menu_button;
 
   [GtkChild]
-  unowned Adw.ViewSwitcher switcher;
+  unowned Adw.ViewSwitcherTitle switcher;
 
   Settings settings;
   construct {
@@ -40,10 +41,13 @@ public class MainHeaderBar : Gtk.Box
 
     settings = DejaDup.get_settings();
     settings.changed[DejaDup.LAST_RUN_KEY].connect(update_header);
-
     update_header();
 
     bind_property("actions-sensitive", search_button, "sensitive", BindingFlags.SYNC_CREATE);
+
+    switcher.notify["view-switcher-enabled"].connect(update_title_visible);
+    switcher.notify["title-visible"].connect(update_title_visible);
+    switcher.ref();
   }
 
   void reset_stack()
@@ -61,6 +65,11 @@ public class MainHeaderBar : Gtk.Box
 
     previous_button.visible = is_restore;
     search_button.visible = is_restore;
-    switcher.sensitive = is_restore || !welcome_state;
+    switcher.view_switcher_enabled = is_restore || !welcome_state;
+  }
+
+  void update_title_visible()
+  {
+    title_visible = switcher.title_visible && switcher.view_switcher_enabled;
   }
 }

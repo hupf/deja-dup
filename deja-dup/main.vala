@@ -389,6 +389,7 @@ int main(string[] args)
   // FIXME: there must be a better way than this?
   typeof(Browser).ensure();
   typeof(ConfigAutoBackup).ensure();
+  typeof(ConfigAutoBackupRow).ensure();
   typeof(ConfigDelete).ensure();
   typeof(ConfigFolderList).ensure();
   typeof(ConfigFolderPage).ensure();
@@ -396,12 +397,14 @@ int main(string[] args)
   typeof(ConfigPeriodRow).ensure();
   typeof(ConfigRestic).ensure();
   typeof(ConfigServerEntry).ensure();
-  typeof(ConfigStatusLabel).ensure();
   typeof(FolderChooserButton).ensure();
   typeof(MainHeaderBar).ensure();
+  typeof(OverviewPage).ensure();
+  typeof(RecentBackupRow).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();
   typeof(TooltipBox).ensure();
+  typeof(WelcomePage).ensure();
 
   return DejaDupApp.get_instance().run(args);
 }
