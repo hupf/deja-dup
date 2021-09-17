@@ -23,15 +23,12 @@ public class MainWindow : Adw.ApplicationWindow
   [GtkChild]
   unowned Gtk.Stack overview_stack;
   [GtkChild]
-  unowned Gtk.Image app_logo;
-  [GtkChild]
   unowned Browser browser;
 
   construct {
     var deja_app = DejaDupApp.get_instance();
 
     // Set a few icons that are hardcoded in ui files
-    app_logo.icon_name = Config.ICON_NAME;
     backups_page.icon_name = Config.ICON_NAME + "-symbolic";
 
     if (Config.PROFILE == "Devel")
@@ -65,12 +62,6 @@ public class MainWindow : Adw.ApplicationWindow
   {
     if (DejaDupApp.get_instance().custom_backend != null)
       stack.visible_child_name = "restore";
-  }
-
-  [GtkCallback]
-  void on_initial_restore()
-  {
-    DejaDupApp.get_instance().start_custom_restore();
   }
 
   static bool get_visible_child(Value val, Variant variant, void *data)

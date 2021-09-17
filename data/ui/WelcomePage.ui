@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="WelcomePage" parent="GtkBox">
+    <child>
+      <object class="AdwStatusPage" id="status_page">
+        <property name="icon-name">org.gnome.DejaDup</property>
+        <property name="title" translatable="yes">Welcome to Backups</property>
+        <property name="hexpand">1</property>
+        <property name="vexpand">1</property>
+        <property name="child">
+          <object class="GtkBox">
+            <property name="orientation">vertical</property>
+            <property name="spacing">18</property>
+            <property name="halign">center</property>
+            <child>
+              <object class="GtkButton" id="initial-backup-button">
+                <property name="label" translatable="yes">Create My First _Backup</property>
+                <property name="receives_default">1</property>
+                <property name="use_underline">1</property>
+                <property name="action_name">app.backup</property>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkButton" id="initial-restore-button">
+                <property name="label" translatable="yes">_Restore From a Previous Backup</property>
+                <property name="receives_default">1</property>
+                <property name="use_underline">1</property>
+                <signal name="clicked" handler="on_initial_restore"/>
+              </object>
+            </child>
+          </object>
+        </property>
+      </object>
+    </child>
+  </template>
+</interface>

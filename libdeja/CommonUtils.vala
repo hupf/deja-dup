@@ -217,15 +217,12 @@ public TimeSpan get_day()
     return TimeSpan.DAY;
 }
 
-public DateTime? next_run_date()
+public DateTime next_possible_run_date()
 {
   var settings = DejaDup.get_settings();
-  var periodic = settings.get_boolean(DejaDup.PERIODIC_KEY);
   var period_days = settings.get_int(DejaDup.PERIODIC_PERIOD_KEY);
   var last_run_string = settings.get_string(DejaDup.LAST_BACKUP_KEY);
 
-  if (!periodic)
-    return null;
   if (last_run_string == "")
     return new DateTime.now_local();
   if (period_days <= 0)
@@ -241,6 +238,17 @@ public DateTime? next_run_date()
     last_scheduled = last_scheduled.add(period);
 
   return last_scheduled;
+}
+
+public DateTime? next_run_date()
+{
+  var settings = DejaDup.get_settings();
+  var periodic = settings.get_boolean(DejaDup.PERIODIC_KEY);
+
+  if (!periodic)
+    return null;
+
+  return next_possible_run_date();
 }
 
 // In seconds

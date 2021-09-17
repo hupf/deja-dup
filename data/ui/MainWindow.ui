@@ -6,7 +6,7 @@ SPDX-FileCopyrightText: Michael Terry
 
 <interface>
   <template class="MainWindow" parent="AdwApplicationWindow">
-    <property name="default_width">700</property>
+    <property name="default_width">450</property>
     <property name="default_height">400</property>
     <property name="title" translatable="yes">Backups</property>
     <property name="content">
@@ -19,155 +19,28 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="AdwViewStack" id="stack">
+            <property name="vexpand">1</property>
             <child>
               <object class="AdwViewStackPage" id="backups_page">
                 <property name="name">backups</property>
                 <property name="title" translatable="yes">Overview</property>
                 <property name="icon_name">org.gnome.DejaDup-symbolic</property>
                 <property name="child">
-                  <object class="GtkGrid" id="backups-grid">
-                    <property name="halign">center</property>
-                    <property name="valign">center</property>
-                    <property name="margin_start">12</property>
-                    <property name="margin_end">12</property>
-                    <property name="margin_top">12</property>
-                    <property name="margin_bottom">12</property>
-                    <property name="hexpand">1</property>
-                    <property name="vexpand">1</property>
-                    <property name="column_spacing">6</property>
+                  <object class="GtkStack" id="overview_stack">
                     <child>
-                      <object class="GtkImage" id="app_logo">
-                        <property name="pixel_size">256</property>
-                        <property name="icon_name">org.gnome.DejaDup</property>
-                        <layout>
-                          <property name="column">0</property>
-                          <property name="row">0</property>
-                        </layout>
+                      <object class="GtkStackPage">
+                        <property name="name">initial</property>
+                        <property name="child">
+                          <object class="WelcomePage"/>
+                        </property>
                       </object>
                     </child>
                     <child>
-                      <object class="GtkStack" id="overview_stack">
-                        <child>
-                          <object class="GtkStackPage">
-                            <property name="name">initial</property>
-                            <property name="child">
-                              <object class="GtkGrid">
-                                <property name="valign">start</property>
-                                <property name="margin_top">18</property>
-                                <property name="hexpand">1</property>
-                                <property name="row_spacing">36</property>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="label" translatable="yes">Keep your important files safe in a backup.</property>
-                                    <property name="wrap">1</property>
-                                    <property name="max_width_chars">30</property>
-                                    <property name="xalign">0</property>
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">0</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="initial-backup-button">
-                                    <property name="label" translatable="yes">Create My First _Backup</property>
-                                    <property name="receives_default">1</property>
-                                    <property name="use_underline">1</property>
-                                    <property name="action_name">app.backup</property>
-                                    <style>
-                                      <class name="suggested-action"/>
-                                    </style>
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">1</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="initial-restore-button">
-                                    <property name="label" translatable="yes">_Restore From a Previous Backup</property>
-                                    <property name="receives_default">1</property>
-                                    <property name="use_underline">1</property>
-                                    <signal name="clicked" handler="on_initial_restore"/>
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">2</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                              </object>
-                            </property>
-                          </object>
-                        </child>
-                        <child>
-                          <object class="GtkStackPage">
-                            <property name="name">normal</property>
-                            <property name="child">
-                              <object class="GtkGrid">
-                                <property name="valign">start</property>
-                                <property name="margin_top">18</property>
-                                <property name="hexpand">1</property>
-                                <property name="row_spacing">36</property>
-                                <property name="column_spacing">12</property>
-                                <child>
-                                  <object class="ConfigAutoBackup" id="auto_backup">
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">0</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="halign">start</property>
-                                    <property name="hexpand">1</property>
-                                    <property name="label" translatable="yes">Back up _automatically</property>
-                                    <property name="use_underline">1</property>
-                                    <property name="mnemonic_widget">auto_backup</property>
-                                    <property name="xalign">0</property>
-                                    <layout>
-                                      <property name="column">1</property>
-                                      <property name="row">0</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="ConfigStatusLabel">
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">1</property>
-                                      <property name="column-span">2</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                                <child>
-                                  <object class="GtkButton" id="backup-button">
-                                    <property name="label" translatable="yes">_Back Up Now</property>
-                                    <property name="receives_default">1</property>
-                                    <property name="halign">start</property>
-                                    <property name="valign">center</property>
-                                    <property name="use_underline">1</property>
-                                    <property name="action_name">app.backup</property>
-                                    <style>
-                                      <class name="suggested-action"/>
-                                    </style>
-                                    <layout>
-                                      <property name="column">0</property>
-                                      <property name="row">2</property>
-                                      <property name="column-span">2</property>
-                                    </layout>
-                                  </object>
-                                </child>
-                              </object>
-                            </property>
-                          </object>
-                        </child>
-                        <layout>
-                          <property name="column">1</property>
-                          <property name="row">0</property>
-                        </layout>
+                      <object class="GtkStackPage">
+                        <property name="name">normal</property>
+                        <property name="child">
+                          <object class="OverviewPage"/>
+                        </property>
                       </object>
                     </child>
                   </object>
@@ -184,6 +57,14 @@ SPDX-FileCopyrightText: Michael Terry
                 </property>
               </object>
             </child>
+          </object>
+        </child>
+        <child>
+          <object class="AdwViewSwitcherBar">
+            <property name="stack">stack</property>
+            <binding name="reveal">
+              <lookup name="title-visible">header</lookup>
+            </binding>
           </object>
         </child>
       </object>
