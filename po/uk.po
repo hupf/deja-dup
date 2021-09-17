@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-09-15 12:35+0000\n"
-"PO-Revision-Date: 2021-09-15 15:40+0300\n"
+"POT-Creation-Date: 2021-09-17 00:16+0000\n"
+"PO-Revision-Date: 2021-09-17 08:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -35,7 +35,8 @@ msgstr "Резервування з регулярним інтервалом"
 msgid "@icon@"
 msgstr "@icon@"
 
-#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainWindow.ui:11
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainHeaderBar.ui:20
+#: data/ui/MainWindow.ui:11
 msgid "Backups"
 msgstr "Резервні копії"
 
@@ -259,7 +260,7 @@ msgstr ""
 "Унікальний ідентифікатор файлової системи для накопичувача, який "
 "використовується для розпізнавання диска під час його підключення."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:123 data/ui/Browser.ui:222
+#: data/org.gnome.DejaDup.gschema.xml.in:123 data/ui/Browser.ui:251
 msgid "Name"
 msgstr "Назва"
 
@@ -367,9 +368,6 @@ msgstr ""
 "для відновлення."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:100
-#| msgid ""
-#| "Back up to the cloud, a network server, or a local drive. Pick a schedule "
-#| "that works for you."
 msgid "Back up to the cloud, a network server, or a local drive."
 msgstr ""
 "Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого "
@@ -381,7 +379,7 @@ msgid ""
 msgstr ""
 "Керуйте резервним копіюванням, вибравши саме ті теки, які вам потрібні."
 
-#: data/ui/Browser.ui:15 data/ui/MainHeaderBar.ui:47
+#: data/ui/Browser.ui:15 data/ui/MainHeaderBar.ui:48
 msgid "Search"
 msgstr "Пошук"
 
@@ -389,29 +387,48 @@ msgstr "Пошук"
 msgid "Scanning backup files…"
 msgstr "Шукаємо файли резервних копій…"
 
+#: data/ui/Browser.ui:100
+#| msgid "Folders"
+msgid "Folder is Empty"
+msgstr "Тека порожня"
+
 #: data/ui/Browser.ui:114
+msgid "No Results Found"
+msgstr ""
+"Нічого не знайдено"
+
+#: data/ui/Browser.ui:115
+msgid "Try a different search"
+msgstr ""
+"Спробуйте інші критерії пошуку"
+
+#: data/ui/Browser.ui:143
 msgid "_Retry"
 msgstr "_Повторити"
 
-#: data/ui/Browser.ui:149
+#: data/ui/Browser.ui:178
 msgid "_Connect"
 msgstr "З'_єднатись"
 
-#: data/ui/Browser.ui:174
+#: data/ui/Browser.ui:203
 msgid "Encryption password needed"
 msgstr "Потрібен пароль для доступу"
 
-#: data/ui/Browser.ui:185
+#: data/ui/Browser.ui:214
 msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
-#: data/ui/Browser.ui:268
+#: data/ui/Browser.ui:297
 msgid "Location"
 msgstr "Місце"
 
-#: data/ui/Browser.ui:314 deja-dup/AssistantRestore.vala:65
+#: data/ui/Browser.ui:343 deja-dup/AssistantRestore.vala:65
 msgid "_Restore"
 msgstr "_Відновити"
+
+#: data/ui/ConfigAutoBackupRow.ui:10
+msgid "Back Up _Automatically"
+msgstr "Створювати резервні копії _автоматично"
 
 #: data/ui/ConfigFolderList.ui:21 deja-dup/ConfigFolderList.vala:66
 msgid "Add"
@@ -459,61 +476,45 @@ msgstr "С_кинути доступ до облікового запису"
 msgid "_Network Location"
 msgstr "_Мережеве розташування"
 
-#: data/ui/MainHeaderBar.ui:28
+#: data/ui/MainHeaderBar.ui:29
 msgid "Back"
 msgstr "Назад"
 
-#: data/ui/MainHeaderBar.ui:38
+#: data/ui/MainHeaderBar.ui:39
 msgid "Menu"
 msgstr "Меню"
 
-#: data/ui/MainHeaderBar.ui:64
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Select All"
 msgstr "Позна_чити все"
 
-#: data/ui/MainHeaderBar.ui:71
+#: data/ui/MainHeaderBar.ui:72
 msgid "_Preferences"
 msgstr "_Налаштування"
 
-#: data/ui/MainHeaderBar.ui:75
+#: data/ui/MainHeaderBar.ui:76
 msgid "_Keyboard Shortcuts"
 msgstr "_Сполучення клавіш"
 
-#: data/ui/MainHeaderBar.ui:79
+#: data/ui/MainHeaderBar.ui:80
 msgid "_Help"
 msgstr "_Довідка"
 
-#: data/ui/MainHeaderBar.ui:83
+#: data/ui/MainHeaderBar.ui:84
 msgid "_About Backups"
 msgstr "_Про Резервні копії"
 
-#: data/ui/MainWindow.ui:25
+#: data/ui/MainWindow.ui:26
 msgid "Overview"
 msgstr "Огляд"
 
-#: data/ui/MainWindow.ui:61
-msgid "Keep your important files safe in a backup."
-msgstr "Виконуйте резервне копіювання важливих для вас файлів."
-
-#: data/ui/MainWindow.ui:73
-msgid "Create My First _Backup"
-msgstr "Створити першу _резервну копію"
-
-#: data/ui/MainWindow.ui:88
-msgid "_Restore From a Previous Backup"
-msgstr "_Відновити дані зі створеної резервної копії"
-
-#: data/ui/MainWindow.ui:126
-msgid "Back up _automatically"
-msgstr "Створювати резервні копії _автоматично"
-
-#: data/ui/MainWindow.ui:147
-msgid "_Back Up Now"
-msgstr "Створити _резервну копію зараз"
-
-#: data/ui/MainWindow.ui:180 deja-dup/AssistantRestore.vala:61
+#: data/ui/MainWindow.ui:53 deja-dup/AssistantRestore.vala:61
 msgid "Restore"
 msgstr "Відновити зі збереженої копії"
+
+#: data/ui/OverviewPage.ui:31
+msgid "_Back Up Now"
+msgstr "Створити _резервну копію зараз"
 
 #: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:348
 msgid "_Cancel"
@@ -562,25 +563,26 @@ msgstr ""
 msgid "Schedule"
 msgstr "Розклад"
 
-#: data/ui/PreferencesWindow.ui:63
-msgid "Back Up _Automatically"
-msgstr "Створювати резервні копії _автоматично"
-
-#: data/ui/PreferencesWindow.ui:78
+#: data/ui/PreferencesWindow.ui:65
 msgid "Automatic Backup _Frequency"
 msgstr "_Частота автоматичного резервного копіювання"
 
-#: data/ui/PreferencesWindow.ui:93
+#: data/ui/PreferencesWindow.ui:80
 msgid "Labs"
 msgstr "Лабораторія"
 
-#: data/ui/PreferencesWindow.ui:97
+#: data/ui/PreferencesWindow.ui:84
 msgid "Restic"
 msgstr "Restic"
 
-#: data/ui/PreferencesWindow.ui:101
+#: data/ui/PreferencesWindow.ui:88
 msgid "Use _Restic instead of Duplicity"
 msgstr "Скористатися _Restic замість Duplicity"
+
+#: data/ui/RecentBackupRow.ui:9
+#| msgid "No recent backups."
+msgid "Most Recent Backup"
+msgstr "Найсвіжіша резервна копія"
 
 #: data/ui/ServerHintPopover.ui:17
 msgid "Network Locations"
@@ -649,6 +651,19 @@ msgstr "dav:// або davs://"
 #: data/ui/TimeCombo.ui:13
 msgid "_Date"
 msgstr "_Дата"
+
+#: data/ui/WelcomePage.ui:12
+#| msgid "_Keep Backups"
+msgid "Welcome to Backups"
+msgstr "Вітаємо у «Резервних копіях»"
+
+#: data/ui/WelcomePage.ui:22
+msgid "Create My First _Backup"
+msgstr "Створити першу _резервну копію"
+
+#: data/ui/WelcomePage.ui:33
+msgid "_Restore From a Previous Backup"
+msgstr "_Відновити дані зі створеної резервної копії"
 
 #: data/ui/help-overlay.ui:16
 msgctxt "shortcut window"
@@ -980,13 +995,49 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: deja-dup/Browser.vala:228
+#: deja-dup/Browser.vala:252
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: deja-dup/Browser.vala:336 libdeja/duplicity/DuplicityJob.vala:1079
+#: deja-dup/Browser.vala:371 libdeja/duplicity/DuplicityJob.vala:1079
 msgid "No backup files found"
 msgstr "Резервних копій не знайдено"
+
+#: deja-dup/ConfigAutoBackupRow.vala:32
+msgid "Next backup is today."
+msgstr "Чергове резервне копіювання - сьогодні."
+
+#: deja-dup/ConfigAutoBackupRow.vala:33
+#| msgid "Next backup is today."
+msgid "Next backup would be today."
+msgstr "Наступне резервне копіювання заплановано на сьогодні."
+
+#: deja-dup/ConfigAutoBackupRow.vala:38
+msgid "Next backup is tomorrow."
+msgstr "Чергове резервне копіювання - завтра."
+
+#: deja-dup/ConfigAutoBackupRow.vala:39
+#| msgid "Next backup is tomorrow."
+msgid "Next backup would be tomorrow."
+msgstr "Наступне резервне копіювання заплановано на завтра."
+
+#: deja-dup/ConfigAutoBackupRow.vala:46
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "Чергове резервне копіювання через %d день."
+msgstr[1] "Чергове резервне копіювання через %d дні."
+msgstr[2] "Чергове резервне копіювання через %d днів."
+
+#: deja-dup/ConfigAutoBackupRow.vala:50
+#, c-format
+#| msgid "Next backup is %d day from now."
+#| msgid_plural "Next backup is %d days from now."
+msgid "Next backup would be %d day from now."
+msgid_plural "Next backup would be %d days from now."
+msgstr[0] "Наступне резервне копіювання заплановано за %d день."
+msgstr[1] "Наступне резервне копіювання заплановано за %d дні."
+msgstr[2] "Наступне резервне копіювання заплановано за %d днів."
 
 #: deja-dup/ConfigDeleteRow.vala:12
 msgid "At least three months"
@@ -1065,48 +1116,6 @@ msgid_plural "Every %d days"
 msgstr[0] "Кожен %d день"
 msgstr[1] "Кожен %d дні"
 msgstr[2] "Кожен %d днів"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:48
-msgid "Next backup is today."
-msgstr "Чергове резервне копіювання - сьогодні."
-
-#: deja-dup/ConfigStatusLabel.vala:50
-msgid "Next backup is tomorrow."
-msgstr "Чергове резервне копіювання - завтра."
-
-#: deja-dup/ConfigStatusLabel.vala:58
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "Чергове резервне копіювання через %d день."
-msgstr[1] "Чергове резервне копіювання через %d дні."
-msgstr[2] "Чергове резервне копіювання через %d днів."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:75
-msgid "Last backup was today."
-msgstr "Останнє резервне копіювання було сьогодні."
-
-#: deja-dup/ConfigStatusLabel.vala:77
-msgid "Last backup was yesterday."
-msgstr "Останнє резервне копіювання було вчора."
-
-#: deja-dup/ConfigStatusLabel.vala:85
-#, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "Останнє резервне копіювання було %d день тому."
-msgstr[1] "Останнє резервне копіювання було %d дні тому."
-msgstr[2] "Останнє резервне копіювання було %d днів тому."
-
-#: deja-dup/ConfigStatusLabel.vala:98
-msgid "No recent backups."
-msgstr "Недавні резервні копії відсутні."
-
-#: deja-dup/ConfigStatusLabel.vala:104
-msgid "No backup scheduled."
-msgstr "Створення резервних копій не заплановано."
 
 #: deja-dup/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -1227,6 +1236,34 @@ msgstr ""
 "Будь ласка, %sповідомте%s нам про успіхи та помилки, якщо увімкнете цю "
 "можливість."
 
+#. Check for some really simple/common friendly names
+#: deja-dup/RecentBackupRow.vala:43
+msgid "Today"
+msgstr ""
+"Сьогодні"
+
+#: deja-dup/RecentBackupRow.vala:45
+msgid "Yesterday"
+msgstr ""
+"Вчора"
+
+#. Translators: sentence case
+#: deja-dup/RecentBackupRow.vala:54
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] ""
+"%d день тому"
+msgstr[1] ""
+"%d дні тому"
+msgstr[2] ""
+"%d днів тому"
+
+#: deja-dup/RecentBackupRow.vala:64
+msgid "None"
+msgstr ""
+"Немає"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -1278,7 +1315,7 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:479
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s на %2$s"
@@ -1379,31 +1416,31 @@ msgstr ""
 "Мережеві розташування Samba мають містити і назву вузла, і назву спільного "
 "ресурсу."
 
-#: libdeja/CommonUtils.vala:450
+#: libdeja/CommonUtils.vala:458
 msgid "Access Granted"
 msgstr "Доступ надано"
 
-#: libdeja/CommonUtils.vala:451
+#: libdeja/CommonUtils.vala:459
 msgid "Backups will now continue. You can close this page."
 msgstr "«Резервні копії» продовжують роботу. Ви можете закрити цю сторінку."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:530
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "Домівка (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:535
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "Домівка"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:540
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "Смітник"
 
-#: libdeja/CommonUtils.vala:602
+#: libdeja/CommonUtils.vala:610
 msgid "Backup encryption password"
 msgstr "Пароль шифрування резервної копії"
 
@@ -1641,6 +1678,27 @@ msgid ""
 msgstr ""
 "Резервне копіювання почнеться, коли стане доступним нелімітоване мережеве "
 "з'єднання."
+
+#~ msgid "Keep your important files safe in a backup."
+#~ msgstr "Виконуйте резервне копіювання важливих для вас файлів."
+
+#~ msgid "Back up _automatically"
+#~ msgstr "Створювати резервні копії _автоматично"
+
+#~ msgid "Last backup was today."
+#~ msgstr "Останнє резервне копіювання було сьогодні."
+
+#~ msgid "Last backup was yesterday."
+#~ msgstr "Останнє резервне копіювання було вчора."
+
+#~ msgid "Last backup was %d day ago."
+#~ msgid_plural "Last backup was %d days ago."
+#~ msgstr[0] "Останнє резервне копіювання було %d день тому."
+#~ msgstr[1] "Останнє резервне копіювання було %d дні тому."
+#~ msgstr[2] "Останнє резервне копіювання було %d днів тому."
+
+#~ msgid "No backup scheduled."
+#~ msgstr "Створення резервних копій не заплановано."
 
 #~ msgid "Keep your important documents safe from disaster"
 #~ msgstr "Зберігайте усі ваші важливі документи у безпеці від катастрофи"
