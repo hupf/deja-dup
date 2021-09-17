@@ -11,9 +11,7 @@ libdeja_tests = executable('libdeja-tests', ['unit-tests.vala'],
     include_directories: [libdeja_inc])
 
 test('libdeja', dbus_run_session,
-    env: ['top_builddir=' + meson.project_build_root(),
-          'top_srcdir=' + meson.project_source_root(),
-          'srcdir=' + meson.current_source_dir()],
+    env: ['srcdir=' + meson.current_source_dir()],
     args: [libdeja_tests])
 
 # The network test is manual for the moment

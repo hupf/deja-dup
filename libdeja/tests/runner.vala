@@ -6,43 +6,12 @@
 
 using GLib;
 
-bool system_mode = false;
-
-string get_top_builddir()
-{
-  var builddir = Environment.get_variable("top_builddir");
-  if (builddir == null)
-    builddir = "../../builddir";
-  return builddir;
-}
-
 string get_srcdir()
 {
   var srcdir = Environment.get_variable("srcdir");
   if (srcdir == null)
     srcdir = ".";
   return srcdir;
-}
-
-void setup_gsettings()
-{
-  if (!system_mode) {
-    var dir = Environment.get_variable("DEJA_DUP_TEST_HOME");
-
-    var schema_dir = Path.build_filename(dir, "share", "glib-2.0", "schemas");
-    DirUtils.create_with_parents(schema_dir, 0700);
-
-    var data_dirs = Environment.get_variable("XDG_DATA_DIRS");
-    Environment.set_variable("XDG_DATA_DIRS", "%s:%s".printf(Path.build_filename(dir, "share"), data_dirs), true);
-
-    if (Posix.system("cp %s/data/%s.gschema.xml %s".printf(get_top_builddir(), Config.APPLICATION_ID, schema_dir)) != 0)
-      warning("Could not copy schema to %s", schema_dir);
-
-    if (Posix.system("glib-compile-schemas %s".printf(schema_dir)) != 0)
-      warning("Could not compile schemas in %s", schema_dir);
-  }
-
-  Environment.set_variable("GSETTINGS_BACKEND", "memory", true);
 }
 
 KeyFile load_script()
@@ -1016,7 +985,6 @@ void restic_run()
 #endif
 
 const OptionEntry[] OPTIONS = {
-  {"system", 0, 0, OptionArg.NONE, ref system_mode, "Run against system install", null},
   {null}
 };
 
@@ -1045,8 +1013,6 @@ int main(string[] args)
   Environment.set_variable("DEJA_DUP_DEBUG", "1", true);
   Environment.set_variable("DEJA_DUP_LANGUAGE", "en", true);
   Test.bug_base("https://gitlab.gnome.org/World/deja-dup/-/issues/%s");
-
-  setup_gsettings();
 
   var script = "unknown/unknown";
   if (args.length > 1)
