@@ -52,6 +52,7 @@ class GameMode : Object
 
   void update()
   {
-    enabled = proxy.get_cached_property("ClientCount").get_int32() > 0;
+    var count = proxy.get_cached_property("ClientCount");
+    enabled = count != null && count.get_int32() > 0;
   }
 }
