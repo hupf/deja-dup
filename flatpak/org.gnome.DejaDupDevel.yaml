@@ -27,20 +27,16 @@ modules:
     sources:
       - type: git
         url: https://github.com/librsync/librsync.git
-        tag: v2.3.1
-        commit: 27f738650c20fef1285f11d85a34e5094a71c06f
+        tag: v2.3.2
+        commit: 42b636d2a65ab6914ea7cac50886da28192aaf9b
 
-  - ./setuptools-scm.yaml
   - ./duplicity.yaml
-  - ./pydrive2.yaml
-  - ./requests-oauthlib.yaml
+  - ./pydrive2.yaml # for google drive
+  - ./requests-oauthlib.yaml # for microsoft onedrive
 
 
-  # - ./borgbackup.yaml
   - ./restic.yaml
-
-
-  - ./rclone.yaml
+  - ./rclone.yaml # used by restic for cloud support
 
 
   - name: libsass

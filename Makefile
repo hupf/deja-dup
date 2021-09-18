@@ -84,14 +84,14 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
-	for p in borgbackup duplicity pydrive2 requests-oauthlib setuptools-scm wheel; do \
-		../../flatpak-builder-tools/pip/flatpak-pip-generator --output $$p $$p; \
-		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$p.yaml $$p.json; \
-		rm $$p.json; \
-		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$p.yaml; \
-	done; \
-	grep -e type: -e url: -e sha256: wheel.yaml >> pydrive2.yaml; \
-	rm wheel.yaml
+	for p in borgbackup "flit-core setuptools-scm duplicity" "cryptography<3.4 pydrive2" requests-oauthlib; do \
+		name=$$(echo $$p | grep -oE '[^[:space:]]+$$'); \
+		echo $$name; \
+		../../flatpak-builder-tools/pip/flatpak-pip-generator --runtime org.gnome.Sdk//master --output $$name $$p; \
+		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$name.yaml $$name.json; \
+		rm $$name.json; \
+		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$name.yaml; \
+	done
 
 .PHONY: black
 black:
