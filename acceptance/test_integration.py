@@ -29,7 +29,7 @@ class IntegrationTest(BaseTest):
 
         # Also test that help is translated by passing LANG
         app = self.cmd(env="LANG=fr_FR.UTF-8 LANGUAGE=fr")
-        app.childNamed("Menu").click()
+        app.button("Menu").click()
 
         self.addCleanup(self.kill_bus, "org.gnome.Yelp")
         app.button("Aide").click()

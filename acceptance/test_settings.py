@@ -5,6 +5,7 @@
 # SPDX-FileCopyrightText: Michael Terry
 
 from dogtail import tree
+from dogtail.predicate import GenericPredicate
 from gi.repository import GLib
 
 from . import BaseTest
@@ -14,8 +15,16 @@ class PreferencesTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.app = self.cmd()
-        self.app.childNamed("Menu").click()
-        self.app.childNamed("Preferences").click()
+        self.app.button("Menu").click()
+        self.app.button("Preferences").click()
+
+    def get_auto_check(self, root):
+        # Dogtail can't find an item with multiple labels (where labeller is a
+        # list). So it can't find the list box with both a title and subtitle.
+        # Instead, find the label, bounce up, then back down
+        label = root.child(name="Back Up Automatically")
+        box = label.findAncestor(GenericPredicate(roleName="list item"))
+        return box.child(roleName="check box")
 
     def test_general(self):
         # Test that there's a special first time welcome screen
@@ -25,14 +34,12 @@ class PreferencesTest(BaseTest):
         now = GLib.DateTime.new_now_utc().format_iso8601()
         self.set_string("last-run", now)
         main = self.app.window("Backups")
-        periodic_main_box = main.child(roleName="panel", name="Back up automatically")
-        periodic_main = periodic_main_box.child(roleName="check box")
+        periodic_main = self.get_auto_check(main)
 
         prefs = self.app.window("Preferences")
 
         # Periodic to settings
-        listbox = prefs.child(roleName="list item", name="Back Up Automatically")
-        periodic = listbox.child(roleName="check box")
+        periodic = self.get_auto_check(prefs)
         self.assertFalse(periodic.checked)
         self.assertFalse(periodic_main.checked)
         periodic.click()

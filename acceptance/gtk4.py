@@ -96,7 +96,7 @@ class Gtk4Node:
 
         # Fix coords to take into account client side decorations.
         # Hardcoding this is super gross, I'd love a better way.
-        self.coords = (root_coords.x + 100, root_coords.y + 100)
+        self.coords = (root_coords.x + 50, root_coords.y + 50)
 
     def click(self, button=1):
         """Click with adjusted screen-global coordinates"""
@@ -137,6 +137,9 @@ class Gtk4Node:
 
     def dump(self):
         self.node.dump()
+
+    def findAncestor(self, *args, **kwargs):
+        return self._wrapShowingMethod(self.node.findAncestor, *args, **kwargs)
 
     @property
     def focused(self):
