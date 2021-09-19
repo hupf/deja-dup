@@ -13,7 +13,9 @@ public class DejaDupApp : Adw.Application
   public signal void operation_started();
 
   WeakRef main_window;
+  WeakRef preferences_window;
   WeakRef operation;
+  SimpleAction preferences_action = null;
   SimpleAction quit_action = null;
 
   const OptionEntry[] OPTIONS = {
@@ -178,13 +180,12 @@ public class DejaDupApp : Adw.Application
 
     add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
+    set_accels_for_action("app.preferences", {"<Control>comma"});
     set_accels_for_action("app.quit", {"<Control>w", "<Control>q"});
+    preferences_action = lookup_action("preferences") as SimpleAction;
     quit_action = lookup_action("quit") as SimpleAction;
 
-    notify["custom-backend"].connect(() => {
-      var prefs_action = lookup_action("preferences") as SimpleAction;
-      prefs_action.set_enabled(custom_backend == null);
-    });
+    notify["custom-backend"].connect(check_preferences_enabled);
 
     // Cleanly exit (shutting down duplicity as we go)
     Unix.signal_add(ProcessSignal.HUP, exit_cleanly);
@@ -199,8 +200,14 @@ public class DejaDupApp : Adw.Application
     base.shutdown();
   }
 
+  void check_preferences_enabled()
+  {
+    preferences_action.set_enabled(get_operation() == null && custom_backend == null);
+  }
+
   void operation_closed()
   {
+    check_preferences_enabled();
     quit_action.set_enabled(true);
   }
 
@@ -213,6 +220,7 @@ public class DejaDupApp : Adw.Application
 
     operation.set(op);
     ((Gtk.Widget)op).destroy.connect(operation_closed);
+    check_preferences_enabled();
     quit_action.set_enabled(false);
     operation_started();
 
@@ -242,10 +250,14 @@ public class DejaDupApp : Adw.Application
 
   void preferences()
   {
+    if (preferences_window.get() != null)
+      return;
+
     var window = new PreferencesWindow();
     window.set_transient_for(get_app_window());
     window.application = this;
     window.present();
+    preferences_window.set(window);
   }
 
   void help()
