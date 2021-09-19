@@ -4,8 +4,6 @@
 # SPDX-FileCopyrightText: Michael Terry
 
 libdeja_tests = executable('libdeja-tests', ['unit-tests.vala'],
-    vala_args: common_vflags,
-    c_args: common_cflags,
     dependencies: [gio_dep, secret_dep],
     link_with: [libdeja],
     include_directories: [libdeja_inc])
@@ -16,8 +14,6 @@ test('libdeja', dbus_run_session,
 
 # The network test is manual for the moment
 network_test = executable('network-test', ['network.vala'],
-    vala_args: common_vflags,
-    c_args: common_cflags,
     dependencies: [gio_dep, secret_dep],
     link_with: [libdeja],
     include_directories: [libdeja_inc])

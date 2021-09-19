@@ -11,10 +11,6 @@ project('deja-dup', ['vala', 'c'],
 gnome = import('gnome')
 i18n = import('i18n')
 
-# Source paths
-podir = join_paths(meson.current_source_dir(), 'po')
-vapidir = join_paths(meson.current_source_dir(), 'vapi')
-
 # Install paths
 prefix = get_option('prefix')
 bindir = join_paths(prefix, get_option('bindir'))
@@ -58,13 +54,14 @@ else
     message('Using default profile.')
 endif
 
-common_vflags = [
+add_project_arguments(
     '--pkg=config',
     '--pkg=posix',
     '--target-glib=2.66',
-    '--vapidir', vapidir,
-]
-common_cflags = [
+    '--vapidir', join_paths(meson.project_source_root(), 'vapi'),
+    language: 'vala',
+)
+add_project_arguments(
     '-DG_LOG_DOMAIN="deja-dup"',
     '-DG_LOG_USE_STRUCTURED',
     '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
@@ -88,38 +85,40 @@ common_cflags = [
     '-DAPPLICATION_ID="@0@"'.format(application_id),
     '-DICON_NAME="@0@"'.format(application_id),
     '-DLOCALE_DIR="@0@"'.format(localedir),
-    '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir)
-]
+    '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir),
+    language: 'c',
+)
 
 if gtk_wayland_dep.found()
-common_vflags += ['--define=HAS_WAYLAND']
+add_project_arguments('--define=HAS_WAYLAND', language: 'vala')
 endif
 
 if gtk_x11_dep.found()
-common_vflags += ['--define=HAS_X11']
+add_project_arguments('--define=HAS_X11', language: 'vala')
 endif
 
 if packagekit_dep.found()
-common_vflags += ['--define=HAS_PACKAGEKIT']
+add_project_arguments('--define=HAS_PACKAGEKIT', language: 'vala')
 endif
 
 if get_option('enable_borg')
-common_vflags += ['--define=ENABLE_BORG']
+add_project_arguments('--define=ENABLE_BORG', language: 'vala')
 endif
 
 if get_option('enable_restic')
-common_vflags += ['--define=ENABLE_RESTIC']
+add_project_arguments('--define=ENABLE_RESTIC', language: 'vala')
 endif
 
 # Check if gio has GPowerProfileMonitor support
 if dependency('gio-2.0', version: '>= 2.70', required: false).found()
-common_vflags += ['--define=HAS_POWER_PROFILE_MONITOR']
+add_project_arguments('--define=HAS_POWER_PROFILE_MONITOR', language: 'vala')
 endif
 
 add_test_setup('default', is_default: true, env: {
     'DEJA_DUP_LANGUAGE': 'en',
     'GSETTINGS_BACKEND': 'memory',
     'GSETTINGS_SCHEMA_DIR': meson.project_build_root() + '/data',
+    'LC_ALL': 'C.UTF-8',
 })
 
 meson.add_devenv({

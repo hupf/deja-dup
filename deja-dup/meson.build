@@ -45,8 +45,7 @@ deja_dup = executable('deja-dup',
     ] + resources,
     vala_args: [
         '--gresourcesdir=@0@/data/ui'.format(meson.project_source_root()),
-    ] + common_vflags,
-    c_args: common_cflags,
+    ],
     dependencies: [
         adwaita_dep,
         gio_unix_dep,

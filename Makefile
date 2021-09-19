@@ -16,7 +16,7 @@ configure:
 
 .PHONY: check
 check: all
-	LC_ALL=C.UTF-8 meson test -C builddir
+	meson test -C builddir
 
 .PHONY: acceptance-flatpak acceptance-snap
 acceptance-flatpak:

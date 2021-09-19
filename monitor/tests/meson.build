@@ -5,8 +5,6 @@
 
 scheduler_test = executable('scheduler-test',
     ['scheduler.vala', meson.project_source_root() + '/monitor/Scheduler.vala'],
-    vala_args: common_vflags,
-    c_args: common_cflags,
     dependencies: [gio_dep, secret_dep],
     link_with: [libdeja],
     include_directories: [libdeja_inc])

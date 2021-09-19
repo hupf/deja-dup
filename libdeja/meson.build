@@ -50,8 +50,6 @@ libdeja = shared_library('deja',
      'restic/ResticJob.vala',
      'restic/ResticPlugin.vala',
     ],
-    vala_args: common_vflags,
-    c_args: common_cflags,
     dependencies: [
         gio_dep,
         gio_unix_dep,
