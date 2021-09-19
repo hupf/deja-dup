@@ -394,7 +394,7 @@ class Browser : Gtk.Grid
       if (success) {
         saved_passphrase = op.get_state().passphrase;
         files_filled = true;
-        switch_overlay_off();
+        update_content_view();
       }
     });
     store.register_operation(operation as DejaDup.OperationFiles);
