@@ -193,7 +193,7 @@ public abstract class AssistantOperation : Assistant
   protected void set_secondary_label(string text)
   {
     if (text != null && text != "") {
-      secondary_label.label = "<i>" + text + "</i>";
+      secondary_label.label = text;
       secondary_label.show();
     }
     else
@@ -245,7 +245,6 @@ public abstract class AssistantOperation : Assistant
     secondary_label.wrap = true;
     secondary_label.max_width_chars = 30;
     secondary_label.visible = false;
-    secondary_label.use_markup = true;
     page.attach(secondary_label, 0, row, 2, 1);
     ++row;
 
@@ -357,14 +356,15 @@ public abstract class AssistantOperation : Assistant
     encrypt_enabled.toggled.connect(check_password_validity);
     ++rows;
 
-    w = new Gtk.Label("    "); // indent
+    w = new Gtk.Label("      "); // indent
     page.attach(w, 0, rows, 1, 1);
     encryption_choice_widgets.append(w);
 
-    w = new Gtk.Label("<i>%s</i>".printf(
-      _("You will need your password to restore your files. You might want to write it down.")));
+    w = new Gtk.Label(
+      _("You will need your password to restore your files. You might want to write it down.")
+    );
+    w.add_css_class("caption-heading");
     w.set("xalign", 0.0f,
-          "use-markup", true,
           "max-width-chars", 25,
           "wrap", true);
     page.attach(w, 1, rows, 2, 1);

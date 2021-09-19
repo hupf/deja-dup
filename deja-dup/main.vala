@@ -178,8 +178,7 @@ public class DejaDupApp : Adw.Application
 
     add_action_entries(ACTIONS, this);
     set_accels_for_action("app.help", {"F1"});
-    set_accels_for_action("app.menu", {"F10"});
-    set_accels_for_action("app.quit", {"<Control>q"});
+    set_accels_for_action("app.quit", {"<Control>w", "<Control>q"});
     quit_action = lookup_action("quit") as SimpleAction;
 
     notify["custom-backend"].connect(() => {

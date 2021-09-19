@@ -98,11 +98,7 @@ public class FileStore : Object, ListModel
   string get_full_path(uint position)
   {
     var item = items.get(position);
-    var node_path = tree.node_to_path(current);
-    if (item.path == null)
-      return Path.build_filename("/", node_path, item.filename);
-    else
-      return Path.build_filename("/", node_path, item.path, item.filename);
+    return Path.build_filename("/", item.path, item.filename);
   }
 
   void update_search()
@@ -115,7 +111,7 @@ public class FileStore : Object, ListModel
     var needle_tokens = search_filter.tokenize_and_fold("", null);
 
     var removed = clear_full();
-    recursive_search(needle_tokens, current);
+    recursive_search(needle_tokens, tree.root); // per HIG, search globally
     sort();
     items_changed(0, removed, items.length);
   }
@@ -191,11 +187,11 @@ public class FileStore : Object, ListModel
       icon = new EmblemedIcon(icon, emblem);
     }
 
-    // Get relative path to current node
+    // Get relative path from root node
     unowned var iter = node;
-    string path = null;
-    while (iter.parent != current) {
-      if (path == null)
+    string path = "";
+    while (iter.parent != tree.root) {
+      if (path == "")
         path = iter.parent.filename;
       else
         path = Path.build_filename(iter.parent.filename, path);

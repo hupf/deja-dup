@@ -28,7 +28,7 @@ class PreferencesTest(BaseTest):
 
     def test_general(self):
         # Test that there's a special first time welcome screen
-        self.app.button("Create My First Backup")
+        self.app.button("Create Your First Backup")
 
         # Grab switch from main window, set last-run time so the switch shows up
         now = GLib.DateTime.new_now_utc().format_iso8601()
