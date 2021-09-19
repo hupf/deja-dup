@@ -153,7 +153,7 @@ public class DejaDup.FileTree : Object
 
   void clear_metadir()
   {
-    var metadir_node = file_to_node(DejaDup.get_metadir(), true);
+    var metadir_node = file_to_node(DejaDup.get_metadir().get_child("README"), true);
     if (metadir_node != null)
       erase_node_and_parents(metadir_node);
   }
