@@ -26,7 +26,8 @@ internal class ResticInstance : ToolInstance
       return true;
     }
     if (line == "Fatal: wrong password or no key found" ||
-        line == "Fatal: an empty password is not a password")
+        line == "Fatal: an empty password is not a password" ||
+        line == "Fatal: Fatal: an empty password is not a password")
     {
       bad_password();
       return true;
