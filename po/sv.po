@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-09-19 22:00+0000\n"
-"PO-Revision-Date: 2021-09-20 11:30+0200\n"
+"POT-Creation-Date: 2021-09-20 12:08+0000\n"
+"PO-Revision-Date: 2021-09-20 14:12+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -306,7 +306,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:394
+#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:392
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Säkerhetskopior"
 
@@ -996,30 +996,36 @@ msgstr "Autentisering krävs"
 msgid "No backup files found"
 msgstr "Inga säkerhetskopior hittades"
 
-#: deja-dup/ConfigAutoBackupRow.vala:32
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:34
 msgid "Next backup is today."
 msgstr "Nästa säkerhetskopiering sker i dag."
 
-#: deja-dup/ConfigAutoBackupRow.vala:33
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:36
 msgid "Next backup would be today."
 msgstr "Nästa säkerhetskopiering skulle vara i dag."
 
-#: deja-dup/ConfigAutoBackupRow.vala:38
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:43
 msgid "Next backup is tomorrow."
 msgstr "Nästa säkerhetskopiering sker i morgon."
 
-#: deja-dup/ConfigAutoBackupRow.vala:39
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:45
 msgid "Next backup would be tomorrow."
 msgstr "Nästa säkerhetskopiering skulle vara i morgon."
 
-#: deja-dup/ConfigAutoBackupRow.vala:46
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:53
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
 msgstr[0] "Nästa säkerhetskopiering sker om %d dag."
 msgstr[1] "Nästa säkerhetskopiering sker om %d dagar."
 
-#: deja-dup/ConfigAutoBackupRow.vala:50
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:58
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -1237,7 +1243,9 @@ msgid_plural "%d days ago"
 msgstr[0] "%d dag sedan"
 msgstr[1] "%d dagar sedan"
 
-#: deja-dup/RecentBackupRow.vala:64
+#. Translators: this is used like "Most Recent Backup: None"
+#: deja-dup/RecentBackupRow.vala:65
+msgctxt "backups"
 msgid "None"
 msgstr "Ingen"
 
