@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-09-19 05:42+0000\n"
-"PO-Revision-Date: 2021-09-20 08:43+0200\n"
+"POT-Creation-Date: 2021-09-20 12:05+0000\n"
+"PO-Revision-Date: 2021-09-20 18:31+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: српски <gnome-sr@googlegroups.org>\n"
 "Language: sr\n"
@@ -308,7 +308,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:382
+#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:394
 msgid "Déjà Dup Backups"
 msgstr "Резерве Безбедног сефа"
 
@@ -389,7 +389,6 @@ msgid "Scanning backup files…"
 msgstr "Прегледам датотеке резерве…"
 
 #: data/ui/Browser.ui:99
-#| msgid "Folders"
 msgid "Folder is Empty"
 msgstr "Фасцикла је празна"
 
@@ -480,7 +479,6 @@ msgid "Back"
 msgstr "Назад"
 
 #: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
-#| msgid "Menu"
 msgid "Main Menu"
 msgstr "Главни изборник"
 
@@ -572,7 +570,6 @@ msgid "Labs"
 msgstr "Лабс"
 
 #: data/ui/PreferencesWindow.ui:83
-#| msgid "Restoring:"
 msgid "Restic"
 msgstr "Рестик"
 
@@ -581,7 +578,6 @@ msgid "Use _Restic instead of Duplicity"
 msgstr "Користи _Рестик уместо Дуплирка"
 
 #: data/ui/RecentBackupRow.ui:9
-#| msgid "No recent backups."
 msgid "Most Recent Backup"
 msgstr "Најновија резерва"
 
@@ -654,12 +650,10 @@ msgid "_Date"
 msgstr "_Датум"
 
 #: data/ui/WelcomePage.ui:12
-#| msgid "_Keep Backups"
 msgid "Welcome to Backups"
 msgstr "Добродошли у Безбедни сеф"
 
 #: data/ui/WelcomePage.ui:22
-#| msgid "Create My First _Backup"
 msgid "Create Your First _Backup"
 msgstr "Направите башу прву _резерву"
 
@@ -879,7 +873,6 @@ msgid "Grant Access"
 msgstr "Одобри приступ"
 
 #: deja-dup/AssistantOperation.vala:796
-#| msgid "E_ncryption password"
 msgid "Set Encryption Password"
 msgstr "Поставите лозинку шифровања"
 
@@ -1009,25 +1002,28 @@ msgstr "Потребно је потврђивање идентитета"
 msgid "No backup files found"
 msgstr "Нисам пронашао датотеке резерве"
 
-#: deja-dup/ConfigAutoBackupRow.vala:32
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:34
 msgid "Next backup is today."
 msgstr "Следеће прављење резерве је данас."
 
-#: deja-dup/ConfigAutoBackupRow.vala:33
-#| msgid "Next backup is today."
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:36
 msgid "Next backup would be today."
 msgstr "Следеће прављење резерве биће данас."
 
-#: deja-dup/ConfigAutoBackupRow.vala:38
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:43
 msgid "Next backup is tomorrow."
 msgstr "Следеће прављење резерве је сутра."
 
-#: deja-dup/ConfigAutoBackupRow.vala:39
-#| msgid "Next backup is tomorrow."
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:45
 msgid "Next backup would be tomorrow."
 msgstr "Следеће прављење резерве биће сутра."
 
-#: deja-dup/ConfigAutoBackupRow.vala:46
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:53
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -1036,10 +1032,9 @@ msgstr[1] "Следеће прављење резерве је за %d дана 
 msgstr[2] "Следеће прављење резерве је за %d дана од сада."
 msgstr[3] "Следеће прављење резерве је за један дан."
 
-#: deja-dup/ConfigAutoBackupRow.vala:50
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:58
 #, c-format
-#| msgid "Next backup is %d day from now."
-#| msgid_plural "Next backup is %d days from now."
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
 msgstr[0] "Следеће прављење резерве биће за %d дан од сада."
@@ -1225,11 +1220,13 @@ msgstr ""
 #: deja-dup/PreferencesWindow.vala:37
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
-msgstr "Надамо се да ће Рестик укључити нове функције много лакше у будућности."
+msgstr ""
+"Надамо се да ће Рестик укључити нове функције много лакше у будућности."
 
 #: deja-dup/PreferencesWindow.vala:39
 msgid "This is an experimental feature and may be removed at any time."
-msgstr "Ово је експериментална функција и може бити уклоњена у било које време."
+msgstr ""
+"Ово је експериментална функција и може бити уклоњена у било које време."
 
 #: deja-dup/PreferencesWindow.vala:40
 msgid "Use caution, but any testing you can manage is appreciated."
@@ -1254,8 +1251,6 @@ msgstr "Јуче"
 #. Translators: sentence case
 #: deja-dup/RecentBackupRow.vala:54
 #, c-format
-#| msgid "%d day"
-#| msgid_plural "%d days"
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "пре %d дан"
@@ -1263,7 +1258,10 @@ msgstr[1] "пре %d дана"
 msgstr[2] "пре %d дана"
 msgstr[3] "пре један дан"
 
-#: deja-dup/RecentBackupRow.vala:64
+#. Translators: this is used like "Most Recent Backup: None"
+#: deja-dup/RecentBackupRow.vala:65
+#| msgid "None"
+msgctxt "backups"
 msgid "None"
 msgstr "Ништа"
 
@@ -1276,27 +1274,27 @@ msgstr "Ништа"
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/main.vala:20 monitor/monitor.vala:17
+#: deja-dup/main.vala:22 monitor/monitor.vala:17
 msgid "Show version"
 msgstr "Приказује издање"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:23
 msgid "Restore given files"
 msgstr "Враћа дате датотеке"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:24
 msgid "Immediately start a backup"
 msgstr "Истог тренутка започиње прављење резерве"
 
-#: deja-dup/main.vala:84
+#: deja-dup/main.vala:86
 msgid "Please list files to restore"
 msgstr "Испишите датотеке за враћање"
 
-#: deja-dup/main.vala:90 deja-dup/main.vala:104
+#: deja-dup/main.vala:92 deja-dup/main.vala:106
 msgid "An operation is already in progress"
 msgstr "Једна радња је већ у току"
 
-#: deja-dup/main.vala:274
+#: deja-dup/main.vala:286
 msgid "translator-credits"
 msgstr ""
 "  Мирослав Николић <miroslavnikolic@rocketmail.com>  Марко М. Костић <marko."
@@ -1629,21 +1627,16 @@ msgstr ""
 "користите дуплирка да направите или вратите резерве ваших датотека."
 
 #: libdeja/restic/ResticPlugin.vala:42
-#| msgid "Could not understand duplicity version."
 msgid "Could not understand restic version."
 msgstr "Не могу да разумем издање рестика."
 
 #: libdeja/restic/ResticPlugin.vala:49
 #, c-format
-#| msgid "Could not understand duplicity version ‘%s’."
 msgid "Could not understand restic version ‘%s’."
 msgstr "Не могу да разумем издање рестика %s."
 
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
-#| msgid ""
-#| "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
-#| "version %d.%d.%.2d"
 msgid ""
 "Backups requires at least version %d.%d.%.2d of restic, but only found "
 "version %d.%d.%.2d"
