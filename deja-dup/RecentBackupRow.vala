@@ -61,7 +61,8 @@ public class RecentBackupRow : Adw.ActionRow
     var last = settings.get_string(DejaDup.LAST_BACKUP_KEY);
     var last_time = new DateTime.from_iso8601(last, new TimeZone.utc());
     if (last_time == null)
-      when.label = _("None");
+      // Translators: this is used like "Most Recent Backup: None"
+      when.label = C_("backups", "None");
     else
       when.label = pretty_last_name(last_time);
   }

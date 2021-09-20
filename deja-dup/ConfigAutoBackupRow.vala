@@ -29,23 +29,31 @@ public class ConfigAutoBackupRow : Adw.ActionRow
 
   string today_message(bool periodic)
   {
-    return periodic ? _("Next backup is today.")
-                    : _("Next backup would be today.");
+    return periodic ?
+      // Translators: this is used when automatic updates are enabled
+      _("Next backup is today.") :
+      // Translators: this is used when automatic updates are disabled
+      _("Next backup would be today.");
   }
 
   string tomorrow_message(bool periodic)
   {
-    return periodic ? _("Next backup is tomorrow.")
-                    : _("Next backup would be tomorrow.");
+    return periodic ?
+      // Translators: this is used when automatic updates are enabled
+      _("Next backup is tomorrow.") :
+      // Translators: this is used when automatic updates are disabled
+      _("Next backup would be tomorrow.");
   }
 
   string future_message(int days, bool periodic)
   {
     if (periodic)
+      // Translators: this is used when automatic updates are enabled
       return dngettext(Config.GETTEXT_PACKAGE,
                        "Next backup is %d day from now.",
                        "Next backup is %d days from now.", days).printf(days);
     else
+      // Translators: this is used when automatic updates are disabled
       return dngettext(Config.GETTEXT_PACKAGE,
                        "Next backup would be %d day from now.",
                        "Next backup would be %d days from now.", days).printf(days);
