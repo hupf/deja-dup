@@ -144,14 +144,14 @@ public class DejaDupApp : Adw.Application
     }
   }
 
-  Gtk.ApplicationWindow? get_app_window()
+  MainWindow? get_app_window()
   {
-    return main_window.get() as Gtk.ApplicationWindow;
+    return main_window.get() as MainWindow;
   }
 
   MainHeaderBar? get_header()
   {
-    var win = main_window.get() as MainWindow;
+    var win = get_app_window();
     if (win == null)
       return null;
     return win.get_header();
@@ -374,10 +374,8 @@ public class DejaDupApp : Adw.Application
     if (get_operation() != null || get_app_window() == null)
       return; // not safe or needed to continue closing modals
 
-    foreach (var window in Gtk.Window.list_toplevels()) {
-      if (window.transient_for == get_app_window() && window.modal && window.visible) {
-        window.destroy();
-      }
+    foreach (var window in get_app_window().get_modals()) {
+      window.destroy();
     }
   }
 }

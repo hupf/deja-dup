@@ -14,6 +14,17 @@ public class MainWindow : Adw.ApplicationWindow
     return header;
   }
 
+  public List<Gtk.Window> get_modals()
+  {
+    var modals = new List<Gtk.Window>();
+    foreach (var window in Gtk.Window.list_toplevels()) {
+      if (window.transient_for == this && window.modal && window.visible) {
+        modals.prepend(window);
+      }
+    }
+    return modals;
+  }
+
   [GtkChild]
   unowned MainHeaderBar header;
   [GtkChild]

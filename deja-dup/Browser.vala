@@ -50,7 +50,7 @@ class Browser : Gtk.Grid
   MountOperation mount_op; // normally null
   MainLoop passphrase_loop;
   string saved_passphrase; // most recent successful password
-  unowned Gtk.ApplicationWindow app_window;
+  unowned MainWindow app_window;
   unowned MainHeaderBar header;
   SimpleActionGroup action_group;
 
@@ -417,11 +417,8 @@ class Browser : Gtk.Grid
     if (!app_window.is_active)
       return false;
 
-    var windows = Gtk.Window.list_toplevels();
-    foreach (var window in windows) {
-      if (window.visible && window != app_window)
-        return false;
-    }
+    if (app_window.get_modals() != null)
+      return false;
 
     return true;
   }
