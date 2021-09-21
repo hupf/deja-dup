@@ -98,7 +98,8 @@ public class FileStore : Object, ListModel
   string get_full_path(uint position)
   {
     var item = items.get(position);
-    return Path.build_filename("/", item.path, item.filename);
+    var node_path = tree.node_to_path(tree.root);
+    return Path.build_filename("/", node_path, item.path, item.filename);
   }
 
   void update_search()
