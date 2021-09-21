@@ -15,7 +15,7 @@ class PreferencesTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.app = self.cmd()
-        self.app.button("Menu").click()
+        self.app.button("Main Menu").click()
         self.app.button("Preferences").click()
 
     def get_auto_check(self, root):

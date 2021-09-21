@@ -220,7 +220,7 @@ class BrowserTest(BaseTest):
         icons = self.app.findChildren(lambda x: x.roleName == "table cell")
         assert len(icons) == 4 and len([i for i in icons if i.selected]) == 0
 
-        self.app.button("Menu").click()
+        self.app.button("Main Menu").click()
         self.app.button("Select All").click()
 
         assert len([i for i in icons if i.selected]) == 4

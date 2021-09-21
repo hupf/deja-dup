@@ -91,6 +91,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
         return true;
 
       case DejaDup.Backend.Kind.MICROSOFT:
+        explanation = _("This storage location is not yet supported.");
         return supports_microsoft;
 
       default:

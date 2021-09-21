@@ -59,7 +59,7 @@ class RestoreTest(BaseTest):
 
         # Now select all.
         self.wait_for(lambda: search.sensitive)
-        app.childNamed("Menu").click()
+        app.childNamed("Main Menu").click()
         app.childNamed("Select All").click()
 
         # And start restore
