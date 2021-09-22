@@ -10,7 +10,7 @@ public class Notifications : Object
 {
   public static void automatic_backup_started()
   {
-    send_status(_("Starting scheduled backup"));
+    send_status(_("Starting scheduled backup"), null, NotificationPriority.LOW);
   }
 
   public static void automatic_backup_delayed(string reason)
