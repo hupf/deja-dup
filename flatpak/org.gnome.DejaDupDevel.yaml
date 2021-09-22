@@ -9,11 +9,11 @@ sdk: org.gnome.Sdk
 command: deja-dup
 
 finish-args:
-  - --device=dri
+  - --device=dri # gtk4 wants gl access
   - --filesystem=host
-  - --filesystem=xdg-run/gvfs
-  - --filesystem=xdg-run/gvfsd
-  - --filesystem=~/.var/app/
+  - --filesystem=xdg-run/gvfs # for gvfsd-fuse paths
+  - --filesystem=xdg-run/gvfsd # for gvfsd itself to work
+  - --filesystem=~/.var/app/ # flatpak hides these even with 'host' above
   - --share=ipc
   - --share=network
   - --socket=fallback-x11

@@ -7,7 +7,7 @@
 
 
 ##### Debug Information
-(go to the About menu item, click on Debug Information, and copy that here)
+(go to the About menu item, where you'll either see a System tab or a Debug Information button, and copy the text copy here)
 
 
 

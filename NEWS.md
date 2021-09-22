@@ -7,8 +7,22 @@ SPDX-FileCopyrightText: Michael Terry
 - Add support for Microsoft OneDrive
 - Delay scheduled backups when Power Saver mode or GameMode are enabled
 - Add opt-in experimental support for using Restic
+- Refresh the UI in various places
+- Update Basque, Brazilian Portuguese, Catalan, Chinese (China), Danish, Dutch,
+  Finnish, Friulian, Galician, German, Hungarian, Indonesian, Italian,
+  Japanese, Occitan, Polish, Romanian, Russian, Serbian, Slovenian, Spanish,
+  Swedish, Turkish, and Ukrainian translations
 
 ##### Packaging
+- A note on versioning: Déjà Dup has switched to a GNOME-style version scheme,
+  with a .alpha and .beta leading to a .0 stable release, instead of the
+  previous odd/even scheme. So this 43.alpha release is leading towards a
+  stable 43.0 release. Déjà Dup still doesn't follow the GNOME release
+  schedule, just their versioning style.
+- A note on this release: You probably should not package this release for your
+  distro, even in a testing capacity. It wants an unreleased duplicity and
+  needs an unreleased libadwaita. This is truly a bleeding edge alpha release,
+  mostly to get community testing.
 - Switch from gtk3 to gtk4
 - Switch from libhandy1 to libadwaita1
 - Require meson 0.58+

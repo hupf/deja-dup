@@ -15,8 +15,8 @@ class PreferencesTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.app = self.cmd()
-        self.app.button("Main Menu").click()
-        self.app.button("Preferences").click()
+        self.app.childNamed("Main Menu").click()
+        self.app.childNamed("Preferences").click()
 
     def get_auto_check(self, root):
         # Dogtail can't find an item with multiple labels (where labeller is a
