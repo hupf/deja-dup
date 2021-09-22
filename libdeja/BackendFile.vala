@@ -8,11 +8,13 @@ using GLib;
 
 public abstract class DejaDup.BackendFile : Backend
 {
+  public bool unmount_when_done {get; set; default = true;}
+
   bool will_unmount = false;
 
   public override async void cleanup() {
     // unmount if we originally mounted the backup location
-    if (will_unmount) {
+    if (will_unmount && unmount_when_done) {
       yield unmount();
       will_unmount = false;
     }

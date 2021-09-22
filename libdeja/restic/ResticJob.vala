@@ -33,6 +33,14 @@ internal class ResticJoblet : DejaDup.ToolJoblet
   {
     yield base.prepare();
     tmpdir = yield DejaDup.get_tempdir(); // save and use in prepare_args
+
+    var remote_backend = backend as DejaDup.BackendRemote;
+    if (remote_backend != null) {
+      // FIXME: I've found issues with mounting and unmounting often - it seems
+      // to confuse FUSE. Which, fair. So just litter the user's session with
+      // our mount.
+      remote_backend.unmount_when_done = false;
+    }
   }
 
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
