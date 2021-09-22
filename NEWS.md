@@ -3,6 +3,8 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.beta
+
 # 43.alpha
 - Add support for Microsoft OneDrive
 - Delay scheduled backups when Power Saver mode or GameMode are enabled

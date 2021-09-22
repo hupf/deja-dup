@@ -4,7 +4,7 @@
 # SPDX-FileCopyrightText: Michael Terry
 
 project('deja-dup', ['vala', 'c'],
-    version: '43.alpha',
+    version: '43.beta',
     license: 'GPL-3.0-or-later',
     meson_version: '>= 0.58')
 
