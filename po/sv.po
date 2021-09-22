@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-09-20 12:08+0000\n"
-"PO-Revision-Date: 2021-09-20 14:12+0200\n"
+"POT-Creation-Date: 2021-09-22 14:29+0000\n"
+"PO-Revision-Date: 2021-09-22 17:59+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -357,25 +357,25 @@ msgstr ""
 "andra program för säkerhetskopiering."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:92
-msgid "Back up your files automatically. Set it and forget it."
-msgstr "Säkerhetskopiera dina filer automatiskt. Ställ in det och glöm det."
+msgid "Back up your files automatically — set it and forget it"
+msgstr "Säkerhetskopiera dina filer automatiskt — ställ in det och glöm det"
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:96
-msgid "Restoring is a breeze. Browse your files and select which to restore."
+msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
-"Återställning är enkelt. Bläddra bland dina filer och välj vilka du vill "
-"återställa."
+"Återställning är enkelt — bläddra bland dina filer och välj vilka du vill "
+"återställa"
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:100
-msgid "Back up to the cloud, a network server, or a local drive."
-msgstr "Säkerhetskopiera till molnet, en nätverksserver eller en lokal enhet."
+msgid "Back up to the cloud, a network server, or a local drive"
+msgstr "Säkerhetskopiera till molnet, en nätverksserver eller en lokal enhet"
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:104
 msgid ""
-"Take control of your backup by choosing exactly which folders to include."
+"Take control of your backup by choosing exactly which folders to include"
 msgstr ""
 "Ta kontroll över din säkerhetskopiering genom att välja exakt vilka mappar "
-"som ska inkluderas."
+"som ska inkluderas"
 
 #: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
 #: data/ui/MainHeaderBar.ui:52
@@ -1473,7 +1473,7 @@ msgid "Paused (no network)"
 msgstr "Pausad (inget nätverk)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:279
+#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:287
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
@@ -1619,7 +1619,12 @@ msgstr ""
 "Säkerhetskopior kräver minst version %d.%d.%.2d av duplicity, men hittade "
 "endast version %d.%d.%.2d"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:98
+#: libdeja/duplicity/DuplicityPlugin.vala:94
+#: libdeja/restic/ResticPlugin.vala:91
+msgid "This storage location is not yet supported."
+msgstr "Denna lagringsplats stöds inte ännu."
+
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1644,10 +1649,6 @@ msgid ""
 msgstr ""
 "Säkerhetskopior kräver minst version %d.%d.%.2d av restic, men hittade "
 "endast version %d.%d.%.2d"
-
-#: libdeja/restic/ResticPlugin.vala:91
-msgid "This storage location is not yet supported."
-msgstr "Denna lagringsplats stöds inte ännu."
 
 #: monitor/ReadyWatcher.vala:159
 msgid ""
