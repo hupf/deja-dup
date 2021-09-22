@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-09-20 12:05+0000\n"
-"PO-Revision-Date: 2021-09-20 17:10+0300\n"
+"POT-Creation-Date: 2021-09-22 14:29+0000\n"
+"PO-Revision-Date: 2021-09-22 17:52+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:15+0000\n"
 "X-Generator: Lokalize 20.12.0\n"
 
@@ -304,7 +305,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:394
+#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:392
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -356,26 +357,32 @@ msgstr ""
 "програмам резервного копіювання."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:92
-msgid "Back up your files automatically. Set it and forget it."
+#| msgid "Back up your files automatically. Set it and forget it."
+msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Створюйте резервні копії ваших файлів автоматично. Налаштуйте програму і "
 "позбудьтеся клопоту."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:96
-msgid "Restoring is a breeze. Browse your files and select which to restore."
+#| msgid ""
+#| "Restoring is a breeze. Browse your files and select which to restore."
+msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Відновлення даних є надзвичайно простим. Достатньо вибрати файли і каталог "
 "для відновлення."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:100
-msgid "Back up to the cloud, a network server, or a local drive."
+#| msgid "Back up to the cloud, a network server, or a local drive."
+msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого "
 "комп'ютера."
 
 #: data/org.gnome.DejaDup.metainfo.xml.in:104
+#| msgid ""
+#| "Take control of your backup by choosing exactly which folders to include."
 msgid ""
-"Take control of your backup by choosing exactly which folders to include."
+"Take control of your backup by choosing exactly which folders to include"
 msgstr ""
 "Керуйте резервним копіюванням, вибравши саме ті теки, які вам потрібні."
 
@@ -1254,7 +1261,6 @@ msgstr[2] "%d днів тому"
 
 #. Translators: this is used like "Most Recent Backup: None"
 #: deja-dup/RecentBackupRow.vala:65
-#| msgid "None"
 msgctxt "backups"
 msgid "None"
 msgstr "Немає"
@@ -1489,7 +1495,7 @@ msgid "Paused (no network)"
 msgstr "Призупинено (мережа відсутня)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:279
+#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:287
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
@@ -1636,7 +1642,12 @@ msgstr ""
 "Для роботи «Резервних копій» потрібна принаймні версія %d.%d.%.2d duplicity. "
 "Втім, виявлено лише версію %d.%d.%.2d"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:98
+#: libdeja/duplicity/DuplicityPlugin.vala:94
+#: libdeja/restic/ResticPlugin.vala:91
+msgid "This storage location is not yet supported."
+msgstr "Підтримку цього типу місць зберігання даних ще не реалізовано."
+
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1662,10 +1673,6 @@ msgid ""
 msgstr ""
 "Для роботи «Резервних копій» потрібна принаймні версія %d.%d.%.2d restic. "
 "Втім, виявлено лише версію %d.%d.%.2d"
-
-#: libdeja/restic/ResticPlugin.vala:91
-msgid "This storage location is not yet supported."
-msgstr "Підтримку цього типу місць зберігання даних ще не реалізовано."
 
 #: monitor/ReadyWatcher.vala:159
 msgid ""
