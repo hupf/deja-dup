@@ -924,9 +924,13 @@ internal class DuplicityJob : DejaDup.ToolJob
     // "bad session key" error message that is given if the password was incorrect.
     // Any other error should be presented to the user so they can maybe fix it
     // (bad configuration files or something).
+    // We also check the hardcoded string in case there's a language misconfig
+    // and gpg isn't giving us the translated strings.
     var no_seckey_msg = gpg_strerror(GPGError.NO_SECKEY);
     var bad_key_msg = gpg_strerror(GPGError.BAD_KEY);
-    if (text.contains(no_seckey_msg) || text.contains(bad_key_msg)) {
+    if (text.contains(no_seckey_msg) || text.contains("No secret key") ||
+        text.contains(bad_key_msg) || text.contains("Bad session key"))
+    {
       report_encryption_error();
       return true;
     }
