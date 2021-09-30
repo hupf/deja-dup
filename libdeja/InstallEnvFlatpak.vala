@@ -57,7 +57,7 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
     try {
       remove_monitor = removed.monitor_file(FileMonitorFlags.NONE);
       remove_monitor.changed.connect(() => {
-        //loop.quit();
+        loop.quit();
       });
     } catch (IOError e) {
       warning("%s", e.message);
