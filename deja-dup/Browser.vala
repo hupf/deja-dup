@@ -123,6 +123,7 @@ class Browser : Gtk.Grid
   {
     app_window = win;
     app_window.notify["is-active"].connect(maybe_start_operation);
+    app_window.notify["visible"].connect(maybe_start_operation);
 
     header = win.get_header();
     header.bind_search_bar(search_bar);
@@ -414,7 +415,7 @@ class Browser : Gtk.Grid
 
   bool app_window_is_active()
   {
-    if (!app_window.is_active)
+    if (!app_window.is_active || !app_window.visible)
       return false;
 
     if (app_window.get_modals() != null)

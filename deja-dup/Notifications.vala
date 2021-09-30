@@ -21,7 +21,7 @@ public class Notifications : Object
   public static void backup_finished(Gtk.Window win, bool success,
                                      bool cancelled, string? detail)
   {
-    if (!win.is_active && success && !cancelled) {
+    if (!window_is_active(win) && success && !cancelled) {
       string title = _("Backup completed");
       var priority = NotificationPriority.LOW;
 
@@ -34,7 +34,7 @@ public class Notifications : Object
 
       send_status(title, body, priority);
     }
-    else if (!win.is_active && !success && !cancelled) {
+    else if (!window_is_active(win) && !success && !cancelled) {
       send_status(_("Backup failed"));
     }
     else {
@@ -46,21 +46,21 @@ public class Notifications : Object
   public static void restore_finished(Gtk.Window win, bool success,
                                       bool cancelled, string? detail)
   {
-    if (!win.is_active && !success && !cancelled)
+    if (!window_is_active(win) && !success && !cancelled)
       send_status(_("Restore failed"));
   }
 
   public static void operation_blocked(Gtk.Window win, string title,
                                        string? body = null)
   {
-    if (!win.is_active)
+    if (!window_is_active(win))
       send_status(title, body);
   }
 
   public static void attention_needed(Gtk.Window win, string title,
                                       string? body = null)
   {
-    if (!win.is_active)
+    if (!window_is_active(win))
       send_status(title, body, NotificationPriority.HIGH);
   }
 
@@ -118,5 +118,10 @@ public class Notifications : Object
   static void withdraw_status()
   {
     Application.get_default().withdraw_notification("backup-status");
+  }
+
+  static bool window_is_active(Gtk.Window win)
+  {
+    return win.is_active && win.visible;
   }
 }
