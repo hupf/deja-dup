@@ -33,19 +33,31 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
   }
 
   FileMonitor update_monitor;
+  FileMonitor remove_monitor;
   public override void register_monitor_restart(MainLoop loop)
   {
-    var file = File.new_for_path("/app/.updated");
+    var updated = File.new_for_path("/app/.updated");
     try {
-      update_monitor = file.monitor_file(FileMonitorFlags.NONE);
+      update_monitor = updated.monitor_file(FileMonitorFlags.NONE);
       update_monitor.changed.connect(() => {
-        var cmd = "flatpak-spawn --latest-version %s".printf(get_monitor_exec());
+        var cmd = "flatpak-spawn --latest-version %s --replace".printf(get_monitor_exec());
         try {
           Process.spawn_command_line_async(cmd);
-          loop.quit();
+          // being replaced will kill the current process, so no need to call loop.quit()
         } catch (SpawnError e) {
           warning("%s", e.message);
+          loop.quit();
         }
+      });
+    } catch (IOError e) {
+      warning("%s", e.message);
+    }
+
+    var removed = File.new_for_path("/app/.removed");
+    try {
+      remove_monitor = removed.monitor_file(FileMonitorFlags.NONE);
+      remove_monitor.changed.connect(() => {
+        //loop.quit();
       });
     } catch (IOError e) {
       warning("%s", e.message);

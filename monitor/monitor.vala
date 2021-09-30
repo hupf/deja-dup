@@ -11,9 +11,11 @@ Scheduler scheduler;
 ReadyWatcher ready_watcher;
 
 bool no_delay = false;
+bool replace = false;
 bool show_version = false;
 const OptionEntry[] OPTIONS = {
   {"no-delay", 0, OptionFlags.HIDDEN, OptionArg.NONE, ref no_delay, null, null},
+  {"replace", 0, OptionFlags.HIDDEN, OptionArg.NONE, ref replace, null, null},
   {"version", 0, 0, OptionArg.NONE, ref show_version, N_("Show version"), null},
   {null}
 };
@@ -95,10 +97,21 @@ void make_first_check()
   });
 }
 
+// Used when debugging, to force a backup
+bool on_sigusr1()
+{
+  debug("Starting auto backup per signal request.");
+  BackupInterface.start_auto.begin();
+  return Source.CONTINUE;
+}
+
 void begin_monitoring()
 {
   // initialize network proxy, just so it can settle by the time we check it
   DejaDup.Network.get();
+
+  DejaDup.InstallEnv.instance().register_monitor_restart(loop);
+  Unix.signal_add (Posix.Signal.USR1, on_sigusr1);
 
   // Delay first check to give the network and desktop environment a chance to start up.
   var delay_time = 120;
@@ -131,12 +144,17 @@ int main(string[] args)
 
   DejaDup.initialize();
 
+  var name_flags = BusNameOwnerFlags.DO_NOT_QUEUE | BusNameOwnerFlags.ALLOW_REPLACEMENT;
+  if (replace)
+    name_flags |= BusNameOwnerFlags.REPLACE;
+  name_flags = BusNameOwnerFlags.NONE;
+
   loop = new MainLoop(null, false);
-  DejaDup.InstallEnv.instance().register_monitor_restart(loop);
   Idle.add(() => {
     // quit if we can't get the bus name or become disconnected
     Bus.own_name(BusType.SESSION, Config.APPLICATION_ID + ".Monitor",
-                 BusNameOwnerFlags.NONE, ()=>{},
+                 name_flags,
+                 ()=>{},
                  ()=>{begin_monitoring();},
                  ()=>{loop.quit();});
     return Source.REMOVE;
