@@ -30,13 +30,15 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     if (has_been_setup)
       return;
 
-    string output;
+    string stderr, stdout;
     Process.spawn_sync(null, {duplicity_command(), "--version"}, null,
-                       SpawnFlags.SEARCH_PATH, null, out output);
+                       SpawnFlags.SEARCH_PATH, null, out stdout, out stderr);
 
-    var tokens = output.split(" ");
-    if (tokens == null || tokens.length < 2)
+    var tokens = stdout.split(" ");
+    if (tokens == null || tokens.length < 2) {
+      warning("%s\n%s", stderr, stdout);
       throw new SpawnError.FAILED(_("Could not understand duplicity version."));
+    }
 
     // In version 0.6.25, the output from duplicity --version changed and the
     // string "duplicity major.minor.micro" is now preceded by a deprecation
