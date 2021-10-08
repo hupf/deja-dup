@@ -17,6 +17,8 @@ public class ConfigPeriodRow : ConfigComboRow
 
   protected override void fill_store() {
     add_item(1, _("Daily"));
+    add_item(2, label_for_value(2));
+    add_item(3, label_for_value(3));
     add_item(7, _("Weekly"));
   }
 
