@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
 "POT-Creation-Date: 2021-10-03 11:40+0000\n"
-"PO-Revision-Date: 2021-01-17 10:16+0900\n"
+"PO-Revision-Date: 2021-10-20 20:50+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "Language: ja\n"
@@ -43,14 +43,14 @@ msgstr "バックアップ"
 #: data/org.gnome.DejaDup.desktop.in:7
 #: data/org.gnome.DejaDup.metainfo.xml.in:16
 msgid "Protect yourself from data loss"
-msgstr ""
+msgstr "データ損失からあなたを守ります"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
 #: data/org.gnome.DejaDup.desktop.in:21
 msgid "déjà;deja;dup;"
 msgstr ""
-"déjà;deja;dup;backup;デジャ;ダップ;バックアップ;復元;dap;bakkuappu;fukugen;"
+"déjà;deja;dup;backup;デジャ;ダップ;バックアップ;復元;dap;bakkuappu;fukugen;hukugen;"
 
 #: data/org.gnome.DejaDup.desktop.in:28
 msgid "Back Up"
@@ -370,18 +370,16 @@ msgid "Scanning backup files…"
 msgstr "バックアップファイルをスキャン中…"
 
 #: data/ui/Browser.ui:99
-#, fuzzy
-#| msgid "Folders"
 msgid "Folder is Empty"
-msgstr "フォルダー"
+msgstr "フォルダーは空です"
 
 #: data/ui/Browser.ui:113
 msgid "No Results Found"
-msgstr ""
+msgstr "見つかりませんでした"
 
 #: data/ui/Browser.ui:114
 msgid "Try a different search"
-msgstr ""
+msgstr "他のキーワードを試してください"
 
 #: data/ui/Browser.ui:142
 msgid "_Retry"
@@ -460,10 +458,8 @@ msgid "Back"
 msgstr "戻る"
 
 #: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
-#, fuzzy
-#| msgid "Menu"
 msgid "Main Menu"
-msgstr "メニュー"
+msgstr "メインメニュー"
 
 #: data/ui/MainHeaderBar.ui:69
 msgid "_Select All"
@@ -552,20 +548,16 @@ msgid "Labs"
 msgstr ""
 
 #: data/ui/PreferencesWindow.ui:83
-#, fuzzy
-#| msgid "Restoring:"
 msgid "Restic"
-msgstr "復元中:"
+msgstr "Restic"
 
 #: data/ui/PreferencesWindow.ui:87
 msgid "Use _Restic instead of Duplicity"
-msgstr ""
+msgstr "Duplicity の代わりに Restic を使用する(_R)"
 
 #: data/ui/RecentBackupRow.ui:9
-#, fuzzy
-#| msgid "No recent backups."
 msgid "Most Recent Backup"
-msgstr "最近のバックアップはありません。"
+msgstr "直近のバックアップ"
 
 #: data/ui/ServerHintPopover.ui:17
 msgid "Network Locations"
@@ -636,14 +628,10 @@ msgid "_Date"
 msgstr "日付(_D)"
 
 #: data/ui/WelcomePage.ui:12
-#, fuzzy
-#| msgid "_Keep Backups"
 msgid "Welcome to Backups"
-msgstr "バックアップの保持(_K)"
+msgstr "“バックアップ”へようこそ"
 
 #: data/ui/WelcomePage.ui:22
-#, fuzzy
-#| msgid "Create My First _Backup"
 msgid "Create Your First _Backup"
 msgstr "最初のバックアップを作成(_B)"
 
@@ -860,10 +848,8 @@ msgid "Grant Access"
 msgstr "アクセス許可"
 
 #: deja-dup/AssistantOperation.vala:796
-#, fuzzy
-#| msgid "E_ncryption password"
 msgid "Set Encryption Password"
-msgstr "暗号化パスワード(_N)"
+msgstr "暗号化パスワードを設定"
 
 #: deja-dup/AssistantOperation.vala:798
 msgid "Require Password?"
@@ -992,10 +978,8 @@ msgstr "次回のバックアップは今日です。"
 
 #. Translators: this is used when automatic updates are disabled
 #: deja-dup/ConfigAutoBackupRow.vala:36
-#, fuzzy
-#| msgid "Next backup is today."
 msgid "Next backup would be today."
-msgstr "次回のバックアップは今日です。"
+msgstr "次回のバックアップはおそらく今日です。"
 
 #. Translators: this is used when automatic updates are enabled
 #: deja-dup/ConfigAutoBackupRow.vala:43
@@ -1004,26 +988,22 @@ msgstr "次回のバックアップは明日です。"
 
 #. Translators: this is used when automatic updates are disabled
 #: deja-dup/ConfigAutoBackupRow.vala:45
-#, fuzzy
-#| msgid "Next backup is tomorrow."
 msgid "Next backup would be tomorrow."
-msgstr "次回のバックアップは明日です。"
+msgstr "次回のバックアップはおそらく明日です。"
 
 #. Translators: this is used when automatic updates are enabled
 #: deja-dup/ConfigAutoBackupRow.vala:53
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
-msgstr[0] "次のバックアップは今から %d 日後です。"
+msgstr[0] "次回のバックアップは今から %d 日後です。"
 
 #. Translators: this is used when automatic updates are disabled
 #: deja-dup/ConfigAutoBackupRow.vala:58
-#, fuzzy, c-format
-#| msgid "Next backup is %d day from now."
-#| msgid_plural "Next backup is %d days from now."
+#, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
-msgstr[0] "次のバックアップは今から %d 日後です。"
+msgstr[0] "次回のバックアップはおそらく今から %d 日後です。"
 
 #: deja-dup/ConfigDeleteRow.vala:12
 msgid "At least three months"
@@ -1191,6 +1171,8 @@ msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
 msgstr ""
+"Restic は Duplicity の代わりに“バックアップ”の内部で使用することができる"
+"バックアップツールです。"
 
 #: deja-dup/PreferencesWindow.vala:37
 msgid ""
@@ -1200,40 +1182,41 @@ msgstr ""
 #: deja-dup/PreferencesWindow.vala:39
 msgid "This is an experimental feature and may be removed at any time."
 msgstr ""
+"この機能は実験段階であり、場合によっては削除される可能性があります。"
 
 #: deja-dup/PreferencesWindow.vala:40
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr ""
+"よく注意したうえで使用し、動作確認していただけると助かります。"
 
 #. Translators: the %s formatting is a link start and end.
 #: deja-dup/PreferencesWindow.vala:43
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr ""
+"有効にしてバックアップを実行した場合の成否をぜひ%sご報告%sください。"
 
 #. Check for some really simple/common friendly names
 #: deja-dup/RecentBackupRow.vala:43
 msgid "Today"
-msgstr ""
+msgstr "今日"
 
 #: deja-dup/RecentBackupRow.vala:45
 msgid "Yesterday"
-msgstr ""
+msgstr "昨日"
 
 #. Translators: sentence case
 #: deja-dup/RecentBackupRow.vala:54
-#, fuzzy, c-format
-#| msgid "%d day"
-#| msgid_plural "%d days"
+#, c-format
 msgid "%d day ago"
 msgid_plural "%d days ago"
-msgstr[0] "%d 日"
+msgstr[0] "%d 日前"
 
 #. Translators: this is used like "Most Recent Backup: None"
 #: deja-dup/RecentBackupRow.vala:65
 msgctxt "backups"
 msgid "None"
-msgstr ""
+msgstr "なし"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -1607,7 +1590,7 @@ msgstr ""
 #: libdeja/duplicity/DuplicityPlugin.vala:94
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
-msgstr ""
+msgstr "この保存場所はまだサポートしていません。"
 
 #: libdeja/duplicity/DuplicityPlugin.vala:99
 msgid ""
@@ -1618,28 +1601,22 @@ msgstr ""
 "ファイルをバックアップ/復元することは可能です。"
 
 #: libdeja/restic/ResticPlugin.vala:42
-#, fuzzy
-#| msgid "Could not understand duplicity version."
 msgid "Could not understand restic version."
-msgstr "duplicity のバージョンを解釈できませんでした。"
+msgstr "restic のバージョンを解釈できませんでした。"
 
 #: libdeja/restic/ResticPlugin.vala:49
-#, fuzzy, c-format
-#| msgid "Could not understand duplicity version ‘%s’."
+#, c-format
 msgid "Could not understand restic version ‘%s’."
-msgstr "duplicity のバージョン ‘%s’ を解釈できませんでした。"
+msgstr "restic のバージョン ‘%s’ を解釈できませんでした。"
 
 #: libdeja/restic/ResticPlugin.vala:52
-#, fuzzy, c-format
-#| msgid ""
-#| "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
-#| "version %d.%d.%.2d"
+#, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of restic, but only found "
 "version %d.%d.%.2d"
 msgstr ""
-"“バックアップ”は duplicity のバージョン %d.%d.%.2d 以上が必要ですが、%d.%d."
-"%.2d のみ認識されました"
+"“バックアップ”は restic のバージョン %d.%d.%.2d 以上が必要ですが、%d.%d.%."
+"2d のみ認識されました"
 
 #: monitor/ReadyWatcher.vala:159
 msgid ""
