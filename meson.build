@@ -3,10 +3,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-project('deja-dup', ['vala', 'c'],
-    version: '43.beta',
+project(
+    'deja-dup',
+    'vala',
     license: 'GPL-3.0-or-later',
-    meson_version: '>= 0.58')
+    meson_version: '>= 0.59',
+    version: '43.beta',
+)
 
 gnome = import('gnome')
 i18n = import('i18n')
