@@ -70,11 +70,13 @@ public class FileStore : Object, ListModel
     public string collate_key {get; construct;}
     public string path {get; construct;}
     public Icon icon {get; construct;}
+    public Icon emblem {get; construct;}
 
     internal Item(DejaDup.FileTree.Node node, string collate_key,
-                  string? path, Icon icon)
+                  string? path, Icon icon, Icon? emblem)
     {
-      Object(node: node, collate_key: collate_key, icon: icon, path: path);
+      Object(node: node, collate_key: collate_key, path: path, icon: icon,
+             emblem: emblem);
     }
   }
 
@@ -183,9 +185,10 @@ public class FileStore : Object, ListModel
                        ContentType.from_mime_type("inode/directory") :
                        ContentType.guess(node.filename, null, null);
     var icon = ContentType.get_icon(content_type);
+
+    Icon emblem = null;
     if (node.kind == FileType.SYMBOLIC_LINK) {
-      var emblem = new Emblem(new ThemedIcon("emblem-symbolic-link"));
-      icon = new EmblemedIcon(icon, emblem);
+      emblem = new ThemedIcon("emblem-symbolic-link");
     }
 
     // Get relative path from root node
@@ -199,7 +202,7 @@ public class FileStore : Object, ListModel
       iter = iter.parent;
     }
 
-    items.add(new Item(node, collate_key, path, icon));
+    items.add(new Item(node, collate_key, path, icon, emblem));
   }
 
   void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree) {

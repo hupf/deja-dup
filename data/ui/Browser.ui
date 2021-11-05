@@ -260,14 +260,31 @@ SPDX-FileCopyrightText: Michael Terry
         <property name="label">label</property>
         <property name="spacing">6</property>
         <child>
-          <object class="GtkImage">
-            <property name="icon-size">large</property>
-            <property name="use-fallback">1</property>
-            <binding name="gicon">
-              <lookup name="icon" type="FileStoreItem">
-                <lookup name="item">GtkListItem</lookup>
-              </lookup>
-            </binding>
+          <object class="GtkOverlay">
+            <child>
+              <object class="GtkImage">
+                <property name="pixel-size">32</property>
+                <property name="use-fallback">1</property>
+                <binding name="gicon">
+                  <lookup name="icon" type="FileStoreItem">
+                    <lookup name="item">GtkListItem</lookup>
+                  </lookup>
+                </binding>
+              </object>
+            </child>
+            <child type="overlay">
+              <object class="GtkImage">
+                <property name="halign">center</property>
+                <property name="valign">end</property>
+                <property name="margin-start">16</property>
+                <property name="pixel-size">16</property>
+                <binding name="gicon">
+                  <lookup name="emblem" type="FileStoreItem">
+                    <lookup name="item">GtkListItem</lookup>
+                  </lookup>
+                </binding>
+              </object>
+            </child>
           </object>
         </child>
         <child>
