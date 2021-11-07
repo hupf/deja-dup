@@ -24,6 +24,10 @@ public class BackendLocal : BackendFile
   // path may be relative to home or absolute
   public static File? get_file_for_path(string path)
   {
+    if (Path.is_absolute(path)) {
+      return File.new_for_path(path);
+    }
+
     var root = File.new_for_path(Environment.get_home_dir());
 
     if (path == "~") {
