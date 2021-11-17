@@ -27,7 +27,7 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-adwaita_dep = dependency('libadwaita-1')
+adwaita_dep = dependency('libadwaita-1', version: '>= 1.0.0.alpha.4')
 gio_dep = dependency('gio-2.0', version: '>= 2.66')
 gio_unix_dep = dependency('gio-unix-2.0')
 gtk_dep = dependency('gtk4', version: '>= 4.4')
