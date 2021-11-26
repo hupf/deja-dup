@@ -4,6 +4,43 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.beta
+This is a beta release for the upcoming 43.0. No further feature changes are
+planned. 43.0 will come out sometime during the GNOME 42 window, so if your
+distro version will include GNOME 42, this is safe to package.
+
+##### New Since 43.alpha
+- Add two- and three-day schedule options to the preferences window
+- More aggressively replace old existing monitor processes when launching
+- When scanning duplicity output for gpg error messages, also look for the
+  English version of error strings (in addition to the current language), as
+  it is possible the installed languages of Deja Dup and gpg could be different
+- Update Brazilian Portuguese, Croatian, Finnish, German, Japanese, Occitan,
+  Persian, Polish, Slovak, Slovenian, Swedish, Turkish, and Ukrainian
+  translations
+
+##### Required Packaging Changes Since 42.x
+- Require libadwaita1 1.0.0.alpha.4+ (instead of libhandy1)
+- Require gtk4 4.4+ (instead of gtk3)
+- Require glib 2.66+
+- Require meson 0.59+
+- Due to new support for Microsoft OneDrive:
+  - Require the `requests_oauthlib` python module
+  - If you can't hard-depend on it, define the new `requests_oauthlib_pkgs`
+    config flag if building with packagekit support
+  - This feature will only be visible if duplicity 0.8.21+ is available
+
+##### Optional Packaging Changes Since 42.x
+- For experimental Restic support:
+  - New config flag `enable_restic`, which you can set to `true` to turn on
+    the new experimental support for Restic. This will not use Restic by
+    default, but merely expose a new "Labs" panel in the preferences window
+    where users can opt-in. So it is safe to enable and helps us get feedback.
+  - Require the `restic` and `rclone` packages
+  - New config flags `restic_pkgs` and `rclone_pkgs`, if you can't hard-depend
+    on the restic or rclone packages and are building with packagekit support
+  - New config flags `restic_command` and `rclone_command`, where you can
+    override the path to the restic and rclone executables (defaults to
+    searching `PATH`)
 
 # 43.alpha
 - Add support for Microsoft OneDrive
@@ -16,13 +53,13 @@ SPDX-FileCopyrightText: Michael Terry
   Swedish, Turkish, and Ukrainian translations
 
 ##### Packaging
-- A note on versioning: Déjà Dup has switched to a GNOME-style version scheme,
-  with a .alpha and .beta leading to a .0 stable release, instead of the
-  previous odd/even scheme. So this 43.alpha release is leading towards a
+- **A note on versioning:** Déjà Dup has switched to a GNOME-style version
+  scheme, with a .alpha and .beta leading to a .0 stable release, instead of
+  the previous odd/even scheme. So this 43.alpha release is leading towards a
   stable 43.0 release. Déjà Dup still doesn't follow the GNOME release
   schedule, just their versioning style.
-- A note on this release: You probably should not package this release for your
-  distro, even in a testing capacity. It wants an unreleased duplicity and
+- **A note on this release:** You probably should not package this release for
+  your distro, even in a testing capacity. It wants an unreleased duplicity and
   needs an unreleased libadwaita. This is truly a bleeding edge alpha release,
   mostly to get community testing.
 - Switch from gtk3 to gtk4
