@@ -9,6 +9,7 @@ import os
 import stat
 from contextlib import contextmanager
 from time import sleep
+from unittest import expectedFailure
 
 import ddt
 from dogtail.predicate import GenericPredicate
@@ -129,6 +130,7 @@ class BackupTest(BaseTest):
 
         with self.new_files():
             self.wait_for(mid_progress)
+            sleep(0.2)  # give time for duplicity to write a .part file
             app.button("Resume Later").click()
             self.wait_for(lambda: window.dead)
 
@@ -207,6 +209,13 @@ class BackupTest(BaseTest):
         assert self.get_string("nag-check") != months_ago
 
 
+@ddt.ddt
 class ResticBackupTest(ResticMixin, BackupTest):
-    pass
-    # FIXME: test_nag_check and test_resume don't work yet
+    @expectedFailure  # it's too fast - need a better test
+    @ddt.data(True, False)
+    def test_resume(self, initial):
+        super().test_resume(initial)
+
+    @expectedFailure   # verify support isn't finished yet
+    def test_nag_check(self):
+        super().test_nag_check()

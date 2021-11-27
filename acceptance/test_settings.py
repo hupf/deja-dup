@@ -19,11 +19,7 @@ class PreferencesTest(BaseTest):
         self.app.childNamed("Preferences").click()
 
     def get_auto_check(self, root):
-        # Dogtail can't find an item with multiple labels (where labeller is a
-        # list). So it can't find the list box with both a title and subtitle.
-        # Instead, find the label, bounce up, then back down
-        label = root.child(name="Back Up Automatically")
-        box = label.findAncestor(GenericPredicate(roleName="list item"))
+        box = root.child(roleName="list item", name="Back Up Automatically")
         return box.child(roleName="check box")
 
     def test_general(self):

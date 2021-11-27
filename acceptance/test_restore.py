@@ -63,7 +63,7 @@ class RestoreTest(BaseTest):
         app.childNamed("Select All").click()
 
         # And start restore
-        app.button("Restore").click()
+        self.click_restore_button(app)
         window = app.window("Restore to Where?")
         window.button("Restore").click()  # to where
 

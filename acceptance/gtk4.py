@@ -110,6 +110,11 @@ class Gtk4Node:
         self._ensure_coords()
         clickX = self.coords[0] + self.node.position[0] + self.node.size[0] / 2
         clickY = self.coords[1] + self.node.position[1] + self.node.size[1] / 2
+
+        popover = self.node.findAncestor(GenericPredicate(name="GtkPopover"))
+        if popover:
+            clickY += 20
+
         rawinput.click(clickX, clickY, button)
 
     def doubleClick(self, button=1):

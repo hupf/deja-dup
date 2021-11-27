@@ -208,6 +208,10 @@ class BaseTest(unittest.TestCase):
         app.child(roleName="text entry", label="Encryption password").typeText(password)
         app.button("Continue").click()
 
+    def click_restore_button(self, parent):
+        bar = parent.child(name="GtkActionBar")
+        bar.button("Restore").click()
+
     def get_config(self, section, option, fallback=None, required=True):
         if not self.config:
             if required:

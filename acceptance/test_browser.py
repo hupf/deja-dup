@@ -121,7 +121,7 @@ class BrowserTest(BaseTest):
             assert not selection_button
 
     def start_restore(self):
-        self.app.button("Restore").click()
+        self.click_restore_button(self.app)
         self.window = self.app.window("Restore to Where?")
 
     def select_location(self, where):
