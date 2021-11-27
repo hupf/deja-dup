@@ -84,7 +84,7 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
-	for p in borgbackup "flit-core setuptools-scm duplicity" "cryptography<3.4 pydrive2" requests-oauthlib; do \
+	for p in borgbackup "setuptools-scm duplicity" "cryptography<3.4 pydrive2" requests-oauthlib; do \
 		name=$$(echo $$p | grep -oE '[^[:space:]]+$$'); \
 		echo $$name; \
 		../../flatpak-builder-tools/pip/flatpak-pip-generator --runtime org.gnome.Sdk//master --output $$name $$p; \
