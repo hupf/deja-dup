@@ -15,7 +15,7 @@ export DEJA_DUP_TEST_FAST_FAIL=1
 
 if [ "$1" = "--snap" ]; then
   shift
-  export XDG_DATA_DIRS=$HOME/snap/deja-dup/current/.local/share:$XDG_DATA_DIRS
+  export GSETTINGS_SCHEMA_DIR=/snap/deja-dup/current/usr/share/glib-2.0/schemas
   export DD_MODE="snap"
   export DD_EXEC="snap run deja-dup"
   export DD_MONITOR_EXEC="snap run deja-dup.monitor"
@@ -27,7 +27,7 @@ elif [ "$1" = "--flatpak" ]; then
   shift
   export GSETTINGS_BACKEND=keyfile
   export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDup/config
-  export XDG_DATA_DIRS="$(flatpak info org.gnome.DejaDup -l)/files/share":$XDG_DATA_DIRS
+  export GSETTINGS_SCHEMA_DIR="$(flatpak info org.gnome.DejaDup -l)/files/share/glib-2.0/schemas"
   export DD_MODE="flatpak"
   export DD_EXEC="flatpak run --filesystem=/tmp -p org.gnome.DejaDup"
   export DD_MONITOR_EXEC="flatpak run -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDup"
@@ -48,7 +48,7 @@ elif [ "$1" = "--flatpak-dev" ]; then
   shift
   export GSETTINGS_BACKEND=keyfile
   export XDG_CONFIG_HOME=$HOME/.var/app/org.gnome.DejaDupDevel/config
-  export XDG_DATA_DIRS="$(flatpak info --user org.gnome.DejaDupDevel -l)/files/share":$XDG_DATA_DIRS
+  export GSETTINGS_SCHEMA_DIR="$(flatpak info --user org.gnome.DejaDupDevel -l)/files/share/glib-2.0/schemas"
   export DD_MODE="flatpak"
   export DD_EXEC="flatpak run --user --filesystem=/tmp -p org.gnome.DejaDupDevel"
   export DD_MONITOR_EXEC="flatpak run --user -p --command=/app/libexec/deja-dup/deja-dup-monitor org.gnome.DejaDupDevel"
@@ -67,19 +67,9 @@ elif [ "$1" = "--flatpak-dev" ]; then
 
 elif [ "$1" = "--dev" ]; then
   shift
-
-  BUILDDIR=$(realpath ./builddir)
-  mkdir -p "${BUILDDIR}/tmpshare/glib-2.0/schemas"
-  cp "${BUILDDIR}/data/org.gnome.DejaDupDevel.gschema.xml" "${BUILDDIR}/tmpshare/glib-2.0/schemas"
-  glib-compile-schemas "${BUILDDIR}/tmpshare/glib-2.0/schemas"
-
-  export PATH="$BUILDDIR/deja-dup:$PATH"
-  export XDG_DATA_DIRS="${BUILDDIR}/tmpshare:${XDG_DATA_DIRS}"
-  export GNOTIFICATION_BACKEND=freedesktop
-  export DEJA_DUP_NOTIFICATION_ICON="$(pwd)/data/icons/org.gnome.DejaDup-symbolic.svg"
   export DD_MODE="dev"
-  export DD_EXEC="${BUILDDIR}/deja-dup/deja-dup"
-  export DD_MONITOR_EXEC="${BUILDDIR}/monitor/deja-dup-monitor"
+  export DD_EXEC="meson devenv -C builddir deja-dup"
+  export DD_MONITOR_EXEC="meson devenv -C builddir deja-dup-monitor"
   export DD_CACHE_DIR=$HOME/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
 
