@@ -293,8 +293,7 @@ class Browser : Gtk.Grid
   [GtkCallback]
   void start_auth() {
     if (auth_url == null) {
-      mount_op = new Gtk.MountOperation(app_window);
-      maybe_start_operation();
+      retry_operation();
     } else {
       Gtk.show_uri(app_window, auth_url, Gdk.CURRENT_TIME);
     }
@@ -425,6 +424,12 @@ class Browser : Gtk.Grid
   }
 
   [GtkCallback]
+  void retry_operation()
+  {
+    mount_op = new Gtk.MountOperation(app_window);
+    maybe_start_operation();
+  }
+
   void maybe_start_operation()
   {
     if (operation != null)
