@@ -17,6 +17,11 @@ public class ConfigAutoBackup: ConfigSwitch
   bool on_state_set(bool state)
   {
     if (state) {
+      var window = this.root as Gtk.Window;
+      if (window == null) {
+        return true; // can happen if this switch wasn't finalized
+      }
+
       Background.request_autostart.begin(this.toggle, (obj, res) => {
         if (Background.request_autostart.end(res)) {
           this.toggle.state = true; // finish state set
