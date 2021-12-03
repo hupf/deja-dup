@@ -22,7 +22,7 @@ public class ConfigAutoBackup: ConfigSwitch
         return true; // can happen if this switch wasn't finalized
       }
 
-      Background.request_autostart.begin(this.toggle, (obj, res) => {
+      Background.request_autostart.begin(window, (obj, res) => {
         if (Background.request_autostart.end(res)) {
           this.toggle.state = true; // finish state set
           set_periodic(true);
