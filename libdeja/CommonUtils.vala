@@ -37,6 +37,12 @@ public bool in_testing_mode()
   return (testing_str != null && int.parse(testing_str) > 0);
 }
 
+public bool in_demo_mode()
+{
+  var demo_str = Environment.get_variable("DEJA_DUP_DEMO");
+  return (demo_str != null && int.parse(demo_str) > 0);
+}
+
 string current_time_as_iso8601()
 {
   var now = new DateTime.now_utc();

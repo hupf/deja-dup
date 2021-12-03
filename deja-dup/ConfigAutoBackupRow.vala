@@ -87,6 +87,8 @@ public class ConfigAutoBackupRow : Adw.ActionRow
     var settings = DejaDup.get_settings();
     var periodic = settings.get_boolean(DejaDup.PERIODIC_KEY);
     var next = DejaDup.next_possible_run_date();
+    if (DejaDup.in_demo_mode())
+      next = new DateTime.now_local().add(DejaDup.get_day() * 7);
     subtitle = pretty_next_name(next, periodic);
   }
 }

@@ -63,5 +63,7 @@ public class PreferencesWindow : Adw.PreferencesWindow
   {
     var backend = DejaDup.Backend.get_default();
     location_description.label = backend.get_location_pretty();
+    if (DejaDup.in_demo_mode())
+      location_description.label = "hostname on Google Drive";
   }
 }

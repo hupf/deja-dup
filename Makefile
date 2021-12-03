@@ -46,9 +46,11 @@ run-bash:
 
 .PHONY: devenv
 devenv:
+	# Owns org.gnome.DejaDup so that we can run non-devel builds too
 	@flatpak run \
 		--command=make \
 		--devel \
+		--own-name=org.gnome.DejaDup \
 		--talk-name=com.feralinteractive.GameMode \
 		--talk-name=org.freedesktop.Notifications \
 		org.gnome.DejaDupDevel//master \
@@ -111,16 +113,3 @@ builddir/vlint:
 lint: reuse black builddir/vlint
 	builddir/vlint -c vala-lint.conf .
 
-# This is a target to make some source data that could look good in a screenshot
-.PHONE: fake-source
-fake-source:
-	rm -r ~/.cache/deja-dup/fake-source; \
-	mkdir -p ~/.cache/deja-dup/fake-source; \
-	cd ~/.cache/deja-dup/fake-source; \
-	mkdir full empty; \
-	cd full; \
-	mkdir Recipes Homework Pictures Music; \
-	touch report.odt TODO.txt screen1.png screen2.png screen3.png \
-	      memo.ogg notes.txt resume.pdf Museum.pdf 'building plans.pdf' \
-	      budget.ods 'lorem ipsum.txt' 'cute_cats.ogv' 'Week1 Report.txt' \
-	      'Week2 Report.txt' 'Week3 Report.txt'

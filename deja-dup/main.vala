@@ -191,6 +191,20 @@ public class DejaDupApp : Adw.Application
     Unix.signal_add(ProcessSignal.HUP, exit_cleanly);
     Unix.signal_add(ProcessSignal.INT, exit_cleanly);
     Unix.signal_add(ProcessSignal.TERM, exit_cleanly);
+
+    if (DejaDup.in_demo_mode())
+    {
+      // Use default GNOME settings as much as possible.
+      // The goal here is that we are suitable for screenshots.
+      var display = Gdk.Display.get_default();
+      var style = Adw.StyleManager.get_for_display(display);
+      var gtksettings = Gtk.Settings.get_for_display(display);
+
+      gtksettings.gtk_decoration_layout = ":close";
+      gtksettings.gtk_font_name = "Cantarell 11";
+      gtksettings.gtk_icon_theme_name = "Adwaita";
+      style.color_scheme = Adw.ColorScheme.FORCE_LIGHT;
+    }
   }
 
   public override void shutdown()
