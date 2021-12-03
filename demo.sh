@@ -1,4 +1,8 @@
 #!/bin/sh
+# -*- Mode: sh; indent-tabs-mode: nil; tab-width: 2 -*-
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
 
 # This script creates a quick disposable environment and settings, to quickly
 # make screenshots.
