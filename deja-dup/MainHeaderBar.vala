@@ -19,18 +19,10 @@ public class MainHeaderBar : Gtk.Box
                              "active", BindingFlags.BIDIRECTIONAL);
   }
 
-  public void open_menu()
-  {
-    primary_menu_button.popup();
-  }
-
   [GtkChild]
   unowned Gtk.Button previous_button;
   [GtkChild]
   unowned Gtk.ToggleButton search_button;
-
-  [GtkChild]
-  unowned Gtk.MenuButton primary_menu_button;
 
   [GtkChild]
   unowned Adw.ViewSwitcherTitle switcher;
@@ -47,6 +39,7 @@ public class MainHeaderBar : Gtk.Box
 
     switcher.notify["view-switcher-enabled"].connect(update_title_visible);
     switcher.notify["title-visible"].connect(update_title_visible);
+    update_title_visible();
     switcher.ref();
   }
 

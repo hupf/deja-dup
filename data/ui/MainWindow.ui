@@ -6,8 +6,7 @@ SPDX-FileCopyrightText: Michael Terry
 
 <interface>
   <template class="MainWindow" parent="AdwApplicationWindow">
-    <property name="default_width">550</property>
-    <property name="default_height">400</property>
+    <property name="default-height">400</property>
     <property name="title" translatable="yes">Backups</property>
     <property name="content">
       <object class="GtkBox">
@@ -19,7 +18,7 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child>
           <object class="AdwViewStack" id="stack">
-            <property name="vexpand">1</property>
+            <property name="vexpand">true</property>
             <child>
               <object class="AdwViewStackPage" id="backups_page">
                 <property name="name">backups</property>
@@ -27,6 +26,7 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="icon_name">org.gnome.DejaDup-symbolic</property>
                 <property name="child">
                   <object class="GtkStack" id="overview_stack">
+                    <property name="valign">start</property>
                     <child>
                       <object class="GtkStackPage">
                         <property name="name">initial</property>
@@ -62,9 +62,7 @@ SPDX-FileCopyrightText: Michael Terry
         <child>
           <object class="AdwViewSwitcherBar">
             <property name="stack">stack</property>
-            <binding name="reveal">
-              <lookup name="title-visible">header</lookup>
-            </binding>
+            <property name="reveal" bind-source="header" bind-property="title-visible" bind-flags="sync-create"/>
           </object>
         </child>
       </object>

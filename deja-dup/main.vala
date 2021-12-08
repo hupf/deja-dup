@@ -40,7 +40,6 @@ public class DejaDupApp : Adw.Application
     {"delay", delay, "s"},
     {"preferences", preferences},
     {"help", help},
-    {"menu", menu},
     {"about", about},
     {"quit", quit},
     // redundant with default activation usually, but is used by notifications
@@ -147,14 +146,6 @@ public class DejaDupApp : Adw.Application
   MainWindow? get_app_window()
   {
     return main_window.get() as MainWindow;
-  }
-
-  MainHeaderBar? get_header()
-  {
-    var win = get_app_window();
-    if (win == null)
-      return null;
-    return win.get_header();
   }
 
   AssistantOperation? get_operation()
@@ -277,13 +268,6 @@ public class DejaDupApp : Adw.Application
   void help()
   {
     Gtk.show_uri(get_app_window(), "help:" + Config.PACKAGE, Gdk.CURRENT_TIME);
-  }
-
-  void menu()
-  {
-    if (get_header() == null)
-      return;
-    get_header().open_menu();
   }
 
   void about()
