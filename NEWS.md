@@ -3,6 +3,45 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.0
+This is a stable release, following 43.alpha and 43.beta in the GNOME style.
+Previously, odd number releases were the development releases, but no longer.
+
+##### Changes Since 43.beta
+- Fix the restore browser not asking any user questions during mount (like an
+  invalid ssl cert)
+- Minor UI spacing/style tweaks
+- Update Basque, Occitan, and Portuguese translations
+
+##### New Features Since 42.x
+- Add support for Microsoft OneDrive
+- Delay scheduled backups when Power Saver mode or GameMode are enabled
+- Add opt-in experimental support for using Restic
+
+##### Required Packaging Changes Since 42.x
+- Require libadwaita1 1.0+ (instead of libhandy1)
+- Require gtk4 4.4+ (instead of gtk3)
+- Require glib 2.66+
+- Require meson 0.59+
+- Due to new support for Microsoft OneDrive:
+  - Require the `requests_oauthlib` python module
+  - If you can't hard-depend on it, define the new `requests_oauthlib_pkgs`
+    config flag if building with packagekit support
+  - This feature will only be visible if duplicity 0.8.21+ is available
+
+##### Optional Packaging Changes Since 42.x
+- For experimental Restic support:
+  - New config flag `enable_restic`, which you can set to `true` to turn on
+    the new experimental support for Restic. This will not use Restic by
+    default, but merely expose a new "Labs" panel in the preferences window
+    where users can opt-in. So it is safe to enable and helps us get feedback.
+  - Require the `restic` and `rclone` packages
+  - New config flags `restic_pkgs` and `rclone_pkgs`, if you can't hard-depend
+    on the restic or rclone packages and are building with packagekit support
+  - New config flags `restic_command` and `rclone_command`, where you can
+    override the path to the restic and rclone executables (defaults to
+    searching `PATH`)
+
 # 43.beta
 This is a beta release for the upcoming 43.0. No further feature changes are
 planned. 43.0 will come out sometime during the GNOME 42 window, so if your
