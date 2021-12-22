@@ -36,7 +36,7 @@ Plus an environment pointed at any built data and executables.
 
 # Folder Layout
  * libdeja: non-GUI library that wraps policy and hides complexity of duplicity
- * deja-dup: GNOME UI for libdeja
+ * app: GNOME UI for libdeja
  * monitor: the deja-dup-monitor user daemon
  * data: shared schemas, icons, etc
 
@@ -44,8 +44,8 @@ Plus an environment pointed at any built data and executables.
 
 From inside a devenv shell, you can iterate as you develop by just running `deja-dup` directly.
 
-* Running all unit tests: `meson test -C builddir`
-* Running one unit test: `meson test script-threshold-inc -C builddir/ -v`
+* Running all unit tests: `meson test -C _build`
+* Running one unit test: `meson test script-threshold-inc -C _build -v`
 
 # Copyright
 

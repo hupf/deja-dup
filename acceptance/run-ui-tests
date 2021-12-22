@@ -68,8 +68,8 @@ elif [ "$1" = "--flatpak-dev" ]; then
 elif [ "$1" = "--dev" ]; then
   shift
   export DD_MODE="dev"
-  export DD_EXEC="meson devenv -C builddir deja-dup"
-  export DD_MONITOR_EXEC="meson devenv -C builddir deja-dup-monitor"
+  export DD_EXEC="meson devenv -C _build deja-dup"
+  export DD_MONITOR_EXEC="meson devenv -C _build deja-dup-monitor"
   export DD_CACHE_DIR=$HOME/.cache/deja-dup
   export DD_APPID=org.gnome.DejaDupDevel
 

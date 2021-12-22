@@ -21,7 +21,7 @@ Previously, odd number releases were the development releases, but no longer.
 ##### Required Packaging Changes Since 42.x
 - Require libadwaita1 1.0+ (instead of libhandy1)
 - Require gtk4 4.4+ (instead of gtk3)
-- Require glib 2.66+
+- Require glib2 2.66+
 - Require meson 0.59+
 - Due to new support for Microsoft OneDrive:
   - Require the `requests_oauthlib` python module

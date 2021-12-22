@@ -5,18 +5,18 @@
 
 .PHONY: all
 all: configure
-	meson compile -C builddir
+	meson compile -C _build
 
 %:
-	@[ "$@" = "Makefile" ] || meson compile -C builddir $@
+	@[ "$@" = "Makefile" ] || meson compile -C _build $@
 
 .PHONY: configure
 configure:
-	@[ -d builddir ] || meson setup -Dprofile=Devel -Denable_restic=true builddir
+	@[ -d _build ] || meson setup -Dprofile=Devel -Denable_restic=true _build
 
 .PHONY: check
 check: all
-	meson test -C builddir
+	meson test -C _build
 
 .PHONY: acceptance-flatpak acceptance-snap
 acceptance-flatpak:
@@ -26,7 +26,7 @@ acceptance-snap:
 
 .PHONY: clean
 clean:
-	rm -rf builddir
+	rm -rf _build
 
 .PHONY: run
 run:
@@ -42,7 +42,7 @@ run:
 run-bash:
 	@env \
 		PKG_CONFIG_PATH=/app/lib/pkgconfig \
-		make && meson devenv -C builddir deja-dup
+		make && meson devenv -C _build deja-dup
 
 .PHONY: devenv
 devenv:
@@ -59,7 +59,7 @@ devenv:
 .PHONY: devenv-bash
 devenv-bash:
 	@env PKG_CONFIG_PATH=/app/lib/pkgconfig make configure
-	@meson devenv -C builddir env \
+	@meson devenv -C _build env \
 		-C `pwd` \
 		PKG_CONFIG_PATH=/app/lib/pkgconfig \
 		PS1='[📦 \W]$$ ' \
@@ -79,8 +79,8 @@ flatpak:
 	flatpak-builder --install \
 	                --user \
 	                --force-clean \
-	                --state-dir=builddir/.flatpak-builder \
-	                builddir/flatpak \
+	                --state-dir=_build/.flatpak-builder \
+	                _build \
 	                flatpak/org.gnome.DejaDupDevel.yaml
 
 .PHONY: flatpak-update
@@ -97,19 +97,19 @@ flatpak-update:
 
 .PHONY: black
 black:
-	black --check -t py38 --exclude builddir --include 'mock/duplicity|\.py$$' .
+	black --check -t py38 --exclude _build --include 'mock/duplicity|\.py$$' .
 
 .PHONY: reuse
 reuse:
 	reuse lint
 
-builddir/vlint:
-	mkdir -p builddir
-	git clone https://github.com/vala-lang/vala-lint.git builddir/vala-lint
-	cd builddir/vala-lint && meson build && meson compile -C build
-	ln -s ./vala-lint/build/src/io.elementary.vala-lint builddir/vlint
+_build/vlint:
+	mkdir -p _build
+	git clone https://github.com/vala-lang/vala-lint.git _build/vala-lint
+	cd _build/vala-lint && meson build && meson compile -C build
+	ln -s ./vala-lint/build/src/io.elementary.vala-lint _build/vlint
 
 .PHONY: lint
-lint: reuse black builddir/vlint
-	builddir/vlint -c vala-lint.conf .
+lint: reuse black _build/vlint
+	_build/vlint -c vala-lint.conf .
 

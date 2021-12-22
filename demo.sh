@@ -13,10 +13,10 @@ SRCROOT=$(pwd)
 ROOT=$(mktemp -d)
 
 # Build non-devel version
-[ -d builddir/demo ] || meson setup -Denable_restic=true builddir/demo
-meson compile -C builddir/demo
+[ -d _build/demo ] || meson setup -Denable_restic=true _build/demo
+meson compile -C _build/demo
 devenv() {
-  meson devenv -C "$SRCROOT/builddir/demo" $*
+  meson devenv -C "$SRCROOT/_build/demo" $*
 }
 
 # Set up home

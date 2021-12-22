@@ -42,7 +42,7 @@ install_man('deja-dup.1')
 # GSETTINGS
 
 gschema = configure_file(
-    input: 'org.gnome.DejaDup.gschema.xml.in',
+    input: 'app.gschema.xml.in',
     output: '@0@.gschema.xml'.format(application_id),
     configuration: conf_data,
     install_dir: join_paths(datadir, 'glib-2.0', 'schemas'),
@@ -68,7 +68,7 @@ meson.add_devenv({'GSETTINGS_SCHEMA_DIR': meson.current_build_dir()})
 # DBUS SERVICE
 
 configure_file(
-    input: 'org.gnome.DejaDup.service.in',
+    input: 'app.service.in',
     output: '@0@.service'.format(application_id),
     configuration: conf_data,
     install_dir: join_paths(datadir, 'dbus-1', 'services'),
@@ -78,7 +78,7 @@ configure_file(
 # MONITOR DESKTOP
 
 monitor_desktop = configure_file(
-    input: 'org.gnome.DejaDup.Monitor.desktop.in',
+    input: 'monitor.desktop.in',
     output: '@0@.Monitor.desktop'.format(application_id),
     configuration: conf_data,
     install_dir: join_paths(etcdir, 'xdg', 'autostart'),
@@ -94,8 +94,8 @@ test(
 # MAIN DESKTOP
 
 deja_dup_desktop_vars = configure_file(
-    input: 'org.gnome.DejaDup.desktop.in',
-    output: 'org.gnome.DejaDup.vars.desktop.in',
+    input: 'app.desktop.in',
+    output: '@0@.desktop.in'.format(application_id),
     configuration: conf_data,
 )
 
@@ -117,8 +117,8 @@ test(
 # METAINFO
 
 deja_dup_metainfo_vars = configure_file(
-    input: 'org.gnome.DejaDup.metainfo.xml.in',
-    output: 'org.gnome.DejaDup.vars.metainfo.xml.in',
+    input: 'app.metainfo.xml.in',
+    output: '@0@.metainfo.xml.in'.format(application_id),
     configuration: conf_data,
 )
 
