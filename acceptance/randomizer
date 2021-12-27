@@ -20,9 +20,9 @@ fi
 
 touch "$DIR/.randomized"
 
-# $RANDOM goes from 0 to 32k. With count, we go from 0 to 62M (62,000k)
+# $RANDOM goes from 0 to 32k. With count, we go from 0 to 160M (160,000k)
 modify_file() {
-  dd if=/dev/urandom bs=$RANDOM count=2000 of="$1" 2>/dev/null
+  dd if=/dev/urandom bs=$RANDOM count=5000 of="$1" 2>/dev/null
 }
 
 add_file() {
