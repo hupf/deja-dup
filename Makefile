@@ -80,7 +80,7 @@ flatpak:
 	                --user \
 	                --force-clean \
 	                --state-dir=_build/.flatpak-builder \
-	                _build \
+	                _build/flatpak \
 	                flatpak/org.gnome.DejaDupDevel.yaml
 
 .PHONY: flatpak-update
