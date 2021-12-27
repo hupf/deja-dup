@@ -30,6 +30,7 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 adwaita_dep = dependency('libadwaita-1', version: '>= 1.0.0.alpha.4')
 gio_dep = dependency('gio-2.0', version: '>= 2.66')
 gio_unix_dep = dependency('gio-unix-2.0')
+gpg_error_dep = dependency('gpg-error', version: '>= 1.33')
 gtk_dep = dependency('gtk4', version: '>= 4.4')
 gtk_wayland_dep = dependency('gtk4-wayland', required: false)
 gtk_x11_dep = dependency('gtk4-x11', required: false)
@@ -37,10 +38,6 @@ json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
 soup_dep = dependency('libsoup-2.4', version: '>= 2.48')
-
-# libgpg-error doesn't ship a pkg-config file
-gpgerror_libs = run_command('gpg-error-config', '--libs').stdout().strip()
-gpgerror_dep = declare_dependency(link_args: gpgerror_libs.split())
 
 # Programs
 appstream_util = find_program('appstream-util', required: false)

@@ -6,15 +6,6 @@
 
 using GLib;
 
-[CCode (cheader_filename = "gpgrt.h", cname = "gpg_err_code_t", cprefix = "GPG_ERR_", has_type_id = false)]
-extern enum GPGError {
-  NO_SECKEY = 17,
-  BAD_KEY = 19,
-}
-
-[CCode (cheader_filename = "gpgrt.h")]
-extern unowned string gpg_strerror(GPGError code);
-
 internal class DuplicityJob : DejaDup.ToolJob
 {
   DejaDup.ToolJob.Mode original_mode {get; private set;}
@@ -926,8 +917,8 @@ internal class DuplicityJob : DejaDup.ToolJob
     // (bad configuration files or something).
     // We also check the hardcoded string in case there's a language misconfig
     // and gpg isn't giving us the translated strings.
-    var no_seckey_msg = gpg_strerror(GPGError.NO_SECKEY);
-    var bad_key_msg = gpg_strerror(GPGError.BAD_KEY);
+    var no_seckey_msg = GpgError.strerror(GpgError.Code.NO_SECKEY);
+    var bad_key_msg = GpgError.strerror(GpgError.Code.BAD_KEY);
     if (text.contains(no_seckey_msg) || text.contains("No secret key") ||
         text.contains(bad_key_msg) || text.contains("Bad session key"))
     {

@@ -53,7 +53,7 @@ libdeja = shared_library('deja',
     dependencies: [
         gio_dep,
         gio_unix_dep,
-        gpgerror_dep,
+        gpg_error_dep,
         json_dep,
         packagekit_dep,
         secret_dep,
