@@ -164,8 +164,24 @@ public class DejaDupApp : Adw.Application
     return Source.REMOVE;
   }
 
+  // Eventually, when we can assume that the system supports color schemes,
+  // we can drop this legacy check.
+  bool has_dark_gtk_theme()
+  {
+    // libadwaita will call this for us, but we need it now to check the
+    // settings - it's safe to call this multiple times.
+    Gtk.init();
+
+    var theme_name = Gtk.Settings.get_default().gtk_theme_name.casefold();
+    var dark_suffix = "-dark".casefold();
+    return theme_name.has_suffix(dark_suffix); // very rough heuristic
+  }
+
   public override void startup()
   {
+    // grab this before libadwaita overrides it
+    var dark_gtk_theme = has_dark_gtk_theme();
+
     base.startup();
     DejaDup.gui_initialize();
 
@@ -183,18 +199,25 @@ public class DejaDupApp : Adw.Application
     Unix.signal_add(ProcessSignal.INT, exit_cleanly);
     Unix.signal_add(ProcessSignal.TERM, exit_cleanly);
 
+    var display = Gdk.Display.get_default();
+    var style_manager = Adw.StyleManager.get_for_display(display);
+
+    if (!style_manager.system_supports_color_schemes && dark_gtk_theme) {
+      // We can't follow the gtk theme as it changes, but this is good
+      // enough for now - start up with the right dark/light preference.
+      style_manager.color_scheme = Adw.ColorScheme.PREFER_DARK;
+    }
+
     if (DejaDup.in_demo_mode())
     {
       // Use default GNOME settings as much as possible.
       // The goal here is that we are suitable for screenshots.
-      var display = Gdk.Display.get_default();
-      var style = Adw.StyleManager.get_for_display(display);
       var gtksettings = Gtk.Settings.get_for_display(display);
 
       gtksettings.gtk_decoration_layout = ":close";
       gtksettings.gtk_font_name = "Cantarell 11";
       gtksettings.gtk_icon_theme_name = "Adwaita";
-      style.color_scheme = Adw.ColorScheme.FORCE_LIGHT;
+      style_manager.color_scheme = Adw.ColorScheme.FORCE_LIGHT;
     }
   }
 
