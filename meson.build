@@ -64,7 +64,7 @@ add_project_arguments(
 add_project_arguments(
     '-DG_LOG_DOMAIN="deja-dup"',
     '-DG_LOG_USE_STRUCTURED',
-    '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE',
+    '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE', # can remove with pk 1.2+
     '-DDUPLICITY_COMMAND="@0@"'.format(get_option('duplicity_command')),
     '-DDUPLICITY_PACKAGES="@0@"'.format(get_option('duplicity_pkgs')),
     '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
