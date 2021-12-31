@@ -10,8 +10,11 @@ Previously, odd number releases were the development releases, but no longer.
 ##### Changes Since 43.beta
 - Fix the restore browser not asking any user questions during mount (like an
   invalid ssl cert)
+- Use dark mode if color schemes are not supported by the system, but the gtk
+  theme is a dark variant
 - Minor UI spacing/style tweaks
-- Update Basque, Occitan, and Portuguese translations
+- Update Basque, Friulian, Occitan, Portuguese, Russian, and Serbian
+  translations
 
 ##### New Features Since 42.x
 - Add support for Microsoft OneDrive
@@ -20,7 +23,7 @@ Previously, odd number releases were the development releases, but no longer.
 
 ##### Required Packaging Changes Since 42.x
 - Require libadwaita1 1.0+ (instead of libhandy1)
-- Require gtk4 4.4+ (instead of gtk3)
+- Require gtk4 4.6+ (instead of gtk3)
 - Require glib2 2.66+
 - Require meson 0.59+
 - Due to new support for Microsoft OneDrive:

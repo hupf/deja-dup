@@ -27,15 +27,15 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-adwaita_dep = dependency('libadwaita-1', version: '>= 1.0.0.alpha.4')
+adwaita_dep = dependency('libadwaita-1', version: '>= 1.0')
 gio_dep = dependency('gio-2.0', version: '>= 2.66')
 gio_unix_dep = dependency('gio-unix-2.0')
 gpg_error_dep = dependency('gpg-error', version: '>= 1.33')
-gtk_dep = dependency('gtk4', version: '>= 4.4')
+gtk_dep = dependency('gtk4', version: '>= 4.5')
 gtk_wayland_dep = dependency('gtk4-wayland', required: false)
 gtk_x11_dep = dependency('gtk4-x11', required: false)
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
-packagekit_dep = dependency('packagekit-glib2', version: '>=0.6.5', required: false)
+packagekit_dep = dependency('packagekit-glib2', version: '>= 0.6.5', required: false)
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
 soup_dep = dependency('libsoup-2.4', version: '>= 2.48')
 
