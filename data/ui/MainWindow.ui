@@ -26,7 +26,6 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="icon_name">org.gnome.DejaDup-symbolic</property>
                 <property name="child">
                   <object class="GtkStack" id="overview_stack">
-                    <property name="valign">start</property>
                     <child>
                       <object class="GtkStackPage">
                         <property name="name">initial</property>
@@ -60,9 +59,8 @@ SPDX-FileCopyrightText: Michael Terry
           </object>
         </child>
         <child>
-          <object class="AdwViewSwitcherBar">
+          <object class="AdwViewSwitcherBar" id="bar">
             <property name="stack">stack</property>
-            <property name="reveal" bind-source="header" bind-property="title-visible" bind-flags="sync-create"/>
           </object>
         </child>
       </object>
