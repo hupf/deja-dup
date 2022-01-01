@@ -76,9 +76,14 @@ class Gtk4Node:
         if self.coords:
             return
 
-        top = self.node.findAncestor(GenericPredicate(roleName="frame"))
+        top = self.findAncestor(GenericPredicate(roleName="frame"))
         if not top:
-            top = self.node.findAncestor(GenericPredicate(roleName="dialog"))
+            top = self.findAncestor(GenericPredicate(roleName="dialog"))
+        if not top:
+            # check for a gtk3 portal dialog - it won't need translation
+            if self.findAncestor(GenericPredicate(roleName="file chooser")):
+                self.coords = (0, 0)
+                return
         assert top
 
         from Xlib import X, display, Xutil

@@ -4,8 +4,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-from dogtail import tree
 from dogtail.predicate import GenericPredicate
+from dogtail.rawinput import keyCombo
 from gi.repository import GLib
 
 from . import BaseTest
@@ -149,8 +149,9 @@ class PreferencesTest(BaseTest):
         # Add one
         add = table.child(name="Add")
         add.click()
-        dlg = tree.root.child(roleName="file chooser", name="Choose Folders")
+        dlg = self.get_file_chooser("Choose Folders")
         dlg.child(name="Documents").click()
+        keyCombo("<Alt>Up")
         dlg.child(name="Add").click()
         self.wait_for_table_names(table, ["~/Pictures", "~/Documents"])
         self.assertEqual(self.get_strv(key), ["$PICTURES", home + "/Documents"])

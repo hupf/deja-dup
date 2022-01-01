@@ -8,7 +8,6 @@ import os
 import shutil
 import stat
 
-from dogtail import tree
 from dogtail.predicate import GenericPredicate
 from dogtail.rawinput import holdKey, keyCombo, pressKey, releaseKey, typeText
 from gi.repository import GLib
@@ -131,11 +130,11 @@ class BrowserTest(BaseTest):
         ).click()
         self.window.child(roleName="push button", label="Choose Folder…").click()
         os.makedirs(where, exist_ok=True)
-        dlg = tree.root.child(roleName="file chooser", name="Choose Folder")
+        dlg = self.get_file_chooser("Choose Folder")
         # Focus dialog (not always done automatically with portal dialogs)
         dlg.child(roleName="label", name="Choose Folder").click()
         typeText(where + "\n")
-        dlg.child(name="Select").click()
+        self.wait_for(lambda: dlg.dead)
 
     def walk_restore(self, error=False, where=None):
         self.start_restore()
@@ -313,7 +312,7 @@ class BrowserTest(BaseTest):
         assert not button.sensitive
 
         # Test that we can if you switch locations
-        self.select_location(self.srcdir)
+        self.select_location(self.restoredir)
         label = self.app.findChild(
             findPermissionLabel, retry=False, requireResult=False
         )

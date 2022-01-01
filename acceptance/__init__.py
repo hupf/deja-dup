@@ -208,6 +208,11 @@ class BaseTest(unittest.TestCase):
         app.child(roleName="text entry", label="Encryption password").typeText(password)
         app.button("Continue").click()
 
+    def get_file_chooser(self, name):
+        # Look for gtk3 portal dialog or native gtk4 one, depending
+        roleName = "file chooser" if os.environ["DD_MODE"] == "flatpak" else "dialog"
+        return Gtk4Node(tree.root).child(roleName=roleName, name=name)
+
     def click_restore_button(self, parent):
         bar = parent.child(name="GtkActionBar")
         bar.button("Restore").click()

@@ -31,6 +31,14 @@ class RestoreTest(BaseTest):
         window.button("Forward").click()  # folders
         window.button("Forward").click()  # storage location
 
+        self.wait_for(
+            lambda: lambda: window.findChild(
+                GenericPredicate(roleName="text", label="Encryption password"),
+                retry=False,
+                requireResult=False,
+            ),
+            timeout=300,
+        )
         window.child(roleName="text", label="Encryption password").text = "test-restore"
 
         # Confirm password if we are doing an initial backup

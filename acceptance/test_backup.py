@@ -216,6 +216,6 @@ class ResticBackupTest(ResticMixin, BackupTest):
     def test_resume(self, initial):
         super().test_resume(initial)
 
-    @expectedFailure   # verify support isn't finished yet
+    @expectedFailure  # verify support isn't finished yet
     def test_nag_check(self):
         super().test_nag_check()

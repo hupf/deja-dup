@@ -24,9 +24,6 @@ class IntegrationTest(BaseTest):
         assert app.childNamed("Restaurer")
 
     def test_help(self):
-        if os.environ["DD_MODE"] == "snap":
-            self.skipTest("snap removes help")
-
         # Also test that help is translated by passing LANG
         app = self.cmd(env="LANG=fr_FR.UTF-8 LANGUAGE=fr")
         app.childNamed("Main Menu").click()
