@@ -41,6 +41,8 @@ class Browser : Gtk.Grid
   unowned Gtk.Button restore_button;
   [GtkChild]
   unowned TimeCombo timecombo;
+  [GtkChild]
+  unowned Gtk.Spinner spinner;
 
   DejaDupApp application;
   FileStore store;
@@ -228,27 +230,24 @@ class Browser : Gtk.Grid
   }
 
   void switch_overlay_to_spinner() {
-    overlay_stack.visible_child_name = "spinner";
-    overlay_stack.visible = true;
+    switch_overlay_to("spinner");
+    spinner.spinning = true;
   }
 
   void switch_overlay_to_error(string msg) {
     error_label.label = msg;
 
-    overlay_stack.visible_child_name = "error";
-    overlay_stack.visible = true;
+    switch_overlay_to("error");
   }
 
   void switch_overlay_to_pause(string msg) {
     pause_label.label = msg;
 
-    overlay_stack.visible_child_name = "pause";
-    overlay_stack.visible = true;
+    switch_overlay_to("pause");
   }
 
   void switch_overlay_to_mount_needed() {
-    overlay_stack.visible_child_name = "auth";
-    overlay_stack.visible = true;
+    switch_overlay_to("auth");
 
     auth_label.label = _("Authentication needed");
     auth_url = null;
@@ -259,16 +258,14 @@ class Browser : Gtk.Grid
   }
 
   void switch_overlay_to_oauth_needed(string msg, string url) {
-    overlay_stack.visible_child_name = "auth";
-    overlay_stack.visible = true;
+    switch_overlay_to("auth");
 
     auth_label.label = msg;
     auth_url = url;
   }
 
   void switch_overlay_to_passphrase() {
-    overlay_stack.visible_child_name = "passphrase";
-    overlay_stack.visible = true;
+    switch_overlay_to("passphrase");
 
     // Now this signal (passphrase_required) has unfortunate semantics. We need
     // to keep a main loop open until we get the operation its passphrase.
@@ -276,18 +273,23 @@ class Browser : Gtk.Grid
   }
 
   void switch_overlay_to_empty_folder() {
-    overlay_stack.visible_child_name = "empty-folder";
-    overlay_stack.visible = true;
+    switch_overlay_to("empty-folder");
   }
 
   void switch_overlay_to_empty_search() {
     view_stack.visible_child_name = "icons";
-    overlay_stack.visible_child_name = "empty-search";
+    switch_overlay_to("empty-search");
+  }
+
+  void switch_overlay_to(string name) {
+    overlay_stack.visible_child_name = name;
     overlay_stack.visible = true;
+    spinner.spinning = false;
   }
 
   void switch_overlay_off() {
     overlay_stack.visible = false;
+    spinner.spinning = false;
   }
 
   [GtkCallback]
