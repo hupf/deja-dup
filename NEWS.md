@@ -3,6 +3,8 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.1
+
 # 43.0
 This is a stable release, following 43.alpha and 43.beta in the GNOME style.
 Previously, odd number releases were the development releases, but no longer.
