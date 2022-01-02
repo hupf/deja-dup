@@ -67,9 +67,8 @@ public class BackendGoogle : BackendOAuth
 
   public override async uint64 get_space(bool free = true)
   {
-    var message = Soup.Form.request_new(
-      "GET", "https://www.googleapis.com/drive/v3/about",
-      "fields", "storageQuota"
+    var message = new Soup.Message(
+      "GET", "https://www.googleapis.com/drive/v3/about?fields=storageQuota"
     );
     Json.Reader reader;
 

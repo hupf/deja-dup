@@ -75,7 +75,7 @@ public abstract class DejaDup.BackendOAuth : Backend
 
   async Json.Reader? send_message_raw(Soup.Message message) throws Error
   {
-    var response = yield session.send_async(message);
+    var response = yield session.send_async(message, Priority.DEFAULT, null);
     if (message.status_code != Soup.Status.OK)
       return null;
     var data = new uint8[5000]; // assume anything we read will be 5k or smaller
@@ -153,43 +153,43 @@ public abstract class DejaDup.BackendOAuth : Backend
 
   string get_consent_location()
   {
-    var message = Soup.Form.request_new(
-      "GET", auth_url,
+    var form = Soup.Form.encode(
       "client_id", client_id,
       "redirect_uri", local_address,
       "response_type", "code",
       "code_challenge", pkce,
       "scope", scope
     );
-    return message.uri.to_string(false);
+    var message = new Soup.Message.from_encoded_form("GET", auth_url, form);
+    return message.uri.to_string();
   }
 
   async void get_credentials(string code) throws Error
   {
-    var message = Soup.Form.request_new(
-      "POST", token_url,
+    var form = Soup.Form.encode(
       "client_id", client_id,
       "redirect_uri", local_address,
       "grant_type", "authorization_code",
       "code_verifier", pkce,
       "code", code
     );
+    var message = new Soup.Message.from_encoded_form("POST", token_url, form);
     yield get_tokens(message);
   }
 
   async void refresh_credentials() throws Error
   {
-    var message = Soup.Form.request_new(
-      "POST", token_url,
+    var form = Soup.Form.encode(
       "client_id", client_id,
       "refresh_token", refresh_token,
       "grant_type", "refresh_token"
     );
+    var message = new Soup.Message.from_encoded_form("POST", token_url, form);
     yield get_tokens(message);
   }
 
   // Returns true if are done with consent flow
-  bool process_server_request(Soup.Message message, string path,
+  bool process_server_request(Soup.ServerMessage message, string path,
                               HashTable<string, string>? query,
                               out string code, out string error_msg)
   {
@@ -197,11 +197,11 @@ public abstract class DejaDup.BackendOAuth : Backend
     error_msg = null;
 
     if (path != "/") {
-      message.status_code = Soup.Status.NOT_FOUND;
+      message.set_status(Soup.Status.NOT_FOUND, null);
       return false;
     }
 
-    message.status_code = Soup.Status.ACCEPTED;
+    message.set_status(Soup.Status.ACCEPTED, null);
 
     string? error = query == null ? null : query.lookup("error");
     if (error != null) {
@@ -217,7 +217,8 @@ public abstract class DejaDup.BackendOAuth : Backend
 
     // Show consent granted screen
     var html = DejaDup.get_access_granted_html();
-    message.response_body.append_take(html.data);
+    message.set_response("text/html; charset=UTF-8", Soup.MemoryUse.COPY,
+                         html.data);
     return true;
   }
 
@@ -227,7 +228,7 @@ public abstract class DejaDup.BackendOAuth : Backend
     var server = new Soup.Server("server-header",
                                  "%s/%s ".printf(Config.PACKAGE, Config.VERSION));
     server.listen_local(0, Soup.ServerListenOptions.IPV4_ONLY);
-    local_address = server.get_uris().data.to_string(false);
+    local_address = server.get_uris().data.to_string();
 
     // Prepare to handle requests that finish the consent process
     string error_msg = null;
