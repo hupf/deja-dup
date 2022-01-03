@@ -94,6 +94,8 @@ flatpak-update:
 		rm $$name.json; \
 		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$name.yaml; \
 	done
+	# Hopefully temporary fix to handle setuptools 60 and above, which duplicity doesn't vibe with yet
+	sed -i 's/pip3 install/SETUPTOOLS_USE_DISTUTILS=stdlib pip3 install/g' flatpak/duplicity.yaml
 
 .PHONY: black
 black:
