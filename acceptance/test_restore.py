@@ -66,7 +66,7 @@ class RestoreTest(BaseTest):
             self.enter_browser_password(app, "test-restore")
 
         # Now select all.
-        self.wait_for(lambda: search.sensitive)
+        self.wait_for(lambda: search.sensitive, timeout=300)
         app.childNamed("Main Menu").click()
         app.childNamed("Select All").click()
 
