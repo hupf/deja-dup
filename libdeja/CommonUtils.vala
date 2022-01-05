@@ -488,9 +488,12 @@ public string get_file_desc(File file)
   catch (Error e) {}
 
   var desc = Path.get_basename(file.get_parse_name());
-  var uri = new Soup.URI(file.get_uri());
-  if (uri != null && uri.host != null && uri.host != "")
-    desc = _("%1$s on %2$s").printf(desc, uri.host);
+  try {
+    var host = Uri.parse(file.get_uri(), UriFlags.NON_DNS).get_host();
+    if (host != null && host != "")
+      desc = _("%1$s on %2$s").printf(desc, host);
+  }
+  catch (UriError e) {}
 
   return desc;
 }

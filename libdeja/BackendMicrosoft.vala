@@ -74,9 +74,8 @@ public class BackendMicrosoft : BackendOAuth
 
   public override async uint64 get_space(bool free = true)
   {
-    var message = Soup.Form.request_new(
-      "GET", "https://graph.microsoft.com/v1.0/me/drive",
-      "select", "quota"
+    var message = new Soup.Message(
+      "GET", "https://graph.microsoft.com/v1.0/me/drive?select=quota"
     );
     Json.Reader reader;
 
@@ -107,9 +106,8 @@ public class BackendMicrosoft : BackendOAuth
     }
 
     // Grab the drive ID in case a tool needs it
-    var message = Soup.Form.request_new(
-      "GET", "https://graph.microsoft.com/v1.0/me/drive",
-      "select", "id"
+    var message = new Soup.Message(
+      "GET", "https://graph.microsoft.com/v1.0/me/drive?select=id"
     );
     var reader = yield send_message(message);
     reader.read_member("id");

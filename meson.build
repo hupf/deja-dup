@@ -37,7 +37,7 @@ gtk_x11_dep = dependency('gtk4-x11', required: false)
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
 packagekit_dep = dependency('packagekit-glib2', version: '>= 0.6.5', required: false)
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
-soup_dep = dependency('libsoup-2.4', version: '>= 2.48')
+soup_dep = dependency('libsoup-3.0', version: '>= 3.0')
 
 # Programs
 appstream_util = find_program('appstream-util', required: false)
