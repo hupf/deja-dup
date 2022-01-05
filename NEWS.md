@@ -4,6 +4,10 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.1
+- Increase default window size to avoid being too small
+
+##### Packaging
+- Require libsoup-3.0 (instead of libsoup-2.4)
 
 # 43.0
 This is a stable release, following 43.alpha and 43.beta in the GNOME style.
