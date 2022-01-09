@@ -6,22 +6,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2020-06-21 21:37-0400\n"
-"PO-Revision-Date: 2020-06-09 10:09+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
+"POT-Creation-Date: 2021-09-22 14:29+0000\n"
+"PO-Revision-Date: 2022-01-09 15:56+0800\n"
 "Last-Translator: Cheng-Chia Tseng <pswo10680@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:15+0000\n"
-"X-Generator: Launchpad (build 1cbd0aa39df153c901321817f9b57cf3f232b507)\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:246
+#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:117
 msgid "Backup Monitor"
 msgstr "備份監視器"
 
@@ -34,64 +35,15 @@ msgstr "為定期備份排程"
 msgid "@icon@"
 msgstr "@icon@"
 
-#. Translators: The name is a play on the French phrase "déjà vu" meaning
-#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
-#. context is itself a reference to both the underlying command line tool
-#. "duplicity" and the act of duplicating data for backup.  As a whole, the
-#. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.appdata.xml.in:15 deja-dup/main.vala:325
-msgid "Déjà Dup Backups"
-msgstr "Déjà Dup 備份"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:16
-msgid "Keep your important documents safe from disaster"
-msgstr "讓您的重要資料遠離意外"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:18
-msgid ""
-"Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
-"Right Way (encrypted, off-site, and regular) and uses duplicity as the "
-"backend."
-msgstr "Déjà Dup 是個簡易備份工具。其將備份背後的複雜性 (加密、離站、定期) 隱藏得很好，並以 dupicity 作為後端程式。"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:20
-msgid ""
-"Support for local, remote, or cloud backup locations such as Google Drive"
-msgstr "支援本機、遠端備份，以及 Google Drive 之類的雲端備份"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:21
-msgid "Securely encrypts and compresses your data"
-msgstr "安全地加密並儲存您的資料"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:22
-msgid ""
-"Incrementally backs up, letting you restore from any particular backup"
-msgstr "增量式備份，讓您可從任何一個備份還原資料"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:23
-msgid "Schedules regular backups"
-msgstr "定期備份"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:24
-msgid "Integrates well into your GNOME desktop"
-msgstr "與 GNOME 桌面緊密整合"
-
-#: data/org.gnome.DejaDup.appdata.xml.in:26
-msgid ""
-"Déjà Dup focuses on ease of use and recovering from personal, accidental "
-"data loss. If you need a full system backup or an archival program, you may "
-"prefer other backup apps."
-msgstr ""
-"Déjà Dup "
-"的目標是要讓使用者可以在個人資料遺失，或資料意外遺失的狀況下輕鬆還原。如果您需要完整的系統備份功能，或是封存檔案用的程式，您可能要參考其他備份軟體。"
-
-#: data/org.gnome.DejaDup.desktop.in:6 deja-dup/MainWindow.vala:25
+#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainHeaderBar.ui:20
+#: data/ui/MainWindow.ui:11
 msgid "Backups"
 msgstr "備份"
 
 #: data/org.gnome.DejaDup.desktop.in:7
-msgid "Change your backup settings"
-msgstr "變更您的備份設定值"
+#: data/org.gnome.DejaDup.metainfo.xml.in:16
+msgid "Protect yourself from data loss"
+msgstr "保護您的資料不流失"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
@@ -117,9 +69,10 @@ msgid ""
 "relative to the user’s home directory."
 msgstr ""
 "這份清單中的目錄會備份。保留的值 "
-"$HOME、$DESKTOP、$DOCUMENTS、$DOWNLOAD、$MUSIC、$PICTURES、$PUBLIC_SHARE、$TEMPLATES"
-"、$TRASH、和 $VIDEOS 會辨識為使用者的特殊目錄，且可以是較長路徑中的開頭 ($HOME/subdir)。保留的值 $USER "
-"則會以使用者的使用者名稱替換，且可以放在路徑中的任何地方。相對路徑條目則是相對於使用者的家目錄。"
+"$HOME、$DESKTOP、$DOCUMENTS、$DOWNLOAD、$MUSIC、$PICTURES、$PUBLIC_SHARE、$TEMPLATES、$TRASH、"
+"和 $VIDEOS 會辨識為使用者的特殊目錄，且可以是較長路徑中的開頭 ($HOME/"
+"subdir)。保留的值 $USER 則會以使用者的使用者名稱替換，且可以放在路徑中的任何"
+"地方。相對路徑條目則是相對於使用者的家目錄。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:18
 msgid "Folders to ignore"
@@ -135,9 +88,10 @@ msgid ""
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr ""
 "這份清單中的目錄不會備份。保留的值 "
-"$HOME、$DESKTOP、$DOCUMENTS、$DOWNLOAD、$MUSIC、$PICTURES、$PUBLIC_SHARE、$TEMPLATES"
-"、$TRASH、和 $VIDEOS 會辨識為使用者的特殊目錄，且可以是較長路徑中的開頭 ($HOME/subdir)。保留的值 $USER "
-"則會以使用者的使用者名稱替換，且可以放在路徑中的任何地方。相對路徑條目則是相對於使用者的家目錄。"
+"$HOME、$DESKTOP、$DOCUMENTS、$DOWNLOAD、$MUSIC、$PICTURES、$PUBLIC_SHARE、$TEMPLATES、$TRASH、"
+"和 $VIDEOS 會辨識為使用者的特殊目錄，且可以是較長路徑中的開頭 ($HOME/"
+"subdir)。保留的值 $USER 則會以使用者的使用者名稱替換，且可以放在路徑中的任何"
+"地方。相對路徑條目則是相對於使用者的家目錄。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:23
 msgid "The last time Déjà Dup was run"
@@ -183,7 +137,7 @@ msgstr "要多久 (定期) 備份一次"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:44
 msgid "The number of days between backups."
-msgstr "備份間隔日數"
+msgstr "備份間隔日數。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:48
 msgid ""
@@ -197,9 +151,9 @@ msgid ""
 "don’t know about backups. This time should be either ‘disabled’ to turn off "
 "this check or in ISO 8601 format."
 msgstr ""
-"當使用者登入時，Déjà Dup "
-"監視器會檢查是否該提示你備份。這個功能是為了提高不知道備份是什麼的使用者的發現率。這裡的時間可以是「disabled」表示關閉檢查，或是採用 ISO "
-"8601 格式的時間。"
+"當使用者登入時，Déjà Dup 監視器會檢查是否該提示你備份。這個功能是為了提高不知"
+"道備份是什麼的使用者的發現率。這裡的時間可以是「disabled」表示關閉檢查，或是"
+"採用 ISO 8601 格式的時間。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:53
 msgid ""
@@ -212,8 +166,8 @@ msgid ""
 "occasionally notify you to confirm the password. This time should be either "
 "‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr ""
-"為了避免您遺忘您的密碼， Déjà Dup 偶爾會通知您確認一下密碼。這裡的時間可以是「disabled」代表關閉檢查，或是採用 ISO 8601 "
-"格式的時間。"
+"為了避免您遺忘您的密碼， Déjà Dup 偶爾會通知您確認一下密碼。這裡的時間可以是"
+"「disabled」代表關閉檢查，或是採用 ISO 8601 格式的時間。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:58
 msgid "How long to keep backup files"
@@ -224,7 +178,9 @@ msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
 "longer."
-msgstr "保留備份檔案之日數；如為 0 指永遠保留。這是最小的保留日數，檔案實際上可能會保留更久一些。"
+msgstr ""
+"保留備份檔案之日數；如為 0 指永遠保留。這是最小的保留日數，檔案實際上可能會保"
+"留更久一些。"
 
 #: data/org.gnome.DejaDup.gschema.xml.in:63
 msgid "How long to wait between full backups"
@@ -246,420 +202,506 @@ msgid ""
 "connections (like 4G)."
 msgstr "若否，Déjà Dup 不會以計價網路連線（如 4G）執行排程的備份。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:88
+#: data/org.gnome.DejaDup.gschema.xml.in:97
 msgid "Type of location to store backup"
 msgstr "要儲存備份的位置類型"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:89
+#: data/org.gnome.DejaDup.gschema.xml.in:98
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
 msgstr "備份位置的類型。若為「自動」，預設會基於目前哪些可用來選取。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:100
-#: data/org.gnome.DejaDup.gschema.xml.in:123
-#: data/org.gnome.DejaDup.gschema.xml.in:136
-#: data/org.gnome.DejaDup.gschema.xml.in:144
+#: data/org.gnome.DejaDup.gschema.xml.in:110
+#: data/org.gnome.DejaDup.gschema.xml.in:133
+#: data/org.gnome.DejaDup.gschema.xml.in:146
+#: data/org.gnome.DejaDup.gschema.xml.in:154
+#: data/org.gnome.DejaDup.gschema.xml.in:161
 msgid "The folder where backups are stored"
 msgstr "備份的儲存目錄"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:101
+#: data/org.gnome.DejaDup.gschema.xml.in:111
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr "備份要儲存的資料夾階層。路徑可以是絕對路徑或相對於您家目錄的路徑。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:108
+#: data/org.gnome.DejaDup.gschema.xml.in:118
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:109
+#: data/org.gnome.DejaDup.gschema.xml.in:119
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr "裝置的獨一檔案系統辨識碼，用來辨別插入的裝置。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:113
+#: data/org.gnome.DejaDup.gschema.xml.in:123 data/ui/Browser.ui:250
 msgid "Name"
 msgstr "名稱"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:114
+#: data/org.gnome.DejaDup.gschema.xml.in:124
 msgid "The name of the external drive."
 msgstr "外接裝置的名稱。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:118
+#: data/org.gnome.DejaDup.gschema.xml.in:128
 msgid "Icon"
 msgstr "圖示"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/org.gnome.DejaDup.gschema.xml.in:129
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "外接裝置的圖示，為序列化 GIcon。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/org.gnome.DejaDup.gschema.xml.in:134
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
-msgstr "備份儲存的資料夾階層"
+msgstr "備份儲存的資料夾階層。路徑採裝置的相對路徑。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:131
+#: data/org.gnome.DejaDup.gschema.xml.in:141
 msgid "The server address"
 msgstr "伺服器位址"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:132
+#: data/org.gnome.DejaDup.gschema.xml.in:142
 msgid "The URI of the remote server location."
 msgstr "遠端伺服器位址的 URI。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:137
+#: data/org.gnome.DejaDup.gschema.xml.in:147
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
 msgstr "備份儲存的資料夾階層。路徑可以是絕對路徑，或是相對於主機的路徑。"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:145
+#. Translators: The name is a play on the French phrase "déjà vu" meaning
+#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
+#. context is itself a reference to both the underlying command line tool
+#. "duplicity" and the act of duplicating data for backup.  As a whole, the
+#. phrase "Déjà Dup" may not be very translatable.
+#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:392
+msgid "Déjà Dup Backups"
+msgstr "Déjà Dup 備份"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:18
 msgid ""
-"The folder path where backups are stored. Paths can be absolute or relative "
-"to the host."
-msgstr "儲存備份的資料夾路徑。可以是絕對路徑，也可以是主機的相對路徑。"
+"Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
+"Right Way (encrypted, off-site, and regular) and uses duplicity as the "
+"backend."
+msgstr ""
+"Déjà Dup 是個簡易備份工具。其將備份背後的複雜性 (加密、離站、定期) 隱藏得很"
+"好，並以 dupicity 作為後端程式。"
 
-#: data/ui/help-overlay.ui:19
-msgctxt "shortcut window"
-msgid "General"
-msgstr "一般"
+#: data/org.gnome.DejaDup.metainfo.xml.in:20
+msgid ""
+"Support for local, remote, or cloud backup locations such as Google Drive"
+msgstr "支援本機、遠端備份，以及 Google Drive 之類的雲端備份"
 
-#: data/ui/help-overlay.ui:24
-msgctxt "shortcut window"
-msgid "Show help"
-msgstr "顯示說明"
+#: data/org.gnome.DejaDup.metainfo.xml.in:21
+msgid "Securely encrypts and compresses your data"
+msgstr "安全地加密並儲存您的資料"
 
-#: data/ui/help-overlay.ui:31
-msgctxt "shortcut window"
-msgid "Open menu"
-msgstr "開啟選單"
+#: data/org.gnome.DejaDup.metainfo.xml.in:22
+msgid "Incrementally backs up, letting you restore from any particular backup"
+msgstr "增量式備份，讓您可從任何一個備份還原資料"
 
-#: data/ui/help-overlay.ui:38
-msgctxt "shortcut window"
-msgid "Quit"
-msgstr "退出"
+#: data/org.gnome.DejaDup.metainfo.xml.in:23
+msgid "Schedules regular backups"
+msgstr "定期備份"
 
-#: data/ui/help-overlay.ui:45
-msgctxt "shortcut window"
-msgid "Keyboard shortcuts"
-msgstr "鍵盤快捷鍵"
+#: data/org.gnome.DejaDup.metainfo.xml.in:24
+msgid "Integrates well into your GNOME desktop"
+msgstr "與 GNOME 桌面緊密整合"
 
-#: data/ui/help-overlay.ui:53
-msgctxt "shortcut window"
-msgid "Browsing Backed Up Files"
-msgstr "瀏覽備份檔案"
+#: data/org.gnome.DejaDup.metainfo.xml.in:26
+msgid ""
+"Déjà Dup focuses on ease of use and recovering from personal, accidental "
+"data loss. If you need a full system backup or an archival program, you may "
+"prefer other backup apps."
+msgstr ""
+"Déjà Dup 的目標是要讓使用者可以在個人資料遺失，或資料意外遺失的狀況下輕鬆還"
+"原。如果您需要完整的系統備份功能，或是封存檔案用的程式，您可能要參考其他備份"
+"軟體。"
 
-#: data/ui/help-overlay.ui:58
-msgctxt "shortcut window"
+#: data/org.gnome.DejaDup.metainfo.xml.in:92
+msgid "Back up your files automatically — set it and forget it"
+msgstr "自動備份您的檔案 — 設定好就可以拋到腦後"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:96
+msgid "Restoring is a breeze — browse your files and select which to restore"
+msgstr "還原有如春風拂面 —瀏覽您的檔案，並選取想還原的項目"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:100
+msgid "Back up to the cloud, a network server, or a local drive"
+msgstr "備份至雲端、網路伺服器、本地裝置等"
+
+#: data/org.gnome.DejaDup.metainfo.xml.in:104
+msgid ""
+"Take control of your backup by choosing exactly which folders to include"
+msgstr "掌握您的備份，選擇您實際想納入那些資料夾"
+
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
+#: data/ui/MainHeaderBar.ui:52
 msgid "Search"
 msgstr "搜尋"
 
-#: data/ui/help-overlay.ui:65
-msgctxt "shortcut window"
-msgid "Go back"
-msgstr "返回"
-
-#: data/ui/main.ui:46
-msgid "Back"
-msgstr "往回"
-
-#: data/ui/main.ui:86
-msgid "Select"
-msgstr "選取"
-
-#: data/ui/main.ui:112 data/ui/main.ui:184
-msgid "Search"
-msgstr "搜尋"
-
-#: data/ui/main.ui:156 data/ui/main.ui:771 deja-dup/Assistant.vala:338
-msgid "_Cancel"
-msgstr "取消(_C)"
-
-#: data/ui/main.ui:249
-msgid "Keep your important files safe in a backup."
-msgstr "透過備份以安全保留您的重要檔案。"
-
-#: data/ui/main.ui:261
-msgid "Create My First _Backup"
-msgstr "建立我的第一個備份(_B)"
-
-#: data/ui/main.ui:277
-msgid "_Restore From a Previous Backup"
-msgstr "從先前的備份還原(_R)"
-
-#: data/ui/main.ui:310 data/ui/preferences.ui:117
-msgid "Automatic backup"
-msgstr "自動備份"
-
-#: data/ui/main.ui:325
-msgid "Back up _automatically"
-msgstr "自動備份(_A)"
-
-#: data/ui/main.ui:352
-msgid "_Back Up Now"
-msgstr "立刻備份(_B)"
-
-#: data/ui/main.ui:381
-msgid "Overview"
-msgstr "概覽"
-
-#: data/ui/main.ui:395 deja-dup/AssistantRestore.vala:70
-msgid "_Restore"
-msgstr "還原(_R)"
-
-#: data/ui/main.ui:413 deja-dup/AssistantRestore.vala:139
-msgid "_Date"
-msgstr "日期(_D)"
-
-#: data/ui/main.ui:533
+#: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
 msgstr "正在搜尋備份檔案…"
 
-#: data/ui/main.ui:567
+#: data/ui/Browser.ui:99
+msgid "Folder is Empty"
+msgstr "空的資料夾"
+
+#: data/ui/Browser.ui:113
+msgid "No Results Found"
+msgstr "找不到結果"
+
+#: data/ui/Browser.ui:114
+msgid "Try a different search"
+msgstr "試試不同的搜尋"
+
+#: data/ui/Browser.ui:142
 msgid "_Retry"
 msgstr "重試(_R)"
 
-#: data/ui/main.ui:606
+#: data/ui/Browser.ui:177
 msgid "_Connect"
 msgstr "連接(_C)"
 
-#: data/ui/main.ui:635
+#: data/ui/Browser.ui:202
 msgid "Encryption password needed"
 msgstr "需要加密密碼"
 
-#: data/ui/main.ui:646
+#: data/ui/Browser.ui:213
 msgid "_Enter Password"
 msgstr "輸入密碼(_E)"
 
-#: data/ui/main.ui:750 deja-dup/AssistantRestore.vala:66
-msgid "Restore"
-msgstr "還原"
+#: data/ui/Browser.ui:296
+msgid "Location"
+msgstr "位置"
 
-#: data/ui/main.ui:780
-msgid "Con_tinue"
-msgstr "繼續(_T)"
+#: data/ui/Browser.ui:342 deja-dup/AssistantRestore.vala:65
+msgid "_Restore"
+msgstr "還原(_R)"
 
-#: data/ui/main.ui:848 deja-dup/AssistantOperation.vala:384
-#: deja-dup/AssistantOperation.vala:455
-msgid "E_ncryption password"
-msgstr "加密密碼(_N)"
-
-#: data/ui/main.ui:859 deja-dup/AssistantOperation.vala:414
-#: deja-dup/AssistantOperation.vala:464
-msgid "_Show password"
-msgstr "顯示密碼(_S)"
-
-#: data/ui/main.ui:874 deja-dup/AssistantOperation.vala:421
-#: deja-dup/MountOperationAssistant.vala:27
-msgid "_Remember password"
-msgstr "記住密碼(_R)"
-
-#: data/ui/menus.ui:12
-msgid "_Preferences"
-msgstr "偏好設定(_P)"
-
-#: data/ui/menus.ui:16
-msgid "_Keyboard Shortcuts"
-msgstr "鍵盤快捷鍵(_K)"
-
-#: data/ui/menus.ui:20
-msgid "_Help"
-msgstr "幫助(_H)"
-
-#: data/ui/menus.ui:24
-msgid "_About Backups"
-msgstr "關於《備份》(_A)"
-
-#: data/ui/menus.ui:32
-msgid "Select _All"
-msgstr "全部選取(_A)"
-
-#: data/ui/menus.ui:36
-msgid "Select _None"
-msgstr "全部不選(_N)"
-
-#: data/ui/preferences.ui:27
-msgid "Storage"
-msgstr "儲存處"
-
-#: data/ui/preferences.ui:32
-msgid "_Location"
-msgstr "位置(_L)"
-
-#: data/ui/preferences.ui:78
-msgid "_Keep Backups"
-msgstr "保留備份(_K)"
-
-#: data/ui/preferences.ui:87
-msgid ""
-"The oldest backups will still be deleted earlier if the location is low on "
-"space."
-msgstr "如果備份位置空間緊縮，則最舊的備份仍會優先刪除。"
-
-#: data/ui/preferences.ui:101
-msgid "Schedule"
-msgstr "排程"
-
-#: data/ui/preferences.ui:107
+#: data/ui/ConfigAutoBackupRow.ui:10
 msgid "Back Up _Automatically"
 msgstr "自動備份(_A)"
 
-#: data/ui/preferences.ui:129
-msgid "Automatic Backup _Frequency"
-msgstr "自動備份頻率(_F)"
+#: data/ui/ConfigFolderList.ui:21 deja-dup/ConfigFolderList.vala:66
+msgid "Add"
+msgstr "加入"
 
-#: data/ui/preferences.ui:147
+#: data/ui/ConfigFolderPage.ui:10
+msgid "Folders"
+msgstr "資料夾"
+
+#: data/ui/ConfigFolderPage.ui:13
 msgid "Folders to Back Up"
 msgstr "備份的資料夾"
 
-#: data/ui/preferences.ui:153
-msgid "Includes"
-msgstr "包含"
-
-#: data/ui/preferences.ui:162
+#: data/ui/ConfigFolderPage.ui:20
 msgid "Folders to Ignore"
 msgstr "要忽略的資料夾"
 
-#: data/ui/preferences.ui:168
-msgid "Excludes"
-msgstr "排除"
+#: data/ui/ConfigFolderRow.ui:15
+msgid ""
+"This folder cannot be backed up because Backups does not have access to it."
+msgstr "無法備份這個資料夾，因為《備份》軟體沒有資料夾的存取權。"
 
-#: data/ui/preferences.ui:177
-msgid "Preferences"
-msgstr "偏好設定"
+#: data/ui/ConfigFolderRow.ui:27
+msgid "Remove"
+msgstr "移除"
 
 #. Translators: storage as in "where to store the backup"
-#: data/ui/preferences.ui:233
+#: data/ui/ConfigLocationGrid.ui:19
 msgid "_Storage Location"
 msgstr "儲存位置(_S)"
 
-#: data/ui/preferences.ui:270 data/ui/preferences.ui:354
-#: data/ui/preferences.ui:392 data/ui/preferences.ui:459
+#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
+#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
+#: data/ui/ConfigLocationGrid.ui:256
 msgid "_Folder"
 msgstr "資料夾(_F)"
 
-#: data/ui/preferences.ui:294
+#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
 msgid "_Reset Account Access"
-msgstr ""
+msgstr "重設帳號存取權(_R)"
 
-#: data/ui/preferences.ui:326
+#: data/ui/ConfigLocationGrid.ui:141
 msgid "_Network Location"
 msgstr "網路位置(_N)"
 
-#: data/ui/preferences.ui:433 libdeja/BackendUnsupported.vala:29
+#: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
+msgid "Back"
+msgstr "往回"
+
+#: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
+msgid "Main Menu"
+msgstr "主選單"
+
+#: data/ui/MainHeaderBar.ui:69
+msgid "_Select All"
+msgstr "全部選取(_A)"
+
+#: data/ui/MainHeaderBar.ui:76
+msgid "_Preferences"
+msgstr "偏好設定(_P)"
+
+#: data/ui/MainHeaderBar.ui:80
+msgid "_Keyboard Shortcuts"
+msgstr "鍵盤快捷鍵(_K)"
+
+#: data/ui/MainHeaderBar.ui:84
+msgid "_Help"
+msgstr "幫助(_H)"
+
+#: data/ui/MainHeaderBar.ui:88
+msgid "_About Backups"
+msgstr "關於《備份》(_A)"
+
+#: data/ui/MainWindow.ui:26
+msgid "Overview"
+msgstr "概覽"
+
+#: data/ui/MainWindow.ui:53 deja-dup/AssistantRestore.vala:61
+msgid "Restore"
+msgstr "還原"
+
+#: data/ui/OverviewPage.ui:31
+msgid "_Back Up Now"
+msgstr "立刻備份(_B)"
+
+#: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:348
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: data/ui/PassphraseDialog.ui:22
+msgid "Con_tinue"
+msgstr "繼續(_T)"
+
+#: data/ui/PassphraseDialog.ui:49 deja-dup/AssistantOperation.vala:380
+#: deja-dup/AssistantOperation.vala:441
+msgid "E_ncryption password"
+msgstr "加密密碼(_N)"
+
+#: data/ui/PassphraseDialog.ui:71 deja-dup/AssistantOperation.vala:408
+#: deja-dup/MountOperationAssistant.vala:25
+msgid "_Remember password"
+msgstr "記住密碼(_R)"
+
+#: data/ui/PreferencesWindow.ui:17
+msgid "General"
+msgstr "一般"
+
+#: data/ui/PreferencesWindow.ui:20
+msgid "Storage"
+msgstr "儲存處"
+
+#: data/ui/PreferencesWindow.ui:23
+msgid "_Location"
+msgstr "位置(_L)"
+
+#: data/ui/PreferencesWindow.ui:40
+msgid "_Keep Backups"
+msgstr "保留備份(_K)"
+
+#: data/ui/PreferencesWindow.ui:49
 msgid ""
-"This storage location is no longer supported. You can still use duplicity "
-"directly to back up or restore your files."
-msgstr "不再支援這個儲存位置類型。您仍可以直接使用 duplicity 來備份或還原您的檔案。"
+"The oldest backups will still be deleted earlier if the location is low on "
+"space or kept up to three months longer to avoid deleting related backups."
+msgstr ""
+"如果備份位置空間緊縮時，會優先刪除最舊的備份，或者是至多保留三個月，來避免刪"
+"除相關備份。"
 
-#: data/ui/preferences.ui:475
-msgid "_Choose Folder…"
-msgstr "選擇資料夾(_C)..."
+#: data/ui/PreferencesWindow.ui:58
+msgid "Schedule"
+msgstr "排程"
 
-#: data/ui/server-hint.ui:21
+#: data/ui/PreferencesWindow.ui:64
+msgid "Automatic Backup _Frequency"
+msgstr "自動備份頻率(_F)"
+
+#: data/ui/PreferencesWindow.ui:79
+msgid "Labs"
+msgstr "實驗中"
+
+#: data/ui/PreferencesWindow.ui:83
+#| msgid "Restoring:"
+msgid "Restic"
+msgstr "Restic"
+
+#: data/ui/PreferencesWindow.ui:87
+msgid "Use _Restic instead of Duplicity"
+msgstr "採用 _Restic 取代 Duplicity"
+
+#: data/ui/RecentBackupRow.ui:9
+msgid "Most Recent Backup"
+msgstr "最近的備份"
+
+#: data/ui/ServerHintPopover.ui:17
 msgid "Network Locations"
 msgstr "網路位置"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/server-hint.ui:34
+#: data/ui/ServerHintPopover.ui:29
 msgid ""
 "Network locations are made up of a protocol prefix, an address, and "
 "sometimes a path depending on the protocol. Examples:"
 msgstr "網路位置要由協定前綴、位址組成，有時視協定還要提供路徑。範例："
 
-#: data/ui/server-hint.ui:69
+#: data/ui/ServerHintPopover.ui:55
 msgid "Available Protocols"
 msgstr "可用的協定"
 
-#: data/ui/server-hint.ui:83
+#: data/ui/ServerHintPopover.ui:68
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/server-hint.ui:94
+#: data/ui/ServerHintPopover.ui:78
 msgid "File Transfer Protocol"
 msgstr "檔案傳輸協定"
 
-#: data/ui/server-hint.ui:105
+#: data/ui/ServerHintPopover.ui:88
 msgid "Network File System"
 msgstr "網路檔案協定"
 
-#: data/ui/server-hint.ui:116
+#: data/ui/ServerHintPopover.ui:98
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/server-hint.ui:127
+#: data/ui/ServerHintPopover.ui:108
 msgid "SSH File Transfer Protocol"
 msgstr "SSH 檔案傳輸協定"
 
-#: data/ui/server-hint.ui:138
+#: data/ui/ServerHintPopover.ui:118
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/server-hint.ui:149
+#: data/ui/ServerHintPopover.ui:128
 msgid "Prefix"
 msgstr "前綴"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/server-hint.ui:174
+#: data/ui/ServerHintPopover.ui:151
 msgid "ftp:// or ftps://"
 msgstr "ftp:// 或 ftps://"
 
-#: data/ui/server-hint.ui:196
+#: data/ui/ServerHintPopover.ui:171
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/server-hint.ui:207
+#: data/ui/ServerHintPopover.ui:181
 msgid "sftp:// or ssh://"
 msgstr "sftp:// 或 ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/server-hint.ui:218
+#: data/ui/ServerHintPopover.ui:191
 msgid "dav:// or davs://"
 msgstr "dav:// 或 davs://"
 
-#: deja-dup/Assistant.vala:282
+#: data/ui/TimeCombo.ui:13
+msgid "_Date"
+msgstr "日期(_D)"
+
+#: data/ui/WelcomePage.ui:12
+msgid "Welcome to Backups"
+msgstr "歡迎備份"
+
+#: data/ui/WelcomePage.ui:22
+msgid "Create Your First _Backup"
+msgstr "建立您的第一個備份(_B)"
+
+#: data/ui/WelcomePage.ui:33
+msgid "_Restore From a Previous Backup"
+msgstr "從先前的備份還原(_R)"
+
+#: data/ui/help-overlay.ui:16
+msgctxt "shortcut window"
+msgid "General"
+msgstr "一般"
+
+#: data/ui/help-overlay.ui:20
+msgctxt "shortcut window"
+msgid "Show help"
+msgstr "顯示說明"
+
+#: data/ui/help-overlay.ui:26
+msgctxt "shortcut window"
+msgid "Open menu"
+msgstr "開啟選單"
+
+#: data/ui/help-overlay.ui:32
+msgctxt "shortcut window"
+msgid "Quit"
+msgstr "退出"
+
+#: data/ui/help-overlay.ui:38
+msgctxt "shortcut window"
+msgid "Keyboard shortcuts"
+msgstr "鍵盤快捷鍵"
+
+#: data/ui/help-overlay.ui:45
+msgctxt "shortcut window"
+msgid "Browsing Backed Up Files"
+msgstr "瀏覽備份檔案"
+
+#: data/ui/help-overlay.ui:49
+msgctxt "shortcut window"
+msgid "Search"
+msgstr "搜尋"
+
+#: data/ui/help-overlay.ui:55
+msgctxt "shortcut window"
+msgid "Go back"
+msgstr "返回"
+
+#: deja-dup/Assistant.vala:293
 msgid "Co_ntinue"
 msgstr "繼續(_N)"
 
-#: deja-dup/Assistant.vala:288
+#: deja-dup/Assistant.vala:299
 msgctxt "verb"
 msgid "_Test"
 msgstr "測試(_T)"
 
-#: deja-dup/Assistant.vala:324
+#: deja-dup/Assistant.vala:334
 msgid "_Resume Later"
 msgstr "稍後繼續(_R)"
 
-#: deja-dup/Assistant.vala:330
+#: deja-dup/Assistant.vala:340
 msgid "_Back"
 msgstr "返回(_B)"
 
-#: deja-dup/Assistant.vala:332
+#: deja-dup/Assistant.vala:342
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: deja-dup/Assistant.vala:349
+#: deja-dup/Assistant.vala:359
 msgid "_Forward"
 msgstr "下一步(_F)"
 
-#: deja-dup/AssistantBackup.vala:19
+#: deja-dup/AssistantBackup.vala:21
 msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "備份"
 
-#: deja-dup/AssistantBackup.vala:26
+#: deja-dup/AssistantBackup.vala:28
 msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "備份(_B)"
 
-#: deja-dup/AssistantBackup.vala:81
+#: deja-dup/AssistantBackup.vala:64
+msgid ""
+"The following folders cannot be backed up because Backups does not have "
+"access to them:"
+msgstr "無法備份下列資料夾，因為《備份》沒有其存取權。"
+
+#: deja-dup/AssistantBackup.vala:80
 msgid "Creating the first backup.  This may take a while."
 msgstr "正在建立第一份備份。這會花上一些時間。"
 
-#: deja-dup/AssistantBackup.vala:82
+#: deja-dup/AssistantBackup.vala:81
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -667,453 +709,512 @@ msgstr "正在建立新鮮備份以保護備份免於損壞。這會比一般情
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:113
+#: deja-dup/AssistantBackup.vala:96
 msgid "Backing up:"
 msgstr "備份中："
 
-#: deja-dup/AssistantBackup.vala:122
+#: deja-dup/AssistantBackup.vala:105
 msgid "Backup Failed"
 msgstr "備份失敗"
 
-#: deja-dup/AssistantBackup.vala:125
+#: deja-dup/AssistantBackup.vala:108
 msgid "Backup Finished"
 msgstr "備份成功"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:129
+#: deja-dup/AssistantBackup.vala:112
 msgid "Your files were successfully backed up and tested."
 msgstr "您的檔案已成功備份並通過測試。"
 
-#: deja-dup/AssistantBackup.vala:136
+#: deja-dup/AssistantBackup.vala:119
 msgid "Backing Up…"
-msgstr "正在備份..."
+msgstr "正在備份…"
 
-#: deja-dup/AssistantOperation.vala:165
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: deja-dup/AssistantBackup.vala:125 deja-dup/AssistantOperation.vala:879
+msgid "Backups needs your input to continue"
+msgstr "備份需要您輸入以繼續"
+
+#: deja-dup/AssistantBackup.vala:146
+msgid "Backup in progress"
+msgstr "備份處理中"
+
+#: deja-dup/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "從何處還原？"
+
+#: deja-dup/AssistantLocation.vala:21
+msgid "_Backup location"
+msgstr "備份位置(_B)"
+
+#: deja-dup/AssistantLocation.vala:22
+msgid "_Search"
+msgstr "搜尋(_S)"
+
+#: deja-dup/AssistantOperation.vala:160
 msgid "Scanning:"
 msgstr "掃描中："
 
-#: deja-dup/AssistantOperation.vala:166
+#: deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
-msgstr "正在掃描..."
+msgstr "正在掃描…"
 
-#: deja-dup/AssistantOperation.vala:270
+#: deja-dup/AssistantOperation.vala:265
 msgid "_Details"
 msgstr "詳細資料(_D)"
 
-#: deja-dup/AssistantOperation.vala:315
+#: deja-dup/AssistantOperation.vala:312
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "若要繼續，必須安裝下列軟體包："
 
-#: deja-dup/AssistantOperation.vala:351
+#: deja-dup/AssistantOperation.vala:346
 msgid "_Allow restoring without a password"
 msgstr "允許不用密碼就能還原(_A)"
 
-#: deja-dup/AssistantOperation.vala:357
+#: deja-dup/AssistantOperation.vala:351
 msgid "_Password-protect your backup"
 msgstr "以密碼保護您的備份(_P)"
 
-#: deja-dup/AssistantOperation.vala:369
+#: deja-dup/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "您以後需要密碼才能還原檔案。您可能會想要把它抄下來。"
 
-#: deja-dup/AssistantOperation.vala:401
+#: deja-dup/AssistantOperation.vala:396
 msgid "Confir_m password"
 msgstr "確認密碼(_M)"
 
-#: deja-dup/AssistantOperation.vala:440
+#: deja-dup/AssistantOperation.vala:427
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
 "brief restore test."
-msgstr "為了檢查您是否可以在緊急時刻取回您的檔案，請再次輸入您的加密密碼來執行一次簡快的還原測試。"
+msgstr ""
+"為了檢查您是否可以在緊急時刻取回您的檔案，請再次輸入您的加密密碼來執行一次簡"
+"快的還原測試。"
 
-#: deja-dup/AssistantOperation.vala:469
+#: deja-dup/AssistantOperation.vala:449
 msgid "Test every two _months"
 msgstr "每兩個月測試一次(_M)"
 
-#: deja-dup/AssistantOperation.vala:501
+#: deja-dup/AssistantOperation.vala:480
 msgid "_Grant Access"
 msgstr "授予存取權限(_G)"
 
-#: deja-dup/AssistantOperation.vala:563
+#: deja-dup/AssistantOperation.vala:542
 msgid "Install Packages"
 msgstr "安裝軟體包"
 
-#: deja-dup/AssistantOperation.vala:578
+#: deja-dup/AssistantOperation.vala:557
 msgid "Summary"
 msgstr "摘要"
 
-#: deja-dup/AssistantOperation.vala:600
+#: deja-dup/AssistantOperation.vala:579
 msgid "Restore Test"
 msgstr "還原測試"
 
-#: deja-dup/AssistantOperation.vala:608
+#: deja-dup/AssistantOperation.vala:587
 msgid "Grant Access"
 msgstr "授予存取權限"
 
-#. For most, don't do anything special.  Show generic 'unknown error'
-#. message, but provide the exception text for better bug reports.
-#. Plus, sometimes it may clue the user in to what's wrong.
-#. But first, try to restart without a cache, since that seems to quite
-#. frequently fix odd metadata errors with duplicity.  If we hit an error
-#. a second time, we'll show the unknown error message.
-#: deja-dup/AssistantOperation.vala:690
-#: libdeja/tools/duplicity/DuplicityJob.vala:707
-#: libdeja/tools/duplicity/DuplicityJob.vala:1090
-msgid "Failed with an unknown error."
-msgstr "失敗伴隨未知錯誤。"
+#: deja-dup/AssistantOperation.vala:796
+msgid "Set Encryption Password"
+msgstr "設定加密密碼"
 
-#: deja-dup/AssistantOperation.vala:863
+#: deja-dup/AssistantOperation.vala:798
 msgid "Require Password?"
 msgstr "是否需要密碼？"
 
-#: deja-dup/AssistantOperation.vala:865
+#: deja-dup/AssistantOperation.vala:800
 msgid "Encryption Password Needed"
 msgstr "需要加密密碼"
 
-#: deja-dup/AssistantOperation.vala:989
+#: deja-dup/AssistantOperation.vala:847
+msgid "Backups needs your encryption password to continue"
+msgstr "備份需要您的加密密碼以繼續"
+
+#: deja-dup/AssistantOperation.vala:919
 msgctxt "verb"
 msgid "_Install"
 msgstr "安裝(_I)"
 
-#: deja-dup/AssistantRestore.vala:97
-msgid "_Backup location"
-msgstr "備份位置(_B)"
+#: deja-dup/AssistantOperation.vala:924
+msgid "Backups needs to install packages to continue"
+msgstr "備份需要安裝軟體以繼續"
 
-#: deja-dup/AssistantRestore.vala:118
-msgid "Restore From Where?"
-msgstr "從何處還原？"
-
-#: deja-dup/AssistantRestore.vala:185
+#: deja-dup/AssistantRestore.vala:139
 msgid "Restore files to _original locations"
 msgstr "檔案還原至原始位置(_O)"
 
-#: deja-dup/AssistantRestore.vala:195
+#: deja-dup/AssistantRestore.vala:150
 msgid "Restore to _specific folder"
 msgstr "還原至指定資料夾(_S)"
 
-#: deja-dup/AssistantRestore.vala:207
-msgid "Choose destination for restored files"
-msgstr "為還原的檔案選擇目的地"
+#: deja-dup/AssistantRestore.vala:178
+msgid "Restore to _specific folder:"
+msgstr "還原至指定資料夾(_S)："
 
-#: deja-dup/AssistantRestore.vala:215
-msgid "Restore _folder"
-msgstr "還原資料夾(_F)"
-
-#: deja-dup/AssistantRestore.vala:228
+#: deja-dup/AssistantRestore.vala:187
 msgid "Backups does not have permission to restore the following files:"
-msgstr ""
+msgstr "備份無權還原下列檔案："
 
-#: deja-dup/AssistantRestore.vala:292
+#: deja-dup/AssistantRestore.vala:251
 msgid "Backup location"
 msgstr "備份位置"
 
-#: deja-dup/AssistantRestore.vala:307
+#. Translators: label for the date from which we are restoring
+#: deja-dup/AssistantRestore.vala:266
 msgid "Restore date"
 msgstr "還原日期"
 
-#: deja-dup/AssistantRestore.vala:315
+#. Translators: label for the folder into which we putting restored files
+#: deja-dup/AssistantRestore.vala:275
 msgid "Restore folder"
 msgstr "還原資料夾"
 
-#: deja-dup/AssistantRestore.vala:341
+#: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
-msgstr "正在檢查有否備份..."
+msgstr "正在檢查有否備份…"
 
-#: deja-dup/AssistantRestore.vala:349
+#: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
 msgstr "還原何時？"
 
-#: deja-dup/AssistantRestore.vala:360
+#: deja-dup/AssistantRestore.vala:318
 msgid "Restore to Where?"
 msgstr "還原至何處？"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:395
+#: deja-dup/AssistantRestore.vala:351
 msgid "Restoring:"
 msgstr "正在還原："
 
-#. If we didn't see any dates...  Must not be any backups on the backend
-#: deja-dup/AssistantRestore.vala:405
+#: deja-dup/AssistantRestore.vala:363
 msgid "No backups to restore"
 msgstr "沒有要還原的備份檔"
 
-#: deja-dup/AssistantRestore.vala:514
+#: deja-dup/AssistantRestore.vala:446
 msgid "Original location"
 msgstr "原始位置"
 
-#: deja-dup/AssistantRestore.vala:525
+#: deja-dup/AssistantRestore.vala:460
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "要還原的檔案"
 
-#: deja-dup/AssistantRestore.vala:546
+#: deja-dup/AssistantRestore.vala:485
 msgid "Restore Failed"
 msgstr "還原失敗"
 
-#: deja-dup/AssistantRestore.vala:548
+#: deja-dup/AssistantRestore.vala:487
 msgid "Restore Finished"
 msgstr "還原完成"
 
 #. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:551
+#: deja-dup/AssistantRestore.vala:490
 msgid "Your files were successfully restored."
 msgstr "您的檔案已成功還原。"
 
-#: deja-dup/AssistantRestore.vala:554
+#: deja-dup/AssistantRestore.vala:493
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "您的檔案已成功還原。"
 
-#: deja-dup/AssistantRestore.vala:561 libdeja/Operation.vala:45
+#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
-msgstr "正在還原..."
+msgstr "正在還原…"
 
-#: deja-dup/Browser.vala:201
-msgid "Click on items to select them"
-msgstr "點按項目來選取它們"
+#: deja-dup/AssistantRestore.vala:570
+msgid "Restore in progress"
+msgstr "還原處理中"
 
-#: deja-dup/Browser.vala:203
-#, c-format
-msgid "%u selected"
-msgid_plural "%u selected"
-msgstr[0] "已選取 %u 個"
+#: deja-dup/Background.vala:77
+msgid "Cannot back up automatically"
+msgstr "無法自動備份"
 
-#: deja-dup/Browser.vala:380
+#: deja-dup/Browser.vala:252
 msgid "Authentication needed"
 msgstr "需要通過身分核對"
 
-#: deja-dup/ConfigDelete.vala:16
-msgid "At least six months"
-msgstr "至少六個月"
+#: deja-dup/Browser.vala:371 libdeja/duplicity/DuplicityJob.vala:1079
+msgid "No backup files found"
+msgstr "找不到備份檔案"
 
-#: deja-dup/ConfigDelete.vala:17
-msgid "At least a year"
-msgstr "至少一年"
-
-#: deja-dup/ConfigDelete.vala:18
-msgid "Forever"
-msgstr "永遠"
-
-#: deja-dup/ConfigDelete.vala:27
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "至少 %d 日"
-
-#: deja-dup/ConfigFolderList.vala:51
-msgid "Remove"
-msgstr "移除"
-
-#: deja-dup/ConfigFolderList.vala:69
-msgid "Add"
-msgstr "加入"
-
-#: deja-dup/ConfigFolderList.vala:79
-msgid "Choose folders"
-msgstr "選擇資料夾"
-
-#: deja-dup/ConfigFolderList.vala:81
-msgid "_Add"
-msgstr "加入(_A)"
-
-#. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:72 deja-dup/ConfigLocationCombo.vala:266
-#: libdeja/BackendGoogle.vala:86
-msgid "Google Drive"
-msgstr "Google 雲端硬碟"
-
-#: deja-dup/ConfigLocationCombo.vala:73
-msgid "Local Folder"
-msgstr "本地端資料夾"
-
-#: deja-dup/ConfigLocationCombo.vala:74
-msgid "Network Server"
-msgstr "網路伺服器"
-
-#: deja-dup/ConfigLocationCombo.vala:264
-msgid "Google Cloud Storage"
-msgstr "Google Cloud Storage"
-
-#: deja-dup/ConfigLocationCombo.vala:268
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/ConfigLocationCombo.vala:270
-msgid "Rackspace Cloud Files"
-msgstr "Rackspace Cloud Files"
-
-#: deja-dup/ConfigLocationCombo.vala:272
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/ConfigLocationGrid.vala:109
-msgid "Choose Folder"
-msgstr "選擇資料夾"
-
-#: deja-dup/ConfigLocationGrid.vala:112
-msgid "_OK"
-msgstr "確定(_O)"
-
-#: deja-dup/ConfigPeriod.vala:24
-msgid "Daily"
-msgstr "每天"
-
-#: deja-dup/ConfigPeriod.vala:25
-msgid "Weekly"
-msgstr "每週"
-
-#: deja-dup/ConfigPeriod.vala:34
-#, c-format
-msgid "Every %d day"
-msgid_plural "Every %d days"
-msgstr[0] "每 %d 天"
-
-#. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:46
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:34
 msgid "Next backup is today."
 msgstr "下次備份在今日。"
 
-#: deja-dup/ConfigStatusLabel.vala:48
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:36
+msgid "Next backup would be today."
+msgstr "下次備份該在今日。"
+
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:43
 msgid "Next backup is tomorrow."
 msgstr "下次備份在明日。"
 
-#: deja-dup/ConfigStatusLabel.vala:56
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:45
+msgid "Next backup would be tomorrow."
+msgstr "下次備份該在明日。"
+
+#. Translators: this is used when automatic updates are enabled
+#: deja-dup/ConfigAutoBackupRow.vala:53
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
 msgstr[0] "下次備份在 %d 日之後。"
 
-#. Check for some really simple/common friendly names
-#: deja-dup/ConfigStatusLabel.vala:73
-msgid "Last backup was today."
-msgstr "上次備份在今日。"
-
-#: deja-dup/ConfigStatusLabel.vala:75
-msgid "Last backup was yesterday."
-msgstr "上次備份在昨日。"
-
-#: deja-dup/ConfigStatusLabel.vala:83
+#. Translators: this is used when automatic updates are disabled
+#: deja-dup/ConfigAutoBackupRow.vala:58
 #, c-format
-msgid "Last backup was %d day ago."
-msgid_plural "Last backup was %d days ago."
-msgstr[0] "上次備份在 %d 日之前。"
+msgid "Next backup would be %d day from now."
+msgid_plural "Next backup would be %d days from now."
+msgstr[0] "下次備份該在 %d 日之後。"
 
-#: deja-dup/ConfigStatusLabel.vala:96
-msgid "No recent backups."
-msgstr "最近沒有備份。"
+#: deja-dup/ConfigDeleteRow.vala:12
+msgid "At least three months"
+msgstr "至少三個月"
 
-#: deja-dup/ConfigStatusLabel.vala:102
-msgid "No backup scheduled."
-msgstr "沒有備份排程。"
+#: deja-dup/ConfigDeleteRow.vala:13
+msgid "At least six months"
+msgstr "至少六個月"
+
+#: deja-dup/ConfigDeleteRow.vala:14
+msgid "At least a year"
+msgstr "至少一年"
+
+#: deja-dup/ConfigDeleteRow.vala:15
+msgid "Forever"
+msgstr "永遠"
+
+#: deja-dup/ConfigDeleteRow.vala:22
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "至少 %d 日"
+
+#: deja-dup/ConfigFolderList.vala:63
+msgid "Choose Folders"
+msgstr "選擇資料夾"
+
+#. *** Basic entries ***
+#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
+msgid "Google Drive"
+msgstr "Google 雲端硬碟"
+
+#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
+msgid "Microsoft OneDrive"
+msgstr "Microsoft OneDrive"
+
+#: deja-dup/ConfigLocationCombo.vala:63
+msgid "Local Folder"
+msgstr "本地端資料夾"
+
+#: deja-dup/ConfigLocationCombo.vala:65
+msgid "Network Server"
+msgstr "網路伺服器"
+
+#. *** Old deprecated cloud entries, kept just for a kinder migration ***
+#: deja-dup/ConfigLocationCombo.vala:70
+msgid "Google Cloud Storage"
+msgstr "Google Cloud Storage"
+
+#: deja-dup/ConfigLocationCombo.vala:72
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: deja-dup/ConfigLocationCombo.vala:74
+msgid "Rackspace Cloud Files"
+msgstr "Rackspace Cloud Files"
+
+#: deja-dup/ConfigLocationCombo.vala:76
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: deja-dup/ConfigPeriodRow.vala:19
+msgid "Daily"
+msgstr "每天"
+
+#: deja-dup/ConfigPeriodRow.vala:20
+msgid "Weekly"
+msgstr "每週"
+
+#: deja-dup/ConfigPeriodRow.vala:27
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "每 %d 天"
+
+#: deja-dup/FolderChooserButton.vala:18
+msgid "_Choose Folder…"
+msgstr "選擇資料夾(_C)…"
+
+#: deja-dup/FolderChooserButton.vala:26
+msgid "Choose Folder"
+msgstr "選擇資料夾"
 
 #: deja-dup/MountOperationAssistant.vala:23
-msgid "Connect to Server"
-msgstr "連線至伺服器"
-
-#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Username"
 msgstr "使用者名稱(_U)"
 
-#: deja-dup/MountOperationAssistant.vala:25
+#: deja-dup/MountOperationAssistant.vala:24
 msgid "_Password"
 msgstr "密碼(_P)"
 
-#: deja-dup/MountOperationAssistant.vala:26
-msgid "S_how password"
-msgstr "顯示密碼(_H)"
-
-#: deja-dup/MountOperationAssistant.vala:66
+#: deja-dup/MountOperationAssistant.vala:62
 msgid "Location not available"
 msgstr "位置不可用"
 
-#: deja-dup/MountOperationAssistant.vala:148
+#: deja-dup/MountOperationAssistant.vala:77
+msgid "Backups needs your password to continue"
+msgstr "備份需要您的密碼繼續"
+
+#: deja-dup/MountOperationAssistant.vala:143
 msgid "Connect _anonymously"
 msgstr "匿名連線(_A)"
 
-#: deja-dup/MountOperationAssistant.vala:152
+#: deja-dup/MountOperationAssistant.vala:148
 msgid "Connect as u_ser"
 msgstr "以此使用者連線(_S)"
 
 #. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:195
+#: deja-dup/MountOperationAssistant.vala:192
 msgid "_Domain"
 msgstr "網域(_D)"
 
-#: deja-dup/Prompt.vala:18
+#: deja-dup/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "正在啟動備份排程"
+
+#: deja-dup/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "排定的備份已延遲"
+
+#: deja-dup/Notifications.vala:25
+msgid "Backup completed"
+msgstr "備份已完成"
+
+#: deja-dup/Notifications.vala:30
+msgid "Backup finished"
+msgstr "備份完成"
+
+#: deja-dup/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "並非所有檔案皆成功備。"
+
+#: deja-dup/Notifications.vala:38
+msgid "Backup failed"
+msgstr "備份失敗"
+
+#: deja-dup/Notifications.vala:50
+msgid "Restore failed"
+msgstr "還原失敗"
+
+#: deja-dup/Notifications.vala:71
 msgid "Keep your files safe by backing up regularly"
 msgstr "定期備份來保護檔案安全"
 
-#: deja-dup/Prompt.vala:23
+#: deja-dup/Notifications.vala:72
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
 "that backup."
-msgstr "重要的文件、資料、設定可以透過備份的儲存而受到保護。若發生意外，您可以從該備份檔將它們還原。"
+msgstr ""
+"重要的文件、資料、設定可以透過備份的儲存而受到保護。若發生意外，您可以從該備"
+"份檔將它們還原。"
 
-#: deja-dup/Prompt.vala:30
-msgid "_Don't Show Again"
-msgstr "不要再顯示(_D)"
+#: deja-dup/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "不要再顯示"
 
-#: deja-dup/Prompt.vala:38
-msgid "_Open Backup Settings"
-msgstr "開啟備份設定(_O)"
+#: deja-dup/Notifications.vala:78
+msgid "Open Backups"
+msgstr "開啟備份"
 
-#: deja-dup/StatusIcon.vala:45
-msgid "Backup completed"
-msgstr "備份已完成"
-
-#: deja-dup/StatusIcon.vala:50
-msgid "Backup finished"
-msgstr "備份完成"
-
-#: deja-dup/StatusIcon.vala:51
+#: deja-dup/PreferencesWindow.vala:36
 msgid ""
-"Not all files were successfully backed up.  See dialog for more details."
-msgstr "並非所有檔案皆成功備份。請查看對話盒以瞭解詳細資訊。"
+"Restic is a another backup tool that can be used under the hood instead of "
+"Duplicity."
+msgstr "Restic 是另一個時下最新的備份工具，可以取代 Duplicity。"
 
-#: deja-dup/StatusIcon.vala:81
-msgid "Starting scheduled backup"
-msgstr "正在啟動備份排程"
+#: deja-dup/PreferencesWindow.vala:37
+msgid ""
+"It is hoped that Restic will enable new features more easily in the future."
+msgstr "願 Restic 能在未來更輕鬆引入新功能。"
+
+#: deja-dup/PreferencesWindow.vala:39
+msgid "This is an experimental feature and may be removed at any time."
+msgstr "這是個實驗中的功能，隨時都可能移除。"
+
+#: deja-dup/PreferencesWindow.vala:40
+msgid "Use caution, but any testing you can manage is appreciated."
+msgstr "請小心使用，但您能力所及能處理得來的任何測試皆歡迎。"
+
+#. Translators: the %s formatting is a link start and end.
+#: deja-dup/PreferencesWindow.vala:43
+#, c-format
+msgid "Please %sreport%s successes or failures when enabled."
+msgstr "當啟用後，請 %sreport%s 成功或失敗。"
+
+#. Check for some really simple/common friendly names
+#: deja-dup/RecentBackupRow.vala:43
+msgid "Today"
+msgstr "今日"
+
+#: deja-dup/RecentBackupRow.vala:45
+msgid "Yesterday"
+msgstr "昨日"
+
+#. Translators: sentence case
+#: deja-dup/RecentBackupRow.vala:54
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d 日前"
+
+#. Translators: this is used like "Most Recent Backup: None"
+#: deja-dup/RecentBackupRow.vala:65
+msgctxt "backups"
+msgid "None"
+msgstr "無"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: deja-dup/TimeCombo.vala:85
+#: deja-dup/TimeCombo.vala:80
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: deja-dup/WidgetUtils.vala:22
-#, c-format
-msgid "Could not display %s"
-msgstr "無法顯示 %s"
-
-#: deja-dup/main.vala:20 monitor/monitor.vala:24
+#: deja-dup/main.vala:22 monitor/monitor.vala:17
 msgid "Show version"
 msgstr "顯示版本"
 
-#: deja-dup/main.vala:21
+#: deja-dup/main.vala:23
 msgid "Restore given files"
 msgstr "還原給定的檔案"
 
-#: deja-dup/main.vala:22
+#: deja-dup/main.vala:24
 msgid "Immediately start a backup"
 msgstr "立刻開始備份"
 
-#: deja-dup/main.vala:81 deja-dup/main.vala:96
+#: deja-dup/main.vala:86
+msgid "Please list files to restore"
+msgstr "請列出要還原的檔案"
+
+#: deja-dup/main.vala:92 deja-dup/main.vala:106
 msgid "An operation is already in progress"
 msgstr "有項作業已經在處理中"
 
-#: deja-dup/main.vala:213
-msgid "Scheduled backup delayed"
-msgstr "排定的備份已延遲"
-
-#: deja-dup/main.vala:244
+#: deja-dup/main.vala:286
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -1128,156 +1229,195 @@ msgstr ""
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:78 libdeja/CommonUtils.vala:484
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上的 %1$s"
 
-#: libdeja/BackendDrive.vala:85
+#: libdeja/BackendDrive.vala:83
 #, c-format
 msgid "Backup will begin when %s is connected."
 msgstr "備份將在連上 %s 時開始。"
 
-#: libdeja/BackendDrive.vala:174 libdeja/BackendRemote.vala:141
+#: libdeja/BackendDrive.vala:223 libdeja/BackendRemote.vala:165
 msgid "Storage location not available"
 msgstr "儲存位置無法使用"
 
-#: libdeja/BackendDrive.vala:174
+#: libdeja/BackendDrive.vala:223
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "正在等候「%s」完成連接..."
+msgstr "正在等候「%s」完成連接…"
 
-#: libdeja/BackendGoogle.vala:70 libdeja/BackendRemote.vala:116
-#: monitor/monitor.vala:72
+#: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
+#: monitor/ReadyWatcher.vala:154
 msgid "Backup will begin when a network connection becomes available."
 msgstr "當網路連線可用時備份將開始。"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:89
+#: libdeja/BackendGoogle.vala:65
 #, c-format
 msgid "%s on Google Drive"
 msgstr "Google Drive 的 %s 資料夾"
 
-#: libdeja/BackendGoogle.vala:132
-msgid "Could not log into Google servers."
-msgstr "無法登入 Google 伺服器。"
+#. Translators: %s is a folder.
+#: libdeja/BackendMicrosoft.vala:67
+#, c-format
+msgid "%s on Microsoft OneDrive"
+msgstr "Microsoft OneDrive 的 %s 資料夾"
 
-#: libdeja/BackendGoogle.vala:220
-msgid "Google credentials for Déjà Dup"
-msgstr "用於 Déjà Dup 的 Google 登入資料"
+#. Duplicity requires a folder, and this is a reasonable restriction.
+#: libdeja/BackendMicrosoft.vala:106
+msgid "You must provide a Microsoft OneDrive folder."
+msgstr "您必須提供 Microsoft OneDrive 資料夾。"
 
-#: libdeja/BackendGoogle.vala:321
-msgid "You first need to allow Backups to access your Google account."
-msgstr "您需要先允許《備份》存取您的 Google 帳號。"
+#. Translators: %s is a brand name like Microsoft or Google
+#: libdeja/BackendOAuth.vala:69
+#, c-format
+msgid "Could not log into %s servers."
+msgstr "無法登入 %s 伺服器。"
 
-#: libdeja/BackendRemote.vala:98
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:145
+#, c-format
+msgid "%s credentials for Déjà Dup"
+msgstr "用於 Déjà Dup 的 %s 登入身份"
+
+#. We need a random string between 43 and 128 chars. UUIDs are an easy way
+#. to get random strings, but they are only 37 chars long. So just add two.
+#. And show the oauth consent page finally
+#. Translators: %s is a brand name like Google or Microsoft
+#: libdeja/BackendOAuth.vala:247
+#, c-format
+msgid "You first need to allow Backups to access your %s account."
+msgstr "您需要先允許《備份》存取您的 %s 帳號。"
+
+#: libdeja/BackendRemote.vala:106
 msgid "The network server is not available"
 msgstr "網路伺服器無法使用"
 
-#: libdeja/BackendRemote.vala:142
+#: libdeja/BackendRemote.vala:166
 msgid "Waiting for a network connection…"
-msgstr "正在等候網路連線..."
+msgstr "正在等候網路連線…"
 
-#: libdeja/BackendRemote.vala:155
+#: libdeja/BackendRemote.vala:179
 msgid "Could not mount storage location."
 msgstr "無法掛載儲存位置。"
+
+#: libdeja/BackendRemote.vala:183
+msgid ""
+"The server’s network location needs to be specified in the storage location "
+"preferences."
+msgstr "需要在儲存位置偏好設定中指定伺服器的網路位置。"
+
+#: libdeja/BackendRemote.vala:188
+#, c-format
+msgid ""
+"The server’s network location ‘%s’ does not look like a network location."
+msgstr "伺服器的網路位置「%s」看起來不像是網路位置。"
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:161
-msgid ""
-"Samba network locations must include both a hostname and a share name."
+#: libdeja/BackendRemote.vala:196
+msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba 網路位置必須包含主機名稱和共享名稱。"
 
-#: libdeja/CommonUtils.vala:457
+#: libdeja/CommonUtils.vala:458
 msgid "Access Granted"
 msgstr "已授予存取權限"
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:459
 msgid "Backups will now continue. You can close this page."
 msgstr "現在會繼續備份。您可以關閉本頁面。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:535
+#: libdeja/CommonUtils.vala:538
 #, c-format
 msgid "Home (%s)"
 msgstr "家屋 (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:540
+#: libdeja/CommonUtils.vala:543
 msgid "Home"
 msgstr "家屋資料夾"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:545
+#: libdeja/CommonUtils.vala:548
 msgid "Trash"
 msgstr "垃圾桶"
 
-#: libdeja/CommonUtils.vala:607
+#: libdeja/CommonUtils.vala:610
 msgid "Backup encryption password"
 msgstr "備份加密密碼"
 
-#: libdeja/Operation.vala:43
-msgid "Backing up…"
-msgstr "正在備份..."
+#: libdeja/InstallEnvFlatpak.vala:92
+msgid ""
+"Make sure Backups has permission to run in the background in Settings → "
+"Applications → Backups and try again."
+msgstr ""
+"請前往「設定值 → 應用程式 → 備份」中確認《備份》有權在背景中執行，並重試一"
+"次。"
 
 #: libdeja/Operation.vala:47
+msgid "Backing up…"
+msgstr "正在備份…"
+
+#: libdeja/Operation.vala:51
 msgid "Checking for backups…"
-msgstr "正在檢查備份..."
+msgstr "正在檢查備份…"
 
-#: libdeja/Operation.vala:49
+#: libdeja/Operation.vala:53
 msgid "Listing files…"
-msgstr "正在列出檔案..."
+msgstr "正在列出檔案…"
 
-#: libdeja/Operation.vala:51 libdeja/Operation.vala:81
-#: libdeja/tools/duplicity/DuplicityJob.vala:381
-#: libdeja/tools/duplicity/DuplicityJob.vala:392
-#: libdeja/tools/duplicity/DuplicityJob.vala:428
+#: libdeja/Operation.vala:55 libdeja/Operation.vala:85
+#: libdeja/duplicity/DuplicityJob.vala:381
+#: libdeja/duplicity/DuplicityJob.vala:392
+#: libdeja/duplicity/DuplicityJob.vala:428
 msgid "Preparing…"
-msgstr "正在準備..."
+msgstr "正在準備…"
 
-#: libdeja/OperationBackup.vala:27 libdeja/OperationVerify.vala:41
+#: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
-msgstr "正在驗證備份..."
+msgstr "正在核驗備份…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
-msgstr "正在還原檔案..."
+msgstr "正在還原檔案…"
 
-#: libdeja/OperationVerify.vala:78
+#: libdeja/OperationVerify.vala:81
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
 msgstr "您的備份似乎已損毀。您應該刪除備份並且再試一次。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:79
-#: libdeja/tools/duplicity/DuplicityJob.vala:162
+#: libdeja/duplicity/DuplicityJob.vala:79
+#: libdeja/duplicity/DuplicityJob.vala:149
 msgid "Paused (no network)"
 msgstr "已暫停 (無網路)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/tools/duplicity/DuplicityJob.vala:538
+#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:287
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "備份位置空間太小。請嘗試使用至少 %s 的位置。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:563
+#: libdeja/duplicity/DuplicityJob.vala:563
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr "備份位置沒有足夠的可用空間。請嘗試使用至少 %s 的位置。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:584
-#: libdeja/tools/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
-msgstr "正在清理..."
+msgstr "正在清理…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:671
+#: libdeja/duplicity/DuplicityJob.vala:678
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1286,110 +1426,232 @@ msgstr "無法備份下列檔案。請確認您可以開啟它們。"
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/tools/duplicity/DuplicityJob.vala:687
+#: libdeja/duplicity/DuplicityJob.vala:694
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr "無法還原以下的檔案。請確認您是否能夠寫入它們。"
 
+#. For most, don't do anything special.  Show generic 'unknown error'
+#. message, but provide the exception text for better bug reports.
+#. Plus, sometimes it may clue the user in to what's wrong.
+#. But first, try to restart without a cache, since that seems to quite
+#. frequently fix odd metadata errors with duplicity.  If we hit an error
+#. a second time, we'll show the unknown error message.
+#. Should emit some sort of error...
+#: libdeja/duplicity/DuplicityJob.vala:714
+#: libdeja/duplicity/DuplicityJob.vala:1098 libdeja/libtool/ToolJoblet.vala:115
+msgid "Failed with an unknown error."
+msgstr "失敗伴隨未知錯誤。"
+
 #. notify upper layers, if they want to do anything
-#: libdeja/tools/duplicity/DuplicityJob.vala:909
+#: libdeja/duplicity/DuplicityJob.vala:917
 msgid "Bad encryption password."
 msgstr "加密密碼不對。"
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/tools/duplicity/DuplicityJob.vala:954
+#: libdeja/duplicity/DuplicityJob.vala:962
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "無法還原「%s」：在備份內找不到檔案"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:965
+#: libdeja/duplicity/DuplicityJob.vala:973
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
 "name is %s.  If this is unexpected, you should back up to a different "
 "location."
-msgstr "現存的備份其電腦名稱為 %s，但是目前的電腦名稱為 %s。若這是您未預期的問題，建議您應該備份至不同位置。"
+msgstr ""
+"現存的備份其電腦名稱為 %s，但是目前的電腦名稱為 %s。若這是您未預期的問題，建"
+"議您應該備份至不同位置。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:968
+#: libdeja/duplicity/DuplicityJob.vala:976
 msgid "Computer name changed"
 msgstr "電腦名稱已變更"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "當嘗試建立「%s」時未獲許可。"
 
 #. assume error is on backend side
-#: libdeja/tools/duplicity/DuplicityJob.vala:1007
-#: libdeja/tools/duplicity/DuplicityJob.vala:1011
+#: libdeja/duplicity/DuplicityJob.vala:1015
+#: libdeja/duplicity/DuplicityJob.vala:1019
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "當嘗試讀取「%s」時未獲許可。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1015
+#: libdeja/duplicity/DuplicityJob.vala:1023
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "當嘗試刪除「%s」時未獲許可。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1022
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "備份位置「%s」不存在。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1028
-#: libdeja/tools/duplicity/DuplicityJob.vala:1061
+#: libdeja/duplicity/DuplicityJob.vala:1036
+#: libdeja/duplicity/DuplicityJob.vala:1069
 msgid "No space left."
 msgstr "沒有剩餘空間。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1050
+#: libdeja/duplicity/DuplicityJob.vala:1058
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "讀取「%s」檔案發生錯誤。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1052
+#: libdeja/duplicity/DuplicityJob.vala:1060
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "寫入「%s」檔案發生錯誤。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1063
+#: libdeja/duplicity/DuplicityJob.vala:1071
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "「%s」內沒有剩餘空間。"
 
-#: libdeja/tools/duplicity/DuplicityJob.vala:1071
-msgid "No backup files found"
-msgstr "找不到備份檔案"
-
-#: libdeja/tools/duplicity/DuplicityJob.vala:1121
+#: libdeja/duplicity/DuplicityJob.vala:1129
 msgid "Uploading…"
-msgstr "正在上傳..."
+msgstr "正在上傳…"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:33
+#: libdeja/duplicity/DuplicityPlugin.vala:39
 msgid "Could not understand duplicity version."
 msgstr "無法理解 duplicity 版本。"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:43
+#: libdeja/duplicity/DuplicityPlugin.vala:49
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "無法理解 duplicity 版本「%s」。"
 
-#: libdeja/tools/duplicity/DuplicityPlugin.vala:46
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
-msgstr "備份需要 duplicity 至少是 %d.%d.%.2d 以上的版本，但只找到 %d.%d.%.2d 版"
+msgstr ""
+"備份需要 duplicity 至少是 %d.%d.%.2d 以上的版本，但只找到 %d.%d.%.2d 版"
 
-#: monitor/monitor.vala:75
+#: libdeja/duplicity/DuplicityPlugin.vala:94
+#: libdeja/restic/ResticPlugin.vala:91
+msgid "This storage location is not yet supported."
+msgstr "尚未支援這個儲存位置類型。"
+
+#: libdeja/duplicity/DuplicityPlugin.vala:99
+msgid ""
+"This storage location is no longer supported. You can still use duplicity "
+"directly to back up or restore your files."
+msgstr ""
+"不再支援這個儲存位置類型。您仍可以直接使用 duplicity 來備份或還原您的檔案。"
+
+#: libdeja/restic/ResticPlugin.vala:42
+msgid "Could not understand restic version."
+msgstr "無法理解 restic 版本。"
+
+#: libdeja/restic/ResticPlugin.vala:49
+#, c-format
+msgid "Could not understand restic version ‘%s’."
+msgstr "無法理解 restic 版本「%s」。"
+
+#: libdeja/restic/ResticPlugin.vala:52
+#, c-format
+msgid ""
+"Backups requires at least version %d.%d.%.2d of restic, but only found "
+"version %d.%d.%.2d"
+msgstr "備份需要 restic 至少是 %d.%d.%.2d 以上的版本，但只找到 %d.%d.%.2d 版"
+
+#: monitor/ReadyWatcher.vala:159
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "當有非計價網路連線時會開始備份。"
 
-#~ msgid "Folder"
-#~ msgstr "資料夾"
+#~ msgid "Keep your important documents safe from disaster"
+#~ msgstr "讓您的重要資料遠離意外"
+
+#~ msgid "Change your backup settings"
+#~ msgstr "變更您的備份設定值"
+
+#~ msgid ""
+#~ "The folder path where backups are stored. Paths can be absolute or "
+#~ "relative to the host."
+#~ msgstr "儲存備份的資料夾路徑。可以是絕對路徑，也可以是主機的相對路徑。"
+
+#~ msgid "Select"
+#~ msgstr "選取"
+
+#~ msgid "Keep your important files safe in a backup."
+#~ msgstr "透過備份以安全保留您的重要檔案。"
+
+#~ msgid "Automatic backup"
+#~ msgstr "自動備份"
+
+#~ msgid "_Show password"
+#~ msgstr "顯示密碼(_S)"
+
+#~ msgid "Select _None"
+#~ msgstr "全部不選(_N)"
+
+#~ msgid "Includes"
+#~ msgstr "包含"
+
+#~ msgid "Excludes"
+#~ msgstr "排除"
+
+#~ msgid "Preferences"
+#~ msgstr "偏好設定"
+
+#~ msgid "Choose destination for restored files"
+#~ msgstr "為還原的檔案選擇目的地"
+
+#~ msgid "Restore _folder"
+#~ msgstr "還原資料夾(_F)"
+
+#~ msgid "Click on items to select them"
+#~ msgstr "點按項目來選取它們"
+
+#~ msgid "%u selected"
+#~ msgid_plural "%u selected"
+#~ msgstr[0] "已選取 %u 個"
+
+#~ msgid "Choose folders"
+#~ msgstr "選擇資料夾"
+
+#~ msgid "_Add"
+#~ msgstr "加入(_A)"
+
+#~ msgid "_OK"
+#~ msgstr "確定(_O)"
+
+#~ msgid "Last backup was today."
+#~ msgstr "上次備份在今日。"
+
+#~ msgid "Last backup was yesterday."
+#~ msgstr "上次備份在昨日。"
+
+#~ msgid "Last backup was %d day ago."
+#~ msgid_plural "Last backup was %d days ago."
+#~ msgstr[0] "上次備份在 %d 日之前。"
+
+#~ msgid "No backup scheduled."
+#~ msgstr "沒有備份排程。"
+
+#~ msgid "Connect to Server"
+#~ msgstr "連線至伺服器"
+
+#~ msgid "S_how password"
+#~ msgstr "顯示密碼(_H)"
+
+#~ msgid "_Open Backup Settings"
+#~ msgstr "開啟備份設定(_O)"
+
+#~ msgid ""
+#~ "Not all files were successfully backed up.  See dialog for more details."
+#~ msgstr "並非所有檔案皆成功備份。請查看對話盒以瞭解詳細資訊。"
+
+#~ msgid "Could not display %s"
+#~ msgstr "無法顯示 %s"
 
 #~ msgid "File"
 #~ msgstr "檔案"
@@ -1397,15 +1659,13 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Categories"
 #~ msgstr "類別"
 
-#~ msgid "You must provide a directory, not a file"
-#~ msgstr "必須提供目錄而非檔案"
-
 #~ msgctxt "verb"
 #~ msgid "_Keep"
 #~ msgstr "保留(_K)"
 
 #~ msgid ""
-#~ "Old backups will be deleted earlier if the storage location is low on space."
+#~ "Old backups will be deleted earlier if the storage location is low on "
+#~ "space."
 #~ msgstr "如儲存位置空間不足，會先刪除舊的備份。"
 
 #~ msgid "Scheduling"
@@ -1417,7 +1677,6 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Day"
 #~ msgstr "日"
 
-#, c-format
 #~ msgid "Could not restore ‘%s’: Not a valid file location"
 #~ msgstr "無法還原「%s」：非有效的檔案位置"
 
@@ -1432,11 +1691,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ "and Nextcloud"
 #~ msgstr "支援本地端、遠端、或雲端備份位置如 Google Drive 和 Nextcloud"
 
-#, c-format
 #~ msgid "Waiting for %s to be configured in your backup settings…"
 #~ msgstr "等候您備份設定中的 %s 作設定…"
 
-#, c-format
 #~ msgid "Backup will begin when ‘%s’ has Files support enabled"
 #~ msgstr "備份將在「%s」啟用《檔案》支援後開始"
 
@@ -1449,7 +1706,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "Whether to request the root password when backing up from or restoring to "
 #~ "system folders."
-#~ msgstr "是否在從系統資料夾製作備份時，或還原至系統資料夾時要求輸入 root 管理帳號密碼。"
+#~ msgstr ""
+#~ "是否在從系統資料夾製作備份時，或還原至系統資料夾時要求輸入 root 管理帳號密"
+#~ "碼。"
 
 #~ msgid "Amazon S3 Access Key ID"
 #~ msgstr "Amazon S3 存取金鑰 ID"
@@ -1463,7 +1722,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "Which Amazon S3 bucket to store files in. This does not need to exist "
 #~ "already. Only legal hostname strings are valid."
-#~ msgstr "您想要儲存於哪個 Amazon S3 bucker。這已經不需要填寫。只能使用有效的主機名稱字串。"
+#~ msgstr ""
+#~ "您想要儲存於哪個 Amazon S3 bucker。這已經不需要填寫。只能使用有效的主機名"
+#~ "稱字串。"
 
 #~ msgid "The Amazon S3 folder"
 #~ msgstr "Amazon S3 資料夾"
@@ -1471,7 +1732,8 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "An optional folder name to store files in. This folder will be created in "
 #~ "the chosen bucket."
-#~ msgstr "要儲存檔案至其中的選擇性資料夾名稱。此資料夾將建立於所選擇的 bucket 內。"
+#~ msgstr ""
+#~ "要儲存檔案至其中的選擇性資料夾名稱。此資料夾將建立於所選擇的 bucket 內。"
 
 #~ msgid "Google Cloud Storage Access Key ID"
 #~ msgstr "Google Cloud Storage 存取金鑰 ID"
@@ -1479,15 +1741,19 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
 #~ "Cloud Storage username."
-#~ msgstr "您的 Google Cloud Storage 存取金鑰辨識碼。它視為您的 Google Cloud Storage 使用者名稱。"
+#~ msgstr ""
+#~ "您的 Google Cloud Storage 存取金鑰辨識碼。它視為您的 Google Cloud Storage "
+#~ "使用者名稱。"
 
 #~ msgid "The Google Cloud Storage bucket name to use"
 #~ msgstr "要使用的 Google Cloud Storage bucket 名稱"
 
 #~ msgid ""
-#~ "Which Google Cloud Storage bucket to store files in. This does not need to "
-#~ "exist already. Only legal hostname strings are valid."
-#~ msgstr "要儲存到哪個 Google Cloud Storage bucket 中。Bucket 不需要事先存在。僅支援符合規範的主機名稱字串。"
+#~ "Which Google Cloud Storage bucket to store files in. This does not need "
+#~ "to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "要儲存到哪個 Google Cloud Storage bucket 中。Bucket 不需要事先存在。僅支援"
+#~ "符合規範的主機名稱字串。"
 
 #~ msgid "The Google Cloud Storage folder"
 #~ msgstr "Google Cloud Storage 資料夾"
@@ -1496,9 +1762,11 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgstr "Rackspace Cloud Files 容器"
 
 #~ msgid ""
-#~ "Which Rackspace Cloud Files container to store files in. This does not need "
-#~ "to exist already. Only legal hostname strings are valid."
-#~ msgstr "要儲存檔案在哪個 Rackspace Cloud Files 容器中。這個容器不需要事先存在。只有符合規範的主機名稱字串有效。"
+#~ "Which Rackspace Cloud Files container to store files in. This does not "
+#~ "need to exist already. Only legal hostname strings are valid."
+#~ msgstr ""
+#~ "要儲存檔案在哪個 Rackspace Cloud Files 容器中。這個容器不需要事先存在。只"
+#~ "有符合規範的主機名稱字串有效。"
 
 #~ msgid "Your Rackspace username"
 #~ msgstr "您的 Rackspace 使用者名稱"
@@ -1524,7 +1792,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "Which OpenStack Swift container to store files in. This does not need to "
 #~ "exist already. Only legal hostname strings are valid."
-#~ msgstr "要儲存到哪個 OpenStack Swift 容器中。容器不需要事先存在。僅支援符合規範的主機名稱字串。"
+#~ msgstr ""
+#~ "要儲存到哪個 OpenStack Swift 容器中。容器不需要事先存在。僅支援符合規範的"
+#~ "主機名稱字串。"
 
 #~ msgid "Your OpenStack username"
 #~ msgstr "您的 OpenStack 使用者名稱"
@@ -1585,12 +1855,10 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Scanning for files from up to a month ago…"
 #~ msgstr "正在掃描有否一個月前的檔案..."
 
-#, c-format
 #~ msgid "Scanning for files from about a month ago…"
 #~ msgid_plural "Scanning for files from about %d months ago…"
 #~ msgstr[0] "正在掃描有否 %d 個月前的檔案..."
 
-#, c-format
 #~ msgid "Scanning for files from about a year ago…"
 #~ msgid_plural "Scanning for files from about %d years ago…"
 #~ msgstr[0] "正在掃描有否 %d 年前的檔案..."
@@ -1631,23 +1899,22 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Restore…"
 #~ msgstr "還原…"
 
-#, c-format
 #~ msgid "You may use the %s button to browse for existing backups."
 #~ msgstr "可以 %s 鈕瀏覽現有備份。"
 
-#, c-format
 #~ msgid ""
 #~ "You can restore the entire backup with the %s button or use %s to either "
 #~ "revert individual files or restore missing ones."
-#~ msgstr "您可以使用 %s 按鈕還原整個備份，或是使用《%s》回復個別檔案或還原遺失的檔案。"
+#~ msgstr ""
+#~ "您可以使用 %s 按鈕還原整個備份，或是使用《%s》回復個別檔案或還原遺失的檔"
+#~ "案。"
 
 #~ msgid "Back Up Now…"
 #~ msgstr "立即備份…"
 
-#, c-format
 #~ msgid ""
-#~ "You should <a href=''>enable</a> automatic backups or use the %s button to "
-#~ "start one now."
+#~ "You should <a href=''>enable</a> automatic backups or use the %s button "
+#~ "to start one now."
 #~ msgstr "應<a href=''>啟用</a>自動備份或以 %s 鈕立即開始新備份。"
 
 #~ msgid "A backup automatically starts every day."
@@ -1656,7 +1923,6 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "A backup automatically starts every week."
 #~ msgstr "每週會自動備份。"
 
-#, c-format
 #~ msgid "A backup automatically starts every %d day."
 #~ msgid_plural "A backup automatically starts every %d days."
 #~ msgstr[0] "每 %d 日會自動備份。"
@@ -1678,7 +1944,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid ""
 #~ "This account has disabled Files support. It cannot be used until Files "
 #~ "support is enabled again for this Online Account."
-#~ msgstr "這個帳號已停用《檔案》支援。此功能將無法使用，直到線上帳號再次啟用《檔案》支援。"
+#~ msgstr ""
+#~ "這個帳號已停用《檔案》支援。此功能將無法使用，直到線上帳號再次啟用《檔案》"
+#~ "支援。"
 
 #~ msgid "_Open Online Account Settings"
 #~ msgstr "開啟線上帳號設定(_O)"
@@ -1695,28 +1963,22 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Week"
 #~ msgstr "週"
 
-#, c-format
-#~ msgid "%d day"
-#~ msgid_plural "%d days"
-#~ msgstr[0] "%d 日"
-
 #~ msgid "Backup will begin when a storage location is configured"
 #~ msgstr "備份將在設定完儲存位置後開始"
 
-#~ msgid "Waiting for Online Accounts to be configured in your backup settings…"
+#~ msgid ""
+#~ "Waiting for Online Accounts to be configured in your backup settings…"
 #~ msgstr "等候您備份設定中的線上帳號作設定…"
 
-#, c-format
 #~ msgid "%s on Rackspace Cloud Files"
 #~ msgstr "Rackspace Cloud Files 上的 %s"
 
 #~ msgid "Permission denied"
 #~ msgstr "未獲許可"
 
-#, c-format
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a "
-#~ "href=\"%s\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
+#~ "\">online</a>."
 #~ msgstr "您可以<a href=\"%s\">線上</a>註冊 Rackspace Cloud Files 帳號。"
 
 #~ msgid "Connect to Rackspace Cloud Files"
@@ -1731,11 +1993,9 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "_Remember API access key"
 #~ msgstr "記住 API 存取金鑰(_R)"
 
-#, c-format
 #~ msgid "%s on Amazon S3"
 #~ msgstr "Amazon S3 上的 %s"
 
-#, c-format
 #~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
 #~ msgstr "您可以在<a href=\"%s\">線上</a>登入 Amazon S3 帳號。"
 
@@ -1754,7 +2014,6 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "_Remember secret access key"
 #~ msgstr "記住祕密存取金鑰(_R)"
 
-#, c-format
 #~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
 #~ msgstr "在 %s 中找不到備份工具。您的安裝可能不完整。"
 
@@ -1773,21 +2032,24 @@ msgstr "當有非計價網路連線時會開始備份。"
 #~ msgid "Invalid secret key."
 #~ msgstr "祕密金鑰無效。"
 
-#~ msgid "Your Amazon Web Services account is not signed up for the S3 service."
+#~ msgid ""
+#~ "Your Amazon Web Services account is not signed up for the S3 service."
 #~ msgstr "您的 Amazon 網路服務帳號未註冊 S3 服務。"
 
 #~ msgid "S3 bucket name is not available."
 #~ msgstr "S3 bucket 名稱不可用。"
 
-#, c-format
 #~ msgid ""
-#~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, but "
-#~ "only found version %d.%d.%.2d"
-#~ msgstr "Déjà Dup 備份工具需要 %d.%d.%.2d 版以上的 duplicity，但是只找到 %d.%d.%.2d 版"
+#~ "Déjà Dup Backup Tool requires at least version %d.%d.%.2d of duplicity, "
+#~ "but only found version %d.%d.%.2d"
+#~ msgstr ""
+#~ "Déjà Dup 備份工具需要 %d.%d.%.2d 版以上的 duplicity，但是只找到 %d.%d."
+#~ "%.2d 版"
 
 #~ msgid "Déjà Dup Backup Tool will now continue. You can close this page."
 #~ msgstr "Déjà Dup 備份工作可以繼續進行。現在可以關閉本頁。"
 
 #~ msgid ""
-#~ "You first need to allow Déjà Dup Backup Tool to access your Google account."
+#~ "You first need to allow Déjà Dup Backup Tool to access your Google "
+#~ "account."
 #~ msgstr "首先要允許 Déjà Dup 備份工具存取您的 Google 帳號。"
