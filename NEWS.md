@@ -3,6 +3,8 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.2
+
 # 43.1
 - Increase default window size to avoid being too small
 
