@@ -9,7 +9,9 @@ SPDX-FileCopyrightText: Michael Terry
 - Increase default window size to avoid being too small
 
 ##### Packaging
-- Require libsoup-3.0 (instead of libsoup-2.4)
+- Require libsoup-3.0 (instead of libsoup-2.4) - sorry, I agree that it's
+  rude to bump a dependency like this in a minor stable release, but I wanted
+  to squeeze this in before too long, to help future proof the 43.x line.
 
 # 43.0
 This is a stable release, following 43.alpha and 43.beta in the GNOME style.
