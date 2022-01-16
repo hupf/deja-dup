@@ -28,7 +28,7 @@ pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
 adwaita_dep = dependency('libadwaita-1', version: '>= 1.0')
-gio_dep = dependency('gio-2.0', version: '>= 2.66')
+gio_dep = dependency('gio-2.0', version: '>= 2.70')
 gio_unix_dep = dependency('gio-unix-2.0')
 gpg_error_dep = dependency('gpg-error', version: '>= 1.33')
 gtk_dep = dependency('gtk4', version: '>= 4.6')
@@ -57,7 +57,7 @@ endif
 add_project_arguments(
     '--pkg=config',
     '--pkg=posix',
-    '--target-glib=2.66',
+    '--target-glib=2.70',
     '--vapidir', join_paths(meson.project_source_root(), 'vapi'),
     language: 'vala',
 )
@@ -107,11 +107,6 @@ endif
 
 if get_option('enable_restic')
 add_project_arguments('--define=ENABLE_RESTIC', language: 'vala')
-endif
-
-# Check if gio has GPowerProfileMonitor support
-if dependency('gio-2.0', version: '>= 2.70', required: false).found()
-add_project_arguments('--define=HAS_POWER_PROFILE_MONITOR', language: 'vala')
 endif
 
 add_test_setup('default', is_default: true, env: {

@@ -88,9 +88,7 @@ class ReadyWatcher : Object
   uint netcheck_id = 0;
   GenericSet<string> unready_reasons = null;
   GameMode gamemode = null;
-#if HAS_POWER_PROFILE_MONITOR
   PowerProfileMonitor power_monitor = null;
-#endif
 
   construct
   {
@@ -105,10 +103,8 @@ class ReadyWatcher : Object
     gamemode = new GameMode();
     gamemode.notify["enabled"].connect(gamemode_changed);
 
-#if HAS_POWER_PROFILE_MONITOR
     power_monitor = PowerProfileMonitor.dup_default();
     power_monitor.notify["power-saver-enabled"].connect(power_saver_changed);
-#endif
   }
 
   ~ReadyWatcher()
@@ -136,7 +132,6 @@ class ReadyWatcher : Object
       return false;
     }
 
-#if HAS_POWER_PROFILE_MONITOR
     if (power_monitor.power_saver_enabled) {
       // Don't message about this - battery status will fix itself in time, and
       // is almost certainly more important to the user than the backup. We don't
@@ -145,7 +140,6 @@ class ReadyWatcher : Object
       message = null;
       return false;
     }
-#endif
 
     var backend = DejaDup.Backend.get_default();
     var network = DejaDup.Network.get();
@@ -175,14 +169,12 @@ class ReadyWatcher : Object
     maybe_ready();
   }
 
-#if HAS_POWER_PROFILE_MONITOR
   void power_saver_changed()
   {
     if (power_monitor.power_saver_enabled)
       stop_auto();
     maybe_ready();
   }
-#endif
 
   void network_changed()
   {
