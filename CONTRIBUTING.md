@@ -22,12 +22,12 @@ This is recommended if you intend to contribute back a patch. Git checkouts incl
 
 To make sure you can build against the latest GNOME libraries, it helps to install the GNOME SDK.
 
-1. [Install flatpak](https://flatpak.org/setup/).
-1. `make devenv-setup`
+1. [Install flatpak](https://flatpak.org/setup/) and `flatpak-builder`.
+1. `make devenv-setup` (this will install the GNOME SDK flatpaks and also build & install our own devel flatpak locally)
 1. `make devenv`
 
 Now you're inside a flatpak container (org.gnome.DejaDupDevel) with all dependencies installed.
-Plus an environment pointed at any built data and executables.
+From here, you can build and run `deja-dup` like so: `make && deja-dup`.
 
 ## Building
 

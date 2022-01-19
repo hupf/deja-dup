@@ -12,7 +12,7 @@ all: configure
 
 .PHONY: configure
 configure:
-	@[ -d _build ] || meson setup -Dprofile=Devel -Denable_restic=true _build
+	@[ -d _build/meson-info ] || meson setup -Dprofile=Devel -Denable_restic=true _build
 
 .PHONY: check
 check: all
