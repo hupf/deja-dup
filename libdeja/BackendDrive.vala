@@ -123,6 +123,49 @@ public class BackendDrive : BackendFile
     return null;
   }
 
+  public static bool is_allowed_volume(Volume vol)
+  {
+    // Unfortunately, there is no convenience API to ask, "what type is this
+    // GVolume?"  Instead, we ask for the icon and look for standard icon
+    // names to determine type.
+    // Maybe there is a way to distinguish between optical drives and flash
+    // drives?  But I'm not sure what it is right now.
+
+    if (vol.get_drive() == null)
+      return false;
+
+    // Don't add internal hard drives
+    if (!vol.get_drive().is_removable())
+      return false;
+
+    if (get_uuid(vol) == null)
+      return false;
+
+    // First, if the icon is emblemed, look past emblems to real icon
+    Icon icon_in = vol.get_icon();
+    EmblemedIcon icon_emblemed = icon_in as EmblemedIcon;
+    if (icon_emblemed != null)
+      icon_in = icon_emblemed.get_icon();
+
+    ThemedIcon icon = icon_in as ThemedIcon;
+    if (icon == null)
+      return false;
+
+    weak string[] names = icon.get_names();
+    foreach (weak string name in names) {
+      switch (name) {
+      case "drive-harddisk":
+      case "drive-removable-media":
+      case "media-flash":
+      case "media-floppy":
+      case "media-tape":
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   // Returns true if path is a volume path and we changed settings
   public static bool set_volume_info_from_file(File file, Settings settings)
   {
@@ -134,7 +177,7 @@ public class BackendDrive : BackendFile
     }
 
     var volume = mount.get_volume();
-    if (volume == null)
+    if (volume == null || !is_allowed_volume(volume))
       return false;
 
     var folder = mount.get_root().get_relative_path(file);

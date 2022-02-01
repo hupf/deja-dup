@@ -102,48 +102,6 @@ public class ConfigLocationCombo : Gtk.Box
     return combo.mnemonic_activate(group_cycling);
   }
 
-  bool is_allowed_volume(Volume vol)
-  {
-    // Unfortunately, there is no convenience API to ask, "what type is this
-    // GVolume?"  Instead, we ask for the icon and look for standard icon
-    // names to determine type.
-    // Maybe there is a way to distinguish between optical drives and flash
-    // drives?  But I'm not sure what it is right now.
-
-    if (vol.get_drive() == null)
-      return false;
-
-    // Don't add internal hard drives
-    if (!vol.get_drive().is_removable())
-      return false;
-
-    // First, if the icon is emblemed, look past emblems to real icon
-    Icon icon_in = vol.get_icon();
-    EmblemedIcon icon_emblemed = icon_in as EmblemedIcon;
-    if (icon_emblemed != null)
-      icon_in = icon_emblemed.get_icon();
-
-    ThemedIcon icon = icon_in as ThemedIcon;
-    if (icon == null)
-      return false;
-
-    weak string[] names = icon.get_names();
-    foreach (weak string name in names) {
-      switch (name) {
-      case "drive-harddisk":
-      case "drive-removable-media":
-      case "media-flash":
-      case "media-floppy":
-      case "media-tape":
-        return true;
-      //case "drive-optical":
-      //case "media-optical":
-      }
-    }
-
-    return false;
-  }
-
   void add_entry(string id, string? icon, string label, Group group, DejaDup.Backend.Kind kind)
   {
     // If this backend is unsupported, only add it to the combo if it's currently selected
@@ -186,7 +144,7 @@ public class ConfigLocationCombo : Gtk.Box
 
   void add_volume(VolumeMonitor monitor, Volume v)
   {
-    if (is_allowed_volume(v))
+    if (DejaDup.BackendDrive.is_allowed_volume(v))
     {
       add_volume_full(DejaDup.BackendDrive.get_uuid(v), v.get_name(), v.get_icon());
     }
