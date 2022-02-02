@@ -147,7 +147,6 @@ int main(string[] args)
   var name_flags = BusNameOwnerFlags.DO_NOT_QUEUE | BusNameOwnerFlags.ALLOW_REPLACEMENT;
   if (replace)
     name_flags |= BusNameOwnerFlags.REPLACE;
-  name_flags = BusNameOwnerFlags.NONE;
 
   loop = new MainLoop(null, false);
   Idle.add(() => {
