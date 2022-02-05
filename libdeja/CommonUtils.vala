@@ -25,6 +25,9 @@ public const string DELETE_AFTER_KEY = "delete-after";
 public const string FULL_BACKUP_PERIOD_KEY = "full-backup-period";
 public const string ALLOW_METERED_KEY = "allow-metered";
 public const string TOOL_KEY = "tool";
+public const string CUSTOM_TOOL_SETUP_KEY = "custom-tool-setup";
+public const string CUSTOM_TOOL_TEARDOWN_KEY = "custom-tool-teardown";
+public const string CUSTOM_TOOL_WRAPPER_KEY = "custom-tool-wrapper";
 
 public errordomain BackupError {
   BAD_CONFIG,

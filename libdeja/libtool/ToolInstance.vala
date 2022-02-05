@@ -14,6 +14,20 @@ internal abstract class ToolInstance : Object
   public bool verbose {get; private set; default = false;}
   public string forced_cache_dir {get; set; default = null;}
 
+  public static void prefix_wrapper_args(ref List<string> args) throws ShellError
+  {
+    var settings = DejaDup.get_settings();
+    var wrapper = settings.get_string(DejaDup.CUSTOM_TOOL_WRAPPER_KEY);
+    if (wrapper == "")
+      return;
+
+    string[] parsed;
+    Shell.parse_argv(wrapper, out parsed);
+
+    for (var i = parsed.length - 1; i >= 0; i--)
+      args.prepend(parsed[i]);
+  }
+
   public async void start(List<string> argv_in, List<string>? envp_in)
   {
     try {
@@ -103,6 +117,8 @@ internal abstract class ToolInstance : Object
     List<string> argv = new List<string>();
     foreach (string arg in argv_in)
       argv.append(arg);
+
+    prefix_wrapper_args(ref argv);
 
     // Grab version of command line to show user
     string user_cmd = null;

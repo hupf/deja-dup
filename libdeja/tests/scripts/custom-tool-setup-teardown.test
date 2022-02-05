@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+[Operation]
+Type=backup
+Settings=custom-tool-setup='touch @TEST_HOME@/setup';custom-tool-teardown='touch @TEST_HOME@/teardown';
+FinalScript=ls @TEST_HOME@/teardown
+
+[Duplicity]
+Runs=status;dry;backup;status-restore;verify;
+
+[Duplicity status]
+#ls @TEST_HOME@/setup
+#! ls @TEST_HOME@/teardown
+Script=^
+
+# No Restic test
+# this is not a tool feature, but an Operation one
+

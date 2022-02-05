@@ -85,8 +85,20 @@ public abstract class Operation : Object
     action_desc_changed(_("Preparing…"));
 
     yield check_dependencies();
-    if (!finished) // might have been cancelled during check above
-      restart();
+    if (finished) // might have been cancelled during check above
+      return;
+
+    string stdout, stderr;
+    if (!run_custom_tool_command(DejaDup.CUSTOM_TOOL_SETUP_KEY, out stdout, out stderr)) {
+      var detail = (stdout + stderr).strip();
+      if (detail == "")
+        detail = null;
+      raise_error(_("Custom tool setup failed."), detail);
+      done(false, false, null);
+      return;
+    }
+
+    restart();
   }
 
   void restart()
@@ -196,6 +208,7 @@ public abstract class Operation : Object
 
     yield backend.cleanup();
     yield DejaDup.clean_tempdirs(false /* just duplicity temp files */);
+    run_custom_tool_command(DejaDup.CUSTOM_TOOL_TEARDOWN_KEY);
 
     done(success, cancelled, detail);
   }
@@ -296,6 +309,35 @@ public abstract class Operation : Object
     }
 
     passphrase_required();
+  }
+
+  // Returns true if the command succeeded
+  bool run_custom_tool_command(string key, out string stdout = null, out string stderr = null)
+  {
+    stdout = null;
+    stderr = null;
+
+    var settings = DejaDup.get_settings();
+    var command = settings.get_string(key);
+    if (command == "")
+      return true;
+
+    int status;
+    try {
+      debug("Running '%s'", command);
+      Process.spawn_command_line_sync(command, out stdout, out stderr, out status);
+    }
+    catch (Error e) {
+      stdout = e.message;
+      stderr = "";
+      return false;
+    }
+
+    // echo these to the console to help a user debugging their script
+    print(stdout);
+    print(stderr);
+
+    return Process.if_exited(status) && Process.exit_status(status) == 0;
   }
 
 #if HAS_PACKAGEKIT

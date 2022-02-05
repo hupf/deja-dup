@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+# The idea here is to add a wrapper that makes a canary file and then runs
+# the tool like normal.
+
+[Operation]
+Type=backup
+Settings=custom-tool-wrapper='@TEST_HOME@/wrapper';
+#cat << EOF > @TEST_HOME@/wrapper
+##!/bin/sh
+#touch @TEST_HOME@/ran
+#exec \$*
+#EOF
+#chmod a+x @TEST_HOME@/wrapper
+Script=^
+
+[Duplicity]
+Runs=status;dry;backup;status-restore;verify;
+
+[Duplicity status]
+Script=ls @TEST_HOME@/ran
+
+[Restic]
+Runs=backup;verify;
+
+[Restic backup]
+Script=ls @TEST_HOME@/ran
