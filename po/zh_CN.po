@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-01-31 04:53+0000\n"
-"PO-Revision-Date: 2022-01-31 16:21+0800\n"
+"POT-Creation-Date: 2022-02-05 03:54+0000\n"
+"PO-Revision-Date: 2022-02-05 23:15+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -808,69 +808,105 @@ msgid ""
 msgstr ""
 "如果为假，则 Déjà Dup 会避免在按流量计费的网络连接（例如 4G）上运行计划备份。"
 
-#: data/app.gschema.xml.in:97
+#: data/app.gschema.xml.in:73
+#| msgid "Could not start backup tool"
+msgid "Command to run before the backup tool"
+msgstr "使用备份工具前要运行的命令"
+
+#: data/app.gschema.xml.in:74
+msgid ""
+"Useful if you need to manually mount a folder, for example. If this command "
+"fails, the backup won't start."
+msgstr "可以用于比如您需要手动挂载文件夹的情况。如果该命令失败，不会开始备份。"
+
+#: data/app.gschema.xml.in:78
+#| msgid "Could not start backup tool"
+msgid "Command to run after the backup tool"
+msgstr "使用备份工具后要运行的命令"
+
+#: data/app.gschema.xml.in:79
+msgid ""
+"Useful if you need to clean up after your setup command. Failures are "
+"ignored."
+msgstr "可以用于比如您需要在备份命令后进行清理。失败将被忽略。"
+
+#: data/app.gschema.xml.in:83
+#| msgid "Could not start backup tool"
+msgid "Command to run around the backup tool"
+msgstr "使用备份工具时要运行的命令"
+
+#: data/app.gschema.xml.in:84
+msgid ""
+"Useful if you need to limit resources or otherwise wrap the execution of the "
+"tool command. An example value might be 'trickle -u 500' which would result "
+"in deja-dup running 'trickle -u 500 duplicity …'."
+msgstr ""
+"可以用于比如您需要限制资源或包裹工具命令的执行。例如使用设定值“trickle -u "
+"500”会导致 deja-dup 运行“trickle -u 500 duplicity …”。"
+
+#: data/app.gschema.xml.in:112
 msgid "Type of location to store backup"
 msgstr "存储备份的位置的类型"
 
-#: data/app.gschema.xml.in:98
+#: data/app.gschema.xml.in:113
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
 msgstr "备份位置的类型。如果为“auto”，将会基于可用的位置来选择默认值。"
 
-#: data/app.gschema.xml.in:110 data/app.gschema.xml.in:133
-#: data/app.gschema.xml.in:146 data/app.gschema.xml.in:154
-#: data/app.gschema.xml.in:161
+#: data/app.gschema.xml.in:125 data/app.gschema.xml.in:148
+#: data/app.gschema.xml.in:161 data/app.gschema.xml.in:169
+#: data/app.gschema.xml.in:176
 msgid "The folder where backups are stored"
 msgstr "存储备份的文件夹"
 
-#: data/app.gschema.xml.in:111
+#: data/app.gschema.xml.in:126
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr "存储备份的文件夹层次结构。路径可以为绝对路径或相对于您的主目录的路径。"
 
-#: data/app.gschema.xml.in:118
+#: data/app.gschema.xml.in:133
 msgid "UUID"
 msgstr "UUID"
 
-#: data/app.gschema.xml.in:119
+#: data/app.gschema.xml.in:134
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr "该驱动器的唯一文件系统标识符，用于在插入该驱动器时进行识别。"
 
-#: data/app.gschema.xml.in:123 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:138 data/ui/Browser.ui:244
 msgid "Name"
 msgstr "名称"
 
-#: data/app.gschema.xml.in:124
+#: data/app.gschema.xml.in:139
 msgid "The name of the external drive."
 msgstr "外部驱动器的名称。"
 
-#: data/app.gschema.xml.in:128
+#: data/app.gschema.xml.in:143
 msgid "Icon"
 msgstr "图标"
 
-#: data/app.gschema.xml.in:129
+#: data/app.gschema.xml.in:144
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "外部驱动器的图标，是一个序列化的 GIcon。"
 
-#: data/app.gschema.xml.in:134
+#: data/app.gschema.xml.in:149
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr "存储备份的文件夹层次结构。路径是相对于该驱动器的。"
 
-#: data/app.gschema.xml.in:141
+#: data/app.gschema.xml.in:156
 msgid "The server address"
 msgstr "服务器地址"
 
-#: data/app.gschema.xml.in:142
+#: data/app.gschema.xml.in:157
 msgid "The URI of the remote server location."
 msgstr "远程服务器位置的 URI。"
 
-#: data/app.gschema.xml.in:147
+#: data/app.gschema.xml.in:162
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -1236,7 +1272,7 @@ msgstr "后退"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:494
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:497
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上的 %1$s"
@@ -1246,11 +1282,11 @@ msgstr "%2$s 上的 %1$s"
 msgid "Backup will begin when %s is connected."
 msgstr "备份将在 %s 连接时开始。"
 
-#: libdeja/BackendDrive.vala:223 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:266 libdeja/BackendRemote.vala:157
 msgid "Storage location not available"
 msgstr "存储位置不可用"
 
-#: libdeja/BackendDrive.vala:223
+#: libdeja/BackendDrive.vala:266
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "正在等待“%s”建立连接……"
@@ -1329,31 +1365,31 @@ msgstr "服务器网络位置“%s”看起来不是网络位置。"
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba 网络位置必须包含主机名和共享名称。"
 
-#: libdeja/CommonUtils.vala:464
+#: libdeja/CommonUtils.vala:467
 msgid "Access Granted"
 msgstr "访问已授权"
 
-#: libdeja/CommonUtils.vala:465
+#: libdeja/CommonUtils.vala:468
 msgid "Backups will now continue. You can close this page."
 msgstr "备份现在继续。您可以关闭此页面。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:547
+#: libdeja/CommonUtils.vala:550
 #, c-format
 msgid "Home (%s)"
 msgstr "主文件夹（%s）"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:552
+#: libdeja/CommonUtils.vala:555
 msgid "Home"
 msgstr "主文件夹"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:557
+#: libdeja/CommonUtils.vala:560
 msgid "Trash"
 msgstr "回收站"
 
-#: libdeja/CommonUtils.vala:619
+#: libdeja/CommonUtils.vala:622
 msgid "Backup encryption password"
 msgstr "备份加密密码"
 
@@ -1381,6 +1417,10 @@ msgstr "正在列出文件……"
 #: libdeja/duplicity/DuplicityJob.vala:419
 msgid "Preparing…"
 msgstr "正在准备……"
+
+#: libdeja/Operation.vala:96
+msgid "Custom tool setup failed."
+msgstr "自定义工具创建失败。"
 
 #: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
@@ -1958,9 +1998,6 @@ msgstr "备份将在不按流量计费的网络连接可用时开始。"
 
 #~ msgid "Backup tool is broken.  Your installation is incomplete."
 #~ msgstr "备份工具损坏。您的安装不完整。"
-
-#~ msgid "Could not start backup tool"
-#~ msgstr "无法启动备份工具"
 
 #~ msgid "Invalid ID."
 #~ msgstr "无效的 ID。"
