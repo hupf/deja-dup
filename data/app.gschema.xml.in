@@ -68,6 +68,21 @@ SPDX-FileCopyrightText: Michael Terry
       <summary>Whether to use metered networks</summary>
       <description>If false, Déjà Dup will refuse to run scheduled backups over metered network connections (like 4G).</description>
     </key>
+    <key name="custom-tool-setup" type="s">
+      <default>''</default>
+      <summary>Command to run before the backup tool</summary>
+      <description>Useful if you need to manually mount a folder, for example. If this command fails, the backup won't start.</description>
+    </key>
+    <key name="custom-tool-teardown" type="s">
+      <default>''</default>
+      <summary>Command to run after the backup tool</summary>
+      <description>Useful if you need to clean up after your setup command. Failures are ignored.</description>
+    </key>
+    <key name="custom-tool-wrapper" type="s">
+      <default>''</default>
+      <summary>Command to run around the backup tool</summary>
+      <description>Useful if you need to limit resources or otherwise wrap the execution of the tool command. An example value might be 'trickle -u 500' which would result in deja-dup running 'trickle -u 500 duplicity …'.</description>
+    </key>
     <key name="tool" type="s">
       <default>'duplicity'</default>
       <choices>

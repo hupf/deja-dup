@@ -1,0 +1,29 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+[Operation]
+Type=backup
+
+Settings=custom-tool-setup='@TEST_HOME@/setup';
+#cat << EOF > @TEST_HOME@/setup
+##!/bin/sh
+#echo stderr msg >&2
+#echo stdout msg
+#exit 1
+#EOF
+#chmod a+x @TEST_HOME@/setup
+Script=^
+
+Success=false
+Error=Custom tool setup failed.
+#stdout msg
+#stderr msg
+ErrorDetail=^
+
+[Duplicity]
+# Skip normal version run, because we fail before even that
+Version=
+
+# No Restic test
+# this is not a tool feature, but an Operation one
+

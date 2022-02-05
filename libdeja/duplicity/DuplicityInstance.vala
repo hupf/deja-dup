@@ -84,6 +84,8 @@ internal class DuplicityInstance : Object
     // Finally, actual duplicity command
     argv.prepend(DuplicityPlugin.duplicity_command());
 
+    ToolInstance.prefix_wrapper_args(ref argv);
+
     // Grab version of command line to show user
     string user_cmd = null;
     foreach(string a in argv) {

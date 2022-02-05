@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+[Operation]
+Type=backup
+Settings=custom-tool-setup='bad setup quote "';
+Success=false
+Error=Custom tool setup failed.
+ErrorDetail=Text ended before matching quote was found for ". (The text was “bad setup quote "”)
+
+[Duplicity]
+# Skip normal version run, because we fail before even that
+Version=
+
+# No Restic test
+# this is not a tool feature, but an Operation one
+

@@ -62,7 +62,7 @@ void backup_teardown()
   var file = File.new_for_path(mockscript_path);
   if (file.query_exists(null)) {
     // Fail the test, something went wrong
-    warning("Mockscript file still exists");
+    warning("Mockscript file %s still exists", mockscript_path);
   }
 
   file = File.new_for_path(mockscript_path + ".failed");
@@ -228,7 +228,7 @@ class BackupRunner : Object
   public DejaDup.Operation op = null;
   public string path = null;
   public string script = null;
-  public string init_script = null;
+  public string final_script = null;
   public bool success = true;
   public bool cancelled = false;
   public string? detail = null;
@@ -252,9 +252,6 @@ class BackupRunner : Object
       Environment.set_variable("PATH", path, true);
 
     DejaDup.initialize();
-
-    if (init_script != null)
-      run_script(init_script);
 
     if (op == null)
       return;
@@ -340,6 +337,9 @@ class BackupRunner : Object
 
     if (passphrases > 0)
       warning("Passphrases expected, but not seen");
+
+    if (final_script != null)
+      run_script(final_script);
   }
 }
 
@@ -423,14 +423,14 @@ void process_operation_block(KeyFile keyfile, string group, BackupRunner br) thr
     br.detail = replace_keywords(keyfile.get_string(group, "Detail"));
   if (keyfile.has_key(group, "DiskFree"))
     Environment.set_variable("DEJA_DUP_TEST_SPACE_FREE", keyfile.get_string(group, "DiskFree"), true);
-  if (keyfile.has_key(group, "InitScript"))
-    br.init_script = replace_keywords(keyfile.get_string(group, "InitScript"));
   if (keyfile.has_key(group, "Error"))
     br.error_str = keyfile.get_string(group, "Error");
   if (keyfile.has_key(group, "ErrorRegex"))
     br.error_regex = keyfile.get_string(group, "ErrorRegex");
   if (keyfile.has_key(group, "ErrorDetail"))
-    br.error_detail = keyfile.get_string(group, "ErrorDetail");
+    br.error_detail = get_string_field(keyfile, group, "ErrorDetail");
+  if (keyfile.has_key(group, "FinalScript"))
+    br.final_script = get_string_field(keyfile, group, "FinalScript");
   if (keyfile.has_key(group, "Passphrases"))
     br.passphrases = keyfile.get_integer(group, "Passphrases");
   if (keyfile.has_key(group, "Path"))
@@ -622,7 +622,8 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
   var version = "9.9.99";
   if (keyfile.has_key(group, "Version"))
     version = get_string_field(keyfile, group, "Version");
-  add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
+  if (version.length > 0)
+    add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
 
   if (keyfile.has_key(group, "IsFull"))
     br.is_full = keyfile.get_boolean(group, "IsFull");
