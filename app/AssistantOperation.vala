@@ -878,9 +878,11 @@ public abstract class AssistantOperation : Assistant
     interrupt(question_page);
     Notifications.attention_needed(this, _("Backups needs your input to continue"), title);
     var loop = new MainLoop(null);
-    var signal_id = closing.connect(loop.quit);
+    var closing_id = closing.connect(loop.quit);
+    var forward_id = forward.connect(loop.quit);
     loop.run();
-    disconnect(signal_id);
+    disconnect(closing_id);
+    disconnect(forward_id);
   }
 
 #if HAS_PACKAGEKIT

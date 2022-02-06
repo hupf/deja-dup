@@ -34,7 +34,7 @@ class BaseTest(unittest.TestCase):
         self.reset_gsettings(self.get_settings())
 
         # Clean any previous cache files
-        shutil.rmtree(os.environ["DD_CACHE_DIR"], ignore_errors=True)
+        self.clean_cache()
 
         # Set up tiny sample source root
         self.rootdir = GLib.get_home_dir() + "/.deja-dup-test"
@@ -54,6 +54,9 @@ class BaseTest(unittest.TestCase):
             self.config.read(configname)
         else:
             self.config = None
+
+    def clean_cache(self):
+        shutil.rmtree(os.environ["DD_CACHE_DIR"], ignore_errors=True)
 
     def randomize_srcdir(self):
         datadir = os.path.join(self.srcdir, "data")

@@ -7,9 +7,10 @@
 import glob
 import os
 import stat
+import subprocess
 from contextlib import contextmanager
 from time import sleep
-from unittest import expectedFailure
+from unittest import expectedFailure, skip
 
 import ddt
 from dogtail.predicate import GenericPredicate
@@ -103,6 +104,23 @@ class BackupTest(BaseTest):
         self.walk_incremental_backup(app, password="nope", wait=False)
         with self.new_files():
             self.walk_incremental_backup(app, password="t")
+
+    def test_hostname_question(self):
+        app = self.cmd("--backup")
+        with self.new_files():
+            self.walk_initial_backup(app)
+
+        # Change hostname
+        subprocess.run("sed -i 's/Hostname .*/Hostname dejanewhostnametest/' "
+                       f"{self.destdir}/*.manifest",
+                       shell=True, check=True)
+        self.clean_cache()
+
+        app = self.cmd("--backup")
+        with self.new_files():
+            window = app.window("Computer name changed")
+            window.button("Forward").click()
+            self.walk_incremental_backup(app)
 
     @ddt.data(True, False)
     def test_resume(self, initial):
@@ -219,3 +237,7 @@ class ResticBackupTest(ResticMixin, BackupTest):
     @expectedFailure  # verify support isn't finished yet
     def test_nag_check(self):
         super().test_nag_check()
+
+    @skip("hostname question doesn't exist in restic")
+    def test_hostname_question(self):
+        super().test_hostname_question()
