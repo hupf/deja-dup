@@ -57,6 +57,11 @@ public class Notifications : Object
       send_status(title, body);
   }
 
+  public static void operation_unblocked()
+  {
+    withdraw_status();
+  }
+
   public static void attention_needed(Gtk.Window win, string title,
                                       string? body = null)
   {

@@ -438,6 +438,9 @@ public void initialize()
      ball rolling in case this is the first time. */
   DejaDup.Backend.get_default();
 
+  // initialize network proxy, just so it can settle by the time we check it
+  DejaDup.Network.get();
+
   // And cleanup from any previous runs
   clean_tempdirs.begin();
 }

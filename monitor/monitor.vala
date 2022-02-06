@@ -107,9 +107,6 @@ bool on_sigusr1()
 
 void begin_monitoring()
 {
-  // initialize network proxy, just so it can settle by the time we check it
-  DejaDup.Network.get();
-
   DejaDup.InstallEnv.instance().register_monitor_restart(loop);
   Unix.signal_add (Posix.Signal.USR1, on_sigusr1);
 
