@@ -95,8 +95,8 @@ class PreferencesTest(BaseTest):
         prefs = self.app.window("Preferences")
         prefs.child(name="Folders").click()
 
-        label = prefs.child(name=widget)
-        table = label.parent.child(roleName="list")
+        panel = prefs.child(roleName="panel", name=widget)
+        table = panel.child(roleName="list")
 
         user = GLib.get_user_name()
         home = GLib.get_home_dir()

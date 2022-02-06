@@ -4,6 +4,15 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.2
+- Fix a crash if you select a mount in the Local Folder settings file chooser
+- Fix the "hostname has changed" dialog to let you actually continue the backup
+- Fix a bogus notification that complained about not being connected to the
+  network for scheduled backups to Network Servers, even if you were connected
+- Make replacing existing monitor processes during upgrade work better
+- Add a hidden advanced setting to run setup/teardown commands when running
+  the backup tool (useful if you have an unusual manual mount you need)
+- Update Chinese (China), Chinese (Taiwan), Czech, Russian, and Ukrainian
+  translations
 
 # 43.1
 - Increase default window size to avoid being too small
