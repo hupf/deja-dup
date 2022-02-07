@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2021-11-18 23:14+0000\n"
-"PO-Revision-Date: 2021-12-19 17:35+0200\n"
-"Last-Translator: Alexey Rubtsov <rushills@gmail.com>\n"
+"POT-Creation-Date: 2022-02-05 03:54+0000\n"
+"PO-Revision-Date: 2022-02-05 13:28+0300\n"
+"Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -18,49 +18,686 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.0\n"
 
-#. Translators: Monitor in this sense means something akin to 'watcher', not
-#. a computer screen.  This program acts like a daemon that kicks off
-#. backups at scheduled times.
-#: data/org.gnome.DejaDup.Monitor.desktop.in:6 monitor/monitor.vala:130
-msgid "Backup Monitor"
-msgstr "Менеджер резервного копирования"
+#: app/Assistant.vala:293
+msgid "Co_ntinue"
+msgstr "_Продолжить"
 
-#: data/org.gnome.DejaDup.Monitor.desktop.in:7
-msgid "Schedules backups at regular intervals"
-msgstr "Производит резервное копирование через регулярные интервалы"
+#: app/Assistant.vala:299
+msgctxt "verb"
+msgid "_Test"
+msgstr "_Проверить"
 
-#: data/org.gnome.DejaDup.Monitor.desktop.in:9
-#: data/org.gnome.DejaDup.desktop.in:9
-msgid "@icon@"
-msgstr "@icon@"
+#: app/Assistant.vala:334
+msgid "_Resume Later"
+msgstr "П_родолжить позже"
 
-#: data/org.gnome.DejaDup.desktop.in:6 data/ui/MainHeaderBar.ui:20
-#: data/ui/MainWindow.ui:11
-msgid "Backups"
-msgstr "Резервные копии"
+#: app/Assistant.vala:340
+msgid "_Back"
+msgstr "_Назад"
 
-#: data/org.gnome.DejaDup.desktop.in:7
-#: data/org.gnome.DejaDup.metainfo.xml.in:16
-msgid "Protect yourself from data loss"
-msgstr "Защитите себя от потери данных"
+#: app/Assistant.vala:342
+msgid "_Close"
+msgstr "_Закрыть"
 
-#. Translators: Add whatever keywords you want in your language, separated by semicolons
-#. These keywords are used when searching for applications in dashes, etc.
-#: data/org.gnome.DejaDup.desktop.in:21
-msgid "déjà;deja;dup;"
-msgstr "déjà;deja;dup;дежа;дап;дуп;"
+#: app/Assistant.vala:348 data/ui/PassphraseDialog.ui:15
+msgid "_Cancel"
+msgstr "_Отмена"
 
-#: data/org.gnome.DejaDup.desktop.in:28
+#: app/Assistant.vala:359
+msgid "_Forward"
+msgstr "_Далее"
+
+#: app/AssistantBackup.vala:21
+msgctxt "back up is verb"
 msgid "Back Up"
 msgstr "Создать резервную копию"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:13
+#: app/AssistantBackup.vala:28
+msgctxt "back up is verb"
+msgid "_Back Up"
+msgstr "_Создать резервную копию"
+
+#: app/AssistantBackup.vala:64
+msgid ""
+"The following folders cannot be backed up because Backups does not have "
+"access to them:"
+msgstr ""
+"Следующие папки не могут быть резервированы, поскольку у Backups нет к ним "
+"доступа:"
+
+#: app/AssistantBackup.vala:80
+msgid "Creating the first backup.  This may take a while."
+msgstr ""
+"Резервная копия создаётся первый раз. Это может занять некоторое время."
+
+#: app/AssistantBackup.vala:81
+msgid ""
+"Creating a fresh backup to protect against backup corruption.  This will "
+"take longer than normal."
+msgstr ""
+"Создаётся полная копия для защиты от возможных повреждений. Это может занять "
+"времени больше, чем обычно."
+
+#. Translators:  This is the phrase 'Backing up' in the larger phrase
+#. "Backing up '%s'".  %s is a filename.
+#: app/AssistantBackup.vala:96
+msgid "Backing up:"
+msgstr "Создается резервная копия для:"
+
+#: app/AssistantBackup.vala:105
+msgid "Backup Failed"
+msgstr "Резервное копирование не удалось"
+
+#: app/AssistantBackup.vala:108
+msgid "Backup Finished"
+msgstr "Резервное копирование завершено"
+
+#. Also leave ourselves up if we just finished a restore test.
+#: app/AssistantBackup.vala:112
+msgid "Your files were successfully backed up and tested."
+msgstr "Резервная копия файлов успешно создана и проверена."
+
+#: app/AssistantBackup.vala:119
+msgid "Backing Up…"
+msgstr "Резервное копирование…"
+
+#. In the unlikely event the user turned on automatic backups but never
+#. made a backup, we should tell them if we start up and need to be
+#. configured for first time.
+#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:879
+msgid "Backups needs your input to continue"
+msgstr "Резервные копии нуждаются в вашем участии для продолжения работы"
+
+#: app/AssistantBackup.vala:146
+msgid "Backup in progress"
+msgstr "Выполняется резервное копирование"
+
+#: app/AssistantLocation.vala:15
+msgid "Restore From Where?"
+msgstr "Откуда восстановить?"
+
+#: app/AssistantLocation.vala:21
+msgid "_Backup location"
+msgstr "_Местоположение резервной копии"
+
+#: app/AssistantLocation.vala:22
+msgid "_Search"
+msgstr "П_оиск"
+
+#: app/AssistantOperation.vala:160
+msgid "Scanning:"
+msgstr "Сканируется:"
+
+#: app/AssistantOperation.vala:161
+msgid "Scanning…"
+msgstr "Сканирование…"
+
+#: app/AssistantOperation.vala:265
+msgid "_Details"
+msgstr "_Подробности"
+
+#: app/AssistantOperation.vala:312
+msgid "In order to continue, the following packages need to be installed:"
+msgstr "Чтобы продолжить, необходимо установить следующие пакеты:"
+
+#: app/AssistantOperation.vala:346
+msgid "_Allow restoring without a password"
+msgstr "_Разрешить восстановление без пароля"
+
+#: app/AssistantOperation.vala:351
+msgid "_Password-protect your backup"
+msgstr "Защитите _паролем резервную копию"
+
+#: app/AssistantOperation.vala:364
+msgid ""
+"You will need your password to restore your files. You might want to write "
+"it down."
+msgstr ""
+"Потребуется указать пароль для восстановления файлов. Возможно, его лучше "
+"записать."
+
+#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:441
+#: data/ui/PassphraseDialog.ui:49
+msgid "E_ncryption password"
+msgstr "Пароль шифрования"
+
+#: app/AssistantOperation.vala:396
+msgid "Confir_m password"
+msgstr "Подвер_дить пароль"
+
+#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:71
+msgid "_Remember password"
+msgstr "_Запомнить пароль"
+
+#: app/AssistantOperation.vala:427
+msgid ""
+"In order to check that you will be able to retrieve your files in the case "
+"of an emergency, please enter your encryption password again to perform a "
+"brief restore test."
+msgstr ""
+"Чтобы проверить возможность доступа к вашим файлам в случае экстренной "
+"ситуации, пожалуйста, снова введите пароль для доступа к зашифрованным "
+"данным, чтобы выполнить проверку на восстановление."
+
+#: app/AssistantOperation.vala:449
+msgid "Test every two _months"
+msgstr "Проверять каждые два _месяца"
+
+#: app/AssistantOperation.vala:480
+msgid "_Grant Access"
+msgstr "_Разрешить доступ"
+
+#: app/AssistantOperation.vala:542
+msgid "Install Packages"
+msgstr "Установить пакеты"
+
+#: app/AssistantOperation.vala:557
+msgid "Summary"
+msgstr "Сводка"
+
+#: app/AssistantOperation.vala:579
+msgid "Restore Test"
+msgstr "Проверка восстановления"
+
+#: app/AssistantOperation.vala:587
+msgid "Grant Access"
+msgstr "_Разрешить доступ"
+
+#: app/AssistantOperation.vala:796
+msgid "Set Encryption Password"
+msgstr "Установка пароля шифрования"
+
+#: app/AssistantOperation.vala:798
+msgid "Require Password?"
+msgstr "Хотите ли вы установить пароль?"
+
+#: app/AssistantOperation.vala:800
+msgid "Encryption Password Needed"
+msgstr "Требуется пароль шифрования"
+
+#: app/AssistantOperation.vala:847
+msgid "Backups needs your encryption password to continue"
+msgstr "Для продолжения резервного копирования необходим пароль шифрования"
+
+#: app/AssistantOperation.vala:919
+msgctxt "verb"
+msgid "_Install"
+msgstr "_Установить"
+
+#: app/AssistantOperation.vala:924
+msgid "Backups needs to install packages to continue"
+msgstr "Для продолжения резервного копирования необходимо установить пакеты"
+
+#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:53
+msgid "Restore"
+msgstr "Восстановить"
+
+#: app/AssistantRestore.vala:65 data/ui/Browser.ui:353
+msgid "_Restore"
+msgstr "_Восстановить"
+
+#: app/AssistantRestore.vala:139
+msgid "Restore files to _original locations"
+msgstr "Восстановить файлы на их прежнее местоположение"
+
+#: app/AssistantRestore.vala:150
+msgid "Restore to _specific folder"
+msgstr "Восстановить в _указанную папку"
+
+#: app/AssistantRestore.vala:178
+msgid "Restore to _specific folder:"
+msgstr "Восстановить в _конкретную папку:"
+
+#: app/AssistantRestore.vala:187
+msgid "Backups does not have permission to restore the following files:"
+msgstr "Backups не имеет разрешения на восстановление следующих файлов:"
+
+#: app/AssistantRestore.vala:251
+msgid "Backup location"
+msgstr "Местоположение резервных копий"
+
+#. Translators: label for the date from which we are restoring
+#: app/AssistantRestore.vala:266
+msgid "Restore date"
+msgstr "Дата восстановления"
+
+#. Translators: label for the folder into which we putting restored files
+#: app/AssistantRestore.vala:275
+msgid "Restore folder"
+msgstr "Восстановить в папку"
+
+#: app/AssistantRestore.vala:299
+msgid "Checking for Backups…"
+msgstr "Проверка резервных копий…"
+
+#: app/AssistantRestore.vala:307
+msgid "Restore From When?"
+msgstr "С какого момента восстановить?"
+
+#: app/AssistantRestore.vala:318
+msgid "Restore to Where?"
+msgstr "Куда восстановить файлы?"
+
+#. Translators:  This is the word 'Restoring' in the phrase
+#. "Restoring '%s'".  %s is a filename.
+#: app/AssistantRestore.vala:351
+msgid "Restoring:"
+msgstr "Востанавливается:"
+
+#: app/AssistantRestore.vala:363
+msgid "No backups to restore"
+msgstr "Нет резервных копий для восстановления"
+
+#: app/AssistantRestore.vala:446
+msgid "Original location"
+msgstr "Первоначальное местоположение"
+
+#: app/AssistantRestore.vala:460
+msgid "File to restore"
+msgid_plural "Files to restore"
+msgstr[0] "Файл для восстановления"
+msgstr[1] "Файла для восстановления"
+msgstr[2] "Файлов для восстановления"
+
+#: app/AssistantRestore.vala:485
+msgid "Restore Failed"
+msgstr "Восстановление не удалось"
+
+#: app/AssistantRestore.vala:487
+msgid "Restore Finished"
+msgstr "Восстановление завершено"
+
+#. if it *is* visible, a header will be set already
+#: app/AssistantRestore.vala:490
+msgid "Your files were successfully restored."
+msgstr "Ваши файлы были успешно восстановлены."
+
+#: app/AssistantRestore.vala:493
+msgid "Your file was successfully restored."
+msgid_plural "Your files were successfully restored."
+msgstr[0] "Ваш файл был успешно восстановлен."
+msgstr[1] "Ваши файлы были успешно восстановлены."
+msgstr[2] "Ваши файлы были успешно восстановлены."
+
+#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+msgid "Restoring…"
+msgstr "Восстановление…"
+
+#: app/AssistantRestore.vala:570
+msgid "Restore in progress"
+msgstr "Восстановление в процессе выполнения"
+
+#: app/Background.vala:73
+msgid "Cannot back up automatically"
+msgstr "Невозможно автоматическое резервное копирование"
+
+#: app/Browser.vala:252
+msgid "Authentication needed"
+msgstr "Необходима аутентификация"
+
+#: app/Browser.vala:373 libdeja/duplicity/DuplicityJob.vala:1074
+msgid "No backup files found"
+msgstr "Резервных копий не обнаружено"
+
+#. Translators: this is used when automatic updates are enabled
+#: app/ConfigAutoBackupRow.vala:34
+msgid "Next backup is today."
+msgstr "Следующее резервное копирование - сегодня."
+
+#. Translators: this is used when automatic updates are disabled
+#: app/ConfigAutoBackupRow.vala:36
+msgid "Next backup would be today."
+msgstr "Следующее резервное копирование было бы сегодня."
+
+#. Translators: this is used when automatic updates are enabled
+#: app/ConfigAutoBackupRow.vala:43
+msgid "Next backup is tomorrow."
+msgstr "Следующее резервное копирование - завтра."
+
+#. Translators: this is used when automatic updates are disabled
+#: app/ConfigAutoBackupRow.vala:45
+msgid "Next backup would be tomorrow."
+msgstr "Следующее резервное копирование было бы завтра."
+
+#. Translators: this is used when automatic updates are enabled
+#: app/ConfigAutoBackupRow.vala:53
+#, c-format
+msgid "Next backup is %d day from now."
+msgid_plural "Next backup is %d days from now."
+msgstr[0] "Следующее резервное копирование через %d день."
+msgstr[1] "Следующее резервное копирование через %d дня."
+msgstr[2] "Следующее резервное копирование через %d дней."
+
+#. Translators: this is used when automatic updates are disabled
+#: app/ConfigAutoBackupRow.vala:58
+#, c-format
+msgid "Next backup would be %d day from now."
+msgid_plural "Next backup would be %d days from now."
+msgstr[0] "Следующее резервное копирование было бы через %d день."
+msgstr[1] "Следующее резервное копирование было бы через %d дня."
+msgstr[2] "Следующее резервное копирование было бы через %d дней."
+
+#: app/ConfigDeleteRow.vala:12
+msgid "At least three months"
+msgstr "Не менее трех месяцев"
+
+#: app/ConfigDeleteRow.vala:13
+msgid "At least six months"
+msgstr "Минимум шесть месяцев"
+
+#: app/ConfigDeleteRow.vala:14
+msgid "At least a year"
+msgstr "Минимум год"
+
+#: app/ConfigDeleteRow.vala:15
+msgid "Forever"
+msgstr "Вечно"
+
+#: app/ConfigDeleteRow.vala:22
+#, c-format
+msgid "At least %d day"
+msgid_plural "At least %d days"
+msgstr[0] "Минимум %d день"
+msgstr[1] "Минимум %d дня"
+msgstr[2] "Минимум %d дней"
+
+#: app/ConfigFolderList.vala:63
+msgid "Choose Folders"
+msgstr "Выберите папки"
+
+#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+msgid "Add"
+msgstr "Добавить"
+
+#. *** Basic entries ***
+#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
+msgid "Google Drive"
+msgstr "Google Диск"
+
+#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
+msgid "Microsoft OneDrive"
+msgstr "Microsoft OneDrive"
+
+#: app/ConfigLocationCombo.vala:63
+msgid "Local Folder"
+msgstr "Локальная папка"
+
+#: app/ConfigLocationCombo.vala:65
+msgid "Network Server"
+msgstr "Сетевой сервер"
+
+#. *** Old deprecated cloud entries, kept just for a kinder migration ***
+#: app/ConfigLocationCombo.vala:70
+msgid "Google Cloud Storage"
+msgstr "Облачное хранилище Google"
+
+#: app/ConfigLocationCombo.vala:72
+msgid "OpenStack Swift"
+msgstr "OpenStack Swift"
+
+#: app/ConfigLocationCombo.vala:74
+msgid "Rackspace Cloud Files"
+msgstr "Облачные файлы Rackspace"
+
+#: app/ConfigLocationCombo.vala:76
+msgid "Amazon S3"
+msgstr "Amazon S3"
+
+#: app/ConfigPeriodRow.vala:19
+msgid "Daily"
+msgstr "Ежедневно"
+
+#: app/ConfigPeriodRow.vala:22
+msgid "Weekly"
+msgstr "Еженедельно"
+
+#: app/ConfigPeriodRow.vala:29
+#, c-format
+msgid "Every %d day"
+msgid_plural "Every %d days"
+msgstr[0] "Каждый %d день"
+msgstr[1] "Каждые %d дня"
+msgstr[2] "Каждые %d дней"
+
+#: app/FolderChooserButton.vala:18
+msgid "_Choose Folder…"
+msgstr "_Выберите папку…"
+
+#: app/FolderChooserButton.vala:26
+msgid "Choose Folder"
+msgstr "Выберите папку"
+
+#: app/MountOperationAssistant.vala:23
+msgid "_Username"
+msgstr "_Имя пользователя"
+
+#: app/MountOperationAssistant.vala:24
+msgid "_Password"
+msgstr "_Пароль"
+
+#: app/MountOperationAssistant.vala:62
+msgid "Location not available"
+msgstr "Местоположение не доступно"
+
+#: app/MountOperationAssistant.vala:77
+msgid "Backups needs your password to continue"
+msgstr "Для продолжения резервного копирования требуется ваш пароль"
+
+#: app/MountOperationAssistant.vala:143
+msgid "Connect _anonymously"
+msgstr "Подключиться _анонимно"
+
+#: app/MountOperationAssistant.vala:148
+msgid "Connect as u_ser"
+msgstr "Подключиться как п_ользователь"
+
+#. Translators: this is a Windows networking domain
+#: app/MountOperationAssistant.vala:192
+msgid "_Domain"
+msgstr "_Домен"
+
+#: app/Notifications.vala:13
+msgid "Starting scheduled backup"
+msgstr "Запуск запланированного резервного копирования"
+
+#: app/Notifications.vala:18
+msgid "Scheduled backup delayed"
+msgstr "Отложено создание резервной копии по расписанию"
+
+#: app/Notifications.vala:25
+msgid "Backup completed"
+msgstr "Резервное копирование выполнено"
+
+#: app/Notifications.vala:30
+msgid "Backup finished"
+msgstr "Создание резервной копии завершено"
+
+#: app/Notifications.vala:31
+msgid "But not all files were successfully backed up."
+msgstr "Но не все файлы были успешно резервированы."
+
+#: app/Notifications.vala:38
+msgid "Backup failed"
+msgstr "Сбой архивации"
+
+#: app/Notifications.vala:50
+msgid "Restore failed"
+msgstr "Восстановление не удалось"
+
+#: app/Notifications.vala:71
+msgid "Keep your files safe by backing up regularly"
+msgstr ""
+"Сохраняйте свои файлы в безопасности, регулярно создавая резервные копии"
+
+#: app/Notifications.vala:72
+msgid ""
+"Important documents, data, and settings can be protected by storing them in "
+"a backup. In the case of a disaster, you would be able to recover them from "
+"that backup."
+msgstr ""
+"Важные документы, данные и настройки можно защитить, создавая их резервную "
+"копию. В случае потери данных вы сможете восстановить их из этой резервной "
+"копии."
+
+#: app/Notifications.vala:77
+msgid "Don’t Show Again"
+msgstr "Не показывать больше"
+
+#: app/Notifications.vala:78
+msgid "Open Backups"
+msgstr "Открытые резервные копии"
+
+#: app/PreferencesWindow.vala:36
+msgid ""
+"Restic is a another backup tool that can be used under the hood instead of "
+"Duplicity."
+msgstr ""
+"Restic - это еще один инструмент резервного копирования, который можно "
+"использовать вместо Duplicity."
+
+#: app/PreferencesWindow.vala:37
+msgid ""
+"It is hoped that Restic will enable new features more easily in the future."
+msgstr "Есть надежда, что в будущем Restic будет легче внедрять новые функции."
+
+#: app/PreferencesWindow.vala:39
+msgid "This is an experimental feature and may be removed at any time."
+msgstr "Это экспериментальная функция, и она может быть удалена в любое время."
+
+#: app/PreferencesWindow.vala:40
+msgid "Use caution, but any testing you can manage is appreciated."
+msgstr ""
+"Будьте осторожны, но любое тестирование, с которым вы можете справиться, "
+"будет оценено по достоинству."
+
+#. Translators: the %s formatting is a link start and end.
+#: app/PreferencesWindow.vala:43
+#, c-format
+msgid "Please %sreport%s successes or failures when enabled."
+msgstr "Пожалуйста, укажите %sreport%s успехов или неудач при включении."
+
+#. Check for some really simple/common friendly names
+#: app/RecentBackupRow.vala:43
+msgid "Today"
+msgstr "Сегодня"
+
+#: app/RecentBackupRow.vala:45
+msgid "Yesterday"
+msgstr "Вчера"
+
+#. Translators: sentence case
+#: app/RecentBackupRow.vala:54
+#, c-format
+msgid "%d day ago"
+msgid_plural "%d days ago"
+msgstr[0] "%d день назад"
+msgstr[1] "%d дня назад"
+msgstr[2] "%d дней назад"
+
+#. Translators: this is used like "Most Recent Backup: None"
+#: app/RecentBackupRow.vala:65
+msgctxt "backups"
+msgid "None"
+msgstr "Нет"
+
+#. Translators: %x is the current date, %X is the current time.
+#. This will be in a list with other strings that just have %x (the
+#. current date).  So make sure if you change this, it still makes
+#. sense in that context.
+#: app/TimeCombo.vala:80
+#, c-format
+msgid "%x %X"
+msgstr "%x %X"
+
+#: app/main.vala:22 monitor/monitor.vala:19
+msgid "Show version"
+msgstr "Показать версию"
+
+#: app/main.vala:23
+msgid "Restore given files"
+msgstr "Восстановить данные файлы"
+
+#: app/main.vala:24
+msgid "Immediately start a backup"
+msgstr "Немедлено начать архивирование"
+
+#: app/main.vala:85
+msgid "Please list files to restore"
+msgstr "Пожалуйста, перечислите файлы для восстановления"
+
+#: app/main.vala:91 app/main.vala:105
+msgid "An operation is already in progress"
+msgstr "Операция уже выполняется"
+
+#: app/main.vala:307
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Aleksey Kabanov https://launchpad.net/~ak099\n"
+"  Alex https://launchpad.net/~misterzixy\n"
+"  Alexey Ivanov https://launchpad.net/~alexey-ivanov\n"
+"  Alexey Rusaleev https://launchpad.net/~alexey-rusaleev\n"
+"  Alexey Stepankov https://launchpad.net/~xeurun\n"
+"  AsstZD https://launchpad.net/~eskaer-spamsink\n"
+"  Dmitriy Kulikov https://launchpad.net/~kulikoff\n"
+"  Dmitry Shachnev https://launchpad.net/~mitya57\n"
+"  Eugene Roskin https://launchpad.net/~lowrider\n"
+"  Ilya Telegin https://launchpad.net/~devi29rus\n"
+"  Ivan Akulov https://launchpad.net/~gxoptg\n"
+"  Michael Terry https://launchpad.net/~mterry\n"
+"  Mihail Kravsun https://launchpad.net/~ozzymk\n"
+"  Nicholas Guriev https://launchpad.net/~mymedia\n"
+"  Nick Becker https://launchpad.net/~nickbecker\n"
+"  Nikita Putko https://launchpad.net/~ktototam98\n"
+"  Sergey Basalaev https://launchpad.net/~sbasalaev\n"
+"  Sergey Sedov https://launchpad.net/~serg-sedov\n"
+"  Stanislav Hanzhin https://launchpad.net/~hanzhin-stas\n"
+"  Vladimir Yakovlev https://launchpad.net/~nagos\n"
+"  deusbase https://launchpad.net/~deusbase\n"
+"  diablo https://launchpad.net/~diablo\n"
+"  poruchik https://launchpad.net/~lyubutinan\n"
+"  Илья Калитко https://launchpad.net/~kalitko-ilya007\n"
+"  ☠Jay ZDLin☠ https://launchpad.net/~black-buddha666"
+
+#. Translators: The name is a play on the French phrase "déjà vu" meaning
+#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
+#. context is itself a reference to both the underlying command line tool
+#. "duplicity" and the act of duplicating data for backup.  As a whole, the
+#. phrase "Déjà Dup" may not be very translatable.
+#: app/main.vala:413 data/app.metainfo.xml.in:15
+msgid "Déjà Dup Backups"
+msgstr "Резервные копии Déjà Dup"
+
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:20 data/ui/MainWindow.ui:11
+msgid "Backups"
+msgstr "Резервные копии"
+
+#: data/app.desktop.in:7 data/app.metainfo.xml.in:16
+msgid "Protect yourself from data loss"
+msgstr "Защитите себя от потери данных"
+
+#: data/app.desktop.in:9 data/monitor.desktop.in:9
+msgid "@icon@"
+msgstr "@icon@"
+
+#. Translators: Add whatever keywords you want in your language, separated by semicolons
+#. These keywords are used when searching for applications in dashes, etc.
+#: data/app.desktop.in:21
+msgid "déjà;deja;dup;"
+msgstr "déjà;deja;dup;дежа;дап;дуп;"
+
+#: data/app.desktop.in:28
+msgid "Back Up"
+msgstr "Создать резервную копию"
+
+#: data/app.gschema.xml.in:13
 msgid "Folders to save"
 msgstr "Папки для сохранения"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:14
+#: data/app.gschema.xml.in:14
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, "
 "$DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, "
@@ -77,11 +714,11 @@ msgstr ""
 "пользователя и может находиться в любом месте пути. Записи с относительными "
 "путями относятся к домашнему каталогу пользователя."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:18
+#: data/app.gschema.xml.in:18
 msgid "Folders to ignore"
 msgstr "Исключённые папки"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:19
+#: data/app.gschema.xml.in:19
 msgid ""
 "This list of directories will not be backed up. Reserved values $HOME, "
 "$DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, "
@@ -98,22 +735,22 @@ msgstr ""
 "пользователя и может находиться в любом месте пути. Записи с относительными "
 "путями относятся к домашнему каталогу пользователя."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:23
+#: data/app.gschema.xml.in:23
 msgid "The last time Déjà Dup was run"
 msgstr "Время, когда Déjà Dup запускалось в последний раз"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:24
+#: data/app.gschema.xml.in:24
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
 msgstr ""
 "Предыдущий успешный запуск Déjà Dup. Время должно быть в формате ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:28
+#: data/app.gschema.xml.in:28
 msgid "The last time Déjà Dup backed up"
 msgstr "Последняя дата резервного копирования Déjà Dup"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:29
+#: data/app.gschema.xml.in:29
 msgid ""
 "The last time Déjà Dup successfully completed a backup. This time should be "
 "in ISO 8601 format."
@@ -121,11 +758,11 @@ msgstr ""
 "Последняя дата создания резервной копии с помощью Déjà Dup. Время должно "
 "указываться в формате ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:33
+#: data/app.gschema.xml.in:33
 msgid "The last time Déjà Dup restored"
 msgstr "Последняя дата восстановления с помощью Déjà Dup"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:34
+#: data/app.gschema.xml.in:34
 msgid ""
 "The last time Déjà Dup successfully completed a restore. This time should be "
 "in ISO 8601 format."
@@ -133,30 +770,30 @@ msgstr ""
 "Последняя дата восстановления из резервной копии с помощью Déjà Dup. Время "
 "должно указываться в формате ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:38
+#: data/app.gschema.xml.in:38
 msgid "Whether to periodically back up"
-msgstr "Создавать резервные копии по расписанию?"
+msgstr "Нужно ли периодически выполнять резервное копирование"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:39
+#: data/app.gschema.xml.in:39
 msgid "Whether to automatically back up on a regular schedule."
-msgstr "Запускать резервное копирование по расписанию?"
+msgstr "Нужно ли автоматически выполнять резервное копирование по расписанию."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:43
+#: data/app.gschema.xml.in:43
 msgid "How often to periodically back up"
 msgstr "Периодичность резервного копирования"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:44
+#: data/app.gschema.xml.in:44
 msgid "The number of days between backups."
-msgstr "Количество дней между резервными копиями"
+msgstr "Количество дней между резервными копиями."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:48
+#: data/app.gschema.xml.in:48
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr ""
 "Последний раз, когда Déjà Dup проверял необходимость запроса о резервном "
 "копировании"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:49
+#: data/app.gschema.xml.in:49
 msgid ""
 "When a user logs in, the Déjà Dup monitor checks whether it should prompt "
 "about backing up. This is used to increase discoverability for users that "
@@ -168,13 +805,13 @@ msgstr ""
 "пользователей, которые мало знают о резервном копировании. Время задается в "
 "формате ISO 8601. Для отключения проверок укажите значение 'disabled'."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:53
+#: data/app.gschema.xml.in:53
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
 "Когда Déjà Dup последний раз проверял необходимость запроса вашего пароля"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:54
+#: data/app.gschema.xml.in:54
 msgid ""
 "In order to prevent you from forgetting your passwords, Déjà Dup will "
 "occasionally notify you to confirm the password. This time should be either "
@@ -184,11 +821,11 @@ msgstr ""
 "необходимости подтверждения пароля. Чтобы отключить эту проверку, отключите "
 "этот \"период\" или задайте его в формате ISO 8601."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:58
+#: data/app.gschema.xml.in:58
 msgid "How long to keep backup files"
 msgstr "Как долго хранить резервные копии"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:59
+#: data/app.gschema.xml.in:59
 msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
@@ -197,11 +834,11 @@ msgstr ""
 "Количество дней хранения резервной копии. Значение 0 - вечно. Это "
 "минимальное значение, файлы могут храниться дольше."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:63
+#: data/app.gschema.xml.in:63
 msgid "How long to wait between full backups"
 msgstr "Период времени между полными резерными копиями"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:64
+#: data/app.gschema.xml.in:64
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
@@ -209,11 +846,11 @@ msgstr ""
 "Время от времени Déjà Dup необходимо создавать актуальные полные резерные "
 "копии. Это количество дней между полными резервными копиями."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:68
+#: data/app.gschema.xml.in:68
 msgid "Whether to use metered networks"
 msgstr "Использовать ли тарифицируемые сети"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:69
+#: data/app.gschema.xml.in:69
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
@@ -221,11 +858,52 @@ msgstr ""
 "Если выключено, Déjà Dup не будет запускать запланированные резервные "
 "копирования по тарифицируемым сетевым соединениям (например, 4G)."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:97
+#: data/app.gschema.xml.in:73
+msgid "Command to run before the backup tool"
+msgstr ""
+"Команда для запуска перед началом работы инструмента резервного копирования"
+
+#: data/app.gschema.xml.in:74
+msgid ""
+"Useful if you need to manually mount a folder, for example. If this command "
+"fails, the backup won't start."
+msgstr ""
+"Полезно, например, если вам нужно вручную смонтировать папку. Если эта "
+"команда не выполнится, резервное копирование не начнется."
+
+#: data/app.gschema.xml.in:78
+msgid "Command to run after the backup tool"
+msgstr ""
+"Команда для запуска после завершения работы инструмента резервного "
+"копирования"
+
+#: data/app.gschema.xml.in:79
+msgid ""
+"Useful if you need to clean up after your setup command. Failures are "
+"ignored."
+msgstr ""
+"Полезно, если вам нужно очистить данные после команды setup. Сбои "
+"игнорируются."
+
+#: data/app.gschema.xml.in:83
+msgid "Command to run around the backup tool"
+msgstr "Команда для запуска вокруг работы инструмента резервного копирования"
+
+#: data/app.gschema.xml.in:84
+msgid ""
+"Useful if you need to limit resources or otherwise wrap the execution of the "
+"tool command. An example value might be 'trickle -u 500' which would result "
+"in deja-dup running 'trickle -u 500 duplicity …'."
+msgstr ""
+"Полезно, если вам нужно ограничить ресурсы или иным образом обернуть "
+"выполнение команды инструмента. Примером значения может быть 'trickle -u "
+"500', в результате чего deja-dup выполнит 'trickle -u 500 duplicity ...'."
+
+#: data/app.gschema.xml.in:112
 msgid "Type of location to store backup"
 msgstr "Тип места хранения копий"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:98
+#: data/app.gschema.xml.in:113
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -233,15 +911,13 @@ msgstr ""
 "Тип местоположения резервной копии. Если ‘auto’, будет использоваться "
 "доступное местоположение по умолчанию."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:110
-#: data/org.gnome.DejaDup.gschema.xml.in:133
-#: data/org.gnome.DejaDup.gschema.xml.in:146
-#: data/org.gnome.DejaDup.gschema.xml.in:154
-#: data/org.gnome.DejaDup.gschema.xml.in:161
+#: data/app.gschema.xml.in:125 data/app.gschema.xml.in:148
+#: data/app.gschema.xml.in:161 data/app.gschema.xml.in:169
+#: data/app.gschema.xml.in:176
 msgid "The folder where backups are stored"
 msgstr "Папка содержащая резервные копии"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:111
+#: data/app.gschema.xml.in:126
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -249,11 +925,11 @@ msgstr ""
 "Иерархия папок, в которых сохраняются резервные копии. Расположения могут "
 "быть абсолютными или относительными к домашней папке."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:118
+#: data/app.gschema.xml.in:133
 msgid "UUID"
 msgstr "UUID"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:119
+#: data/app.gschema.xml.in:134
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -261,23 +937,23 @@ msgstr ""
 "Уникальный идентификатор накопителя, который используется для опознавания "
 "накопителя при его подключении."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:123 data/ui/Browser.ui:250
+#: data/app.gschema.xml.in:138 data/ui/Browser.ui:244
 msgid "Name"
 msgstr "Имя"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:124
+#: data/app.gschema.xml.in:139
 msgid "The name of the external drive."
 msgstr "Имя внешнего накопителя."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:128
+#: data/app.gschema.xml.in:143
 msgid "Icon"
 msgstr "Значок"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:129
+#: data/app.gschema.xml.in:144
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Значок внешнего диска в виде сериализованного GIcon."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:134
+#: data/app.gschema.xml.in:149
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -285,15 +961,15 @@ msgstr ""
 "Иерархия папок, в которых сохраняются резервные копии. Расположения могут "
 "быть относительными к диску."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:141
+#: data/app.gschema.xml.in:156
 msgid "The server address"
 msgstr "Адрес сервера"
 
-#: data/org.gnome.DejaDup.gschema.xml.in:142
+#: data/app.gschema.xml.in:157
 msgid "The URI of the remote server location."
 msgstr "URI расположения на удаленном сервере."
 
-#: data/org.gnome.DejaDup.gschema.xml.in:147
+#: data/app.gschema.xml.in:162
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -301,16 +977,7 @@ msgstr ""
 "Иерархия папок, в которых сохраняются резервные копии. Расположения могут "
 "быть абсолютными или относительными к имени узла."
 
-#. Translators: The name is a play on the French phrase "déjà vu" meaning
-#. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
-#. context is itself a reference to both the underlying command line tool
-#. "duplicity" and the act of duplicating data for backup.  As a whole, the
-#. phrase "Déjà Dup" may not be very translatable.
-#: data/org.gnome.DejaDup.metainfo.xml.in:15 deja-dup/main.vala:392
-msgid "Déjà Dup Backups"
-msgstr "Резервные копии Déjà Dup"
-
-#: data/org.gnome.DejaDup.metainfo.xml.in:18
+#: data/app.metainfo.xml.in:18
 msgid ""
 "Déjà Dup is a simple backup tool. It hides the complexity of backing up the "
 "Right Way (encrypted, off-site, and regular) and uses duplicity as the "
@@ -321,32 +988,32 @@ msgstr ""
 "хранение отдельно от компьютера, регулярность копирования) и использует "
 "duplicity в качестве внутреннего интерфейса."
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:20
+#: data/app.metainfo.xml.in:20
 msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
 "Поддержка локальных, дистанционных или облачных расположений резервных "
 "копий, таких как Google Drive"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:21
+#: data/app.metainfo.xml.in:21
 msgid "Securely encrypts and compresses your data"
 msgstr "Надежно шифрует и сжимает данные"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:22
+#: data/app.metainfo.xml.in:22
 msgid "Incrementally backs up, letting you restore from any particular backup"
 msgstr ""
 "Поэтапное резервное копирование, позволяет вам выполнять восстановление из "
 "определённых резервных копий"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:23
+#: data/app.metainfo.xml.in:23
 msgid "Schedules regular backups"
 msgstr "Планирование регулярного резервного копирования"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:24
+#: data/app.metainfo.xml.in:24
 msgid "Integrates well into your GNOME desktop"
 msgstr "Интегрируется на должном уровне с рабочим столом GNOME"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:26
+#: data/app.metainfo.xml.in:26
 msgid ""
 "Déjà Dup focuses on ease of use and recovering from personal, accidental "
 "data loss. If you need a full system backup or an archival program, you may "
@@ -357,25 +1024,36 @@ msgstr ""
 "копирование системы или программа архивации, рассмотрите другие варианты "
 "программ резервного копирования."
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:92
+#: data/app.metainfo.xml.in:86
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Сохраняйте резервные копии автоматически - настройте и забудьте"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:96
+#: data/app.metainfo.xml.in:90
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Восстановление в один момент — просмотрите свои файлы и выберите, что "
 "восстановить"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:100
+#: data/app.metainfo.xml.in:94
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Сохраняйте в облако, сетевой сервер или локальный диск"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:104
+#: data/app.metainfo.xml.in:98
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
 "Возьмите контроль в свои руки, выбирая, что именно вы хотите включить в копию"
+
+#. Translators: Monitor in this sense means something akin to 'watcher', not
+#. a computer screen.  This program acts like a daemon that kicks off
+#. backups at scheduled times.
+#: data/monitor.desktop.in:6 monitor/monitor.vala:130
+msgid "Backup Monitor"
+msgstr "Менеджер резервного копирования"
+
+#: data/monitor.desktop.in:7
+msgid "Schedules backups at regular intervals"
+msgstr "Производит резервное копирование через регулярные интервалы"
 
 #: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
 #: data/ui/MainHeaderBar.ui:52
@@ -384,51 +1062,43 @@ msgstr "Поиск"
 
 #: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
-msgstr "Сканирование резервных копий файлов.."
+msgstr "Сканирование резервных копий файлов…"
 
 #: data/ui/Browser.ui:99
 msgid "Folder is Empty"
 msgstr "Папка пуста"
 
-#: data/ui/Browser.ui:113
+#: data/ui/Browser.ui:110
 msgid "No Results Found"
 msgstr "Не найдено результатов"
 
-#: data/ui/Browser.ui:114
+#: data/ui/Browser.ui:111
 msgid "Try a different search"
 msgstr "Попробуйте поискать по-другому"
 
-#: data/ui/Browser.ui:142
+#: data/ui/Browser.ui:136
 msgid "_Retry"
 msgstr "П_овторить"
 
-#: data/ui/Browser.ui:177
+#: data/ui/Browser.ui:171
 msgid "_Connect"
 msgstr "_Подключиться"
 
-#: data/ui/Browser.ui:202
+#: data/ui/Browser.ui:196
 msgid "Encryption password needed"
 msgstr "Требуется пароль для шифрования"
 
-#: data/ui/Browser.ui:213
+#: data/ui/Browser.ui:207
 msgid "_Enter Password"
 msgstr "_Введите пароль"
 
-#: data/ui/Browser.ui:313
+#: data/ui/Browser.ui:307
 msgid "Location"
 msgstr "Расположение"
-
-#: data/ui/Browser.ui:359 deja-dup/AssistantRestore.vala:65
-msgid "_Restore"
-msgstr "_Восстановить"
 
 #: data/ui/ConfigAutoBackupRow.ui:10
 msgid "Back Up _Automatically"
 msgstr "_Автоматическое резервирование"
-
-#: data/ui/ConfigFolderList.ui:21 deja-dup/ConfigFolderList.vala:66
-msgid "Add"
-msgstr "Добавить"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -504,31 +1174,13 @@ msgstr "_Сведения о резервном копировании"
 msgid "Overview"
 msgstr "Обзор"
 
-#: data/ui/MainWindow.ui:53 deja-dup/AssistantRestore.vala:61
-msgid "Restore"
-msgstr "Восстановить"
-
-#: data/ui/OverviewPage.ui:31
+#: data/ui/OverviewPage.ui:34
 msgid "_Back Up Now"
-msgstr "_Сделать разервную копию сейчас"
-
-#: data/ui/PassphraseDialog.ui:15 deja-dup/Assistant.vala:348
-msgid "_Cancel"
-msgstr "_Отмена"
+msgstr "_Сделать резервную копию сейчас"
 
 #: data/ui/PassphraseDialog.ui:22
 msgid "Con_tinue"
 msgstr "Продол_жить"
-
-#: data/ui/PassphraseDialog.ui:49 deja-dup/AssistantOperation.vala:380
-#: deja-dup/AssistantOperation.vala:441
-msgid "E_ncryption password"
-msgstr "Пароль шифрования"
-
-#: data/ui/PassphraseDialog.ui:71 deja-dup/AssistantOperation.vala:408
-#: deja-dup/MountOperationAssistant.vala:25
-msgid "_Remember password"
-msgstr "_Запомнить пароль"
 
 #: data/ui/PreferencesWindow.ui:17
 msgid "General"
@@ -536,7 +1188,7 @@ msgstr "Общие"
 
 #: data/ui/PreferencesWindow.ui:20
 msgid "Storage"
-msgstr "Носитель"
+msgstr "Хранилище"
 
 #: data/ui/PreferencesWindow.ui:23
 msgid "_Location"
@@ -651,11 +1303,11 @@ msgstr "_Дата"
 msgid "Welcome to Backups"
 msgstr "Добро пожаловать в Резервные копии"
 
-#: data/ui/WelcomePage.ui:22
+#: data/ui/WelcomePage.ui:25
 msgid "Create Your First _Backup"
 msgstr "Создайте свою первую _резервную копию"
 
-#: data/ui/WelcomePage.ui:33
+#: data/ui/WelcomePage.ui:37
 msgid "_Restore From a Previous Backup"
 msgstr "_Восстановление из предыдущей резервной копии"
 
@@ -699,625 +1351,9 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Назад"
 
-#: deja-dup/Assistant.vala:293
-msgid "Co_ntinue"
-msgstr "_Продолжить"
-
-#: deja-dup/Assistant.vala:299
-msgctxt "verb"
-msgid "_Test"
-msgstr "_Проверить"
-
-#: deja-dup/Assistant.vala:334
-msgid "_Resume Later"
-msgstr "П_родолжить позже"
-
-#: deja-dup/Assistant.vala:340
-msgid "_Back"
-msgstr "_Назад"
-
-#: deja-dup/Assistant.vala:342
-msgid "_Close"
-msgstr "_Закрыть"
-
-#: deja-dup/Assistant.vala:359
-msgid "_Forward"
-msgstr "_Далее"
-
-#: deja-dup/AssistantBackup.vala:21
-msgctxt "back up is verb"
-msgid "Back Up"
-msgstr "Создать резервную копию"
-
-#: deja-dup/AssistantBackup.vala:28
-msgctxt "back up is verb"
-msgid "_Back Up"
-msgstr "_Создать резервную копию"
-
-#: deja-dup/AssistantBackup.vala:64
-msgid ""
-"The following folders cannot be backed up because Backups does not have "
-"access to them:"
-msgstr ""
-"Следующие папки не могут быть резервированы, поскольку у Backups нет к ним "
-"доступа:"
-
-#: deja-dup/AssistantBackup.vala:80
-msgid "Creating the first backup.  This may take a while."
-msgstr ""
-"Резервная копия создаётся первый раз. Это может занять некоторое время."
-
-#: deja-dup/AssistantBackup.vala:81
-msgid ""
-"Creating a fresh backup to protect against backup corruption.  This will "
-"take longer than normal."
-msgstr ""
-"Создаётся полная копия для защиты от возможных повреждений. Это может занять "
-"времени больше, чем обычно."
-
-#. Translators:  This is the phrase 'Backing up' in the larger phrase
-#. "Backing up '%s'".  %s is a filename.
-#: deja-dup/AssistantBackup.vala:96
-msgid "Backing up:"
-msgstr "Создается резервная копия для:"
-
-#: deja-dup/AssistantBackup.vala:105
-msgid "Backup Failed"
-msgstr "Резервное копирование не удалось"
-
-#: deja-dup/AssistantBackup.vala:108
-msgid "Backup Finished"
-msgstr "Резервное копирование завершено"
-
-#. Also leave ourselves up if we just finished a restore test.
-#: deja-dup/AssistantBackup.vala:112
-msgid "Your files were successfully backed up and tested."
-msgstr "Резервная копия файлов успешно создана и проверена."
-
-#: deja-dup/AssistantBackup.vala:119
-msgid "Backing Up…"
-msgstr "Резервное копирование..."
-
-#. In the unlikely event the user turned on automatic backups but never
-#. made a backup, we should tell them if we start up and need to be
-#. configured for first time.
-#: deja-dup/AssistantBackup.vala:125 deja-dup/AssistantOperation.vala:879
-msgid "Backups needs your input to continue"
-msgstr "Резервные копии нуждаются в вашем участии для продолжения работы"
-
-#: deja-dup/AssistantBackup.vala:146
-msgid "Backup in progress"
-msgstr "Выполняется резервное копирование"
-
-#: deja-dup/AssistantLocation.vala:15
-msgid "Restore From Where?"
-msgstr "Откуда восстановить?"
-
-#: deja-dup/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "_Местоположение резервной копии"
-
-#: deja-dup/AssistantLocation.vala:22
-msgid "_Search"
-msgstr "П_оиск"
-
-#: deja-dup/AssistantOperation.vala:160
-msgid "Scanning:"
-msgstr "Сканируется:"
-
-#: deja-dup/AssistantOperation.vala:161
-msgid "Scanning…"
-msgstr "Сканирование..."
-
-#: deja-dup/AssistantOperation.vala:265
-msgid "_Details"
-msgstr "_Подробности"
-
-#: deja-dup/AssistantOperation.vala:312
-msgid "In order to continue, the following packages need to be installed:"
-msgstr "Чтобы продолжить, необходимо установить следующие пакеты:"
-
-#: deja-dup/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Разрешить восстановление без пароля"
-
-#: deja-dup/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "Защитите _паролем резервную копию"
-
-#: deja-dup/AssistantOperation.vala:364
-msgid ""
-"You will need your password to restore your files. You might want to write "
-"it down."
-msgstr ""
-"Потребуется указать пароль для восстановления файлов. Возможно, его лучше "
-"записать."
-
-#: deja-dup/AssistantOperation.vala:396
-msgid "Confir_m password"
-msgstr "Подвер_дить пароль"
-
-#: deja-dup/AssistantOperation.vala:427
-msgid ""
-"In order to check that you will be able to retrieve your files in the case "
-"of an emergency, please enter your encryption password again to perform a "
-"brief restore test."
-msgstr ""
-"Чтобы проверить возможность доступа к вашим файлам в случае экстренной "
-"ситуации, пожалуйста, снова введите пароль для доступа к зашифрованным "
-"данным, чтобы выполнить проверку на восстановление."
-
-#: deja-dup/AssistantOperation.vala:449
-msgid "Test every two _months"
-msgstr "Проверять каждые два _месяца"
-
-#: deja-dup/AssistantOperation.vala:480
-msgid "_Grant Access"
-msgstr "_Разрешить доступ"
-
-#: deja-dup/AssistantOperation.vala:542
-msgid "Install Packages"
-msgstr "Установить пакеты"
-
-#: deja-dup/AssistantOperation.vala:557
-msgid "Summary"
-msgstr "Сводка"
-
-#: deja-dup/AssistantOperation.vala:579
-msgid "Restore Test"
-msgstr "Проверка восстановления"
-
-#: deja-dup/AssistantOperation.vala:587
-msgid "Grant Access"
-msgstr "_Разрешить доступ"
-
-#: deja-dup/AssistantOperation.vala:796
-msgid "Set Encryption Password"
-msgstr "Установка пароля шифрования"
-
-#: deja-dup/AssistantOperation.vala:798
-msgid "Require Password?"
-msgstr "Хотите ли вы установить пароль?"
-
-#: deja-dup/AssistantOperation.vala:800
-msgid "Encryption Password Needed"
-msgstr "Требуется пароль шифрования"
-
-#: deja-dup/AssistantOperation.vala:847
-msgid "Backups needs your encryption password to continue"
-msgstr "Для продолжения резервного копирования необходим пароль шифрования"
-
-#: deja-dup/AssistantOperation.vala:919
-msgctxt "verb"
-msgid "_Install"
-msgstr "_Установить"
-
-#: deja-dup/AssistantOperation.vala:924
-msgid "Backups needs to install packages to continue"
-msgstr "Для продолжения резервного копирования необходимо установить пакеты"
-
-#: deja-dup/AssistantRestore.vala:139
-msgid "Restore files to _original locations"
-msgstr "Восстановить файлы на их прежнее местоположение"
-
-#: deja-dup/AssistantRestore.vala:150
-msgid "Restore to _specific folder"
-msgstr "Восстановить в _указанную папку"
-
-#: deja-dup/AssistantRestore.vala:178
-msgid "Restore to _specific folder:"
-msgstr "Восстановить в _конкретную папку:"
-
-#: deja-dup/AssistantRestore.vala:187
-msgid "Backups does not have permission to restore the following files:"
-msgstr "Backups не имеет разрешения на восстановление следующих файлов:"
-
-#: deja-dup/AssistantRestore.vala:251
-msgid "Backup location"
-msgstr "Местоположение резервных копий"
-
-#. Translators: label for the date from which we are restoring
-#: deja-dup/AssistantRestore.vala:266
-msgid "Restore date"
-msgstr "Дата восстановления"
-
-#. Translators: label for the folder into which we putting restored files
-#: deja-dup/AssistantRestore.vala:275
-msgid "Restore folder"
-msgstr "Восстановить в папку"
-
-#: deja-dup/AssistantRestore.vala:299
-msgid "Checking for Backups…"
-msgstr "Проверка резервных копий..."
-
-#: deja-dup/AssistantRestore.vala:307
-msgid "Restore From When?"
-msgstr "С какого момента восстановить?"
-
-#: deja-dup/AssistantRestore.vala:318
-msgid "Restore to Where?"
-msgstr "Куда восстановить файлы?"
-
-#. Translators:  This is the word 'Restoring' in the phrase
-#. "Restoring '%s'".  %s is a filename.
-#: deja-dup/AssistantRestore.vala:351
-msgid "Restoring:"
-msgstr "Востанавливается:"
-
-#: deja-dup/AssistantRestore.vala:363
-msgid "No backups to restore"
-msgstr "Нет резервных копий для восстановления"
-
-#: deja-dup/AssistantRestore.vala:446
-msgid "Original location"
-msgstr "Первоначальное местоположение"
-
-#: deja-dup/AssistantRestore.vala:460
-msgid "File to restore"
-msgid_plural "Files to restore"
-msgstr[0] "Файл для восстановления"
-msgstr[1] "Файла для восстановления"
-msgstr[2] "Файлов для восстановления"
-
-#: deja-dup/AssistantRestore.vala:485
-msgid "Restore Failed"
-msgstr "Восстановление не удалось"
-
-#: deja-dup/AssistantRestore.vala:487
-msgid "Restore Finished"
-msgstr "Восстановление завершено"
-
-#. if it *is* visible, a header will be set already
-#: deja-dup/AssistantRestore.vala:490
-msgid "Your files were successfully restored."
-msgstr "Ваши файлы были успешно восстановлены"
-
-#: deja-dup/AssistantRestore.vala:493
-msgid "Your file was successfully restored."
-msgid_plural "Your files were successfully restored."
-msgstr[0] "Ваш файл был успешно восстановлен."
-msgstr[1] "Ваши файлы были успешно восстановлены."
-msgstr[2] "Ваши файлы были успешно восстановлены."
-
-#: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
-msgid "Restoring…"
-msgstr "Восстановление..."
-
-#: deja-dup/AssistantRestore.vala:570
-msgid "Restore in progress"
-msgstr "Восстановление в процессе выполнения"
-
-#: deja-dup/Background.vala:77
-msgid "Cannot back up automatically"
-msgstr "Невозможно автоматическое резервное копирование"
-
-#: deja-dup/Browser.vala:253
-msgid "Authentication needed"
-msgstr "Необходима аутентификация"
-
-#: deja-dup/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1083
-msgid "No backup files found"
-msgstr "Резервных копий не обнаружено"
-
-#. Translators: this is used when automatic updates are enabled
-#: deja-dup/ConfigAutoBackupRow.vala:34
-msgid "Next backup is today."
-msgstr "Следующее резервное копирование - сегодня."
-
-#. Translators: this is used when automatic updates are disabled
-#: deja-dup/ConfigAutoBackupRow.vala:36
-msgid "Next backup would be today."
-msgstr "Следующее резервное копирование было бы сегодня."
-
-#. Translators: this is used when automatic updates are enabled
-#: deja-dup/ConfigAutoBackupRow.vala:43
-msgid "Next backup is tomorrow."
-msgstr "Следующее резервное копирование - завтра."
-
-#. Translators: this is used when automatic updates are disabled
-#: deja-dup/ConfigAutoBackupRow.vala:45
-msgid "Next backup would be tomorrow."
-msgstr "Следующее резервное копирование было бы завтра."
-
-#. Translators: this is used when automatic updates are enabled
-#: deja-dup/ConfigAutoBackupRow.vala:53
-#, c-format
-msgid "Next backup is %d day from now."
-msgid_plural "Next backup is %d days from now."
-msgstr[0] "Следующее резервное копирование через %d день."
-msgstr[1] "Следующее резервное копирование через %d дня."
-msgstr[2] "Следующее резервное копирование через %d дней."
-
-#. Translators: this is used when automatic updates are disabled
-#: deja-dup/ConfigAutoBackupRow.vala:58
-#, c-format
-msgid "Next backup would be %d day from now."
-msgid_plural "Next backup would be %d days from now."
-msgstr[0] "Следующее резервное копирование было бы через %d день."
-msgstr[1] "Следующее резервное копирование было бы через %d дня."
-msgstr[2] "Следующее резервное копирование было бы через %d дней."
-
-#: deja-dup/ConfigDeleteRow.vala:12
-msgid "At least three months"
-msgstr "Не менее трех месяцев"
-
-#: deja-dup/ConfigDeleteRow.vala:13
-msgid "At least six months"
-msgstr "Минимум шесть месяцев"
-
-#: deja-dup/ConfigDeleteRow.vala:14
-msgid "At least a year"
-msgstr "Минимум год"
-
-#: deja-dup/ConfigDeleteRow.vala:15
-msgid "Forever"
-msgstr "Вечно"
-
-#: deja-dup/ConfigDeleteRow.vala:22
-#, c-format
-msgid "At least %d day"
-msgid_plural "At least %d days"
-msgstr[0] "Минимум %d день"
-msgstr[1] "Минимум %d дня"
-msgstr[2] "Минимум %d дней"
-
-#: deja-dup/ConfigFolderList.vala:63
-msgid "Choose Folders"
-msgstr "Выберите папки"
-
-#. *** Basic entries ***
-#: deja-dup/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
-msgid "Google Drive"
-msgstr "Google Диск"
-
-#: deja-dup/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
-msgid "Microsoft OneDrive"
-msgstr "Microsoft OneDrive"
-
-#: deja-dup/ConfigLocationCombo.vala:63
-msgid "Local Folder"
-msgstr "Локальная папка"
-
-#: deja-dup/ConfigLocationCombo.vala:65
-msgid "Network Server"
-msgstr "Сетевой сервер"
-
-#. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: deja-dup/ConfigLocationCombo.vala:70
-msgid "Google Cloud Storage"
-msgstr "Облачное хранилище Google"
-
-#: deja-dup/ConfigLocationCombo.vala:72
-msgid "OpenStack Swift"
-msgstr "OpenStack Swift"
-
-#: deja-dup/ConfigLocationCombo.vala:74
-msgid "Rackspace Cloud Files"
-msgstr "Облачные файлы Rackspace"
-
-#: deja-dup/ConfigLocationCombo.vala:76
-msgid "Amazon S3"
-msgstr "Amazon S3"
-
-#: deja-dup/ConfigPeriodRow.vala:19
-msgid "Daily"
-msgstr "Ежедневно"
-
-#: deja-dup/ConfigPeriodRow.vala:22
-msgid "Weekly"
-msgstr "Еженедельно"
-
-#: deja-dup/ConfigPeriodRow.vala:29
-#, c-format
-msgid "Every %d day"
-msgid_plural "Every %d days"
-msgstr[0] "Каждый %d день"
-msgstr[1] "Каждые %d дня"
-msgstr[2] "Каждые %d дней"
-
-#: deja-dup/FolderChooserButton.vala:18
-msgid "_Choose Folder…"
-msgstr "_Выберите папку…"
-
-#: deja-dup/FolderChooserButton.vala:26
-msgid "Choose Folder"
-msgstr "Выберите папку"
-
-#: deja-dup/MountOperationAssistant.vala:23
-msgid "_Username"
-msgstr "_Имя пользователя"
-
-#: deja-dup/MountOperationAssistant.vala:24
-msgid "_Password"
-msgstr "_Пароль"
-
-#: deja-dup/MountOperationAssistant.vala:62
-msgid "Location not available"
-msgstr "Местоположение не доступно"
-
-#: deja-dup/MountOperationAssistant.vala:77
-msgid "Backups needs your password to continue"
-msgstr "Для продолжения резервного копирования требуется ваш пароль"
-
-#: deja-dup/MountOperationAssistant.vala:143
-msgid "Connect _anonymously"
-msgstr "Подключиться _анонимно"
-
-#: deja-dup/MountOperationAssistant.vala:148
-msgid "Connect as u_ser"
-msgstr "Подключиться как п_ользователь"
-
-#. Translators: this is a Windows networking domain
-#: deja-dup/MountOperationAssistant.vala:192
-msgid "_Domain"
-msgstr "_Домен"
-
-#: deja-dup/Notifications.vala:13
-msgid "Starting scheduled backup"
-msgstr "Запуск запланированного резервного копирования"
-
-#: deja-dup/Notifications.vala:18
-msgid "Scheduled backup delayed"
-msgstr "Отложено создание резервной копии по расписанию"
-
-#: deja-dup/Notifications.vala:25
-msgid "Backup completed"
-msgstr "Резервное копирование выполнено"
-
-#: deja-dup/Notifications.vala:30
-msgid "Backup finished"
-msgstr "Создание резервной копии завершено"
-
-#: deja-dup/Notifications.vala:31
-msgid "But not all files were successfully backed up."
-msgstr "Но не все файлы были успешно резервированы."
-
-#: deja-dup/Notifications.vala:38
-msgid "Backup failed"
-msgstr "Сбой архивации"
-
-#: deja-dup/Notifications.vala:50
-msgid "Restore failed"
-msgstr "Восстановление не удалось"
-
-#: deja-dup/Notifications.vala:71
-msgid "Keep your files safe by backing up regularly"
-msgstr ""
-"Сохраняйте свои файлы в безопасности, регулярно создавая резервные копии"
-
-#: deja-dup/Notifications.vala:72
-msgid ""
-"Important documents, data, and settings can be protected by storing them in "
-"a backup. In the case of a disaster, you would be able to recover them from "
-"that backup."
-msgstr ""
-"Важные документы, данные и настройки можно защитить, создавая их резервную "
-"копию. В случае потери данных вы сможете восстановить их из этой резервной "
-"копии."
-
-#: deja-dup/Notifications.vala:77
-msgid "Don’t Show Again"
-msgstr "Не показывать больше"
-
-#: deja-dup/Notifications.vala:78
-msgid "Open Backups"
-msgstr "Открытые резервные копии"
-
-#: deja-dup/PreferencesWindow.vala:36
-msgid ""
-"Restic is a another backup tool that can be used under the hood instead of "
-"Duplicity."
-msgstr ""
-"Restic - это еще один инструмент резервного копирования, который можно "
-"использовать вместо Duplicity."
-
-#: deja-dup/PreferencesWindow.vala:37
-msgid ""
-"It is hoped that Restic will enable new features more easily in the future."
-msgstr "Есть надежда, что в будущем Restic будет легче внедрять новые функции."
-
-#: deja-dup/PreferencesWindow.vala:39
-msgid "This is an experimental feature and may be removed at any time."
-msgstr "Это экспериментальная функция, и она может быть удалена в любое время."
-
-#: deja-dup/PreferencesWindow.vala:40
-msgid "Use caution, but any testing you can manage is appreciated."
-msgstr ""
-"Будьте осторожны, но любое тестирование, с которым вы можете справиться, "
-"будет оценено по достоинству."
-
-#. Translators: the %s formatting is a link start and end.
-#: deja-dup/PreferencesWindow.vala:43
-#, c-format
-msgid "Please %sreport%s successes or failures when enabled."
-msgstr "Пожалуйста, укажите %sreport%s успехов или неудач при включении."
-
-#. Check for some really simple/common friendly names
-#: deja-dup/RecentBackupRow.vala:43
-msgid "Today"
-msgstr "Сегодня"
-
-#: deja-dup/RecentBackupRow.vala:45
-msgid "Yesterday"
-msgstr "Вчера"
-
-#. Translators: sentence case
-#: deja-dup/RecentBackupRow.vala:54
-#, c-format
-msgid "%d day ago"
-msgid_plural "%d days ago"
-msgstr[0] "%d день назад"
-msgstr[1] "%d дня назад"
-msgstr[2] "%d дней назад"
-
-#. Translators: this is used like "Most Recent Backup: None"
-#: deja-dup/RecentBackupRow.vala:65
-msgctxt "backups"
-msgid "None"
-msgstr "Нет"
-
-#. Translators: %x is the current date, %X is the current time.
-#. This will be in a list with other strings that just have %x (the
-#. current date).  So make sure if you change this, it still makes
-#. sense in that context.
-#: deja-dup/TimeCombo.vala:80
-#, c-format
-msgid "%x %X"
-msgstr "%x %X"
-
-#: deja-dup/main.vala:22 monitor/monitor.vala:19
-msgid "Show version"
-msgstr "Показать версию"
-
-#: deja-dup/main.vala:23
-msgid "Restore given files"
-msgstr "Восстановить данные файлы"
-
-#: deja-dup/main.vala:24
-msgid "Immediately start a backup"
-msgstr "Немедлено начать архивирование"
-
-#: deja-dup/main.vala:86
-msgid "Please list files to restore"
-msgstr "Пожалуйста, перечислите файлы для восстановления"
-
-#: deja-dup/main.vala:92 deja-dup/main.vala:106
-msgid "An operation is already in progress"
-msgstr "Операция уже выполняется"
-
-#: deja-dup/main.vala:286
-msgid "translator-credits"
-msgstr ""
-"Launchpad Contributions:\n"
-"  Aleksey Kabanov https://launchpad.net/~ak099\n"
-"  Alex https://launchpad.net/~misterzixy\n"
-"  Alexey Ivanov https://launchpad.net/~alexey-ivanov\n"
-"  Alexey Rusaleev https://launchpad.net/~alexey-rusaleev\n"
-"  Alexey Stepankov https://launchpad.net/~xeurun\n"
-"  AsstZD https://launchpad.net/~eskaer-spamsink\n"
-"  Dmitriy Kulikov https://launchpad.net/~kulikoff\n"
-"  Dmitry Shachnev https://launchpad.net/~mitya57\n"
-"  Eugene Roskin https://launchpad.net/~lowrider\n"
-"  Ilya Telegin https://launchpad.net/~devi29rus\n"
-"  Ivan Akulov https://launchpad.net/~gxoptg\n"
-"  Michael Terry https://launchpad.net/~mterry\n"
-"  Mihail Kravsun https://launchpad.net/~ozzymk\n"
-"  Nicholas Guriev https://launchpad.net/~mymedia\n"
-"  Nick Becker https://launchpad.net/~nickbecker\n"
-"  Nikita Putko https://launchpad.net/~ktototam98\n"
-"  Sergey Basalaev https://launchpad.net/~sbasalaev\n"
-"  Sergey Sedov https://launchpad.net/~serg-sedov\n"
-"  Stanislav Hanzhin https://launchpad.net/~hanzhin-stas\n"
-"  Vladimir Yakovlev https://launchpad.net/~nagos\n"
-"  deusbase https://launchpad.net/~deusbase\n"
-"  diablo https://launchpad.net/~diablo\n"
-"  poruchik https://launchpad.net/~lyubutinan\n"
-"  Илья Калитко https://launchpad.net/~kalitko-ilya007\n"
-"  ☠Jay ZDLin☠ https://launchpad.net/~black-buddha666"
-
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:497
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s на %2$s"
@@ -1327,17 +1363,17 @@ msgstr "%1$s на %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "Резервное копирование начнётся после подключения %s."
 
-#: libdeja/BackendDrive.vala:223 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:266 libdeja/BackendRemote.vala:157
 msgid "Storage location not available"
 msgstr "Местоположение хранилища недоступно"
 
-#: libdeja/BackendDrive.vala:223
+#: libdeja/BackendDrive.vala:266
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "Ожидание подключения  ‘%s’ ..."
+msgstr "Ожидание подключения  ‘%s’…"
 
 #: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
-#: monitor/ReadyWatcher.vala:154
+#: monitor/ReadyWatcher.vala:148
 msgid "Backup will begin when a network connection becomes available."
 msgstr "Резервное копирование будет начато при подключении к сети."
 
@@ -1354,7 +1390,7 @@ msgid "%s on Microsoft OneDrive"
 msgstr "%s на Microsoft OneDrive"
 
 #. Duplicity requires a folder, and this is a reasonable restriction.
-#: libdeja/BackendMicrosoft.vala:106
+#: libdeja/BackendMicrosoft.vala:105
 msgid "You must provide a Microsoft OneDrive folder."
 msgstr "Вы должны предоставить папку Microsoft OneDrive."
 
@@ -1374,7 +1410,7 @@ msgstr "%s учетные данные для Déjà Dup"
 #. to get random strings, but they are only 37 chars long. So just add two.
 #. And show the oauth consent page finally
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:247
+#: libdeja/BackendOAuth.vala:248
 #, c-format
 msgid "You first need to allow Backups to access your %s account."
 msgstr ""
@@ -1386,7 +1422,7 @@ msgstr "Сетевой сервер недоступен"
 
 #: libdeja/BackendRemote.vala:158
 msgid "Waiting for a network connection…"
-msgstr "Ожидание сетевого подключения ..."
+msgstr "Ожидание сетевого подключения…"
 
 #: libdeja/BackendRemote.vala:171
 msgid "Could not mount storage location."
@@ -1414,33 +1450,33 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Сетевые местоположения Samba должны включать имя узла и общего ресурса."
 
-#: libdeja/CommonUtils.vala:458
+#: libdeja/CommonUtils.vala:467
 msgid "Access Granted"
 msgstr "Доступ предоставлен"
 
-#: libdeja/CommonUtils.vala:459
+#: libdeja/CommonUtils.vala:468
 msgid "Backups will now continue. You can close this page."
 msgstr ""
 "Теперь резервное копирование будет продолжено. Вы можете закрыть эту "
 "страницу."
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:538
+#: libdeja/CommonUtils.vala:550
 #, c-format
 msgid "Home (%s)"
 msgstr "Домашняя папка (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:543
+#: libdeja/CommonUtils.vala:555
 msgid "Home"
-msgstr "Главная"
+msgstr "Домашняя папка"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:548
+#: libdeja/CommonUtils.vala:560
 msgid "Trash"
 msgstr "Корзина"
 
-#: libdeja/CommonUtils.vala:610
+#: libdeja/CommonUtils.vala:622
 msgid "Backup encryption password"
 msgstr "Сделать резервную копию пароля шифрования"
 
@@ -1454,22 +1490,26 @@ msgstr ""
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
-msgstr "Резервное копирование..."
+msgstr "Резервное копирование…"
 
 #: libdeja/Operation.vala:51
 msgid "Checking for backups…"
-msgstr "Проверка резервных копий..."
+msgstr "Проверка резервных копий…"
 
 #: libdeja/Operation.vala:53
 msgid "Listing files…"
-msgstr "Список файлов..."
+msgstr "Список файлов…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:381
-#: libdeja/duplicity/DuplicityJob.vala:392
-#: libdeja/duplicity/DuplicityJob.vala:428
+#: libdeja/duplicity/DuplicityJob.vala:372
+#: libdeja/duplicity/DuplicityJob.vala:383
+#: libdeja/duplicity/DuplicityJob.vala:419
 msgid "Preparing…"
-msgstr "Выполняется подготовка..."
+msgstr "Выполняется подготовка…"
+
+#: libdeja/Operation.vala:96
+msgid "Custom tool setup failed."
+msgstr "Не удалось выполнить настройку пользовательского инструмента."
 
 #: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
@@ -1477,7 +1517,7 @@ msgstr "Проверка резервной копии…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
-msgstr "Восстановление файлов..."
+msgstr "Восстановление файлов…"
 
 #: libdeja/OperationVerify.vala:81
 msgid ""
@@ -1487,20 +1527,20 @@ msgstr ""
 "Вероятно, ваша резервная копия повреждена. Удалите резервную копию и "
 "попробуйте снова."
 
-#: libdeja/duplicity/DuplicityJob.vala:79
-#: libdeja/duplicity/DuplicityJob.vala:149
+#: libdeja/duplicity/DuplicityJob.vala:70
+#: libdeja/duplicity/DuplicityJob.vala:140
 msgid "Paused (no network)"
 msgstr "Приостановлено (нет сети)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:538 libdeja/restic/ResticJob.vala:287
+#: libdeja/duplicity/DuplicityJob.vala:529 libdeja/restic/ResticJob.vala:287
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Резервное местоположение слишком маленькое. Попробуйте использовать место, "
 "содержащее не менее %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:563
+#: libdeja/duplicity/DuplicityJob.vala:554
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1509,15 +1549,15 @@ msgstr ""
 "В месте резервного копирования недостаточно свободного места. Попробуйте "
 "использовать место с объемом не менее %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:575
+#: libdeja/duplicity/DuplicityJob.vala:589
 msgid "Cleaning up…"
-msgstr "Очистка..."
+msgstr "Очистка…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
 #. everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:678
+#: libdeja/duplicity/DuplicityJob.vala:669
 msgid ""
 "Could not back up the following files.  Please make sure you are able to "
 "open them."
@@ -1528,7 +1568,7 @@ msgstr ""
 #. OK, we succeeded yay!  But some files didn't actually restore
 #. because we couldn't write to them.  So tell the user so they
 #. don't think everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:694
+#: libdeja/duplicity/DuplicityJob.vala:685
 msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
@@ -1543,25 +1583,25 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:714
-#: libdeja/duplicity/DuplicityJob.vala:1102 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:705
+#: libdeja/duplicity/DuplicityJob.vala:1093 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Не удалось (неизвестная ошибка)"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:917
+#: libdeja/duplicity/DuplicityJob.vala:908
 msgid "Bad encryption password."
-msgstr "Неверный пароль шифрования"
+msgstr "Неверный пароль шифрования."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:966
+#: libdeja/duplicity/DuplicityJob.vala:957
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Не удалось восстановить  ‘%s’: файл не найден в резервной копии"
 
-#: libdeja/duplicity/DuplicityJob.vala:977
+#: libdeja/duplicity/DuplicityJob.vala:968
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1572,53 +1612,53 @@ msgstr ""
 "избежание непредсказуемых последствий, рекомендуется создать резервную копию "
 "на другом носителе."
 
-#: libdeja/duplicity/DuplicityJob.vala:980
+#: libdeja/duplicity/DuplicityJob.vala:971
 msgid "Computer name changed"
 msgstr "Изменилось название компьютера"
 
-#: libdeja/duplicity/DuplicityJob.vala:1015
+#: libdeja/duplicity/DuplicityJob.vala:1006
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Доступ запрещён при попытке создать ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:1019
-#: libdeja/duplicity/DuplicityJob.vala:1023
+#: libdeja/duplicity/DuplicityJob.vala:1010
+#: libdeja/duplicity/DuplicityJob.vala:1014
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
-msgstr "Доступ запрещён при попытке прочитать ‘%s’"
+msgstr "Доступ запрещён при попытке прочитать ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1027
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
-msgstr "Доступ запрещён при попытке удаления ‘%s’"
+msgstr "Доступ запрещён при попытке удаления ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1034
+#: libdeja/duplicity/DuplicityJob.vala:1025
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Носитель ‘%s’ не существует."
 
-#: libdeja/duplicity/DuplicityJob.vala:1040
-#: libdeja/duplicity/DuplicityJob.vala:1073
+#: libdeja/duplicity/DuplicityJob.vala:1031
+#: libdeja/duplicity/DuplicityJob.vala:1064
 msgid "No space left."
 msgstr "Не осталось свободного места."
 
-#: libdeja/duplicity/DuplicityJob.vala:1062
+#: libdeja/duplicity/DuplicityJob.vala:1053
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Ошибка чтения файла ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1064
+#: libdeja/duplicity/DuplicityJob.vala:1055
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Ошибка записи файла ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1075
+#: libdeja/duplicity/DuplicityJob.vala:1066
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Не осталось свободного места на ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1133
+#: libdeja/duplicity/DuplicityJob.vala:1124
 msgid "Uploading…"
 msgstr "Передача…"
 
@@ -1672,513 +1712,10 @@ msgstr ""
 "Для резервного копирования требуется как минимум версия %d.%d.%.2d restic, "
 "но найдена только версия %d.%d.%.2d"
 
-#: monitor/ReadyWatcher.vala:159
+#: monitor/ReadyWatcher.vala:153
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 "Резервное копирование начнется, когда будет доступно безлимитное сетевое "
 "соединение."
 
-#~ msgid "Keep your important documents safe from disaster"
-#~ msgstr "Сохраняйте важные документы в безопасности от возможных катастроф"
-
-#~ msgid "Change your backup settings"
-#~ msgstr "Изменить параметры резервного копирования"
-
-#~ msgid "Keep your important files safe in a backup."
-#~ msgstr "Храните важные файлы в резервной копии."
-
-#~ msgid "Back up _automatically"
-#~ msgstr "Резервное копирование _автоматически"
-
-#~ msgid "Last backup was today."
-#~ msgstr "Последнее резервное копирование было сегодня."
-
-#~ msgid "Last backup was yesterday."
-#~ msgstr "Последнее резервное копирование было вчера."
-
-#~ msgid "Last backup was %d day ago."
-#~ msgid_plural "Last backup was %d days ago."
-#~ msgstr[0] "Последнее резервное копирование было %d день назад."
-#~ msgstr[1] "Последнее резервное копирование было %d дня назад."
-#~ msgstr[2] "Последнее резервное копирование было %d дней назад."
-
-#~ msgid "No backup scheduled."
-#~ msgstr "Создание резервных копий не запланировано."
-
-#~ msgid ""
-#~ "Please note that you must choose a new storage location, rather than "
-#~ "convert an existing backup."
-#~ msgstr ""
-#~ "Обратите внимание, что необходимо выбрать новое место хранения, а не "
-#~ "преобразовывать существующую резервную копию."
-
-#~ msgid ""
-#~ "The folder path where backups are stored. Paths can be absolute or "
-#~ "relative to the host."
-#~ msgstr ""
-#~ "Путь к каталогу для хранения резервных копий. Может быть абсолютным или "
-#~ "относительным."
-
-#~ msgid "Automatic backup"
-#~ msgstr "Автоматическое резервное копирование"
-
-#~ msgid "_Show password"
-#~ msgstr "_Показать пароль"
-
-#~ msgid "Preferences"
-#~ msgstr "Параметры"
-
-#~ msgid "Choose destination for restored files"
-#~ msgstr "Выберите местоположение для восстанавливаемых файлов"
-
-#~ msgid "Restore _folder"
-#~ msgstr "Восстановить в _папку"
-
-#~ msgid "Choose folders"
-#~ msgstr "Выберите каталоги"
-
-#~ msgid "_Add"
-#~ msgstr "_Добавить"
-
-#~ msgid "_OK"
-#~ msgstr "_OK"
-
-#~ msgid "Connect to Server"
-#~ msgstr "Подключиться к серверу"
-
-#~ msgid "S_how password"
-#~ msgstr "_Показать пароль"
-
-#~ msgid "_Open Backup Settings"
-#~ msgstr "_Открыть настройки резервного копирования"
-
-#~ msgid ""
-#~ "Not all files were successfully backed up.  See dialog for more details."
-#~ msgstr ""
-#~ "Не все файлы были добавлены в резервную копию. См. диалог, для получения "
-#~ "дополнительных сведений."
-
-#~ msgid "Could not display %s"
-#~ msgstr "Не удалось отобразить %s"
-
-#~ msgid "File"
-#~ msgstr "Файл"
-
-#~ msgid "Categories"
-#~ msgstr "Категории"
-
-#~ msgid ""
-#~ "Old backups will be deleted earlier if the storage location is low on "
-#~ "space."
-#~ msgstr ""
-#~ "Старые резервные копии будут удалены раньше, если не будет хватать места "
-#~ "для хранения."
-
-#~ msgid "Scheduling"
-#~ msgstr "Планирование"
-
-#~ msgid "Ubuntu One"
-#~ msgstr "Ubuntu One"
-
-#~ msgid "Could not restore ‘%s’: Not a valid file location"
-#~ msgstr "Невозможно восстановить ‘%s’: Некорректное местоположение файла"
-
-#~ msgid "Backup location is too small.  Try using one with more space."
-#~ msgstr ""
-#~ "Недостаточно места для резервного копирования. Попробуйте использовать "
-#~ "другой носитель."
-
-#~ msgid "Backup location does not have enough free space."
-#~ msgstr "Недостаточно свободного места для резервного копирования"
-
-#~ msgid "Waiting for %s to be configured in your backup settings…"
-#~ msgstr "Ожидание настройки %s в параметрах резервного копирования…"
-
-#~ msgid "Backup will begin when ‘%s’ has Files support enabled"
-#~ msgstr ""
-#~ "Резервное копирование начнётся, после включения поддержки Files для ‘%s’"
-
-#~ msgid "Déjà Dup Backup Tool"
-#~ msgstr "Программа резервного копирования Déjà Dup"
-
-#~ msgid "Whether to request the root password"
-#~ msgstr "Запрашивать пароль администратора?"
-
-#~ msgid ""
-#~ "Whether to request the root password when backing up from or restoring to "
-#~ "system folders."
-#~ msgstr ""
-#~ "Запрашивать пароль администратора во время процесса резервного "
-#~ "копирования или восстановления в системные папки?"
-
-#~ msgid "Amazon S3 Access Key ID"
-#~ msgstr "Ключ доступа ID Amazon S3"
-
-#~ msgid "Your Amazon S3 Access Key Identifier. This acts as your S3 username."
-#~ msgstr ""
-#~ "Ваш S3 Access Key Identifier. Выступает в роли вашего имени пользователя "
-#~ "на S3."
-
-#~ msgid "The Amazon S3 bucket name to use"
-#~ msgstr "Имя набора (bucket) Amazon S3"
-
-#~ msgid ""
-#~ "Which Amazon S3 bucket to store files in. This does not need to exist "
-#~ "already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "В каком наборе (bucket) Amazon S3 хранить файлы. Его наличие не "
-#~ "обязательно. Только действительное имя хоста допустимо."
-
-#~ msgid "The Amazon S3 folder"
-#~ msgstr "Папка на Amazon S3"
-
-#~ msgid ""
-#~ "An optional folder name to store files in. This folder will be created in "
-#~ "the chosen bucket."
-#~ msgstr ""
-#~ "Необязательное название папки, в которой хранятся файлы. Папка будет "
-#~ "создана в выбранном пространстве."
-
-#~ msgid "Google Cloud Storage Access Key ID"
-#~ msgstr "Идентификатор ключа доступа облачного хранилища Google"
-
-#~ msgid ""
-#~ "Your Google Cloud Storage Access Key Identifier. This acts as your Google "
-#~ "Cloud Storage username."
-#~ msgstr ""
-#~ "Идентификатор ключа доступа облачного хранилища Google, будет "
-#~ "использоваться как имя пользователя облачного хранилища Google."
-
-#~ msgid "The Google Cloud Storage bucket name to use"
-#~ msgstr "Задействуемое имя корзины облачного хранилища Google"
-
-#~ msgid ""
-#~ "Which Google Cloud Storage bucket to store files in. This does not need "
-#~ "to exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "В какой корзине облачного хранилища Google сохранять файлы. Нет "
-#~ "необходимости в её предварительном создании. Можно использовать только "
-#~ "допустимые строки наименования узла."
-
-#~ msgid "The Google Cloud Storage folder"
-#~ msgstr "Папка облачного хранилища Google"
-
-#~ msgid "The Rackspace Cloud Files container"
-#~ msgstr "Контейнер Rackspace Cloud Files"
-
-#~ msgid ""
-#~ "Which Rackspace Cloud Files container to store files in. This does not "
-#~ "need to exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "Используемый контейнер Rackspace Cloud Files. Он может еще не "
-#~ "существовать. Допустимы лишь правильные сетевые имена компьютеров."
-
-#~ msgid "Your Rackspace username"
-#~ msgstr "Ваше имя пользователя в Rackspace"
-
-#~ msgid "This is your username for the Rackspace Cloud Files service."
-#~ msgstr "Это ваше имя пользователя в службе Rackspace Cloud Files."
-
-#~ msgid "Account ID"
-#~ msgstr "ID учётной записи"
-
-#~ msgid "The unique ID for the GNOME Online Account."
-#~ msgstr "Уникальный ID онлайн учётной записи GNOME."
-
-#~ msgid "The type of account"
-#~ msgstr "Тип учётной записи"
-
-#~ msgid "The cached type of account that ID represents."
-#~ msgstr "Закэшированный тип учётной записи, представляющий собой ID."
-
-#~ msgid "The OpenStack Swift container"
-#~ msgstr "Контейнер OpenStack Swift"
-
-#~ msgid ""
-#~ "Which OpenStack Swift container to store files in. This does not need to "
-#~ "exist already. Only legal hostname strings are valid."
-#~ msgstr ""
-#~ "Расположение контейнера для сохранения файлов в OpenStack Swift. Выхода "
-#~ "из системы не требуется. Можно использовать только допустимые строки "
-#~ "наименования узла."
-
-#~ msgid "Your OpenStack username"
-#~ msgstr "Ваше имя пользователя в OpenStack"
-
-#~ msgid "This is your username for the OpenStack Swift service."
-#~ msgstr "Ваше имя пользователя в службе OpenStack Swift."
-
-#~ msgid "Your OpenStack tenant"
-#~ msgstr "Ваш арендатор OpenStack"
-
-#~ msgid "This is your tenant for the OpenStack Swift service."
-#~ msgstr "Это ваш арендатор для службы OpenStack Swift."
-
-#~ msgid "Authentication URL"
-#~ msgstr "URL аутентификации"
-
-#~ msgid ""
-#~ "This is the Authentication URL, or keystone URL for the OpenStack service"
-#~ msgstr "Это URL для аутентификации или URL Keystone для службы OpenStack"
-
-#~ msgid "Privileges are required to restore files to system locations"
-#~ msgstr "Для восстановления файлов в системных папках требуются привилегии"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Help"
-#~ msgstr "Справка"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Shortcuts"
-#~ msgstr "Комбинации клавиш"
-
-#~ msgid "Restore Missing Files…"
-#~ msgstr "Восстановление отсутствующих файлов..."
-
-#~ msgid "Restore deleted files from backup"
-#~ msgstr "Восстановление удалённых файлов из резервной копии"
-
-#~ msgid "Revert to Previous Version…"
-#~ msgid_plural "Revert to Previous Versions…"
-#~ msgstr[0] "Вернуться к прежней версии..."
-#~ msgstr[1] "Вернуться к прежним версиям..."
-#~ msgstr[2] "Вернуться к прежним версиям..."
-
-#~ msgid "Restore file from backup"
-#~ msgid_plural "Restore files from backup"
-#~ msgstr[0] "Восстановить файл из резервной копии"
-#~ msgstr[1] "Восстановить файла из резервной копии"
-#~ msgstr[2] "Восстановить файлов из резервной копии"
-
-#~ msgid "Last seen"
-#~ msgstr "Последнее посещение"
-
-#~ msgid "Restore which Files?"
-#~ msgstr "Какие файлы восстанавливать?"
-
-#~ msgid "Scanning for files from up to a day ago…"
-#~ msgstr "Поиск файлов ранее прошлого дня..."
-
-#~ msgid "Scanning for files from up to a week ago…"
-#~ msgstr "Поиск файлов ранее прошлой недели..."
-
-#~ msgid "Scanning for files from up to a month ago…"
-#~ msgstr "Поиск файлов ранее прошлого месяца..."
-
-#~ msgid "Scanning for files from about a month ago…"
-#~ msgid_plural "Scanning for files from about %d months ago…"
-#~ msgstr[0] "Сканирование файлов месячной давности..."
-#~ msgstr[1] "Сканирование файлов %d месячной давности..."
-#~ msgstr[2] "Сканирование файлов %d месячной давности..."
-
-#~ msgid "Scanning for files from about a year ago…"
-#~ msgid_plural "Scanning for files from about %d years ago…"
-#~ msgstr[0] "Сканирование файлов годовалой давности..."
-#~ msgstr[1] "Сканирование файлов %d годовой давности..."
-#~ msgstr[2] "Сканирование файлов %d годовой давности..."
-
-#~ msgid "Scanning finished"
-#~ msgstr "Сканирование завершено"
-
-#~ msgid "Restore deleted files"
-#~ msgstr "Восстановить удалённые файлы"
-
-#~ msgid "No directory provided"
-#~ msgstr "Папка не указана"
-
-#~ msgid "Only one directory can be shown at once"
-#~ msgstr "Только одну папку можно показать сразу"
-
-#~ msgid "Directory does not exist"
-#~ msgstr "Каталог не существует"
-
-#~ msgid "_Restore…"
-#~ msgstr "_Восстановить..."
-
-#~ msgid "_Back Up Now…"
-#~ msgstr "_Создать резервную копию..."
-
-#~ msgid "_Storage location"
-#~ msgstr "_Расположение резервных копий"
-
-#~ msgid "Storage location"
-#~ msgstr "Расположение резервных копий"
-
-#~ msgid "_Automatic backup"
-#~ msgstr "_Автоматическое резервное копирование"
-
-#~ msgid "Restore…"
-#~ msgstr "Восстановить..."
-
-#~ msgid "You may use the %s button to browse for existing backups."
-#~ msgstr "Используйте кнопку %s для выбора существующих резервных копий."
-
-#~ msgid ""
-#~ "You can restore the entire backup with the %s button or use %s to either "
-#~ "revert individual files or restore missing ones."
-#~ msgstr ""
-#~ "Вы можете восстановить резервную копию целиком, используя кнопку %s или "
-#~ "%s, чтобы вернуть определённые файлы или восстановить отсутствующие."
-
-#~ msgid ""
-#~ "You should <a href=''>enable</a> automatic backups or use the %s button "
-#~ "to start one now."
-#~ msgstr ""
-#~ "Вам необходимо <a href=''>включить</a> возможность автоматического "
-#~ "создания резервных копий или использовать кнопку %s, чтобы начать их "
-#~ "создание сейчас."
-
-#~ msgid "A backup automatically starts every week."
-#~ msgstr "Резервное копирование выполняется автоматически каждую неделю."
-
-#~ msgid "A backup automatically starts every %d day."
-#~ msgid_plural "A backup automatically starts every %d days."
-#~ msgstr[0] "Резервное копирование выполняется автоматически каждый %d день."
-#~ msgstr[1] "Резервное копирование выполняется автоматически каждые %d дня."
-#~ msgstr[2] "Резервное копирование выполняется автоматически каждые %d дней."
-
-#~ msgid "_Remove"
-#~ msgstr "_Удалить"
-
-#~ msgid "GCS Access Key I_D"
-#~ msgstr "Кл_юч доступа к GCS"
-
-#~ msgid ""
-#~ "This account is not yet configured. It cannot be used until you add it to "
-#~ "your Online Accounts."
-#~ msgstr ""
-#~ "Учётная запись ещё не настроена. Она может быть использована только после "
-#~ "добавления в Онлайн учётные записи."
-
-#~ msgid "_Open Online Account Settings"
-#~ msgstr "_Открыть настройку Онлайн учётных записей"
-
-#~ msgid "_Container"
-#~ msgstr "_Контейнер"
-
-#~ msgid "S3 Access Key I_D"
-#~ msgstr "Ключ доступа I_D S3"
-
-#~ msgid "Ubuntu One has shut down.  Please choose another storage location."
-#~ msgstr ""
-#~ "Сервис Ubuntu One был закрыт. Пожалуйста, выберите другое место хранения."
-
-#~ msgid ""
-#~ "Waiting for Online Accounts to be configured in your backup settings…"
-#~ msgstr ""
-#~ "Ожидание настройки сетевых учётных записей в параметрах резервного "
-#~ "копирования..."
-
-#~ msgid "%s on Rackspace Cloud Files"
-#~ msgstr "%s в облачных файлах Rackspace"
-
-#~ msgid "Permission denied"
-#~ msgstr "В доступе отказано"
-
-#~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
-#~ "\">online</a>."
-#~ msgstr ""
-#~ "Вы можете  <a href=\"%s\">подписаться</a>на облачный сервис хранения "
-#~ "файлов Rackspace."
-
-#~ msgid "Connect to Rackspace Cloud Files"
-#~ msgstr "Подключиться к облачным файлам Rackspace"
-
-#~ msgid "_API access key"
-#~ msgstr "_Ключ доступа API"
-
-#~ msgid "S_how API access key"
-#~ msgstr "_Показать ключ доступа API"
-
-#~ msgid "%s on Amazon S3"
-#~ msgstr "%s в службе Amazon S3"
-
-#~ msgid "You can sign up for an Amazon S3 account <a href=\"%s\">online</a>."
-#~ msgstr ""
-#~ "Вы можете зарегистрироваться в службе Amazon S3 <a href=\"%s\">в "
-#~ "интернете</a>."
-
-#~ msgid "Connect to Amazon S3"
-#~ msgstr "Соединиться с Amazon S3"
-
-#~ msgid "_Access key ID"
-#~ msgstr "_Ключ доступа ID"
-
-#~ msgid "_Secret access key"
-#~ msgstr "_Секретный ключ доступа"
-
-#~ msgid "S_how secret access key"
-#~ msgstr "_Показать секретный ключ доступа"
-
-#~ msgid "_Remember secret access key"
-#~ msgstr "_Запомнить секретный ключ доступа"
-
-#~ msgid "Could not find backup tool in %s.  Your installation is incomplete."
-#~ msgstr ""
-#~ "Невозможно найти приложение резервного копирования в %s. Установка не "
-#~ "завершена."
-
-#~ msgid "Could not load backup tool.  Your installation is incomplete."
-#~ msgstr ""
-#~ "Невозможно загрузить приложение резервного копирования. Установка не "
-#~ "завершена."
-
-#~ msgid "Backup tool is broken.  Your installation is incomplete."
-#~ msgstr ""
-#~ "Приложение резервного копирования повреждено. Установка не завершена."
-
-#~ msgid "Could not start backup tool"
-#~ msgstr "Невозможно запустить приложение резервного копирования"
-
-#~ msgid "Invalid ID."
-#~ msgstr "Неправильный ID."
-
-#~ msgid "Invalid secret key."
-#~ msgstr "Не правильный секретный ключ."
-
-#~ msgid ""
-#~ "Your Amazon Web Services account is not signed up for the S3 service."
-#~ msgstr "Ваша учётная запись в службе Amazon не имеет подписки в службе S3."
-
-#~ msgid "S3 bucket name is not available."
-#~ msgstr "Имя набора (bucket) S3 недоступно."
-
-#~ msgid ""
-#~ "Support for local, remote, or cloud backup locations such as Google Drive "
-#~ "and Nextcloud"
-#~ msgstr ""
-#~ "Поддержка локальных, удаленных или облачных расположений резервных копий, "
-#~ "таких как Google Drive и Nextcloud"
-
-#~ msgid ""
-#~ "This account has disabled Files support. It cannot be used until Files "
-#~ "support is enabled again for this Online Account."
-#~ msgstr ""
-#~ "Для этой учётной записи отключена поддержка Files. Files не может "
-#~ "использоваться, пока его поддержка не будет повторно включена для этой "
-#~ "сетевой учётной записи."
-
-#~ msgid "Backup will begin when a storage location is configured"
-#~ msgstr ""
-#~ "Резервное копирование начнётся после настройки местоположения хранилища"
-
-# повторять каждый день или каждую неделю
-#~ msgid "_Every"
-#~ msgstr "_Повторять"
-
-#~ msgctxt "verb"
-#~ msgid "_Keep"
-#~ msgstr "_Хранить"
-
-# повторять | каждый день
-#~ msgid "Day"
-#~ msgstr "Каждый день"
-
-# повторять | каждую неделю
-#~ msgid "Week"
-#~ msgstr "Каждую неделю"
-
-#~ msgid "Back Up Now…"
-#~ msgstr "Создать резервную копию…"
