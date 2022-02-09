@@ -87,9 +87,14 @@ void make_first_check()
     stop_and_quit.begin();
   });
 
-  ready_watcher.maybe_ready.connect(() => {
-    if (scheduler.past_due)
+  ready_watcher.maybe_ready.connect((why) => {
+    if (scheduler.past_due) {
+      debug("Starting kickoff due to '%s' ready event while past due for a backup.", why);
       single_kickoff.begin();
+    }
+    else {
+      debug("Ignored '%s' ready event because we are not past due for a backup.", why);
+    }
   });
 
   ready_watcher.stop_auto.connect(() => {

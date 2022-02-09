@@ -44,7 +44,7 @@ using GLib;
 
 class ReadyWatcher : Object
 {
-  public signal void maybe_ready(); // it's *conceivable* ready status changed
+  public signal void maybe_ready(string why); // it's *conceivable* ready status changed
 
   // sent if we become so unready, we should stop any auto backup (for example,
   // low power mode)
@@ -98,7 +98,7 @@ class ReadyWatcher : Object
     DejaDup.Network.get().notify["metered"].connect(network_changed);
 
     var mon = DejaDup.get_volume_monitor();
-    mon.volume_added.connect(condition_changed);
+    mon.volume_added.connect(volume_added);
 
     gamemode = new GameMode();
     gamemode.notify["enabled"].connect(gamemode_changed);
@@ -157,23 +157,23 @@ class ReadyWatcher : Object
     return yield backend.is_ready(out reason, out message);
   }
 
-  void condition_changed()
+  void volume_added()
   {
-    maybe_ready();
+    maybe_ready("volume added");
   }
 
   void gamemode_changed()
   {
     if (gamemode.enabled)
       stop_auto();
-    maybe_ready();
+    maybe_ready("gamemode changed");
   }
 
   void power_saver_changed()
   {
     if (power_monitor.power_saver_enabled)
       stop_auto();
-    maybe_ready();
+    maybe_ready("power saver changed");
   }
 
   void network_changed()
@@ -190,7 +190,7 @@ class ReadyWatcher : Object
       delay_time = 0;
     netcheck_id = Timeout.add_seconds(delay_time, () => {
       netcheck_id = 0;
-      maybe_ready();
+      maybe_ready("network status changed");
       return Source.REMOVE;
     });
   }
