@@ -1,23 +1,24 @@
-# Japanese translation for deja-dup
-# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# Japanese translation for deja-dup.
+# Copyright (C) 2010-2022 deja-dup's COPYRIGHT HOLDER
 # SPDX-License-Identifier: GPL-3.0-or-later
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+# This file is distributed under the same license as the deja-dup package.
+# Rosetta Contributors and Canonical Ltd <>, 2010-2020.
+# sicklylife <translation@sicklylife.jp>, 2020-2022.
+# Shinichirou Yamada <yamada_strong_yamada_nice_64bit@yahoo.co.jp>, 2020.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
 "POT-Creation-Date: 2021-10-03 11:40+0000\n"
-"PO-Revision-Date: 2021-10-20 20:50+0900\n"
+"PO-Revision-Date: 2022-02-09 20:00+0900\n"
 "Last-Translator: sicklylife <translation@sicklylife.jp>\n"
-"Language-Team: Japanese <ja@li.org>\n"
+"Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Launchpad (build 1cbd0aa39df153c901321817f9b57cf3f232b507)\n"
 
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
@@ -212,6 +213,42 @@ msgstr ""
 "false の場合、Déjà Dup は 4G のような従量制課金接続では、スケジュールされた"
 "バックアップの実行を拒否します。"
 
+#: data/app.gschema.xml.in:73
+msgid "Command to run before the backup tool"
+msgstr "バックアップツールの前に実行するコマンド"
+
+#: data/app.gschema.xml.in:74
+msgid ""
+"Useful if you need to manually mount a folder, for example. If this command "
+"fails, the backup won't start."
+msgstr ""
+"例えばフォルダーを手動でマウントする必要がある場合に便利です。このコマンドが失"
+"敗した場合はバックアップを開始しません。"
+
+#: data/app.gschema.xml.in:78
+msgid "Command to run after the backup tool"
+msgstr "バックアップツールの後に実行するコマンド"
+
+#: data/app.gschema.xml.in:79
+msgid ""
+"Useful if you need to clean up after your setup command. Failures are "
+"ignored."
+msgstr ""
+
+#: data/app.gschema.xml.in:83
+msgid "Command to run around the backup tool"
+msgstr "バックアップツールを補助するコマンド"
+
+#: data/app.gschema.xml.in:84
+msgid ""
+"Useful if you need to limit resources or otherwise wrap the execution of the "
+"tool command. An example value might be 'trickle -u 500' which would result "
+"in deja-dup running 'trickle -u 500 duplicity …'."
+msgstr ""
+"リソースを制限する必要がある場合やツールコマンドを別のコマンドでラップする必要"
+"がある場合に便利です。例えば 'trickle -u 500' と入力すると deja-dup は内部で "
+"'trickle -u 500 duplicity …' のように実行します。"
+
 #: data/org.gnome.DejaDup.gschema.xml.in:97
 msgid "Type of location to store backup"
 msgstr "バックアップを保存する場所のタイプ"
@@ -343,19 +380,19 @@ msgstr ""
 "に、焦点を置いています。システム全体のバックアップやアーカイバルなプログラム"
 "が必要な場合は、他のバックアップアプリを選択することをお勧めします。"
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:92
+#: data/app.metainfo.xml.in:86
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:96
+#: data/app.metainfo.xml.in:90
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:100
+#: data/app.metainfo.xml.in:94
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 
-#: data/org.gnome.DejaDup.metainfo.xml.in:104
+#: data/app.metainfo.xml.in:98
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -784,7 +821,7 @@ msgstr "スキャン中:"
 
 #: deja-dup/AssistantOperation.vala:161
 msgid "Scanning…"
-msgstr "スキャンしています…"
+msgstr "スキャン中…"
 
 #: deja-dup/AssistantOperation.vala:265
 msgid "_Details"
@@ -796,7 +833,7 @@ msgstr "続けるには、次のパッケージをインストールする必要
 
 #: deja-dup/AssistantOperation.vala:346
 msgid "_Allow restoring without a password"
-msgstr "パスワード無しで復元を許可する(_A)"
+msgstr "パスワードなしで復元を許可する(_A)"
 
 #: deja-dup/AssistantOperation.vala:351
 msgid "_Password-protect your backup"
@@ -904,7 +941,7 @@ msgstr "復元先のフォルダー"
 
 #: deja-dup/AssistantRestore.vala:299
 msgid "Checking for Backups…"
-msgstr "バックアップの確認中…"
+msgstr "バックアップを確認中…"
 
 #: deja-dup/AssistantRestore.vala:307
 msgid "Restore From When?"
@@ -953,7 +990,7 @@ msgstr[0] "ファイルが正常に復元されました。"
 
 #: deja-dup/AssistantRestore.vala:500 libdeja/Operation.vala:49
 msgid "Restoring…"
-msgstr "復元しています…"
+msgstr "復元中…"
 
 #: deja-dup/AssistantRestore.vala:570
 msgid "Restore in progress"
@@ -1290,7 +1327,7 @@ msgstr "保存場所が利用できません"
 #: libdeja/BackendDrive.vala:223
 #, c-format
 msgid "Waiting for ‘%s’ to become connected…"
-msgstr "‘%s’ が接続されるのを待っています…"
+msgstr "‘%s’が接続されるのを待っています…"
 
 #: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
 #: monitor/ReadyWatcher.vala:154
@@ -1358,7 +1395,7 @@ msgstr "設定ダイアログでサーバーのネットワークの場所を指
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
-msgstr "‘%s’ はネットワークの場所ではありません。"
+msgstr "‘%s’はネットワークの場所ではありません。"
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
@@ -1406,22 +1443,26 @@ msgstr ""
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
-msgstr "バックアップしています…"
+msgstr "バックアップ中…"
 
 #: libdeja/Operation.vala:51
 msgid "Checking for backups…"
-msgstr "バックアップを照合しています…"
+msgstr "バックアップを照合中…"
 
 #: libdeja/Operation.vala:53
 msgid "Listing files…"
-msgstr "ファイルをリストアップしています…"
+msgstr "ファイルをリストアップ中…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
 #: libdeja/duplicity/DuplicityJob.vala:381
 #: libdeja/duplicity/DuplicityJob.vala:392
 #: libdeja/duplicity/DuplicityJob.vala:428
 msgid "Preparing…"
-msgstr "準備しています…"
+msgstr "準備中…"
+
+#: libdeja/Operation.vala:96
+msgid "Custom tool setup failed."
+msgstr "カスタムツールのセットアップに失敗しました。"
 
 #: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
@@ -1429,7 +1470,7 @@ msgstr "バックアップを検証中…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
-msgstr "ファイルを復元しています…"
+msgstr "ファイルを復元中…"
 
 #: libdeja/OperationVerify.vala:81
 msgid ""
@@ -1461,7 +1502,7 @@ msgstr ""
 #: libdeja/duplicity/DuplicityJob.vala:584
 #: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
-msgstr "クリーンアップしています…"
+msgstr "クリーンアップ中…"
 
 #. OK, we succeeded yay!  But some files didn't make it into the backup
 #. because we couldn't read them.  So tell the user so they don't think
@@ -1507,7 +1548,7 @@ msgstr "暗号化パスワードが違います。"
 #: libdeja/duplicity/DuplicityJob.vala:966
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
-msgstr "‘%s’ を復元できませんでした: ファイルがバックアップ内に見つかりません"
+msgstr "‘%s’を復元できませんでした: ファイルがバックアップ内に見つかりません"
 
 #: libdeja/duplicity/DuplicityJob.vala:977
 #, c-format
@@ -1526,24 +1567,24 @@ msgstr "コンピューター名が変更されました"
 #: libdeja/duplicity/DuplicityJob.vala:1015
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
-msgstr "‘%s’ を作成しようとしましたが権限がありません。"
+msgstr "‘%s’を作成しようとしましたが権限がありません。"
 
 #. assume error is on backend side
 #: libdeja/duplicity/DuplicityJob.vala:1019
 #: libdeja/duplicity/DuplicityJob.vala:1023
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
-msgstr "‘%s’ を読み込もうとしましたが権限がありません。"
+msgstr "‘%s’を読み込もうとしましたが権限がありません。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1027
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
-msgstr "‘%s’ を削除しようとしましたが権限がありません。"
+msgstr "‘%s’を削除しようとしましたが権限がありません。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1034
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
-msgstr "バックアップの保存場所 ‘%s’ が存在しません。"
+msgstr "バックアップの保存場所‘%s’が存在しません。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1040
 #: libdeja/duplicity/DuplicityJob.vala:1073
@@ -1553,21 +1594,21 @@ msgstr "空き容量がありません。"
 #: libdeja/duplicity/DuplicityJob.vala:1062
 #, c-format
 msgid "Error reading file ‘%s’."
-msgstr "ファイル ‘%s’ の読み込み中にエラーが発生しました。"
+msgstr "‘%s’の読み込み中にエラーが発生しました。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1064
 #, c-format
 msgid "Error writing file ‘%s’."
-msgstr "ファイル ‘%s’ の書き込み中にエラーが発生しました。"
+msgstr "‘%s’の書き込み中にエラーが発生しました。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1075
 #, c-format
 msgid "No space left in ‘%s’."
-msgstr "‘%s’ に空き容量がありません。"
+msgstr "‘%s’に空き容量がありません。"
 
 #: libdeja/duplicity/DuplicityJob.vala:1133
 msgid "Uploading…"
-msgstr "アップロードしています…"
+msgstr "アップロード中…"
 
 #: libdeja/duplicity/DuplicityPlugin.vala:39
 msgid "Could not understand duplicity version."
@@ -1576,7 +1617,7 @@ msgstr "duplicity のバージョンを解釈できませんでした。"
 #: libdeja/duplicity/DuplicityPlugin.vala:49
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
-msgstr "duplicity のバージョン ‘%s’ を解釈できませんでした。"
+msgstr "duplicity のバージョン‘%s’を解釈できませんでした。"
 
 #: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
@@ -1607,7 +1648,7 @@ msgstr "restic のバージョンを解釈できませんでした。"
 #: libdeja/restic/ResticPlugin.vala:49
 #, c-format
 msgid "Could not understand restic version ‘%s’."
-msgstr "restic のバージョン ‘%s’ を解釈できませんでした。"
+msgstr "restic のバージョン‘%s’を解釈できませんでした。"
 
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
@@ -2122,7 +2163,7 @@ msgstr ""
 #~ "要ですが、%d.%d.%.2d のみ認識されました"
 
 #~ msgid "Could not restore ‘%s’: Not a valid file location"
-#~ msgstr "‘%s’ を復元できませんでした: 場所の指定が適切ではありません"
+#~ msgstr "‘%s’を復元できませんでした: 場所の指定が適切ではありません"
 
 #~ msgid ""
 #~ "You first need to allow Déjà Dup Backup Tool to access your Google "
