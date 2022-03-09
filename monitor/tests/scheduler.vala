@@ -242,7 +242,7 @@ int main(string[] args)
   unit.add(new TestCase("period-changes", setup, notices_period_changes, teardown));
   unit.add(new TestCase("period-overdue", setup, period_change_overdue, teardown));
   unit.add(new TestCase("backup-changes", setup, notices_last_backup_changes, teardown));
-  TestSuite.get_root().add_suite(unit);
+  TestSuite.get_root().add_suite((owned)unit);
 
   return Test.run();
 }

@@ -1032,7 +1032,7 @@ int main(string[] args)
   if (keyfile.has_group("Duplicity")) {
     var suite = new TestSuite("duplicity");
     suite.add(new TestCase(testname, backup_setup, duplicity_run, backup_teardown));
-    TestSuite.get_root().add_suite(suite);
+    TestSuite.get_root().add_suite((owned)suite);
     found_group = true;
   }
 
@@ -1040,7 +1040,7 @@ int main(string[] args)
   if (keyfile.has_group("Restic")) {
     var suite = new TestSuite("restic");
     suite.add(new TestCase(testname, backup_setup, restic_run, backup_teardown));
-    TestSuite.get_root().add_suite(suite);
+    TestSuite.get_root().add_suite((owned)suite);
     found_group = true;
   }
 #endif

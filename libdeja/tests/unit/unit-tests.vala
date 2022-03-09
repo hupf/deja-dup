@@ -138,7 +138,7 @@ int main(string[] args)
   unit.add(new TestCase("parse-dir", setup, parse_dir, teardown));
   unit.add(new TestCase("parse-version", setup, parse_version, teardown));
   unit.add(new TestCase("prompt", setup, prompt, teardown));
-  TestSuite.get_root().add_suite(unit);
+  TestSuite.get_root().add_suite((owned)unit);
 
   return Test.run();
 }
