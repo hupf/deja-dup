@@ -6,10 +6,6 @@
 
 using GLib;
 
-// Missing vala binding at time of writing
-[CCode (cname = "gtk_popover_present")]
-extern void popover_present(Gtk.Popover popover);
-
 [GtkTemplate (ui = "/org/gnome/DejaDup/ConfigServerEntry.ui")]
 class ConfigServerEntry : Gtk.Entry
 {
@@ -33,6 +29,6 @@ class ConfigServerEntry : Gtk.Entry
   public override void size_allocate(int width, int height, int baseline)
   {
     base.size_allocate(width, height, baseline);
-    popover_present(popover);
+    popover.present();
   }
 }
