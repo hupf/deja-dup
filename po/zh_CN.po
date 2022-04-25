@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-02-05 03:54+0000\n"
-"PO-Revision-Date: 2022-02-05 23:15+0800\n"
+"POT-Creation-Date: 2022-04-24 14:50+0000\n"
+"PO-Revision-Date: 2022-04-25 18:06+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:15+0000\n"
-"X-Generator: Gtranslator 41.0\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: app/Assistant.vala:293
 msgid "Co_ntinue"
@@ -215,12 +215,12 @@ msgstr "需要加密密码"
 msgid "Backups needs your encryption password to continue"
 msgstr "备份需要您的加密密码才能继续"
 
-#: app/AssistantOperation.vala:919
+#: app/AssistantOperation.vala:921
 msgctxt "verb"
 msgid "_Install"
 msgstr "安装(_I)"
 
-#: app/AssistantOperation.vala:924
+#: app/AssistantOperation.vala:926
 msgid "Backups needs to install packages to continue"
 msgstr "备份需要安装软件包才能继续"
 
@@ -508,11 +508,11 @@ msgstr "备份失败"
 msgid "Restore failed"
 msgstr "恢复失败"
 
-#: app/Notifications.vala:71
+#: app/Notifications.vala:76
 msgid "Keep your files safe by backing up regularly"
 msgstr "通过定期备份来确保您的文件安全"
 
-#: app/Notifications.vala:72
+#: app/Notifications.vala:77
 msgid ""
 "Important documents, data, and settings can be protected by storing them in "
 "a backup. In the case of a disaster, you would be able to recover them from "
@@ -521,11 +521,11 @@ msgstr ""
 "通过将重要的文档、数据和设置存储在备份中，可以保护它们。一旦发生灾难，您将可"
 "以从备份中恢复它们。"
 
-#: app/Notifications.vala:77
+#: app/Notifications.vala:82
 msgid "Don’t Show Again"
 msgstr "不再显示"
 
-#: app/Notifications.vala:78
+#: app/Notifications.vala:83
 msgid "Open Backups"
 msgstr "打开备份"
 
@@ -809,7 +809,6 @@ msgstr ""
 "如果为假，则 Déjà Dup 会避免在按流量计费的网络连接（例如 4G）上运行计划备份。"
 
 #: data/app.gschema.xml.in:73
-#| msgid "Could not start backup tool"
 msgid "Command to run before the backup tool"
 msgstr "使用备份工具前要运行的命令"
 
@@ -820,7 +819,6 @@ msgid ""
 msgstr "可以用于比如您需要手动挂载文件夹的情况。如果该命令失败，不会开始备份。"
 
 #: data/app.gschema.xml.in:78
-#| msgid "Could not start backup tool"
 msgid "Command to run after the backup tool"
 msgstr "使用备份工具后要运行的命令"
 
@@ -831,7 +829,6 @@ msgid ""
 msgstr "可以用于比如您需要在备份命令后进行清理。失败将被忽略。"
 
 #: data/app.gschema.xml.in:83
-#| msgid "Could not start backup tool"
 msgid "Command to run around the backup tool"
 msgstr "使用备份工具时要运行的命令"
 
@@ -971,7 +968,7 @@ msgstr "控制您的备份，选择要包含的文件夹"
 #. Translators: Monitor in this sense means something akin to 'watcher', not
 #. a computer screen.  This program acts like a daemon that kicks off
 #. backups at scheduled times.
-#: data/monitor.desktop.in:6 monitor/monitor.vala:130
+#: data/monitor.desktop.in:6 monitor/monitor.vala:132
 msgid "Backup Monitor"
 msgstr "备份监视器"
 
@@ -1061,8 +1058,8 @@ msgid "_Reset Account Access"
 msgstr "重置帐户访问(_R)"
 
 #: data/ui/ConfigLocationGrid.ui:141
-msgid "_Network Location"
-msgstr "网络位置(_N)"
+msgid "Ser_ver Address"
+msgstr "服务器地址(_V)"
 
 #: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
 msgid "Back"
@@ -1152,65 +1149,65 @@ msgstr "使用 _Restic 替代 Duplicity"
 msgid "Most Recent Backup"
 msgstr "最近的备份"
 
-#: data/ui/ServerHintPopover.ui:17
-msgid "Network Locations"
-msgstr "网络位置"
+#: data/ui/ServerHintPopover.ui:21
+msgid "Server Addresses"
+msgstr "服务器地址"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:29
+#: data/ui/ServerHintPopover.ui:33
 msgid ""
-"Network locations are made up of a protocol prefix, an address, and "
-"sometimes a path depending on the protocol. Examples:"
-msgstr "网络位置包含协议前缀、地址，有时还包含路径，这取决于协议。例如："
+"Server addresses are made up of a protocol prefix, an address, and sometimes "
+"a path depending on the protocol. Examples:"
+msgstr "服务器地址由协议前缀和地址组成，有时根据协议还包括路径。例如："
 
-#: data/ui/ServerHintPopover.ui:55
+#: data/ui/ServerHintPopover.ui:59
 msgid "Available Protocols"
 msgstr "可用协议"
 
-#: data/ui/ServerHintPopover.ui:68
+#: data/ui/ServerHintPopover.ui:72
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:78
+#: data/ui/ServerHintPopover.ui:82
 msgid "File Transfer Protocol"
 msgstr "文件传输协议"
 
-#: data/ui/ServerHintPopover.ui:88
+#: data/ui/ServerHintPopover.ui:92
 msgid "Network File System"
 msgstr "网络文件系统"
 
-#: data/ui/ServerHintPopover.ui:98
+#: data/ui/ServerHintPopover.ui:102
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:108
+#: data/ui/ServerHintPopover.ui:112
 msgid "SSH File Transfer Protocol"
 msgstr "SSH 文件传输协议"
 
-#: data/ui/ServerHintPopover.ui:118
+#: data/ui/ServerHintPopover.ui:122
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:128
+#: data/ui/ServerHintPopover.ui:132
 msgid "Prefix"
 msgstr "前缀"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:151
+#: data/ui/ServerHintPopover.ui:155
 msgid "ftp:// or ftps://"
 msgstr "ftp:// 或 ftps://"
 
-#: data/ui/ServerHintPopover.ui:171
+#: data/ui/ServerHintPopover.ui:175
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:181
+#: data/ui/ServerHintPopover.ui:185
 msgid "sftp:// or ssh://"
 msgstr "sftp:// 或 ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:191
+#: data/ui/ServerHintPopover.ui:195
 msgid "dav:// or davs://"
 msgstr "dav:// 或 davs://"
 
@@ -1272,7 +1269,7 @@ msgstr "后退"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:497
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:500
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%2$s 上的 %1$s"
@@ -1365,31 +1362,31 @@ msgstr "服务器网络位置“%s”看起来不是网络位置。"
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba 网络位置必须包含主机名和共享名称。"
 
-#: libdeja/CommonUtils.vala:467
+#: libdeja/CommonUtils.vala:470
 msgid "Access Granted"
 msgstr "访问已授权"
 
-#: libdeja/CommonUtils.vala:468
+#: libdeja/CommonUtils.vala:471
 msgid "Backups will now continue. You can close this page."
 msgstr "备份现在继续。您可以关闭此页面。"
 
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:550
+#: libdeja/CommonUtils.vala:553
 #, c-format
 msgid "Home (%s)"
 msgstr "主文件夹（%s）"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:555
+#: libdeja/CommonUtils.vala:558
 msgid "Home"
 msgstr "主文件夹"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:560
+#: libdeja/CommonUtils.vala:563
 msgid "Trash"
 msgstr "回收站"
 
-#: libdeja/CommonUtils.vala:622
+#: libdeja/CommonUtils.vala:625
 msgid "Backup encryption password"
 msgstr "备份加密密码"
 
@@ -1610,6 +1607,12 @@ msgstr "备份需要至少 %d.%d.%.2d 版本的 restic，但只找到了 %d.%d.%
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "备份将在不按流量计费的网络连接可用时开始。"
+
+#~ msgid "_Network Location"
+#~ msgstr "网络位置(_N)"
+
+#~ msgid "Network Locations"
+#~ msgstr "网络位置"
 
 #~ msgid "Keep your important documents safe from disaster"
 #~ msgstr "保护您的重要文档免于灾难"
