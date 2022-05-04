@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-03-09 17:42+0000\n"
-"PO-Revision-Date: 2022-03-10 19:54+0200\n"
+"POT-Creation-Date: 2022-05-03 12:17+0000\n"
+"PO-Revision-Date: 2022-05-04 14:30+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -658,10 +658,6 @@ msgstr "גיבויים"
 msgid "Protect yourself from data loss"
 msgstr "הגנה מאיבוד המידע שלך"
 
-#: data/app.desktop.in:9 data/monitor.desktop.in:9
-msgid "@icon@"
-msgstr "@icon@"
-
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
 #: data/app.desktop.in:21
@@ -1023,6 +1019,7 @@ msgstr "הפעלת גיבויים בהפרשים קבועים"
 msgid "Search"
 msgstr "חיפוש"
 
+#. Translators: this means scanning the storage location data files, not the source folders
 #: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
 msgstr "מתבצעת סקירת קובצי גיבוי…"
@@ -1100,8 +1097,9 @@ msgid "_Reset Account Access"
 msgstr "_איפוס גישה לחשבון"
 
 #: data/ui/ConfigLocationGrid.ui:141
-msgid "_Network Location"
-msgstr "מיקום ב_רשת"
+#| msgid "The server address"
+msgid "Ser_ver Address"
+msgstr "כתובת ה_שרת"
 
 #: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
 msgid "Back"
@@ -1191,67 +1189,71 @@ msgstr "להשתמש ב־Restic _במקום ב־Duplicity"
 msgid "Most Recent Backup"
 msgstr "גיבויים אחרונים"
 
-#: data/ui/ServerHintPopover.ui:17
-msgid "Network Locations"
-msgstr "מיקומי רשת"
+#: data/ui/ServerHintPopover.ui:21
+#| msgid "The server address"
+msgid "Server Addresses"
+msgstr "כתובות השרת"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:29
+#: data/ui/ServerHintPopover.ui:33
+#| msgid ""
+#| "Network locations are made up of a protocol prefix, an address, and "
+#| "sometimes a path depending on the protocol. Examples:"
 msgid ""
-"Network locations are made up of a protocol prefix, an address, and "
-"sometimes a path depending on the protocol. Examples:"
+"Server addresses are made up of a protocol prefix, an address, and sometimes "
+"a path depending on the protocol. Examples:"
 msgstr ""
-"מיקומי הרשת מורכבים מקידומת פרוטוקול, כתובת ולפעמים נתיב כתלות בפרוטוקול. "
+"כתובות הרשת מורכבות מקידומת פרוטוקול, כתובת ולפעמים נתיב כתלות בפרוטוקול. "
 "למשל:"
 
-#: data/ui/ServerHintPopover.ui:55
+#: data/ui/ServerHintPopover.ui:59
 msgid "Available Protocols"
 msgstr "פרוטוקולים זמינים"
 
-#: data/ui/ServerHintPopover.ui:68
+#: data/ui/ServerHintPopover.ui:72
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:78
+#: data/ui/ServerHintPopover.ui:82
 msgid "File Transfer Protocol"
 msgstr "פרוטוקול העברת קבצים (FTP)"
 
-#: data/ui/ServerHintPopover.ui:88
+#: data/ui/ServerHintPopover.ui:92
 msgid "Network File System"
 msgstr "מערכת קבצים ברשת (NFS)"
 
-#: data/ui/ServerHintPopover.ui:98
+#: data/ui/ServerHintPopover.ui:102
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:108
+#: data/ui/ServerHintPopover.ui:112
 msgid "SSH File Transfer Protocol"
 msgstr "פרוטוקול העברת קבצים עם SSH"
 
-#: data/ui/ServerHintPopover.ui:118
+#: data/ui/ServerHintPopover.ui:122
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:128
+#: data/ui/ServerHintPopover.ui:132
 msgid "Prefix"
 msgstr "קידומת"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:151
+#: data/ui/ServerHintPopover.ui:155
 msgid "ftp:// or ftps://"
 msgstr "ftp://‎ או ftps://‎"
 
-#: data/ui/ServerHintPopover.ui:171
+#: data/ui/ServerHintPopover.ui:175
 msgid "smb://"
 msgstr "smb://‎"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:181
+#: data/ui/ServerHintPopover.ui:185
 msgid "sftp:// or ssh://"
 msgstr "sftp://‎ או ssh://‎"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:191
+#: data/ui/ServerHintPopover.ui:195
 msgid "dav:// or davs://"
 msgstr "dav://‎ או davs://‎"
 
@@ -1660,6 +1662,15 @@ msgstr ""
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "הגיבוי יתחיל כאשר חיבור לרשת שאינה מוגבלת במיכסה יהיה זמין."
+
+#~ msgid "@icon@"
+#~ msgstr "@icon@"
+
+#~ msgid "_Network Location"
+#~ msgstr "מיקום ב_רשת"
+
+#~ msgid "Network Locations"
+#~ msgstr "מיקומי רשת"
 
 #~ msgid "Keep your important documents safe from disaster"
 #~ msgstr "להגן על המסמכים החשובים שלך מפני אסון"
