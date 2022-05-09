@@ -1423,6 +1423,10 @@ internal class DuplicityJob : DejaDup.ToolJob
         argv.prepend("restore");
         if (tag != null && tag != "now")
           argv.append("--time=%s".printf(tag));
+        // We can't restore owner uid without root access, and if duplicity
+        // tries and fails, it won't restore other attributes like modified
+        // timestamp or chmod permissions. So ask it not to try.
+        argv.append("--do-not-restore-ownership");
         argv.append("--force");
         argv.append(get_remote());
         argv.append(local_arg.get_path());
