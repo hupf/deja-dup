@@ -129,12 +129,14 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
       file_arg = "'--file-to-restore=%s' ".printf(file_to_restore.substring(1)); // skip root /
       dest_arg = "/" + File.new_for_path(file_to_restore).get_basename();
     }
-    return "'restore' %s%s'--force' 'gio+file://%s' '%s%s' %s"
+    return "'restore' %s%s'--do-not-restore-ownership' '--force' 'gio+file://%s' '%s%s' %s"
       .printf(file_arg, extra, backupdir, restoredir, dest_arg, end_str);
   }
-  else if (mode == Mode.VERIFY)
-    return "'restore' '--file-to-restore=%s/deja-dup/metadata' '--force' 'gio+file://%s' '%s/deja-dup/metadata' %s"
-      .printf(cachedir.substring(1), backupdir, cachedir, end_str);
+  else if (mode == Mode.VERIFY) {
+    var constant_args = "'--do-not-restore-ownership' '--force'";
+    return "'restore' '--file-to-restore=%s/deja-dup/metadata' %s 'gio+file://%s' '%s/deja-dup/metadata' %s"
+      .printf(cachedir.substring(1), constant_args, backupdir, cachedir, end_str);
+  }
   else if (mode == Mode.LIST)
     return "'list-current-files' %s'gio+file://%s' %s".printf(extra, backupdir, end_str);
   else if (mode == Mode.REMOVE)
