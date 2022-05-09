@@ -13,6 +13,7 @@ project(
 
 gnome = import('gnome')
 i18n = import('i18n')
+vala = meson.get_compiler('vala')
 
 # Install paths
 prefix = get_option('prefix')

@@ -3,6 +3,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Before 0.56.1, these vala bindings were kept in the main gtk4 vapi
+gtk_target_deps = []
+if vala.version().version_compare('>= 0.56.1')
+gtk_target_deps = [gtk_wayland_dep, gtk_x11_dep]
+endif
+
+
 deja_dup = executable('deja-dup',
     ['main.vala',
      'Assistant.vala',
@@ -50,11 +57,9 @@ deja_dup = executable('deja-dup',
         adwaita_dep,
         gio_unix_dep,
         gtk_dep,
-        gtk_wayland_dep,
-        gtk_x11_dep,
         packagekit_dep,
         secret_dep,
-    ],
+    ] + gtk_target_deps,
     link_with: [libdeja],
     include_directories: [libdeja_inc],
     install: true,
