@@ -12,7 +12,12 @@ all: configure
 
 .PHONY: configure
 configure:
-	@[ -d _build/meson-info ] || meson setup -Dprofile=Devel -Denable_restic=true _build
+	@[ -d _build/meson-info ] || meson setup \
+	  -Dprofile=Devel \
+	  -Denable_restic=true \
+	  -Dgoogle_client_id=916137916439-r2u45r9d099p9f18c53anggs3no1g5bm.apps.googleusercontent.com \
+	  -Dmicrosoft_client_id=4eba1a0b-f3de-469b-9fc5-ffa908bd5b97 \
+	  _build
 
 .PHONY: check
 check: all

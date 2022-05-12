@@ -39,6 +39,12 @@ public class BackendMicrosoft : BackendOAuth
     scope = "offline_access Files.ReadWrite";
   }
 
+  public override string get_redirect_uri()
+  {
+    // This 'auth' path is required
+    return "msal%s://auth".printf(client_id);
+  }
+
   public override string[] get_dependencies() {
     return Config.REQUESTS_OAUTHLIB_PACKAGES.split(",");
   }

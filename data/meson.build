@@ -3,7 +3,17 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-fs = import('fs')
+# GOOGLE CUSTOM SCHEME (reverse dns)
+
+google_client_id_parts = get_option('google_client_id').split('.')
+google_client_id_parts_reversed = []
+foreach part : google_client_id_parts
+    google_client_id_parts_reversed = [part] + google_client_id_parts_reversed
+endforeach
+google_reversedns = '.'.join(google_client_id_parts_reversed)
+
+
+# SHARED CONFIGURATION DATA
 
 conf_data = configuration_data()
 conf_data.set('appid', application_id)
@@ -13,9 +23,8 @@ conf_data.set('gsettingspath', profile == '' ? 'deja-dup' : 'deja-dup-' + profil
 conf_data.set('icon', application_id)
 conf_data.set('pkglibexecdir', pkglibexecdir)
 conf_data.set('profile', profile)
-conf_data.set('svgcheck', fs.read('icons/selection-checked-symbolic.svg'))
-conf_data.set('svgcloud', fs.read('icons/cloud-outline-thin-symbolic.svg'))
-conf_data.set('svglogo', fs.read('icons/org.gnome.DejaDup-symbolic.svg'))
+conf_data.set('scheme_google', google_reversedns)
+conf_data.set('scheme_microsoft', 'msal' + get_option('microsoft_client_id'))
 conf_data.set('version', meson.project_version())
 
 
@@ -144,15 +153,6 @@ test(
 endif
 
 
-# ACCESS GRANTED
-
-configure_file(
-    input: 'access-granted.html.in',
-    output: '@BASENAME@',
-    configuration: conf_data,
-)
-
-
 # GRESOURCES
 
 resources_xml = configure_file(
@@ -174,4 +174,5 @@ resources = gnome.compile_resources(
 gnome.post_install(
     glib_compile_schemas: true,
     gtk_update_icon_cache: true,
+    update_desktop_database: true,
 )

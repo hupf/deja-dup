@@ -7,7 +7,7 @@ Comment=Protect yourself from data loss
 
 Icon=@icon@
 
-Exec=deja-dup
+Exec=deja-dup %u
 
 StartupNotify=true
 DBusActivatable=true
@@ -17,6 +17,9 @@ X-GNOME-SingleWindow=true
 
 Type=Application
 Categories=Utility;Archiving;GNOME;GTK;X-GNOME-Utilities;
+
+# Used for oauth flows (server redirects to this custom scheme and we catch it)
+MimeType=x-scheme-handler/@scheme_google@;x-scheme-handler/@scheme_microsoft@;
 
 # Translators: Add whatever keywords you want in your language, separated by semicolons
 # These keywords are used when searching for applications in dashes, etc.

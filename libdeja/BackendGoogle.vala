@@ -37,6 +37,18 @@ public class BackendGoogle : BackendOAuth
     scope = "https://www.googleapis.com/auth/drive.file";
   }
 
+  public override string get_redirect_uri()
+  {
+    var id_parts = client_id.split(".");
+    string[] reversed = {};
+    for (int i = id_parts.length - 1; i >= 0; i--) {
+      reversed += id_parts[i];
+    }
+    // Exact path does not matter and is optional. But it seems wise to use some
+    // path and this one seems reasonable (and is the example in their oauth docs).
+    return "%s:/oauth2redirect".printf(string.joinv(".", reversed));
+  }
+
   public override string[] get_dependencies() {
     return Config.PYDRIVE_PACKAGES.split(",");
   }

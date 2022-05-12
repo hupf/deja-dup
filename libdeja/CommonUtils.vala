@@ -463,23 +463,6 @@ public void i18n_setup()
   Intl.bind_textdomain_codeset(Config.GETTEXT_PACKAGE, "UTF-8");
 }
 
-public string get_access_granted_html()
-{
-  try {
-    // Grabs the html from resources and fills in some strings with calculated content
-    var html_path = "/org/gnome/DejaDup/access-granted.html";
-    var html_bytes = resources_lookup_data(html_path, ResourceLookupFlags.NONE);
-    var html = (string)html_bytes.get_data();
-
-    html = html.replace("$TITLE", _("Access Granted"));
-    html = html.replace("$TEXT", _("Backups will now continue. You can close this page."));
-    return html;
-  }
-  catch (Error e) {
-    return "";
-  }
-}
-
 public string get_file_desc(File file)
 {
   if (file.is_native())
