@@ -52,6 +52,11 @@ public class MainWindow : Adw.ApplicationWindow
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
                                null, null);
 
+    settings.bind(DejaDup.WINDOW_WIDTH_KEY, this, "default-width", SettingsBindFlags.DEFAULT);
+    settings.bind(DejaDup.WINDOW_HEIGHT_KEY, this, "default-height", SettingsBindFlags.DEFAULT);
+    settings.bind(DejaDup.WINDOW_MAXIMIZED_KEY, this, "maximized", SettingsBindFlags.DEFAULT);
+    settings.bind(DejaDup.WINDOW_FULLSCREENED_KEY, this, "fullscreened", SettingsBindFlags.DEFAULT);
+
     header.notify["title-visible"].connect(on_title_visible_changed);
     on_title_visible_changed();
 

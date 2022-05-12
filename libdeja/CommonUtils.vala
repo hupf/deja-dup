@@ -11,6 +11,10 @@ extern long gethostid();
 
 namespace DejaDup {
 
+public const string WINDOW_WIDTH_KEY = "window-width";
+public const string WINDOW_HEIGHT_KEY = "window-height";
+public const string WINDOW_MAXIMIZED_KEY = "window-maximized";
+public const string WINDOW_FULLSCREENED_KEY = "window-fullscreened";
 public const string INCLUDE_LIST_KEY = "include-list";
 public const string EXCLUDE_LIST_KEY = "exclude-list";
 public const string BACKEND_KEY = "backend";
