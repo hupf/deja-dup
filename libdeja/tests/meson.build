@@ -58,11 +58,15 @@ tests = [
     'write-error'
 ]
 
+if dbus_run_session.found()
 foreach t: tests
-    test('script-' + t, dbus_run_session,
+    test(
+        'script-' + t,
+        dbus_run_session,
         env: ['srcdir=' + meson.current_source_dir()],
-        args: [test_runner,
-               join_paths(meson.current_source_dir(), 'scripts', t + '.test')])
+        args: [test_runner, join_paths(meson.current_source_dir(), 'scripts', t + '.test')],
+    )
 endforeach
+endif
 
 subdir('unit')

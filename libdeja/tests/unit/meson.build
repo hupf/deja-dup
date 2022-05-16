@@ -8,9 +8,14 @@ libdeja_tests = executable('libdeja-tests', ['unit-tests.vala'],
     link_with: [libdeja],
     include_directories: [libdeja_inc])
 
-test('libdeja', dbus_run_session,
+if dbus_run_session.found()
+test(
+    'libdeja',
+    dbus_run_session,
     env: ['srcdir=' + meson.current_source_dir()],
-    args: [libdeja_tests])
+    args: [libdeja_tests],
+)
+endif
 
 # The network test is manual for the moment
 network_test = executable('network-test', ['network.vala'],

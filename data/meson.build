@@ -84,11 +84,13 @@ monitor_desktop = configure_file(
     install_dir: join_paths(etcdir, 'xdg', 'autostart'),
 )
 
+if desktop_file_validate.found()
 test(
     'validate-monitor-desktop',
     desktop_file_validate,
     args: [monitor_desktop],
 )
+endif
 
 
 # MAIN DESKTOP
@@ -107,11 +109,13 @@ deja_dup_desktop = i18n.merge_file(
     install: true,
     install_dir: join_paths(datadir, 'applications'))
 
+if desktop_file_validate.found()
 test(
     'validate-desktop',
     desktop_file_validate,
     args: [deja_dup_desktop],
 )
+endif
 
 
 # METAINFO
@@ -131,11 +135,13 @@ deja_dup_metainfo = i18n.merge_file(
     install_dir: join_paths(datadir, 'metainfo'),
 )
 
+if appstream_util.found()
 test(
     'validate-appstream',
     appstream_util,
     args: ['--nonet', 'validate-relax', deja_dup_metainfo],
 )
+endif
 
 
 # ACCESS GRANTED
