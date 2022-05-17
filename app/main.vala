@@ -25,8 +25,6 @@ public class DejaDupApp : Adw.Application
     {"auto", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
     {"delay", 0, OptionFlags.HIDDEN, OptionArg.STRING, null, null, null},
     {"prompt", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
-    // debugging option to easily grab the generated access granted html
-    {"access-granted-html", 0, OptionFlags.HIDDEN, OptionArg.NONE, null, null, null},
     {"", 0, 0, OptionArg.FILENAME_ARRAY, null, null, null}, // remaining
     {null}
   };
@@ -56,8 +54,14 @@ public class DejaDupApp : Adw.Application
 
   private DejaDupApp()
   {
-    Object(application_id: Config.APPLICATION_ID,
-           flags: ApplicationFlags.HANDLES_COMMAND_LINE);
+    Object(
+      application_id: Config.APPLICATION_ID,
+      flags: ApplicationFlags.HANDLES_COMMAND_LINE |
+             // HANDLES_OPEN is required to support Open calls over dbus, which
+             // we use for our registered custom schemes (which support our
+             // oauth2 workflow).
+             ApplicationFlags.HANDLES_OPEN
+    );
     add_main_option_entries(OPTIONS);
   }
 
@@ -74,14 +78,15 @@ public class DejaDupApp : Adw.Application
   {
     var options = command_line.get_options_dict();
 
-    string[] filenames = {};
+    File[] files = {};
     if (options.contains("")) {
       var variant = options.lookup_value("", VariantType.BYTESTRING_ARRAY);
-      filenames = variant.get_bytestring_array();
+      foreach (var filename in variant.get_bytestring_array())
+        files += command_line.create_file_for_arg(filename);
     }
 
     if (options.contains("restore")) {
-      if (filenames.length == 0) {
+      if (files.length == 0) {
         command_line.printerr("%s\n", _("Please list files to restore"));
         return 1;
       }
@@ -93,9 +98,8 @@ public class DejaDupApp : Adw.Application
       }
 
       var file_list = new List<File>();
-      int i = 0;
-      while (filenames[i] != null)
-        file_list.append(command_line.create_file_for_arg(filenames[i++]));
+      foreach (var file in files)
+        file_list.append(file);
 
       restore_files(file_list);
     }
@@ -116,8 +120,13 @@ public class DejaDupApp : Adw.Application
     else if (options.contains("prompt")) {
       Notifications.prompt();
     }
-    else if (options.contains("access-granted-html")) {
-      print(DejaDup.get_access_granted_html());
+    else if (files.length > 0) {
+      // If we were called without a mode (like --restore) but with file arguments,
+      // let's do our "Open" action (which is mostly used for our oauth flow).
+      // That oauth flow can happen via command line in some environments like
+      // snaps, whereas the dbus Open call might happen for flatpaks. Regardless
+      // of how they come in, treat them the same.
+      open(files, "");
     }
     else {
       activate();
@@ -141,6 +150,28 @@ public class DejaDupApp : Adw.Application
       get_app_window().application = this;
       get_app_window().present();
     }
+  }
+
+  public override void open(GLib.File[] files, string hint)
+  {
+    var oauth_backend = get_restore_backend() as DejaDup.BackendOAuth;
+
+    // We might be in middle of oauth flow, and are given an expected redirect uri
+    // like 'com.googleusercontent.apps.123:/oauth2redirect?code=xxx'
+    if (files.length == 1 && oauth_backend != null)
+    {
+      var provided_uri = files[0].get_uri();
+      // Normalize backend URI through gio, so it matches incoming URI format (slashes after colon, etc)
+      var expected_uri = File.new_for_uri(oauth_backend.get_redirect_uri()).get_uri();
+      if (provided_uri.has_prefix(expected_uri) && oauth_backend.continue_authorization(provided_uri)) {
+        activate();
+        return;
+      }
+    }
+
+    // Got passed files, but we don't know what to do with them.
+    foreach (var file in files)
+      warning("Ignoring unexpected file: %s", file.get_parse_name());
   }
 
   MainWindow? get_app_window()

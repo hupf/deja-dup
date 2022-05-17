@@ -16,6 +16,20 @@ public abstract class DejaDup.BackendOAuth : Backend
   public string access_token {get; private set;}
   public string refresh_token {get; private set;}
 
+  public abstract string get_redirect_uri();
+
+  // Meant to be called externally when the oauth service redirects back to us.
+  // This passed-in uri will hold the code and error values from the service.
+  public bool continue_authorization(string command_line_redirect_uri)
+  {
+    if (authorization_instance.get() == null)
+      return false; // no auth in progress
+
+    var active_backend = (BackendOAuth)authorization_instance.get();
+    active_backend.continue_authorization_helper(command_line_redirect_uri);
+    return true;
+  }
+
   public async string? lookup_refresh_token()
   {
     var schema = get_secret_schema();
@@ -46,9 +60,16 @@ public abstract class DejaDup.BackendOAuth : Backend
   protected string token_url;
   protected string scope;
 
+  // GLOBALLY shared callback property - possibly better as an instance property
+  // and then we'd just need to properly surface "the currently active backend"
+  // to the application instance, so it can find the right instance.
+  static WeakRef authorization_instance;
+  SourceFunc authorization_callback;
+
   Soup.Session session;
-  string local_address;
   string pkce;
+  string error_msg;
+  string code;
 
   construct {
     session = new Soup.Session();
@@ -155,7 +176,7 @@ public abstract class DejaDup.BackendOAuth : Backend
   {
     var form = Soup.Form.encode(
       "client_id", client_id,
-      "redirect_uri", local_address,
+      "redirect_uri", get_redirect_uri(),
       "response_type", "code",
       "code_challenge", pkce,
       "scope", scope
@@ -168,7 +189,7 @@ public abstract class DejaDup.BackendOAuth : Backend
   {
     var form = Soup.Form.encode(
       "client_id", client_id,
-      "redirect_uri", local_address,
+      "redirect_uri", get_redirect_uri(),
       "grant_type", "authorization_code",
       "code_verifier", pkce,
       "code", code
@@ -188,55 +209,11 @@ public abstract class DejaDup.BackendOAuth : Backend
     yield get_tokens(message);
   }
 
-  // Returns true if are done with consent flow
-  bool process_server_request(Soup.ServerMessage message, string path,
-                              HashTable<string, string>? query,
-                              out string code, out string error_msg)
-  {
-    code = null;
-    error_msg = null;
-
-    if (path != "/") {
-      message.set_status(Soup.Status.NOT_FOUND, null);
-      return false;
-    }
-
-    message.set_status(Soup.Status.ACCEPTED, null);
-
-    string? error = query == null ? null : query.lookup("error");
-    if (error != null) {
-      error_msg = error;
-      return true;
-    }
-
-    code = query == null ? null : query.lookup("code");
-    if (code == null) {
-      error_msg = ""; // non-null but we don't have any extra context
-      return true;
-    }
-
-    // Show consent granted screen
-    var html = DejaDup.get_access_granted_html();
-    message.set_response("text/html; charset=UTF-8", Soup.MemoryUse.COPY,
-                         html.data);
-    return true;
-  }
-
   async void start_authorization() throws Error
   {
-    // Start a server and listen on it
-    var server = new Soup.Server("server-header",
-                                 "%s/%s ".printf(Config.PACKAGE, Config.VERSION));
-    server.listen_local(0, Soup.ServerListenOptions.IPV4_ONLY);
-    local_address = server.get_uris().data.to_string();
-
     // Prepare to handle requests that finish the consent process
-    string error_msg = null;
-    string code = null;
-    server.add_handler(null, (s, msg, path, query) => {
-      if (process_server_request(msg, path, query, out code, out error_msg))
-        Idle.add(start_authorization.callback);
-    });
+    error_msg = null;
+    code = null;
 
     // We need a random string between 43 and 128 chars. UUIDs are an easy way
     // to get random strings, but they are only 37 chars long. So just add two.
@@ -249,16 +226,42 @@ public abstract class DejaDup.BackendOAuth : Backend
       get_consent_location()
     );
 
+    authorization_instance.set(this);
+    authorization_callback = start_authorization.callback;
     yield;
+    authorization_instance.set(null);
+    authorization_callback = null;
 
     if (error_msg != null) {
       stop_login(error_msg);
       return;
     }
 
-    server = null;
     show_oauth_consent_page(null, null); // continue on from paused screen
     yield get_credentials(code);
+  }
+
+  void continue_authorization_helper(string command_line_redirect_uri)
+  {
+    HashTable<string,string> query = null;
+
+    try {
+      var uri = Uri.parse(command_line_redirect_uri, UriFlags.NONE);
+      query = Uri.parse_params(uri.get_query());
+    } catch (UriError e) {
+      error_msg = e.message;
+    }
+
+    if (error_msg == null && query != null)
+      error_msg = query.lookup("error");
+
+    if (error_msg == null && query != null)
+      code = query.lookup("code");
+
+    if (error_msg == null && code == null)
+      error_msg = ""; // default to just a blank contextual error message
+
+    authorization_callback();
   }
 
   public override async void prepare() throws Error
