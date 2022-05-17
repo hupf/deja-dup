@@ -3,6 +3,25 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.3
+- Change Google/Microsoft authentication flow to use a more secure,
+  non-deprecated approach (Google is turning off the approach we use now in
+  just a few months)
+- Remember window size after closing
+- Fix incorrect file permissions / mtime when restoring files from other users
+- Update Basque, Brazilian Portuguese, Catalan, Chinese (China), Croatian,
+  Danish, Dutch, Finnish, French, Galician, Hebrew, Hungarian, Indonesian,
+  Italian, Japanese, Occitan, Persian, Polish, Portuguese, Russian, Serbian,
+  Slovenian, Spanish, Swedish, Turkish, Ukrainian, and Vietnamese translations
+
+##### Packaging
+- Heads up that the above-mentioned authentication flow changes require
+  registering custom mimetypes so that the browser can launch deja-dup to give
+  us the authentication token after the user allows it (these mimetypes look
+  like 'x-scheme-handler/com.google...' or 'x-scheme-handler/msal...' with
+  identifiers specific to deja-dup's client ids for each service)
+- Fix building against recent meson and vala (0.56.1+) releases
+
 # 43.2
 - Fix a crash if you select a mount in the Local Folder settings file chooser
 - Fix the "hostname has changed" dialog to let you actually continue the backup
