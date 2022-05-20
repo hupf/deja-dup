@@ -163,7 +163,7 @@ public abstract class DejaDup.BackendOAuth : Backend
       Secret.password_store_sync(schema,
                                  Secret.COLLECTION_DEFAULT,
                                  // Translators: %s is a brand name like Google or Microsoft
-                                 _("%s credentials for Déjà Dup"),
+                                 _("%s credentials for Déjà Dup").printf(brand_name),
                                  refresh_token,
                                  null,
                                  "client_id", client_id);
