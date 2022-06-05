@@ -34,13 +34,13 @@ public class DejaDup.OperationFiles : Operation
     tree.add(file, type);
   }
 
-  internal async override void operation_finished(bool success, bool cancelled, string? detail)
+  internal async override void operation_finished(bool success, bool cancelled)
   {
     if (success && !cancelled) {
       tree.finish();
       listed_current_files(tree);
     }
-    yield base.operation_finished(success, cancelled, detail);
+    yield base.operation_finished(success, cancelled);
   }
 
   protected override List<string>? make_argv()

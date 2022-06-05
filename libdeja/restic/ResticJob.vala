@@ -226,6 +226,7 @@ internal class ResticPruneJoblet : ResticJoblet
 
 internal class ResticBackupJoblet : ResticJoblet
 {
+  bool snapshot_made = false;
   int64 seconds_elapsed = -1;
   uint64 free_space = DejaDup.Backend.INFINITE_SPACE;
   uint64 total_space = DejaDup.Backend.INFINITE_SPACE;
@@ -234,6 +235,16 @@ internal class ResticBackupJoblet : ResticJoblet
   {
     chain.append_to_chain(new ResticPruneJoblet());
     return true;
+  }
+
+  protected override void handle_done(bool success, bool cancelled)
+  {
+    // If we made a snapshot, still say it was a success. Restic might give a
+    // non-zero return status if there were warnings about file I/O errors.
+    if (snapshot_made && !cancelled)
+      success = true;
+
+    base.handle_done(success, cancelled);
   }
 
   protected override async void prepare() throws Error
@@ -286,7 +297,7 @@ internal class ResticBackupJoblet : ResticJoblet
       // Tiny backup location.  Suggest they get a larger one.
       var msg = _("Backup location is too small. Try using one with at least %s.");
       show_error(msg.printf(format_size(total_bytes)));
-      done(false, false, null);
+      done(false, false);
       return true;
     }
 
@@ -311,6 +322,42 @@ internal class ResticBackupJoblet : ResticJoblet
     return true;
   }
 
+  bool process_error(Json.Reader reader)
+  {
+    reader.read_member("item");
+    var item = reader.get_string_value();
+    reader.end_member();
+
+    if (item != null && item != "")
+      local_file_error(item);
+
+    return true;
+  }
+
+  bool process_summary(Json.Reader reader)
+  {
+    reader.read_member("snapshot_id");
+    var snapshot_id = reader.get_string_value();
+    reader.end_member();
+
+    if (snapshot_id != null && snapshot_id != "")
+      snapshot_made = true;
+
+    return true;
+  }
+
+  protected override bool process_message(string? msgid, Json.Reader reader)
+  {
+    if (msgid == "status")
+      return process_status(reader);
+    if (msgid == "error")
+      return process_error(reader);
+    if (msgid == "summary")
+      return process_summary(reader);
+
+    return false;
+  }
+
   protected override void handle_no_repository()
   {
     disconnect_inst(); // otherwise we might run handle_done() during is_full
@@ -321,15 +368,7 @@ internal class ResticBackupJoblet : ResticJoblet
     chain.prepend_to_chain(new ResticBackupJoblet());
     chain.prepend_to_chain(new ResticInitJoblet());
 
-    done(true, false, null);
-  }
-
-  protected override bool process_message(string? msgid, Json.Reader reader)
-  {
-    if (msgid == "status")
-      return process_status(reader);
-
-    return false;
+    done(true, false);
   }
 
   bool list_contains_file(List<File> list, File file)
@@ -600,7 +639,7 @@ internal class ResticJob : DejaDup.ToolJobChain
       break;
     default:
       warning("Unknown mode %d", mode);
-      done(true, false, null);
+      done(true, false);
       return;
     }
 

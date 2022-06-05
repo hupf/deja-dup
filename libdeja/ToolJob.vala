@@ -10,7 +10,7 @@ using GLib;
 public abstract class DejaDup.ToolJob : Object
 {
   // life cycle signals
-  public signal void done(bool success, bool cancelled, string? detail);
+  public signal void done(bool success, bool cancelled);
   public signal void raise_error(string errstr, string? detail);
 
   // hints to UI
@@ -18,6 +18,7 @@ public abstract class DejaDup.ToolJob : Object
   public signal void action_file_changed(File file, bool actual);
   public signal void progress(double percent);
   public signal void is_full(bool first);
+  public signal void local_file_error(string file); // I/o error when reading/writing
 
   // hints that interaction is needed
   public signal void bad_encryption_password();

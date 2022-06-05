@@ -14,13 +14,13 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
   public override void cancel() { // with cleanup, no success
     disconnect_inst();
     if (cancel_cleanup())
-      done(true, false, null); // go to next job
+      done(true, false); // go to next job
     else
-      done(false, true, null);
+      done(false, true);
   }
   public override void stop() { // no cleanup, with success
     disconnect_inst();
-    done(true, true, null);
+    done(true, true);
   }
   public override void pause(string? reason) {
     if (inst != null)
@@ -43,7 +43,7 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
     }
     catch (Error e) {
       show_error(e.message);
-      done(false, false, null);
+      done(false, false);
       return;
     }
 
@@ -72,7 +72,7 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
 
   protected void finish() {
     disconnect_inst();
-    done(true, false, null);
+    done(true, false);
   }
 
   protected void disconnect_inst()
@@ -116,6 +116,6 @@ internal abstract class DejaDup.ToolJoblet : DejaDup.ToolJob
     }
 
     disconnect_inst();
-    done(success, cancelled, null);
+    done(success, cancelled);
   }
 }

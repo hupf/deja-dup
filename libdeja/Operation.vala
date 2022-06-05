@@ -76,9 +76,9 @@ public abstract class Operation : Object
   internal ToolJob job;
   protected string passphrase;
   bool finished = false;
-  string saved_detail = null;
   Operation chained_op = null;
   bool searched_for_passphrase = false;
+  GenericSet<string?> local_error_files = new GenericSet<string?>(str_hash, str_equal);
 
   public async virtual void start()
   {
@@ -155,7 +155,7 @@ public abstract class Operation : Object
     else if (job != null)
       job.cancel();
     else
-      operation_finished.begin(false, true, null);
+      operation_finished.begin(false, true);
   }
 
   public void stop()
@@ -165,7 +165,7 @@ public abstract class Operation : Object
     else if (job != null)
       job.stop();
     else
-      operation_finished.begin(true, true, null);
+      operation_finished.begin(true, true);
   }
 
   protected virtual void connect_to_job()
@@ -173,10 +173,11 @@ public abstract class Operation : Object
     /*
      * Connect Deja Dup to signals
      */
-    job.done.connect((d, o, c, detail) => {operation_finished.begin(o, c, detail);});
+    job.done.connect((d, o, c) => {operation_finished.begin(o, c);});
     job.raise_error.connect((d, s, detail) => {raise_error(s, detail);});
     job.action_desc_changed.connect((d, s) => {action_desc_changed(s);});
     job.action_file_changed.connect((d, f, b) => {send_action_file_changed(f, b);});
+    job.local_file_error.connect(note_local_file_error);
     job.progress.connect((d, p) => {progress(p);});
     job.question.connect((d, t, m) => {question(t, m);});
     job.is_full.connect((first) => {is_full(first);});
@@ -202,7 +203,22 @@ public abstract class Operation : Object
       job.encrypt_password = passphrase;
   }
 
-  internal async virtual void operation_finished(bool success, bool cancelled, string? detail)
+  // Returns any extra info (like specific files that didn't back up)
+  protected virtual string? get_success_detail()
+  {
+    return null;
+  }
+
+  void send_done(bool success, bool cancelled)
+  {
+    string detail = null;
+    if (success && !cancelled)
+      detail = get_success_detail();
+
+    done(success, cancelled, detail);
+  }
+
+  internal async virtual void operation_finished(bool success, bool cancelled)
   {
     finished = true;
 
@@ -210,7 +226,7 @@ public abstract class Operation : Object
     yield DejaDup.clean_tempdirs(false /* just duplicity temp files */);
     run_custom_tool_command(DejaDup.CUSTOM_TOOL_TEARDOWN_KEY);
 
-    done(success, cancelled, detail);
+    send_done(success, cancelled);
   }
 
   protected virtual List<string>? make_argv()
@@ -224,17 +240,7 @@ public abstract class Operation : Object
     return null;
   }
 
-  static string combine_details(string? old_detail, string? new_detail)
-  {
-    if (old_detail == null)
-      return new_detail;
-    else if (new_detail == null)
-      return old_detail;
-    else
-      return old_detail + "\n\n" + new_detail;
-  }
-
-  protected async void chain_op(Operation subop, string desc, string? detail)
+  protected async void chain_op(Operation subop, string desc)
   {
     /**
      * Sometimes an operation wants to chain to a separate operation.
@@ -244,7 +250,8 @@ public abstract class Operation : Object
 
     chained_op = subop;
     subop.done.connect((s, c, d) => {
-      done(s, c, combine_details(saved_detail, d));
+      // ignore detail from chained op for now - can fix if we need to
+      send_done(s, c);
       chained_op = null;
     });
     subop.raise_error.connect((e, d) => {raise_error(e, d);});
@@ -259,7 +266,6 @@ public abstract class Operation : Object
     subop.install.connect((p, i) => {install(p, i);});
 
     use_cached_password = subop.use_cached_password;
-    saved_detail = combine_details(saved_detail, detail);
     subop.set_state(get_state());
 
     action_desc_changed(desc);
@@ -338,6 +344,18 @@ public abstract class Operation : Object
     print(stderr);
 
     return Process.if_exited(status) && Process.exit_status(status) == 0;
+  }
+
+  void note_local_file_error(string file)
+  {
+    local_error_files.add(file);
+  }
+
+  protected List<weak string?> get_local_error_files()
+  {
+    var sorted_error_files = local_error_files.get_values();
+    sorted_error_files.sort(strcmp);
+    return sorted_error_files;
   }
 
 #if HAS_PACKAGEKIT

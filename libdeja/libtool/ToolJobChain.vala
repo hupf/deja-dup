@@ -11,7 +11,7 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
   public override async void start()
   {
     if (chain == null) {
-      done(true, false, null);
+      done(true, false);
       return;
     }
 
@@ -24,7 +24,7 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
     if (current != null)
       current.cancel(); // sends done()
     else
-      done(false, true, null);
+      done(false, true);
   }
 
   public override void stop()
@@ -33,7 +33,7 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
     if (current != null)
       current.stop(); // sends done()
     else
-      done(true, true, null);
+      done(true, true);
   }
 
   public override void pause(string? reason)
@@ -72,6 +72,7 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
     job.raise_error.connect((e, d) => {raise_error(e, d);});
     job.action_desc_changed.connect((a) => {action_desc_changed(a);});
     job.action_file_changed.connect((f, a) => {action_file_changed(f, a);});
+    job.local_file_error.connect((f) => {local_file_error(f);});
     job.progress.connect((p) => {progress(p);});
     job.is_full.connect((f) => {is_full(f);});
     job.bad_encryption_password.connect(() => {bad_encryption_password();});
@@ -114,7 +115,7 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
     yield current.start();
   }
 
-  void handle_done(bool success, bool cancelled, string? detail)
+  void handle_done(bool success, bool cancelled)
   {
     clear_current();
 
@@ -123,6 +124,6 @@ internal class DejaDup.ToolJobChain : DejaDup.ToolJob
       return;
     }
 
-    done(success, cancelled, detail);
+    done(success, cancelled);
   }
 }

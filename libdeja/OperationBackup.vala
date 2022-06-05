@@ -20,9 +20,24 @@ public class DejaDup.OperationBackup : Operation
     yield base.start();
   }
 
-  internal async override void operation_finished(bool success, bool cancelled, string? detail)
+  protected override string? get_success_detail()
   {
-    /* If successfully completed, update time of last backup and run base operation_finished */
+    string detail = null;
+
+    var error_files = get_local_error_files();
+    if (error_files.length() > 0) {
+      detail = _("Could not back up the following files.  Please make sure you are able to open them.");
+      detail += "\n";
+      foreach (var f in error_files) {
+        detail += "\n%s".printf(f);
+      }
+    }
+
+    return detail;
+  }
+
+  internal async override void operation_finished(bool success, bool cancelled)
+  {
     if (success && !cancelled)
       DejaDup.update_last_run_timestamp(DejaDup.LAST_BACKUP_KEY);
 
@@ -37,9 +52,9 @@ public class DejaDup.OperationBackup : Operation
 
     if (success && !cancelled && tool_name != "restic") {
       var verify = new OperationVerify(backend, job.tag);
-      yield chain_op(verify, _("Verifying backup…"), detail);
+      yield chain_op(verify, _("Verifying backup…"));
     } else {
-      yield base.operation_finished(success, cancelled, detail);
+      yield base.operation_finished(success, cancelled);
     }
   }
 

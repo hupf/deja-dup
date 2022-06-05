@@ -388,7 +388,7 @@ internal class BorgJob : DejaDup.ToolJobChain
       break;
     default:
       warning("Unknown mode %d", mode);
-      done(true, false, null);
+      done(true, false);
       return;
     }
 

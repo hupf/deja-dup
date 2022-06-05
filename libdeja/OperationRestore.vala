@@ -45,11 +45,27 @@ public class DejaDup.OperationRestore : Operation
     return null;
   }
 
-  internal async override void operation_finished(bool success, bool cancelled, string? detail)
+  protected override string? get_success_detail()
+  {
+    string detail = null;
+
+    var error_files = get_local_error_files();
+    if (error_files.length() > 0) {
+      detail = _("Could not restore the following files.  Please make sure you are able to write to them.");
+      detail += "\n";
+      foreach (var f in error_files) {
+        detail += "\n%s".printf(f);
+      }
+    }
+
+    return detail;
+  }
+
+  internal async override void operation_finished(bool success, bool cancelled)
   {
     if (success && !cancelled)
       DejaDup.update_last_run_timestamp(DejaDup.LAST_RESTORE_KEY);
 
-    yield base.operation_finished(success, cancelled, detail);
+    yield base.operation_finished(success, cancelled);
   }
 }

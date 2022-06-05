@@ -40,8 +40,6 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   static File slash;
 
-  GenericSet<string?> local_error_files = new GenericSet<string?>(str_hash, str_equal);
-
   bool checked_collection_info = false;
   bool got_collection_info = false;
   struct DateInfo {
@@ -116,7 +114,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
     catch (Error e) {
       raise_error(e.message, null);
-      done(false, false, null);
+      done(false, false);
       return;
     }
 
@@ -131,7 +129,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
 
     if (!restart())
-      done(false, false, null);
+      done(false, false);
 
     if (!backend.is_native()) {
       DejaDup.Network.get().notify["connected"].connect(network_changed);
@@ -350,8 +348,6 @@ internal class DuplicityJob : DejaDup.ToolJob
   bool restart()
   {
     state = State.NORMAL;
-    if (restore_files == null) // only clear if we're not in middle of restore sequence
-      local_error_files.remove_all();
 
     if (mode == DejaDup.ToolJob.Mode.INVALID)
       return false;
@@ -503,7 +499,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     }
 
     if (mode != DejaDup.ToolJob.Mode.INVALID && !restart()) {
-      done(false, false, null);
+      done(false, false);
     }
   }
 
@@ -513,7 +509,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
     if (!has_progress_total) {
       if (!restart())
-        done(false, false, null);
+        done(false, false);
       return;
     }
 
@@ -528,7 +524,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         // Tiny backup location.  Suggest they get a larger one.
         var msg = _("Backup location is too small. Try using one with at least %s.");
         show_error(msg.printf(formatted_progress_total));
-        done(false, false, null);
+        done(false, false);
         return;
     }
 
@@ -553,13 +549,13 @@ internal class DuplicityJob : DejaDup.ToolJob
       else {
         var msg = _("Backup location does not have enough free space. Try using one with at least %s.");
         show_error(msg.printf(formatted_progress_total));
-        done(false, false, null);
+        done(false, false);
         return;
       }
     }
 
     if (!restart())
-      done(false, false, null);
+      done(false, false);
   }
 
   bool cleanup() {
@@ -602,17 +598,8 @@ internal class DuplicityJob : DejaDup.ToolJob
     return state == State.CLEANUP;
   }
 
-  List<unowned string> get_sorted_local_error_files()
-  {
-    var error_files = local_error_files.get_values();
-    error_files.sort(strcmp);
-    return error_files;
-  }
-
   void handle_done(DuplicityInstance? inst, bool success, bool cancelled)
   {
-    string detail = null;
-
     if (can_ignore_error())
       success = true;
 
@@ -662,32 +649,9 @@ internal class DuplicityJob : DejaDup.ToolJob
         }
 
         if (mode == DejaDup.ToolJob.Mode.BACKUP) {
-          if (local_error_files.length > 0) {
-            // OK, we succeeded yay!  But some files didn't make it into the backup
-            // because we couldn't read them.  So tell the user so they don't think
-            // everything is hunky dory.
-            detail = _("Could not back up the following files.  Please make sure you are able to open them.");
-            detail += "\n";
-            foreach (var f in get_sorted_local_error_files()) {
-              detail += "\n%s".printf(f);
-            }
-          }
-
           mode = DejaDup.ToolJob.Mode.INVALID; // mark 'done' so when we delete, we don't restart
           if (delete_files_if_needed())
             return;
-        }
-        else if (mode == DejaDup.ToolJob.Mode.RESTORE) {
-          if (local_error_files.length > 0) {
-            // OK, we succeeded yay!  But some files didn't actually restore
-            // because we couldn't write to them.  So tell the user so they
-            // don't think everything is hunky dory.
-            detail = _("Could not restore the following files.  Please make sure you are able to write to them.");
-            detail += "\n";
-            foreach (var f in get_sorted_local_error_files()) {
-              detail += "\n%s".printf(f);
-            }
-          }
         }
         break;
 
@@ -705,7 +669,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       show_error(_("Failed with an unknown error."));
 
     inst = null;
-    done(success, cancelled, detail);
+    done(success, cancelled);
   }
 
   string saved_status;
@@ -1307,7 +1271,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           var error_file = make_file_obj(firstline[2]);
           if (is_file_in_or_under_list(error_file, includes) &&
               !is_file_in_list(error_file, excludes))
-            local_error_files.add(error_file.get_parse_name());
+            local_file_error(error_file.get_parse_name());
         }
         break;
 
@@ -1321,7 +1285,7 @@ internal class DuplicityJob : DejaDup.ToolJob
           var error_file = make_file_obj(firstline[2]);
           if (!error_file.equal(slash) && // for some reason, duplicity likes to talk about '/'
               !text.contains("[Errno 1]")) // Errno 1 is "can't chown" or similar; very common and ignorable
-            local_error_files.add(error_file.get_parse_name());
+            local_file_error(error_file.get_parse_name());
         }
         break;
       }

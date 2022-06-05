@@ -59,7 +59,7 @@ public class DejaDup.OperationVerify : Operation
     base.connect_to_job();
   }
 
-  internal async override void operation_finished(bool success, bool cancelled, string? detail)
+  internal async override void operation_finished(bool success, bool cancelled)
   {
     // Verify results
     if (success) {
@@ -88,6 +88,6 @@ public class DejaDup.OperationVerify : Operation
 
     new RecursiveDelete(metadir).start();
 
-    yield base.operation_finished(success, cancelled, detail);
+    yield base.operation_finished(success, cancelled);
   }
 }
