@@ -91,12 +91,11 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
+	export BORG_OPENSSL_PREFIX=/usr; \
 	for p in borgbackup "setuptools-scm duplicity" "cryptography<3.4 pydrive2" requests-oauthlib; do \
 		name=$$(echo $$p | grep -oE '[^[:space:]]+$$'); \
 		echo $$name; \
-		../../flatpak-builder-tools/pip/flatpak-pip-generator --runtime org.gnome.Sdk//master --output $$name $$p; \
-		../../flatpak-builder-tools/flatpak-json2yaml.py -f --output $$name.yaml $$name.json; \
-		rm $$name.json; \
+		../../flatpak-builder-tools/pip/flatpak-pip-generator --yaml --runtime org.gnome.Sdk//master --output $$name $$p; \
 		sed -i '1i# SPDX-License-Identifier\: GPL-3.0-or-later\n# SPDX-FileCopyrightText\: Michael Terry\n---' $$name.yaml; \
 	done
 	# Hopefully temporary fix to handle setuptools 60 and above, which duplicity doesn't vibe with yet
