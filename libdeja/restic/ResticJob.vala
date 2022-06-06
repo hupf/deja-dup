@@ -209,6 +209,28 @@ internal class ResticInitJoblet : ResticJoblet
   }
 }
 
+// Jobs may leave stale locks if interrupted (e.g. an exclusive-lock action
+// like pruning). If we try to do anything while an exclusive lock exists,
+// restic will complain. There is slight risk here if there is maybe... a
+// different laptop that is merely suspended also pointing at this same repo?
+// But in general, we do not encourage re-using repos. And the actual harm of
+// interrupted jobs is much more likely. (Note that this only clears stale
+// locks.)
+internal class ResticUnlockJoblet : ResticJoblet
+{
+  construct {
+    // this is a best-effort joblet - we don't care if there is no repository, etc
+    ignore_errors = true;
+  }
+
+  protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
+  {
+    base.prepare_args(ref argv, ref envp);
+    argv.append(get_remote());
+    argv.append("unlock");
+  }
+}
+
 internal class ResticPruneJoblet : ResticJoblet
 {
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
@@ -615,6 +637,7 @@ internal class ResticJob : DejaDup.ToolJobChain
       var settings = DejaDup.get_settings();
       var delete_after = settings.get_int(DejaDup.DELETE_AFTER_KEY);
 
+      append_to_chain(new ResticUnlockJoblet());
       //append_to_chain(new ResticMakeSpaceJoblet());
       append_to_chain(new ResticBackupJoblet());
       if (delete_after > 0)
@@ -622,6 +645,7 @@ internal class ResticJob : DejaDup.ToolJobChain
 
       break;
     case Mode.RESTORE:
+      append_to_chain(new ResticUnlockJoblet());
       if (restore_files == null) {
         append_to_chain(new ResticRestoreJoblet(null));
       }
@@ -632,9 +656,11 @@ internal class ResticJob : DejaDup.ToolJobChain
       }
       break;
     case Mode.STATUS:
+      append_to_chain(new ResticUnlockJoblet());
       append_to_chain(new ResticStatusJoblet());
       break;
     case Mode.LIST:
+      append_to_chain(new ResticUnlockJoblet());
       append_to_chain(new ResticListJoblet());
       break;
     default:
