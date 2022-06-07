@@ -144,11 +144,17 @@ deja_dup_metainfo = i18n.merge_file(
     install_dir: join_paths(datadir, 'metainfo'),
 )
 
-if appstream_util.found()
+if appstreamcli.found()
+test(
+    'validate-appstream',
+    appstreamcli,
+    args: ['validate', '--no-net', deja_dup_metainfo],
+)
+elif appstream_util.found()
 test(
     'validate-appstream',
     appstream_util,
-    args: ['--nonet', 'validate-relax', deja_dup_metainfo],
+    args: ['validate-relax', '--nonet', deja_dup_metainfo],
 )
 endif
 
