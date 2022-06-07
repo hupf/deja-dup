@@ -831,6 +831,10 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       args.append(file_to_restore == null ? "/" : parse_path(file_to_restore));
       break;
 
+    case "unlock":
+      args.append("unlock");
+      break;
+
     case "verify":
       args.append("restore");
       args.append("--target=/");

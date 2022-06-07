@@ -66,12 +66,12 @@ Encrypted=true
 Passphrase=true
 
 [Restic]
-Runs=backup 1;backup 2;backup 3;verify;
+Runs=unlock 1;unlock 2;unlock 3;backup;verify;
 
 # Two different messages result in bad passphrase being detected:
 
-[Restic backup 1]
+[Restic unlock 1]
 Output=Fatal: wrong password or no key found
 
-[Restic backup 2]
+[Restic unlock 2]
 Output=Fatal: an empty password is not a password
