@@ -311,14 +311,14 @@ public abstract class AssistantOperation : Assistant
 
     l = new Gtk.Label(_("In order to continue, the following packages need to be installed:"));
     l.xalign = 0.0f;
-    l.max_width_chars = 50;
+    l.max_width_chars = 35;
     l.wrap = true;
     page.attach(l, 0, rows++, 1, 1);
     backend_install_desc = l;
 
     l = new Gtk.Label("");
     l.halign = Gtk.Align.START;
-    l.max_width_chars = 50;
+    l.max_width_chars = 35;
     l.wrap = true;
     l.margin_start = 12;
     l.use_markup = true;
@@ -406,7 +406,8 @@ public abstract class AssistantOperation : Assistant
     first_password_widgets.append(label);
 
     w = new Gtk.CheckButton.with_mnemonic(_("_Remember password"));
-    page.attach(w, 2, rows, 1, 1);
+    w.halign = Gtk.Align.END;
+    page.attach(w, 1, rows, 2, 1);
     encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
     ++rows;
     encrypt_remember = (Gtk.CheckButton)w;
@@ -471,7 +472,7 @@ public abstract class AssistantOperation : Assistant
 
     var l = new Gtk.Label("");
     l.xalign = 0.0f;
-    l.max_width_chars = 50;
+    l.max_width_chars = 35;
     l.wrap = true;
     page.attach(l, 0, rows, 3, 1);
     ++rows;

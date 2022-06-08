@@ -17,30 +17,43 @@ SPDX-FileCopyrightText: Michael Terry
         </style>
         <property name="child">
           <object class="GtkBox">
+            <property name="homogeneous">true</property>
             <property name="orientation">vertical</property>
             <property name="spacing">18</property>
             <property name="halign">center</property>
             <child>
               <object class="GtkButton" id="initial-backup-button">
-                <property name="label" translatable="yes">Create Your First _Backup</property>
                 <property name="receives_default">1</property>
-                <property name="use_underline">1</property>
                 <property name="action_name">app.backup</property>
                 <style>
                   <class name="suggested-action"/>
                   <class name="pill"/>
                 </style>
+                <property name="child">
+                  <object class="GtkLabel">
+                    <property name="justify">center</property>
+                    <property name="label" translatable="yes">Create Your First _Backup</property>
+                    <property name="use-underline">true</property>
+                    <property name="wrap">true</property>
+                  </object>
+                </property>
               </object>
             </child>
             <child>
               <object class="GtkButton" id="initial-restore-button">
-                <property name="label" translatable="yes">_Restore From a Previous Backup</property>
                 <property name="receives_default">1</property>
-                <property name="use_underline">1</property>
                 <signal name="clicked" handler="on_initial_restore"/>
                 <style>
                   <class name="pill"/>
                 </style>
+                <property name="child">
+                  <object class="GtkLabel">
+                    <property name="justify">center</property>
+                    <property name="label" translatable="yes">_Restore From a Previous Backup</property>
+                    <property name="use-underline">true</property>
+                    <property name="wrap">true</property>
+                  </object>
+                </property>
               </object>
             </child>
           </object>

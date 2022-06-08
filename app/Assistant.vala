@@ -37,7 +37,7 @@ public class Assistant : Adw.Window
   Gtk.Widget close_button;
   Gtk.Widget resume_button;
   Gtk.Widget apply_button;
-  protected Gtk.Box page_box;
+  protected Gtk.Stack page_box;
   uint inhibit_id;
 
   public class PageInfo {
@@ -69,6 +69,7 @@ public class Assistant : Adw.Window
   {
     add_css_class("dialog");
 
+    default_width = 360;
     deletable = false;
     infos = new List<PageInfo>();
 
@@ -80,7 +81,7 @@ public class Assistant : Adw.Window
     header_bar.show_end_title_buttons = false;
     dialog_box.append(header_bar);
 
-    page_box = new Gtk.Box(Gtk.Orientation.VERTICAL, 0);
+    page_box = new Gtk.Stack();
     page_box.hexpand = true;
     page_box.vexpand = true;
     dialog_box.append(page_box);
@@ -227,16 +228,7 @@ public class Assistant : Adw.Window
       use_title(info);
       set_buttons();
       set_inhibited(info.type == Type.PROGRESS);
-
-      var child = page_box.get_first_child();
-      if (child != null) {
-        child.hide();
-        page_box.remove(child);
-      }
-      page_box.append(info.page);
-      info.page.show();
-
-      reset_size(info.page);
+      page_box.visible_child = info.page;
 
       var w = get_focus();
       if (w != null && w.get_type() == typeof(Gtk.Label))
@@ -355,7 +347,6 @@ public class Assistant : Adw.Window
     return false;
   }
 
-  Gtk.Requisition page_box_req;
   public void append_page(Gtk.Widget page, Type type = Type.NORMAL, string forward_text = _("_Forward"))
   {
     var was_empty = infos == null;
@@ -370,23 +361,10 @@ public class Assistant : Adw.Window
     info.forward_text = forward_text;
     infos.append(info);
 
-    if (was_empty)
-      page_box.get_preferred_size(null, out page_box_req);
-
-    reset_size(page);
+    page_box.add_child(page);
 
     if (was_empty)
       Idle.add(set_first_page);
-  }
-
-  void reset_size(Gtk.Widget page)
-  {
-    Gtk.Requisition pagereq;
-    int boxw, boxh;
-    page_box.get_size_request(out boxw, out boxh);
-    page.get_preferred_size(null, out pagereq);
-    page_box.set_size_request(int.max(boxw, pagereq.width + page_box_req.width),
-                              int.max(boxh, pagereq.height + page_box_req.height));
   }
 
   public void set_page_title(Gtk.Widget page, string title)
