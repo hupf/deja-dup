@@ -35,7 +35,7 @@ bool handle_options(out int status)
 async void kickoff()
 {
   string unready_message;
-  bool ready = yield ready_watcher.is_ready(out unready_message);
+  bool ready = yield ready_watcher.is_ready(scheduler.days_late, out unready_message);
   if (!ready) {
     if (unready_message != null) {
       yield BackupInterface.notify_not_ready(unready_message);

@@ -57,18 +57,21 @@ class ReadyWatcher : Object
     Object(no_delay: no_delay);
   }
 
-  public async bool is_ready(out string message)
+  public async bool is_ready(int days_late, out string message)
   {
     message = null;
 
     string reason, reason_message;
-    var ready = yield is_ready_with_reason(out reason, out reason_message);
+    var ready = yield is_ready_with_reason(days_late, out reason, out reason_message);
 
     if (!ready && reason != null && !unready_reasons.contains(reason))
     {
-      // See the comment above is_ready_with_reason for why we split like this
-      foreach (var part in reason.split("."))
-        unready_reasons.add(part);
+      unready_reasons.add(reason);
+
+      // See the comment above `is_ready_with_reason` for why we split like this
+      var parts = reason.split(".");
+      if (parts.length > 1) // only support one period for now, can expand as needed
+        unready_reasons.add(parts[0]);
 
       message = reason_message;
     }
@@ -124,7 +127,7 @@ class ReadyWatcher : Object
   // that. But we do want the other direction -- if we've shown them the
   // generic version, there is still value in letting them know that actually,
   // we need an unmetered connection.
-  async bool is_ready_with_reason(out string reason, out string message)
+  async bool is_ready_with_reason(int days_late, out string reason, out string message)
   {
     if (gamemode.enabled) {
       reason = "gamemode";
@@ -133,11 +136,20 @@ class ReadyWatcher : Object
     }
 
     if (power_monitor.power_saver_enabled) {
-      // Don't message about this - battery status will fix itself in time, and
-      // is almost certainly more important to the user than the backup. We don't
-      // need to nag them about changing power saver status just for us.
-      reason = "power-saver";
-      message = null;
+      // Don't message about this immediately - battery status will fix itself
+      // in time, and is almost certainly more important to the user than a new
+      // backup. We don't need to nag them about changing power saver status
+      // just for us. Unless it's been over a day... maybe they accidentally
+      // left low power mode on after manually switching to it? Then we should
+      // let them know about the issue so they can correct it and/or be aware we
+      // delay backups when saving power.
+      if (days_late < 1) {
+        reason = "power-saver";
+        message = null;
+      } else {
+        reason = "power-saver.overdue";
+        message = _("Backup will begin when power saver mode is no longer active.");
+      }
       return false;
     }
 

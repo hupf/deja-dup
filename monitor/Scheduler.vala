@@ -30,7 +30,9 @@ class Scheduler : Object
   public signal void backup(); // a backup should be attempted
   public signal void quit(); // monitor should quit, auto backups are off
 
+  // Better to look for the backup() signal than to monitor changes to these props
   public bool past_due {get; protected set;}
+  public int days_late {get; protected set;} // zero if < 24 hours due
 
   ///////////
   uint timeout_id = 0;
@@ -94,8 +96,10 @@ class Scheduler : Object
     TimeSpan wait_time;
     var enabled = time_until_next_run(out wait_time);
 
-    if (!enabled || wait_time > 0)
+    if (!enabled || wait_time > 0) {
       past_due = false;
+      days_late = 0;
+    }
     // else it will be set to true in initiate_backup - don't set it true now
     // to avoid badly timed triggers for notify["past-due"]
 
@@ -144,6 +148,11 @@ class Scheduler : Object
   {
     // First, schedule another backup in a day. See comment at top of file for why
     prepare_tomorrow();
+
+    days_late = 0;
+    TimeSpan wait_time;
+    if (time_until_next_run(out wait_time))
+      days_late = (int)(-wait_time / DejaDup.get_day());
 
     past_due = true;
     backup();
