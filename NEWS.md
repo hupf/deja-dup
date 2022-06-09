@@ -3,6 +3,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 43.4
+- Improve support for mobile screen sizes
+- Minor fixes to our experimental restic support (make sure to unlock the repo
+  and warn if some files could not be read when backing up)
+- Update French and German translations
+
 # 43.3
 - Change Google/Microsoft authentication flow to use a more secure,
   non-deprecated approach (Google is turning off the approach we use now in
