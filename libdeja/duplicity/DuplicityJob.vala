@@ -1316,16 +1316,15 @@ internal class DuplicityJob : DejaDup.ToolJob
     //     file
     // * lots of files looks ugly to users
     //
-    // duplicity's default is 25 (used to be 5).
+    // duplicity's default is 200MB (used to be 25, and even 5 a long time ago).
     //
-    // For local filesystems, we'll choose large volsize.
-    // For remote FSs, we'll go smaller.
+    // Let's just use that (when their default was 25, we used 50 for local
+    // backups, but 200 seems big enough that I don't want to go even higher
+    // when local).
     if (DejaDup.in_testing_mode())
       return 1;
-    else if (backend.is_native())
-      return 50;
     else
-      return 25;
+      return 200;
   }
 
   void disconnect_inst()
