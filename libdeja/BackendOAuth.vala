@@ -48,6 +48,9 @@ public abstract class DejaDup.BackendOAuth : Backend
     try {
       Secret.password_clear_sync(schema, null,
                                  "client_id", client_id);
+      // any observers need to reset as if we have a new backend (because the
+      // user may well authenticate with a whole different account next time)
+      BackendWatcher.get_instance().changed();
     } catch (Error e) {
       // Ignore
     }

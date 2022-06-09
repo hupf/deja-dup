@@ -22,10 +22,9 @@ public class PreferencesWindow : Adw.PreferencesWindow
   unowned Gtk.Label restic_description;
 #endif
 
-  DejaDup.BackendWatcher watcher;
   construct
   {
-    watcher = new DejaDup.BackendWatcher();
+    var watcher = DejaDup.BackendWatcher.get_instance();
     watcher.changed.connect(update_location_description);
     update_location_description();
 

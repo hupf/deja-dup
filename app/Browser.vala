@@ -47,7 +47,6 @@ class Browser : Gtk.Grid
   DejaDupApp application;
   FileStore store;
   Gtk.MultiSelection selection;
-  DejaDup.BackendWatcher watcher;
   string auth_url; // if null, auth button should start mount op vs oauth
   MountOperation mount_op; // normally null
   MainLoop passphrase_loop;
@@ -108,7 +107,7 @@ class Browser : Gtk.Grid
     search_entry.search_changed.connect(update_search_filter);
 
     // Watch for backend changes that need to reset us
-    watcher = new DejaDup.BackendWatcher();
+    var watcher = DejaDup.BackendWatcher.get_instance();
     watcher.changed.connect(clear_operation);
     watcher.new_backup.connect(clear_operation);
     application.notify["custom-backend"].connect(clear_operation);

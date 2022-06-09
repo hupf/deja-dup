@@ -15,6 +15,19 @@ public class DejaDup.BackendWatcher : Object
   public signal void changed();
   public signal void new_backup();
 
+  static BackendWatcher instance;
+  public static BackendWatcher get_instance()
+  {
+    if (instance == null)
+      instance = new BackendWatcher();
+    return instance;
+  }
+
+  private BackendWatcher()
+  {
+    Object();
+  }
+
   List<Settings> all_settings; // hold refs to keep signals alive
   construct {
     var settings = DejaDup.get_settings();
