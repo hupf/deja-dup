@@ -49,7 +49,7 @@ class BackupTest(BaseTest):
 
     def test_from_main_window(self):
         app = self.cmd()
-        app.button("Create Your First Backup").click()
+        app.childNamed("Create Your First Backup").click()
         with self.new_files():
             self.walk_initial_backup(app)
 

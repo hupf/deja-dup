@@ -80,6 +80,8 @@ class Gtk4Node:
         if not top:
             top = self.findAncestor(GenericPredicate(roleName="dialog"))
         if not top:
+            top = self.findAncestor(GenericPredicate(roleName="filler", name="Preferences"))
+        if not top:
             # check for a gtk3 portal dialog - it won't need translation
             if self.findAncestor(GenericPredicate(roleName="file chooser")):
                 self.coords = (0, 0)

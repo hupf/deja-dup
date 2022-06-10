@@ -93,11 +93,11 @@ class RestoreTest(BaseTest):
     def test_simple_cycle(self):
         app = self.cmd()
 
-        app.button("Create Your First Backup").click()
+        app.childNamed("Create Your First Backup").click()
         self.walk_backup(app)
 
         self.set_string("last-run", "")  # to go back to welcome screen
-        app.button("Restore From a Previous Backup").click()
+        app.childNamed("Restore From a Previous Backup").click()
         self.walk_restore(app)
 
 

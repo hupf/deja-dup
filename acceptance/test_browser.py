@@ -26,7 +26,7 @@ class BrowserTest(BaseTest):
         self.srcdir = "/tmp/deja-dup"
         shutil.rmtree(self.srcdir, ignore_errors=True)
 
-        self.restoredir = "/tmp/deja-dup.restore"
+        self.restoredir = self.rootdir + "/restore"
         self.password = None
         self.app = self.cmd()
 

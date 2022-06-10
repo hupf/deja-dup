@@ -28,15 +28,19 @@ SPDX-FileCopyrightText: Michael Terry
                 <style>
                   <class name="suggested-action"/>
                   <class name="pill"/>
+                  <class name="text-button"/>
                 </style>
                 <property name="child">
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="backup-label">
                     <property name="justify">center</property>
                     <property name="label" translatable="yes">Create Your First _Backup</property>
                     <property name="use-underline">true</property>
                     <property name="wrap">true</property>
                   </object>
                 </property>
+                <accessibility>
+                  <relation name="labelled-by">backup-label</relation>
+                </accessibility>
               </object>
             </child>
             <child>
@@ -45,15 +49,19 @@ SPDX-FileCopyrightText: Michael Terry
                 <signal name="clicked" handler="on_initial_restore"/>
                 <style>
                   <class name="pill"/>
+                  <class name="text-button"/>
                 </style>
                 <property name="child">
-                  <object class="GtkLabel">
+                  <object class="GtkLabel" id="restore-label">
                     <property name="justify">center</property>
                     <property name="label" translatable="yes">_Restore From a Previous Backup</property>
                     <property name="use-underline">true</property>
                     <property name="wrap">true</property>
                   </object>
                 </property>
+                <accessibility>
+                  <relation name="labelled-by">restore-label</relation>
+                </accessibility>
               </object>
             </child>
           </object>

@@ -26,7 +26,7 @@ class IntegrationTest(BaseTest):
     def test_help(self):
         # Also test that help is translated by passing LANG
         app = self.cmd(env="LANG=fr_FR.UTF-8 LANGUAGE=fr")
-        app.childNamed("Main Menu").click()
+        app.childNamed("Menu principal").click()
 
         self.addCleanup(self.kill_bus, "org.gnome.Yelp")
         app.button("Aide").click()

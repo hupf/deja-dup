@@ -24,7 +24,7 @@ class PreferencesTest(BaseTest):
 
     def test_general(self):
         # Test that there's a special first time welcome screen
-        self.app.button("Create Your First Backup")
+        self.app.childNamed("Create Your First Backup")
 
         # Grab switch from main window, set last-run time so the switch shows up
         now = GLib.DateTime.new_now_utc().format_iso8601()
@@ -32,7 +32,7 @@ class PreferencesTest(BaseTest):
         main = self.app.window("Backups")
         periodic_main = self.get_auto_check(main)
 
-        prefs = self.app.window("Preferences")
+        prefs = self.app.child(roleName="filler", name="Preferences")
 
         # Periodic to settings
         periodic = self.get_auto_check(prefs)
@@ -92,7 +92,7 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.table_names(table) == names)
 
     def assert_inclusion_table(self, widget, key):
-        prefs = self.app.window("Preferences")
+        prefs = self.app.child(roleName="filler", name="Preferences")
         prefs.child(name="Folders").click()
 
         panel = prefs.child(roleName="panel", name=widget)
