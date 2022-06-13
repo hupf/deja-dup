@@ -4,10 +4,15 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 43.4
+- Warn about delayed backups due to power saver mode, if it's been over a day
+  since we were supposed to back up
 - Improve support for mobile screen sizes
+- Add some in-preferences help explaining some of the always-ignored folders
+- Bump default volume size from 25/50MB to 200MB, to keep fewer files around
+  and improve network throughput
 - Minor fixes to our experimental restic support (make sure to unlock the repo
   and warn if some files could not be read when backing up)
-- Update French and German translations
+- Update French, German, Polish, Portuguese, Swedish, and Ukrainian translations
 
 # 43.3
 - Change Google/Microsoft authentication flow to use a more secure,
