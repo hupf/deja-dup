@@ -735,7 +735,10 @@ public async void clean_tempdirs(bool all=true)
         var infos = yield enumerator.next_files_async(NUM_ENUMERATED,
                                                       Priority.DEFAULT, null);
         foreach (FileInfo info in infos) {
-          if (info.get_name().has_prefix("duplicity-") || (all && info.get_name().has_prefix("deja-dup-"))) {
+          if (info.get_name().has_prefix("duplicity-") ||
+              info.get_name().has_prefix("restic-") ||
+              (all && info.get_name().has_prefix("deja-dup-")))
+          {
             var child = gfile.get_child(info.get_name());
             yield new DejaDup.RecursiveDelete(child).start_async();
           }

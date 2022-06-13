@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-# Bug 907846
+# Bug https://bugs.launchpad.net/deja-dup/+bug/907846
 
 [Operation]
 Type=backup
@@ -26,3 +26,12 @@ IncludeArgs='--include=@TEST_HOME@/1' '--include=@TEST_HOME@/2'
 #WARNING 10 '@TEST_HOME@/2'
 Output=true
 IncludeArgs='--include=@TEST_HOME@/1' '--include=@TEST_HOME@/2'
+
+[Restic]
+Runs=unlock;backup;verify;
+
+[Restic backup]
+#{"message_type":"error","item":"@TEST_HOME@/1"}
+#{"message_type":"error","item":"@TEST_HOME@/2"}
+Output=^
+ExtraIncludes=@TEST_HOME@/1;@TEST_HOME@/2;

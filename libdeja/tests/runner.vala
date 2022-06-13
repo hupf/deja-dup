@@ -387,12 +387,14 @@ string run_script(string in)
 {
   string output;
   string errstr;
+  int status;
   try {
-    Process.spawn_sync(null, {"/bin/sh", "-c", in}, null, 0, null, out output, out errstr, null);
+    Process.spawn_sync(null, {"/bin/sh", "-c", in}, null, 0, null, out output, out errstr, out status);
+    Process.check_wait_status(status);
     if (errstr != null && errstr != "")
       warning("Error running script: %s", errstr);
   }
-  catch (SpawnError e) {
+  catch (Error e) {
     warning(e.message);
     assert_not_reached();
   }

@@ -5,11 +5,18 @@
 
 [Operation]
 Type=backup
-Script=mkdir -p @TEST_HOME@/tmp/duplicity-blarg @TEST_HOME@/tmp/nope
+FinalScript=test ! -e @TEST_HOME@/tmp/duplicity-blarg -a ! -e @TEST_HOME@/tmp/restic-blarg -a -d @TEST_HOME@/tmp/deja-dup-nope
 
 [Duplicity]
 Runs=status;dry;backup;status-restore;verify;
 
-# Check at end of everything that we cleared the temp files
-[Duplicity verify]
-Script=test ! -e @TEST_HOME@/tmp/duplicity-blarg -a -d @TEST_HOME@/tmp/nope
+# Make tmp files after we start, because we clean everything during initialization
+[Duplicity status]
+Script=mkdir -p @TEST_HOME@/tmp/duplicity-blarg @TEST_HOME@/tmp/deja-dup-nope
+
+[Restic]
+Runs=unlock;backup;verify;
+
+# Make tmp files after we start, because we clean everything during initialization
+[Restic unlock]
+Script=mkdir -p @TEST_HOME@/tmp/restic-blarg @TEST_HOME@/tmp/deja-dup-nope
