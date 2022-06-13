@@ -209,7 +209,6 @@ public class AssistantRestore : AssistantOperation
     bad_files_grid.attach(bad_files_label, 0, 1, 2, 1);
 
     var page = new Gtk.Box(Gtk.Orientation.VERTICAL, 6);
-    page.width_request = 450; // it's a long title, give space for it in header
     DejaDup.set_margins(page, 12);
     page.append(orig_radio);
     page.append(cust_radio_box);

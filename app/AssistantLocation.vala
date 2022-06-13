@@ -15,7 +15,6 @@ public class AssistantLocation : Assistant
     default_title = _("Restore From Where?");
     modal = true;
     destroy_with_parent = true;
-    resizable = false;
 
     location_grid = new ConfigLocationGrid(true);
     location_grid.set_location_label(_("_Backup location"));

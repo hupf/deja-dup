@@ -69,7 +69,7 @@ public class Assistant : Adw.Window
   {
     add_css_class("dialog");
 
-    default_width = 360;
+    default_width = 450;
     deletable = false;
     infos = new List<PageInfo>();
 
