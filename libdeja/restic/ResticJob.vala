@@ -67,12 +67,49 @@ internal class ResticJoblet : DejaDup.ToolJoblet
       argv.append("--option=rclone.program=" + Rclone.rclone_command());
     }
 
+    argv.append(get_remote());
+
     if (DejaDup.ensure_directory_exists(tmpdir))
       envp.append("TMPDIR=%s".printf(tmpdir));
   }
 
   // Restic helpers
-  protected string get_remote()
+  protected virtual bool process_message(string? msgid, Json.Reader reader) { return false; }
+
+  protected string escape_pattern(string path)
+  {
+    // https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files
+    return path.replace("$", "$$");
+  }
+
+  protected string escape_path(string path)
+  {
+    // https://golang.org/pkg/path/filepath/#Match
+    var escaped = path.replace("\\", "\\\\");
+    escaped = escaped.replace("*", "\\*");
+    escaped = escaped.replace("?", "\\?");
+    escaped = escaped.replace("[", "\\[");
+    return escape_pattern(escaped);
+  }
+
+  protected virtual void handle_no_repository() {}
+
+  protected override void handle_done(bool success, bool cancelled)
+  {
+    if (ignore_errors)
+      success = true;
+    base.handle_done(success, cancelled);
+  }
+
+  protected virtual void handle_fatal_error(string msg)
+  {
+    if (!ignore_errors)
+      show_error(msg);
+  }
+
+  // Private helpers
+
+  string get_remote()
   {
     string repo = null;
 
@@ -99,26 +136,6 @@ internal class ResticJoblet : DejaDup.ToolJoblet
     return "--repo=" + repo;
   }
 
-  protected virtual bool process_message(string? msgid, Json.Reader reader) { return false; }
-
-  protected string escape_pattern(string path)
-  {
-    // https://restic.readthedocs.io/en/latest/040_backup.html#excluding-files
-    return path.replace("$", "$$");
-  }
-
-  protected string escape_path(string path)
-  {
-    // https://golang.org/pkg/path/filepath/#Match
-    var escaped = path.replace("\\", "\\\\");
-    escaped = escaped.replace("*", "\\*");
-    escaped = escaped.replace("?", "\\?");
-    escaped = escaped.replace("[", "\\[");
-    return escape_pattern(escaped);
-  }
-
-  // Private helpers
-
   string? get_msgid(Json.Reader reader)
   {
     string msgid = null;
@@ -140,21 +157,6 @@ internal class ResticJoblet : DejaDup.ToolJoblet
     bad_encryption_password();
   }
 
-  protected virtual void handle_no_repository() {}
-
-  protected override void handle_done(bool success, bool cancelled)
-  {
-    if (ignore_errors)
-      success = true;
-    base.handle_done(success, cancelled);
-  }
-
-  protected virtual void handle_fatal_error(string msg)
-  {
-    if (!ignore_errors)
-      show_error(msg);
-  }
-
   string? restic_cachedir()
   {
     string dir = Environment.get_user_cache_dir();
@@ -169,7 +171,6 @@ internal class ResticMakeSpaceJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("stats");
     argv.append("--tag=deja-dup");
     argv.append("--mode=raw-data");
@@ -204,7 +205,6 @@ internal class ResticInitJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("init");
   }
 }
@@ -226,7 +226,6 @@ internal class ResticUnlockJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("unlock");
   }
 }
@@ -236,7 +235,6 @@ internal class ResticPruneJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("prune");
   }
 
@@ -288,7 +286,6 @@ internal class ResticBackupJoblet : ResticJoblet
     base.prepare_args(ref argv, ref envp);
     tag = "latest"; // for the restore check's benefit, at end of backup
 
-    argv.append(get_remote());
     argv.append("backup");
     argv.append("--tag=deja-dup");
     argv.append("--exclude-caches");
@@ -370,10 +367,10 @@ internal class ResticBackupJoblet : ResticJoblet
 
   protected override bool process_message(string? msgid, Json.Reader reader)
   {
-    if (msgid == "status")
-      return process_status(reader);
     if (msgid == "error")
       return process_error(reader);
+    if (msgid == "status")
+      return process_status(reader);
     if (msgid == "summary")
       return process_summary(reader);
 
@@ -407,10 +404,10 @@ internal class ResticBackupJoblet : ResticJoblet
     // FIXME: nested folders don't work:
     // https://github.com/restic/restic/issues/3408
 
-    // Expand symlinks and ignore mising targets.
+    // Expand symlinks and ignore missing targets.
     // Restic will back up a symlink if specified directly. But if we left
-    // synlinks in parent paths, it will treat them as normal directories.
-    // These calls make sure we include the sym link and the target dirs.
+    // symlinks in parent paths, it will treat them as normal directories.
+    // These calls make sure we include the symlink and the target dirs.
     // (Which is consistent behavior with our Duplicity tool support.)
     DejaDup.expand_links_in_list(ref includes, true);
     DejaDup.expand_links_in_list(ref includes_priority, true);
@@ -447,7 +444,6 @@ internal class ResticDeleteOldBackupsJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("forget");
     argv.append("--tag=deja-dup");
     argv.append("--group-by=tags");
@@ -461,7 +457,6 @@ internal class ResticStatusJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("snapshots");
     argv.append("--tag=deja-dup");
   }
@@ -512,7 +507,6 @@ internal class ResticListJoblet : ResticJoblet
   protected override void prepare_args(ref List<string> argv, ref List<string> envp) throws Error
   {
     base.prepare_args(ref argv, ref envp);
-    argv.append(get_remote());
     argv.append("ls");
     argv.append(tag);
   }
@@ -601,7 +595,6 @@ internal class ResticRestoreJoblet : ResticJoblet
 
     base.prepare_args(ref argv, ref envp);
 
-    argv.append(get_remote());
     argv.append("dump");
     argv.append(tag);
     argv.append(include_path);
@@ -611,7 +604,6 @@ internal class ResticRestoreJoblet : ResticJoblet
   {
     base.prepare_args(ref argv, ref envp);
 
-    argv.append(get_remote());
     argv.append("restore");
     argv.append("--target=/");
     if (restore_file != null)
