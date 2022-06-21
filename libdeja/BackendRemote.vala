@@ -198,7 +198,8 @@ public class BackendRemote : BackendFile
       return false;
     } catch (Error e) {
       // try once more with same response in case we timed out while waiting for user
-      mount_op.@set("retry_mode", true);
+      if (mount_op != null)
+        mount_op.@set("retry_mode", true);
       yield root.mount_enclosing_volume(MountMountFlags.NONE, mount_op, null);
     } finally {
       if (mount_op != null)
