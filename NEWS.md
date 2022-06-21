@@ -12,7 +12,9 @@ SPDX-FileCopyrightText: Michael Terry
   and improve network throughput
 - Minor fixes to our experimental restic support (make sure to unlock the repo
   and warn if some files could not be read when backing up)
-- Update French, German, Polish, Portuguese, Swedish, and Ukrainian translations
+- Update Brazilian Portuguese, Chinese (China), French, German, Hebrew,
+  Occitan, Persian, Polish, Portuguese, Russian, Swedish, and Ukrainian
+  translations
 
 # 43.3
 - Change Google/Microsoft authentication flow to use a more secure,
