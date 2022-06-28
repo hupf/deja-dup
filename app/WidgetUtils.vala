@@ -11,7 +11,12 @@ namespace DejaDup {
 
 public void run_error_dialog(Gtk.Window? parent, string header, string message)
 {
-  Gtk.MessageDialog dlg = new Gtk.MessageDialog(
+#if HAS_ADWAITA_1_2
+  var dlg = new Adw.MessageDialog(parent, header, message);
+  dlg.add_response("accept", _("_OK"));
+  dlg.default_response = "accept";
+#else
+  var dlg = new Gtk.MessageDialog(
     parent,
     Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
     Gtk.MessageType.ERROR,
@@ -19,6 +24,8 @@ public void run_error_dialog(Gtk.Window? parent, string header, string message)
     "%s", header
   );
   dlg.format_secondary_text("%s", message);
+#endif
+
   dlg.response.connect(dlg.destroy);
   dlg.present();
 }

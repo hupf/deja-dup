@@ -106,6 +106,9 @@ endif
 if adwaita_dep.version().version_compare('>= 1.1.0')
 add_project_arguments('--define=HAS_ADWAITA_1_1', language: 'vala')
 endif
+if adwaita_dep.version().version_compare('>= 1.2.0')
+add_project_arguments('--define=HAS_ADWAITA_1_2', language: 'vala')
+endif
 
 if get_option('enable_borg')
 add_project_arguments('--define=ENABLE_BORG', language: 'vala')
