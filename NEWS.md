@@ -3,7 +3,10 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-# 43.5
+# 44.0
+
+##### Packaging
+- Require libadwaita1 1.2+
 
 # 43.4
 - Warn about delayed backups due to power saver mode, if it's been over a day

@@ -458,6 +458,7 @@ int main(string[] args)
   typeof(ConfigPeriodRow).ensure();
   typeof(ConfigRestic).ensure();
   typeof(ConfigServerEntry).ensure();
+  typeof(ExcludeHelpButton).ensure();
   typeof(FolderChooserButton).ensure();
   typeof(MainHeaderBar).ensure();
   typeof(OverviewPage).ensure();
