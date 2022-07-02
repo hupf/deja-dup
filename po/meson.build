@@ -1,20 +1,24 @@
-# -*- Mode: Meson; indent-tabs-mode: nil; tab-width: 4 -*-
+# -*- Mode: Meson; indent-tabs-mode: nil; tab-width: 2 -*-
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
 i18n.gettext(
-    meson.project_name(),
-    preset: 'glib',
-    args: ['--copyright-holder=Michael Terry'],
+  meson.project_name(),
+  args: ['--copyright-holder=Michael Terry'],
+  preset: 'glib',
 )
 
-validate_po_linguas = find_program('./validate-linguas')
-test('po-linguas', validate_po_linguas,
-    env: ['LC_ALL=C.UTF-8'],
-    workdir: meson.current_source_dir())
+test(
+  'po-linguas',
+  find_program('./validate-linguas'),
+  env: ['LC_ALL=C.UTF-8'],
+  workdir: meson.current_source_dir()
+)
 
-validate_potfiles = find_program('./validate-potfiles')
-test('potfiles', validate_potfiles,
-    env: ['LC_ALL=C.UTF-8'],
-    workdir: meson.project_source_root())
+test(
+  'potfiles',
+  find_program('./validate-potfiles'),
+  env: ['LC_ALL=C.UTF-8'],
+  workdir: meson.project_source_root(),
+)
