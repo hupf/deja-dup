@@ -34,7 +34,7 @@ public abstract class AssistantOperation : Assistant
   Gtk.Label backend_install_packages;
   Gtk.ProgressBar backend_install_progress;
 
-  Gtk.PasswordEntry nag_entry;
+  Adw.PasswordEntryRow nag_entry;
   Adw.PasswordEntryRow encrypt_entry;
   Adw.PasswordEntryRow confirm_entry;
   Gtk.Switch encrypt_enabled;
@@ -393,45 +393,44 @@ public abstract class AssistantOperation : Assistant
 
   protected Gtk.Widget make_nag_page()
   {
-    int rows = 0;
-    Gtk.Widget w;
-
-    var page = new Gtk.Grid();
-    page.row_spacing = 12;
-    page.column_spacing = 6;
+    var page = new Adw.Clamp();
     DejaDup.set_margins(page, 12);
 
-    w = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
-                        "of an emergency, please enter your encryption password again to perform a " +
-                        "brief restore test."));
-    w.set("xalign", 0.0f,
-          "max-width-chars", 25,
-          "wrap", true);
-    page.attach(w, 0, rows, 2, 1);
-    ++rows;
+    var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 12);
+    page.child = box;
 
-    nag_entry = new Gtk.PasswordEntry();
-    nag_entry.hexpand = true;
-    nag_entry.activates_default = true;
-    nag_entry.show_peek_icon = true;
-    nag_entry.changed.connect(check_nag_validity);
-    var label = new Gtk.Label(_("E_ncryption password"));
-    label.mnemonic_widget = nag_entry;
-    label.use_underline = true;
+    var label = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
+                                "of an emergency, please enter your encryption password again to perform a " +
+                                "brief restore test."));
+    label.wrap = true;
     label.xalign = 0;
-    page.attach(label, 0, rows, 1, 1);
-    page.attach(nag_entry, 1, rows, 1, 1);
-    ++rows;
+    box.append(label);
 
-    w = new Gtk.CheckButton.with_mnemonic(_("Test every two _months"));
-    page.attach(w, 0, rows, 2, 1);
-    ((Gtk.CheckButton)w).active = true;
-    w.vexpand = true;
-    w.valign = Gtk.Align.END;
-    ((Gtk.CheckButton)w).toggled.connect((button) => {
-      DejaDup.update_nag_time(!button.get_active());
+    var group = new Adw.PreferencesGroup();
+    box.append(group);
+
+    nag_entry = new Adw.PasswordEntryRow();
+    (nag_entry.get_delegate() as Gtk.Text).activates_default = true;
+    nag_entry.title =_("E_ncryption password");
+    nag_entry.use_underline = true;
+    nag_entry.changed.connect(check_nag_validity);
+    group.add(nag_entry);
+
+    var nag_switch = new Gtk.Switch();
+    nag_switch.active = true;
+    nag_switch.can_focus = false;
+    nag_switch.halign = Gtk.Align.END;
+    nag_switch.valign = Gtk.Align.CENTER;
+    nag_switch.notify["active"].connect((button, spec) => {
+      DejaDup.update_nag_time(!(button as Gtk.Switch).get_active());
     });
-    ++rows;
+
+    var nag_row = new Adw.ActionRow();
+    nag_row.activatable_widget = nag_switch;
+    nag_row.title = _("Test every two _months");
+    nag_row.use_underline = true;
+    nag_row.add_suffix(nag_switch);
+    group.add(nag_row);
 
     return page;
   }
