@@ -14,7 +14,7 @@ class PassphraseDialog : Gtk.Dialog
   [GtkChild]
   unowned Adw.PasswordEntryRow entry;
   [GtkChild]
-  unowned Gtk.Switch remember;
+  unowned SwitchRow remember;
 
   construct {
     use_header_bar = 1; // setting this in the ui file doesn't seem to work
@@ -27,11 +27,7 @@ class PassphraseDialog : Gtk.Dialog
       set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
     });
 
-    // AdwEntryRow does not expose activates-default, so we find it ourselves here
-    var gtktext = entry.get_delegate() as Gtk.Text;
-    if (gtktext != null) {
-      gtktext.activates_default = true;
-    }
+    DejaDup.configure_entry_row(entry, true);
   }
 
   ~PassphraseDialog()

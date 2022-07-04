@@ -37,8 +37,8 @@ public abstract class AssistantOperation : Assistant
   Adw.PasswordEntryRow nag_entry;
   Adw.PasswordEntryRow encrypt_entry;
   Adw.PasswordEntryRow confirm_entry;
-  Gtk.Switch encrypt_enabled;
-  Gtk.Switch encrypt_remember;
+  SwitchRow encrypt_enabled;
+  SwitchRow encrypt_remember;
   protected Gtk.Widget password_page {get; private set;}
   protected Gtk.Widget nag_page {get; private set;}
   protected bool nagged;
@@ -341,52 +341,34 @@ public abstract class AssistantOperation : Assistant
     var group = new Adw.PreferencesGroup();
     page.child = group;
 
-    encrypt_enabled = new Gtk.Switch();
+    encrypt_enabled = new SwitchRow();
     encrypt_enabled.active = true; // always default to encrypted
-    encrypt_enabled.can_focus = false;
-    encrypt_enabled.halign = Gtk.Align.END;
-    encrypt_enabled.valign = Gtk.Align.CENTER;
+    encrypt_enabled.subtitle = _("You will need your password to restore your files. You might want to write it down.");
+    encrypt_enabled.title = _("_Password-protect your backup");
     encrypt_enabled.notify["active"].connect(check_password_validity);
-
-    var encrypt_row = new Adw.ActionRow();
-    encrypt_row.activatable_widget = encrypt_enabled;
-    encrypt_row.subtitle = _("You will need your password to restore your files. You might want to write it down.");
-    encrypt_row.title = _("_Password-protect your backup");
-    encrypt_row.use_underline = true;
-    encrypt_row.add_suffix(encrypt_enabled);
-    group.add(encrypt_row);
-    encryption_choice_widgets.append(encrypt_row);
+    group.add(encrypt_enabled);
+    encryption_choice_widgets.append(encrypt_enabled);
 
     encrypt_entry = new Adw.PasswordEntryRow();
-    (encrypt_entry.get_delegate() as Gtk.Text).activates_default = true;
+    DejaDup.configure_entry_row(encrypt_entry, true);
     encrypt_entry.title = _("E_ncryption password");
-    encrypt_entry.use_underline = true;
     encrypt_entry.changed.connect(check_password_validity);
     encrypt_enabled.bind_property("active", encrypt_entry, "sensitive", BindingFlags.SYNC_CREATE);
     group.add(encrypt_entry);
 
     // Add a confirmation entry if this is user's first time
     confirm_entry = new Adw.PasswordEntryRow();
-    (confirm_entry.get_delegate() as Gtk.Text).activates_default = true;
+    DejaDup.configure_entry_row(confirm_entry, true);
     confirm_entry.title = _("Confir_m password");
-    confirm_entry.use_underline = true;
     confirm_entry.changed.connect(check_password_validity);
     encrypt_enabled.bind_property("active", confirm_entry, "sensitive", BindingFlags.SYNC_CREATE);
     group.add(confirm_entry);
     first_password_widgets.append(confirm_entry);
 
-    encrypt_remember = new Gtk.Switch();
-    encrypt_remember.can_focus = false;
-    encrypt_remember.halign = Gtk.Align.END;
-    encrypt_remember.valign = Gtk.Align.CENTER;
-
-    var remember_row = new Adw.ActionRow();
-    remember_row.activatable_widget = encrypt_remember;
-    remember_row.title = _("_Remember password");
-    remember_row.use_underline = true;
-    remember_row.add_suffix(encrypt_remember);
-    encrypt_enabled.bind_property("active", remember_row, "sensitive", BindingFlags.SYNC_CREATE);
-    group.add(remember_row);
+    encrypt_remember = new SwitchRow();
+    encrypt_remember.title = _("_Remember password");
+    encrypt_enabled.bind_property("active", encrypt_remember, "sensitive", BindingFlags.SYNC_CREATE);
+    group.add(encrypt_remember);
 
     return page;
   }
@@ -410,26 +392,17 @@ public abstract class AssistantOperation : Assistant
     box.append(group);
 
     nag_entry = new Adw.PasswordEntryRow();
-    (nag_entry.get_delegate() as Gtk.Text).activates_default = true;
+    DejaDup.configure_entry_row(nag_entry, true);
     nag_entry.title =_("E_ncryption password");
-    nag_entry.use_underline = true;
     nag_entry.changed.connect(check_nag_validity);
     group.add(nag_entry);
 
-    var nag_switch = new Gtk.Switch();
-    nag_switch.active = true;
-    nag_switch.can_focus = false;
-    nag_switch.halign = Gtk.Align.END;
-    nag_switch.valign = Gtk.Align.CENTER;
-    nag_switch.notify["active"].connect((button, spec) => {
-      DejaDup.update_nag_time(!(button as Gtk.Switch).get_active());
-    });
-
-    var nag_row = new Adw.ActionRow();
-    nag_row.activatable_widget = nag_switch;
+    var nag_row = new SwitchRow();
+    nag_row.active = true;
     nag_row.title = _("Test every two _months");
-    nag_row.use_underline = true;
-    nag_row.add_suffix(nag_switch);
+    nag_row.notify["active"].connect((row, spec) => {
+      DejaDup.update_nag_time(!((SwitchRow)row).active);
+    });
     group.add(nag_row);
 
     return page;

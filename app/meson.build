@@ -47,6 +47,7 @@ deja_dup = executable(
   'RecentBackupRow.vala',
   'RestoreFileTester.vala',
   'ServerHintPopover.vala',
+  'SwitchRow.vala',
   'TimeCombo.vala',
   'TooltipBox.vala',
   'WelcomePage.vala',

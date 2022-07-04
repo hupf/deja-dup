@@ -34,6 +34,22 @@ public void set_margins(Gtk.Widget w, int margin)
   w.margin_bottom = margin;
 }
 
+// Convenience call that sets some common or hard-to-access properties on
+// AdwEntryRow and descendants. I would do this as a subclass, but
+// AdwPasswordEntryRow (though not AdwEntryRow) is sealed to inheritance.
+public void configure_entry_row(Adw.EntryRow row,
+                                bool activates_default = false,
+                                Gtk.InputHints input_hints = Gtk.InputHints.NONE)
+{
+  row.use_underline = true; // we just always want this
+
+  var gtktext = row.get_delegate() as Gtk.Text;
+  if (gtktext != null) {
+    gtktext.activates_default = activates_default;
+    gtktext.input_hints = input_hints;
+  }
+}
+
 bool start_monitor_if_needed(FilteredSettings settings)
 {
   if (settings.get_boolean(PERIODIC_KEY)) {
