@@ -7,16 +7,10 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationCombo.ui")]
-public class ConfigLocationCombo : Gtk.Box
+public class ConfigLocationCombo : Adw.ComboRow
 {
-  public Item selected_item {get; protected set;}
-  public DejaDup.FilteredSettings settings {get; construct;}
-  public DejaDup.FilteredSettings drive_settings {get; construct;}
-
-  public ConfigLocationCombo(DejaDup.FilteredSettings settings,
-                             DejaDup.FilteredSettings drive_settings) {
-    Object(settings: settings, drive_settings: drive_settings);
-  }
+  public DejaDup.FilteredSettings settings {get; private set;}
+  public DejaDup.FilteredSettings drive_settings {get; private set;}
 
   public class Item : Object {
     public Icon icon {get; set;}
@@ -41,18 +35,17 @@ public class ConfigLocationCombo : Gtk.Box
     LOCAL,
   }
 
-  [GtkChild]
-  unowned Gtk.DropDown combo;
-
   ListStore store;
   construct {
-    // Here we have a model wrapped inside a sortable model.  This is so we
-    // can keep indices around for the inner model while the outer model appears
-    // nice and sorted to users.
     store = new ListStore(typeof(Item));
-    combo.model = store;
+    model = store;
+  }
 
-    combo.bind_property("selected-item", this, "selected-item", BindingFlags.SYNC_CREATE);
+  public void setup(DejaDup.FilteredSettings settings,
+                    DejaDup.FilteredSettings drive_settings)
+  {
+    this.settings = settings;
+    this.drive_settings = drive_settings;
 
     // *** Basic entries ***
 
@@ -91,15 +84,10 @@ public class ConfigLocationCombo : Gtk.Box
 
     // *** Now bind our combo to settings ***
     settings.bind_with_mapping(DejaDup.BACKEND_KEY,
-                               combo, "selected",
+                               this, "selected",
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                this.ref(), Object.unref);
-  }
-
-  [GtkCallback]
-  bool on_mnemonic_activate(bool group_cycling) {
-    return combo.mnemonic_activate(group_cycling);
   }
 
   void add_entry(string id, string? icon, string label, Group group, DejaDup.Backend.Kind kind)
@@ -227,6 +215,9 @@ public class ConfigLocationCombo : Gtk.Box
     uint position;
 
     var id = variant.get_string();
+    if (DejaDup.in_demo_mode())
+      id = "google";
+
     if (id == "drive") {
       position = self.add_saved_volume();
     }
@@ -262,7 +253,7 @@ public class ConfigLocationCombo : Gtk.Box
   {
     var position = add_saved_volume();
     if (position != uint.MAX)
-      combo.selected = position;
+      selected = position;
   }
 
   void set_volume_info(string uuid)

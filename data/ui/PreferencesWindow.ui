@@ -16,23 +16,20 @@ SPDX-FileCopyrightText: Michael Terry
         <property name="icon_name">emblem-system-symbolic</property>
         <property name="title" translatable="yes">General</property>
         <child>
-          <object class="AdwPreferencesGroup" id="storage_group">
+          <object class="ConfigLocationGroup">
             <property name="title" translatable="yes">Storage</property>
+          </object>
+        </child>
+        <child>
+          <object class="AdwPreferencesGroup">
+            <property name="title" translatable="yes">Schedule</property>
             <child>
-              <object class="AdwExpanderRow" id="location">
-                <property name="title" translatable="yes">_Location</property>
+              <object class="ConfigAutoBackupRow"/>
+            </child>
+            <child>
+              <object class="ConfigPeriodRow" id="frequency">
+                <property name="title" translatable="yes">Automatic Backup _Frequency</property>
                 <property name="use_underline">1</property>
-                <child type="action">
-                  <object class="GtkLabel" id="location_description">
-                    <property name="ellipsize">middle</property>
-                    <style>
-                      <class name="dim-label"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="ConfigLocationGrid"/>
-                </child>
               </object>
             </child>
             <child>
@@ -49,20 +46,6 @@ SPDX-FileCopyrightText: Michael Terry
                 <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
                 <property name="wrap">1</property>
                 <property name="xalign">0</property>
-              </object>
-            </child>
-          </object>
-        </child>
-        <child>
-          <object class="AdwPreferencesGroup">
-            <property name="title" translatable="yes">Schedule</property>
-            <child>
-              <object class="ConfigAutoBackupRow"/>
-            </child>
-            <child>
-              <object class="ConfigPeriodRow" id="frequency">
-                <property name="title" translatable="yes">Automatic Backup _Frequency</property>
-                <property name="use_underline">1</property>
               </object>
             </child>
           </object>

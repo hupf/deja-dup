@@ -39,7 +39,8 @@ public void set_margins(Gtk.Widget w, int margin)
 // AdwPasswordEntryRow (though not AdwEntryRow) is sealed to inheritance.
 public void configure_entry_row(Adw.EntryRow row,
                                 bool activates_default = false,
-                                Gtk.InputHints input_hints = Gtk.InputHints.NONE)
+                                Gtk.InputHints input_hints = Gtk.InputHints.NONE,
+                                Gtk.InputPurpose input_purpose = Gtk.InputPurpose.FREE_FORM)
 {
   row.use_underline = true; // we just always want this
 
@@ -47,6 +48,7 @@ public void configure_entry_row(Adw.EntryRow row,
   if (gtktext != null) {
     gtktext.activates_default = activates_default;
     gtktext.input_hints = input_hints;
+    gtktext.input_purpose = input_purpose;
   }
 }
 

@@ -454,7 +454,9 @@ int main(string[] args)
   typeof(ConfigDelete).ensure();
   typeof(ConfigFolderList).ensure();
   typeof(ConfigFolderPage).ensure();
-  typeof(ConfigLocationGrid).ensure();
+  typeof(ConfigLocationCombo).ensure();
+  typeof(ConfigLocationCombo.Item).ensure();
+  typeof(ConfigLocationGroup).ensure();
   typeof(ConfigPeriodRow).ensure();
   typeof(ConfigRestic).ensure();
   typeof(ConfigServerEntry).ensure();
@@ -463,6 +465,7 @@ int main(string[] args)
   typeof(MainHeaderBar).ensure();
   typeof(OverviewPage).ensure();
   typeof(RecentBackupRow).ensure();
+  typeof(ServerHintPopover).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();
   typeof(TooltipBox).ensure();

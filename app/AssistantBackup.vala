@@ -39,7 +39,10 @@ public class AssistantBackup : AssistantOperation
       scroll.child = new ConfigFolderPage();
       append_page(scroll);
 
-      append_page(new ConfigLocationGrid());
+      var clamp = new Adw.Clamp();
+      clamp.child = new ConfigLocationGroup();
+      DejaDup.set_margins(clamp, 12);
+      append_page(clamp);
     }
   }
 

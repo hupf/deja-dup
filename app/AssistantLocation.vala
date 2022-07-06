@@ -9,23 +9,27 @@ using GLib;
 // A simple one-page assistant to ask where to restore from
 public class AssistantLocation : Assistant
 {
-  ConfigLocationGrid location_grid;
+  ConfigLocationGroup location_group;
   construct
   {
     default_title = _("Restore From Where?");
     modal = true;
     destroy_with_parent = true;
 
-    location_grid = new ConfigLocationGrid(true);
-    location_grid.set_location_label(_("_Backup location"));
-    append_page(location_grid, Type.NORMAL, _("_Search"));
+    var clamp = new Adw.Clamp();
+    DejaDup.set_margins(clamp, 12);
+
+    location_group = new ConfigLocationGroup(true);
+    clamp.child = location_group;
+
+    append_page(clamp, Type.NORMAL, _("_Search"));
 
     response.connect(handle_response);
   }
 
   void handle_response(int resp)
   {
-    var backend = location_grid.get_backend();
+    var backend = location_group.get_backend();
 
     destroy();
 
