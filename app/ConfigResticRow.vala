@@ -6,12 +6,14 @@
 
 using GLib;
 
-public class ConfigRestic: ConfigSwitch
+public class ConfigResticRow: SwitchRow
 {
   construct {
+    title = _("Use _Restic instead of Duplicity");
+
     var settings = DejaDup.get_settings();
     settings.bind_with_mapping(DejaDup.TOOL_KEY,
-                               this.toggle, "active",
+                               this, "active",
                                SettingsBindFlags.DEFAULT,
                                get_mapping, set_mapping,
                                null, null);

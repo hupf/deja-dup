@@ -6,8 +6,7 @@
 
 using GLib;
 
-[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigAutoBackupRow.ui")]
-public class ConfigAutoBackupRow : Adw.ActionRow
+public class ConfigAutoBackupRow : SwitchRow
 {
   Settings settings;
   construct {
@@ -15,7 +14,11 @@ public class ConfigAutoBackupRow : Adw.ActionRow
     settings.changed[DejaDup.PERIODIC_KEY].connect(update_label);
     settings.changed[DejaDup.PERIODIC_PERIOD_KEY].connect(update_label);
     settings.changed[DejaDup.LAST_BACKUP_KEY].connect(update_label);
+    settings.bind(DejaDup.PERIODIC_KEY, this, "active", SettingsBindFlags.GET);
 
+    state_set.connect(on_state_set);
+
+    title = _("Back Up _Automatically");
     update_label();
   }
 
@@ -90,5 +93,34 @@ public class ConfigAutoBackupRow : Adw.ActionRow
     if (DejaDup.in_demo_mode())
       next = new DateTime.now_local().add(DejaDup.get_day() * 7);
     subtitle = pretty_next_name(next, periodic);
+  }
+
+  bool on_state_set(bool state)
+  {
+    if (state) {
+      var window = this.root as Gtk.Window;
+      if (window == null) {
+        return true; // can happen if this switch wasn't finalized
+      }
+
+      Background.request_autostart.begin(window, (obj, res) => {
+        if (Background.request_autostart.end(res)) {
+          this.state = true; // finish state set
+          set_periodic(true);
+        } else {
+          this.active = false; // flip switch back to unset mode
+        }
+      });
+      return true; // delay setting of state
+    }
+
+    set_periodic(false);
+    return false;
+  }
+
+  static void set_periodic(bool state)
+  {
+    var settings = DejaDup.get_settings();
+    settings.set_boolean(DejaDup.PERIODIC_KEY, state);
   }
 }

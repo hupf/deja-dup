@@ -11,4 +11,12 @@ using GLib;
 public class SwitchRow : Adw.ActionRow
 {
   public bool active {get; set;}
+  public bool state {get; set;}
+  public signal bool state_set(bool state);
+
+  [GtkCallback]
+  bool on_state_set(bool state)
+  {
+    return state_set(state);
+  }
 }

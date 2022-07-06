@@ -35,7 +35,7 @@ public class ConfigLocationGroup : DynamicPreferencesGroup
   }
 
   [GtkChild]
-  unowned ConfigLocationCombo combo;
+  unowned ConfigLocationRow combo;
 
   [GtkChild]
   unowned Adw.EntryRow google_folder;
@@ -104,7 +104,7 @@ public class ConfigLocationGroup : DynamicPreferencesGroup
 
   void update_stack()
   {
-    var item = combo.selected_item as ConfigLocationCombo.Item;
+    var item = combo.selected_item as ConfigLocationRow.Item;
     if (item == null)
       return;
 

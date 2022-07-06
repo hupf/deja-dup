@@ -6,8 +6,8 @@
 
 using GLib;
 
-[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationCombo.ui")]
-public class ConfigLocationCombo : Adw.ComboRow
+[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationRow.ui")]
+public class ConfigLocationRow : Adw.ComboRow
 {
   public DejaDup.FilteredSettings settings {get; private set;}
   public DejaDup.FilteredSettings drive_settings {get; private set;}
@@ -211,7 +211,7 @@ public class ConfigLocationCombo : Adw.ComboRow
 
   static bool get_mapping(Value val, Variant variant, void *data)
   {
-    var self = (ConfigLocationCombo)data;
+    var self = (ConfigLocationRow)data;
     uint position;
 
     var id = variant.get_string();
@@ -234,7 +234,7 @@ public class ConfigLocationCombo : Adw.ComboRow
 
   static Variant set_mapping(Value val, VariantType expected_type, void *data)
   {
-    var self = (ConfigLocationCombo)data;
+    var self = (ConfigLocationRow)data;
     var position = val.get_uint();
     var item = (Item)self.store.get_item(position);
     var id = item.id;

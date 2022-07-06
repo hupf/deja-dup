@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <template class="ConfigLocationCombo" parent="AdwComboRow">
+  <template class="ConfigLocationRow" parent="AdwComboRow">
     <property name="factory">
       <object class="GtkBuilderListItemFactory">
         <property name="bytes"><![CDATA[
@@ -20,7 +20,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="icon-size">normal</property>
             <property name="use-fallback">true</property>
             <binding name="gicon">
-              <lookup name="icon" type="ConfigLocationComboItem">
+              <lookup name="icon" type="ConfigLocationRowItem">
                 <lookup name="item">GtkListItem</lookup>
               </lookup>
             </binding>
@@ -31,7 +31,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="ellipsize">end</property>
             <property name="xalign">0</property>
             <binding name="label">
-              <lookup name="text" type="ConfigLocationComboItem">
+              <lookup name="text" type="ConfigLocationRowItem">
                 <lookup name="item">GtkListItem</lookup>
               </lookup>
             </binding>

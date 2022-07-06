@@ -449,17 +449,15 @@ int main(string[] args)
 
   // FIXME: there must be a better way than this?
   typeof(Browser).ensure();
-  typeof(ConfigAutoBackup).ensure();
   typeof(ConfigAutoBackupRow).ensure();
   typeof(ConfigDelete).ensure();
-  typeof(ConfigFolderList).ensure();
+  typeof(ConfigFolderGroup).ensure();
   typeof(ConfigFolderPage).ensure();
-  typeof(ConfigLocationCombo).ensure();
-  typeof(ConfigLocationCombo.Item).ensure();
   typeof(ConfigLocationGroup).ensure();
+  typeof(ConfigLocationRow).ensure();
+  typeof(ConfigLocationRow.Item).ensure();
   typeof(ConfigPeriodRow).ensure();
-  typeof(ConfigRestic).ensure();
-  typeof(ConfigServerEntry).ensure();
+  typeof(ConfigResticRow).ensure();
   typeof(ExcludeHelpButton).ensure();
   typeof(FolderChooserButton).ensure();
   typeof(MainHeaderBar).ensure();

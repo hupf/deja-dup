@@ -65,18 +65,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="visible">0</property>
             <property name="title" translatable="yes">Restic</property>
             <child>
-              <object class="AdwActionRow" id="restic_row">
-                <property name="activatable_widget">use_restic</property>
-                <property name="title" translatable="yes">Use _Restic instead of Duplicity</property>
-                <property name="use_underline">1</property>
-                <child>
-                  <object class="ConfigRestic" id="use_restic">
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="can-focus">0</property>
-                  </object>
-                </child>
-              </object>
+              <object class="ConfigResticRow"/>
             </child>
             <child>
               <object class="GtkLabel" id="restic_description">

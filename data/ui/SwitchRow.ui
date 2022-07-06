@@ -10,10 +10,12 @@ SPDX-FileCopyrightText: Michael Terry
     <property name="use-underline">true</property>
     <child type="suffix">
       <object class="GtkSwitch" id="toggle">
-        <property name="active" bind-source="SwitchRow" bind-flags="sync-create">false</property>
+        <property name="active" bind-source="SwitchRow" bind-flags="sync-create|bidirectional">false</property>
         <property name="can-focus">false</property>
         <property name="halign">end</property>
+        <property name="state" bind-source="SwitchRow" bind-flags="sync-create|bidirectional">false</property>
         <property name="valign">center</property>
+        <signal name="state_set" handler="on_state_set"/>
       </object>
     </child>
   </template>
