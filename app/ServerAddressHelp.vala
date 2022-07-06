@@ -6,7 +6,7 @@
 
 using GLib;
 
-[GtkTemplate (ui = "/org/gnome/DejaDup/ServerHintPopover.ui")]
-class ServerHintPopover : Gtk.Popover
+[GtkTemplate (ui = "/org/gnome/DejaDup/ServerAddressHelp.ui")]
+class ServerAddressHelp : Gtk.Box
 {
 }

@@ -458,12 +458,12 @@ int main(string[] args)
   typeof(ConfigLocationRow.Item).ensure();
   typeof(ConfigPeriodRow).ensure();
   typeof(ConfigResticRow).ensure();
-  typeof(ExcludeHelpButton).ensure();
   typeof(FolderChooserButton).ensure();
+  typeof(HelpButton).ensure();
   typeof(MainHeaderBar).ensure();
   typeof(OverviewPage).ensure();
   typeof(RecentBackupRow).ensure();
-  typeof(ServerHintPopover).ensure();
+  typeof(ServerAddressHelp).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();
   typeof(TooltipBox).ensure();

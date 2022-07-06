@@ -35,17 +35,20 @@ SPDX-FileCopyrightText: Michael Terry
             <child>
               <object class="ConfigDelete" id="keep">
                 <property name="title" translatable="yes">_Keep Backups</property>
-                <property name="use_underline">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="margin_top">8</property>
-                <property name="margin_start">16</property>
-                <property name="margin_end">16</property>
-                <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
-                <property name="wrap">1</property>
-                <property name="xalign">0</property>
+                <property name="use-underline">true</property>
+                <child type="suffix">
+                  <object class="HelpButton">
+                    <property name="valign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
+                        <property name="max-width-chars">35</property>
+                        <property name="wrap">true</property>
+                        <property name="xalign">0</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>

@@ -57,13 +57,11 @@ SPDX-FileCopyrightText: Michael Terry
       <object class="AdwEntryRow" id="remote_address">
         <property name="title" translatable="yes">Ser_ver Address</property>
         <child type="suffix">
-          <object class="GtkMenuButton">
-            <property name="has-frame">false</property>
-            <property name="icon-name">dialog-question-symbolic</property>
-            <property name="popover">
-              <object class="ServerHintPopover"/>
-            </property>
+          <object class="HelpButton">
             <property name="valign">center</property>
+            <child>
+              <object class="ServerAddressHelp"/>
+            </child>
           </object>
         </child>
       </object>
