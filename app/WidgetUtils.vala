@@ -18,12 +18,6 @@ public void run_error_dialog(Gtk.Window? parent, string header, string message)
   dlg.present();
 }
 
-public Gtk.Builder make_builder(string name)
-{
-  var path = "%s/%s.ui".printf(DejaDup.get_application_path(), name);
-  return new Gtk.Builder.from_resource(path);
-}
-
 // Convenience call that sets each side margin to the same value.
 // Used as a porting aid from gtk3, to replace border-width.
 public void set_margins(Gtk.Widget w, int margin)
@@ -37,18 +31,13 @@ public void set_margins(Gtk.Widget w, int margin)
 // Convenience call that sets some common or hard-to-access properties on
 // AdwEntryRow and descendants. I would do this as a subclass, but
 // AdwPasswordEntryRow (though not AdwEntryRow) is sealed to inheritance.
-public void configure_entry_row(Adw.EntryRow row,
-                                bool activates_default = false,
-                                Gtk.InputHints input_hints = Gtk.InputHints.NONE,
-                                Gtk.InputPurpose input_purpose = Gtk.InputPurpose.FREE_FORM)
+public void configure_entry_row(Adw.EntryRow row, bool activates_default = false)
 {
   row.use_underline = true; // we just always want this
 
   var gtktext = row.get_delegate() as Gtk.Text;
   if (gtktext != null) {
     gtktext.activates_default = activates_default;
-    gtktext.input_hints = input_hints;
-    gtktext.input_purpose = input_purpose;
   }
 }
 

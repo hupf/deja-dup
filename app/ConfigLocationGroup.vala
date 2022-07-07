@@ -87,7 +87,6 @@ public class ConfigLocationGroup : DynamicPreferencesGroup
     bind_folder(remote_settings, DejaDup.REMOTE_FOLDER_KEY, remote_folder, true);
     remote_settings.bind(DejaDup.REMOTE_URI_KEY, remote_address,
                          "text", SettingsBindFlags.DEFAULT);
-    DejaDup.configure_entry_row(remote_address, false, Gtk.InputHints.NO_SPELLCHECK, Gtk.InputPurpose.URL);
 
     // Drive
     drive_settings = new DejaDup.FilteredSettings(DejaDup.DRIVE_ROOT, read_only);
@@ -124,8 +123,6 @@ public class ConfigLocationGroup : DynamicPreferencesGroup
     settings.bind_with_mapping(key, entry, "text",
       SettingsBindFlags.DEFAULT, get_folder_mapping, set_identity_mapping,
       ((int)allow_abs).to_pointer(), null);
-
-    DejaDup.configure_entry_row(entry, false, Gtk.InputHints.NO_SPELLCHECK);
   }
 
   static bool get_folder_mapping(Value val, Variant variant, void *data)
