@@ -116,6 +116,7 @@ add_test_setup(
   'default',
   env: {
     'DEJA_DUP_LANGUAGE': 'en',
+    'G_ENABLE_DIAGNOSTIC': '0',
     'GSETTINGS_BACKEND': 'memory',
     'GSETTINGS_SCHEMA_DIR': meson.project_build_root() + '/data',
     'LC_ALL': 'C.UTF-8',
