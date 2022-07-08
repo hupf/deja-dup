@@ -12,9 +12,9 @@ class PassphraseDialog : Gtk.Dialog
   public signal void got_passphrase(string passphrase);
 
   [GtkChild]
-  unowned Gtk.PasswordEntry entry;
+  unowned Adw.PasswordEntryRow entry;
   [GtkChild]
-  unowned Gtk.CheckButton remember;
+  unowned SwitchRow remember;
 
   construct {
     use_header_bar = 1; // setting this in the ui file doesn't seem to work
@@ -26,6 +26,8 @@ class PassphraseDialog : Gtk.Dialog
 
       set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
     });
+
+    DejaDup.configure_entry_row(entry, true);
   }
 
   ~PassphraseDialog()

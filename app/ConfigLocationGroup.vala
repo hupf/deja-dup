@@ -6,18 +6,13 @@
 
 using GLib;
 
-[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationGrid.ui")]
-public class ConfigLocationGrid : Gtk.Grid
+[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigLocationGroup.ui")]
+public class ConfigLocationGroup : DynamicPreferencesGroup
 {
   public bool read_only {get; construct;}
 
-  public ConfigLocationGrid(bool read_only = false) {
+  public ConfigLocationGroup(bool read_only = false) {
     Object(read_only: read_only);
-  }
-
-  public void set_location_label(string label)
-  {
-    location_label.label = label;
   }
 
   public DejaDup.Backend get_backend()
@@ -40,30 +35,28 @@ public class ConfigLocationGrid : Gtk.Grid
   }
 
   [GtkChild]
-  unowned Gtk.Label location_label;
-  [GtkChild]
-  unowned Gtk.Stack location_stack;
+  unowned ConfigLocationRow combo;
 
   [GtkChild]
-  unowned Gtk.Entry google_folder;
+  unowned Adw.EntryRow google_folder;
   [GtkChild]
   unowned Gtk.Button google_reset;
 
   [GtkChild]
-  unowned Gtk.Entry microsoft_folder;
+  unowned Adw.EntryRow microsoft_folder;
   [GtkChild]
   unowned Gtk.Button microsoft_reset;
 
   [GtkChild]
-  unowned ConfigServerEntry remote_address;
+  unowned Adw.EntryRow remote_address;
   [GtkChild]
-  unowned Gtk.Entry remote_folder;
+  unowned Adw.EntryRow remote_folder;
 
   [GtkChild]
-  unowned Gtk.Entry drive_folder;
+  unowned Adw.EntryRow drive_folder;
 
   [GtkChild]
-  unowned Gtk.Entry local_folder;
+  unowned Adw.EntryRow local_folder;
   [GtkChild]
   unowned FolderChooserButton local_browse;
 
@@ -76,41 +69,41 @@ public class ConfigLocationGrid : Gtk.Grid
   DejaDup.FilteredSettings microsoft_settings;
   DejaDup.FilteredSettings local_settings;
   DejaDup.FilteredSettings remote_settings;
-  ConfigLocationCombo combo;
   construct {
     settings = new DejaDup.FilteredSettings(null, read_only);
 
-    drive_settings = new DejaDup.FilteredSettings(DejaDup.DRIVE_ROOT, read_only);
-    bind_folder(drive_settings, DejaDup.DRIVE_FOLDER_KEY, drive_folder, false);
-
+    // Google
     google_settings = new DejaDup.FilteredSettings(DejaDup.GOOGLE_ROOT, read_only);
     bind_folder(google_settings, DejaDup.GOOGLE_FOLDER_KEY, google_folder, false);
     set_up_google_reset.begin();
 
+    // Microsoft
     microsoft_settings = new DejaDup.FilteredSettings(DejaDup.MICROSOFT_ROOT, read_only);
     bind_folder(microsoft_settings, DejaDup.MICROSOFT_FOLDER_KEY, microsoft_folder, false);
     set_up_microsoft_reset.begin();
 
-    local_settings = new DejaDup.FilteredSettings(DejaDup.LOCAL_ROOT, read_only);
-    bind_folder(local_settings, DejaDup.LOCAL_FOLDER_KEY, local_folder, true);
-
+    // Remote
     remote_settings = new DejaDup.FilteredSettings(DejaDup.REMOTE_ROOT, read_only);
     bind_folder(remote_settings, DejaDup.REMOTE_FOLDER_KEY, remote_folder, true);
     remote_settings.bind(DejaDup.REMOTE_URI_KEY, remote_address,
                          "text", SettingsBindFlags.DEFAULT);
 
-    combo = new ConfigLocationCombo(settings, drive_settings);
-    combo.hexpand = true;
-    attach(combo, 1, 0);
-    location_label.mnemonic_widget = combo;
+    // Drive
+    drive_settings = new DejaDup.FilteredSettings(DejaDup.DRIVE_ROOT, read_only);
+    bind_folder(drive_settings, DejaDup.DRIVE_FOLDER_KEY, drive_folder, false);
 
+    // Local
+    local_settings = new DejaDup.FilteredSettings(DejaDup.LOCAL_ROOT, read_only);
+    bind_folder(local_settings, DejaDup.LOCAL_FOLDER_KEY, local_folder, true);
+
+    combo.setup(settings, drive_settings);
     combo.notify["selected-item"].connect(update_stack);
     update_stack();
   }
 
   void update_stack()
   {
-    var item = combo.selected_item;
+    var item = combo.selected_item as ConfigLocationRow.Item;
     if (item == null)
       return;
 
@@ -122,10 +115,10 @@ public class ConfigLocationGrid : Gtk.Grid
     if (page == "unsupported")
       unsupported_label.label = support_explanation;
 
-    location_stack.visible_child_name = page;
+    mode = page;
   }
 
-  void bind_folder(Settings settings, string key, Gtk.Entry entry, bool allow_abs)
+  void bind_folder(Settings settings, string key, Adw.EntryRow entry, bool allow_abs)
   {
     settings.bind_with_mapping(key, entry, "text",
       SettingsBindFlags.DEFAULT, get_folder_mapping, set_identity_mapping,
@@ -136,6 +129,8 @@ public class ConfigLocationGrid : Gtk.Grid
   {
     var allow_abs = (bool)int.from_pointer(data);
     var folder = DejaDup.process_folder_key(variant.get_string(), allow_abs, null);
+    if (DejaDup.in_demo_mode())
+      folder = "hostname";
     val.set_string(folder);
     return true;
   }
@@ -168,9 +163,7 @@ public class ConfigLocationGrid : Gtk.Grid
   {
     var backend = new DejaDup.BackendGoogle(google_settings);
     var token = yield backend.lookup_refresh_token();
-    if (token != null) {
-      google_reset.visible = true;
-    }
+    google_reset.visible = token != null && !DejaDup.in_demo_mode();
   }
 
   [GtkCallback]
@@ -185,8 +178,6 @@ public class ConfigLocationGrid : Gtk.Grid
   {
     var backend = new DejaDup.BackendMicrosoft(microsoft_settings);
     var token = yield backend.lookup_refresh_token();
-    if (token != null) {
-      microsoft_reset.visible = true;
-    }
+    microsoft_reset.visible = token != null;
   }
 }

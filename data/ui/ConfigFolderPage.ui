@@ -9,14 +9,50 @@ SPDX-FileCopyrightText: Michael Terry
     <property name="icon_name">folder-symbolic</property>
     <property name="title" translatable="yes">Folders</property>
     <child>
-      <object class="ConfigFolderList">
+      <object class="ConfigFolderGroup">
         <property name="title" translatable="yes">Folders to Back Up</property>
         <property name="key">include-list</property>
         <property name="check_access">1</property>
       </object>
     </child>
     <child>
-      <object class="ConfigFolderList" id="exclude_list">
+      <object class="ConfigFolderGroup">
+        <property name="header-suffix">
+          <object class="HelpButton">
+            <child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">These folders are always ignored:</property>
+                <property name="max-width-chars">35</property>
+                <property name="wrap">true</property>
+                <property name="xalign">0.0</property>
+                <style>
+                  <class name="heading"/>
+                </style>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label">~/.cache
+~/.ccache
+~/.gvfs
+~/.Private
+~/.steam/root
+~/.var/app/*/cache
+~/snap/*/*/.cache
+/dev
+/proc
+/run
+/sys
+/tmp</property>
+                <property name="margin-top">6</property>
+                <property name="xalign">0.0</property>
+                <style>
+                  <class name="monospace"/>
+                </style>
+              </object>
+            </child>
+          </object>
+        </property>
         <property name="title" translatable="yes">Folders to Ignore</property>
         <property name="key">exclude-list</property>
       </object>

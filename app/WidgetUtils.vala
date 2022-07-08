@@ -11,29 +11,11 @@ namespace DejaDup {
 
 public void run_error_dialog(Gtk.Window? parent, string header, string message)
 {
-#if HAS_ADWAITA_1_2
   var dlg = new Adw.MessageDialog(parent, header, message);
   dlg.add_response("accept", _("_OK"));
   dlg.default_response = "accept";
-#else
-  var dlg = new Gtk.MessageDialog(
-    parent,
-    Gtk.DialogFlags.DESTROY_WITH_PARENT | Gtk.DialogFlags.MODAL,
-    Gtk.MessageType.ERROR,
-    Gtk.ButtonsType.OK,
-    "%s", header
-  );
-  dlg.format_secondary_text("%s", message);
-#endif
-
   dlg.response.connect(dlg.destroy);
   dlg.present();
-}
-
-public Gtk.Builder make_builder(string name)
-{
-  var path = "%s/%s.ui".printf(DejaDup.get_application_path(), name);
-  return new Gtk.Builder.from_resource(path);
 }
 
 // Convenience call that sets each side margin to the same value.
@@ -44,6 +26,19 @@ public void set_margins(Gtk.Widget w, int margin)
   w.margin_end = margin;
   w.margin_top = margin;
   w.margin_bottom = margin;
+}
+
+// Convenience call that sets some common or hard-to-access properties on
+// AdwEntryRow and descendants. I would do this as a subclass, but
+// AdwPasswordEntryRow (though not AdwEntryRow) is sealed to inheritance.
+public void configure_entry_row(Adw.EntryRow row, bool activates_default = false)
+{
+  row.use_underline = true; // we just always want this
+
+  var gtktext = row.get_delegate() as Gtk.Text;
+  if (gtktext != null) {
+    gtktext.activates_default = activates_default;
+  }
 }
 
 bool start_monitor_if_needed(FilteredSettings settings)

@@ -8,7 +8,7 @@ project(
   'vala',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.59',
-  version: '43.5',
+  version: '44.0',
 )
 
 gnome = import('gnome')
@@ -28,7 +28,7 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-adwaita_dep = dependency('libadwaita-1', version: '>= 1.0')
+adwaita_dep = dependency('libadwaita-1', version: '>= 1.2')
 gio_dep = dependency('gio-2.0', version: '>= 2.70')
 gio_unix_dep = dependency('gio-unix-2.0')
 gpg_error_dep = dependency('gpg-error', version: '>= 1.33')
@@ -104,13 +104,6 @@ if packagekit_dep.found()
   add_project_arguments('--define=HAS_PACKAGEKIT', language: 'vala')
 endif
 
-if adwaita_dep.version().version_compare('>= 1.1.0')
-  add_project_arguments('--define=HAS_ADWAITA_1_1', language: 'vala')
-endif
-if adwaita_dep.version().version_compare('>= 1.2.0')
-  add_project_arguments('--define=HAS_ADWAITA_1_2', language: 'vala')
-endif
-
 if get_option('enable_borg')
   add_project_arguments('--define=ENABLE_BORG', language: 'vala')
 endif
@@ -123,6 +116,7 @@ add_test_setup(
   'default',
   env: {
     'DEJA_DUP_LANGUAGE': 'en',
+    'G_ENABLE_DIAGNOSTIC': '0',
     'GSETTINGS_BACKEND': 'memory',
     'GSETTINGS_SCHEMA_DIR': meson.project_build_root() + '/data',
     'LC_ALL': 'C.UTF-8',

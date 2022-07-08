@@ -6,52 +6,15 @@ SPDX-FileCopyrightText: Michael Terry
 
 <interface>
   <template class="PreferencesWindow" parent="AdwPreferencesWindow">
-    <property name="modal">1</property>
     <property name="default-width">500</property>
     <property name="default-height">500</property>
-    <property name="destroy_with_parent">1</property>
-    <property name="search_enabled">0</property>
+    <property name="search-enabled">false</property>
     <child>
       <object class="AdwPreferencesPage">
         <property name="icon_name">emblem-system-symbolic</property>
         <property name="title" translatable="yes">General</property>
         <child>
-          <object class="AdwPreferencesGroup" id="storage_group">
-            <property name="title" translatable="yes">Storage</property>
-            <child>
-              <object class="AdwExpanderRow" id="location">
-                <property name="title" translatable="yes">_Location</property>
-                <property name="use_underline">1</property>
-                <child type="action">
-                  <object class="GtkLabel" id="location_description">
-                    <property name="ellipsize">middle</property>
-                    <style>
-                      <class name="dim-label"/>
-                    </style>
-                  </object>
-                </child>
-                <child>
-                  <object class="ConfigLocationGrid"/>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="ConfigDelete" id="keep">
-                <property name="title" translatable="yes">_Keep Backups</property>
-                <property name="use_underline">1</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="margin_top">8</property>
-                <property name="margin_start">16</property>
-                <property name="margin_end">16</property>
-                <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
-                <property name="wrap">1</property>
-                <property name="xalign">0</property>
-              </object>
-            </child>
-          </object>
+          <object class="ConfigLocationGroup"/>
         </child>
         <child>
           <object class="AdwPreferencesGroup">
@@ -63,6 +26,25 @@ SPDX-FileCopyrightText: Michael Terry
               <object class="ConfigPeriodRow" id="frequency">
                 <property name="title" translatable="yes">Automatic Backup _Frequency</property>
                 <property name="use_underline">1</property>
+              </object>
+            </child>
+            <child>
+              <object class="ConfigDelete" id="keep">
+                <property name="title" translatable="yes">_Keep Backups</property>
+                <property name="use-underline">true</property>
+                <child type="suffix">
+                  <object class="HelpButton">
+                    <property name="valign">center</property>
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">The oldest backups will still be deleted earlier if the location is low on space or kept up to three months longer to avoid deleting related backups.</property>
+                        <property name="max-width-chars">35</property>
+                        <property name="wrap">true</property>
+                        <property name="xalign">0</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
               </object>
             </child>
           </object>
@@ -82,18 +64,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="visible">0</property>
             <property name="title" translatable="yes">Restic</property>
             <child>
-              <object class="AdwActionRow" id="restic_row">
-                <property name="activatable_widget">use_restic</property>
-                <property name="title" translatable="yes">Use _Restic instead of Duplicity</property>
-                <property name="use_underline">1</property>
-                <child>
-                  <object class="ConfigRestic" id="use_restic">
-                    <property name="halign">end</property>
-                    <property name="valign">center</property>
-                    <property name="can-focus">0</property>
-                  </object>
-                </child>
-              </object>
+              <object class="ConfigResticRow"/>
             </child>
             <child>
               <object class="GtkLabel" id="restic_description">

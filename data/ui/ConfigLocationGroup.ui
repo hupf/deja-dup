@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="ConfigLocationGroup" parent="DynamicPreferencesGroup">
+    <property name="title" translatable="yes">Storage</property>
+
+    <child>
+      <object class="ConfigLocationRow" id="combo"/>
+    </child>
+
+    <!-- Google -->
+    <child type="google">
+      <object class="AdwEntryRow" id="google_folder">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="title" translatable="yes">_Folder</property>
+        <property name="use-underline">true</property>
+      </object>
+    </child>
+    <child type="google">
+      <!-- Add a box wrapper so we can track visibility on button and box separately -->
+      <object class="GtkBox">
+        <property name="halign">end</property>
+        <child>
+          <object class="GtkButton" id="google_reset">
+            <property name="label" translatable="yes">_Reset Account Access</property>
+            <property name="margin-top">12</property>
+            <property name="use-underline">true</property>
+            <signal name="clicked" handler="on_google_reset_clicked"/>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Microsoft -->
+    <child type="microsoft">
+      <object class="AdwEntryRow" id="microsoft_folder">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="title" translatable="yes">_Folder</property>
+        <property name="use-underline">true</property>
+      </object>
+    </child>
+    <child type="microsoft">
+      <!-- Add a box wrapper so we can track visibility on button and box separately -->
+      <object class="GtkBox">
+        <property name="halign">end</property>
+        <child>
+          <object class="GtkButton" id="microsoft_reset">
+            <property name="label" translatable="yes">_Reset Account Access</property>
+            <property name="margin-top">12</property>
+            <property name="use-underline">true</property>
+            <signal name="clicked" handler="on_microsoft_reset_clicked"/>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Remote -->
+    <child type="remote">
+      <object class="AdwEntryRow" id="remote_address">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="input-purpose">url</property>
+        <property name="title" translatable="yes">Ser_ver Address</property>
+        <property name="use-underline">true</property>
+        <child type="suffix">
+          <object class="HelpButton">
+            <property name="valign">center</property>
+            <child>
+              <object class="ServerAddressHelp"/>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="remote">
+      <object class="AdwEntryRow" id="remote_folder">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="title" translatable="yes">_Folder</property>
+        <property name="use-underline">true</property>
+      </object>
+    </child>
+
+    <!-- Drive -->
+    <child type="drive">
+      <object class="AdwEntryRow" id="drive_folder">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="title" translatable="yes">_Folder</property>
+        <property name="use-underline">true</property>
+      </object>
+    </child>
+
+    <!-- Local -->
+    <child type="local">
+      <object class="AdwEntryRow" id="local_folder">
+        <property name="input-hints">no-spellcheck</property>
+        <property name="title" translatable="yes">_Folder</property>
+        <property name="use-underline">true</property>
+        <child type="suffix">
+          <object class="FolderChooserButton" id="local_browse">
+            <property name="valign">center</property>
+            <signal name="file_selected" handler="on_local_file_selected"/>
+          </object>
+        </child>
+      </object>
+    </child>
+
+    <!-- Unsupported -->
+    <child type="unsupported">
+      <object class="GtkLabel" id="unsupported_label">
+        <property name="margin-end">12</property>
+        <property name="margin-start">12</property>
+        <property name="margin-top">12</property>
+        <property name="wrap">true</property>
+        <property name="xalign">0</property>
+        <style>
+          <class name="error"/>
+        </style>
+      </object>
+    </child>
+
+  </template>
+</interface>

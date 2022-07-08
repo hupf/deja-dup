@@ -34,11 +34,11 @@ public abstract class AssistantOperation : Assistant
   Gtk.Label backend_install_packages;
   Gtk.ProgressBar backend_install_progress;
 
-  Gtk.PasswordEntry nag_entry;
-  Gtk.PasswordEntry encrypt_entry;
-  Gtk.PasswordEntry confirm_entry;
-  Gtk.CheckButton encrypt_enabled;
-  Gtk.CheckButton encrypt_remember;
+  Adw.PasswordEntryRow nag_entry;
+  Adw.PasswordEntryRow encrypt_entry;
+  Adw.PasswordEntryRow confirm_entry;
+  SwitchRow encrypt_enabled;
+  SwitchRow encrypt_remember;
   protected Gtk.Widget password_page {get; private set;}
   protected Gtk.Widget nag_page {get; private set;}
   protected bool nagged;
@@ -335,127 +335,75 @@ public abstract class AssistantOperation : Assistant
 
   protected Gtk.Widget make_password_page()
   {
-    int rows = 0;
-    Gtk.Widget w, label;
-
-    var page = new Gtk.Grid();
-    page.row_spacing = 6;
-    page.column_spacing = 6;
+    var page = new Adw.Clamp();
     DejaDup.set_margins(page, 12);
 
-    w = new Gtk.CheckButton.with_mnemonic(_("_Allow restoring without a password"));
-    page.attach(w, 0, rows, 3, 1);
-    encryption_choice_widgets.append(w);
-    ++rows;
+    var group = new Adw.PreferencesGroup();
+    page.child = group;
 
-    encrypt_enabled = new Gtk.CheckButton.with_mnemonic(_("_Password-protect your backup"));
-    encrypt_enabled.group = w as Gtk.CheckButton;
+    encrypt_enabled = new SwitchRow();
     encrypt_enabled.active = true; // always default to encrypted
-    page.attach(encrypt_enabled, 0, rows, 3, 1);
+    encrypt_enabled.subtitle = _("You will need your password to restore your files. You might want to write it down.");
+    encrypt_enabled.title = _("_Password-protect your backup");
+    encrypt_enabled.notify["active"].connect(check_password_validity);
+    group.add(encrypt_enabled);
     encryption_choice_widgets.append(encrypt_enabled);
-    encrypt_enabled.toggled.connect(check_password_validity);
-    ++rows;
 
-    w = new Gtk.Label("      "); // indent
-    page.attach(w, 0, rows, 1, 1);
-    encryption_choice_widgets.append(w);
-
-    w = new Gtk.Label(
-      _("You will need your password to restore your files. You might want to write it down.")
-    );
-    w.add_css_class("caption-heading");
-    w.set("xalign", 0.0f,
-          "max-width-chars", 25,
-          "wrap", true);
-    page.attach(w, 1, rows, 2, 1);
-    encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
-    first_password_widgets.append(w);
-    ++rows;
-
-    encrypt_entry = new Gtk.PasswordEntry();
-    encrypt_entry.hexpand = true;
-    encrypt_entry.activates_default = true;
-    encrypt_entry.show_peek_icon = true;
+    encrypt_entry = new Adw.PasswordEntryRow();
+    DejaDup.configure_entry_row(encrypt_entry, true);
+    encrypt_entry.title = _("E_ncryption password");
     encrypt_entry.changed.connect(check_password_validity);
-    label = new Gtk.Label(_("E_ncryption password"));
-    label.set("mnemonic-widget", encrypt_entry,
-              "use-underline", true,
-              "xalign", 1.0f);
-    page.attach(label, 1, rows, 1, 1);
-    page.attach(encrypt_entry, 2, rows, 1, 1);
     encrypt_enabled.bind_property("active", encrypt_entry, "sensitive", BindingFlags.SYNC_CREATE);
-    encrypt_enabled.bind_property("active", label, "sensitive", BindingFlags.SYNC_CREATE);
-    ++rows;
+    group.add(encrypt_entry);
 
     // Add a confirmation entry if this is user's first time
-    confirm_entry = new Gtk.PasswordEntry();
-    confirm_entry.hexpand = true;
-    confirm_entry.activates_default = true;
-    confirm_entry.show_peek_icon = true;
+    confirm_entry = new Adw.PasswordEntryRow();
+    DejaDup.configure_entry_row(confirm_entry, true);
+    confirm_entry.title = _("Confir_m password");
     confirm_entry.changed.connect(check_password_validity);
-    label = new Gtk.Label(_("Confir_m password"));
-    label.set("mnemonic-widget", confirm_entry,
-              "use-underline", true,
-              "xalign", 1.0f);
-    page.attach(label, 1, rows, 1, 1);
-    page.attach(confirm_entry, 2, rows, 1, 1);
     encrypt_enabled.bind_property("active", confirm_entry, "sensitive", BindingFlags.SYNC_CREATE);
-    encrypt_enabled.bind_property("active", label, "sensitive", BindingFlags.SYNC_CREATE);
-    ++rows;
+    group.add(confirm_entry);
     first_password_widgets.append(confirm_entry);
-    first_password_widgets.append(label);
 
-    w = new Gtk.CheckButton.with_mnemonic(_("_Remember password"));
-    w.halign = Gtk.Align.END;
-    page.attach(w, 1, rows, 2, 1);
-    encrypt_enabled.bind_property("active", w, "sensitive", BindingFlags.SYNC_CREATE);
-    ++rows;
-    encrypt_remember = (Gtk.CheckButton)w;
+    encrypt_remember = new SwitchRow();
+    encrypt_remember.title = _("_Remember password");
+    encrypt_enabled.bind_property("active", encrypt_remember, "sensitive", BindingFlags.SYNC_CREATE);
+    group.add(encrypt_remember);
 
     return page;
   }
 
   protected Gtk.Widget make_nag_page()
   {
-    int rows = 0;
-    Gtk.Widget w;
-
-    var page = new Gtk.Grid();
-    page.row_spacing = 12;
-    page.column_spacing = 6;
+    var page = new Adw.Clamp();
     DejaDup.set_margins(page, 12);
 
-    w = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
-                        "of an emergency, please enter your encryption password again to perform a " +
-                        "brief restore test."));
-    w.set("xalign", 0.0f,
-          "max-width-chars", 25,
-          "wrap", true);
-    page.attach(w, 0, rows, 2, 1);
-    ++rows;
+    var box = new Gtk.Box(Gtk.Orientation.VERTICAL, 12);
+    page.child = box;
 
-    nag_entry = new Gtk.PasswordEntry();
-    nag_entry.hexpand = true;
-    nag_entry.activates_default = true;
-    nag_entry.show_peek_icon = true;
-    nag_entry.changed.connect(check_nag_validity);
-    var label = new Gtk.Label(_("E_ncryption password"));
-    label.mnemonic_widget = nag_entry;
-    label.use_underline = true;
+    var label = new Gtk.Label(_("In order to check that you will be able to retrieve your files in the case " +
+                                "of an emergency, please enter your encryption password again to perform a " +
+                                "brief restore test."));
+    label.wrap = true;
     label.xalign = 0;
-    page.attach(label, 0, rows, 1, 1);
-    page.attach(nag_entry, 1, rows, 1, 1);
-    ++rows;
+    box.append(label);
 
-    w = new Gtk.CheckButton.with_mnemonic(_("Test every two _months"));
-    page.attach(w, 0, rows, 2, 1);
-    ((Gtk.CheckButton)w).active = true;
-    w.vexpand = true;
-    w.valign = Gtk.Align.END;
-    ((Gtk.CheckButton)w).toggled.connect((button) => {
-      DejaDup.update_nag_time(!button.get_active());
+    var group = new Adw.PreferencesGroup();
+    box.append(group);
+
+    nag_entry = new Adw.PasswordEntryRow();
+    DejaDup.configure_entry_row(nag_entry, true);
+    nag_entry.title =_("E_ncryption password");
+    nag_entry.changed.connect(check_nag_validity);
+    group.add(nag_entry);
+
+    var nag_row = new SwitchRow();
+    nag_row.active = true;
+    nag_row.title = _("Test every two _months");
+    nag_row.notify["active"].connect((row, spec) => {
+      DejaDup.update_nag_time(!((SwitchRow)row).active);
     });
-    ++rows;
+    group.add(nag_row);
 
     return page;
   }
@@ -777,18 +725,21 @@ public abstract class AssistantOperation : Assistant
     }
 
     var passphrase = encrypt_entry.get_text();
-    if (passphrase == "") {
-      allow_forward(false);
-      return;
-    }
+    var passphrase_entered = passphrase != "";
 
     if (confirm_entry.visible) {
       var passphrase2 = confirm_entry.text;
-      var valid = (passphrase == passphrase2);
+      var valid = (passphrase == passphrase2) && passphrase_entered;
+      if (valid) {
+        // The HIG recommends positive rather than negative feedback
+        confirm_entry.add_css_class("success");
+      } else {
+        confirm_entry.remove_css_class("success");
+      }
       allow_forward(valid);
     }
     else
-      allow_forward(true);
+      allow_forward(passphrase_entered);
   }
 
   void configure_password_page(bool first)

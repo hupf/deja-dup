@@ -326,14 +326,20 @@ public class DejaDupApp : Adw.Application
 
   void about()
   {
-    var dialog = new Gtk.AboutDialog();
-    dialog.artists = {"Barbara Muraus",
-                      "Jakub Steiner"};
-    dialog.authors = {"Michael Terry"};
+    var dialog = new Adw.AboutWindow();
+    dialog.application_icon = Config.ICON_NAME;
+    dialog.application_name = Environment.get_application_name();
+    dialog.artists = {
+      "Barbara Muraus",
+      "Jakub Steiner",
+    };
+    dialog.debug_info = DebugInfo.get_debug_info();
+    dialog.debug_info_filename = "deja-dup-debug.txt";
+    dialog.developers = {
+      "Michael Terry",
+    };
+    dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
-    dialog.logo_icon_name = Config.ICON_NAME;
-    dialog.modal = true;
-    dialog.system_information = DebugInfo.get_debug_info();
     dialog.transient_for = get_app_window();
     dialog.translator_credits = _("translator-credits");
     dialog.version = Config.VERSION;
@@ -449,19 +455,21 @@ int main(string[] args)
 
   // FIXME: there must be a better way than this?
   typeof(Browser).ensure();
-  typeof(ConfigAutoBackup).ensure();
   typeof(ConfigAutoBackupRow).ensure();
   typeof(ConfigDelete).ensure();
-  typeof(ConfigFolderList).ensure();
+  typeof(ConfigFolderGroup).ensure();
   typeof(ConfigFolderPage).ensure();
-  typeof(ConfigLocationGrid).ensure();
+  typeof(ConfigLocationGroup).ensure();
+  typeof(ConfigLocationRow).ensure();
+  typeof(ConfigLocationRow.Item).ensure();
   typeof(ConfigPeriodRow).ensure();
-  typeof(ConfigRestic).ensure();
-  typeof(ConfigServerEntry).ensure();
+  typeof(ConfigResticRow).ensure();
   typeof(FolderChooserButton).ensure();
+  typeof(HelpButton).ensure();
   typeof(MainHeaderBar).ensure();
   typeof(OverviewPage).ensure();
   typeof(RecentBackupRow).ensure();
+  typeof(ServerAddressHelp).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();
   typeof(TooltipBox).ensure();

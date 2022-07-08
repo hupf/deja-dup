@@ -10,9 +10,6 @@ using GLib;
 public class PreferencesWindow : Adw.PreferencesWindow
 {
   [GtkChild]
-  unowned Gtk.Label location_description;
-
-  [GtkChild]
   unowned Adw.PreferencesPage labs_page;
 
 #if ENABLE_RESTIC
@@ -24,10 +21,6 @@ public class PreferencesWindow : Adw.PreferencesWindow
 
   construct
   {
-    var watcher = DejaDup.BackendWatcher.get_instance();
-    watcher.changed.connect(update_location_description);
-    update_location_description();
-
 #if ENABLE_RESTIC
     labs_page.visible = true;
     restic_group.visible = true;
@@ -56,13 +49,5 @@ public class PreferencesWindow : Adw.PreferencesWindow
   ~PreferencesWindow()
   {
     debug("Finalizing PreferencesWindow\n");
-  }
-
-  void update_location_description()
-  {
-    var backend = DejaDup.Backend.get_default();
-    location_description.label = backend.get_location_pretty();
-    if (DejaDup.in_demo_mode())
-      location_description.label = "hostname on Google Drive";
   }
 }

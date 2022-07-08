@@ -6,8 +6,8 @@
 
 using GLib;
 
-[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigFolderList.ui")]
-public class ConfigFolderList : Adw.PreferencesGroup
+[GtkTemplate (ui = "/org/gnome/DejaDup/ConfigFolderGroup.ui")]
+public class ConfigFolderGroup : Adw.PreferencesGroup
 {
   public string key {get; construct;}
   public bool check_access {get; construct;}

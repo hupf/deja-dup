@@ -5,14 +5,10 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <template class="ConfigLocationCombo" parent="GtkBox">
-    <signal name="mnemonic-activate" handler="on_mnemonic_activate"/>
-    <child>
-      <object class="GtkDropDown" id="combo">
-        <property name="hexpand">1</property>
-        <property name="factory">
-          <object class="GtkBuilderListItemFactory">
-            <property name="bytes"><![CDATA[
+  <template class="ConfigLocationRow" parent="AdwComboRow">
+    <property name="factory">
+      <object class="GtkBuilderListItemFactory">
+        <property name="bytes"><![CDATA[
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <template class="GtkListItem">
@@ -22,9 +18,9 @@ SPDX-FileCopyrightText: Michael Terry
         <child>
           <object class="GtkImage">
             <property name="icon-size">normal</property>
-            <property name="use-fallback">1</property>
+            <property name="use-fallback">true</property>
             <binding name="gicon">
-              <lookup name="icon" type="ConfigLocationComboItem">
+              <lookup name="icon" type="ConfigLocationRowItem">
                 <lookup name="item">GtkListItem</lookup>
               </lookup>
             </binding>
@@ -35,7 +31,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="ellipsize">end</property>
             <property name="xalign">0</property>
             <binding name="label">
-              <lookup name="text" type="ConfigLocationComboItem">
+              <lookup name="text" type="ConfigLocationRowItem">
                 <lookup name="item">GtkListItem</lookup>
               </lookup>
             </binding>
@@ -45,10 +41,10 @@ SPDX-FileCopyrightText: Michael Terry
     </property>
   </template>
 </interface>
-            ]]></property>
-          </object>
-        </property>
+        ]]></property>
       </object>
-    </child>
+    </property>
+    <property name="title" translatable="yes">_Location</property>
+    <property name="use-underline">true</property>
   </template>
 </interface>
