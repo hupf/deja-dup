@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/HelpButton.ui")]
-public class HelpButton : Gtk.Box, Gtk.Buildable
+public class HelpButton : Adw.Bin, Gtk.Buildable
 {
   [GtkChild]
   unowned Gtk.Box box;

@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainHeaderBar.ui")]
-public class MainHeaderBar : Gtk.Box
+public class MainHeaderBar : Adw.Bin
 {
   public Adw.ViewStack stack {get; set;}
   public bool actions_sensitive {get; set;}

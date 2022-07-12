@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/TimeCombo.ui")]
-public class TimeCombo : Gtk.Box
+public class TimeCombo : Adw.Bin
 {
   public string when { get; private set; default = null; }
 
@@ -27,9 +27,11 @@ public class TimeCombo : Gtk.Box
   {
     store.remove_all();
     when = null;
-    visible = false;
+    box.visible = false;
   }
 
+  [GtkChild]
+  unowned Gtk.Box box;
   [GtkChild]
   unowned Gtk.DropDown combo;
 
@@ -90,6 +92,6 @@ public class TimeCombo : Gtk.Box
     });
 
     combo.selected = 0;
-    visible = true;
+    box.visible = true;
   }
 }

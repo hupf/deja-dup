@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <template class="WelcomePage" parent="GtkBox">
+  <template class="WelcomePage" parent="AdwBin">
     <child>
       <object class="AdwStatusPage" id="status_page">
         <property name="icon-name">org.gnome.DejaDup</property>
@@ -15,7 +15,7 @@ SPDX-FileCopyrightText: Michael Terry
         <style>
           <class name="icon-dropshadow"/>
         </style>
-        <property name="child">
+        <child>
           <object class="GtkBox">
             <property name="homogeneous">true</property>
             <property name="orientation">vertical</property>
@@ -30,14 +30,14 @@ SPDX-FileCopyrightText: Michael Terry
                   <class name="pill"/>
                   <class name="text-button"/>
                 </style>
-                <property name="child">
+                <child>
                   <object class="GtkLabel" id="backup-label">
                     <property name="justify">center</property>
                     <property name="label" translatable="yes">Create Your First _Backup</property>
                     <property name="use-underline">true</property>
                     <property name="wrap">true</property>
                   </object>
-                </property>
+                </child>
                 <accessibility>
                   <relation name="labelled-by">backup-label</relation>
                 </accessibility>
@@ -51,21 +51,21 @@ SPDX-FileCopyrightText: Michael Terry
                   <class name="pill"/>
                   <class name="text-button"/>
                 </style>
-                <property name="child">
+                <child>
                   <object class="GtkLabel" id="restore-label">
                     <property name="justify">center</property>
                     <property name="label" translatable="yes">_Restore From a Previous Backup</property>
                     <property name="use-underline">true</property>
                     <property name="wrap">true</property>
                   </object>
-                </property>
+                </child>
                 <accessibility>
                   <relation name="labelled-by">restore-label</relation>
                 </accessibility>
               </object>
             </child>
           </object>
-        </property>
+        </child>
       </object>
     </child>
   </template>

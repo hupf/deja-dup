@@ -5,7 +5,7 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <template class="OverviewPage" parent="GtkBox">
+  <template class="OverviewPage" parent="AdwBin">
     <child>
       <object class="AdwStatusPage" id="status_page">
         <property name="icon-name">org.gnome.DejaDup</property>
@@ -14,9 +14,9 @@ SPDX-FileCopyrightText: Michael Terry
         <style>
           <class name="icon-dropshadow"/>
         </style>
-        <property name="child">
+        <child>
           <object class="AdwClamp">
-            <property name="child">
+            <child>
               <object class="GtkBox">
                 <property name="orientation">vertical</property>
                 <child>
@@ -43,9 +43,9 @@ SPDX-FileCopyrightText: Michael Terry
                   </object>
                 </child>
               </object>
-            </property>
+            </child>
           </object>
-        </property>
+        </child>
       </object>
     </child>
   </template>

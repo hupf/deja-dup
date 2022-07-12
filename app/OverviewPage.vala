@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/OverviewPage.ui")]
-public class OverviewPage : Gtk.Box
+public class OverviewPage : Adw.Bin
 {
   [GtkChild]
   unowned Adw.StatusPage status_page;
