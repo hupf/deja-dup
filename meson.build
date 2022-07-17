@@ -36,7 +36,7 @@ gtk_dep = dependency('gtk4', version: '>= 4.6')
 gtk_wayland_dep = dependency('gtk4-wayland', required: false)
 gtk_x11_dep = dependency('gtk4-x11', required: false)
 json_dep = dependency('json-glib-1.0', version: '>= 1.2')
-packagekit_dep = dependency('packagekit-glib2', version: '>= 0.6.5', required: false)
+packagekit_dep = dependency('packagekit-glib2', version: '>= 1.2', required: get_option('packagekit'))
 secret_dep = dependency('libsecret-1', version: '>= 0.18.6')
 soup_dep = dependency('libsoup-3.0', version: '>= 3.0')
 
@@ -75,7 +75,6 @@ add_project_arguments(
   '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
   '-DGOOGLE_CLIENT_ID="@0@"'.format(get_option('google_client_id')),
   '-DGVFS_PACKAGES="@0@"'.format(get_option('gvfs_pkgs')),
-  '-DI_KNOW_THE_PACKAGEKIT_GLIB2_API_IS_SUBJECT_TO_CHANGE', # can remove with pk 1.2+
   '-DICON_NAME="@0@"'.format(application_id),
   '-DLOCALE_DIR="@0@"'.format(localedir),
   '-DMICROSOFT_CLIENT_ID="@0@"'.format(get_option('microsoft_client_id')),

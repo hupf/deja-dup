@@ -7,6 +7,11 @@ SPDX-FileCopyrightText: Michael Terry
 
 ##### Packaging
 - Require libadwaita1 1.2+
+- Add new `-Dpackagekit=enabled` option flag to control whether we build with
+  PackageKit support. Previously, this was an `auto` feature without an option
+  flag to control it, but is now `disabled` by default and you can explicitly
+  enable it if your packaging cannot directly depend on runtime dependencies
+  like duplicity. And if you do enable this, we now require version 1.2+.
 
 # 43.4
 - Warn about delayed backups due to power saver mode, if it's been over a day
