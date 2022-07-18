@@ -1,29 +1,44 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
-option('packagekit', type: 'feature', value: 'disabled', description: 'Install missing dependencies at runtime')
 
-option('duplicity_command', type: 'string', value: 'duplicity', description: 'Path to duplicity command')
-option('duplicity_pkgs', type: 'string', value: 'duplicity', description: 'Distro package names to install the duplicity command, separated by commas')
-option('gvfs_pkgs', type: 'string', value: '', description: 'Distro package names to install giobackend duplicity support, separated by commas')
-option('pydrive_pkgs', type: 'string', value: '', description: 'Distro package names to install pydrivebackend duplicity support, separated by commas')
-option('requests_oauthlib_pkgs', type: 'string', value: '', description: 'Distro package names to install requests_oauthlib support, separated by commas')
+# ********************************************************
+# See PACKAGING.md for more documentation on these options
+# ********************************************************
+
 
 # Experimental restic support, feel free to enable - users still have to opt in to actually using it.
 # Note that enabling restic will also require rclone to be installed (rclone-specific options are below)
 option('enable_restic', type: 'boolean', value: false, description: 'Enable experimental restic support')
-option('restic_command', type: 'string', value: 'restic', description: 'Path to restic command')
-option('restic_pkgs', type: 'string', value: 'restic', description: 'Distro package names to install the restic command, separated by commas')
 
 # Wildly experimental borg support, not even exposed in UI yet. You likely don't want to enable this.
 option('enable_borg', type: 'boolean', value: false, description: 'Enable experimental borg support')
+
+# If your setup has these commands outside the standard PATH locations, use these options to
+# point at them.
 option('borg_command', type: 'string', value: 'borg', description: 'Path to borg command')
-option('borg_pkgs', type: 'string', value: 'borgbackup', description: 'Distro package names to install the borg command, separated by commas')
-
+option('duplicity_command', type: 'string', value: 'duplicity', description: 'Path to duplicity command')
 option('rclone_command', type: 'string', value: 'rclone', description: 'Path to rclone command')
-option('rclone_pkgs', type: 'string', value: 'rclone', description: 'Distro package names to install the rclone command, separated by commas')
+option('restic_command', type: 'string', value: 'restic', description: 'Path to restic command')
 
+# If you cannot directly depend on the following dependencies (which would be the preferred user
+# experience), you can instead enable the packagekit feature and then also specify your distro's
+# package names for these commands.
+# An example: -Dpackagekit=enabled -Dpydrive_pkgs=python3-pydrive2
+option('packagekit', type: 'feature', value: 'disabled', description: 'Install missing dependencies at runtime')
+option('borg_pkgs', type: 'string', value: 'borgbackup', description: 'Distro package names to install the borg command, separated by commas')
+option('duplicity_pkgs', type: 'string', value: 'duplicity', description: 'Distro package names to install the duplicity command, separated by commas')
+option('gvfs_pkgs', type: 'string', value: '', description: 'Distro package names to install giobackend duplicity support, separated by commas')
+option('pydrive_pkgs', type: 'string', value: '', description: 'Distro package names to install pydrivebackend duplicity support, separated by commas')
+option('rclone_pkgs', type: 'string', value: 'rclone', description: 'Distro package names to install the rclone command, separated by commas')
+option('requests_oauthlib_pkgs', type: 'string', value: '', description: 'Distro package names to install requests_oauthlib support, separated by commas')
+option('restic_pkgs', type: 'string', value: 'restic', description: 'Distro package names to install the restic command, separated by commas')
+
+# You likely don't want to set this, it's only used to distinguish debug/nightly builds from release builds
 option('profile', type: 'string', value: '', description: 'Profile name, for parallel installations')
 
+# You likely don't want to set these, they are the client OAuth IDs we use for these services - but
+# if you do need to show a different app name or have your own usage quotas, you can set your own ID here.
+# Note that the installed mimetypes we use for the OAuth login flow are based off these option values.
 option('google_client_id', type: 'string', value: '916137916439-evn6skqan91m96fmsskk8102e3iepv22.apps.googleusercontent.com', description: 'Google API client ID')
 option('microsoft_client_id', type: 'string', value: 'e6c2a4b2-6238-47df-9fc9-5b78941dd679', description: 'Microsoft API client ID')
