@@ -3,20 +3,34 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# Welcome
+
+This guide is aimed at developers looking to build Déjà Dup locally and maybe contribute back a patch.
+
+Thank you so much for helping out! That's so nice.
+
+If you encounter a problems or just want to run an idea by us first before spending much time on it, please get in touch in our [chat room][chat].
+
+[chat]: https://matrix.to/#/#deja-dup:gnome.org
+
 # Building from a Source Release
 
 This is recommended if you are a downstream packager of stable releases.
+Though if you *are* a downstream packager, please read
+[`PACKAGING.md`](PACKAGING.md) instead, as it has more relevant tips.
 
 If you have downloaded this source from a tarball release (that is, a file like `.tar.bz2` or `.zip`),
 you can use standard meson commands like:
  * `meson --buildtype=release my-build-directory`
  * `meson compile -C my-build-directory`
 
-See the [meson documentation](https://mesonbuild.com/) for more guidance. And look at `meson_options.txt` for all the extra build options you can set.
+See the [meson documentation](https://mesonbuild.com/) for more guidance.
+And look at [`meson_options.txt`](meson_options.txt) for all the extra build options you can set.
 
 # Building from a Git Clone
 
-This is recommended if you intend to contribute back a patch. Git checkouts include a `Makefile` that make setting up a sandboxed development environment easier.
+This is recommended if you intend to contribute back a patch.
+Git checkouts include a [`Makefile`](Makefile) that make setting up a sandboxed development environment easier.
 
 ## Set Up the GNOME SDK
 
@@ -26,7 +40,7 @@ To make sure you can build against the latest GNOME libraries, it helps to insta
 1. `make devenv-setup` (this will install the GNOME SDK flatpaks and also build & install our own devel flatpak locally)
 1. `make devenv`
 
-Now you're inside a flatpak container (org.gnome.DejaDupDevel) with all dependencies installed.
+Now you're inside a flatpak container (`org.gnome.DejaDupDevel`) with all dependencies installed.
 From here, you can build and run `deja-dup` like so: `make && deja-dup`.
 
 ## Building
@@ -44,12 +58,14 @@ From here, you can build and run `deja-dup` like so: `make && deja-dup`.
 
 From inside a devenv shell, you can iterate as you develop by just running `deja-dup` directly.
 
+But if you want to actually run the test suite, that's easy too:
+
 * Running all unit tests: `meson test -C _build`
-* Running one unit test: `meson test script-threshold-inc -C _build -v`
+* Running one unit test: `meson test -C _build -v script-threshold-inc`
 
 # Copyright
 
-If you are making a [substantial patch](https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html) (adding ~15 lines or more), add yourself to the top of the file in a new copyright line.
+If you are making a [substantial patch](https://www.gnu.org/prep/maintain/html_node/Legally-Significant.html) (adding ~15 lines or more), add yourself to the top of the changed file in a new copyright line.
 
 # Project Assets
 

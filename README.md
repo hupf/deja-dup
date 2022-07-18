@@ -19,6 +19,13 @@ Déjà Dup focuses on ease of use and personal, accidental data loss.
 If you need a full system backup or an archival program, you may prefer other
 backup apps.
 
+## Building
+
+If you are hacking on Déjà Dup, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+
+Or if you are packaging Déjà Dup for a distribution, see
+[`PACKAGING.md`](PACKAGING.md) for extra tips.
+
 ## Links
 
  * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
