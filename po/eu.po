@@ -12,8 +12,8 @@
 msgid ""
 msgstr "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-03-04 11:17+0000\n"
-"PO-Revision-Date: 2022-03-06 06:00+0100\n"
+"POT-Creation-Date: 2022-07-08 12:00+0000\n"
+"PO-Revision-Date: 2022-08-07 06:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -22,32 +22,32 @@ msgstr "Project-Id-Version: deja-dup\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: app/Assistant.vala:293
+#: app/Assistant.vala:285
 msgid "Co_ntinue"
 msgstr "_Jarraitu"
 
-#: app/Assistant.vala:299
+#: app/Assistant.vala:291
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Probatu"
 
-#: app/Assistant.vala:334
+#: app/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "_Berrekin geroago"
 
-#: app/Assistant.vala:340
+#: app/Assistant.vala:332
 msgid "_Back"
 msgstr "At_zera"
 
-#: app/Assistant.vala:342
+#: app/Assistant.vala:334
 msgid "_Close"
 msgstr "It_xi"
 
-#: app/Assistant.vala:348 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "_Utzi"
 
-#: app/Assistant.vala:359
+#: app/Assistant.vala:350
 msgid "_Forward"
 msgstr "A_urrera"
 
@@ -61,17 +61,17 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Babes_kopia"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
 msgstr "Ezin da hurrengo karpetan babeskopiarik egin Babeskopiak aplikazioak ezin dituelako atzitu:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Lehen babeskopia sortzen. Honek denbora behar du."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -79,35 +79,35 @@ msgstr "Babeskopia berria sortzen, haiek hondatzearen aurka babesteko. Honek nor
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Babeskopia egiten:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Babeskopiak huts egin du"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Babeskopia amaitu da"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "Zure fitxategiak arrakastaz kopiatu dira eta babeskopia ondo dagoela probatu da."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Babeskopia egiten..."
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:879
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:831
 msgid "Backups needs your input to continue"
 msgstr "Babeskopiak aplikazioak zure ekintza bat behar du jarraitzeko"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Babeskopia lanean"
 
@@ -115,11 +115,7 @@ msgstr "Babeskopia lanean"
 msgid "Restore From Where?"
 msgstr "Nondik leheneratu?"
 
-#: app/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "_Babeskopiaren kokapena"
-
-#: app/AssistantLocation.vala:22
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "B_ilatu"
 
@@ -139,91 +135,88 @@ msgstr "_Xehetasunak"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Aurrera egiteko, honako pakete hauek instalatu beharko dituzu:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Onartu pasahitzik gabe leheneratzea"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "Babestu zure kopia _pasahitzez"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "Zure pasahitza beharko duzu fitxategiak leheneratzeko. Agian hobe da nonbait idazten baduzu."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:441
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "Babestu zure kopia _pasahitzez"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "Zifratze-pasahit_za"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "Baie_ztatu pasahitza"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "_Gogoratu pasahitza"
 
-#: app/AssistantOperation.vala:427
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
 "brief restore test."
 msgstr "Larrialdi kasu batean fitxategiak berreskuratzeko gai izango garela egiaztatu ahal izateko, sartu zifratze-pasahitza berriro, berreskuratzeko proba txiki bat egin dezagun."
 
-#: app/AssistantOperation.vala:449
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Probatu _bi hilabetetik behin"
 
-#: app/AssistantOperation.vala:480
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "Baimendu _sarbidea"
 
-#: app/AssistantOperation.vala:542
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Instalatu paketeak"
 
-#: app/AssistantOperation.vala:557
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Laburpena"
 
-#: app/AssistantOperation.vala:579
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Leheneratu proba"
 
-#: app/AssistantOperation.vala:587
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "Baimendu sarbidea"
 
-#: app/AssistantOperation.vala:796
+#: app/AssistantOperation.vala:748
 msgid "Set Encryption Password"
 msgstr "Ezarri zifratze-pasahitza"
 
-#: app/AssistantOperation.vala:798
+#: app/AssistantOperation.vala:750
 msgid "Require Password?"
 msgstr "Pasahitza beharrezko egin?"
 
-#: app/AssistantOperation.vala:800
+#: app/AssistantOperation.vala:752
 msgid "Encryption Password Needed"
 msgstr "Zifratze-pasahitza behar da"
 
-#: app/AssistantOperation.vala:847
+#: app/AssistantOperation.vala:799
 msgid "Backups needs your encryption password to continue"
 msgstr "Babeskopiak aplikazioak zure zifratze-pasahitza behar du jarraitzeko"
 
-#: app/AssistantOperation.vala:921
+#: app/AssistantOperation.vala:873
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalatu"
 
-#: app/AssistantOperation.vala:926
+#: app/AssistantOperation.vala:878
 msgid "Backups needs to install packages to continue"
 msgstr "Babeskopiak aplikazioak zenbait pakete instalatu behar ditu jarraitzeko"
 
-#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:53
+#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:51
 msgid "Restore"
 msgstr "Leheneratu"
 
@@ -247,76 +240,76 @@ msgstr "Leheneratu karpeta ze_hatz batera:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Babeskopiak aplikazioak ez du baimenik honeko fitxategiak leheneratzeko:"
 
-#: app/AssistantRestore.vala:251
+#: app/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Babeskopiaren kokapena"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:266
+#: app/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Leheneratze-data"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:275
+#: app/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Leheneratze-karpeta"
 
-#: app/AssistantRestore.vala:299
+#: app/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Babeskopiak bilatzen..."
 
-#: app/AssistantRestore.vala:307
+#: app/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Noiztik leheneratu?"
 
-#: app/AssistantRestore.vala:318
+#: app/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Nora leheneratu?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:351
+#: app/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Leheneratzen:"
 
-#: app/AssistantRestore.vala:363
+#: app/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Ez dago leheneratzeko babeskopiarik"
 
-#: app/AssistantRestore.vala:446
+#: app/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Jatorrizko kokapena"
 
-#: app/AssistantRestore.vala:460
+#: app/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Leheneratuko den fitxategia"
 msgstr[1] "Leheneratuko diren fitxategiak"
 
-#: app/AssistantRestore.vala:485
+#: app/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Leheneratzeak huts egin du"
 
-#: app/AssistantRestore.vala:487
+#: app/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Leheneratzea amaitu da"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:490
+#: app/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Zure fitxategiak ongi leheneratu dira"
 
-#: app/AssistantRestore.vala:493
+#: app/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Zure fitxategia ongi leheneratu da."
 msgstr[1] "Zure fitxategiak ongi leheneratu dira."
 
-#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Leheneratzen..."
 
-#: app/AssistantRestore.vala:570
+#: app/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Leheneratzea lanean"
 
@@ -324,36 +317,40 @@ msgstr "Leheneratzea lanean"
 msgid "Cannot back up automatically"
 msgstr "Babeskopia ezin da automatikoki egin"
 
-#: app/Browser.vala:252
+#: app/Browser.vala:251
 msgid "Authentication needed"
 msgstr "Autentifikazioa behar da"
 
-#: app/Browser.vala:373 libdeja/duplicity/DuplicityJob.vala:1074
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
 msgid "No backup files found"
 msgstr "Ez da aurkitu babeskopiaren fitxategirik"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "Egin babeskopia _automatikoki"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "Hurrengo babeskopia gaur da."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "Hurrengo babeskopia gaur izango litzateke."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "Hurrengo babeskopia bihar da."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "Hurrengo babeskopia bihar izango litzateke."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -361,7 +358,7 @@ msgstr[0] "Hurrengo babeskopia egun %d barru da."
 msgstr[1] "Hurrengo babeskopia %d egun barru da."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -391,45 +388,45 @@ msgid_plural "At least %d days"
 msgstr[0] "Gutxienez egun %d"
 msgstr[1] "Gutxienez %d egun"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Hautatu karpetak"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Gehitu"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Karpeta lokala"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Sare zerbitzaria"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -447,6 +444,10 @@ msgid "Every %d day"
 msgid_plural "Every %d days"
 msgstr[0] "egun %detik behin"
 msgstr[1] "%d egunetik behin"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "Erabili _Restic Duplicity erabili ordez"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -532,27 +533,27 @@ msgstr "Ez erakutsi berriro"
 msgid "Open Backups"
 msgstr "Ireki Babeskopiak"
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
 msgstr "Restic babeskopiak egiteko beste tresna bat da, Duplicity ordez erabili daitekeena motor gisa."
 
-#: app/PreferencesWindow.vala:37
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr "Espero da Restic-ek eginbide berriak errazago gaituko dituela etorkizunean."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "Hori eginbide esperimentala da eta edozein momentutan kendu daiteke."
 
-#: app/PreferencesWindow.vala:40
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr "Erabili kontuz, baina eskertuko genizuke probatuko bazenu."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:43
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "%sJakinarazi%s arrakastak eta hutsegiteak gaituta dagoenean."
@@ -589,6 +590,10 @@ msgstr "Bat ere ez"
 msgid "%x %X"
 msgstr "%x %X"
 
+#: app/WidgetUtils.vala:15
+msgid "_OK"
+msgstr "_Ados"
+
 #: app/main.vala:22 monitor/monitor.vala:19
 msgid "Show version"
 msgstr "Erakutsi bertsioa"
@@ -601,15 +606,15 @@ msgstr "Leheneratu esandako fitxategiak"
 msgid "Immediately start a backup"
 msgstr "Abiarazi babeskopia berehala"
 
-#: app/main.vala:85
+#: app/main.vala:90
 msgid "Please list files to restore"
 msgstr "Zerrendatu leheneratuko diren fitxategiak"
 
-#: app/main.vala:91 app/main.vala:105
+#: app/main.vala:96 app/main.vala:109
 msgid "An operation is already in progress"
 msgstr "eragiketa bat martxan dabil une honetan"
 
-#: app/main.vala:307
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr "translator-credits"
 
@@ -618,11 +623,11 @@ msgstr "translator-credits"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:413 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup babeskopiak"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:20 data/ui/MainWindow.ui:11
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Babeskopiak"
 
@@ -630,25 +635,21 @@ msgstr "Babeskopiak"
 msgid "Protect yourself from data loss"
 msgstr "Babestu zure datuak, ez daitezela galdu"
 
-#: data/app.desktop.in:9 data/monitor.desktop.in:9
-msgid "@icon@"
-msgstr "@icon@"
-
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:21
+#: data/app.desktop.in:27
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:28
+#: data/app.desktop.in:35
 msgid "Back Up"
 msgstr "Babeskopia"
 
-#: data/app.gschema.xml.in:13
+#: data/app.gschema.xml.in:25
 msgid "Folders to save"
 msgstr "Gordeko diren karpetak"
 
-#: data/app.gschema.xml.in:14
+#: data/app.gschema.xml.in:26
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, "
 "$DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, "
@@ -658,11 +659,11 @@ msgid ""
 "relative to the user’s home directory."
 msgstr "Direktorio edo karpeta zerrenda honen babeskopia egingo da. $HOME, $DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, eta $VIDEOS balio erreserbatuk erabiltzailearen kokaleku berezitzat jotzen dira eta bide-izen luzeago baten hasieran egon daitezke ($HOME/azpidirektorioa). $USER balio erreserbatua erabiltzailearen izenarekin ordezten da bide-izen bateko edozein kokalekutan egon daiteke. Sarrera erlatiboak erabiltzailearen direktorio nagusiarekiko dira erlatiboak."
 
-#: data/app.gschema.xml.in:18
+#: data/app.gschema.xml.in:30
 msgid "Folders to ignore"
 msgstr "Ezikusiko diren karpetak"
 
-#: data/app.gschema.xml.in:19
+#: data/app.gschema.xml.in:31
 msgid ""
 "This list of directories will not be backed up. Reserved values $HOME, "
 "$DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, "
@@ -672,58 +673,58 @@ msgid ""
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr "Direktorio edo karpeta zerrenda honen babeskopiarik EZ da egingo. $HOME, $DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, eta $VIDEOS balio erreserbatuk erabiltzailearen kokaleku berezitzat jotzen dira eta bide-izen luzeago baten hasieran egon daitezke ($HOME/azpidirektorioa). $USER balio erreserbatua erabiltzailearen izenarekin ordezten da bide-izen bateko edozein kokalekutan egon daiteke. Sarrera erlatiboak erabiltzailearen direktorio nagusiarekiko dira erlatiboak."
 
-#: data/app.gschema.xml.in:23
+#: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
 msgstr "Déjà Dup exekutatu zen azken aldia"
 
-#: data/app.gschema.xml.in:24
+#: data/app.gschema.xml.in:36
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
 msgstr "Déjà Dup arrakastaz exekutatu zen azken aldia. Ordu hau ISO 8601 formatuan egon beharko litzateke."
 
-#: data/app.gschema.xml.in:28
+#: data/app.gschema.xml.in:40
 msgid "The last time Déjà Dup backed up"
 msgstr "Déjà Dup-ek babeskopia egin zuen azken aldia"
 
-#: data/app.gschema.xml.in:29
+#: data/app.gschema.xml.in:41
 msgid ""
 "The last time Déjà Dup successfully completed a backup. This time should be "
 "in ISO 8601 format."
 msgstr "Déjà Dup-ek babeskopia arrakastaz egin zuen azken aldia. Data honek ISO 8601 formatuan egon behar du."
 
-#: data/app.gschema.xml.in:33
+#: data/app.gschema.xml.in:45
 msgid "The last time Déjà Dup restored"
 msgstr "Déjà Dup-ek kopia leheneratu zuen azken aldia"
 
-#: data/app.gschema.xml.in:34
+#: data/app.gschema.xml.in:46
 msgid ""
 "The last time Déjà Dup successfully completed a restore. This time should be "
 "in ISO 8601 format."
 msgstr "Déjà Dup-ek leheneratzea arrakastaz egin zuen azken aldia. Data honek ISO 8601 formatuan egon behar du."
 
-#: data/app.gschema.xml.in:38
+#: data/app.gschema.xml.in:50
 msgid "Whether to periodically back up"
 msgstr "Babeskopia denbora-tarte finkoetan egingo den ala ez"
 
-#: data/app.gschema.xml.in:39
+#: data/app.gschema.xml.in:51
 msgid "Whether to automatically back up on a regular schedule."
 msgstr "Babeskopia automatikoki tarte finkoetan egingo den ala ez."
 
-#: data/app.gschema.xml.in:43
+#: data/app.gschema.xml.in:55
 msgid "How often to periodically back up"
 msgstr "Zenbatero egingo den babeskopia"
 
-#: data/app.gschema.xml.in:44
+#: data/app.gschema.xml.in:56
 msgid "The number of days between backups."
 msgstr "Babeskopien arteko egun-kopurua"
 
-#: data/app.gschema.xml.in:48
+#: data/app.gschema.xml.in:60
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr "Déjà Dup-ek babeskopiaren inguruan galdetu behar zuen ala ez egiaztatu zuen azken aldia"
 
-#: data/app.gschema.xml.in:49
+#: data/app.gschema.xml.in:61
 msgid ""
 "When a user logs in, the Déjà Dup monitor checks whether it should prompt "
 "about backing up. This is used to increase discoverability for users that "
@@ -731,143 +732,143 @@ msgid ""
 "this check or in ISO 8601 format."
 msgstr "Erabiltzaile bateak saioa hasten duenean, Déjà Dup-ek babeskopiari buruz galdetu beharko lukeen ala ez egiaztatzen du. Babeskopiak ezagutzen ez dituzten erabiltzaileak aurkitzea hobetzeko erabiltzen da hau. 'Desgaituta' egon behar luke, egiaztatzea desaktibatzeko, edo ISO 8601 formatuan."
 
-#: data/app.gschema.xml.in:53
+#: data/app.gschema.xml.in:65
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr "Déjà Dup-ek zure pasahitza eskatu behar zuen ala ez egiaztatu zuen azken aldia"
 
-#: data/app.gschema.xml.in:54
+#: data/app.gschema.xml.in:66
 msgid ""
 "In order to prevent you from forgetting your passwords, Déjà Dup will "
 "occasionally notify you to confirm the password. This time should be either "
 "‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr "Pasahitzak ahantz ez ditzazun, Déjà Dup-ek pasahitza baieztatzea eskatuko dizu noizbehinka. Denbora-tarte hau 'desgaituta' egon behar du egiaztatzea desgaitzeko, edo ISO 8601 formatuan egon behar du."
 
-#: data/app.gschema.xml.in:58
+#: data/app.gschema.xml.in:70
 msgid "How long to keep backup files"
 msgstr "Zenbat denboraz mantenduko diren babeskopiatutako fitxategiak"
 
-#: data/app.gschema.xml.in:59
+#: data/app.gschema.xml.in:71
 msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
 "longer."
 msgstr "Babeskopiako fitxategiak babeskopiaren kokapenean mantenduko diren egun-kopurua. 0 balioak betiko esan nahi du. Hau egun-kopuru minimoa da; fitxategiak denbora gehiagoz egon daitezke gordeta."
 
-#: data/app.gschema.xml.in:63
+#: data/app.gschema.xml.in:75
 msgid "How long to wait between full backups"
 msgstr "Zenbat itxaron behar den babeskopia osoen artean"
 
-#: data/app.gschema.xml.in:64
+#: data/app.gschema.xml.in:76
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
 msgstr "Déjà Dup-ek batzuetan babeskopia oso berriak egin behar ditu. Hau babeskopia osoen artean itxaron behar den egun-kopurua da."
 
-#: data/app.gschema.xml.in:68
+#: data/app.gschema.xml.in:80
 msgid "Whether to use metered networks"
 msgstr "Sare mugatuak erabili edo ez"
 
-#: data/app.gschema.xml.in:69
+#: data/app.gschema.xml.in:81
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
 msgstr "Gezurrezkoa bada, Déjà Dup honek ez du onartuko babeskopia programatuak egitea mugatutako sare konexioen gainean (esate baterako, 4G motatakoak)."
 
-#: data/app.gschema.xml.in:73
+#: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
 msgstr "Babeskopia-tresnaren aurretik exekutatuko den komandoa"
 
-#: data/app.gschema.xml.in:74
+#: data/app.gschema.xml.in:86
 msgid ""
 "Useful if you need to manually mount a folder, for example. If this command "
 "fails, the backup won't start."
 msgstr "Erabilgarria karpeta bat eskuz muntatu behar bada, adibidez. Komando honek huts egiten badu, babeskopia ez da abiaraziko."
 
-#: data/app.gschema.xml.in:78
+#: data/app.gschema.xml.in:90
 msgid "Command to run after the backup tool"
 msgstr "Babeskopia-tresnaren ondoren exekutatuko den komandoa"
 
-#: data/app.gschema.xml.in:79
+#: data/app.gschema.xml.in:91
 msgid ""
 "Useful if you need to clean up after your setup command. Failures are "
 "ignored."
 msgstr "Erabilgarria konfigurazio-komandoaren ondoren zerbait garbitu behar bada. Huts egiteei ez ikusiarena egingo zaie."
 
-#: data/app.gschema.xml.in:83
+#: data/app.gschema.xml.in:95
 msgid "Command to run around the backup tool"
 msgstr "Babeskopia-tresnaren inguruan exekutatuko den komandoa"
 
-#: data/app.gschema.xml.in:84
+#: data/app.gschema.xml.in:96
 msgid ""
 "Useful if you need to limit resources or otherwise wrap the execution of the "
 "tool command. An example value might be 'trickle -u 500' which would result "
 "in deja-dup running 'trickle -u 500 duplicity …'."
 msgstr "Erabilgarria baliabideak mugatu nahi badira, edo tresna-komandoaren exekuzioa zerbaitekin inguratu nahi bada. Adibidez, 'trickle -u 500' aukerarekin, 'trickle -u 500 duplicity …' exekutatuko da."
 
-#: data/app.gschema.xml.in:112
+#: data/app.gschema.xml.in:124
 msgid "Type of location to store backup"
 msgstr "Babeskopia gordetzeko kokapen-mota"
 
-#: data/app.gschema.xml.in:113
+#: data/app.gschema.xml.in:125
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
 msgstr "Babeskopiaren kokapen-mota. Balio hau 'auto' bada, balio lehenetsia hautatuko da, atzigarri dagoenaren arabera."
 
-#: data/app.gschema.xml.in:125 data/app.gschema.xml.in:148
-#: data/app.gschema.xml.in:161 data/app.gschema.xml.in:169
-#: data/app.gschema.xml.in:176
+#: data/app.gschema.xml.in:137 data/app.gschema.xml.in:160
+#: data/app.gschema.xml.in:173 data/app.gschema.xml.in:181
+#: data/app.gschema.xml.in:188
 msgid "The folder where backups are stored"
 msgstr "Babeskopiak gordeko diren karpeta"
 
-#: data/app.gschema.xml.in:126
+#: data/app.gschema.xml.in:138
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
 msgstr "Babeskopiak gorde diren karpeten hierarkia. Bideak zure 'home' direktorioari erabat loturik edo erlatiboki loturik egon daitezke."
 
-#: data/app.gschema.xml.in:133
+#: data/app.gschema.xml.in:145
 msgid "UUID"
 msgstr "UUIDa"
 
-#: data/app.gschema.xml.in:134
+#: data/app.gschema.xml.in:146
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
 msgstr "Unitatearen fitxategi-sistemaren identifikatzaile bakarra, unitatea konektatuta dagoenean hura ezagutzeko erabiltzen dena."
 
-#: data/app.gschema.xml.in:138 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
 msgid "Name"
 msgstr "Izena"
 
-#: data/app.gschema.xml.in:139
+#: data/app.gschema.xml.in:151
 msgid "The name of the external drive."
 msgstr "Kanpoko unitatearen izena."
 
-#: data/app.gschema.xml.in:143
+#: data/app.gschema.xml.in:155
 msgid "Icon"
 msgstr "Ikonoa"
 
-#: data/app.gschema.xml.in:144
+#: data/app.gschema.xml.in:156
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Kanpoko unitatearen ikonoa, seriatutako Glcon bat bezala."
 
-#: data/app.gschema.xml.in:149
+#: data/app.gschema.xml.in:161
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
 msgstr "Babeskopiak gordetzen dituen karpeten hierarkia. Bideak unitateari dagozkio."
 
-#: data/app.gschema.xml.in:156
+#: data/app.gschema.xml.in:168
 msgid "The server address"
 msgstr "Zerbitzariaren helbidea"
 
-#: data/app.gschema.xml.in:157
+#: data/app.gschema.xml.in:169
 msgid "The URI of the remote server location."
 msgstr "Urrutiko zerbitzariaren helbidearen URLa."
 
-#: data/app.gschema.xml.in:162
+#: data/app.gschema.xml.in:174
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -936,11 +937,12 @@ msgstr "Babeskopien monitorea"
 msgid "Schedules backups at regular intervals"
 msgstr "Babeskopiak tarte finkoetan programatzen du"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
-#: data/ui/MainHeaderBar.ui:52
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
+#: data/ui/MainHeaderBar.ui:51
 msgid "Search"
 msgstr "Bilatu"
 
+#. Translators: this means scanning the storage location data files, not the source folders
 #: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
 msgstr "Babeskopia-fitxategiak eskaneatzen…"
@@ -977,10 +979,6 @@ msgstr "Sartu _pasahitza"
 msgid "Location"
 msgstr "Kokalekua"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "Egin babeskopia _automatikoki"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Karpetak"
@@ -989,7 +987,11 @@ msgstr "Karpetak"
 msgid "Folders to Back Up"
 msgstr "Babeskopian sartuko diren karpetak"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "Hurrengo karpetei beti egingo zaie ez ikusiarena:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Ez ikusiarena egingo zaien karpetak"
 
@@ -1002,54 +1004,57 @@ msgstr "Ezin da karpeta honen babeskopia egin Babeskopiak aplikazioak ezin duela
 msgid "Remove"
 msgstr "Kendu"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "B_iltegiratzearen kokalekua"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Biltegia"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Karpeta"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "Berrezarri _kontuaren atzitzea"
 
-#: data/ui/ConfigLocationGrid.ui:141
-msgid "_Network Location"
-msgstr "_Sareen kokalekua"
+#: data/ui/ConfigLocationGroup.ui:66
+msgid "Ser_ver Address"
+msgstr "_Zerbitzari-helbidea"
 
-#: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "K_okalekua"
+
+#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
 msgid "Back"
 msgstr "Atzera"
 
-#: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
+#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
 msgid "Main Menu"
 msgstr "Menu nagusia"
 
-#: data/ui/MainHeaderBar.ui:69
+#: data/ui/MainHeaderBar.ui:68
 msgid "_Select All"
 msgstr "Hautatu _denak"
 
-#: data/ui/MainHeaderBar.ui:76
+#: data/ui/MainHeaderBar.ui:75
 msgid "_Preferences"
 msgstr "_Hobespenak"
 
-#: data/ui/MainHeaderBar.ui:80
+#: data/ui/MainHeaderBar.ui:79
 msgid "_Keyboard Shortcuts"
 msgstr "Laster-_teklak"
 
-#: data/ui/MainHeaderBar.ui:84
+#: data/ui/MainHeaderBar.ui:83
 msgid "_Help"
 msgstr "_Laguntza"
 
-#: data/ui/MainHeaderBar.ui:88
+#: data/ui/MainHeaderBar.ui:87
 msgid "_About Backups"
 msgstr "_Babeskopiei buruz"
 
-#: data/ui/MainWindow.ui:26
+#: data/ui/MainWindow.ui:24
 msgid "Overview"
 msgstr "Ikuspegi orokorra"
 
@@ -1057,115 +1062,103 @@ msgstr "Ikuspegi orokorra"
 msgid "_Back Up Now"
 msgstr "Egin babeskopia _orain"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "_Jarraitu"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Orokorra"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Biltegia"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Programazioa"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Kokalekua"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "Babeskopia automatikoaren _maiztasuna"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "_Mantendu babeskopiak"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
 msgstr "Babeskopia zaharrenak lehenago ezabatuko dira kokalekuak toki gutxi badu, edo hiru hilabete arte mantenduko dira haiei lotutako babeskopiak ezabatzea eragozteko."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Programazioa"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "Babeskopia automatikoaren _maiztasuna"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Labs"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "Erabili _Restic Duplicity erabili ordez"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Babeskopia berriena"
 
-#: data/ui/ServerHintPopover.ui:17
-msgid "Network Locations"
-msgstr "Sareen kokalekuak"
+#: data/ui/ServerAddressHelp.ui:15
+msgid "Server Addresses"
+msgstr "Zerbitza-helbideak"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:29
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
-"Network locations are made up of a protocol prefix, an address, and "
-"sometimes a path depending on the protocol. Examples:"
-msgstr "Sareko helbideek protokolo-aurrizki bat, helbide bat eta, zenbaitetan, protokoloaren araberako bide-izen bat dituzte. Adibideak:"
+"Server addresses are made up of a protocol prefix, an address, and sometimes "
+"a path depending on the protocol. Examples:"
+msgstr "Zerbitzari-helbideek protokolo-aurrizki bat, helbide bat eta, zenbaitetan, protokoloaren araberako bide-izen bat dituzte. Adibideak:"
 
-#: data/ui/ServerHintPopover.ui:55
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Protokolo erabilgarriak"
 
-#: data/ui/ServerHintPopover.ui:68
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:78
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "Fitxategi-transferentziako protokoloa (FTP)"
 
-#: data/ui/ServerHintPopover.ui:88
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Sareko fitxategi-sistema (NFS)"
 
-#: data/ui/ServerHintPopover.ui:98
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:108
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "SSH fitxategi-transferentziako protokoloa (FTPS)"
 
-#: data/ui/ServerHintPopover.ui:118
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:128
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Aurrizkia"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:151
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// or ftps://"
 
-#: data/ui/ServerHintPopover.ui:171
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:181
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// or ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:191
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// or davs://"
 
@@ -1177,11 +1170,11 @@ msgstr "_Data"
 msgid "Welcome to Backups"
 msgstr "Ongi etorri Babeskopiak aplikaziora"
 
-#: data/ui/WelcomePage.ui:25
+#: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
 msgstr "Sortu zure lehen _babeskopia"
 
-#: data/ui/WelcomePage.ui:37
+#: data/ui/WelcomePage.ui:57
 msgid "_Restore From a Previous Backup"
 msgstr "_Leheneratu aurreko babeskopia batetik"
 
@@ -1227,7 +1220,7 @@ msgstr "Joan atzera"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:500
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s %2$s-(e)n"
@@ -1246,36 +1239,36 @@ msgstr "Ez dago eskuragarri biltegiratze helbiderik"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "‘%s’ konektatu dadin itxaroten..."
 
-#: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
-#: monitor/ReadyWatcher.vala:148
+#: libdeja/BackendGoogle.vala:62 libdeja/BackendMicrosoft.vala:58
+#: monitor/ReadyWatcher.vala:160
 msgid "Backup will begin when a network connection becomes available."
 msgstr "Babeskopia hasiko da sareko konexio bat eskuragarri dagoenean."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:65
+#: libdeja/BackendGoogle.vala:77
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s Google Drive hodeian"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendMicrosoft.vala:67
+#: libdeja/BackendMicrosoft.vala:73
 #, c-format
 msgid "%s on Microsoft OneDrive"
 msgstr "%s Microsoft OneDrive zerbitzuan"
 
 #. Duplicity requires a folder, and this is a reasonable restriction.
-#: libdeja/BackendMicrosoft.vala:105
+#: libdeja/BackendMicrosoft.vala:111
 msgid "You must provide a Microsoft OneDrive folder."
 msgstr "Microsoft OneDrive karpeta bat adierazi behar da."
 
 #. Translators: %s is a brand name like Microsoft or Google
-#: libdeja/BackendOAuth.vala:69
+#: libdeja/BackendOAuth.vala:93
 #, c-format
 msgid "Could not log into %s servers."
 msgstr "Ezin da %s zerbitzarietan saioa hasi."
 
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:145
+#: libdeja/BackendOAuth.vala:169
 #, c-format
 msgid "%s credentials for Déjà Dup"
 msgstr "%s kredentzialak Déjà Dup aplikaziorako"
@@ -1284,7 +1277,7 @@ msgstr "%s kredentzialak Déjà Dup aplikaziorako"
 #. to get random strings, but they are only 37 chars long. So just add two.
 #. And show the oauth consent page finally
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:248
+#: libdeja/BackendOAuth.vala:228
 #, c-format
 msgid "You first need to allow Backups to access your %s account."
 msgstr "Lehenengo, Babeskopiak aplikazioari baimena eman diozu zure %s kontua atzitzeko."
@@ -1320,31 +1313,23 @@ msgstr "Zerbitzariaren sareko ‘%s’ kokalekuak ez dirudi sareko kokaleku bat 
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba sarearen kokalekuek ostatu-izena eta partekatzeko izena, biak eduki behar dute."
 
-#: libdeja/CommonUtils.vala:470
-msgid "Access Granted"
-msgstr "Baimena eskuratu da"
-
-#: libdeja/CommonUtils.vala:471
-msgid "Backups will now continue. You can close this page."
-msgstr "Babeskopiak aurrera jarraituko du. Orri hau itxi daiteke."
-
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:553
+#: libdeja/CommonUtils.vala:540
 #, c-format
 msgid "Home (%s)"
 msgstr "Karpeta nagusia (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:558
+#: libdeja/CommonUtils.vala:545
 msgid "Home"
 msgstr "Karpeta nagusia"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:563
+#: libdeja/CommonUtils.vala:550
 msgid "Trash"
 msgstr "Zakarrontzia"
 
-#: libdeja/CommonUtils.vala:625
+#: libdeja/CommonUtils.vala:612
 msgid "Backup encryption password"
 msgstr "Babeskopiaren zifratze-pasahitza"
 
@@ -1367,9 +1352,9 @@ msgid "Listing files…"
 msgstr "Fitxategiak zerrendatzen..."
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:372
-#: libdeja/duplicity/DuplicityJob.vala:383
-#: libdeja/duplicity/DuplicityJob.vala:419
+#: libdeja/duplicity/DuplicityJob.vala:368
+#: libdeja/duplicity/DuplicityJob.vala:379
+#: libdeja/duplicity/DuplicityJob.vala:415
 msgid "Preparing…"
 msgstr "Prestatzen..."
 
@@ -1377,7 +1362,13 @@ msgstr "Prestatzen..."
 msgid "Custom tool setup failed."
 msgstr "Tresna-konfigurazio pertsonalizatuak huts egin du."
 
-#: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
+#: libdeja/OperationBackup.vala:29
+msgid ""
+"Could not back up the following files.  Please make sure you are able to "
+"open them."
+msgstr "Ezin izan dira hurrengo fitxategien babeskopia egin. Segurtatu haiek ireki ahal dituzula."
+
+#: libdeja/OperationBackup.vala:55 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "Babeskopia egiaztatzen..."
 
@@ -1385,52 +1376,40 @@ msgstr "Babeskopia egiaztatzen..."
 msgid "Restoring files…"
 msgstr "Fitxategiak leheneratzen..."
 
+#: libdeja/OperationRestore.vala:54
+msgid ""
+"Could not restore the following files.  Please make sure you are able to "
+"write to them."
+msgstr "Ezin izan dira berrezarri ondorengo fitxategiak. Egiaztatu fitxategi hauetan idatz dezakezula."
+
 #: libdeja/OperationVerify.vala:81
 msgid ""
 "Your backup appears to be corrupted.  You should delete the backup and try "
 "again."
 msgstr "Zure babeskopia hondatuta dagoela dirudi. Babeskopia ezabatu eta berriro saiatu beharko zenuke."
 
-#: libdeja/duplicity/DuplicityJob.vala:70
-#: libdeja/duplicity/DuplicityJob.vala:140
+#: libdeja/duplicity/DuplicityJob.vala:68
+#: libdeja/duplicity/DuplicityJob.vala:138
 msgid "Paused (no network)"
 msgstr "Pausatua (sarerik ez)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:529 libdeja/restic/ResticJob.vala:287
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:317
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "Babeskopiaren kokalekua txikiegia da. Saiatu beste bat erabilita, gutxienez %s badu."
 
-#: libdeja/duplicity/DuplicityJob.vala:554
+#: libdeja/duplicity/DuplicityJob.vala:550
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
 "%s."
 msgstr "Babeskopiaren kokalekuak ez du aski tokirik. Saiatu beste bat erabilita, gutxienez %s badu."
 
-#: libdeja/duplicity/DuplicityJob.vala:575
-#: libdeja/duplicity/DuplicityJob.vala:589
+#: libdeja/duplicity/DuplicityJob.vala:571
+#: libdeja/duplicity/DuplicityJob.vala:585
 msgid "Cleaning up…"
 msgstr "Garbitzen..."
-
-#. OK, we succeeded yay!  But some files didn't make it into the backup
-#. because we couldn't read them.  So tell the user so they don't think
-#. everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:669
-msgid ""
-"Could not back up the following files.  Please make sure you are able to "
-"open them."
-msgstr "Ezin izan dira hurrengo fitxategien babeskopia egin. Segurtatu haiek ireki ahal dituzula."
-
-#. OK, we succeeded yay!  But some files didn't actually restore
-#. because we couldn't write to them.  So tell the user so they
-#. don't think everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:685
-msgid ""
-"Could not restore the following files.  Please make sure you are able to "
-"write to them."
-msgstr "Ezin izan dira berrezarri ondorengo fitxategiak. Egiaztatu fitxategi hauetan idatz dezakezula."
 
 #. For most, don't do anything special.  Show generic 'unknown error'
 #. message, but provide the exception text for better bug reports.
@@ -1439,25 +1418,25 @@ msgstr "Ezin izan dira berrezarri ondorengo fitxategiak. Egiaztatu fitxategi hau
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:705
-#: libdeja/duplicity/DuplicityJob.vala:1093 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:669
+#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Huts egin du errore ezezagunarengatik."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:908
+#: libdeja/duplicity/DuplicityJob.vala:872
 msgid "Bad encryption password."
 msgstr "Zifratze-pasahitz okerra."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:957
+#: libdeja/duplicity/DuplicityJob.vala:921
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Ezin izan da ‘%s’ leheneratu: Fitxategia ez da aurkitu babeskopian"
 
-#: libdeja/duplicity/DuplicityJob.vala:968
+#: libdeja/duplicity/DuplicityJob.vala:932
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1465,53 +1444,53 @@ msgid ""
 "location."
 msgstr "Existitzen den babeskopia %s deitutako ordenagailu batena da, bain uneko ordenagailuaren izena %s da. Hau espero ez bazenuen, beste kokapen batean egin beharko zenuke babeskopia."
 
-#: libdeja/duplicity/DuplicityJob.vala:971
+#: libdeja/duplicity/DuplicityJob.vala:935
 msgid "Computer name changed"
 msgstr "Ordenagailuaren izena aldatu da"
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:970
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ sortzen saiatzean."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:1010
-#: libdeja/duplicity/DuplicityJob.vala:1014
+#: libdeja/duplicity/DuplicityJob.vala:974
+#: libdeja/duplicity/DuplicityJob.vala:978
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ irakurtzen saiatzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1018
+#: libdeja/duplicity/DuplicityJob.vala:982
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ ezabatzen saiatzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1025
+#: libdeja/duplicity/DuplicityJob.vala:989
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Babeskopiaren ‘%s’ kokapena ez da existitzen."
 
-#: libdeja/duplicity/DuplicityJob.vala:1031
-#: libdeja/duplicity/DuplicityJob.vala:1064
+#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1028
 msgid "No space left."
 msgstr "Ez dago espaziorik."
 
-#: libdeja/duplicity/DuplicityJob.vala:1053
+#: libdeja/duplicity/DuplicityJob.vala:1017
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia irakurtzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1055
+#: libdeja/duplicity/DuplicityJob.vala:1019
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia idaztean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1066
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Ez dago lekurik ‘%s’-(e)n."
 
-#: libdeja/duplicity/DuplicityJob.vala:1124
+#: libdeja/duplicity/DuplicityJob.vala:1088
 msgid "Uploading…"
 msgstr "Kargatzen..."
 
@@ -1558,10 +1537,38 @@ msgid ""
 "version %d.%d.%.2d"
 msgstr "Babeskopiak aplikazioak restic aplikazioaren %d.%d.%.2d bertsioa behar du gutxienez, baina %d.%d.%.2d aurkitu da"
 
-#: monitor/ReadyWatcher.vala:153
+#: monitor/ReadyWatcher.vala:151
+msgid "Backup will begin when power saver mode is no longer active."
+msgstr "Babeskopia hasiko da energia aurrezteko modua aktibo ez dagoenean."
+
+#: monitor/ReadyWatcher.vala:165
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
-msgstr "Babeskopiaren prozesua hasiko da, hain mugatua ez den Internet konexio bat eskuragarri dagoenean."
+msgstr "Babeskopiaren prozesua hasiko da hain mugatua ez den Internet konexio bat eskuragarri dagoenean."
+
+#~ msgid "_Backup location"
+#~ msgstr "_Babeskopiaren kokapena"
+
+#~ msgid "_Allow restoring without a password"
+#~ msgstr "_Onartu pasahitzik gabe leheneratzea"
+
+#~ msgid "@icon@"
+#~ msgstr "@icon@"
+
+#~ msgid "_Storage Location"
+#~ msgstr "B_iltegiratzearen kokalekua"
+
+#~ msgid "_Network Location"
+#~ msgstr "_Sareen kokalekua"
+
+#~ msgid "Network Locations"
+#~ msgstr "Sareen kokalekuak"
+
+#~ msgid "Access Granted"
+#~ msgstr "Baimena eskuratu da"
+
+#~ msgid "Backups will now continue. You can close this page."
+#~ msgstr "Babeskopiak aurrera jarraituko du. Orri hau itxi daiteke."
 
 #~ msgid "Keep your important documents safe from disaster"
 #~ msgstr "Babestu dokumentu garrantzitsuak hondamenetik"
@@ -1645,9 +1652,6 @@ msgstr "Babeskopiaren prozesua hasiko da, hain mugatua ez den Internet konexio b
 
 #~ msgid "_Add"
 #~ msgstr "_Gehitu"
-
-#~ msgid "_OK"
-#~ msgstr "_Ados"
 
 #~ msgid "S_how password"
 #~ msgstr "Era_kutsi pasahitza"
