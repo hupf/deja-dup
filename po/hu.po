@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-03-04 11:17+0000\n"
-"PO-Revision-Date: 2022-03-06 21:55+0100\n"
-"Last-Translator: Balázs Meskó <mesko.balazs at fsf dot hu>\n"
+"POT-Creation-Date: 2022-07-08 12:00+0000\n"
+"PO-Revision-Date: 2022-08-29 21:00+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -20,32 +20,32 @@ msgstr ""
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
 "X-Generator: Lokalize 19.12.3\n"
 
-#: app/Assistant.vala:293
+#: app/Assistant.vala:285
 msgid "Co_ntinue"
 msgstr "_Folytatás"
 
-#: app/Assistant.vala:299
+#: app/Assistant.vala:291
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Tesztelés"
 
-#: app/Assistant.vala:334
+#: app/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "Folytatás _később"
 
-#: app/Assistant.vala:340
+#: app/Assistant.vala:332
 msgid "_Back"
 msgstr "_Vissza"
 
-#: app/Assistant.vala:342
+#: app/Assistant.vala:334
 msgid "_Close"
 msgstr "_Bezárás"
 
-#: app/Assistant.vala:348 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "Mé_gse"
 
-#: app/Assistant.vala:359
+#: app/Assistant.vala:350
 msgid "_Forward"
 msgstr "T_ovább"
 
@@ -59,7 +59,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Biztonsági mentés"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -67,11 +67,11 @@ msgstr ""
 "A következő mappákról nem készíthető biztonsági mentés, mert a Biztonsági "
 "mentések nem fér hozzájuk:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Első biztonsági mentés létrehozása. Ez eltarthat egy ideig."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -81,35 +81,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Biztonsági mentés:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Biztonsági mentés sikertelen"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Biztonsági mentés befejeződött"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "A fájlok mentése és ellenőrzésre sikeres."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Biztonsági mentés…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:879
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:831
 msgid "Backups needs your input to continue"
 msgstr "A Biztonsági mentéseknek a válaszára van szüksége a folytatáshoz"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Biztonsági mentés folyamatban"
 
@@ -117,11 +117,7 @@ msgstr "Biztonsági mentés folyamatban"
 msgid "Restore From Where?"
 msgstr "Honnan állítson vissza?"
 
-#: app/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "Biztonsági mentés _helye"
-
-#: app/AssistantLocation.vala:22
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "_Keresés"
 
@@ -141,36 +137,33 @@ msgstr "_Részletek"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "A folytatáshoz telepíteni kell az alábbi csomagokat:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Visszaállítás engedélyezése jelszó nélkül"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "_Védje jelszóval a biztonsági mentést"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr ""
 "A jelszóra szüksége lesz a fájlok visszaállításhoz. Ha gondolja jegyezze le."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:441
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "_Védje jelszóval a biztonsági mentést"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "Titkosítási _jelszó"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "Jelszó _megerősítése"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "J_elszó megjegyzése"
 
-#: app/AssistantOperation.vala:427
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -180,59 +173,58 @@ msgstr ""
 "fájlok, adja meg a titkosítási jelszót egy gyors visszaállítási teszt "
 "elvégzéséhez."
 
-#: app/AssistantOperation.vala:449
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Ellenőrzés két _havonta"
 
-#: app/AssistantOperation.vala:480
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "_Hozzáférés megadása"
 
-#: app/AssistantOperation.vala:542
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Csomagok telepítése"
 
-#: app/AssistantOperation.vala:557
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Összegzés"
 
-#: app/AssistantOperation.vala:579
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Visszaállítási teszt"
 
-#: app/AssistantOperation.vala:587
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "Hozzáférés megadása"
 
-#: app/AssistantOperation.vala:796
-#| msgid "E_ncryption password"
+#: app/AssistantOperation.vala:748
 msgid "Set Encryption Password"
 msgstr "Titkosítási jelszó beállítása"
 
-#: app/AssistantOperation.vala:798
+#: app/AssistantOperation.vala:750
 msgid "Require Password?"
 msgstr "Szükséges legyen a jelszó megadása?"
 
-#: app/AssistantOperation.vala:800
+#: app/AssistantOperation.vala:752
 msgid "Encryption Password Needed"
 msgstr "Titkosítási jelszó szükséges"
 
-#: app/AssistantOperation.vala:847
+#: app/AssistantOperation.vala:799
 msgid "Backups needs your encryption password to continue"
 msgstr ""
 "A Biztonsági mentéseknek a titkosítási jelszavára van szüksége a folytatáshoz"
 
-#: app/AssistantOperation.vala:921
+#: app/AssistantOperation.vala:873
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Telepítés"
 
-#: app/AssistantOperation.vala:926
+#: app/AssistantOperation.vala:878
 msgid "Backups needs to install packages to continue"
 msgstr ""
 "A Biztonsági mentéseknek csomagok telepítésére van szüksége a folytatáshoz"
 
-#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:53
+#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:51
 msgid "Restore"
 msgstr "Visszaállítás"
 
@@ -258,76 +250,76 @@ msgstr ""
 "A Biztonsági mentéseknek nincs engedélye a következő fájlok "
 "visszaállításához:"
 
-#: app/AssistantRestore.vala:251
+#: app/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Biztonsági mentés helye"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:266
+#: app/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Visszaállítási dátum"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:275
+#: app/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Visszaállítási mappa"
 
-#: app/AssistantRestore.vala:299
+#: app/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Biztonsági mentések ellenőrzése…"
 
-#: app/AssistantRestore.vala:307
+#: app/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Mikori mentést állítson vissza?"
 
-#: app/AssistantRestore.vala:318
+#: app/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Visszaállítás helye?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:351
+#: app/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Visszaállítás:"
 
-#: app/AssistantRestore.vala:363
+#: app/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Nincsenek visszaállítható biztonsági mentések"
 
-#: app/AssistantRestore.vala:446
+#: app/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Eredeti hely"
 
-#: app/AssistantRestore.vala:460
+#: app/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fájl visszaállítása"
 msgstr[1] "Fájlok visszaállítása"
 
-#: app/AssistantRestore.vala:485
+#: app/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Visszaállítás sikertelen"
 
-#: app/AssistantRestore.vala:487
+#: app/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Visszaállítás befejeződött"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:490
+#: app/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "A fájljai sikeresen visszaállításra kerültek."
 
-#: app/AssistantRestore.vala:493
+#: app/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "A fájlja sikeresen visszaállításra került."
 msgstr[1] "A fájljai sikeresen visszaállításra kerültek."
 
-#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Visszaállítás…"
 
-#: app/AssistantRestore.vala:570
+#: app/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Visszaállítás folyamatban"
 
@@ -335,38 +327,40 @@ msgstr "Visszaállítás folyamatban"
 msgid "Cannot back up automatically"
 msgstr "A biztonsági mentés nem készíthető el automatikusan"
 
-#: app/Browser.vala:252
+#: app/Browser.vala:251
 msgid "Authentication needed"
 msgstr "Hitelesítés szükséges"
 
-#: app/Browser.vala:373 libdeja/duplicity/DuplicityJob.vala:1074
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
 msgid "No backup files found"
 msgstr "Nem találhatóak biztonsági mentési fájlok"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "Biztonsági mentés _automatikusan"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "A következő mentés ma lesz."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
-#| msgid "Next backup is today."
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "A következő mentés ma lenne."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "A következő mentés holnap lesz."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
-#| msgid "Next backup is tomorrow."
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "A következő mentés holnap lenne."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -374,10 +368,8 @@ msgstr[0] "A következő mentés %d nap múlva lesz."
 msgstr[1] "A következő mentés %d nap múlva lesz."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
-#| msgid "Next backup is %d day from now."
-#| msgid_plural "Next backup is %d days from now."
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
 msgstr[0] "A következő mentés %d nap múlva lenne."
@@ -406,45 +398,45 @@ msgid_plural "At least %d days"
 msgstr[0] "Legalább %d napig"
 msgstr[1] "Legalább %d napig"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Mappák kiválasztása"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Hozzáadás"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Helyi mappa"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Hálózati kiszolgáló"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Google felhőtárhely"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace felhő fájlok"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -462,6 +454,10 @@ msgid "Every %d day"
 msgid_plural "Every %d days"
 msgstr[0] "Minden %d nap"
 msgstr[1] "Minden %d nap"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "A _Restic használata a Duplicity helyett"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -549,7 +545,7 @@ msgstr "Ne jelenjen meg újra"
 msgid "Open Backups"
 msgstr "Biztonsági mentések megnyitása"
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
@@ -557,23 +553,23 @@ msgstr ""
 "A Restic egy másik biztonsági mentési eszköz, amelyet a Duplicity helyett "
 "használhat a háttérben."
 
-#: app/PreferencesWindow.vala:37
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr ""
 "Azt reméljük, hogy a Restic egyszerűbben fog új funkciókat lehetővé tenni a "
 "jövőben."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "Ez egy kísérleti funkció, és bármikor eltávolításra kerülhet."
 
-#: app/PreferencesWindow.vala:40
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr "Használja óvatosan, de a tesztelést nagyra értékeljük."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:43
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "Ha engedélyezve van, akkor %sjelentse%s a sikereit vagy a hibákat."
@@ -610,6 +606,10 @@ msgstr "Nincs"
 msgid "%x %X"
 msgstr "%x %X"
 
+#: app/WidgetUtils.vala:15
+msgid "_OK"
+msgstr "_OK"
+
 #: app/main.vala:22 monitor/monitor.vala:19
 msgid "Show version"
 msgstr "Verziószám megjelenítése"
@@ -622,15 +622,15 @@ msgstr "Adott fájlok visszaállítása"
 msgid "Immediately start a backup"
 msgstr "Biztonsági mentés azonnali indítása"
 
-#: app/main.vala:85
+#: app/main.vala:90
 msgid "Please list files to restore"
 msgstr "Sorolja fel a visszaállítandó fájlokat"
 
-#: app/main.vala:91 app/main.vala:105
+#: app/main.vala:96 app/main.vala:109
 msgid "An operation is already in progress"
 msgstr "Már folyamatban van egy művelet"
 
-#: app/main.vala:307
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
@@ -659,11 +659,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:413 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Biztonsági mentések"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:20 data/ui/MainWindow.ui:11
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Biztonsági mentések"
 
@@ -671,25 +671,21 @@ msgstr "Biztonsági mentések"
 msgid "Protect yourself from data loss"
 msgstr "Védje meg magát az adatvesztés ellen"
 
-#: data/app.desktop.in:9 data/monitor.desktop.in:9
-msgid "@icon@"
-msgstr "@icon@"
-
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:21
+#: data/app.desktop.in:27
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:28
+#: data/app.desktop.in:35
 msgid "Back Up"
 msgstr "Biztonsági mentés"
 
-#: data/app.gschema.xml.in:13
+#: data/app.gschema.xml.in:25
 msgid "Folders to save"
 msgstr "Mentendő mappák"
 
-#: data/app.gschema.xml.in:14
+#: data/app.gschema.xml.in:26
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, "
 "$DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, "
@@ -707,11 +703,11 @@ msgstr ""
 "útvonalban bárhol szerepelhet. A relatív bejegyzések a felhasználó home "
 "könyvtárához képest relatívak."
 
-#: data/app.gschema.xml.in:18
+#: data/app.gschema.xml.in:30
 msgid "Folders to ignore"
 msgstr "Mellőzendő mappák"
 
-#: data/app.gschema.xml.in:19
+#: data/app.gschema.xml.in:31
 msgid ""
 "This list of directories will not be backed up. Reserved values $HOME, "
 "$DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, "
@@ -729,11 +725,11 @@ msgstr ""
 "útvonalban bárhol szerepelhet. A relatív bejegyzések a felhasználó home "
 "könyvtárához képest relatívak."
 
-#: data/app.gschema.xml.in:23
+#: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
 msgstr "A Déjà Dup futásának utolsó időpontja"
 
-#: data/app.gschema.xml.in:24
+#: data/app.gschema.xml.in:36
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
@@ -741,11 +737,11 @@ msgstr ""
 "A Déjà Dup utolsó sikeres futásának ideje. Ennek ISO 8601 formátumban kell "
 "lennie."
 
-#: data/app.gschema.xml.in:28
+#: data/app.gschema.xml.in:40
 msgid "The last time Déjà Dup backed up"
 msgstr "A Déjà Dup utolsó mentésének ideje"
 
-#: data/app.gschema.xml.in:29
+#: data/app.gschema.xml.in:41
 msgid ""
 "The last time Déjà Dup successfully completed a backup. This time should be "
 "in ISO 8601 format."
@@ -753,11 +749,11 @@ msgstr ""
 "Az utolsó alkalom amikor a Déjà Dup elmentett fájlokat. Ennek ISO 8601 "
 "formátumban kell lennie."
 
-#: data/app.gschema.xml.in:33
+#: data/app.gschema.xml.in:45
 msgid "The last time Déjà Dup restored"
 msgstr "A Déjà Dup utolsó visszaállításának ideje"
 
-#: data/app.gschema.xml.in:34
+#: data/app.gschema.xml.in:46
 msgid ""
 "The last time Déjà Dup successfully completed a restore. This time should be "
 "in ISO 8601 format."
@@ -765,30 +761,30 @@ msgstr ""
 "Az utolsó alkalom amikor a Déjà Dup visszaállított fájlokat. Ennek ISO 8601 "
 "formátumban kell lennie."
 
-#: data/app.gschema.xml.in:38
+#: data/app.gschema.xml.in:50
 msgid "Whether to periodically back up"
 msgstr "Végezzen-e időszakos biztonsági mentést"
 
-#: data/app.gschema.xml.in:39
+#: data/app.gschema.xml.in:51
 msgid "Whether to automatically back up on a regular schedule."
 msgstr "Automatikusan mentsen-e előzetes ütemezés szerint."
 
-#: data/app.gschema.xml.in:43
+#: data/app.gschema.xml.in:55
 msgid "How often to periodically back up"
 msgstr "Rendszeres mentések gyakorisága"
 
-#: data/app.gschema.xml.in:44
+#: data/app.gschema.xml.in:56
 msgid "The number of days between backups."
 msgstr "A biztonsági mentések közti napok."
 
-#: data/app.gschema.xml.in:48
+#: data/app.gschema.xml.in:60
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr ""
 "A legutóbbi időpont, amikor a Déjà Dup ellenőrizte, hogy ideje van-e "
 "felhívni a figyelmet a mentésre"
 
-#: data/app.gschema.xml.in:49
+#: data/app.gschema.xml.in:61
 msgid ""
 "When a user logs in, the Déjà Dup monitor checks whether it should prompt "
 "about backing up. This is used to increase discoverability for users that "
@@ -800,14 +796,14 @@ msgstr ""
 "ismerő felhasználók tájékoztatását szolgálja. Az ellenőrzést ez alkalommal "
 "letilthatja, vagy az ISO 8601-es formátummal kapcsolhatja ki."
 
-#: data/app.gschema.xml.in:53
+#: data/app.gschema.xml.in:65
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
 "A legutóbbi időpont, amikor a Déjà Dup ellenőrizte, hogy be kell-e kérnie az "
 "Ön jelszavát"
 
-#: data/app.gschema.xml.in:54
+#: data/app.gschema.xml.in:66
 msgid ""
 "In order to prevent you from forgetting your passwords, Déjà Dup will "
 "occasionally notify you to confirm the password. This time should be either "
@@ -817,11 +813,11 @@ msgstr ""
 "elfelejtse azt. Az itt megadott időnek ISO 8601 formátumúnak kell lennie, "
 "vagy letilthatja az ellenőrzést a „disabled” érték megadásával."
 
-#: data/app.gschema.xml.in:58
+#: data/app.gschema.xml.in:70
 msgid "How long to keep backup files"
 msgstr "Milyen hosszú ideig őrizze meg a biztonsági mentés fájljait"
 
-#: data/app.gschema.xml.in:59
+#: data/app.gschema.xml.in:71
 msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
@@ -831,11 +827,11 @@ msgstr ""
 "biztonsági mentés helyén. 0 érték megadása esetén örökké. Ez a minimális "
 "napok száma, ameddig a fájlok tárolódnak."
 
-#: data/app.gschema.xml.in:63
+#: data/app.gschema.xml.in:75
 msgid "How long to wait between full backups"
 msgstr "Teljes mentések közti idő"
 
-#: data/app.gschema.xml.in:64
+#: data/app.gschema.xml.in:76
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
@@ -843,11 +839,11 @@ msgstr ""
 "A Déjà Dup időnként teljes mentést készít. Itt adható meg a teljes mentések "
 "közti idő napokban."
 
-#: data/app.gschema.xml.in:68
+#: data/app.gschema.xml.in:80
 msgid "Whether to use metered networks"
 msgstr "Fizetős hálózatok használata"
 
-#: data/app.gschema.xml.in:69
+#: data/app.gschema.xml.in:81
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
@@ -855,11 +851,11 @@ msgstr ""
 "Ha nem, akkor a Déjà Dup nem fog biztonsági mentést ütemezni fizetős "
 "hálózati kapcsolatokon (pl. 4G)."
 
-#: data/app.gschema.xml.in:73
+#: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
 msgstr "A biztonsági mentési eszköz előtt futtatandó parancs"
 
-#: data/app.gschema.xml.in:74
+#: data/app.gschema.xml.in:86
 msgid ""
 "Useful if you need to manually mount a folder, for example. If this command "
 "fails, the backup won't start."
@@ -867,11 +863,11 @@ msgstr ""
 "Hasznos, ha például kézzel kell csatolnia egy mappát. Ha ez a parancs "
 "sikertelen, akkor a biztonsági mentés nem fog elindulni."
 
-#: data/app.gschema.xml.in:78
+#: data/app.gschema.xml.in:90
 msgid "Command to run after the backup tool"
 msgstr "A biztonsági mentési eszköz után futtatandó parancs"
 
-#: data/app.gschema.xml.in:79
+#: data/app.gschema.xml.in:91
 msgid ""
 "Useful if you need to clean up after your setup command. Failures are "
 "ignored."
@@ -879,26 +875,26 @@ msgstr ""
 "Hasznos, ha takarítani kell a beállítási parancs után. A hibák figyelmen "
 "kívül lesznek hagyva."
 
-#: data/app.gschema.xml.in:83
+#: data/app.gschema.xml.in:95
 msgid "Command to run around the backup tool"
 msgstr "A biztonsági mentési eszköz körül futtatandó parancs"
 
-#: data/app.gschema.xml.in:84
+#: data/app.gschema.xml.in:96
 msgid ""
 "Useful if you need to limit resources or otherwise wrap the execution of the "
 "tool command. An example value might be 'trickle -u 500' which would result "
 "in deja-dup running 'trickle -u 500 duplicity …'."
 msgstr ""
-"Hasznos, ha korlátoznia kell az erőforrásokat, vagy más módon kell körülzárni"
-" az eszköz parancsának végrehajtását. Egy példa lehet a „trickle -u 500”,"
-" amely azt eredményezné, hogy így futna a deja-dup: „trickle -u 500 duplicity"
-" …”."
+"Hasznos, ha korlátoznia kell az erőforrásokat, vagy más módon kell "
+"körülzárni az eszköz parancsának végrehajtását. Egy példa lehet a „trickle -"
+"u 500”, amely azt eredményezné, hogy így futna a deja-dup: „trickle -u 500 "
+"duplicity …”."
 
-#: data/app.gschema.xml.in:112
+#: data/app.gschema.xml.in:124
 msgid "Type of location to store backup"
 msgstr "A hely típusa, a biztonsági mentések tárolásához"
 
-#: data/app.gschema.xml.in:113
+#: data/app.gschema.xml.in:125
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -906,13 +902,13 @@ msgstr ""
 "A mentés helyének típusa. Automatikus választás esetén az elérhetőkből "
 "kiválasztja az alapértelmezettet."
 
-#: data/app.gschema.xml.in:125 data/app.gschema.xml.in:148
-#: data/app.gschema.xml.in:161 data/app.gschema.xml.in:169
-#: data/app.gschema.xml.in:176
+#: data/app.gschema.xml.in:137 data/app.gschema.xml.in:160
+#: data/app.gschema.xml.in:173 data/app.gschema.xml.in:181
+#: data/app.gschema.xml.in:188
 msgid "The folder where backups are stored"
 msgstr "A mappa, ahol a biztonsági mentések tárolódnak"
 
-#: data/app.gschema.xml.in:126
+#: data/app.gschema.xml.in:138
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -920,11 +916,11 @@ msgstr ""
 "A biztonsági mentéseket tároló könyvtárstruktúra. Az útvonalak lehetnek "
 "abszolút elérési utak, vagy relatívak a home könyvtárhoz képest."
 
-#: data/app.gschema.xml.in:133
+#: data/app.gschema.xml.in:145
 msgid "UUID"
 msgstr "UUID"
 
-#: data/app.gschema.xml.in:134
+#: data/app.gschema.xml.in:146
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -932,23 +928,23 @@ msgstr ""
 "A meghajtó egyedi fájlrendszer azonosítója. A meghajtó csatlakoztatásakor ez "
 "alapján lehet beazonosítani."
 
-#: data/app.gschema.xml.in:138 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
 msgid "Name"
 msgstr "Név"
 
-#: data/app.gschema.xml.in:139
+#: data/app.gschema.xml.in:151
 msgid "The name of the external drive."
 msgstr "Külső meghajtó neve."
 
-#: data/app.gschema.xml.in:143
+#: data/app.gschema.xml.in:155
 msgid "Icon"
 msgstr "Ikon"
 
-#: data/app.gschema.xml.in:144
+#: data/app.gschema.xml.in:156
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "A külső meghajtó ikonja, mint szerializált GIcon."
 
-#: data/app.gschema.xml.in:149
+#: data/app.gschema.xml.in:161
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -956,15 +952,15 @@ msgstr ""
 "A biztonsági mentéseket tároló könyvtárstruktúra. Az útvonalak a meghajtón "
 "belül relatívak."
 
-#: data/app.gschema.xml.in:156
+#: data/app.gschema.xml.in:168
 msgid "The server address"
 msgstr "A szerver címe"
 
-#: data/app.gschema.xml.in:157
+#: data/app.gschema.xml.in:169
 msgid "The URI of the remote server location."
 msgstr "A távoli szerver URI címe."
 
-#: data/app.gschema.xml.in:162
+#: data/app.gschema.xml.in:174
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -1051,17 +1047,17 @@ msgstr "Biztonságimentés-figyelő"
 msgid "Schedules backups at regular intervals"
 msgstr "Ütemezett biztonsági mentés rendszeres időközönként"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
-#: data/ui/MainHeaderBar.ui:52
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
+#: data/ui/MainHeaderBar.ui:51
 msgid "Search"
 msgstr "Keresés"
 
+#. Translators: this means scanning the storage location data files, not the source folders
 #: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
 msgstr "Biztonsági mentés fájljainak keresése…"
 
 #: data/ui/Browser.ui:99
-#| msgid "Folders"
 msgid "Folder is Empty"
 msgstr "A mappa üres"
 
@@ -1093,10 +1089,6 @@ msgstr "Jelszó _megadása"
 msgid "Location"
 msgstr "Hely"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "Biztonsági mentés _automatikusan"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Mappák"
@@ -1105,7 +1097,12 @@ msgstr "Mappák"
 msgid "Folders to Back Up"
 msgstr "Mentendő mappák"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+#| msgid "The folder where backups are stored"
+msgid "These folders are always ignored:"
+msgstr "Ezek a mappák mindig mellőzve lesznek:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Mellőzendő mappák"
 
@@ -1119,55 +1116,58 @@ msgstr ""
 msgid "Remove"
 msgstr "Eltávolítás"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "_Tárolás helye"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Tároló"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Mappa"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "Fiókhozzáférés _visszaállítása"
 
-#: data/ui/ConfigLocationGrid.ui:141
-msgid "_Network Location"
-msgstr "_Hálózati hely"
+#: data/ui/ConfigLocationGroup.ui:66
+#| msgid "The server address"
+msgid "Ser_ver Address"
+msgstr "Kiszolgáló _címe"
 
-#: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_Hely"
+
+#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
 msgid "Back"
 msgstr "Vissza"
 
-#: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
-#| msgid "Menu"
+#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
 msgid "Main Menu"
 msgstr "Főmenü"
 
-#: data/ui/MainHeaderBar.ui:69
+#: data/ui/MainHeaderBar.ui:68
 msgid "_Select All"
 msgstr "Ö_sszes kijelölése"
 
-#: data/ui/MainHeaderBar.ui:76
+#: data/ui/MainHeaderBar.ui:75
 msgid "_Preferences"
 msgstr "_Beállítások"
 
-#: data/ui/MainHeaderBar.ui:80
+#: data/ui/MainHeaderBar.ui:79
 msgid "_Keyboard Shortcuts"
 msgstr "_Gyorsbillentyűk"
 
-#: data/ui/MainHeaderBar.ui:84
+#: data/ui/MainHeaderBar.ui:83
 msgid "_Help"
 msgstr "_Súgó"
 
-#: data/ui/MainHeaderBar.ui:88
+#: data/ui/MainHeaderBar.ui:87
 msgid "_About Backups"
 msgstr "A Biztonsági mentések _névjegye"
 
-#: data/ui/MainWindow.ui:26
+#: data/ui/MainWindow.ui:24
 msgid "Overview"
 msgstr "Áttekintés"
 
@@ -1175,27 +1175,27 @@ msgstr "Áttekintés"
 msgid "_Back Up Now"
 msgstr "_Biztonsági mentés most"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "_Folytatás"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Általános"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Tároló"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Ütemező"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Hely"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "Automatikus biztonsági mentés _gyakorisága"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "Biztonsági mentések meg_tartása"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1204,93 +1204,83 @@ msgstr ""
 "helyen kevés a tárhely, vagy három hónappal tovább lesznek megtartva, hogy "
 "elkerülje a kapcsolódó biztonsági mentések törlését."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Ütemező"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "Automatikus biztonsági mentés _gyakorisága"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Labor"
 
-#: data/ui/PreferencesWindow.ui:83
-#| msgid "Restoring:"
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
 
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "A _Restic használata a Duplicity helyett"
-
 #: data/ui/RecentBackupRow.ui:9
-#| msgid "No recent backups."
 msgid "Most Recent Backup"
 msgstr "Legfrissebb biztonsági mentés"
 
-#: data/ui/ServerHintPopover.ui:17
-msgid "Network Locations"
-msgstr "Hálózati helyek"
+#: data/ui/ServerAddressHelp.ui:15
+#| msgid "The server address"
+msgid "Server Addresses"
+msgstr "Kiszolgálócímek"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:29
+#: data/ui/ServerAddressHelp.ui:27
+#| msgid ""
+#| "Network locations are made up of a protocol prefix, an address, and "
+#| "sometimes a path depending on the protocol. Examples:"
 msgid ""
-"Network locations are made up of a protocol prefix, an address, and "
-"sometimes a path depending on the protocol. Examples:"
+"Server addresses are made up of a protocol prefix, an address, and sometimes "
+"a path depending on the protocol. Examples:"
 msgstr ""
-"A hálózati helyek protokoll előtagból, címből, valamint eseteként útvonalból "
-"állnak – a protokolltól függően. Példák:"
+"A kiszolgálócímek protokoll előtagból, címből, valamint esetenként útvonalból"
+" állnak – a protokolltól függően. Példák:"
 
-#: data/ui/ServerHintPopover.ui:55
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Elérhető protokollok"
 
-#: data/ui/ServerHintPopover.ui:68
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:78
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "Fájlátviteli protokoll (FTP)"
 
-#: data/ui/ServerHintPopover.ui:88
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Hálózati fájlrendszer (NFS)"
 
-#: data/ui/ServerHintPopover.ui:98
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:108
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "SSH fájlátviteli protokoll"
 
-#: data/ui/ServerHintPopover.ui:118
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:128
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Előtag"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:151
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// vagy ftps://"
 
-#: data/ui/ServerHintPopover.ui:171
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:181
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// vagy ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:191
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// vagy davs://"
 
@@ -1299,16 +1289,14 @@ msgid "_Date"
 msgstr "Dát_um"
 
 #: data/ui/WelcomePage.ui:12
-#| msgid "_Keep Backups"
 msgid "Welcome to Backups"
 msgstr "Üdvözli a Biztonsági mentések"
 
-#: data/ui/WelcomePage.ui:25
-#| msgid "Create My First _Backup"
+#: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
 msgstr "Első _biztonsági mentés létrehozása"
 
-#: data/ui/WelcomePage.ui:37
+#: data/ui/WelcomePage.ui:57
 msgid "_Restore From a Previous Backup"
 msgstr "_Visszaállítás egy előző biztonsági mentésből"
 
@@ -1354,7 +1342,7 @@ msgstr "Ugrás vissza"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:500
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s ezen: %2$s"
@@ -1373,38 +1361,38 @@ msgstr "A tárolási hely elérhetetlen"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Várakozás %s kapcsolódására…"
 
-#: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
-#: monitor/ReadyWatcher.vala:148
+#: libdeja/BackendGoogle.vala:62 libdeja/BackendMicrosoft.vala:58
+#: monitor/ReadyWatcher.vala:160
 msgid "Backup will begin when a network connection becomes available."
 msgstr ""
 "A biztonsági mentés megkezdődik, amikor a hálózati kapcsolat elérhetővé "
 "válok."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:65
+#: libdeja/BackendGoogle.vala:77
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s a Google Drive-on"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendMicrosoft.vala:67
+#: libdeja/BackendMicrosoft.vala:73
 #, c-format
 msgid "%s on Microsoft OneDrive"
 msgstr "%s a Microsoft OneDrive-on"
 
 #. Duplicity requires a folder, and this is a reasonable restriction.
-#: libdeja/BackendMicrosoft.vala:105
+#: libdeja/BackendMicrosoft.vala:111
 msgid "You must provide a Microsoft OneDrive folder."
 msgstr "Meg kell adnia egy Microsoft OneDrive mappát."
 
 #. Translators: %s is a brand name like Microsoft or Google
-#: libdeja/BackendOAuth.vala:69
+#: libdeja/BackendOAuth.vala:93
 #, c-format
 msgid "Could not log into %s servers."
 msgstr "Nem sikerült bejelentkezni a(z) %s kiszolgálókra."
 
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:145
+#: libdeja/BackendOAuth.vala:169
 #, c-format
 msgid "%s credentials for Déjà Dup"
 msgstr "%s hitelesítési adatok a Déjà Dup számára"
@@ -1413,7 +1401,7 @@ msgstr "%s hitelesítési adatok a Déjà Dup számára"
 #. to get random strings, but they are only 37 chars long. So just add two.
 #. And show the oauth consent page finally
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:248
+#: libdeja/BackendOAuth.vala:228
 #, c-format
 msgid "You first need to allow Backups to access your %s account."
 msgstr ""
@@ -1453,31 +1441,23 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "A Samba hálózati helyeknek gépnevet és megosztásnevet is tartalmaznia kell."
 
-#: libdeja/CommonUtils.vala:470
-msgid "Access Granted"
-msgstr "Hozzáférés biztosítva"
-
-#: libdeja/CommonUtils.vala:471
-msgid "Backups will now continue. You can close this page."
-msgstr "Folytatódik a biztonsági mentés. Bezárhatja ezt az oldalt."
-
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:553
+#: libdeja/CommonUtils.vala:540
 #, c-format
 msgid "Home (%s)"
 msgstr "Saját mappa (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:558
+#: libdeja/CommonUtils.vala:545
 msgid "Home"
 msgstr "Saját mappa"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:563
+#: libdeja/CommonUtils.vala:550
 msgid "Trash"
 msgstr "Kuka"
 
-#: libdeja/CommonUtils.vala:625
+#: libdeja/CommonUtils.vala:612
 msgid "Backup encryption password"
 msgstr "Biztonsági mentést titkosító jelszó"
 
@@ -1503,9 +1483,9 @@ msgid "Listing files…"
 msgstr "Fájlok listázása…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:372
-#: libdeja/duplicity/DuplicityJob.vala:383
-#: libdeja/duplicity/DuplicityJob.vala:419
+#: libdeja/duplicity/DuplicityJob.vala:368
+#: libdeja/duplicity/DuplicityJob.vala:379
+#: libdeja/duplicity/DuplicityJob.vala:415
 msgid "Preparing…"
 msgstr "Előkészítés…"
 
@@ -1513,13 +1493,29 @@ msgstr "Előkészítés…"
 msgid "Custom tool setup failed."
 msgstr "Az egyéni eszköz beállítása sikertelen."
 
-#: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
+#: libdeja/OperationBackup.vala:29
+msgid ""
+"Could not back up the following files.  Please make sure you are able to "
+"open them."
+msgstr ""
+"Néhány fájlról nem lehetett mentést készíteni. Győződjön meg róla, hogy meg "
+"tudja ezeket nyitni."
+
+#: libdeja/OperationBackup.vala:55 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "A biztonsági mentés ellenőrzése…"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
 msgstr "Fájlok visszaállítása…"
+
+#: libdeja/OperationRestore.vala:54
+msgid ""
+"Could not restore the following files.  Please make sure you are able to "
+"write to them."
+msgstr ""
+"Nem állíthatók vissza a következő fájlok. Győződjön meg róla, hogy van írási "
+"joga rájuk."
 
 #: libdeja/OperationVerify.vala:81
 msgid ""
@@ -1529,20 +1525,20 @@ msgstr ""
 "A biztonsági mentés sérültnek tűnik. Törölnie kell a biztonsági mentést, és "
 "próbálja meg újra."
 
-#: libdeja/duplicity/DuplicityJob.vala:70
-#: libdeja/duplicity/DuplicityJob.vala:140
+#: libdeja/duplicity/DuplicityJob.vala:68
+#: libdeja/duplicity/DuplicityJob.vala:138
 msgid "Paused (no network)"
 msgstr "Szüneteltetve (nincs hálózat)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:529 libdeja/restic/ResticJob.vala:287
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:317
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "A biztonsági mentésre kiválasztott hely túl kicsi. Legalább %s méretűre "
 "lenne szükség."
 
-#: libdeja/duplicity/DuplicityJob.vala:554
+#: libdeja/duplicity/DuplicityJob.vala:550
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1551,32 +1547,10 @@ msgstr ""
 "A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás. "
 "Legalább %s méretűre lenne szükség."
 
-#: libdeja/duplicity/DuplicityJob.vala:575
-#: libdeja/duplicity/DuplicityJob.vala:589
+#: libdeja/duplicity/DuplicityJob.vala:571
+#: libdeja/duplicity/DuplicityJob.vala:585
 msgid "Cleaning up…"
 msgstr "Tisztítás…"
-
-#. OK, we succeeded yay!  But some files didn't make it into the backup
-#. because we couldn't read them.  So tell the user so they don't think
-#. everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:669
-msgid ""
-"Could not back up the following files.  Please make sure you are able to "
-"open them."
-msgstr ""
-"Néhány fájlról nem lehetett mentést készíteni. Győződjön meg róla, hogy meg "
-"tudja ezeket nyitni."
-
-#. OK, we succeeded yay!  But some files didn't actually restore
-#. because we couldn't write to them.  So tell the user so they
-#. don't think everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:685
-msgid ""
-"Could not restore the following files.  Please make sure you are able to "
-"write to them."
-msgstr ""
-"Nem állíthatók vissza a következő fájlok. Győződjön meg róla, hogy van írási "
-"joga rájuk."
 
 #. For most, don't do anything special.  Show generic 'unknown error'
 #. message, but provide the exception text for better bug reports.
@@ -1585,26 +1559,26 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:705
-#: libdeja/duplicity/DuplicityJob.vala:1093 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:669
+#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Ismeretlen hiba lépett fel."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:908
+#: libdeja/duplicity/DuplicityJob.vala:872
 msgid "Bad encryption password."
 msgstr "Rossz titkosítási jelszó."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:957
+#: libdeja/duplicity/DuplicityJob.vala:921
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "Nem állítható vissza: „%s”. A fájl nem található meg a biztonsági mentésben"
 
-#: libdeja/duplicity/DuplicityJob.vala:968
+#: libdeja/duplicity/DuplicityJob.vala:932
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1614,53 +1588,53 @@ msgstr ""
 "A meglévő biztonsági mentés neve %s, de a jelenlegi gépnév %s. Ha ez nem "
 "várt fejlemény, inkább készítsen biztonsági mentést egy másik helyre."
 
-#: libdeja/duplicity/DuplicityJob.vala:971
+#: libdeja/duplicity/DuplicityJob.vala:935
 msgid "Computer name changed"
 msgstr "A számítógép neve megváltozott"
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:970
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Hozzáférés megtagadva a következő készítése közben: „%s”."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:1010
-#: libdeja/duplicity/DuplicityJob.vala:1014
+#: libdeja/duplicity/DuplicityJob.vala:974
+#: libdeja/duplicity/DuplicityJob.vala:978
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Hozzáférés megtagadva a következő olvasása közben: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1018
+#: libdeja/duplicity/DuplicityJob.vala:982
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Hozzáférés megtagadva a következő törlése közben: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1025
+#: libdeja/duplicity/DuplicityJob.vala:989
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "A biztonsági mentés helye nem létezik: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1031
-#: libdeja/duplicity/DuplicityJob.vala:1064
+#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1028
 msgid "No space left."
 msgstr "Nincs több hely."
 
-#: libdeja/duplicity/DuplicityJob.vala:1053
+#: libdeja/duplicity/DuplicityJob.vala:1017
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Hiba a(z) „%s” fájl olvasásakor."
 
-#: libdeja/duplicity/DuplicityJob.vala:1055
+#: libdeja/duplicity/DuplicityJob.vala:1019
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Hiba a(z) „%s” fájl írásakor."
 
-#: libdeja/duplicity/DuplicityJob.vala:1066
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Nem maradt több hely itt: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1124
+#: libdeja/duplicity/DuplicityJob.vala:1088
 msgid "Uploading…"
 msgstr "Feltöltés…"
 
@@ -1696,21 +1670,16 @@ msgstr ""
 "a duplicityt, hogy mentse és helyreállítsa a fájljait."
 
 #: libdeja/restic/ResticPlugin.vala:42
-#| msgid "Could not understand duplicity version."
 msgid "Could not understand restic version."
 msgstr "Ismeretlen restic verzió."
 
 #: libdeja/restic/ResticPlugin.vala:49
 #, c-format
-#| msgid "Could not understand duplicity version ‘%s’."
 msgid "Could not understand restic version ‘%s’."
 msgstr "Ismeretlen restic verzió: „%s”."
 
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
-#| msgid ""
-#| "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
-#| "version %d.%d.%.2d"
 msgid ""
 "Backups requires at least version %d.%d.%.2d of restic, but only found "
 "version %d.%d.%.2d"
@@ -1718,7 +1687,12 @@ msgstr ""
 "A biztonsági mentéshez legalább %d.%d.%.2d verziójú resticre van szükség, de "
 "csak %d.%d.%.2d található."
 
-#: monitor/ReadyWatcher.vala:153
+#: monitor/ReadyWatcher.vala:151
+#| msgid "Backup will begin when %s is connected."
+msgid "Backup will begin when power saver mode is no longer active."
+msgstr "A biztonsági mentés elindul, ha az energiatakarékos mód már nem aktív."
+
+#: monitor/ReadyWatcher.vala:165
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
