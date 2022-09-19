@@ -3,13 +3,14 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 # Matej Urbančič <mateju@src.gnome.org>, LaunchPad, 2020–2021.
+# Martin Srebotnjak <miles@filmsi.net>, 2022-.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-03-14 21:47+0000\n"
-"PO-Revision-Date: 2022-03-18 17:19+0100\n"
+"POT-Creation-Date: 2022-09-03 14:23+0000\n"
+"PO-Revision-Date: 2022-09-19 09:47+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "Language: sl\n"
@@ -19,34 +20,34 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
-#: app/Assistant.vala:293
+#: app/Assistant.vala:285
 msgid "Co_ntinue"
 msgstr "Na_daljuj"
 
-#: app/Assistant.vala:299
+#: app/Assistant.vala:291
 msgctxt "verb"
 msgid "_Test"
 msgstr "_Preizkusi"
 
-#: app/Assistant.vala:334
+#: app/Assistant.vala:326
 msgid "_Resume Later"
 msgstr "_Nadaljuj pozneje"
 
-#: app/Assistant.vala:340
+#: app/Assistant.vala:332
 msgid "_Back"
 msgstr "_Nazaj"
 
-#: app/Assistant.vala:342
+#: app/Assistant.vala:334
 msgid "_Close"
 msgstr "_Zapri"
 
-#: app/Assistant.vala:348 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "_Prekliči"
 
-#: app/Assistant.vala:359
+#: app/Assistant.vala:350
 msgid "_Forward"
 msgstr "_Naprej"
 
@@ -60,7 +61,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Ustvari _varnostno kopijo"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -68,11 +69,11 @@ msgstr ""
 "Navedenih map ni mogoče varnostno kopirati, ker ni urejenih dovoljenj za "
 "dostop:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Prvo ustvarjanje varnostne kopije je lahko dolgotrajno."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -82,36 +83,36 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Ustvarjanje varnostne kopije:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Ustvarjanje varnostne kopije je spodletelo."
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Varnostno kopiranje je končano."
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr ""
 "Varnostna kopija vaših datotek je bila uspešno ustvarjena in preizkušena."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Ustvarjanje varnostne kopije …"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:879
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:831
 msgid "Backups needs your input to continue"
 msgstr "Program zahteva odziv pred nadaljevanjem"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Trenutno poteka ustvarjanje varnostne kopije"
 
@@ -119,11 +120,7 @@ msgstr "Trenutno poteka ustvarjanje varnostne kopije"
 msgid "Restore From Where?"
 msgstr "Od kod želite obnoviti varnostno kopijo?"
 
-#: app/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "_Mesto varnostne kopije"
-
-#: app/AssistantLocation.vala:22
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "_Poišči"
 
@@ -143,36 +140,33 @@ msgstr "_Podrobnosti"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Za nadaljevanje je treba namestiti navedene pakete:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Dovoli obnavljanje datotek brez uporabe gesla"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "Zaščita varnostne kopije z _geslom"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr ""
 "Za obnovitev datotek je zahtevano geslo. Geslo si zapišite na varno mesto."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:441
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "Zaščita varnostne kopije z _geslom"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "_Šifrirno geslo"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "Potrdi _geslo"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "_Zapomni si geslo"
 
-#: app/AssistantOperation.vala:427
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -182,56 +176,56 @@ msgstr ""
 "v nujnih primerih tudi pridobili, ponovno vnesite geslo za šifriranje ter "
 "opravite kratek preizkus obnavljanja."
 
-#: app/AssistantOperation.vala:449
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Preizkusi vsake dva _meseca"
 
-#: app/AssistantOperation.vala:480
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "_Dovoli dostop"
 
-#: app/AssistantOperation.vala:542
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Namesti pakete"
 
-#: app/AssistantOperation.vala:557
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Povzetek"
 
-#: app/AssistantOperation.vala:579
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Preizkus obnavljanja"
 
-#: app/AssistantOperation.vala:587
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "Dovoli dostop"
 
-#: app/AssistantOperation.vala:796
+#: app/AssistantOperation.vala:748
 msgid "Set Encryption Password"
 msgstr "Nastavi šifrirno geslo"
 
-#: app/AssistantOperation.vala:798
+#: app/AssistantOperation.vala:750
 msgid "Require Password?"
 msgstr "Ali naj bo geslo zahtevano?"
 
-#: app/AssistantOperation.vala:800
+#: app/AssistantOperation.vala:752
 msgid "Encryption Password Needed"
 msgstr "Zahtevano je šifrirno geslo"
 
-#: app/AssistantOperation.vala:847
+#: app/AssistantOperation.vala:799
 msgid "Backups needs your encryption password to continue"
 msgstr "Varnostna kopija zahteva šifrirno geslo pred nadaljevanjem"
 
-#: app/AssistantOperation.vala:921
+#: app/AssistantOperation.vala:873
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Namesti"
 
-#: app/AssistantOperation.vala:926
+#: app/AssistantOperation.vala:878
 msgid "Backups needs to install packages to continue"
 msgstr "Pred nadaljevanjem je treba namestiti dodatne pakete"
 
-#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:53
+#: app/AssistantRestore.vala:61 data/ui/MainWindow.ui:51
 msgid "Restore"
 msgstr "Obnovi"
 
@@ -255,47 +249,47 @@ msgstr "Obnovi v _določeno mapo:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Ni dovoljenj za obnovitev navedenih datotek:"
 
-#: app/AssistantRestore.vala:251
+#: app/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Mesto varnostnih kopij"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:266
+#: app/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Datum obnovitve"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:275
+#: app/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Mapa za obnovljene datoteke"
 
-#: app/AssistantRestore.vala:299
+#: app/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Poteka preverjanje za varnostne kopije …"
 
-#: app/AssistantRestore.vala:307
+#: app/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Katero varnostno kopijo želite obnoviti?"
 
-#: app/AssistantRestore.vala:318
+#: app/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Kam želite shraniti obnovljene datoteke?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:351
+#: app/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Obnavljanje:"
 
-#: app/AssistantRestore.vala:363
+#: app/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Ni varnostnih kopij za obnovitev"
 
-#: app/AssistantRestore.vala:446
+#: app/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Izvirno mesto"
 
-#: app/AssistantRestore.vala:460
+#: app/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datoteke za obnovitev"
@@ -303,20 +297,20 @@ msgstr[1] "Datoteka za obnovitev"
 msgstr[2] "Datoteki za obnovitev"
 msgstr[3] "Datoteke za obnovitev"
 
-#: app/AssistantRestore.vala:485
+#: app/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Obnovitev je spodletela"
 
-#: app/AssistantRestore.vala:487
+#: app/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Obnovitev je končana"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:490
+#: app/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Datoteke so bile uspešno obnovljene."
 
-#: app/AssistantRestore.vala:493
+#: app/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Datoteke so bile uspešno obnovljene."
@@ -324,11 +318,11 @@ msgstr[1] "Datoteka je bila uspešno obnovljena."
 msgstr[2] "Datoteki sta bili uspešno obnovljeni."
 msgstr[3] "Datoteke so bile uspešno obnovljene."
 
-#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Poteka obnavljanje …"
 
-#: app/AssistantRestore.vala:570
+#: app/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Trenutno poteka obnavljanje varnostne kopije"
 
@@ -336,36 +330,40 @@ msgstr "Trenutno poteka obnavljanje varnostne kopije"
 msgid "Cannot back up automatically"
 msgstr "Samodejno ustvarjanje varnostne kopije ni mogoče"
 
-#: app/Browser.vala:252
+#: app/Browser.vala:251
 msgid "Authentication needed"
 msgstr "Zahtevana je overitev"
 
-#: app/Browser.vala:373 libdeja/duplicity/DuplicityJob.vala:1074
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
 msgid "No backup files found"
 msgstr "Datotek varnostnih kopij ni mogoče najti"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "Varnostne kopije ustvarjaj s_amodejno"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "Naslednja varnostna kopija bo pripravljena danes."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "Naslednja varnostna kopija bo pripravljena danes."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "Naslednja varnostna kopija bo pripravljena jutri."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "Naslednja varnostna kopija bo pripravljena jutri."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -375,7 +373,7 @@ msgstr[2] "Naslednja varnostna kopija bo pripravljena čez %d dneva."
 msgstr[3] "Naslednja varnostna kopija bo pripravljena čez %d dni."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -409,45 +407,45 @@ msgstr[1] "Vsaj %d dan"
 msgstr[2] "Vsaj %d dneva"
 msgstr[3] "Vsaj %d dni"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Izbor mape"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Dodaj"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:62
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:64
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Krajevna mapa"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Omrežni strežnik"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Datoteke v oblaku Rackspace"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -467,6 +465,10 @@ msgstr[0] "Vsakih %d dni"
 msgstr[1] "Vsak %d dan"
 msgstr[2] "Vsaka %d dneva"
 msgstr[3] "Vsake %d dni"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "Uporabi _Restic namesto Duplicity"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -555,7 +557,7 @@ msgstr "Ne prikaži več"
 msgid "Open Backups"
 msgstr "Odpri varnostne kopije"
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
@@ -563,23 +565,23 @@ msgstr ""
 "Program Restic je prav tako orodje za varnostno kopiranje, ki ga je mogoče "
 "uporabiti namesto Duplicity."
 
-#: app/PreferencesWindow.vala:37
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr ""
 "Upamo, da bo program Restic v prihodnosti lažje omogočal nove funkcije."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "To je eksperimentalna zmožnost, ki je lahko kadarkoli odstranjena."
 
-#: app/PreferencesWindow.vala:40
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr ""
 "Priporočena je previdnost, sicer pa je vsako preizkušanje zelo dobrodošlo."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:43
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "%sPošljite poročilo%s o uspešnih in neuspešni rabi."
@@ -613,10 +615,14 @@ msgstr "Ni podatka"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: app/TimeCombo.vala:80
+#: app/TimeCombo.vala:82
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
+
+#: app/WidgetUtils.vala:15
+msgid "_OK"
+msgstr "V _redu"
 
 #: app/main.vala:22 monitor/monitor.vala:19
 msgid "Show version"
@@ -630,18 +636,19 @@ msgstr "Obnovi podane datoteke"
 msgid "Immediately start a backup"
 msgstr "Takoj začni z ustvarjanjem varnostne kopije"
 
-#: app/main.vala:85
+#: app/main.vala:90
 msgid "Please list files to restore"
 msgstr "Navesti je treba datoteke za obnovitev"
 
-#: app/main.vala:91 app/main.vala:105
+#: app/main.vala:96 app/main.vala:109
 msgid "An operation is already in progress"
 msgstr "Opravilo je že v teku."
 
-#: app/main.vala:307
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
+"Martin Srebotnjak <miles@filmsi.net>\n"
 "\n"
 "Predhodno prevajanje v okolju Launchpad:\n"
 "  Andrej Žnidaršič https://launchpad.net/~andrej.znidarsic\n"
@@ -662,11 +669,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:413 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Varnostne kopije Déjà Dup"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:20 data/ui/MainWindow.ui:11
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Varnostne kopije"
 
@@ -674,25 +681,21 @@ msgstr "Varnostne kopije"
 msgid "Protect yourself from data loss"
 msgstr "Zaščitite se pred izgubo podatkov"
 
-#: data/app.desktop.in:9 data/monitor.desktop.in:9
-msgid "@icon@"
-msgstr "@icon@"
-
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:21
+#: data/app.desktop.in:27
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;varnostna;kopija;arhiv;backup;pika;"
 
-#: data/app.desktop.in:28
+#: data/app.desktop.in:35
 msgid "Back Up"
 msgstr "Ustvari varnostno kopijo"
 
-#: data/app.gschema.xml.in:13
+#: data/app.gschema.xml.in:25
 msgid "Folders to save"
 msgstr "Mape za shranjevanje"
 
-#: data/app.gschema.xml.in:14
+#: data/app.gschema.xml.in:26
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, "
 "$DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, "
@@ -709,11 +712,11 @@ msgstr ""
 "kjerkoli v navedbi poti. Relativni vpisi so relativni na uporabnikovo osebno "
 "mapo."
 
-#: data/app.gschema.xml.in:18
+#: data/app.gschema.xml.in:30
 msgid "Folders to ignore"
 msgstr "Prezrte mape"
 
-#: data/app.gschema.xml.in:19
+#: data/app.gschema.xml.in:31
 msgid ""
 "This list of directories will not be backed up. Reserved values $HOME, "
 "$DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, "
@@ -730,22 +733,22 @@ msgstr ""
 "kjerkoli v navedbi poti. Relativni vpisi so relativni na uporabnikovo osebno "
 "mapo."
 
-#: data/app.gschema.xml.in:23
+#: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
 msgstr "Čas zadnjega zagona programa"
 
-#: data/app.gschema.xml.in:24
+#: data/app.gschema.xml.in:36
 msgid ""
 "The last time Déjà Dup was successfully run. This time should be in ISO 8601 "
 "format."
 msgstr ""
 "Čas zadnjega uspešnega zagona programa. Čas mora biti zapisan v ISO 8601."
 
-#: data/app.gschema.xml.in:28
+#: data/app.gschema.xml.in:40
 msgid "The last time Déjà Dup backed up"
 msgstr "Čas zadnjega ustvarjanja varnostne datoteke"
 
-#: data/app.gschema.xml.in:29
+#: data/app.gschema.xml.in:41
 msgid ""
 "The last time Déjà Dup successfully completed a backup. This time should be "
 "in ISO 8601 format."
@@ -753,11 +756,11 @@ msgstr ""
 "Čas zadnjega uspešnega ustvarjanja varnostne kopije. Čas mora biti zapisan v "
 "ISO 8601."
 
-#: data/app.gschema.xml.in:33
+#: data/app.gschema.xml.in:45
 msgid "The last time Déjà Dup restored"
 msgstr "Čas zadnje obnovitve datotek"
 
-#: data/app.gschema.xml.in:34
+#: data/app.gschema.xml.in:46
 msgid ""
 "The last time Déjà Dup successfully completed a restore. This time should be "
 "in ISO 8601 format."
@@ -765,28 +768,28 @@ msgstr ""
 "Čas zadnje uspešne obnovitve datotek varnostnih kopij. Čas mora biti zapisan "
 "v ISO 8601."
 
-#: data/app.gschema.xml.in:38
+#: data/app.gschema.xml.in:50
 msgid "Whether to periodically back up"
 msgstr "Ali naj se varnostne kopije ustvarjajo na določen časovni razmik"
 
-#: data/app.gschema.xml.in:39
+#: data/app.gschema.xml.in:51
 msgid "Whether to automatically back up on a regular schedule."
 msgstr "Ali naj se varnostne kopije ustvarjajo po načrtovanem urniku."
 
-#: data/app.gschema.xml.in:43
+#: data/app.gschema.xml.in:55
 msgid "How often to periodically back up"
 msgstr "Kako pogosto naj se izvaja ustvarjanje varnostnih kopij"
 
-#: data/app.gschema.xml.in:44
+#: data/app.gschema.xml.in:56
 msgid "The number of days between backups."
 msgstr "Število dni med ustvarjanjem varnostnih kopij."
 
-#: data/app.gschema.xml.in:48
+#: data/app.gschema.xml.in:60
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about backing up"
 msgstr "Zadnje preverjanje obvestil o varnostnem kopiranju"
 
-#: data/app.gschema.xml.in:49
+#: data/app.gschema.xml.in:61
 msgid ""
 "When a user logs in, the Déjà Dup monitor checks whether it should prompt "
 "about backing up. This is used to increase discoverability for users that "
@@ -798,12 +801,12 @@ msgstr ""
 "pomena rednega ustvarjanja varnostnih kopij, lažje sprejemanje postopka. "
 "Nastavitev mora biti »onemogočena« ali v obliki ISO 8601."
 
-#: data/app.gschema.xml.in:53
+#: data/app.gschema.xml.in:65
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr "Zadnje preverjanje za vpis gesla"
 
-#: data/app.gschema.xml.in:54
+#: data/app.gschema.xml.in:66
 msgid ""
 "In order to prevent you from forgetting your passwords, Déjà Dup will "
 "occasionally notify you to confirm the password. This time should be either "
@@ -813,11 +816,11 @@ msgstr ""
 "lahko, ali »onemogočen«, če naj bo možnost prezrta ali pa zapis v obliki ISO "
 "8601."
 
-#: data/app.gschema.xml.in:58
+#: data/app.gschema.xml.in:70
 msgid "How long to keep backup files"
 msgstr "Kako dolgo naj se varnostne kopije hranijo"
 
-#: data/app.gschema.xml.in:59
+#: data/app.gschema.xml.in:71
 msgid ""
 "The number of days to keep backup files on the backup location. A value of 0 "
 "means forever. This is a minimum number of days; the files may be kept "
@@ -827,11 +830,11 @@ msgstr ""
 "pomeni trajno shranjevanje. Vrednost je najmanjši čas, datoteke so lahko "
 "ohranjene dlje."
 
-#: data/app.gschema.xml.in:63
+#: data/app.gschema.xml.in:75
 msgid "How long to wait between full backups"
 msgstr "Kako dolg naj bo časovni razmik med ustvarjanjem varnostnih kopij"
 
-#: data/app.gschema.xml.in:64
+#: data/app.gschema.xml.in:76
 msgid ""
 "Déjà Dup needs to occasionally make fresh full backups. This is the number "
 "of days to wait between full backups."
@@ -839,11 +842,11 @@ msgstr ""
 "Program Déjà Dup občasno ustvari polne varnostne kopije. Nastavitev določa "
 "število dni med njimi."
 
-#: data/app.gschema.xml.in:68
+#: data/app.gschema.xml.in:80
 msgid "Whether to use metered networks"
 msgstr "Ali naj opravila potekajo tudi pri uporabi plačljivih povezav"
 
-#: data/app.gschema.xml.in:69
+#: data/app.gschema.xml.in:81
 msgid ""
 "If false, Déjà Dup will refuse to run scheduled backups over metered network "
 "connections (like 4G)."
@@ -851,11 +854,11 @@ msgstr ""
 "Neizbrana možnost onemogoči zagon načrtovanih varnostnih kopiranj preko "
 "merjenih povezav (mobilne povezave)."
 
-#: data/app.gschema.xml.in:73
+#: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
 msgstr "Ukaz za izvajanje pred rabo orodja za varnostno kopiranje"
 
-#: data/app.gschema.xml.in:74
+#: data/app.gschema.xml.in:86
 msgid ""
 "Useful if you need to manually mount a folder, for example. If this command "
 "fails, the backup won't start."
@@ -863,21 +866,21 @@ msgstr ""
 "Uporabno, če morate npr. ročno priklopiti mapo. Če ukaz ne uspe, se "
 "varnostno kopiranje ne zažene."
 
-#: data/app.gschema.xml.in:78
+#: data/app.gschema.xml.in:90
 msgid "Command to run after the backup tool"
 msgstr "Ukaz za izvajanje po rabi orodja za varnostno kopiranje"
 
-#: data/app.gschema.xml.in:79
+#: data/app.gschema.xml.in:91
 msgid ""
 "Useful if you need to clean up after your setup command. Failures are "
 "ignored."
 msgstr "Uporabno, če morate po ukazu namestitve počistiti. Napake so prezrte."
 
-#: data/app.gschema.xml.in:83
+#: data/app.gschema.xml.in:95
 msgid "Command to run around the backup tool"
 msgstr "Ukaz za izvajanje med rabo orodja za varnostno kopiranje"
 
-#: data/app.gschema.xml.in:84
+#: data/app.gschema.xml.in:96
 msgid ""
 "Useful if you need to limit resources or otherwise wrap the execution of the "
 "tool command. An example value might be 'trickle -u 500' which would result "
@@ -887,11 +890,11 @@ msgstr ""
 "orodja. Primer vrednosti je lahko »trickle -u 500« kar bi povzročilo "
 "izvajanje deja-dup s »trickle -u 500 duplicity …«."
 
-#: data/app.gschema.xml.in:112
+#: data/app.gschema.xml.in:124
 msgid "Type of location to store backup"
 msgstr "Vrsta mesta za shranjevanje varnostnih kopij"
 
-#: data/app.gschema.xml.in:113
+#: data/app.gschema.xml.in:125
 msgid ""
 "The type of backup location. If ‘auto’, a default will be chosen based on "
 "what is available."
@@ -899,13 +902,13 @@ msgstr ""
 "Vrsta mesta za ustvarjanja varnostnih kopij. Možnost »samodejno« določa "
 "privzeto mesto med razpoložljivimi možnostmi."
 
-#: data/app.gschema.xml.in:125 data/app.gschema.xml.in:148
-#: data/app.gschema.xml.in:161 data/app.gschema.xml.in:169
-#: data/app.gschema.xml.in:176
+#: data/app.gschema.xml.in:137 data/app.gschema.xml.in:160
+#: data/app.gschema.xml.in:173 data/app.gschema.xml.in:181
+#: data/app.gschema.xml.in:188
 msgid "The folder where backups are stored"
 msgstr "Mapa, kjer so shranjene varnostne kopije"
 
-#: data/app.gschema.xml.in:126
+#: data/app.gschema.xml.in:138
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to your home directory."
@@ -913,11 +916,11 @@ msgstr ""
 "Določena je hierarhija map, kjer so shranjene varnostne kopije. Poti so "
 "lahko določene absolutno ali relativno na osebno mapo."
 
-#: data/app.gschema.xml.in:133
+#: data/app.gschema.xml.in:145
 msgid "UUID"
 msgstr "UUID"
 
-#: data/app.gschema.xml.in:134
+#: data/app.gschema.xml.in:146
 msgid ""
 "The unique filesystem identifier for the drive, used to recognize the drive "
 "when it is plugged in."
@@ -925,23 +928,23 @@ msgstr ""
 "Enolično določilo datotečnega sistema za pogon, ki se uporablja za "
 "prepoznavanje pogona, ko je ta priklopljen."
 
-#: data/app.gschema.xml.in:138 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
 msgid "Name"
 msgstr "Ime"
 
-#: data/app.gschema.xml.in:139
+#: data/app.gschema.xml.in:151
 msgid "The name of the external drive."
 msgstr "Ime zunanje naprave."
 
-#: data/app.gschema.xml.in:143
+#: data/app.gschema.xml.in:155
 msgid "Icon"
 msgstr "Ikona"
 
-#: data/app.gschema.xml.in:144
+#: data/app.gschema.xml.in:156
 msgid "The icon of the external drive, as a serialized GIcon."
 msgstr "Ikona zunanjega pogona, povzeta po GIcon."
 
-#: data/app.gschema.xml.in:149
+#: data/app.gschema.xml.in:161
 msgid ""
 "The folder hierarchy where backups are stored. Paths are relative to the "
 "drive."
@@ -949,15 +952,15 @@ msgstr ""
 "Hierarhija map, kjer so shranjene varnostne kopije. Poti so relativne na "
 "pogon."
 
-#: data/app.gschema.xml.in:156
+#: data/app.gschema.xml.in:168
 msgid "The server address"
 msgstr "Naslov strežnika"
 
-#: data/app.gschema.xml.in:157
+#: data/app.gschema.xml.in:169
 msgid "The URI of the remote server location."
 msgstr "URI za mesto oddaljenega strežnika."
 
-#: data/app.gschema.xml.in:162
+#: data/app.gschema.xml.in:174
 msgid ""
 "The folder hierarchy where backups are stored. Paths can be absolute or "
 "relative to the host."
@@ -1043,11 +1046,12 @@ msgstr "Nadzornik varnostnih kopij"
 msgid "Schedules backups at regular intervals"
 msgstr "Določanje urnika ustvarjanja varnostnih kopij"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:50
-#: data/ui/MainHeaderBar.ui:52
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
+#: data/ui/MainHeaderBar.ui:45
 msgid "Search"
 msgstr "Iskanje"
 
+#. Translators: this means scanning the storage location data files, not the source folders
 #: data/ui/Browser.ui:82
 msgid "Scanning backup files…"
 msgstr "Poteka preiskovanje datotek varnostne kopije …"
@@ -1084,10 +1088,6 @@ msgstr "_Vpis gesla"
 msgid "Location"
 msgstr "Mesto"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "Varnostne kopije ustvarjaj _avtomatično"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Mape"
@@ -1096,7 +1096,11 @@ msgstr "Mape"
 msgid "Folders to Back Up"
 msgstr "Mape za varnostne kopije"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "Te mape so vedno prezrte:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Prezrte mape"
 
@@ -1110,54 +1114,57 @@ msgstr ""
 msgid "Remove"
 msgstr "Odstrani"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "_Mesto shrambe"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Mesta za shranjevanje"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Mapa"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "_Ponastavi dostop do računa"
 
-#: data/ui/ConfigLocationGrid.ui:141
-msgid "_Network Location"
-msgstr "_Omrežno mesto"
+#: data/ui/ConfigLocationGroup.ui:66
+msgid "Ser_ver Address"
+msgstr "Naslo_v strežnika"
 
-#: data/ui/MainHeaderBar.ui:28 data/ui/MainHeaderBar.ui:30
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_Mesto"
+
+#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
 msgid "Back"
 msgstr "Nazaj"
 
-#: data/ui/MainHeaderBar.ui:40 data/ui/MainHeaderBar.ui:42
+#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
 msgid "Main Menu"
 msgstr "Glavni meni"
 
-#: data/ui/MainHeaderBar.ui:69
+#: data/ui/MainHeaderBar.ui:58
 msgid "_Select All"
 msgstr "Izberi _vse"
 
-#: data/ui/MainHeaderBar.ui:76
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Preferences"
 msgstr "_Nastavitve"
 
-#: data/ui/MainHeaderBar.ui:80
+#: data/ui/MainHeaderBar.ui:69
 msgid "_Keyboard Shortcuts"
 msgstr "_Tipkovne bližnjice"
 
-#: data/ui/MainHeaderBar.ui:84
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Help"
 msgstr "_Pomoč"
 
-#: data/ui/MainHeaderBar.ui:88
+#: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
 msgstr "_O programu"
 
-#: data/ui/MainWindow.ui:26
+#: data/ui/MainWindow.ui:24
 msgid "Overview"
 msgstr "Pregled"
 
@@ -1165,27 +1172,27 @@ msgstr "Pregled"
 msgid "_Back Up Now"
 msgstr "Ustvari _varnostno kopijo"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "_Nadaljuj"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Splošno"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Mesta za shranjevanje"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Urnik"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Mesto"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "Pogostost samodejnega ustvarjanja varnostnih kopij"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "_Varnostne kopije ohrani"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1194,95 +1201,83 @@ msgstr ""
 "mestu ni dovolj prostora oziroma shranjene do tri mesece dlje, če obstaja "
 "problem brisanja povezanih varnostnih kopij."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Urnik"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "Pogostost samodejnega ustvarjanja varnostnih kopij"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Laboratorij"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "Uporabi _Restic namesto Duplicity"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Zadnja varnostna kopija"
 
-#: data/ui/ServerHintPopover.ui:17
-msgid "Network Locations"
-msgstr "Omrežna mesta"
+#: data/ui/ServerAddressHelp.ui:15
+msgid "Server Addresses"
+msgstr "Naslovi strežnikov"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:29
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
-"Network locations are made up of a protocol prefix, an address, and "
-"sometimes a path depending on the protocol. Examples:"
+"Server addresses are made up of a protocol prefix, an address, and sometimes "
+"a path depending on the protocol. Examples:"
 msgstr ""
-"Omrežna mesta so zapisana kot predpona, naslov in včasih dodatna pot, "
-"odvisno od protokola. Primeri:"
+"Naslovi strežnikov so zapisani kot predpona protokola, naslov in včasih "
+"dodatna pot, odvisno od protokola. Primeri:"
 
-#: data/ui/ServerHintPopover.ui:55
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Razpoložljivi protokoli"
 
-#: data/ui/ServerHintPopover.ui:68
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:78
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "Protokol prenosa datotek FTP"
 
-#: data/ui/ServerHintPopover.ui:88
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Omrežni datotečni sistem"
 
-#: data/ui/ServerHintPopover.ui:98
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:108
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "Protokol prenosa datotek SSH"
 
-#: data/ui/ServerHintPopover.ui:118
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:128
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Predpona"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:151
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// ali ftps://"
 
-#: data/ui/ServerHintPopover.ui:171
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:181
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// ali ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:191
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// ali davs://"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:15
 msgid "_Date"
 msgstr "_Datum"
 
@@ -1290,11 +1285,11 @@ msgstr "_Datum"
 msgid "Welcome to Backups"
 msgstr "Dobrodošli v program Varnostne kopije"
 
-#: data/ui/WelcomePage.ui:25
+#: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
 msgstr "Ustvari prvo _varnostno kopijo"
 
-#: data/ui/WelcomePage.ui:37
+#: data/ui/WelcomePage.ui:57
 msgid "_Restore From a Previous Backup"
 msgstr "_Obnovi iz predhodne varnostne kopije"
 
@@ -1340,7 +1335,7 @@ msgstr "Skoči nazaj"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
-#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:500
+#: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
 #, c-format
 msgid "%1$s on %2$s"
 msgstr "%1$s na %2$s"
@@ -1359,36 +1354,36 @@ msgstr "Mesto za shranjevanje ni na voljo"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "Poteka čakanje na vzpostavitev povezave z »%s« …"
 
-#: libdeja/BackendGoogle.vala:50 libdeja/BackendMicrosoft.vala:52
-#: monitor/ReadyWatcher.vala:148
+#: libdeja/BackendGoogle.vala:62 libdeja/BackendMicrosoft.vala:58
+#: monitor/ReadyWatcher.vala:160
 msgid "Backup will begin when a network connection becomes available."
 msgstr "Ustvarjanje varnostnih kopij bo izvedeno ob vzpostavitvi povezave."
 
 #. Translators: %s is a folder.
-#: libdeja/BackendGoogle.vala:65
+#: libdeja/BackendGoogle.vala:77
 #, c-format
 msgid "%s on Google Drive"
 msgstr "%s na Google Drive"
 
 #. Translators: %s is a folder.
-#: libdeja/BackendMicrosoft.vala:67
+#: libdeja/BackendMicrosoft.vala:73
 #, c-format
 msgid "%s on Microsoft OneDrive"
 msgstr "%s na Microsoft OneDrive"
 
 #. Duplicity requires a folder, and this is a reasonable restriction.
-#: libdeja/BackendMicrosoft.vala:105
+#: libdeja/BackendMicrosoft.vala:111
 msgid "You must provide a Microsoft OneDrive folder."
 msgstr "Navesti je treba mapo Microsoft One Drive."
 
 #. Translators: %s is a brand name like Microsoft or Google
-#: libdeja/BackendOAuth.vala:69
+#: libdeja/BackendOAuth.vala:93
 #, c-format
 msgid "Could not log into %s servers."
 msgstr "Povezava s strežnikom %s ni mogoča."
 
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:145
+#: libdeja/BackendOAuth.vala:169
 #, c-format
 msgid "%s credentials for Déjà Dup"
 msgstr "Poverila %s za Déjà Dup"
@@ -1397,7 +1392,7 @@ msgstr "Poverila %s za Déjà Dup"
 #. to get random strings, but they are only 37 chars long. So just add two.
 #. And show the oauth consent page finally
 #. Translators: %s is a brand name like Google or Microsoft
-#: libdeja/BackendOAuth.vala:248
+#: libdeja/BackendOAuth.vala:228
 #, c-format
 msgid "You first need to allow Backups to access your %s account."
 msgstr "Najprej je treba dovoliti programu dostop do računa %s."
@@ -1436,31 +1431,23 @@ msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Omrežna mesta Samba morajo vsebovati ime gostitelja in ime mesta souporabe."
 
-#: libdeja/CommonUtils.vala:470
-msgid "Access Granted"
-msgstr "Odobri dostop"
-
-#: libdeja/CommonUtils.vala:471
-msgid "Backups will now continue. You can close this page."
-msgstr "Varnostno kopiranje se bo nadaljevalo, to stran lahko zaprete."
-
 #. Translators: this is the home folder and %s is the user's username
-#: libdeja/CommonUtils.vala:553
+#: libdeja/CommonUtils.vala:540
 #, c-format
 msgid "Home (%s)"
 msgstr "Osebna mapa (%s)"
 
 #. Translators: this is the home folder
-#: libdeja/CommonUtils.vala:558
+#: libdeja/CommonUtils.vala:545
 msgid "Home"
 msgstr "Osebna mapa"
 
 #. Translators: this is the trash folder
-#: libdeja/CommonUtils.vala:563
+#: libdeja/CommonUtils.vala:550
 msgid "Trash"
 msgstr "Smeti"
 
-#: libdeja/CommonUtils.vala:625
+#: libdeja/CommonUtils.vala:612
 msgid "Backup encryption password"
 msgstr "Geslo za šifriranje varnostne kopije"
 
@@ -1485,9 +1472,9 @@ msgid "Listing files…"
 msgstr "Izpisovanje seznama datotek …"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:372
-#: libdeja/duplicity/DuplicityJob.vala:383
-#: libdeja/duplicity/DuplicityJob.vala:419
+#: libdeja/duplicity/DuplicityJob.vala:368
+#: libdeja/duplicity/DuplicityJob.vala:379
+#: libdeja/duplicity/DuplicityJob.vala:415
 msgid "Preparing…"
 msgstr "Poteka priprava …"
 
@@ -1495,13 +1482,29 @@ msgstr "Poteka priprava …"
 msgid "Custom tool setup failed."
 msgstr "Nastavitev orodja po meri ni uspela."
 
-#: libdeja/OperationBackup.vala:40 libdeja/OperationVerify.vala:42
+#: libdeja/OperationBackup.vala:29
+msgid ""
+"Could not back up the following files.  Please make sure you are able to "
+"open them."
+msgstr ""
+"Varnostne kopije navedenih datotek ni bilo mogoče ustvariti. Preverite, ali "
+"so omogočena dovoljenja za odpiranje."
+
+#: libdeja/OperationBackup.vala:55 libdeja/OperationVerify.vala:42
 msgid "Verifying backup…"
 msgstr "Poteka preverjanje zapisa varnostne kopije …"
 
 #: libdeja/OperationRestore.vala:35
 msgid "Restoring files…"
 msgstr "Poteka obnavljanje datotek …"
+
+#: libdeja/OperationRestore.vala:54
+msgid ""
+"Could not restore the following files.  Please make sure you are able to "
+"write to them."
+msgstr ""
+"Navedenih datotek ni bilo mogoče obnoviti. Preverite, ali so omogočena "
+"dovoljenja za zapisovanje."
 
 #: libdeja/OperationVerify.vala:81
 msgid ""
@@ -1511,20 +1514,20 @@ msgstr ""
 "Kaže, daje varnostna kopija okvarjena. Priporočljivo je varnostno kopijo "
 "izbrisati in ustvariti novo."
 
-#: libdeja/duplicity/DuplicityJob.vala:70
-#: libdeja/duplicity/DuplicityJob.vala:140
+#: libdeja/duplicity/DuplicityJob.vala:68
+#: libdeja/duplicity/DuplicityJob.vala:138
 msgid "Paused (no network)"
 msgstr "Premor (ni omrežne povezave)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:529 libdeja/restic/ResticJob.vala:287
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:317
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Na določenem mestu za shranjevanje je premalo prostora. Nastaviti je treba "
 "mesto s prostimi vsaj %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:554
+#: libdeja/duplicity/DuplicityJob.vala:550
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1533,32 +1536,10 @@ msgstr ""
 "Na določenem mestu za shranjevanje ni dovolj prostora. Nastaviti je treba "
 "mesto s prostimi vsaj %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:575
-#: libdeja/duplicity/DuplicityJob.vala:589
+#: libdeja/duplicity/DuplicityJob.vala:571
+#: libdeja/duplicity/DuplicityJob.vala:585
 msgid "Cleaning up…"
 msgstr "Poteka čiščenje datotek …"
-
-#. OK, we succeeded yay!  But some files didn't make it into the backup
-#. because we couldn't read them.  So tell the user so they don't think
-#. everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:669
-msgid ""
-"Could not back up the following files.  Please make sure you are able to "
-"open them."
-msgstr ""
-"Varnostne kopije navedenih datotek ni bilo mogoče ustvariti. Preverite, ali "
-"so omogočena dovoljenja za odpiranje."
-
-#. OK, we succeeded yay!  But some files didn't actually restore
-#. because we couldn't write to them.  So tell the user so they
-#. don't think everything is hunky dory.
-#: libdeja/duplicity/DuplicityJob.vala:685
-msgid ""
-"Could not restore the following files.  Please make sure you are able to "
-"write to them."
-msgstr ""
-"Navedenih datotek ni bilo mogoče obnoviti. Preverite, ali so omogočena "
-"dovoljenja za zapisovanje."
 
 #. For most, don't do anything special.  Show generic 'unknown error'
 #. message, but provide the exception text for better bug reports.
@@ -1567,27 +1548,27 @@ msgstr ""
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:705
-#: libdeja/duplicity/DuplicityJob.vala:1093 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:669
+#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Opravilo je spodletelo z neznano napako."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:908
+#: libdeja/duplicity/DuplicityJob.vala:872
 msgid "Bad encryption password."
 msgstr "Neustrezno šifrirno geslo."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:957
+#: libdeja/duplicity/DuplicityJob.vala:921
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "Datoteke »%s« ni mogoče obnoviti: datoteke v varnostni kopiji ni mogoče "
 "najti."
 
-#: libdeja/duplicity/DuplicityJob.vala:968
+#: libdeja/duplicity/DuplicityJob.vala:932
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1598,53 +1579,53 @@ msgstr ""
 "je %s. Če to ni pričakovano, je priporočljivo narediti varnostno kopijo na "
 "drugo mesto."
 
-#: libdeja/duplicity/DuplicityJob.vala:971
+#: libdeja/duplicity/DuplicityJob.vala:935
 msgid "Computer name changed"
 msgstr "Ime računalnika je spremenjeno"
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:970
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Ni ustreznih dovoljenj za ustvarjanje »%s«."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:1010
-#: libdeja/duplicity/DuplicityJob.vala:1014
+#: libdeja/duplicity/DuplicityJob.vala:974
+#: libdeja/duplicity/DuplicityJob.vala:978
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Ni ustreznih dovoljenj za branje »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1018
+#: libdeja/duplicity/DuplicityJob.vala:982
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Ni ustreznih dovoljenj za brisanje »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1025
+#: libdeja/duplicity/DuplicityJob.vala:989
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Mesto varnostne kopije »%s« ne obstaja."
 
-#: libdeja/duplicity/DuplicityJob.vala:1031
-#: libdeja/duplicity/DuplicityJob.vala:1064
+#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1028
 msgid "No space left."
 msgstr "Ni več razpoložljivega prostora."
 
-#: libdeja/duplicity/DuplicityJob.vala:1053
+#: libdeja/duplicity/DuplicityJob.vala:1017
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Napaka branja datoteke »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1055
+#: libdeja/duplicity/DuplicityJob.vala:1019
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Napaka pisanja datoteke »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1066
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Na »%s« ni dovolj razpoložljivega prostora."
 
-#: libdeja/duplicity/DuplicityJob.vala:1124
+#: libdeja/duplicity/DuplicityJob.vala:1088
 msgid "Uploading…"
 msgstr "Poteka pošiljanje …"
 
@@ -1697,7 +1678,13 @@ msgstr ""
 "Zahtevana je različica programa restic vsaj %d.%d.%.2d, najdena pa je le "
 "različica %d.%d.%.2d."
 
-#: monitor/ReadyWatcher.vala:153
+#: monitor/ReadyWatcher.vala:151
+msgid "Backup will begin when power saver mode is no longer active."
+msgstr ""
+"Ustvarjanje varnostne kopije se bo začelo, ko način napajanja s prihrankom "
+"energije ne bo več aktiven."
+
+#: monitor/ReadyWatcher.vala:165
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
