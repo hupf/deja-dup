@@ -80,12 +80,10 @@ class Gtk4Node:
         if not top:
             top = self.findAncestor(GenericPredicate(roleName="dialog"))
         if not top:
-            top = self.findAncestor(GenericPredicate(roleName="filler", name="Preferences"))
-        if not top:
-            # check for a gtk3 portal dialog - it won't need translation
-            if self.findAncestor(GenericPredicate(roleName="file chooser")):
-                self.coords = (0, 0)
-                return
+            maybe_top = self.findAncestor(GenericPredicate(roleName="filler"))
+            while maybe_top:
+                top = maybe_top
+                maybe_top = top.findAncestor(GenericPredicate(roleName="filler"))
         assert top
 
         from Xlib import X, display, Xutil

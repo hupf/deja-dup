@@ -39,6 +39,7 @@ tests = [
   'encrypt-ask',
   'encrypt-detect',
   'excludes',
+  'initial',
   'instance-error',
   'mkdir',
   'nag',

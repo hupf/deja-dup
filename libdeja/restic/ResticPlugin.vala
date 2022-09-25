@@ -26,7 +26,7 @@ public class ResticPlugin : DejaDup.ToolPlugin
   }
 
   const int REQUIRED_MAJOR = 0;
-  const int REQUIRED_MINOR = 12;
+  const int REQUIRED_MINOR = 14;
   const int REQUIRED_MICRO = 0;
   void do_initial_setup () throws Error
   {
@@ -49,8 +49,8 @@ public class ResticPlugin : DejaDup.ToolPlugin
       throw new SpawnError.FAILED(_("Could not understand restic version ‘%s’.").printf(version));
 
     if (!DejaDup.meets_version(major, minor, micro, REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO)) {
-      var msg = _("Backups requires at least version %d.%d.%.2d of restic, " +
-                  "but only found version %d.%d.%.2d");
+      var msg = _("Backups requires at least version %d.%d.%d of restic, " +
+                  "but only found version %d.%d.%d");
       throw new SpawnError.FAILED(msg.printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
     }
 

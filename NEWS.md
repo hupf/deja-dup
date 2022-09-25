@@ -6,7 +6,11 @@ SPDX-FileCopyrightText: Michael Terry
 # 44.0
 
 ##### Packaging
+- There is now some documentation about how to package deja-dup in
+  [PACKAGING.md](PACKAGING.md) - walking through required & optional
+  dependencies and build options
 - Require libadwaita1 1.2+
+- If you enable restic, we now require restic 0.14+
 - Add new `-Dpackagekit=enabled` option flag to control whether we build with
   PackageKit support. Previously, this was an `auto` feature without an option
   flag to control it, but is now `disabled` by default and you can explicitly

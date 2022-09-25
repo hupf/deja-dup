@@ -152,7 +152,7 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
 
   string args = "";
 
-  if (br.is_full && !br.is_first && (mode == Mode.BACKUP || mode == Mode.DRY))
+  if (br.is_full && (mode == Mode.BACKUP || mode == Mode.DRY))
     args += "full ";
 
   if (mode == Mode.STATUS || mode == Mode.RESTORE_STATUS)
@@ -629,6 +629,8 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
   if (version.length > 0)
     add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
 
+  if (keyfile.has_key(group, "Error"))
+    br.error_str = keyfile.get_string(group, "Error");
   if (keyfile.has_key(group, "IsFull"))
     br.is_full = keyfile.get_boolean(group, "IsFull");
 
@@ -823,6 +825,11 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       args.append("--prune");
       break;
 
+    case "init":
+      args.append("init");
+      args.append("--repository-version=2");
+      break;
+
     case "prune":
       args.append("prune");
       break;
@@ -959,6 +966,9 @@ void process_restic_block(KeyFile keyfile, string group, BackupRunner br) throws
   if (keyfile.has_key(group, "Version"))
     version = get_string_field(keyfile, group, "Version");
   add_to_mockscript("ARGS: version\n\nrestic %s compiled with go1.15.8 on linux/amd64\n".printf(version));
+
+  if (keyfile.has_key(group, "Error"))
+    br.error_str = keyfile.get_string(group, "Error");
 
   if (keyfile.has_key(group, "Runs")) {
     var runs = keyfile.get_string_list(group, "Runs");

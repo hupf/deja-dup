@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+[Operation]
+Type=backup
+IsFull=true
+IsFirst=true
+
+[Duplicity]
+Runs=status;dry;backup;status-restore;verify;
+
+[Duplicity status]
+#INFO 3
+Output=true
+
+[Restic]
+Runs=unlock;backup 1;init;backup 2;verify;
+
+[Restic backup 1]
+Output=Fatal: unable to open config file: blarg

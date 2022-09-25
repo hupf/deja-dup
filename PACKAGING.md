@@ -44,8 +44,7 @@ You'll want to depend on the following runtime dependencies for your distro:
   `sftp`, and `smb` backends at least are installed)
 - The Python module `gi` along with the typelibs for `Gio` and `GLib`
   (all of which are usually provided by the `pygobject` project)
-- The Python module `pydrive2` (or the older, unmaintained `pydrive` module,
-  as Duplicity can use either one)
+- The Python module `pydrive2`
 - The Python module `requests_oauthlib`
 
 ## Optional Dependencies
@@ -67,7 +66,8 @@ I'd love it if you could, so that I get more user testing and feedback.
 Here's how you enable it as an opt-in feature for users:
 
 - Set `-Denable_restic=true` when building
-- Depend on both `restic` and `rclone`
+- Depend on `restic` 0.14.0
+- Depend on `rclone`
 
 ### PackageKit
 
