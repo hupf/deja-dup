@@ -66,7 +66,8 @@ I'd love it if you could, so that I get more user testing and feedback.
 Here's how you enable it as an opt-in feature for users:
 
 - Set `-Denable_restic=true` when building
-- Depend on both `restic` and `rclone`
+- Depend on `restic` 0.14.0
+- Depend on `rclone`
 
 ### PackageKit
 

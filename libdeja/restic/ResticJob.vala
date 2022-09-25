@@ -206,6 +206,7 @@ internal class ResticInitJoblet : ResticJoblet
   {
     base.prepare_args(ref argv, ref envp);
     argv.append("init");
+    argv.append("--repository-version=2");
   }
 }
 
