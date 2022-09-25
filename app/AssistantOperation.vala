@@ -732,8 +732,10 @@ public abstract class AssistantOperation : Assistant
       var valid = (passphrase == passphrase2) && passphrase_entered;
       if (valid) {
         // The HIG recommends positive rather than negative feedback
+        encrypt_entry.add_css_class("success");
         confirm_entry.add_css_class("success");
       } else {
+        encrypt_entry.remove_css_class("success");
         confirm_entry.remove_css_class("success");
       }
       allow_forward(valid);
