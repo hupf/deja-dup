@@ -44,8 +44,7 @@ You'll want to depend on the following runtime dependencies for your distro:
   `sftp`, and `smb` backends at least are installed)
 - The Python module `gi` along with the typelibs for `Gio` and `GLib`
   (all of which are usually provided by the `pygobject` project)
-- The Python module `pydrive2` (or the older, unmaintained `pydrive` module,
-  as Duplicity can use either one)
+- The Python module `pydrive2`
 - The Python module `requests_oauthlib`
 
 ## Optional Dependencies
