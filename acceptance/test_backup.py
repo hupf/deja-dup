@@ -210,7 +210,7 @@ class BackupTest(BaseTest):
         # Wait for prompt (a little longer to appear than normal dogtail timeouts)
         self.wait_for(
             lambda: app.findChild(
-                lambda x: x.roleName == "password text"
+                lambda x: x.roleName == "text"
                 and x.name == "Encryption password",
                 requireResult=False,
                 retry=False,

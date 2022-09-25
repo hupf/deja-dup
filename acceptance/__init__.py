@@ -166,10 +166,10 @@ class BaseTest(unittest.TestCase):
             window.child(roleName="text", label="Encryption password").text = password
             window.child(roleName="text", label="Confirm password").text = password
             if remember:
-                window.child(roleName="check box", name="_Remember password").click()
+                window.child(roleName="check box", name="Remember password").click()
         else:
             window.child(
-                roleName="check box", name="_Allow restoring without a password"
+                roleName="check box", name="Password-protect your backup"
             ).click()
 
         window.button("Forward").click()
@@ -212,7 +212,7 @@ class BaseTest(unittest.TestCase):
         app.button("Continue").click()
 
     def get_file_chooser(self, name):
-        return Gtk4Node(tree.root).child(roleName="dialog", name=name)
+        return Gtk4Node(tree.root).child(roleName="filler", name=name)
 
     def click_restore_button(self, parent):
         bar = parent.child(name="GtkActionBar")
