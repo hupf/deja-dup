@@ -182,11 +182,9 @@ public class BackendDrive : BackendFile
 
     var folder = mount.get_root().get_relative_path(file);
 
-    settings.delay();
     settings.set_string(DRIVE_UUID_KEY, get_uuid(volume));
     settings.set_string(DRIVE_FOLDER_KEY, folder == null ? "" : folder);
     update_volume_info(volume, settings);
-    settings.apply();
 
     return true;
   }
@@ -200,8 +198,6 @@ public class BackendDrive : BackendFile
     if (vol_uuid != settings_uuid && fs_uuid != settings_uuid)
       return;
 
-    settings.delay();
-
     // We're updating to vol UUID here in case we are migrating from a past
     // release that set a filesystem UUID. But only do it if we are going to
     // change it, since writing this key notifies BackendWatcher.
@@ -209,8 +205,6 @@ public class BackendDrive : BackendFile
       settings.set_string(DRIVE_UUID_KEY, vol_uuid);
     settings.set_string(DRIVE_NAME_KEY, volume.get_name());
     settings.set_string(DRIVE_ICON_KEY, volume.get_icon().to_string());
-
-    settings.apply();
   }
 
   async void delay(uint secs)
