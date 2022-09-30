@@ -47,4 +47,3 @@ class PassphraseDialog : Gtk.Dialog
     got_passphrase(passphrase);
   }
 }
-
