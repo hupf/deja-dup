@@ -26,8 +26,6 @@ class PassphraseDialog : Gtk.Dialog
 
       set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
     });
-
-    DejaDup.configure_entry_row(entry, true);
   }
 
   ~PassphraseDialog()
@@ -49,3 +47,4 @@ class PassphraseDialog : Gtk.Dialog
     got_passphrase(passphrase);
   }
 }
+

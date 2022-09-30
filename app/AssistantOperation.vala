@@ -350,16 +350,18 @@ public abstract class AssistantOperation : Assistant
     encryption_choice_widgets.append(encrypt_enabled);
 
     encrypt_entry = new Adw.PasswordEntryRow();
-    DejaDup.configure_entry_row(encrypt_entry, true);
+    encrypt_entry.activates_default = true;
     encrypt_entry.title = _("E_ncryption password");
+    encrypt_entry.use_underline = true;
     encrypt_entry.changed.connect(check_password_validity);
     encrypt_enabled.bind_property("active", encrypt_entry, "sensitive", BindingFlags.SYNC_CREATE);
     group.add(encrypt_entry);
 
     // Add a confirmation entry if this is user's first time
     confirm_entry = new Adw.PasswordEntryRow();
-    DejaDup.configure_entry_row(confirm_entry, true);
+    confirm_entry.activates_default = true;
     confirm_entry.title = _("Confir_m password");
+    confirm_entry.use_underline = true;
     confirm_entry.changed.connect(check_password_validity);
     encrypt_enabled.bind_property("active", confirm_entry, "sensitive", BindingFlags.SYNC_CREATE);
     group.add(confirm_entry);
@@ -392,8 +394,9 @@ public abstract class AssistantOperation : Assistant
     box.append(group);
 
     nag_entry = new Adw.PasswordEntryRow();
-    DejaDup.configure_entry_row(nag_entry, true);
+    nag_entry.activates_default = true;
     nag_entry.title =_("E_ncryption password");
+    nag_entry.use_underline = true;
     nag_entry.changed.connect(check_nag_validity);
     group.add(nag_entry);
 
