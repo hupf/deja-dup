@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-07-03 16:34+0000\n"
-"PO-Revision-Date: 2022-07-03 19:38+0300\n"
+"POT-Creation-Date: 2022-09-25 19:30+0000\n"
+"PO-Revision-Date: 2022-09-26 13:06+0300\n"
 "Last-Translator: Aleksandr Melman <Alexmelman88@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -41,7 +41,7 @@ msgstr "_Назад"
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "_Отмена"
 
@@ -59,7 +59,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Создать резервную копию"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -67,12 +67,12 @@ msgstr ""
 "Следующие папки не могут быть резервированы, поскольку у Backups нет к ним "
 "доступа:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr ""
 "Резервная копия создаётся первый раз. Это может занять некоторое время."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -82,35 +82,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Создается резервная копия для:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Резервное копирование не удалось"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Резервное копирование завершено"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "Резервная копия файлов успешно создана и проверена."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Резервное копирование…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:880
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:833
 msgid "Backups needs your input to continue"
 msgstr "Резервные копии нуждаются в вашем участии для продолжения работы"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Выполняется резервное копирование"
 
@@ -118,11 +118,7 @@ msgstr "Выполняется резервное копирование"
 msgid "Restore From Where?"
 msgstr "Откуда восстановить?"
 
-#: app/AssistantLocation.vala:20
-msgid "_Backup location"
-msgstr "_Местоположение резервной копии"
-
-#: app/AssistantLocation.vala:21
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "П_оиск"
 
@@ -142,15 +138,8 @@ msgstr "_Подробности"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Чтобы продолжить, необходимо установить следующие пакеты:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Разрешить восстановление без пароля"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "Защитите _паролем резервную копию"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -158,21 +147,25 @@ msgstr ""
 "Потребуется указать пароль для восстановления файлов. Возможно, его лучше "
 "записать."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:442
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "Защитите _паролем резервную копию"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "Пароль шифрования"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "Подвер_дить пароль"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "_Запомнить пароль"
 
-#: app/AssistantOperation.vala:428
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -182,52 +175,52 @@ msgstr ""
 "ситуации, пожалуйста, снова введите пароль для доступа к зашифрованным "
 "данным, чтобы выполнить проверку на восстановление."
 
-#: app/AssistantOperation.vala:450
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Проверять каждые два _месяца"
 
-#: app/AssistantOperation.vala:481
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "_Разрешить доступ"
 
-#: app/AssistantOperation.vala:543
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Установить пакеты"
 
-#: app/AssistantOperation.vala:558
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Сводка"
 
-#: app/AssistantOperation.vala:580
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Проверка восстановления"
 
-#: app/AssistantOperation.vala:588
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "_Разрешить доступ"
 
-#: app/AssistantOperation.vala:797
+#: app/AssistantOperation.vala:750
 msgid "Set Encryption Password"
 msgstr "Установка пароля шифрования"
 
-#: app/AssistantOperation.vala:799
+#: app/AssistantOperation.vala:752
 msgid "Require Password?"
 msgstr "Хотите ли вы установить пароль?"
 
-#: app/AssistantOperation.vala:801
+#: app/AssistantOperation.vala:754
 msgid "Encryption Password Needed"
 msgstr "Требуется пароль шифрования"
 
-#: app/AssistantOperation.vala:848
+#: app/AssistantOperation.vala:801
 msgid "Backups needs your encryption password to continue"
 msgstr "Для продолжения резервного копирования необходим пароль шифрования"
 
-#: app/AssistantOperation.vala:922
+#: app/AssistantOperation.vala:875
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Установить"
 
-#: app/AssistantOperation.vala:927
+#: app/AssistantOperation.vala:880
 msgid "Backups needs to install packages to continue"
 msgstr "Для продолжения резервного копирования необходимо установить пакеты"
 
@@ -342,28 +335,32 @@ msgstr "Необходима аутентификация"
 msgid "No backup files found"
 msgstr "Резервных копий не обнаружено"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "_Автоматическое резервирование"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "Следующее резервное копирование - сегодня."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "Следующее резервное копирование было бы сегодня."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "Следующее резервное копирование - завтра."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "Следующее резервное копирование было бы завтра."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -372,7 +369,7 @@ msgstr[1] "Следующее резервное копирование чере
 msgstr[2] "Следующее резервное копирование через %d дней."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -404,45 +401,45 @@ msgstr[0] "Минимум %d день"
 msgstr[1] "Минимум %d дня"
 msgstr[2] "Минимум %d дней"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Выберите папки"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Добавить"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:74
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Диск"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:70
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Локальная папка"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Сетевой сервер"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Облачное хранилище Google"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Облачные файлы Rackspace"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -461,6 +458,10 @@ msgid_plural "Every %d days"
 msgstr[0] "Каждый %d день"
 msgstr[1] "Каждые %d дня"
 msgstr[2] "Каждые %d дней"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "Использовать _Restic вместо Duplicity"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -550,7 +551,7 @@ msgstr "Не показывать больше"
 msgid "Open Backups"
 msgstr "Открытые резервные копии"
 
-#: app/PreferencesWindow.vala:35
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
@@ -558,23 +559,23 @@ msgstr ""
 "Restic - это еще один инструмент резервного копирования, который можно "
 "использовать вместо Duplicity."
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr "Есть надежда, что в будущем Restic будет легче внедрять новые функции."
 
-#: app/PreferencesWindow.vala:38
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "Это экспериментальная функция, и она может быть удалена в любое время."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr ""
 "Будьте осторожны, но любое тестирование, с которым вы можете справиться, "
 "будет оценено по достоинству."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:42
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "Пожалуйста, укажите %sreport%s успехов или неудач при включении."
@@ -607,12 +608,12 @@ msgstr "Нет"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: app/TimeCombo.vala:80
+#: app/TimeCombo.vala:82
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: app/WidgetUtils.vala:16
+#: app/WidgetUtils.vala:15
 msgid "_OK"
 msgstr "_ОК"
 
@@ -636,7 +637,7 @@ msgstr "Пожалуйста, перечислите файлы для восс�
 msgid "An operation is already in progress"
 msgstr "Операция уже выполняется"
 
-#: app/main.vala:338
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -671,11 +672,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:444 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Резервные копии Déjà Dup"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Резервные копии"
 
@@ -1055,8 +1056,8 @@ msgstr "Менеджер резервного копирования"
 msgid "Schedules backups at regular intervals"
 msgstr "Производит резервное копирование через регулярные интервалы"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
-#: data/ui/MainHeaderBar.ui:51
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
+#: data/ui/MainHeaderBar.ui:45
 msgid "Search"
 msgstr "Поиск"
 
@@ -1097,10 +1098,6 @@ msgstr "_Введите пароль"
 msgid "Location"
 msgstr "Расположение"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "_Автоматическое резервирование"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Папки"
@@ -1109,7 +1106,11 @@ msgstr "Папки"
 msgid "Folders to Back Up"
 msgstr "Папки для резервного копирования"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "Эти папки всегда игнорируются:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Папки, которые следует игнорировать"
 
@@ -1124,54 +1125,53 @@ msgstr ""
 msgid "Remove"
 msgstr "Удалить"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "Место хранения"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Хранилище"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Папка"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "Восстановить доступ к учетной записи"
 
-#: data/ui/ConfigLocationGrid.ui:141
+#: data/ui/ConfigLocationGroup.ui:66
 msgid "Ser_ver Address"
 msgstr "Ад_рес сервера"
 
-#: data/ui/ExcludeHelpButton.ui:25
-msgid "These folders are always ignored:"
-msgstr "Эти папки всегда игнорируются:"
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_Расположение"
 
-#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
+#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
 msgid "Back"
 msgstr "Назад"
 
-#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
+#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
 msgid "Main Menu"
 msgstr "Главное Меню"
 
-#: data/ui/MainHeaderBar.ui:68
+#: data/ui/MainHeaderBar.ui:58
 msgid "_Select All"
 msgstr "Выделить вс_ё"
 
-#: data/ui/MainHeaderBar.ui:75
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Preferences"
 msgstr "_Параметры"
 
-#: data/ui/MainHeaderBar.ui:79
+#: data/ui/MainHeaderBar.ui:69
 msgid "_Keyboard Shortcuts"
 msgstr "_Горячие клавиши"
 
-#: data/ui/MainHeaderBar.ui:83
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Help"
 msgstr "_Справка"
 
-#: data/ui/MainHeaderBar.ui:87
+#: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
 msgstr "_Сведения о резервном копировании"
 
@@ -1183,27 +1183,27 @@ msgstr "Обзор"
 msgid "_Back Up Now"
 msgstr "_Сделать резервную копию сейчас"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "Продол_жить"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Общие"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Хранилище"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Расписание"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Расположение"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "_Частота атоматического резервного копирования"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "_Сохраняйте резервные копии"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1212,36 +1212,24 @@ msgstr ""
 "места, или храниться до трех месяцев дольше, чтобы избежать удаления "
 "связанных резервных копий."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Расписание"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "_Частота атоматического резервного копирования"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Лаборатории"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "Использовать _Restic вместо Duplicity"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Недавние резервные копии"
 
-#: data/ui/ServerHintPopover.ui:21
+#: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
 msgstr "Адреса серверов"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:33
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
@@ -1249,58 +1237,58 @@ msgstr ""
 "Адреса серверов состоят из префикса протокола, адреса и иногда пути, в "
 "зависимости от протокола. Примеры:"
 
-#: data/ui/ServerHintPopover.ui:59
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Доступные протоколы"
 
-#: data/ui/ServerHintPopover.ui:72
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:82
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "Протокол передачи файлов (FTP)"
 
-#: data/ui/ServerHintPopover.ui:92
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Сетевая файловая система (NFS)"
 
-#: data/ui/ServerHintPopover.ui:102
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:112
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "Протокол передачи файлов SSH"
 
-#: data/ui/ServerHintPopover.ui:122
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:132
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Префикс"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:155
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// или ftps://"
 
-#: data/ui/ServerHintPopover.ui:175
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:185
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// или ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:195
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// или davs://"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:15
 msgid "_Date"
 msgstr "_Дата"
 
@@ -1544,7 +1532,7 @@ msgid "Paused (no network)"
 msgstr "Приостановлено (нет сети)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:317
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
@@ -1695,11 +1683,11 @@ msgstr "Не удалось понять версию restic «%s»."
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
 msgid ""
-"Backups requires at least version %d.%d.%.2d of restic, but only found "
-"version %d.%d.%.2d"
+"Backups requires at least version %d.%d.%d of restic, but only found version "
+"%d.%d.%d"
 msgstr ""
-"Для резервного копирования требуется как минимум версия %d.%d.%.2d restic, "
-"но найдена только версия %d.%d.%.2d"
+"Для резервного копирования требуется как минимум версия %d.%d.%d restic, но "
+"найдена только версия %d.%d.%d"
 
 #: monitor/ReadyWatcher.vala:151
 msgid "Backup will begin when power saver mode is no longer active."
@@ -1713,6 +1701,15 @@ msgid ""
 msgstr ""
 "Резервное копирование начнется, когда будет доступно безлимитное сетевое "
 "соединение."
+
+#~ msgid "_Backup location"
+#~ msgstr "_Местоположение резервной копии"
+
+#~ msgid "_Allow restoring without a password"
+#~ msgstr "_Разрешить восстановление без пароля"
+
+#~ msgid "_Storage Location"
+#~ msgstr "Место хранения"
 
 #~ msgid "@icon@"
 #~ msgstr "@icon@"
