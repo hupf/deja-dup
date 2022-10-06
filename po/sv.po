@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-07-03 16:34+0000\n"
-"PO-Revision-Date: 2022-07-03 19:19+0200\n"
+"POT-Creation-Date: 2022-09-25 19:30+0000\n"
+"PO-Revision-Date: 2022-09-25 21:41+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -40,7 +40,7 @@ msgstr "_Bakåt"
 msgid "_Close"
 msgstr "_Stäng"
 
-#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "_Avbryt"
 
@@ -58,7 +58,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "Sä_kerhetskopiera"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -66,11 +66,11 @@ msgstr ""
 "Dessa mappar kan inte säkerhetskopieras för att Säkerhetskopior inte har "
 "åtkomst till dem:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Skapar första säkerhetskopian. Detta kan ta en stund."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -80,35 +80,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Säkerhetskopierar:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Säkerhetskopiering misslyckades"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Säkerhetskopian är färdig"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "Dina filer säkerhetskopierades och testades med lyckat resultat."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Säkerhetskopierar…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:880
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:833
 msgid "Backups needs your input to continue"
 msgstr "Säkerhetskopior kräver inmatning från dig för att fortsätta"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Säkerhetskopiering pågår"
 
@@ -116,11 +116,7 @@ msgstr "Säkerhetskopiering pågår"
 msgid "Restore From Where?"
 msgstr "Återställ från?"
 
-#: app/AssistantLocation.vala:20
-msgid "_Backup location"
-msgstr "_Plats för säkerhetskopior"
-
-#: app/AssistantLocation.vala:21
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "_Sök"
 
@@ -140,15 +136,8 @@ msgstr "_Detaljer"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "För att fortsätta måste följande paket installeras:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "_Tillåt återställning utan ett lösenord"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "_Lösenordsskydda din säkerhetskopia"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -156,21 +145,25 @@ msgstr ""
 "Du behöver ditt lösenord för att återställa dina filer. Du bör skriva ner "
 "lösenordet och spara det."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:442
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "_Lösenordsskydda din säkerhetskopia"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "Kr_ypteringslösenord"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "B_ekräfta lösenordet"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "_Kom ihåg lösenord"
 
-#: app/AssistantOperation.vala:428
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -180,52 +173,52 @@ msgstr ""
 "skriv ditt krypteringslösenord igen för att utföra ett snabbt "
 "återställningstest."
 
-#: app/AssistantOperation.vala:450
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Testa varannan _månad"
 
-#: app/AssistantOperation.vala:481
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "_Bevilja åtkomst"
 
-#: app/AssistantOperation.vala:543
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Installera paket"
 
-#: app/AssistantOperation.vala:558
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Sammandrag"
 
-#: app/AssistantOperation.vala:580
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Återställningstest"
 
-#: app/AssistantOperation.vala:588
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "Bevilja åtkomst"
 
-#: app/AssistantOperation.vala:797
+#: app/AssistantOperation.vala:750
 msgid "Set Encryption Password"
 msgstr "Ställ in krypteringslösenord"
 
-#: app/AssistantOperation.vala:799
+#: app/AssistantOperation.vala:752
 msgid "Require Password?"
 msgstr "Kräv lösenord?"
 
-#: app/AssistantOperation.vala:801
+#: app/AssistantOperation.vala:754
 msgid "Encryption Password Needed"
 msgstr "Krypteringslösenord krävs"
 
-#: app/AssistantOperation.vala:848
+#: app/AssistantOperation.vala:801
 msgid "Backups needs your encryption password to continue"
 msgstr "Säkerhetskopior behöver ditt krypteringslösenord för att fortsätta"
 
-#: app/AssistantOperation.vala:922
+#: app/AssistantOperation.vala:875
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installera"
 
-#: app/AssistantOperation.vala:927
+#: app/AssistantOperation.vala:880
 msgid "Backups needs to install packages to continue"
 msgstr "Säkerhetskopior behöver installera paket för att fortsätta"
 
@@ -338,28 +331,32 @@ msgstr "Autentisering krävs"
 msgid "No backup files found"
 msgstr "Inga säkerhetskopior hittades"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "Säkerhetskopiera _automatiskt"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "Nästa säkerhetskopiering sker i dag."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "Nästa säkerhetskopiering skulle vara i dag."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "Nästa säkerhetskopiering sker i morgon."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "Nästa säkerhetskopiering skulle vara i morgon."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -367,7 +364,7 @@ msgstr[0] "Nästa säkerhetskopiering sker om %d dag."
 msgstr[1] "Nästa säkerhetskopiering sker om %d dagar."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -397,45 +394,45 @@ msgid_plural "At least %d days"
 msgstr[0] "Minst %d dag"
 msgstr[1] "Minst %d dagar"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Välj mappar"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Lägg till"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:74
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:70
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Lokal mapp"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Nätverksserver"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Google Cloud-lagring"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -453,6 +450,10 @@ msgid "Every %d day"
 msgid_plural "Every %d days"
 msgstr[0] "%d dags intervall"
 msgstr[1] "%d dagars intervall"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "Använd _Restic i stället för Duplicity"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -541,31 +542,31 @@ msgstr "Visa inte igen"
 msgid "Open Backups"
 msgstr "Öppna Säkerhetskopior"
 
-#: app/PreferencesWindow.vala:35
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
 msgstr ""
 "Restic är ett annat säkerhetskopieringsverktyg som kan användas under huven "
-"istället för Duplicity."
+"i stället för Duplicity."
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr ""
 "Förhoppningen är att Restic kommer möjliggöra nya funktioner lättare i "
 "framtiden."
 
-#: app/PreferencesWindow.vala:38
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "Detta är en experimentell funktion och kan tas bort när som helst."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr "Använd med varsamhet, men allt testande som du kan utföra uppskattas."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:42
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr ""
@@ -599,12 +600,12 @@ msgstr "Ingen"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: app/TimeCombo.vala:80
+#: app/TimeCombo.vala:82
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
 
-#: app/WidgetUtils.vala:16
+#: app/WidgetUtils.vala:15
 msgid "_OK"
 msgstr "_OK"
 
@@ -628,7 +629,7 @@ msgstr "Lista filer att återställa"
 msgid "An operation is already in progress"
 msgstr "En operation pågår redan"
 
-#: app/main.vala:338
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -652,11 +653,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:444 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Säkerhetskopior"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Säkerhetskopior"
 
@@ -971,7 +972,7 @@ msgid ""
 "Support for local, remote, or cloud backup locations such as Google Drive"
 msgstr ""
 "Stöd för lokal placering samt fjärr- eller molnplatser för säkerhetskopior "
-"så som Google Drive"
+"såsom Google Drive"
 
 #: data/app.metainfo.xml.in:21
 msgid "Securely encrypts and compresses your data"
@@ -1034,8 +1035,8 @@ msgstr "Övervakning för säkerhetskopiering"
 msgid "Schedules backups at regular intervals"
 msgstr "Schemalägger säkerhetskopiering vid regelbundna intervaller"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
-#: data/ui/MainHeaderBar.ui:51
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
+#: data/ui/MainHeaderBar.ui:45
 msgid "Search"
 msgstr "Sök"
 
@@ -1076,10 +1077,6 @@ msgstr "_Ange lösenord"
 msgid "Location"
 msgstr "Plats"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "Säkerhetskopiera _automatiskt"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Mappar"
@@ -1088,7 +1085,11 @@ msgstr "Mappar"
 msgid "Folders to Back Up"
 msgstr "Mappar att säkerhetskopiera"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "Dessa mappar ignoreras alltid:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Mappar att ignorera"
 
@@ -1103,54 +1104,53 @@ msgstr ""
 msgid "Remove"
 msgstr "Ta bort"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "_Lagringsplats"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Lagring"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Mapp"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "Å_terställ kontoåtkomst"
 
-#: data/ui/ConfigLocationGrid.ui:141
+#: data/ui/ConfigLocationGroup.ui:66
 msgid "Ser_ver Address"
 msgstr "Ser_veradress"
 
-#: data/ui/ExcludeHelpButton.ui:25
-msgid "These folders are always ignored:"
-msgstr "Dessa mappar ignoreras alltid:"
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_Plats"
 
-#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
+#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
 msgid "Back"
 msgstr "Bakåt"
 
-#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
+#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: data/ui/MainHeaderBar.ui:68
+#: data/ui/MainHeaderBar.ui:58
 msgid "_Select All"
 msgstr "_Markera alla"
 
-#: data/ui/MainHeaderBar.ui:75
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Preferences"
 msgstr "_Inställningar"
 
-#: data/ui/MainHeaderBar.ui:79
+#: data/ui/MainHeaderBar.ui:69
 msgid "_Keyboard Shortcuts"
 msgstr "_Tangentbordsgenvägar"
 
-#: data/ui/MainHeaderBar.ui:83
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Help"
 msgstr "_Hjälp"
 
-#: data/ui/MainHeaderBar.ui:87
+#: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
 msgstr "_Om Säkerhetskopior"
 
@@ -1162,27 +1162,27 @@ msgstr "Översikt"
 msgid "_Back Up Now"
 msgstr "_Säkerhetskopiera nu"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "_Fortsätt"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Allmänt"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Lagring"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Schema"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Plats"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "_Frekvens för automatisk säkerhetskopiering"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "_Behåll säkerhetskopior"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1191,36 +1191,24 @@ msgstr ""
 "får ont om utrymme eller behållas upp till tre månader längre för att "
 "undvika att relaterade säkerhetskopior tas bort."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Schema"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "_Frekvens för automatisk säkerhetskopiering"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Laboratorium"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "Använd _Restic istället för Duplicity"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Senaste säkerhetskopian"
 
-#: data/ui/ServerHintPopover.ui:21
+#: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
 msgstr "Serveradresser"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:33
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
@@ -1228,58 +1216,58 @@ msgstr ""
 "Serveradresser består av ett protokollprefix, en adress och ibland en "
 "sökväg, beroende på protokollet. Exempel:"
 
-#: data/ui/ServerHintPopover.ui:59
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Tillgängliga protokoll"
 
-#: data/ui/ServerHintPopover.ui:72
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:82
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "Filöverföringsprotokoll (FTP)"
 
-#: data/ui/ServerHintPopover.ui:92
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Nätverksfilsystem"
 
-#: data/ui/ServerHintPopover.ui:102
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:112
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "SSH-filöverföringsprotokoll"
 
-#: data/ui/ServerHintPopover.ui:122
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:132
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Prefix"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:155
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// eller ftps://"
 
-#: data/ui/ServerHintPopover.ui:175
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:185
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// eller ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:195
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// eller davs://"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:15
 msgid "_Date"
 msgstr "_Datum"
 
@@ -1523,7 +1511,7 @@ msgid "Paused (no network)"
 msgstr "Pausad (inget nätverk)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:317
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
@@ -1672,11 +1660,11 @@ msgstr "Kunde inte förstå duplicity-versionen ”%s”."
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
 msgid ""
-"Backups requires at least version %d.%d.%.2d of restic, but only found "
-"version %d.%d.%.2d"
+"Backups requires at least version %d.%d.%d of restic, but only found version "
+"%d.%d.%d"
 msgstr ""
-"Säkerhetskopior kräver minst version %d.%d.%.2d av restic, men hittade "
-"endast version %d.%d.%.2d"
+"Säkerhetskopior kräver minst version %d.%d.%d av restic, men hittade endast "
+"version %d.%d.%d"
 
 #: monitor/ReadyWatcher.vala:151
 msgid "Backup will begin when power saver mode is no longer active."
@@ -1688,6 +1676,15 @@ msgid ""
 msgstr ""
 "Säkerhetskopiering startar när en nätverksanslutning utan datakostnader blir "
 "tillgänglig."
+
+#~ msgid "_Backup location"
+#~ msgstr "_Plats för säkerhetskopior"
+
+#~ msgid "_Allow restoring without a password"
+#~ msgstr "_Tillåt återställning utan ett lösenord"
+
+#~ msgid "_Storage Location"
+#~ msgstr "_Lagringsplats"
 
 #~ msgid "@icon@"
 #~ msgstr "@icon@"
