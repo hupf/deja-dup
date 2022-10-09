@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Note that you need to be running under X11 for these tests to work
+
 EXISTING=$(ps x -o pid,cmd | grep deja-dup | sed 's/^ *\([0-9]\+\).*/\1/')
 if [ -n "$EXISTING" ]; then
   kill -9 $EXISTING 2>/dev/null
@@ -81,4 +83,4 @@ fi
 # Dogtail requires this
 gsettings set org.gnome.desktop.interface toolkit-accessibility true
 
-exec pytest-3 $*
+exec python3 -m pytest $*
