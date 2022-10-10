@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-06-10 02:31+0000\n"
-"PO-Revision-Date: 2022-06-12 09:56+0200\n"
+"POT-Creation-Date: 2022-09-25 19:30+0000\n"
+"PO-Revision-Date: 2022-09-29 20:54+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -43,7 +43,7 @@ msgstr "_Zurück"
 msgid "_Close"
 msgstr "S_chließen"
 
-#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "Abbre_chen"
 
@@ -61,7 +61,7 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_Sichern"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
@@ -70,12 +70,12 @@ msgstr ""
 "nicht auf sie zugreifen darf:"
 
 # Muss das gesperrte Leerzeichen aus dem Original auch in die Übersetzung? - jb
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Die erste Sicherung wird erstellt. Das kann eine Weile dauern."
 
 # Auch hier: Ein gesperrtes Leerzeichen zwischen den Sätzen im Original.
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -85,35 +85,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "Sicherung läuft:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "Datensicherung fehlgeschlagen"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "Datensicherung beendet"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "Ihre Dateien wurden erfolgreich gesichert und überprüft."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "Sicherung läuft …"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:880
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:833
 msgid "Backups needs your input to continue"
 msgstr "Datensicherungen benötigt Ihre Eingabe, um fortzufahren"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "Datensicherung läuft"
 
@@ -121,11 +121,7 @@ msgstr "Datensicherung läuft"
 msgid "Restore From Where?"
 msgstr "Von welchem Ort wiederherstellen?"
 
-#: app/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "_Ort der Datensicherung"
-
-#: app/AssistantLocation.vala:22
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "_Suchen"
 
@@ -145,15 +141,8 @@ msgstr "_Details"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Zum Fortfahren müssen die folgenden Pakete installiert werden:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "Wiederherstellung ohne Passwort _erlauben"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "Datensicherung mit _Passwort verschlüsseln"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
@@ -161,21 +150,25 @@ msgstr ""
 "Sie werden Ihr Passwort benötigen, um Ihre Dateien wiederherstellen zu "
 "können. Daher wird Ihnen empfohlen, es aufzuschreiben."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:442
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "Datensicherung mit _Passwort verschlüsseln"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "Passwort zum Verschlüssel_n"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "Passwort _bestätigen"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "Passwort _merken"
 
-#: app/AssistantOperation.vala:428
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -185,53 +178,53 @@ msgstr ""
 "Sie bitte Ihr Verschlüsselungspasswort erneut ein, um einen kurzen "
 "Wiederherstellungstest durchzuführen."
 
-#: app/AssistantOperation.vala:450
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "Alle zwei _Monate überprüfen"
 
-#: app/AssistantOperation.vala:481
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "_Zugriff gewähren"
 
-#: app/AssistantOperation.vala:543
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "Pakete installieren"
 
-#: app/AssistantOperation.vala:558
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "Zusammenfassung"
 
-#: app/AssistantOperation.vala:580
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "Wiederherstellungstest"
 
-#: app/AssistantOperation.vala:588
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "Zugriff gewähren"
 
-#: app/AssistantOperation.vala:797
+#: app/AssistantOperation.vala:750
 msgid "Set Encryption Password"
 msgstr "Verschlüsselungspasswort festlegen"
 
-#: app/AssistantOperation.vala:799
+#: app/AssistantOperation.vala:752
 msgid "Require Password?"
 msgstr "Passwort verlangen?"
 
-#: app/AssistantOperation.vala:801
+#: app/AssistantOperation.vala:754
 msgid "Encryption Password Needed"
 msgstr "Verschlüsselungspasswort erforderlich"
 
-#: app/AssistantOperation.vala:848
+#: app/AssistantOperation.vala:801
 msgid "Backups needs your encryption password to continue"
 msgstr ""
 "Datensicherungen benötigt Ihr Verschlüsselungspasswort, um fortzufahren"
 
-#: app/AssistantOperation.vala:922
+#: app/AssistantOperation.vala:875
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installieren"
 
-#: app/AssistantOperation.vala:927
+#: app/AssistantOperation.vala:880
 msgid "Backups needs to install packages to continue"
 msgstr "Datensicherungen muss Software installieren, um fortzufahren"
 
@@ -261,76 +254,76 @@ msgstr ""
 "Datensicherungen fehlt die Berechtigung, um die folgenden Dateien "
 "wiederherstellen zu können:"
 
-#: app/AssistantRestore.vala:251
+#: app/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "Ort der Datensicherung"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:266
+#: app/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "Wiederherstellungsdatum"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:275
+#: app/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "Ordner der Wiederherstellung"
 
-#: app/AssistantRestore.vala:299
+#: app/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "Auf Sicherungen wird geprüft …"
 
-#: app/AssistantRestore.vala:307
+#: app/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "Von wann wiederherstellen?"
 
-#: app/AssistantRestore.vala:318
+#: app/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "Wohin soll die Datensicherung wiederhergestellt werden?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:351
+#: app/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "Wiederherstellung läuft:"
 
-#: app/AssistantRestore.vala:363
+#: app/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "Keine Datensicherungen zur Wiederherstellung gefunden"
 
-#: app/AssistantRestore.vala:446
+#: app/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "Ursprünglicher Ort"
 
-#: app/AssistantRestore.vala:460
+#: app/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datei, die wiederhergestellt werden soll"
 msgstr[1] "Dateien, die wiederhergestellt werden sollen"
 
-#: app/AssistantRestore.vala:485
+#: app/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "Wiederherstellung fehlgeschlagen"
 
-#: app/AssistantRestore.vala:487
+#: app/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "Wiederherstellung abgeschlossen"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:490
+#: app/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: app/AssistantRestore.vala:493
+#: app/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Ihre Datei wurde erfolgreich wiederhergestellt."
 msgstr[1] "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Datenwiederherstellung …"
 
-#: app/AssistantRestore.vala:570
+#: app/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "Wiederherstellung läuft"
 
@@ -346,28 +339,32 @@ msgstr "Authentifizierung nötig"
 msgid "No backup files found"
 msgstr "Keine Datensicherungsdateien gefunden"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "_Automatisch sichern"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "Nächste Datensicherung ist heute."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "Die nächste Datensicherung wäre heute."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "Nächste Datensicherung ist morgen."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "Die nächste Datensicherung wäre morgen."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -375,7 +372,7 @@ msgstr[0] "Nächste Datensicherung ist in %d Tag."
 msgstr[1] "Nächste Datensicherung ist in %d Tagen."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -405,45 +402,45 @@ msgid_plural "At least %d days"
 msgstr[0] "Mindestens %d Tag"
 msgstr[1] "Mindestens %d Tage"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "Ordner auswählen"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "Hinzufügen"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:74
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:70
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "Lokaler Ordner"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "Netzwerkserver"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "Google Cloud Storage"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "Rackspace Cloud Files"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -461,6 +458,10 @@ msgid "Every %d day"
 msgid_plural "Every %d days"
 msgstr[0] "Jeden %d Tag"
 msgstr[1] "Alle %d Tage"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "»_Restic« statt »Duplicity« nutzen"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -551,7 +552,7 @@ msgid "Open Backups"
 msgstr "Datensicherungen öffnen"
 
 # Vom Duden bevorzugte Schreibweise.
-#: app/PreferencesWindow.vala:35
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
@@ -559,24 +560,24 @@ msgstr ""
 "Restic ist ein alternatives Sicherungswerkzeug, das anstelle von »Duplicity« "
 "im Hintergrund verwendet werden kann."
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr ""
 "Man hofft, dass »Restic« in Zukunft neue Funktionen einfacher ermöglicht."
 
-#: app/PreferencesWindow.vala:38
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr ""
 "Das ist eine experimentelle Funktion und sie kann jederzeit entfernt werden."
 
 # Das klingt komisch, sowohl auf Deutsch als auch im Original. - jb
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr "Seien Sie vorsichtig. All Ihr Testen wird dankend angenommen."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:42
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "Bitte %smelden%s Sie Erfolg und Misserfolg bei Aktivierung."
@@ -608,10 +609,14 @@ msgstr "Keine"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: app/TimeCombo.vala:80
+#: app/TimeCombo.vala:82
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
+
+#: app/WidgetUtils.vala:15
+msgid "_OK"
+msgstr "_OK"
 
 #: app/main.vala:22 monitor/monitor.vala:19
 msgid "Show version"
@@ -634,7 +639,7 @@ msgid "An operation is already in progress"
 msgstr "Ein Vorgang läuft bereits"
 
 # Rein aus Neugier: Warum laufen bei einer GNOME Circle-App alle Übersetzungen über launchpad? - jb
-#: app/main.vala:338
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -694,11 +699,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:444 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Datensicherungen"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Datensicherungen"
 
@@ -712,7 +717,7 @@ msgstr "Schützen Sie sich vor Datenverlust"
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;backup;Datensicherung;Sicherung;"
 
-#: data/app.desktop.in:34
+#: data/app.desktop.in:35
 msgid "Back Up"
 msgstr "Sichern"
 
@@ -1083,8 +1088,8 @@ msgstr "Datensicherungsüberwachung"
 msgid "Schedules backups at regular intervals"
 msgstr "Plant Sicherungen in regelmäßigen Abständen"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
-#: data/ui/MainHeaderBar.ui:51
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
+#: data/ui/MainHeaderBar.ui:45
 msgid "Search"
 msgstr "Suche"
 
@@ -1125,10 +1130,6 @@ msgstr "Passwort _eingeben"
 msgid "Location"
 msgstr "Ort"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "_Automatisch sichern"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "Ordner"
@@ -1137,7 +1138,11 @@ msgstr "Ordner"
 msgid "Folders to Back Up"
 msgstr "Zu sichernde Ordner"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "Diese Ordner werden immer ignoriert:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "Zu ignorierende Ordner"
 
@@ -1152,54 +1157,53 @@ msgstr ""
 msgid "Remove"
 msgstr "Entfernen"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "_Speicherort"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "Speicher"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Ordner"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "Kontozugriff zu_rücksetzen"
 
-#: data/ui/ConfigLocationGrid.ui:141
+#: data/ui/ConfigLocationGroup.ui:66
 msgid "Ser_ver Address"
 msgstr "Ser_ver-Adresse"
 
-#: data/ui/ExcludeHelpButton.ui:25
-msgid "These folders are always ignored:"
-msgstr "Diese Ordner werden immer ignoriert:"
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_Ort"
 
-#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
+#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
 msgid "Back"
 msgstr "Zurück"
 
-#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
+#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: data/ui/MainHeaderBar.ui:68
+#: data/ui/MainHeaderBar.ui:58
 msgid "_Select All"
 msgstr "Alles au_swählen"
 
-#: data/ui/MainHeaderBar.ui:75
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Preferences"
 msgstr "_Einstellungen"
 
-#: data/ui/MainHeaderBar.ui:79
+#: data/ui/MainHeaderBar.ui:69
 msgid "_Keyboard Shortcuts"
 msgstr "_Tastenkürzel"
 
-#: data/ui/MainHeaderBar.ui:83
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Help"
 msgstr "_Hilfe"
 
-#: data/ui/MainHeaderBar.ui:87
+#: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
 msgstr "_Infos zur Datensicherung"
 
@@ -1211,27 +1215,27 @@ msgstr "Übersicht"
 msgid "_Back Up Now"
 msgstr "_Jetzt sichern"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "Fort_fahren"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "Allgemein"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "Speicher"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "Zeitplan"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_Ort"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "_Häufigkeit automatischer Datensicherungen"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "Datensicherungen _behalten"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1240,36 +1244,24 @@ msgstr ""
 "Zielort wenig Speicherplatz verfügbar steht. Oder sie werden drei Monate "
 "länger aufbewahrt, um das Löschen zugehöriger Sicherungen zu vermeiden."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "Zeitplan"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "_Häufigkeit automatischer Datensicherungen"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "Labore"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "»_Restic« statt »Duplicity« nutzen"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Aktuellste Datensicherung"
 
-#: data/ui/ServerHintPopover.ui:21
+#: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
 msgstr "Die Server-Adresse"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:33
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
@@ -1277,58 +1269,58 @@ msgstr ""
 "Server-Adressen bestehen aus einem Protokollpräfix, einer Adresse und "
 "manchmal einem Pfad, je nach Protokoll. Beispiele:"
 
-#: data/ui/ServerHintPopover.ui:59
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "Verfügbare Protokolle"
 
-#: data/ui/ServerHintPopover.ui:72
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:82
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "File Transfer Protocol (Dateiübertragungsprotokoll)"
 
-#: data/ui/ServerHintPopover.ui:92
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "Network File System (NFS)"
 
-#: data/ui/ServerHintPopover.ui:102
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:112
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "SSH File Transfer Protocol (SFTP)"
 
-#: data/ui/ServerHintPopover.ui:122
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:132
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "Präfix"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:155
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp:// oder ftps://"
 
-#: data/ui/ServerHintPopover.ui:175
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:185
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp:// oder ssh://"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:195
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav:// oder davs://"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:15
 msgid "_Date"
 msgstr "_Datum"
 
@@ -1336,11 +1328,11 @@ msgstr "_Datum"
 msgid "Welcome to Backups"
 msgstr "Willkommen zu Datensicherungen"
 
-#: data/ui/WelcomePage.ui:35
+#: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
 msgstr "Ihre erste _Datensicherung anlegen"
 
-#: data/ui/WelcomePage.ui:52
+#: data/ui/WelcomePage.ui:57
 msgid "_Restore From a Previous Backup"
 msgstr "Aus einer vorherigen Datensicherung _wiederherstellen"
 
@@ -1577,7 +1569,7 @@ msgid "Paused (no network)"
 msgstr "Angehalten (keine Netzwerkverbindung)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:320
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
@@ -1730,11 +1722,11 @@ msgstr "restic-Version »%s« wurde nicht erkannt."
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
 msgid ""
-"Backups requires at least version %d.%d.%.2d of restic, but only found "
-"version %d.%d.%.2d"
+"Backups requires at least version %d.%d.%d of restic, but only found version "
+"%d.%d.%d"
 msgstr ""
-"Datensicherung benötigt mindestens Version %d.%d.%.2d von restic, es wurde "
-"aber nur Version %d.%d.%.2d gefunden"
+"Datensicherung benötigt mindestens Version %d.%d.%d von restic, es wurde "
+"aber nur Version %d.%d.%d gefunden"
 
 #: monitor/ReadyWatcher.vala:151
 msgid "Backup will begin when power saver mode is no longer active."
@@ -1748,6 +1740,15 @@ msgid ""
 msgstr ""
 "Die Datensicherung wird durchgeführt, sobald eine ungetaktete Verbindung "
 "verfügbar ist."
+
+#~ msgid "_Backup location"
+#~ msgstr "_Ort der Datensicherung"
+
+#~ msgid "_Allow restoring without a password"
+#~ msgstr "Wiederherstellung ohne Passwort _erlauben"
+
+#~ msgid "_Storage Location"
+#~ msgstr "_Speicherort"
 
 #~ msgid "@icon@"
 #~ msgstr "@icon@"
@@ -1848,9 +1849,6 @@ msgstr ""
 
 #~ msgid "_Add"
 #~ msgstr "_Hinzufügen"
-
-#~ msgid "_OK"
-#~ msgstr "_OK"
 
 #~ msgid "S_how password"
 #~ msgstr "Passwort an_zeigen"
