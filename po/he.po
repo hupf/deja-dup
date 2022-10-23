@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-06-10 02:31+0000\n"
-"PO-Revision-Date: 2022-06-16 11:52+0300\n"
+"POT-Creation-Date: 2022-09-25 19:30+0000\n"
+"PO-Revision-Date: 2022-10-23 20:15+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
 "Language-Team: Hebrew <>\n"
 "Language: he\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
 "2 : 3)\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Gtranslator 40.0\n"
+"X-Generator: Gtranslator 42.0\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -42,7 +42,7 @@ msgstr "_חזרה"
 msgid "_Close"
 msgstr "ס_גירה"
 
-#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:15
+#: app/Assistant.vala:340 data/ui/PassphraseDialog.ui:16
 msgid "_Cancel"
 msgstr "_ביטול"
 
@@ -60,17 +60,17 @@ msgctxt "back up is verb"
 msgid "_Back Up"
 msgstr "_גיבוי"
 
-#: app/AssistantBackup.vala:64
+#: app/AssistantBackup.vala:67
 msgid ""
 "The following folders cannot be backed up because Backups does not have "
 "access to them:"
 msgstr "התיקיות הבאות לא ניתנות לגיבוי כיוון שלגיבויים אין גישה אליהן:"
 
-#: app/AssistantBackup.vala:80
+#: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "הגיבוי הראשון נוצר. פעולה זו עלולה לארוך זמן מה."
 
-#: app/AssistantBackup.vala:81
+#: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
 "take longer than normal."
@@ -79,35 +79,35 @@ msgstr ""
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
-#: app/AssistantBackup.vala:96
+#: app/AssistantBackup.vala:99
 msgid "Backing up:"
 msgstr "מתבצע גיבוי:"
 
-#: app/AssistantBackup.vala:105
+#: app/AssistantBackup.vala:108
 msgid "Backup Failed"
 msgstr "הגיבוי נכשל"
 
-#: app/AssistantBackup.vala:108
+#: app/AssistantBackup.vala:111
 msgid "Backup Finished"
 msgstr "הגיבוי הושלם"
 
 #. Also leave ourselves up if we just finished a restore test.
-#: app/AssistantBackup.vala:112
+#: app/AssistantBackup.vala:115
 msgid "Your files were successfully backed up and tested."
 msgstr "הקבצים שלך גובו ונבדקו."
 
-#: app/AssistantBackup.vala:119
+#: app/AssistantBackup.vala:122
 msgid "Backing Up…"
 msgstr "מתבצע גיבוי…"
 
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:125 app/AssistantOperation.vala:880
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:833
 msgid "Backups needs your input to continue"
 msgstr "גיבויים צריך את הקלט שלך להמשך"
 
-#: app/AssistantBackup.vala:146
+#: app/AssistantBackup.vala:149
 msgid "Backup in progress"
 msgstr "מתבצע גיבוי"
 
@@ -115,11 +115,7 @@ msgstr "מתבצע גיבוי"
 msgid "Restore From Where?"
 msgstr "מהיכן לשחזר?"
 
-#: app/AssistantLocation.vala:21
-msgid "_Backup location"
-msgstr "_מיקום הגיבוי"
-
-#: app/AssistantLocation.vala:22
+#: app/AssistantLocation.vala:25
 msgid "_Search"
 msgstr "_חיפוש"
 
@@ -139,35 +135,32 @@ msgstr "_פרטים"
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "כדי להמשיך, יש להתקין את החבילות הבאות:"
 
+#. always default to encrypted
 #: app/AssistantOperation.vala:346
-msgid "_Allow restoring without a password"
-msgstr "ל_אפשר שחזור ללא ססמה"
-
-#: app/AssistantOperation.vala:351
-msgid "_Password-protect your backup"
-msgstr "ה_גנה על הגיבוי שלך בססמה"
-
-#: app/AssistantOperation.vala:364
 msgid ""
 "You will need your password to restore your files. You might want to write "
 "it down."
 msgstr "לשם שחזור הקבצים שלך תידרש לך ססמה. עדיף לך לכתוב אותה."
 
-#: app/AssistantOperation.vala:380 app/AssistantOperation.vala:442
-#: data/ui/PassphraseDialog.ui:49
+#: app/AssistantOperation.vala:347
+msgid "_Password-protect your backup"
+msgstr "ה_גנה על הגיבוי שלך בססמה"
+
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:396
+#: data/ui/PassphraseDialog.ui:48
 msgid "E_ncryption password"
 msgstr "ססמת הה_צפנה"
 
-#: app/AssistantOperation.vala:396
+#: app/AssistantOperation.vala:362
 msgid "Confir_m password"
 msgstr "אי_שור הססמה"
 
-#: app/AssistantOperation.vala:408 app/MountOperationAssistant.vala:25
-#: data/ui/PassphraseDialog.ui:71
+#: app/AssistantOperation.vala:369 app/MountOperationAssistant.vala:25
+#: data/ui/PassphraseDialog.ui:53
 msgid "_Remember password"
 msgstr "_שמירת הססמה"
 
-#: app/AssistantOperation.vala:428
+#: app/AssistantOperation.vala:384
 msgid ""
 "In order to check that you will be able to retrieve your files in the case "
 "of an emergency, please enter your encryption password again to perform a "
@@ -176,52 +169,52 @@ msgstr ""
 "כדי לבדוק שתהיה לך אפשרות לקבל את הקבצים שלך במקרה חירום, נא להזין את הססמה "
 "שלך שוב כדי לבצע בדיקת שחזור זריזה."
 
-#: app/AssistantOperation.vala:450
+#: app/AssistantOperation.vala:402
 msgid "Test every two _months"
 msgstr "לבדוק כל _חודשיים"
 
-#: app/AssistantOperation.vala:481
+#: app/AssistantOperation.vala:429
 msgid "_Grant Access"
 msgstr "ה_ענקת גישה"
 
-#: app/AssistantOperation.vala:543
+#: app/AssistantOperation.vala:491
 msgid "Install Packages"
 msgstr "התקנת חבילות"
 
-#: app/AssistantOperation.vala:558
+#: app/AssistantOperation.vala:506
 msgid "Summary"
 msgstr "סיכום"
 
-#: app/AssistantOperation.vala:580
+#: app/AssistantOperation.vala:528
 msgid "Restore Test"
 msgstr "בדיקת שחזור"
 
-#: app/AssistantOperation.vala:588
+#: app/AssistantOperation.vala:536
 msgid "Grant Access"
 msgstr "הענקת גישה"
 
-#: app/AssistantOperation.vala:797
+#: app/AssistantOperation.vala:750
 msgid "Set Encryption Password"
 msgstr "הגדרת ססמת הצפנה"
 
-#: app/AssistantOperation.vala:799
+#: app/AssistantOperation.vala:752
 msgid "Require Password?"
 msgstr "האם דרושה ססמה?"
 
-#: app/AssistantOperation.vala:801
+#: app/AssistantOperation.vala:754
 msgid "Encryption Password Needed"
 msgstr "נדרשת ססמת הצפנה"
 
-#: app/AssistantOperation.vala:848
+#: app/AssistantOperation.vala:801
 msgid "Backups needs your encryption password to continue"
 msgstr "גיבויים צריך את ססמת ההצפנה שלך על מנת להמשיך"
 
-#: app/AssistantOperation.vala:922
+#: app/AssistantOperation.vala:875
 msgctxt "verb"
 msgid "_Install"
 msgstr "ה_תקנה"
 
-#: app/AssistantOperation.vala:927
+#: app/AssistantOperation.vala:880
 msgid "Backups needs to install packages to continue"
 msgstr "גיבויים צריך להתקין חבילות על מנת להמשיך"
 
@@ -249,47 +242,47 @@ msgstr "שחזור לתיקייה מו_גדרת:"
 msgid "Backups does not have permission to restore the following files:"
 msgstr "לגיבויים אין את ההרשאות המתאימות לשחזור הקבצים הבאים:"
 
-#: app/AssistantRestore.vala:251
+#: app/AssistantRestore.vala:250
 msgid "Backup location"
 msgstr "מיקום הגיבוי"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:266
+#: app/AssistantRestore.vala:265
 msgid "Restore date"
 msgstr "תאריך השחזור"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:275
+#: app/AssistantRestore.vala:274
 msgid "Restore folder"
 msgstr "תיקיית השחזור"
 
-#: app/AssistantRestore.vala:299
+#: app/AssistantRestore.vala:298
 msgid "Checking for Backups…"
 msgstr "מתבצע חיפוש אחר גיבויים…"
 
-#: app/AssistantRestore.vala:307
+#: app/AssistantRestore.vala:306
 msgid "Restore From When?"
 msgstr "ממתי לשחזר?"
 
-#: app/AssistantRestore.vala:318
+#: app/AssistantRestore.vala:317
 msgid "Restore to Where?"
 msgstr "להיכן לשחזר?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:351
+#: app/AssistantRestore.vala:350
 msgid "Restoring:"
 msgstr "בשחזור:"
 
-#: app/AssistantRestore.vala:363
+#: app/AssistantRestore.vala:362
 msgid "No backups to restore"
 msgstr "אין גיבויים לשחזור"
 
-#: app/AssistantRestore.vala:446
+#: app/AssistantRestore.vala:445
 msgid "Original location"
 msgstr "המיקום המקורי"
 
-#: app/AssistantRestore.vala:460
+#: app/AssistantRestore.vala:459
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "קובץ לשחזור"
@@ -297,20 +290,20 @@ msgstr[1] "קבצים לשחזור"
 msgstr[2] "קבצים לשחזור"
 msgstr[3] "קבצים לשחזור"
 
-#: app/AssistantRestore.vala:485
+#: app/AssistantRestore.vala:484
 msgid "Restore Failed"
 msgstr "השחזור נכשל"
 
-#: app/AssistantRestore.vala:487
+#: app/AssistantRestore.vala:486
 msgid "Restore Finished"
 msgstr "השחזור הושלם"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:490
+#: app/AssistantRestore.vala:489
 msgid "Your files were successfully restored."
 msgstr "הקבצים שלך שוחזרו בהצלחה."
 
-#: app/AssistantRestore.vala:493
+#: app/AssistantRestore.vala:492
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "הקובץ שלך שוחזר בהצלחה."
@@ -318,11 +311,11 @@ msgstr[1] "הקבצים שלך שוחזרו בהצלחה."
 msgstr[2] "הקבצים שלך שוחזרו בהצלחה."
 msgstr[3] "הקבצים שלך שוחזרו בהצלחה."
 
-#: app/AssistantRestore.vala:500 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:499 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "מתבצע שחזור…"
 
-#: app/AssistantRestore.vala:570
+#: app/AssistantRestore.vala:569
 msgid "Restore in progress"
 msgstr "מתבצע שחזור"
 
@@ -338,28 +331,32 @@ msgstr "נדרש אימות"
 msgid "No backup files found"
 msgstr "לא נמצאו קובצי גיבוי"
 
+#: app/ConfigAutoBackupRow.vala:21
+msgid "Back Up _Automatically"
+msgstr "גיבוי _אוטומטי"
+
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:34
+#: app/ConfigAutoBackupRow.vala:37
 msgid "Next backup is today."
 msgstr "הגיבוי הבא הוא היום."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:36
+#: app/ConfigAutoBackupRow.vala:39
 msgid "Next backup would be today."
 msgstr "הגיבוי הבא יהיה היום."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:43
+#: app/ConfigAutoBackupRow.vala:46
 msgid "Next backup is tomorrow."
 msgstr "הגיבוי הבא הוא מחר."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:45
+#: app/ConfigAutoBackupRow.vala:48
 msgid "Next backup would be tomorrow."
 msgstr "הגיבוי הבא יהיה מחר."
 
 #. Translators: this is used when automatic updates are enabled
-#: app/ConfigAutoBackupRow.vala:53
+#: app/ConfigAutoBackupRow.vala:56
 #, c-format
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
@@ -369,7 +366,7 @@ msgstr[2] "הגיבוי הבא בעוד %d ימים מעכשיו."
 msgstr[3] "הגיבוי הבא בעוד %d ימים מעכשיו."
 
 #. Translators: this is used when automatic updates are disabled
-#: app/ConfigAutoBackupRow.vala:58
+#: app/ConfigAutoBackupRow.vala:61
 #, c-format
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
@@ -403,45 +400,45 @@ msgstr[1] "לפחות יומיים"
 msgstr[2] "לפחות %d ימים"
 msgstr[3] "לפחות %d ימים"
 
-#: app/ConfigFolderList.vala:63
+#: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
 msgstr "בחירת תיקייות"
 
-#: app/ConfigFolderList.vala:66 data/ui/ConfigFolderList.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
 msgid "Add"
 msgstr "הוספה"
 
 #. *** Basic entries ***
-#: app/ConfigLocationCombo.vala:59 libdeja/BackendGoogle.vala:74
+#: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
 msgstr "Google Drive"
 
-#: app/ConfigLocationCombo.vala:61 libdeja/BackendMicrosoft.vala:70
+#: app/ConfigLocationRow.vala:54 libdeja/BackendMicrosoft.vala:70
 msgid "Microsoft OneDrive"
 msgstr "Microsoft OneDrive"
 
-#: app/ConfigLocationCombo.vala:63
+#: app/ConfigLocationRow.vala:56
 msgid "Local Folder"
 msgstr "תיקייה מקומית"
 
-#: app/ConfigLocationCombo.vala:65
+#: app/ConfigLocationRow.vala:58
 msgid "Network Server"
 msgstr "שרת ברשת"
 
 #. *** Old deprecated cloud entries, kept just for a kinder migration ***
-#: app/ConfigLocationCombo.vala:70
+#: app/ConfigLocationRow.vala:63
 msgid "Google Cloud Storage"
 msgstr "אחסון ב־Google Cloud"
 
-#: app/ConfigLocationCombo.vala:72
+#: app/ConfigLocationRow.vala:65
 msgid "OpenStack Swift"
 msgstr "OpenStack Swift"
 
-#: app/ConfigLocationCombo.vala:74
+#: app/ConfigLocationRow.vala:67
 msgid "Rackspace Cloud Files"
 msgstr "קבצים בענן של Rackspace"
 
-#: app/ConfigLocationCombo.vala:76
+#: app/ConfigLocationRow.vala:69
 msgid "Amazon S3"
 msgstr "Amazon S3"
 
@@ -461,6 +458,10 @@ msgstr[0] "מדי יום"
 msgstr[1] "מדי יומיים"
 msgstr[2] "מדי %d ימים"
 msgstr[3] "מדי %d ימים"
+
+#: app/ConfigResticRow.vala:12
+msgid "Use _Restic instead of Duplicity"
+msgstr "להשתמש ב־Restic _במקום ב־Duplicity"
 
 #: app/FolderChooserButton.vala:18
 msgid "_Choose Folder…"
@@ -548,28 +549,28 @@ msgstr "לא להציג שוב"
 msgid "Open Backups"
 msgstr "פתיחת גיבויים"
 
-#: app/PreferencesWindow.vala:35
+#: app/PreferencesWindow.vala:28
 msgid ""
 "Restic is a another backup tool that can be used under the hood instead of "
 "Duplicity."
 msgstr ""
 "‫Restic הוא כלי גיבוי נוסף שניתן להשתמש בו מתחת למכסה המנוע במקום Duplicity."
 
-#: app/PreferencesWindow.vala:36
+#: app/PreferencesWindow.vala:29
 msgid ""
 "It is hoped that Restic will enable new features more easily in the future."
 msgstr "התקווה היא ש־Restic יאפשר יכולות חדשות בקלות יתרה בעתיד."
 
-#: app/PreferencesWindow.vala:38
+#: app/PreferencesWindow.vala:31
 msgid "This is an experimental feature and may be removed at any time."
 msgstr "זו יכולת ניסיונית ועשויה להפסיק להיות זמינה בכל עת."
 
-#: app/PreferencesWindow.vala:39
+#: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
 msgstr "להשתמש בזהירות, אך כל בדיקה שיש לך אפשרות לערוך היא נהדרת."
 
 #. Translators: the %s formatting is a link start and end.
-#: app/PreferencesWindow.vala:42
+#: app/PreferencesWindow.vala:35
 #, c-format
 msgid "Please %sreport%s successes or failures when enabled."
 msgstr "נא %sלדווח%s על הצלחות או כשלים כשזה פעיל."
@@ -603,10 +604,14 @@ msgstr "אין"
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
 #. sense in that context.
-#: app/TimeCombo.vala:80
+#: app/TimeCombo.vala:82
 #, c-format
 msgid "%x %X"
 msgstr "%x %X"
+
+#: app/WidgetUtils.vala:15
+msgid "_OK"
+msgstr "_אישור"
 
 #: app/main.vala:22 monitor/monitor.vala:19
 msgid "Show version"
@@ -628,7 +633,7 @@ msgstr "נא לפרט את רשימת הקבצים לשחזור"
 msgid "An operation is already in progress"
 msgstr "כבר מתבצעת פעילות"
 
-#: app/main.vala:338
+#: app/main.vala:344
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -639,18 +644,19 @@ msgstr ""
 "  avim https://launchpad.net/~avisoftware123\n"
 "  rintintin https://launchpad.net/~yonatanhak-gmail\n"
 "  wrewre https://launchpad.net/~efid845-deactivatedaccount\n"
-"  Yosef Or Boczko <yoseforb@gmail.com>"
+"  Yosef Or Boczko <yoseforb@gmail.com>\n"
+"מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:444 data/app.metainfo.xml.in:15
+#: app/main.vala:450 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "‏Déjà Dup גיבויים"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:19 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "גיבויים"
 
@@ -664,7 +670,7 @@ msgstr "הגנה מאיבוד המידע שלך"
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:34
+#: data/app.desktop.in:35
 msgid "Back Up"
 msgstr "גיבוי"
 
@@ -1014,8 +1020,8 @@ msgstr "צג הגיבוי"
 msgid "Schedules backups at regular intervals"
 msgstr "הפעלת גיבויים בהפרשים קבועים"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:49
-#: data/ui/MainHeaderBar.ui:51
+#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
+#: data/ui/MainHeaderBar.ui:45
 msgid "Search"
 msgstr "חיפוש"
 
@@ -1056,10 +1062,6 @@ msgstr "_הזנת ססמה"
 msgid "Location"
 msgstr "מיקום"
 
-#: data/ui/ConfigAutoBackupRow.ui:10
-msgid "Back Up _Automatically"
-msgstr "גיבוי _אוטומטי"
-
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "תיקיות"
@@ -1068,7 +1070,11 @@ msgstr "תיקיות"
 msgid "Folders to Back Up"
 msgstr "תיקייות לגיבוי"
 
-#: data/ui/ConfigFolderPage.ui:20
+#: data/ui/ConfigFolderPage.ui:24
+msgid "These folders are always ignored:"
+msgstr "תיקיות אלה לא תעבורנה גיבוי:"
+
+#: data/ui/ConfigFolderPage.ui:56
 msgid "Folders to Ignore"
 msgstr "לתיקייות לא לגיבוי"
 
@@ -1081,55 +1087,53 @@ msgstr "תיקייה זו לא ניתנת לגיבוי כיוון שלגיבוי
 msgid "Remove"
 msgstr "הסרה"
 
-#. Translators: storage as in "where to store the backup"
-#: data/ui/ConfigLocationGrid.ui:19
-msgid "_Storage Location"
-msgstr "מיקום _אחסון"
+#: data/ui/ConfigLocationGroup.ui:9
+msgid "Storage"
+msgstr "אחסון"
 
-#: data/ui/ConfigLocationGrid.ui:41 data/ui/ConfigLocationGrid.ui:91
-#: data/ui/ConfigLocationGrid.ui:163 data/ui/ConfigLocationGrid.ui:197
-#: data/ui/ConfigLocationGrid.ui:256
+#: data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_תיקייה"
 
-#: data/ui/ConfigLocationGrid.ui:65 data/ui/ConfigLocationGrid.ui:115
+#: data/ui/ConfigLocationGroup.ui:29 data/ui/ConfigLocationGroup.ui:52
 msgid "_Reset Account Access"
 msgstr "_איפוס גישה לחשבון"
 
-#: data/ui/ConfigLocationGrid.ui:141
+#: data/ui/ConfigLocationGroup.ui:66
 msgid "Ser_ver Address"
 msgstr "כתובת ה_שרת"
 
-#: data/ui/ExcludeHelpButton.ui:25
-#| msgid "The folder where backups are stored"
-msgid "These folders are always ignored:"
-msgstr "תיקיות אלה לא תעבורנה גיבוי:"
+#: data/ui/ConfigLocationRow.ui:47
+msgid "_Location"
+msgstr "_מיקום"
 
-#: data/ui/MainHeaderBar.ui:27 data/ui/MainHeaderBar.ui:29
+#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
 msgid "Back"
 msgstr "חזרה"
 
-#: data/ui/MainHeaderBar.ui:39 data/ui/MainHeaderBar.ui:41
+#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: data/ui/MainHeaderBar.ui:68
+#: data/ui/MainHeaderBar.ui:58
 msgid "_Select All"
 msgstr "בחירת ה_כול"
 
-#: data/ui/MainHeaderBar.ui:75
+#: data/ui/MainHeaderBar.ui:65
 msgid "_Preferences"
 msgstr "_העדפות"
 
-#: data/ui/MainHeaderBar.ui:79
+#: data/ui/MainHeaderBar.ui:69
 msgid "_Keyboard Shortcuts"
 msgstr "קי_צורי מקלדת"
 
-#: data/ui/MainHeaderBar.ui:83
+#: data/ui/MainHeaderBar.ui:73
 msgid "_Help"
 msgstr "ע_זרה"
 
-#: data/ui/MainHeaderBar.ui:87
+#: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
 msgstr "_על אודות גיבויים"
 
@@ -1141,27 +1145,27 @@ msgstr "סקירה"
 msgid "_Back Up Now"
 msgstr "_גיבוי כעת"
 
-#: data/ui/PassphraseDialog.ui:22
+#: data/ui/PassphraseDialog.ui:23
 msgid "Con_tinue"
 msgstr "המ_שך"
 
-#: data/ui/PreferencesWindow.ui:17
+#: data/ui/PreferencesWindow.ui:15
 msgid "General"
 msgstr "כללי"
 
-#: data/ui/PreferencesWindow.ui:20
-msgid "Storage"
-msgstr "אחסון"
+#: data/ui/PreferencesWindow.ui:21
+msgid "Schedule"
+msgstr "תזמון"
 
-#: data/ui/PreferencesWindow.ui:23
-msgid "_Location"
-msgstr "_מיקום"
+#: data/ui/PreferencesWindow.ui:27
+msgid "Automatic Backup _Frequency"
+msgstr "_תדירות גיבוי אוטומטי"
 
-#: data/ui/PreferencesWindow.ui:40
+#: data/ui/PreferencesWindow.ui:33
 msgid "_Keep Backups"
 msgstr "ה_משך גיבוי"
 
-#: data/ui/PreferencesWindow.ui:49
+#: data/ui/PreferencesWindow.ui:40
 msgid ""
 "The oldest backups will still be deleted earlier if the location is low on "
 "space or kept up to three months longer to avoid deleting related backups."
@@ -1169,36 +1173,24 @@ msgstr ""
 "הגיבויים הישנים ביותר עדיין יימחקו מוקדם יותר אם אין מקום ביעד או שנשאר "
 "לשלושה חודשים מעבר כדי להימנע ממחיקת גיבויים קשורים."
 
-#: data/ui/PreferencesWindow.ui:58
-msgid "Schedule"
-msgstr "תזמון"
-
-#: data/ui/PreferencesWindow.ui:64
-msgid "Automatic Backup _Frequency"
-msgstr "_תדירות גיבוי אוטומטי"
-
-#: data/ui/PreferencesWindow.ui:79
+#: data/ui/PreferencesWindow.ui:61
 msgid "Labs"
 msgstr "מעבדות"
 
-#: data/ui/PreferencesWindow.ui:83
+#: data/ui/PreferencesWindow.ui:65
 msgid "Restic"
 msgstr "Restic"
-
-#: data/ui/PreferencesWindow.ui:87
-msgid "Use _Restic instead of Duplicity"
-msgstr "להשתמש ב־Restic _במקום ב־Duplicity"
 
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "גיבויים אחרונים"
 
-#: data/ui/ServerHintPopover.ui:21
+#: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
 msgstr "כתובות השרת"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
-#: data/ui/ServerHintPopover.ui:33
+#: data/ui/ServerAddressHelp.ui:27
 msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
@@ -1206,58 +1198,58 @@ msgstr ""
 "כתובות הרשת מורכבות מקידומת פרוטוקול, כתובת ולפעמים נתיב כתלות בפרוטוקול. "
 "למשל:"
 
-#: data/ui/ServerHintPopover.ui:59
+#: data/ui/ServerAddressHelp.ui:53
 msgid "Available Protocols"
 msgstr "פרוטוקולים זמינים"
 
-#: data/ui/ServerHintPopover.ui:72
+#: data/ui/ServerAddressHelp.ui:66
 msgid "AppleTalk"
 msgstr "AppleTalk"
 
-#: data/ui/ServerHintPopover.ui:82
+#: data/ui/ServerAddressHelp.ui:76
 msgid "File Transfer Protocol"
 msgstr "פרוטוקול העברת קבצים (FTP)"
 
-#: data/ui/ServerHintPopover.ui:92
+#: data/ui/ServerAddressHelp.ui:86
 msgid "Network File System"
 msgstr "מערכת קבצים ברשת (NFS)"
 
-#: data/ui/ServerHintPopover.ui:102
+#: data/ui/ServerAddressHelp.ui:96
 msgid "Samba"
 msgstr "Samba"
 
-#: data/ui/ServerHintPopover.ui:112
+#: data/ui/ServerAddressHelp.ui:106
 msgid "SSH File Transfer Protocol"
 msgstr "פרוטוקול העברת קבצים עם SSH"
 
-#: data/ui/ServerHintPopover.ui:122
+#: data/ui/ServerAddressHelp.ui:116
 msgid "WebDAV"
 msgstr "WebDAV"
 
-#: data/ui/ServerHintPopover.ui:132
+#: data/ui/ServerAddressHelp.ui:126
 msgid "Prefix"
 msgstr "קידומת"
 
 #. Translators: do not translate ftp:// and ftps://
-#: data/ui/ServerHintPopover.ui:155
+#: data/ui/ServerAddressHelp.ui:149
 msgid "ftp:// or ftps://"
 msgstr "ftp://‎ או ftps://‎"
 
-#: data/ui/ServerHintPopover.ui:175
+#: data/ui/ServerAddressHelp.ui:169
 msgid "smb://"
 msgstr "smb://‎"
 
 #. Translators: do not translate sftp:// and ssh://
-#: data/ui/ServerHintPopover.ui:185
+#: data/ui/ServerAddressHelp.ui:179
 msgid "sftp:// or ssh://"
 msgstr "sftp://‎ או ssh://‎"
 
 #. Translators: do not translate dav:// and davs://
-#: data/ui/ServerHintPopover.ui:195
+#: data/ui/ServerAddressHelp.ui:189
 msgid "dav:// or davs://"
 msgstr "dav://‎ או davs://‎"
 
-#: data/ui/TimeCombo.ui:13
+#: data/ui/TimeCombo.ui:15
 msgid "_Date"
 msgstr "_תאריך"
 
@@ -1265,11 +1257,11 @@ msgstr "_תאריך"
 msgid "Welcome to Backups"
 msgstr "ברוך בואך אל גיבויים"
 
-#: data/ui/WelcomePage.ui:35
+#: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
 msgstr "יצירת ה_גיבוי הראשון שלך"
 
-#: data/ui/WelcomePage.ui:52
+#: data/ui/WelcomePage.ui:57
 msgid "_Restore From a Previous Backup"
 msgstr "_שחזרו מתוך גיבוי קודם"
 
@@ -1493,7 +1485,7 @@ msgid "Paused (no network)"
 msgstr "בהשהיה (אין רשת)"
 
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:320
+#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "מיקום הגיבוי קטן מדי. כדאי לנסות להשתמש באחד עם %s לפחות."
@@ -1638,14 +1630,13 @@ msgstr "לא ניתן להבין את גרסת ה־restic‏ ‚%s’."
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
 msgid ""
-"Backups requires at least version %d.%d.%.2d of restic, but only found "
-"version %d.%d.%.2d"
+"Backups requires at least version %d.%d.%d of restic, but only found version "
+"%d.%d.%d"
 msgstr ""
-"כלי הגיבויים דורש לפחות את גירסה %d.%d.%.2d של restic, אך הגירסה היחידה "
-"שנמצאה היא %d.%d.%.2d"
+"כלי הגיבויים דורש לפחות את גרסה %d.%d.%.d של restic, אך הגרסה היחידה שנמצאה "
+"היא %d.%d.%.d"
 
 #: monitor/ReadyWatcher.vala:151
-#| msgid "Backup will begin when %s is connected."
 msgid "Backup will begin when power saver mode is no longer active."
 msgstr "הגיבוי יתחיל עם יציאה ממצב חיסכון בסוללה."
 
@@ -1653,6 +1644,15 @@ msgstr "הגיבוי יתחיל עם יציאה ממצב חיסכון בסולל
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "הגיבוי יתחיל כאשר חיבור לרשת שאינה מוגבלת במיכסה יהיה זמין."
+
+#~ msgid "_Backup location"
+#~ msgstr "_מיקום הגיבוי"
+
+#~ msgid "_Allow restoring without a password"
+#~ msgstr "ל_אפשר שחזור ללא ססמה"
+
+#~ msgid "_Storage Location"
+#~ msgstr "מיקום _אחסון"
 
 #~ msgid "Access Granted"
 #~ msgstr "הוענקה גישה"
@@ -1695,9 +1695,6 @@ msgstr "הגיבוי יתחיל כאשר חיבור לרשת שאינה מוגב
 
 #~ msgid "_Add"
 #~ msgstr "הו_ספה"
-
-#~ msgid "_OK"
-#~ msgstr "_אישור"
 
 #~ msgid "Last backup was today."
 #~ msgstr "הגיבוי האחרון התבצע היום."
