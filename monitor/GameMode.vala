@@ -7,6 +7,14 @@
 using GLib;
 
 /**
+ * There are two ways to detect an active GameMode state:
+ * - org.freedesktop.portal.GameMode.Active (since xdg-desktop-portal 1.16)
+ * - com.feralinteractive.GameMode.ClientCount
+ *
+ * We'll check both for now, since the portal is too new to fully rely on.
+ */
+
+/**
  * I don't know how to get convenient property-changed signals from something
  * like the following... Please let me know if you know how.
 
@@ -22,7 +30,8 @@ class GameMode : Object
   public bool enabled {get; private set; default = false;}
 
   ///////////
-  DBusProxy proxy = null;
+  DBusProxy portal = null;
+  DBusProxy service = null;
 
   construct {
     load_proxy.begin();
@@ -31,7 +40,16 @@ class GameMode : Object
   async void load_proxy()
   {
     try {
-      proxy = yield new DBusProxy.for_bus(
+      portal = yield new DBusProxy.for_bus(
+        BusType.SESSION,
+        DBusProxyFlags.DO_NOT_AUTO_START |
+        DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
+        null,
+        "org.freedesktop.portal.Desktop",
+        "/org/freedesktop/portal/desktop",
+        "org.freedesktop.portal.GameMode"
+      );
+      service = yield new DBusProxy.for_bus(
         BusType.SESSION,
         DBusProxyFlags.DO_NOT_AUTO_START |
         DBusProxyFlags.GET_INVALIDATED_PROPERTIES,
@@ -46,13 +64,23 @@ class GameMode : Object
       return;
     }
 
-    proxy.g_properties_changed.connect(update);
-    update();
+    portal.g_properties_changed.connect(update_from_portal);
+    service.g_properties_changed.connect(update_from_service);
+    update_from_portal();
+    update_from_service();
   }
 
-  void update()
+  void update_from_portal()
   {
-    var count = proxy.get_cached_property("ClientCount");
-    enabled = count != null && count.get_int32() > 0;
+    var active = portal.get_cached_property("Active");
+    if (active != null)
+      enabled = active.get_boolean();
+  }
+
+  void update_from_service()
+  {
+    var count = service.get_cached_property("ClientCount");
+    if (count != null)
+      enabled = count.get_int32() > 0;
   }
 }
