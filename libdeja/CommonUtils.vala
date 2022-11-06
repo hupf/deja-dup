@@ -770,5 +770,15 @@ public VolumeMonitor get_volume_monitor()
   return _monitor;
 }
 
+// Block (but nicely) for a few seconds
+async void wait(uint secs)
+{
+  Timeout.add_seconds(secs, () => {
+    wait.callback();
+    return Source.REMOVE;
+  });
+  yield;
+}
+
 } // end namespace
 

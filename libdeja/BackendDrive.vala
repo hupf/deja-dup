@@ -207,16 +207,6 @@ public class BackendDrive : BackendFile
     settings.set_string(DRIVE_ICON_KEY, volume.get_icon().to_string());
   }
 
-  async void delay(uint secs)
-  {
-    var loop = new MainLoop(null);
-    Timeout.add_seconds(secs, () => {
-      loop.quit();
-      return false;
-    });
-    loop.run();
-  }
-
   async bool mount_internal(Volume vol) throws Error
   {
     // Volumes sometimes return a generic error message instead of
@@ -236,7 +226,7 @@ public class BackendDrive : BackendFile
       // This is not very descriptive, but IOError.DBUS_ERROR is the
       // error given when someone else is mounting at the same time.  Sometimes
       // happens when a USB stick is inserted and nautilus is fighting us.
-      yield delay(2); // Try again in a bit
+      yield DejaDup.wait(2); // Try again in a bit
       return yield mount_internal(vol);
     }
 
@@ -258,11 +248,10 @@ public class BackendDrive : BackendFile
       var monitor = DejaDup.get_volume_monitor();
       var name = settings.get_string(DRIVE_NAME_KEY);
       pause_op(_("Storage location not available"), _("Waiting for ‘%s’ to become connected…").printf(name));
-      var loop = new MainLoop(null, false);
       var sigid = monitor.volume_added.connect((m, v) => {
-        loop.quit();
+        wait_for_volume.callback();
       });
-      loop.run();
+      yield;
       monitor.disconnect(sigid);
       pause_op(null, null);
       return yield wait_for_volume();

@@ -156,12 +156,11 @@ public class BackendRemote : BackendFile
     if (!Network.get().connected) {
       pause_op(_("Storage location not available"),
                _("Waiting for a network connection…"));
-      var loop = new MainLoop(null, false);
       var sigid = Network.get().notify["connected"].connect(() => {
         if (Network.get().connected)
-          loop.quit();
+          mount.callback();
       });
-      loop.run();
+      yield;
       Network.get().disconnect(sigid);
       pause_op(null, null);
     }

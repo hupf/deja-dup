@@ -180,9 +180,7 @@ internal abstract class ToolInstance : Object
         var line = yield reader.read_line_utf8_async();
         if (line == null) { // EOF
           // We're reading faster than the tool can provide.  Wait a bit before trying again.
-          var loop = new MainLoop(null);
-          Timeout.add_seconds(1, () => {loop.quit(); return false;});
-          loop.run();
+          yield DejaDup.wait(1);
           continue;
         }
 
