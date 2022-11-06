@@ -7,7 +7,7 @@
 using GLib;
 
 [GtkTemplate (ui = "/org/gnome/DejaDup/PassphraseDialog.ui")]
-class PassphraseDialog : Gtk.Dialog
+class PassphraseDialog : Adw.MessageDialog
 {
   public signal void got_passphrase(string passphrase);
 
@@ -16,28 +16,22 @@ class PassphraseDialog : Gtk.Dialog
   [GtkChild]
   unowned SwitchRow remember;
 
-  construct {
-    use_header_bar = 1; // setting this in the ui file doesn't seem to work
-
-    entry.changed.connect(() => {
-      // Because we set use_header_bar, the default widget seems to get unset
-      // after this constructor. So make sure it's set here. Must be better way.
-      set_default_response(Gtk.ResponseType.OK);
-
-      set_response_sensitive(Gtk.ResponseType.OK, entry.text != "");
-    });
-  }
-
   ~PassphraseDialog()
   {
     debug("Finalizing PassphraseDialog\n");
   }
 
-  public override void response(int response_id)
+  [GtkCallback]
+  void response_cb(string response_id)
   {
-    if (response_id == Gtk.ResponseType.OK && entry.text != "")
+    if (response_id == "continue" && entry.text != "")
       handle_ok.begin();
-    destroy();
+  }
+
+  [GtkCallback]
+  void entry_changed_cb()
+  {
+    set_response_enabled("continue", entry.text != "");
   }
 
   async void handle_ok()

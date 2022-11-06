@@ -5,61 +5,30 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 <interface>
-  <template class="PassphraseDialog" parent="GtkDialog">
+  <template class="PassphraseDialog" parent="AdwMessageDialog">
     <property name="default-width">400</property>
-    <property name="deletable">false</property>
-    <property name="destroy-with-parent">true</property>
-    <property name="modal">true</property>
-    <property name="valign">center</property>
-    <child type="action">
-      <object class="GtkButton" id="cancel">
-        <property name="label" translatable="yes">_Cancel</property>
-        <property name="receives-default">true</property>
-        <property name="use-underline">true</property>
-      </object>
-    </child>
-    <child type="action">
-      <object class="GtkButton" id="forward">
-        <property name="label" translatable="yes">Con_tinue</property>
-        <property name="receives-default">true</property>
-        <property name="sensitive">false</property>
-        <property name="use-underline">true</property>
-        <style>
-          <class name="suggested-action"/>
-        </style>
-      </object>
-    </child>
-    <action-widgets>
-      <action-widget response="cancel">cancel</action-widget>
-      <action-widget response="ok" default="true">forward</action-widget>
-    </action-widgets>
-    <child internal-child="content_area">
-      <object class="GtkBox">
+    <property name="default-response">continue</property>
+    <property name="extra-child">
+      <object class="AdwPreferencesGroup">
         <child>
-          <object class="AdwClamp">
-            <property name="margin-start">12</property>
-            <property name="margin-end">12</property>
-            <property name="margin-top">12</property>
-            <property name="margin-bottom">12</property>
-            <child>
-              <object class="AdwPreferencesGroup">
-                <child>
-                  <object class="AdwPasswordEntryRow" id="entry">
-                    <property name="activates-default">true</property>
-                    <property name="title" translatable="yes">E_ncryption password</property>
-                    <property name="use-underline">true</property>
-                  </object>
-                </child>
-                <child>
-                  <object class="SwitchRow" id="remember">
-                    <property name="title" translatable="yes">_Remember password</property>
-                  </object>
-                </child>
-              </object>
-            </child>
+          <object class="AdwPasswordEntryRow" id="entry">
+            <property name="activates-default">true</property>
+            <property name="title" translatable="yes">E_ncryption password</property>
+            <property name="use-underline">true</property>
+            <signal name="changed" handler="entry_changed_cb"/>
+          </object>
+        </child>
+        <child>
+          <object class="SwitchRow" id="remember">
+            <property name="title" translatable="yes">_Remember password</property>
           </object>
         </child>
       </object>
-    </child>
+    </property>
+    <responses>
+      <response id="close" translatable="yes">_Cancel</response>
+      <response id="continue" translatable="yes" appearance="suggested" enabled="false">Con_tinue</response>
+    </responses>
+    <signal name="response" handler="response_cb"/>
   </template>
 </interface>
