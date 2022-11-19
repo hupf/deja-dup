@@ -18,11 +18,14 @@ SPDX-FileCopyrightText: Michael Terry
 
     <child>
       <object class="GtkButton">
-        <property name="icon_name">list-remove-symbolic</property>
-        <property name="valign">GTK_ALIGN_CENTER</property>
+        <property name="icon-name">edit-delete-symbolic</property>
+        <property name="valign">center</property>
 
         <signal name="clicked" handler="on_remove_clicked"/>
 
+        <style>
+          <class name="flat"/>
+        </style>
         <accessibility>
           <property name="label" translatable="yes">Remove</property>
         </accessibility>

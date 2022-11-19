@@ -733,13 +733,20 @@ public abstract class AssistantOperation : Assistant
     if (confirm_entry.visible) {
       var passphrase2 = confirm_entry.text;
       var valid = (passphrase == passphrase2) && passphrase_entered;
-      if (valid) {
-        // The HIG recommends positive rather than negative feedback
-        encrypt_entry.add_css_class("success");
-        confirm_entry.add_css_class("success");
+      // The HIG recommends positive rather than negative feedback, but
+      // Settings uses negative feedback in a similar setting (see the password
+      // changer dialog) and if we use positive-only feedback, the user would
+      // not see why the forward button isn't active until they have already
+      // solved why not by filling the entries.
+      if (passphrase_entered) {
+        encrypt_entry.remove_css_class("error");
       } else {
-        encrypt_entry.remove_css_class("success");
-        confirm_entry.remove_css_class("success");
+        encrypt_entry.add_css_class("error");
+      }
+      if (valid) {
+        confirm_entry.remove_css_class("error");
+      } else {
+        confirm_entry.add_css_class("error");
       }
       allow_forward(valid);
     }
