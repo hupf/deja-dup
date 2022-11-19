@@ -571,8 +571,12 @@ internal class ResticRestoreJoblet : ResticJoblet
     var testing_str = Environment.get_variable("DEJA_DUP_TESTING");
     if (testing_str != null && int.parse(testing_str) > 0)
       return "restic-dump-to";
-    else
-      return Path.build_filename(Config.PKG_LIBEXEC_DIR, "restic-dump-to");
+
+    var restic_dump_to_str = Environment.get_variable("DEJA_DUP_RESTIC_DUMP_TO_EXEC");
+    if (restic_dump_to_str != null)
+      return restic_dump_to_str;
+
+    return Path.build_filename(Config.PKG_LIBEXEC_DIR, "restic-dump-to");
   }
 
   void prepare_args_to_dir(ref List<string> argv, ref List<string> envp) throws Error

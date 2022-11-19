@@ -70,5 +70,8 @@ install_data(
   install_dir: pkglibexecdir,
   install_mode: 'rwxr-xr-x',
 )
+meson.add_devenv({
+  'DEJA_DUP_RESTIC_DUMP_TO_EXEC': join_paths(meson.current_source_dir(), 'restic', 'restic-dump-to'),
+})
 
 subdir('tests')
