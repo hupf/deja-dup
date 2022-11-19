@@ -165,6 +165,7 @@ public class AssistantRestore : AssistantOperation
     orig_row.add_prefix(orig_radio);
 
     orig_radio.active = true;
+    orig_radio.can_focus = false;
     orig_radio.toggled.connect((r) => {
       if (r.active) {
         restore_location = "/";
@@ -178,6 +179,7 @@ public class AssistantRestore : AssistantOperation
     cust_row.add_prefix(cust_radio);
 
     cust_radio.group = orig_radio;
+    cust_radio.can_focus = false;
     cust_radio.toggled.connect((r) => {
       if (r.active) {
         restore_location = get_abs_path(cust_entry_row.text);
@@ -190,6 +192,7 @@ public class AssistantRestore : AssistantOperation
     cust_entry_row.input_hints = Gtk.InputHints.NO_SPELLCHECK;
     cust_entry_row.sensitive = false;
     cust_entry_row.use_underline = true;
+    cust_entry_row.activates_default = true;
     cust_entry_row.add_suffix(open_button);
     cust_entry_row.changed.connect(() => {
       restore_location = get_abs_path(cust_entry_row.text);
