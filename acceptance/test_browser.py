@@ -126,9 +126,9 @@ class BrowserTest(BaseTest):
     def select_location(self, where):
         self.addCleanup(shutil.rmtree, where, ignore_errors=True)
         self.window.child(
-            roleName="check box", name="Restore to _specific folder"
+            roleName="list item", name="Restore to specific folder"
         ).click()
-        self.window.child(roleName="push button", label="Choose Folder…").click()
+        self.window.child(roleName="push button", name="Choose Folder").click()
         os.makedirs(where, exist_ok=True)
         dlg = self.get_file_chooser("Choose Folder")
         # Focus dialog (not always done automatically with portal dialogs)

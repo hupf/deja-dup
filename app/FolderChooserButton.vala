@@ -18,7 +18,7 @@ class FolderChooserButton : Gtk.Button
     icon_name = "document-open";
     receives_default = true;
     use_underline = true;
-    update_property(Gtk.AccessibleProperty.LABEL, _("_Choose Folder…"));
+    update_property(Gtk.AccessibleProperty.LABEL, _("Choose Folder"));
     clicked.connect(on_clicked);
   }
 
