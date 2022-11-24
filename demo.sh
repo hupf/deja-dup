@@ -16,14 +16,16 @@ ROOT=$(mktemp -d)
 [ -d _build/demo ] || meson setup -Denable_restic=true _build/demo
 meson compile -C _build/demo
 devenv() {
-  meson devenv -C "$SRCROOT/_build/demo" $*
+  meson devenv -C "$SRCROOT/_build/demo" env \
+    HOME="$ROOT_HOME" XDG_CONFIG_HOME="$ROOT_CONFIG" \
+    $*
 }
 
 # Set up home
-export HOME="$ROOT/user"
-export XDG_CONFIG_HOME="$HOME/config"
-mkdir -p "$HOME/Downloads" "$XDG_CONFIG_HOME"
-echo 'XDG_DOWNLOAD_DIR="$HOME/Downloads"' > "$XDG_CONFIG_HOME/user-dirs.dirs"
+export ROOT_HOME="$ROOT/user"
+export ROOT_CONFIG="$ROOT_HOME/config"
+mkdir -p "$ROOT_HOME/Downloads" "$ROOT_CONFIG"
+echo 'XDG_DOWNLOAD_DIR="$HOME/Downloads"' > "$ROOT_CONFIG/user-dirs.dirs"
 
 # Set up backup source
 mkdir -p "$ROOT/src/full" "$ROOT/src/empty"
@@ -40,14 +42,13 @@ mkdir -p "$ROOT/dest"
 duplicity --no-encryption "$ROOT/src" "file://$ROOT/dest"
 
 # Set up gsettings
-mkdir -p "$ROOT/config"
+export ADW_DISABLE_PORTAL=1
 export GSETTINGS_BACKEND=keyfile
 devenv gsettings set org.gnome.DejaDup backend local
 devenv gsettings set org.gnome.DejaDup last-backup "$(date --utc +%Y%m%dT%H%M%SZ)"
 devenv gsettings set org.gnome.DejaDup last-run "$(date --utc +%Y%m%dT%H%M%SZ)"
 devenv gsettings set org.gnome.DejaDup periodic true
 devenv gsettings set org.gnome.DejaDup.Local folder "$ROOT/dest"
-devenv gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
 
 # Set up appearance
 export DEJA_DUP_DEMO=1
