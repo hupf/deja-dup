@@ -21,10 +21,10 @@ backup apps.
 
 ## Building
 
-If you are hacking on Déjà Dup, see [`CONTRIBUTING.md`](CONTRIBUTING.md).
+If you are hacking on Déjà Dup, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Or if you are packaging Déjà Dup for a distribution, see
-[`PACKAGING.md`](PACKAGING.md) for extra tips.
+[PACKAGING.md](PACKAGING.md) for extra tips.
 
 ## Links
 

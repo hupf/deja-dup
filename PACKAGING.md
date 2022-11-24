@@ -97,8 +97,7 @@ But if you need this, it's easy to enable:
     - `duplicity_pkgs`: defaults to `duplicity`
     - `gvfs_pkgs`: specify packages for GVFS as well as the `gi` Python module,
       **no default**
-    - `pydrive_pkgs`: either the `pydrive2` Python module or the unmaintained
-      `pydrive` one, **no default**
+    - `pydrive_pkgs`: the `pydrive2` Python module, **no default**
     - `rclone_pkgs`: defaults to `rclone`
     - `requests_oauthlib_pkgs`: the `requests_oauthlib` Python module,
       **no default**

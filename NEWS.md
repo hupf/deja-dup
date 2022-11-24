@@ -4,6 +4,15 @@ SPDX-FileCopyrightText: Michael Terry
 -->
 
 # 44.0
+- Refresh the visuals in a few places by using modern text entries and the
+  new About dialog
+- Newly created restic backups will now use compression
+- Fix a bug that prevented updating the folder option in the Preferences
+  window after changing to an external disk
+- Update Basque, Brazilian Portuguese, Catalan, Chinese (China), Croatian,
+  Danish, Dutch, Finnish, French, German, Hebrew, Hungarian, Indonesian,
+  Korean, Polish, Portuguese, Russian, Serbian, Slovenian, Swedish, Turkish,
+  and Ukrainian translations
 
 ##### Packaging
 - There is now some documentation about how to package deja-dup in
