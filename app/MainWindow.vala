@@ -35,8 +35,6 @@ public class MainWindow : Adw.ApplicationWindow
   unowned Gtk.Stack overview_stack;
   [GtkChild]
   unowned Browser browser;
-  [GtkChild]
-  unowned Adw.ViewSwitcherBar bar;
 
   construct {
     var deja_app = DejaDupApp.get_instance();
@@ -56,9 +54,6 @@ public class MainWindow : Adw.ApplicationWindow
     settings.bind(DejaDup.WINDOW_HEIGHT_KEY, this, "default-height", SettingsBindFlags.DEFAULT);
     settings.bind(DejaDup.WINDOW_MAXIMIZED_KEY, this, "maximized", SettingsBindFlags.DEFAULT);
     settings.bind(DejaDup.WINDOW_FULLSCREENED_KEY, this, "fullscreened", SettingsBindFlags.DEFAULT);
-
-    header.notify["title-visible"].connect(on_title_visible_changed);
-    on_title_visible_changed();
 
     // If a custom restore backend is set, we switch to restore.
     // If we switch away, we undo the custom restore backend.
@@ -83,17 +78,6 @@ public class MainWindow : Adw.ApplicationWindow
   {
     if (DejaDupApp.get_instance().custom_backend != null)
       stack.visible_child_name = "restore";
-  }
-
-  void on_title_visible_changed()
-  {
-    // Without this width check, I've noticed that the status page "settles"
-    // after a second or two once you interact with the window - by shifting
-    // down a bit. Seems that during startup, the title is visible for a moment,
-    // but the bar isn't ready yet? I haven't debugged the exact race condition
-    // issue. But this prevents the bad settling behavior:
-    if (bar.get_allocated_width() > 0)
-      bar.reveal = header.title_visible;
   }
 
   static bool get_visible_child(Value val, Variant variant, void *data)

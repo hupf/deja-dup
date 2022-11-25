@@ -60,6 +60,9 @@ SPDX-FileCopyrightText: Michael Terry
         <child>
           <object class="AdwViewSwitcherBar" id="bar">
             <property name="stack">stack</property>
+            <binding name="reveal">
+              <lookup name="title-visible">header</lookup>
+            </binding>
           </object>
         </child>
       </object>
