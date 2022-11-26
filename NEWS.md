@@ -9,6 +9,8 @@ SPDX-FileCopyrightText: Michael Terry
 - Newly created restic backups will now use compression
 - Fix a bug that prevented updating the folder option in the Preferences
   window after changing to an external disk
+- Fix a bug that prevented switching to the restore view if the app starts
+  up in mobile mode (thin width)
 - Update Basque, Brazilian Portuguese, Catalan, Chinese (China), Croatian,
   Danish, Dutch, Finnish, French, German, Hebrew, Hungarian, Indonesian,
   Korean, Polish, Portuguese, Russian, Serbian, Slovenian, Swedish, Turkish,
@@ -18,13 +20,14 @@ SPDX-FileCopyrightText: Michael Terry
 - There is now some documentation about how to package deja-dup in
   [PACKAGING.md](PACKAGING.md) - walking through required & optional
   dependencies and build options
-- Require libadwaita1 1.2+
-- If you enable restic, we now require restic 0.14+
 - Add new `-Dpackagekit=enabled` option flag to control whether we build with
   PackageKit support. Previously, this was an `auto` feature without an option
   flag to control it, but is now `disabled` by default and you can explicitly
   enable it if your packaging cannot directly depend on runtime dependencies
-  like duplicity. And if you do enable this, we now require version 1.2+.
+  like duplicity. If you do enable this, read the above doc for a list of other
+  `pkgs` options to set as well.
+- Require libadwaita1 1.2+
+- If you enable restic, we now require restic 0.14+
 
 # 43.4
 - Warn about delayed backups due to power saver mode, if it's been over a day
