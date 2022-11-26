@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+import os
+
 from dogtail.predicate import GenericPredicate
 from dogtail.rawinput import keyCombo
 from gi.repository import GLib
@@ -22,6 +24,13 @@ class PreferencesTest(BaseTest):
         box = root.child(roleName="list item", name="Back Up Automatically")
         return box.child(roleName="check box")
 
+    def get_preferences_window(self):
+        if os.environ["DD_MODE"] == "snap":
+            # Older gtk in snap seems to use frame not filler
+            return self.app.child(roleName="frame", name="Preferences")
+        else:
+            return self.app.child(roleName="filler", name="Preferences")
+
     def test_general(self):
         # Test that there's a special first time welcome screen
         self.app.childNamed("Create Your First Backup")
@@ -32,7 +41,7 @@ class PreferencesTest(BaseTest):
         main = self.app.window("Backups")
         periodic_main = self.get_auto_check(main)
 
-        prefs = self.app.child(roleName="filler", name="Preferences")
+        prefs = self.get_preferences_window()
 
         # Periodic to settings
         periodic = self.get_auto_check(prefs)
@@ -92,7 +101,7 @@ class PreferencesTest(BaseTest):
         self.wait_for(lambda: self.table_names(table) == names)
 
     def assert_inclusion_table(self, widget, key):
-        prefs = self.app.child(roleName="filler", name="Preferences")
+        prefs = self.get_preferences_window()
         prefs.child(name="Folders").click()
 
         table = prefs.child(roleName="list", name=widget)
