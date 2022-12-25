@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# SPDX-License-Identifier: GPL-3.0-or-later
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # OIS <mistresssilvara@hotmail.com>, 2022.
 #
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-11-19 18:48+0000\n"
+"POT-Creation-Date: 2022-12-25 08:44+0000\n"
 "PO-Revision-Date: 2022-12-25 15:41+0700\n"
 "Last-Translator: OIS <mistresssilvara@hotmail.com>\n"
 "Language-Team: Interlingue\n"
@@ -400,7 +400,7 @@ msgstr[1] "Adminim %d dies"
 msgid "Choose Folders"
 msgstr "Selecter fólderes"
 
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:21
+#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
 msgid "Add"
 msgstr "Adjunter"
 
@@ -457,11 +457,7 @@ msgstr[1] "Chascun %d dies"
 msgid "Use _Restic instead of Duplicity"
 msgstr "Usar _Restic in vice de Duplicity"
 
-#: app/FolderChooserButton.vala:21
-msgid "_Choose Folder…"
-msgstr "_Selecter un fólder..."
-
-#: app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
 msgid "Choose Folder"
 msgstr "Selecte un fólder"
 
@@ -933,19 +929,19 @@ msgid ""
 "prefer other backup apps."
 msgstr ""
 
-#: data/app.metainfo.xml.in:86
+#: data/app.metainfo.xml.in:90
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:94
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:98
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:102
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1112,7 +1108,6 @@ msgid "Labs"
 msgstr ""
 
 #: data/ui/PreferencesWindow.ui:65
-#| msgid "Restoring:"
 msgid "Restic"
 msgstr "Restic"
 
@@ -1219,21 +1214,28 @@ msgid "Quit"
 msgstr "Surtir"
 
 #: data/ui/help-overlay.ui:38
+#, fuzzy
+#| msgid "Preferences"
+msgctxt "shortcut window"
+msgid "Preferences"
+msgstr "Preferenties"
+
+#: data/ui/help-overlay.ui:44
 msgctxt "shortcut window"
 msgid "Keyboard shortcuts"
 msgstr "Rapid-tastes"
 
-#: data/ui/help-overlay.ui:45
+#: data/ui/help-overlay.ui:51
 msgctxt "shortcut window"
 msgid "Browsing Backed Up Files"
 msgstr "Navigar archivat files"
 
-#: data/ui/help-overlay.ui:49
+#: data/ui/help-overlay.ui:55
 msgctxt "shortcut window"
 msgid "Search"
 msgstr "Serchar"
 
-#: data/ui/help-overlay.ui:55
+#: data/ui/help-overlay.ui:61
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Ear retro"
@@ -1273,7 +1275,6 @@ msgstr "%s sur Google Drive"
 #. Translators: %s is a folder.
 #: libdeja/BackendMicrosoft.vala:73
 #, c-format
-#| msgid "%s on Google Drive"
 msgid "%s on Microsoft OneDrive"
 msgstr "%s sur Microsoft OneDrive"
 
@@ -1573,6 +1574,9 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 
+#~ msgid "_Choose Folder…"
+#~ msgstr "_Selecter un fólder..."
+
 #, fuzzy
 #~ msgid "Change your backup settings"
 #~ msgstr "Cambiar vor parametres de lingue e region"
@@ -1610,9 +1614,6 @@ msgstr ""
 
 #~ msgid "Excludes"
 #~ msgstr "Exclusiones"
-
-#~ msgid "Preferences"
-#~ msgstr "Preferenties"
 
 #, fuzzy
 #~ msgid "_Storage Location"
