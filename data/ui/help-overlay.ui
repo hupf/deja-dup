@@ -16,7 +16,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="title" translatable="yes" context="shortcut window">General</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">F1</property>
+                <property name="action-name">app.help</property>
                 <property name="title" translatable="yes" context="shortcut window">Show help</property>
               </object>
             </child>
@@ -40,7 +40,7 @@ SPDX-FileCopyrightText: Michael Terry
             </child>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;Control&gt;question</property>
+                <property name="action-name">win.show-help-overlay</property>
                 <property name="title" translatable="yes" context="shortcut window">Keyboard shortcuts</property>
               </object>
             </child>
@@ -51,7 +51,7 @@ SPDX-FileCopyrightText: Michael Terry
             <property name="title" translatable="yes" context="shortcut window">Browsing Backed Up Files</property>
             <child>
               <object class="GtkShortcutsShortcut">
-                <property name="accelerator">&lt;Control&gt;F</property>
+                <property name="action-name">restore.search</property>
                 <property name="title" translatable="yes" context="shortcut window">Search</property>
               </object>
             </child>
@@ -59,6 +59,12 @@ SPDX-FileCopyrightText: Michael Terry
               <object class="GtkShortcutsShortcut">
                 <property name="accelerator">&lt;Alt&gt;Left</property>
                 <property name="title" translatable="yes" context="shortcut window">Go back</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkShortcutsShortcut">
+                <property name="action-name">restore.select-all</property>
+                <property name="title" translatable="yes" context="shortcut window">Select all</property>
               </object>
             </child>
           </object>
