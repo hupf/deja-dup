@@ -7,10 +7,10 @@
 [Operation]
 Type=backup
 Success=false
-ErrorRegex=Backup location is too small\\. Try using one with at least 1000.0\\sTB\\.
 
 [Duplicity]
 Runs=status;dry;
+Error=Backup location is too small. Try using one with at least 2.0 PB.
 
 [Duplicity dry]
 #INFO 2 999999999999999
@@ -18,6 +18,7 @@ Output=true
 
 [Restic]
 Runs=unlock;backup;
+Error=Backup location is too small. Try using one with at least 1000.0 TB.
 
 # Make sure that we check each message, since restic will slowly ramp up
 # the total count as it calculates it.

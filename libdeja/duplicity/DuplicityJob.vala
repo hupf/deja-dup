@@ -507,51 +507,64 @@ internal class DuplicityJob : DejaDup.ToolJob
   {
     checked_backup_space = true;
 
+    // Do we not have a progress total? Just skip all this then.
     if (!has_progress_total) {
       if (!restart())
         done(false, false);
       return;
     }
 
-    var formatted_progress_total = format_size(progress_total);
+    // How many full backups do we already have?
+    int full_dates = 0;
+    foreach (DateInfo info in collection_info) {
+      if (info.full)
+        ++full_dates;
+    }
+    var first_backup = full_dates == 0;
+
+    // Deja Dup needs enough space for two full backups, since we won't delete
+    // the last remaining full backup while we make a second.
+    var initial_required_space = progress_total * 2;
+
+    // How much space is on the disk?
     var free = yield backend.get_space();
     var total = yield backend.get_space(false);
     // Sanity check total here, plus this can actually happen if an overflow
     // occurs (GNOME bug 786177).
     if (free != DejaDup.Backend.INFINITE_SPACE && free > total)
       total = free;
-    if (total < progress_total) {
-        // Tiny backup location.  Suggest they get a larger one.
-        var msg = _("Backup location is too small. Try using one with at least %s.");
-        show_error(msg.printf(formatted_progress_total));
-        done(false, false);
-        return;
+
+    // Is the disk not even big enough to possibly hold what we need?
+    // Don't bother checking whether this is first or later backup.
+    // If the user adds folders to their backup and the target is just too small, let them know.
+    if (total < initial_required_space) {
+      // Tiny backup location.  Suggest they get a larger one.
+      var msg = _("Backup location is too small. Try using one with at least %s.");
+      show_error(msg.printf(format_size(initial_required_space)));
+      done(false, false);
+      return;
     }
 
-    if (free < progress_total) {
-      if (got_collection_info) {
-        // Alright, let's look at collection data
-        int full_dates = 0;
-        foreach (DateInfo info in collection_info) {
-          if (info.full)
-            ++full_dates;
-        }
-
-        if (full_dates > 1) {
-          delete_excess(full_dates - 1);
-          // don't set checked_backup_space, we want to be able to do this again if needed
-          checked_backup_space = false;
-          checked_collection_info = false; // get info again
-          got_collection_info = false;
-          return;
-        }
-      }
-      else {
-        var msg = _("Backup location does not have enough free space. Try using one with at least %s.");
-        show_error(msg.printf(formatted_progress_total));
-        done(false, false);
+    // Is the free space big enough?
+    var required_free_space = first_backup ? initial_required_space : progress_total;
+    if (free < required_free_space) {
+      // Delete older backups if we can
+      if (full_dates > 1) {
+        delete_excess(full_dates - 1);
+        // don't set checked_backup_space, we want to be able to do this again if needed
+        checked_backup_space = false;
+        checked_collection_info = false; // get info again
+        got_collection_info = false;
         return;
       }
+
+      // Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
+      var msg = _("Backup location does not have enough free space. Please free up at least %s.");
+      if (first_backup)
+        msg = _("Backup location does not have enough free space. Try using one with at least %s.");
+      show_error(msg.printf(format_size(required_free_space)));
+      done(false, false);
+      return;
     }
 
     if (!restart())

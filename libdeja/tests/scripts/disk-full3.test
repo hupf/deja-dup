@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: Michael Terry
+
+# Not enough free space on initial backup
+
+[Operation]
+Type=backup
+DiskFree=199
+Success=false
+
+[Duplicity]
+Runs=status;dry;
+Error=Backup location does not have enough free space. Try using one with at least 200 bytes.
+
+[Duplicity dry]
+#echo "INFO 2 100"
+OutputScript=true

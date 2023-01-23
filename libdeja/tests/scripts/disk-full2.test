@@ -1,12 +1,16 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+# Not enough free space -> clean it up -> still not enough.
+
 [Operation]
 Type=backup
 DiskFree=98;99
+Success=false
 
 [Duplicity]
-Runs=status 1;dry;remove;status 2;backup;status-restore;verify;
+Runs=status 1;dry;remove;status 2;
+Error=Backup location does not have enough free space. Please free up at least 100 bytes.
 
 [Duplicity status 1]
 #echo "INFO 3"
