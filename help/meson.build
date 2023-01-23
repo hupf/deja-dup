@@ -14,6 +14,7 @@ gnome.yelp(
     'restore-worst-case.page',
     'support.page',
   ],
+  media: ['figures/DejaDup.svg']
 )
 
 test(
