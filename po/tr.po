@@ -1,21 +1,21 @@
 # Turkish translation for deja-dup
 #
-# Copyright (C) 2015-2022 deja-dup's COPYRIGHT HOLDER
-# This file is distributed under the same license as the deja-dup package.
-#
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# Sabri Ünal <libreajans@gmail.com>, 2022.
-# Emin Tufan Çetin <etcetin@gmail.com>, 2020, 2021, 2022.
+# Copyright (C) 2015-2023 deja-dup's COPYRIGHT HOLDER
+# This file is distributed under the same license as the deja-dup package.
+#
+# Sabri Ünal <libreajans@gmail.com>, 2022, 2023.
+# Emin Tufan Çetin <etcetin@gmail.com>, 2020-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-12-25 08:44+0000\n"
-"PO-Revision-Date: 2022-12-29 18:10+0300\n"
-"Last-Translator: Emin Tufan Çetin <etcetin@gmail.com>\n"
+"POT-Creation-Date: 2023-01-24 18:25+0000\n"
+"PO-Revision-Date: 2023-01-24 22:44+0300\n"
+"Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
@@ -330,7 +330,7 @@ msgstr "Kendiliğinden yedeklenemez"
 msgid "Authentication needed"
 msgstr "Kimlik doğrulama gerekli"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
 msgid "No backup files found"
 msgstr "Yedekleme dosyası bulunamadı"
 
@@ -1287,6 +1287,11 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Geri git"
 
+#: data/ui/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "Tümünü seç"
+
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
 #: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
@@ -1470,13 +1475,23 @@ msgstr ""
 msgid "Paused (no network)"
 msgstr "Duraklatıldı (ağ yok)"
 
+#. Is the disk not even big enough to possibly hold what we need?
+#. Don't bother checking whether this is first or later backup.
+#. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "Yedekleme konumu çok küçük. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/duplicity/DuplicityJob.vala:550
+#. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
+#: libdeja/duplicity/DuplicityJob.vala:562
+#, c-format
+msgid ""
+"Backup location does not have enough free space. Please free up at least %s."
+msgstr "Yedekleme konumunda yeterli boş alan yok. En az %s boşaltmayı deneyin."
+
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1484,8 +1499,8 @@ msgid ""
 msgstr ""
 "Yedekleme konumunda yeterli boş alan yok. En az %s olanı kullanmayı deneyin."
 
-#: libdeja/duplicity/DuplicityJob.vala:571
-#: libdeja/duplicity/DuplicityJob.vala:585
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "Temizleniyor…"
 
@@ -1496,25 +1511,25 @@ msgstr "Temizleniyor…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:669
-#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:682
+#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Bilinmeyen nedenden dolayı başarısız."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:872
+#: libdeja/duplicity/DuplicityJob.vala:885
 msgid "Bad encryption password."
 msgstr "Kötü şifreleme parolası."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:921
+#: libdeja/duplicity/DuplicityJob.vala:934
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’ geri yüklenemedi: Dosya, yedek içerisinde bulunamadı"
 
-#: libdeja/duplicity/DuplicityJob.vala:932
+#: libdeja/duplicity/DuplicityJob.vala:945
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1524,53 +1539,53 @@ msgstr ""
 "Var olan yedek %s adında bilgisayarın, ama şu anki bilgisayarın adı %s. Eğer "
 "bu beklenmedikse başka konuma yedeklemelisiniz."
 
-#: libdeja/duplicity/DuplicityJob.vala:935
+#: libdeja/duplicity/DuplicityJob.vala:948
 msgid "Computer name changed"
 msgstr "Bilgisayar adı değişmiş"
 
-#: libdeja/duplicity/DuplicityJob.vala:970
+#: libdeja/duplicity/DuplicityJob.vala:983
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ oluşturmaya çalışılırken izin verilmedi."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:974
-#: libdeja/duplicity/DuplicityJob.vala:978
+#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:991
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ okunmaya çalışılırken izin verilmedi."
 
-#: libdeja/duplicity/DuplicityJob.vala:982
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ silinmeye çalışılırken izin verilmedi."
 
-#: libdeja/duplicity/DuplicityJob.vala:989
+#: libdeja/duplicity/DuplicityJob.vala:1002
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ yedekleme konumu yok."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
-#: libdeja/duplicity/DuplicityJob.vala:1028
+#: libdeja/duplicity/DuplicityJob.vala:1008
+#: libdeja/duplicity/DuplicityJob.vala:1041
 msgid "No space left."
 msgstr "Boş alan kalmadı."
 
-#: libdeja/duplicity/DuplicityJob.vala:1017
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "‘%s’ dosyası okunurken hata."
 
-#: libdeja/duplicity/DuplicityJob.vala:1019
+#: libdeja/duplicity/DuplicityJob.vala:1032
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "‘%s’ dosyası yazılırken hata."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ içerisinde boş alan kalmadı."
 
-#: libdeja/duplicity/DuplicityJob.vala:1088
+#: libdeja/duplicity/DuplicityJob.vala:1101
 msgid "Uploading…"
 msgstr "Yükleniyor…"
 
@@ -1631,9 +1646,3 @@ msgstr "Güç tutumu kipi etkin olmadığında yedekleme başlayacaktır."
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
-
-#~ msgid "Restore to _specific folder:"
-#~ msgstr "_Belirli bir klasöre geri yükle:"
-
-#~ msgid "_Choose Folder…"
-#~ msgstr "Klasör _Seç…"
