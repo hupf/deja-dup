@@ -2,14 +2,14 @@
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Andika Triwidada <andika@gmail.com>, 2020, 2022.
-# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022.
+# Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-12-25 08:44+0000\n"
-"PO-Revision-Date: 2022-12-26 10:10+0700\n"
+"POT-Creation-Date: 2023-01-25 16:05+0000\n"
+"PO-Revision-Date: 2023-01-27 10:11+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "Language: id\n"
@@ -212,7 +212,7 @@ msgstr "Dibutuhkan Kata Sandi Enkripsi"
 
 #: app/AssistantOperation.vala:811
 msgid "Backups needs your encryption password to continue"
-msgstr "Cadangan perlu kata sandi enkripsi Anda untuk melanjutkan"
+msgstr "Pencadangan perlu kata sandi enkripsi Anda untuk melanjutkan"
 
 #: app/AssistantOperation.vala:885
 msgctxt "verb"
@@ -247,7 +247,7 @@ msgstr "_Map"
 
 #: app/AssistantRestore.vala:211
 msgid "Backups does not have permission to restore the following files:"
-msgstr "Cadangan tidak memiliki izin untuk memulihkan berkas berikut ini:"
+msgstr "Pencadangan tidak memiliki izin untuk memulihkan berkas berikut ini:"
 
 #: app/AssistantRestore.vala:274
 msgid "Backup location"
@@ -305,7 +305,7 @@ msgstr "Pemulihan Selesai"
 #. if it *is* visible, a header will be set already
 #: app/AssistantRestore.vala:513
 msgid "Your files were successfully restored."
-msgstr "Berkas anda berhasil dipulihkan."
+msgstr "Berkas Anda berhasil dipulihkan."
 
 #: app/AssistantRestore.vala:516
 msgid "Your file was successfully restored."
@@ -328,7 +328,7 @@ msgstr "Tidak dapat mencadangkan secara otomatis"
 msgid "Authentication needed"
 msgstr "Otentikasi diperlukan"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
 msgid "No backup files found"
 msgstr "Tidak ditemukan adanya berkas cadangan"
 
@@ -630,7 +630,7 @@ msgstr ""
 "  Mei Hua Song https://launchpad.net/~song-sharen\n"
 "  Muhammad Rivan Febrian https://launchpad.net/~rivanfebrian123\n"
 "Andika Triwidada <andika@gmail.com>, 2020-2022.\n"
-"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022."
+"Kukuh Syafaat <kukuhsyafaat@gnome.org>, 2022-2023."
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
@@ -927,11 +927,11 @@ msgstr ""
 
 #: data/app.gschema.xml.in:168
 msgid "The server address"
-msgstr "Alamat server"
+msgstr "Alamat peladen"
 
 #: data/app.gschema.xml.in:169
 msgid "The URI of the remote server location."
-msgstr "URI dari lokasi server jarak jauh."
+msgstr "URI dari lokasi peladen jarak jauh."
 
 #: data/app.gschema.xml.in:174
 msgid ""
@@ -999,7 +999,7 @@ msgstr ""
 
 #: data/app.metainfo.xml.in:98
 msgid "Back up to the cloud, a network server, or a local drive"
-msgstr "Cadangkan ke cloud, suatu server jaringan, atau drive lokal"
+msgstr "Cadangkan ke cloud, suatu peladen jaringan, atau drive lokal"
 
 #: data/app.metainfo.xml.in:102
 msgid ""
@@ -1191,7 +1191,7 @@ msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
 msgstr ""
-"Alamat server terdiri dari prefiks protokol, alamat, dan terkadang path "
+"Alamat peladen terdiri dari prefiks protokol, alamat, dan terkadang path "
 "tergantung pada protokol. Contoh:"
 
 #: data/ui/ServerAddressHelp.ui:53
@@ -1306,6 +1306,11 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Kembali"
 
+#: data/ui/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "Pilih semua"
+
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
 #: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
@@ -1353,7 +1358,7 @@ msgstr "Anda harus menyediakan folder Microsoft OneDrive."
 #: libdeja/BackendOAuth.vala:93
 #, c-format
 msgid "Could not log into %s servers."
-msgstr "Tak bisa log masuk ke server %s."
+msgstr "Tak bisa log masuk ke peladen %s."
 
 #. Translators: %s is a brand name like Google or Microsoft
 #: libdeja/BackendOAuth.vala:169
@@ -1389,13 +1394,13 @@ msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr ""
-"Lokasi jaringan server perlu ditentukan di preferensi lokasi penyimpanan."
+"Lokasi jaringan peladen perlu ditentukan di preferensi lokasi penyimpanan."
 
 #: libdeja/BackendRemote.vala:179
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
-msgstr "Lokasi jaringan server '%s' tidak terlihat seperti lokasi jaringan."
+msgstr "Lokasi jaringan peladen '%s' tidak terlihat seperti lokasi jaringan."
 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
@@ -1476,7 +1481,7 @@ msgid ""
 "Could not restore the following files.  Please make sure you are able to "
 "write to them."
 msgstr ""
-"Tidak dapat memulihkan cadangan berikut. Pastikan bahwa anda dapat menulis "
+"Tidak dapat memulihkan cadangan berikut.  Pastikan bahwa Anda dapat menulis "
 "ke berkas tersebut."
 
 #: libdeja/OperationVerify.vala:81
@@ -1492,13 +1497,25 @@ msgstr ""
 msgid "Paused (no network)"
 msgstr "Tertunda (tidak ada jaringan)"
 
+#. Is the disk not even big enough to possibly hold what we need?
+#. Don't bother checking whether this is first or later backup.
+#. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr "Lokasi cadangan terlalu kecil. Coba gunakan yang minimal %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:550
+#. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
+#: libdeja/duplicity/DuplicityJob.vala:562
+#, c-format
+msgid ""
+"Backup location does not have enough free space. Please free up at least %s."
+msgstr ""
+"Lokasi cadangan tidak memiliki cukup ruang bebas. Harap bebaskan setidaknya "
+"%s."
+
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1507,8 +1524,8 @@ msgstr ""
 "Lokasi cadangan tidak memiliki cukup ruang bebas. Coba gunakan yang minimal "
 "%s."
 
-#: libdeja/duplicity/DuplicityJob.vala:571
-#: libdeja/duplicity/DuplicityJob.vala:585
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "Pembersihan…"
 
@@ -1519,25 +1536,25 @@ msgstr "Pembersihan…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:669
-#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:682
+#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Gagal dengan kesalahan yang tidak dikenali."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:872
+#: libdeja/duplicity/DuplicityJob.vala:885
 msgid "Bad encryption password."
-msgstr "Password enkripsi buruk."
+msgstr "Kata sandi enkripsi buruk."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:921
+#: libdeja/duplicity/DuplicityJob.vala:934
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Tidak dapat memulihkan '%s': Berkas tidak ditemukan dalam cadangan"
 
-#: libdeja/duplicity/DuplicityJob.vala:932
+#: libdeja/duplicity/DuplicityJob.vala:945
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1548,53 +1565,53 @@ msgstr ""
 "bernama %s.  Jika tidak diinginkan, maka tentukan lokasi cadangan yang "
 "berbeda."
 
-#: libdeja/duplicity/DuplicityJob.vala:935
+#: libdeja/duplicity/DuplicityJob.vala:948
 msgid "Computer name changed"
 msgstr "Nama komputer berubah"
 
-#: libdeja/duplicity/DuplicityJob.vala:970
+#: libdeja/duplicity/DuplicityJob.vala:983
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Akses ditolak saat mencoba membuat '%s'."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:974
-#: libdeja/duplicity/DuplicityJob.vala:978
+#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:991
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Akses ditolak saat mencoba membaca '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:982
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Akses ditolak saat mencoba menghapus '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:989
+#: libdeja/duplicity/DuplicityJob.vala:1002
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Lokasi cadangan '%s' tidak ada."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
-#: libdeja/duplicity/DuplicityJob.vala:1028
+#: libdeja/duplicity/DuplicityJob.vala:1008
+#: libdeja/duplicity/DuplicityJob.vala:1041
 msgid "No space left."
 msgstr "Tidak ada ruang yang tersisa."
 
-#: libdeja/duplicity/DuplicityJob.vala:1017
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Gagal membaca berkas '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1019
+#: libdeja/duplicity/DuplicityJob.vala:1032
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Gagal menulis berkas '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Tidak ada ruang tersisa pada '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1088
+#: libdeja/duplicity/DuplicityJob.vala:1101
 msgid "Uploading…"
 msgstr "Mengunggah…"
 
