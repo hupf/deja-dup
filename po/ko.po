@@ -1,14 +1,14 @@
 # Korean translation for deja-dup
 # Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Seong-ho Cho <shcho@gnome.org>, 2021, 2022.
+# Seong-ho Cho <shcho@gnome.org>, 2021-2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-12-25 08:44+0000\n"
-"PO-Revision-Date: 2022-12-28 18:15+0900\n"
+"POT-Creation-Date: 2023-01-25 16:05+0000\n"
+"PO-Revision-Date: 2023-01-27 02:52+0900\n"
 "Last-Translator: Seong-ho Cho <shcho@gnome.org>\n"
 "Language-Team: Korean <gnome-kr@googlegroups.com>\n"
 "Language: ko\n"
@@ -323,7 +323,7 @@ msgstr "자동 백업할 수 없습니다"
 msgid "Authentication needed"
 msgstr "인증 필요"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
 msgid "No backup files found"
 msgstr "백업 파일을 찾을 수 없습니다"
 
@@ -612,7 +612,7 @@ msgstr "동작이 계속 진행중입니다"
 
 #: app/main.vala:344
 msgid "translator-credits"
-msgstr "Seong-ho Cho <shcho@gnome.org>, 2021, 2022."
+msgstr "조성호 <shcho@gnome.org>"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
@@ -948,8 +948,8 @@ msgid ""
 "data loss. If you need a full system backup or an archival program, you may "
 "prefer other backup apps."
 msgstr ""
-"데쟈 둡은 갑작스러운 개인 데이터 유실에 대비하여 활용 및 복원의 용이성에 초점"
-"을 맞췄습니다. 전체 시스템 백업 또는 프로그램 보관이 필요하다면 다른 백업 앱"
+"데쟈 둡은 갑작스러운 개인 데이터 유실에 대비하여 활용 및 복원의 용이성에 중점"
+"을 두었습니다. 전체 시스템 백업 또는 프로그램 보관이 필요하다면 다른 백업 앱"
 "을 사용하시는게 좋습니다."
 
 #: data/app.metainfo.xml.in:90
@@ -1264,6 +1264,11 @@ msgctxt "shortcut window"
 msgid "Go back"
 msgstr "뒤로 가기"
 
+#: data/ui/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "모두 선택"
+
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
 #: libdeja/BackendDrive.vala:75 libdeja/CommonUtils.vala:487
@@ -1444,15 +1449,26 @@ msgstr "백업이 깨진 것 같습니다.  백업을 삭제하고 다시 시도
 msgid "Paused (no network)"
 msgstr "일시 중지(네트워크 없음)"
 
+#. Is the disk not even big enough to possibly hold what we need?
+#. Don't bother checking whether this is first or later backup.
+#. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "백업 여분 공간이 너무 작습니다. 최소한 %s 여분 공간이 남은 저장소로 시도하십"
 "시오."
 
-#: libdeja/duplicity/DuplicityJob.vala:550
+#. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
+#: libdeja/duplicity/DuplicityJob.vala:562
+#, c-format
+msgid ""
+"Backup location does not have enough free space. Please free up at least %s."
+msgstr ""
+"백업 위치에 충분한 공간이 없습니다. 최소한 %s 여분 공간을 확보하십시오."
+
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1461,8 +1477,8 @@ msgstr ""
 "백업 위치에 충분한 공간이 없습니다. 최소한 %s 여분 공간이 남은 저장소로 시도"
 "하십시오."
 
-#: libdeja/duplicity/DuplicityJob.vala:571
-#: libdeja/duplicity/DuplicityJob.vala:585
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "정리 중…"
 
@@ -1473,81 +1489,81 @@ msgstr "정리 중…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:669
-#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:682
+#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "알 수 없는 오류로 실패했습니다."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:872
+#: libdeja/duplicity/DuplicityJob.vala:885
 msgid "Bad encryption password."
 msgstr "올바르지 않은 암호화 암호."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:921
+#: libdeja/duplicity/DuplicityJob.vala:934
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’을(를) 복원할 수 없습니다. 백업에서 파일을 찾을 수 없습니다"
 
-#: libdeja/duplicity/DuplicityJob.vala:932
+#: libdeja/duplicity/DuplicityJob.vala:945
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
 "name is %s.  If this is unexpected, you should back up to a different "
 "location."
 msgstr ""
-"기존 백업은 %s 컴퓨터에서 만들었지만 현재 사용하는 컴퓨터의 이"
-"름은 ‘%s’입니다. 예상치 못한 문제라면, 다른 위치에 백업하십시오."
+"기존 백업은 %s 컴퓨터에서 만들었지만 현재 사용하는 컴퓨터의 이름은 ‘%s’입니"
+"다. 예상치 못한 문제라면, 다른 위치에 백업하십시오."
 
-#: libdeja/duplicity/DuplicityJob.vala:935
+#: libdeja/duplicity/DuplicityJob.vala:948
 msgid "Computer name changed"
 msgstr "컴퓨터 이름 바뀜"
 
-#: libdeja/duplicity/DuplicityJob.vala:970
+#: libdeja/duplicity/DuplicityJob.vala:983
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’을(를) 만들 권한이 없습니다."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:974
-#: libdeja/duplicity/DuplicityJob.vala:978
+#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:991
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’을(를) 읽을 권한이 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:982
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’을(를) 삭제할 권한이 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:989
+#: libdeja/duplicity/DuplicityJob.vala:1002
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ 백업 위치가 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
-#: libdeja/duplicity/DuplicityJob.vala:1028
+#: libdeja/duplicity/DuplicityJob.vala:1008
+#: libdeja/duplicity/DuplicityJob.vala:1041
 msgid "No space left."
 msgstr "남은 공간이 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:1017
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "‘%s’ 파일을 읽을 수 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:1019
+#: libdeja/duplicity/DuplicityJob.vala:1032
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "‘%s’ 파일에 쓰는 중 오류."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’에 빈 공간이 없습니다."
 
-#: libdeja/duplicity/DuplicityJob.vala:1088
+#: libdeja/duplicity/DuplicityJob.vala:1101
 msgid "Uploading…"
 msgstr "업로드중…"
 
@@ -1605,4 +1621,3 @@ msgstr "전원 절약 모드에서 빠져나오면 백업을 시작합니다."
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "정액제 네트워크에 연결하면 백업을 시작합니다."
-
