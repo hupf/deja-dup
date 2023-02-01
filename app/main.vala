@@ -340,6 +340,7 @@ public class DejaDupApp : Adw.Application
     };
     dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
+    dialog.release_notes = "<p>Modernizes the UI in a few places and enables compression for new Restic backups.</p>";
     dialog.transient_for = get_app_window();
     dialog.translator_credits = _("translator-credits");
     dialog.version = Config.VERSION;
