@@ -3,16 +3,16 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Johannes Maibaum <jmaibaum@gmail.com>, 2020.
 # Christian Kirbach <christian.kirbach@gmail.com>, 2020,2021,2022.
-# Philipp Kiemle <philipp.kiemle@gmail.com>, 2021-2022.
-# Jürgen Benvenuti <gastornis@posteo.org>, 2022.
+# Philipp Kiemle <philipp.kiemle@gmail.com>, 2021-2023.
+# Jürgen Benvenuti <gastornis@posteo.org>, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2022-12-25 08:44+0000\n"
-"PO-Revision-Date: 2022-12-25 16:44+0100\n"
-"Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
+"POT-Creation-Date: 2023-02-01 23:34+0000\n"
+"PO-Revision-Date: 2023-02-13 10:48+0100\n"
+"Last-Translator: Philipp Kiemle <philipp.kiemle@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -69,12 +69,10 @@ msgstr ""
 "Die folgenden Ordner können nicht gesichert werden, da Datensicherungen "
 "nicht auf sie zugreifen darf:"
 
-# Muss das gesperrte Leerzeichen aus dem Original auch in die Übersetzung? - jb
 #: app/AssistantBackup.vala:83
 msgid "Creating the first backup.  This may take a while."
 msgstr "Die erste Sicherung wird erstellt. Das kann eine Weile dauern."
 
-# Auch hier: Ein gesperrtes Leerzeichen zwischen den Sätzen im Original.
 #: app/AssistantBackup.vala:84
 msgid ""
 "Creating a fresh backup to protect against backup corruption.  This will "
@@ -226,7 +224,7 @@ msgstr "_Installieren"
 
 #: app/AssistantOperation.vala:890
 msgid "Backups needs to install packages to continue"
-msgstr "Datensicherungen muss Software installieren, um fortzufahren"
+msgstr "Datensicherungen muss Pakete installieren, um fortzufahren"
 
 #: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
 msgid "Restore"
@@ -238,7 +236,7 @@ msgstr "_Wiederherstellen"
 
 #: app/AssistantRestore.vala:162
 msgid "Restore files to _original locations"
-msgstr "Daten an den ursprünglichen _Orten wiederherstellen"
+msgstr "Dateien an den ursprünglichen _Orten wiederherstellen"
 
 #: app/AssistantRestore.vala:176
 msgid "Restore to _specific folder"
@@ -337,7 +335,7 @@ msgstr "Automatische Datensicherungen können nicht erstellt werden"
 msgid "Authentication needed"
 msgstr "Authentifizierung nötig"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1038
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
 msgid "No backup files found"
 msgstr "Keine Datensicherungsdateien gefunden"
 
@@ -406,7 +404,7 @@ msgstr[1] "Mindestens %d Tage"
 
 #: app/ConfigFolderGroup.vala:63
 msgid "Choose Folders"
-msgstr "Ordner auswählen"
+msgstr "Ordner wählen"
 
 #: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
 msgid "Add"
@@ -467,7 +465,7 @@ msgstr "»_Restic« statt »Duplicity« nutzen"
 
 #: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
 msgid "Choose Folder"
-msgstr "Ordner auswählen"
+msgstr "Ordner wählen"
 
 #: app/MountOperationAssistant.vala:23
 msgid "_Username"
@@ -526,10 +524,9 @@ msgstr "Datensicherung fehlgeschlagen"
 msgid "Restore failed"
 msgstr "Wiederherstellung fehlgeschlagen"
 
-# Variante ohne zwei Kommas: Bewahren Sie Ihre Daten sicher auf durch regelmäßige Datensicherungen. - jb
 #: app/Notifications.vala:76
 msgid "Keep your files safe by backing up regularly"
-msgstr "Ihre Daten, durch regelmäßige Datensicherungen, sicher aufbewahren"
+msgstr "Schützen Sie Ihre Daten durch regelmäßige Datensicherungen"
 
 #: app/Notifications.vala:77
 msgid ""
@@ -569,10 +566,11 @@ msgid "This is an experimental feature and may be removed at any time."
 msgstr ""
 "Das ist eine experimentelle Funktion und sie kann jederzeit entfernt werden."
 
-# Das klingt komisch, sowohl auf Deutsch als auch im Original. - jb
 #: app/PreferencesWindow.vala:32
 msgid "Use caution, but any testing you can manage is appreciated."
-msgstr "Seien Sie vorsichtig. All Ihr Testen wird dankend angenommen."
+msgstr ""
+"Seien Sie vorsichtig, aber alle Tests, die Sie durchführen können, sind "
+"willkommen."
 
 #. Translators: the %s formatting is a link start and end.
 #: app/PreferencesWindow.vala:35
@@ -636,8 +634,7 @@ msgstr "Bitte wiederherzustellende Dateien auflisten"
 msgid "An operation is already in progress"
 msgstr "Ein Vorgang läuft bereits"
 
-# Rein aus Neugier: Warum laufen bei einer GNOME Circle-App alle Übersetzungen über launchpad? - jb
-#: app/main.vala:344
+#: app/main.vala:345
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -690,14 +687,16 @@ msgstr ""
 "  schuko24 https://launchpad.net/~gerd-saenger\n"
 "  siziwi https://launchpad.net/~siziwi\n"
 "  theghost https://launchpad.net/~theghost\n"
-"  typo https://launchpad.net/~gnomeuser8"
+"  typo https://launchpad.net/~gnomeuser8\n"
+"Jürgen Benvenuti <gastornis@posteo.org>\n"
+"Philipp Kiemle <philipp.kiemle@gmail.com>"
 
 #. Translators: The name is a play on the French phrase "déjà vu" meaning
 #. "already seen", but with the "vu" replaced with "dup".  "Dup" in this
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:451 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Datensicherungen"
 
@@ -723,7 +722,6 @@ msgstr "Sichern"
 msgid "Folders to save"
 msgstr "Zu sichernde Ordner"
 
-# Ist das gesperrte Leerzeichen auf Deutsch vor $HOME Absicht? - jb
 #: data/app.gschema.xml.in:26
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, "
@@ -733,7 +731,7 @@ msgid ""
 "by the user’s username and can be anywhere in the path. Relative entries are "
 "relative to the user’s home directory."
 msgstr ""
-"Diese Liste von Ordnern wird gesichert. Die reservierten Schlüsselwörter  "
+"Diese Liste von Ordnern wird gesichert. Die reservierten Schlüsselwörter "
 "$HOME, $DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, "
 "$TEMPLATES, $TRASH, und $VIDEOS werden am Beginn eines Pfades durch die "
 "speziellen Nutzerordner ersetzt. Das Schlüsselwort $USER wird überall im "
@@ -744,7 +742,6 @@ msgstr ""
 msgid "Folders to ignore"
 msgstr "Zu ignorierende Ordner"
 
-# Auch hier: Gesperrtes Leerzeichen vor $HOME. Absicht?
 #: data/app.gschema.xml.in:31
 msgid ""
 "This list of directories will not be backed up. Reserved values $HOME, "
@@ -755,11 +752,11 @@ msgid ""
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr ""
 "Diese Liste von Ordnern wird von der Datensicherung ausgenommen. Die "
-"reservierten Schlüsselwörter  $HOME, $DESKTOP, $DOCUMENTS, $DOWNLOAD, "
-"$MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, und $VIDEOS werden am "
-"Beginn eines Pfades durch die speziellen Nutzerordner ersetzt. Das "
-"Schlüsselwort $USER wird überall im Pfad mit dem Benutzernamen ersetzt. "
-"Relative Pfade gehen immer vom persönlichen Ordner des Benutzers aus."
+"reservierten Schlüsselwörter $HOME, $DESKTOP, $DOCUMENTS, $DOWNLOAD, $MUSIC, "
+"$PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, und $VIDEOS werden am Beginn "
+"eines Pfades durch die speziellen Nutzerordner ersetzt. Das Schlüsselwort "
+"$USER wird überall im Pfad mit dem Benutzernamen ersetzt. Relative Pfade "
+"gehen immer vom persönlichen Ordner des Benutzers aus."
 
 #: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
@@ -862,7 +859,7 @@ msgid ""
 msgstr ""
 "Die Anzahl der Tage, für die Sicherungsdateien aufbewahrt werden sollen. "
 "Falls der Wert 0 ist, bedeutet das unbegrenzt. Hier ist die kleinste Anzahl "
-"der Tage gemeint, die Dateien können auch länger behalten werden."
+"Tage gemeint. Die Dateien können auch länger behalten werden."
 
 #: data/app.gschema.xml.in:75
 msgid "How long to wait between full backups"
@@ -1051,24 +1048,24 @@ msgstr ""
 "Archivprogramm benötigen, könnten andere Datensicherungsprogramme besser "
 "geeignet sein."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:96
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Sichern Sie Ihre Daten automatisch. Einmal einstellen und nie wieder darum "
 "kümmern"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:100
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Dateien wiederherstellen ist ein Kinderspiel. Durchsuchen Sie Ihre Dateien "
 "und wählen Sie Dateien zur Wiederherstellung aus"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:104
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Sichern Sie in die Cloud, auf einen Netzwerkrechner oder ein lokales Laufwerk"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:108
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1118,7 +1115,7 @@ msgstr "_Verbinden"
 
 #: data/ui/Browser.ui:196
 msgid "Encryption password needed"
-msgstr "Verschlüsselungspasswort benötigt"
+msgstr "Verschlüsselungspasswort erforderlich"
 
 #: data/ui/Browser.ui:207
 msgid "_Enter Password"
@@ -1165,7 +1162,7 @@ msgstr "Kontozugriff zu_rücksetzen"
 
 #: data/ui/ConfigLocationGroup.ui:66
 msgid "Ser_ver Address"
-msgstr "Ser_ver-Adresse"
+msgstr "Ser_veradresse"
 
 #: data/ui/ConfigLocationRow.ui:47
 msgid "_Location"
@@ -1197,7 +1194,7 @@ msgstr "_Hilfe"
 
 #: data/ui/MainHeaderBar.ui:77
 msgid "_About Backups"
-msgstr "_Infos zur Datensicherung"
+msgstr "_Info zu Datensicherungen"
 
 #: data/ui/MainWindow.ui:24
 msgid "Overview"
@@ -1233,7 +1230,7 @@ msgid ""
 "space or kept up to three months longer to avoid deleting related backups."
 msgstr ""
 "Die ältesten Datensicherungen werden dennoch früher gelöscht, falls am "
-"Zielort wenig Speicherplatz verfügbar steht. Oder sie werden drei Monate "
+"Zielort wenig Speicherplatz verfügbar ist. Oder sie werden drei Monate "
 "länger aufbewahrt, um das Löschen zugehöriger Sicherungen zu vermeiden."
 
 #: data/ui/PreferencesWindow.ui:61
@@ -1250,7 +1247,7 @@ msgstr "Aktuellste Datensicherung"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
-msgstr "Die Server-Adresse"
+msgstr "Serveradressen"
 
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
 #: data/ui/ServerAddressHelp.ui:27
@@ -1258,7 +1255,7 @@ msgid ""
 "Server addresses are made up of a protocol prefix, an address, and sometimes "
 "a path depending on the protocol. Examples:"
 msgstr ""
-"Server-Adressen bestehen aus einem Protokollpräfix, einer Adresse und "
+"Serveradressen bestehen aus einem Protokollpräfix, einer Adresse und "
 "manchmal einem Pfad, je nach Protokoll. Beispiele:"
 
 #: data/ui/ServerAddressHelp.ui:53
@@ -1372,6 +1369,11 @@ msgstr "Suchen"
 msgctxt "shortcut window"
 msgid "Go back"
 msgstr "Zurück gehen"
+
+#: data/ui/help-overlay.ui:67
+msgctxt "shortcut window"
+msgid "Select all"
+msgstr "Alles auswählen"
 
 #. Translators: %2$s is the name of a removable drive, %1$s is a folder
 #. on that removable drive.
@@ -1550,7 +1552,7 @@ msgid ""
 "write to them."
 msgstr ""
 "Folgende Dateien konnten nicht wiederhergestellt werden. Bitte stellen Sie "
-"sicher, dass Sie für diese Schreibberechtigungen besitzen."
+"sicher, dass Sie für diese Dateien Schreibberechtigungen besitzen."
 
 #: libdeja/OperationVerify.vala:81
 msgid ""
@@ -1565,15 +1567,27 @@ msgstr ""
 msgid "Paused (no network)"
 msgstr "Angehalten (keine Netzwerkverbindung)"
 
+#. Is the disk not even big enough to possibly hold what we need?
+#. Don't bother checking whether this is first or later backup.
+#. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:525 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
 msgid "Backup location is too small. Try using one with at least %s."
 msgstr ""
 "Der Ort der Datensicherung hat nicht genug Speicherplatz. Verwenden Sie "
 "einen Ort mit mindestens %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:550
+#. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
+#: libdeja/duplicity/DuplicityJob.vala:562
+#, c-format
+msgid ""
+"Backup location does not have enough free space. Please free up at least %s."
+msgstr ""
+"Der Ort der Datensicherung hat nicht genug freien Speicherplatz. Bitte "
+"machen Sie mindestens %s frei."
+
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using one with at least "
@@ -1582,8 +1596,8 @@ msgstr ""
 "Der Ort der Datensicherung hat nicht genug freien Speicherplatz. Verwenden "
 "Sie einen Ort mit mindestens %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:571
-#: libdeja/duplicity/DuplicityJob.vala:585
+#: libdeja/duplicity/DuplicityJob.vala:584
+#: libdeja/duplicity/DuplicityJob.vala:598
 msgid "Cleaning up…"
 msgstr "Aufräumen läuft …"
 
@@ -1594,27 +1608,27 @@ msgstr "Aufräumen läuft …"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:669
-#: libdeja/duplicity/DuplicityJob.vala:1057 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:682
+#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Mit unbekanntem Fehler fehlgeschlagen."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:872
+#: libdeja/duplicity/DuplicityJob.vala:885
 msgid "Bad encryption password."
 msgstr "Falsches Passwort zum Verschlüsseln."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:921
+#: libdeja/duplicity/DuplicityJob.vala:934
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "»%s« konnte nicht wiederhergestellt werden: Datei wurde in der Sicherung "
 "nicht gefunden"
 
-#: libdeja/duplicity/DuplicityJob.vala:932
+#: libdeja/duplicity/DuplicityJob.vala:945
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1625,53 +1639,53 @@ msgstr ""
 "aber der Name des aktuellen Rechners ist »%s«. Wenn dies unerwartet ist, "
 "sollten Sie in einen anderen Ordner sichern."
 
-#: libdeja/duplicity/DuplicityJob.vala:935
+#: libdeja/duplicity/DuplicityJob.vala:948
 msgid "Computer name changed"
 msgstr "Rechnername wurde geändert"
 
-#: libdeja/duplicity/DuplicityJob.vala:970
+#: libdeja/duplicity/DuplicityJob.vala:983
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "»%s« kann nicht angelegt werden – keine Berechtigung."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:974
-#: libdeja/duplicity/DuplicityJob.vala:978
+#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:991
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "»%s« kann nicht gelesen werden – keine Berechtigung."
 
-#: libdeja/duplicity/DuplicityJob.vala:982
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "»%s« kann nicht gelöscht werden – keine Berechtigung."
 
-#: libdeja/duplicity/DuplicityJob.vala:989
+#: libdeja/duplicity/DuplicityJob.vala:1002
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Sicherungsordner »%s« ist nicht vorhanden."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
-#: libdeja/duplicity/DuplicityJob.vala:1028
+#: libdeja/duplicity/DuplicityJob.vala:1008
+#: libdeja/duplicity/DuplicityJob.vala:1041
 msgid "No space left."
 msgstr "Nicht genug freier Speicherplatz."
 
-#: libdeja/duplicity/DuplicityJob.vala:1017
+#: libdeja/duplicity/DuplicityJob.vala:1030
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fehler beim Lesen der Datei »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1019
+#: libdeja/duplicity/DuplicityJob.vala:1032
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fehler beim Schreiben der Datei »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1043
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Kein Speicherplatz mehr verfügbar in »%s«."
 
-#: libdeja/duplicity/DuplicityJob.vala:1088
+#: libdeja/duplicity/DuplicityJob.vala:1101
 msgid "Uploading…"
 msgstr "Hochladen läuft …"
 
@@ -2184,8 +2198,8 @@ msgstr ""
 #~ msgstr "Zugriff verweigert"
 
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
-#~ "\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
 #~ msgstr ""
 #~ "Sie können sich im <a href=\"%s\">Netz</a> für ein Konto bei Rackspace-"
 #~ "Cloud-Files registrieren."
