@@ -3,6 +3,14 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 44.1
+- Refuse to back up to a destination that doesn't have enough space, and
+  suggest how much more space is needed
+- New Interlingue translation
+- Updated Belarusian, Brazilian Portuguese, Croatian, Danish, Friulian,
+  Georgian, German, Hebrew, Indonesian, Korean, Polish, Portuguese, Russian,
+  Slovenian, Swedish, Turkish, and Ukrainian translations
+
 # 44.0
 - Refresh the visuals in a few places by using modern text entries and the
   new About dialog
