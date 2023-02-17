@@ -343,14 +343,17 @@ public class DejaDupApp : Adw.Application
     dialog.release_notes = """
       <p>44.1</p>
       <ul>
-        <li>Refuse to back up to a destination that doesn't have enough space, and suggest how much more space is needed</li>
+        <li>Refuse to back up to a destination that doesn't have enough space, and suggest how much more space is
+            needed</li>
       </ul>
       <p>44.0</p>
       <ul>
         <li>Refresh the visuals in a few places by using modern text entries and the new About dialog (this one!)</li>
         <li>Newly created restic backups will now use compression</li>
-        <li>Fix a bug that prevented updating the folder option in the Preferences window after changing to an external disk</li>
-        <li>Fixed a bug that prevented switching to the restore view if the app starts up in mobile mode (thin width)</li>
+        <li>Fix a bug that prevented updating the folder option in the Preferences window after changing to an
+            external disk</li>
+        <li>Fixed a bug that prevented switching to the restore view if the app starts up in mobile mode (thin
+            width)</li>
       </ul>
     """;
     dialog.transient_for = get_app_window();

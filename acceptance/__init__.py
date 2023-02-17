@@ -185,7 +185,9 @@ class BaseTest(unittest.TestCase):
             password = password or "resticpassword"
         if password:
             window = app.window(title or "Encryption Password Needed")
-            window.child(roleName="text", label="Encryption password").typeText(password)
+            window.child(roleName="text", label="Encryption password").typeText(
+                password
+            )
             window.button("Forward").click()
         else:
             window = app.window(title or "Backing Up…")

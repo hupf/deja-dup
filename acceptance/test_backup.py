@@ -111,9 +111,12 @@ class BackupTest(BaseTest):
             self.walk_initial_backup(app)
 
         # Change hostname
-        subprocess.run("sed -i 's/Hostname .*/Hostname dejanewhostnametest/' "
-                       f"{self.destdir}/*.manifest",
-                       shell=True, check=True)
+        subprocess.run(
+            "sed -i 's/Hostname .*/Hostname dejanewhostnametest/' "
+            f"{self.destdir}/*.manifest",
+            shell=True,
+            check=True,
+        )
         self.clean_cache()
 
         app = self.cmd("--backup")
@@ -210,8 +213,7 @@ class BackupTest(BaseTest):
         # Wait for prompt (a little longer to appear than normal dogtail timeouts)
         self.wait_for(
             lambda: app.findChild(
-                lambda x: x.roleName == "text"
-                and x.name == "Encryption password",
+                lambda x: x.roleName == "text" and x.name == "Encryption password",
                 requireResult=False,
                 retry=False,
             )
