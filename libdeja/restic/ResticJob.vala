@@ -315,7 +315,7 @@ internal class ResticBackupJoblet : ResticJoblet
     reader.end_member();
     if (total_bytes > total_space) {
       // Tiny backup location.  Suggest they get a larger one.
-      var msg = _("Backup location is too small. Try using one with at least %s.");
+      var msg = _("Backup location is too small. Try using a location with at least %s free.");
       show_error(msg.printf(format_size(total_bytes)));
       done(false, false);
       return true;

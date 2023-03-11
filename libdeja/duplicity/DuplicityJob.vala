@@ -539,7 +539,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     // If the user adds folders to their backup and the target is just too small, let them know.
     if (total < initial_required_space) {
       // Tiny backup location.  Suggest they get a larger one.
-      var msg = _("Backup location is too small. Try using one with at least %s.");
+      var msg = _("Backup location is too small. Try using a location with at least %s free.");
       show_error(msg.printf(format_size(initial_required_space)));
       done(false, false);
       return;
@@ -561,7 +561,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       // Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
       var msg = _("Backup location does not have enough free space. Please free up at least %s.");
       if (first_backup)
-        msg = _("Backup location does not have enough free space. Try using one with at least %s.");
+        msg = _("Backup location does not have enough free space. Try using a location with at least %s free.");
       show_error(msg.printf(format_size(required_free_space)));
       done(false, false);
       return;
