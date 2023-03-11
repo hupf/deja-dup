@@ -41,6 +41,10 @@ public class DejaDup.InstallEnv : Object
     return {Environment.get_tmp_dir(), "/var/tmp"};
   }
 
+  public virtual string get_trash_dir() {
+    return Path.build_filename(Environment.get_user_data_dir(), "Trash");
+  }
+
   public virtual string get_read_root() { return "/"; }
 
   public virtual void register_monitor_restart(MainLoop loop) {}

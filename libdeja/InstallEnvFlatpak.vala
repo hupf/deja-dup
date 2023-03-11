@@ -26,6 +26,12 @@ class DejaDup.InstallEnvFlatpak : DejaDup.InstallEnv
     return {};
   }
 
+  public override string get_trash_dir() {
+    // The normal default would have us claim that the trash is in ~/.var/...,
+    // so hardcode the normal $HOME location.
+    return Path.build_filename(Environment.get_home_dir(), ".local", "share", "Trash");
+  }
+
   public override async bool request_autostart(string handle, out string? mitigation)
   {
     var request = new FlatpakAutostartRequest();

@@ -499,7 +499,7 @@ void ensure_special_paths ()
   if (home == null) {
     // Fill these out for the first time
     home = File.new_for_path(Environment.get_home_dir());
-    trash = File.new_for_path(DejaDup.get_trash_path());
+    trash = File.new_for_path(InstallEnv.instance().get_trash_dir());
   }
 }
 

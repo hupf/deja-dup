@@ -8,11 +8,6 @@ using GLib;
 
 namespace DejaDup {
 
-public string get_trash_path()
-{
-  return Path.build_filename(Environment.get_user_data_dir(), "Trash");
-}
-
 // The path of the canary metadata dir we insert into our backups (with a "README" file)
 public File get_metadir()
 {
@@ -40,7 +35,7 @@ public string? parse_keywords(string dir)
   if (result.has_prefix("$HOME"))
     result = result.replace("$HOME", Environment.get_home_dir());
   else if (result.has_prefix("$TRASH"))
-    result = result.replace("$TRASH", get_trash_path());
+    result = result.replace("$TRASH", InstallEnv.instance().get_trash_dir());
   else {
     for (int i = 0; i < dirs.length; i++) {
       if (result.has_prefix(dirs[i])) {
