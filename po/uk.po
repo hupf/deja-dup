@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-25 16:05+0000\n"
-"PO-Revision-Date: 2023-01-27 15:43+0200\n"
+"POT-Creation-Date: 2023-03-11 19:12+0000\n"
+"PO-Revision-Date: 2023-03-12 19:28+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -635,7 +635,7 @@ msgstr "Будь ласка, вкажіть список файлів для в�
 msgid "An operation is already in progress"
 msgstr "Операція вже виконується"
 
-#: app/main.vala:344
+#: app/main.vala:360
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -660,7 +660,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:466 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -1012,25 +1012,25 @@ msgstr ""
 "всієї системи або програма для архівації, ви можете віддати перевагу іншим "
 "програмам резервного копіювання."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Створюйте резервні копії ваших файлів автоматично. Налаштуйте програму і "
 "позбудьтеся клопоту."
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Відновлення даних є надзвичайно простим. Достатньо вибрати файли і каталог "
 "для відновлення."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого "
 "комп'ютера."
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1537,31 +1537,33 @@ msgstr "Призупинено (мережа відсутня)"
 #. Tiny backup location.  Suggest they get a larger one.
 #: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
+#| msgid "Backup location is too small. Try using one with at least %s."
+msgid ""
+"Backup location is too small. Try using a location with at least %s free."
 msgstr ""
-"Місце резервного копіювання занадто мале. Спробуйте використовувати "
-"принаймні %s."
+"Місце резервного копіювання занадто мале. Спробуйте скористатися місцем, де"
+" вільно принаймні %s."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
 #: libdeja/duplicity/DuplicityJob.vala:562
+#, c-format
+msgid ""
+"Backup location does not have enough free space. Please free up at least %s."
+msgstr ""
+"Місце резервного копіювання не має достатньо вільного місця. Будь ласка, "
+"звільніть принаймні %s."
+
+#: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 #| msgid ""
 #| "Backup location does not have enough free space. Try using one with at "
 #| "least %s."
 msgid ""
-"Backup location does not have enough free space. Please free up at least %s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
-"Місце резервного копіювання не має достатньо вільного місця. Будь ласка,"
-" звільніть принаймні %s."
-
-#: libdeja/duplicity/DuplicityJob.vala:564
-#, c-format
-msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
-msgstr ""
-"Місце резервного копіювання не має достатньо вільного місця. Спробуйте "
-"використовувати принаймні %s."
+"Місце резервного копіювання не має достатньо вільного місця. Спробуйте"
+" скористатися місцем, де вільно принаймні %s."
 
 #: libdeja/duplicity/DuplicityJob.vala:584
 #: libdeja/duplicity/DuplicityJob.vala:598
