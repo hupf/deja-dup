@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-24 18:25+0000\n"
-"PO-Revision-Date: 2023-01-24 22:44+0300\n"
+"POT-Creation-Date: 2023-03-11 19:26+0000\n"
+"PO-Revision-Date: 2023-03-11 22:37+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <gnome-turk@gnome.org>\n"
 "Language: tr\n"
@@ -617,7 +617,7 @@ msgstr "Lütfen geri yüklenecek dosyaları listeleyin"
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: app/main.vala:344
+#: app/main.vala:360
 msgid "translator-credits"
 msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 
@@ -626,7 +626,7 @@ msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:466 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Yedekleri"
 
@@ -836,7 +836,7 @@ msgid ""
 "ignored."
 msgstr ""
 "Kurulu komutunuzdan sonra temizliğe gereksiniyorsanız kullanışlıdır. Hatalar "
-"göz ardı edilir."
+"yok sayılır."
 
 #: data/app.gschema.xml.in:95
 msgid "Command to run around the backup tool"
@@ -971,21 +971,21 @@ msgstr ""
 "odaklanmıştır. Eğer tam sistem yedekleme veya arşivleme programına "
 "gereksiniyorsanız başka yeek uygulamalarını yeğleyebilirsiniz."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Dosyalarınızı kendiliğinden yedekleyin — ayarlayın ve unutun"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Geri yüklemek çocuk oyuncağı — dosyalarınıza göz atın ve hangisinin geri "
 "yükleneceğini seçin"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Buluta, ağ sunucusuna veya yerel sürücüye yedekleyin"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1408,7 +1408,7 @@ msgstr "Çöp"
 msgid "Backup encryption password"
 msgstr "Yedek şifreleme parolası"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1481,8 +1481,10 @@ msgstr "Duraklatıldı (ağ yok)"
 #. Tiny backup location.  Suggest they get a larger one.
 #: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
-msgstr "Yedekleme konumu çok küçük. En az %s olanı kullanmayı deneyin."
+msgid ""
+"Backup location is too small. Try using a location with at least %s free."
+msgstr ""
+"Yedekleme konumu çok küçük. En az %s boş alanlı bir konum kullanmayı deneyin."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
 #: libdeja/duplicity/DuplicityJob.vala:562
@@ -1494,10 +1496,11 @@ msgstr "Yedekleme konumunda yeterli boş alan yok. En az %s boşaltmayı deneyin
 #: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
-"Yedekleme konumunda yeterli boş alan yok. En az %s olanı kullanmayı deneyin."
+"Yedekleme konumunda yeterli boş alan yok. En az %s boş alanlı bir konum "
+"kullanmayı deneyin."
 
 #: libdeja/duplicity/DuplicityJob.vala:584
 #: libdeja/duplicity/DuplicityJob.vala:598
