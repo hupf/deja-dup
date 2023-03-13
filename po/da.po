@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-25 16:05+0000\n"
-"PO-Revision-Date: 2023-03-11 16:18+0100\n"
+"POT-Creation-Date: 2023-03-13 17:51+0000\n"
+"PO-Revision-Date: 2023-03-13 18:58+0100\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -629,7 +629,7 @@ msgstr "Vis venligst filer som skal genoprettes"
 msgid "An operation is already in progress"
 msgstr "En handling er allerede i gang"
 
-#: app/main.vala:344
+#: app/main.vala:360
 msgid "translator-credits"
 msgstr ""
 "Launchpad-bidrag:\n"
@@ -657,7 +657,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:466 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup-sikkerhedskopieringer"
 
@@ -1008,24 +1008,24 @@ msgstr ""
 "arkiveringsprogram, så kan det være du vil foretrække andre "
 "sikkerhedskopieringsprogrammer."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Foretag automatisk sikkerhedskopiering af dine filer — indstil og lad det "
 "køre"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Gendannelse er pærenemt — gennemse dine filer og vælg dem, der skal "
 "genoprettes"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Gem sikkerhedskopien i skyen, på en netværksserver eller et lokalt drev"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1458,7 +1458,7 @@ msgstr "Papirkurv"
 msgid "Backup encryption password"
 msgstr "Adgangskode til kryptering af sikkerhedskopi"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1533,9 +1533,11 @@ msgstr "På pause (intet netværk)"
 #. Tiny backup location.  Suggest they get a larger one.
 #: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
+msgid ""
+"Backup location is too small. Try using a location with at least %s free."
 msgstr ""
-"Placering af sikkerhedskopi er for lille. Prøv at bruge en med mindst %s."
+"Placering af sikkerhedskopi er for lille. Prøv at bruge en med mindst %s "
+"ledig."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
 #: libdeja/duplicity/DuplicityJob.vala:562
@@ -1548,11 +1550,11 @@ msgstr ""
 #: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
 "Placering af sikkerhedskopi har ikke nok ledig plads. Prøv at bruge en med "
-"mindst %s."
+"mindst %s ledig."
 
 #: libdeja/duplicity/DuplicityJob.vala:584
 #: libdeja/duplicity/DuplicityJob.vala:598
