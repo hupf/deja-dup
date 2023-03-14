@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-25 16:05+0000\n"
-"PO-Revision-Date: 2023-02-21 00:16+0100\n"
-"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"POT-Creation-Date: 2023-03-11 19:12+0000\n"
+"PO-Revision-Date: 2023-03-12 19:10+0100\n"
+"Last-Translator: Meskó Balázs <mesko.balazs@fsf.hu>\n"
 "Language-Team: Hungarian <gnome-hu-list at gnome dot org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -628,7 +628,7 @@ msgstr "Sorolja fel a visszaállítandó fájlokat"
 msgid "An operation is already in progress"
 msgstr "Már folyamatban van egy művelet"
 
-#: app/main.vala:344
+#: app/main.vala:360
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
@@ -657,7 +657,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:466 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Biztonsági mentések"
 
@@ -1011,23 +1011,23 @@ msgstr ""
 "biztonsági mentéshez vagy archiváláshoz való programot keres, akkor arra más "
 "program alkalmasabb lehet."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Készítsen automatikus biztonsági mentést a fájljairól – állítsa be és "
 "felejtse el a problémát"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "A visszaállítás gyerekjáték – tallózza a fájljait, és válassza ki, amit "
 "visszaállítana"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Mentsen felhőbe, hálózati kiszolgálóra vagy helyi meghajtóra"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1307,7 +1307,6 @@ msgid "Quit"
 msgstr "Bezárás"
 
 #: data/ui/help-overlay.ui:38
-#| msgid "_Preferences"
 msgctxt "shortcut window"
 msgid "Preferences"
 msgstr "Beállítások"
@@ -1333,7 +1332,6 @@ msgid "Go back"
 msgstr "Ugrás vissza"
 
 #: data/ui/help-overlay.ui:67
-#| msgid "_Select All"
 msgctxt "shortcut window"
 msgid "Select all"
 msgstr "Összes kijelölése"
@@ -1534,31 +1532,29 @@ msgstr "Szüneteltetve (nincs hálózat)"
 #. Tiny backup location.  Suggest they get a larger one.
 #: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
+msgid ""
+"Backup location is too small. Try using a location with at least %s free."
 msgstr ""
-"A biztonsági mentésre kiválasztott hely túl kicsi. Legalább %s méretűre "
-"lenne szükség."
+"A biztonsági mentésre kiválasztott hely túl kicsi. Próbálkozzon egy legalább "
+"%s szabad területtel rendelkező hellyel."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
 #: libdeja/duplicity/DuplicityJob.vala:562
 #, c-format
-#| msgid ""
-#| "Backup location does not have enough free space. Try using one with at "
-#| "least %s."
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr ""
-"A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás."
-" Legalább %s felszabadítása szükséges."
+"A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás. "
+"Legalább %s felszabadítása szükséges."
 
 #: libdeja/duplicity/DuplicityJob.vala:564
 #, c-format
 msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
 "A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás. "
-"Legalább %s méretűre lenne szükség."
+"Próbálkozzon egy legalább %s szabad területtel rendelkező hellyel."
 
 #: libdeja/duplicity/DuplicityJob.vala:584
 #: libdeja/duplicity/DuplicityJob.vala:598
