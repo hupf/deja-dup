@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2023-01-24 18:25+0000\n"
-"PO-Revision-Date: 2023-01-24 19:36+0100\n"
+"POT-Creation-Date: 2023-03-12 04:08+0000\n"
+"PO-Revision-Date: 2023-03-19 15:48+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -150,7 +150,7 @@ msgstr "Hjälp till att göra <app>Déjà Dup</app> bättre"
 #. (itstool) path: page/title
 #: C/contribute.page:20
 msgid "Getting Involved"
-msgstr "Bli involverad"
+msgstr "Engagera dig"
 
 #. (itstool) path: page/p
 #: C/contribute.page:22
@@ -661,38 +661,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/prefs.page:33
-msgid "<gui>Keep Backups</gui>"
-msgstr "<gui>Behåll säkerhetskopior</gui>"
-
-#. (itstool) path: item/p
-#: C/prefs.page:34
-msgid ""
-"Choose the minimum amount of time to keep backup files. If you find that the "
-"backup files are taking up too much space, you may want to decrease this "
-"duration. Due to implementation details, files may be kept a bit longer than "
-"the chosen time. But no files will be deleted early."
-msgstr ""
-"Välj minsta tid för att behålla säkerhetskopior. Om du upptäcker att "
-"säkerhetskopiorna tar upp för mycket utrymme kanske du vill minska denna "
-"varaktighet. På grund av implementeringsdetaljer kan filer hållas lite "
-"längre än den valda tiden. Men inga filer kommer att raderas för tidigt."
-
-#. (itstool) path: note/p
-#: C/prefs.page:35
-msgid ""
-"Backups are kept forever by default, but still may be deleted earlier if the "
-"storage location begins to run out of space."
-msgstr ""
-"Säkerhetskopior behålls för alltid som standard, men kan fortfarande tas "
-"bort tidigare om lagringsplatsen börjar få ont om utrymme."
-
-#. (itstool) path: item/title
-#: C/prefs.page:38
 msgid "<gui>Back Up Automatically</gui>"
 msgstr "<gui>Säkerhetskopiera automatiskt</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:39
+#: C/prefs.page:34
 msgid ""
 "Turn this option on to have <app>Déjà Dup</app> automatically back up for "
 "you. This is recommended so that you don’t forget to do it yourself. Backups "
@@ -705,12 +678,58 @@ msgstr ""
 "det är viktigt att säkerhetskopiera regelbundet."
 
 #. (itstool) path: item/title
+#: C/prefs.page:37
+msgid "<gui>Automatic Backup Frequency</gui>"
+msgstr "<gui>Frekvens för automatisk säkerhetskopiering</gui>"
+
+# TODO: what is *game mode*?
+#. (itstool) path: item/p
+#: C/prefs.page:38
+msgid ""
+"Choose how frequently you want your automatic backups to be scheduled. Exact "
+"timing of the day is not customizable, but backups will be occur in the "
+"middle of the night if possible. Additionally, automatic backups are paused "
+"and/or not scheduled when in Power Saver or Game Mode."
+msgstr ""
+"Välj hur ofta du vill att dina automatiska säkerhetskopior ska schemaläggas. "
+"Exakt tid på dagen kan inte ställas in, men säkerhetskopior kommer utföras "
+"mitt i natten om möjligt. Vidare så pausas och/eller schemaläggs inte "
+"automatiska säkerhetskopior i strömsparläge eller spelläge."
+
+#. (itstool) path: item/title
+#: C/prefs.page:41
+msgid "<gui>Keep Backups</gui>"
+msgstr "<gui>Behåll säkerhetskopior</gui>"
+
+#. (itstool) path: item/p
 #: C/prefs.page:42
+msgid ""
+"Choose the minimum amount of time to keep backup files. If you find that the "
+"backup files are taking up too much space, you may want to decrease this "
+"duration. Due to implementation details, files may be kept a bit longer than "
+"the chosen time. But no files will be deleted early."
+msgstr ""
+"Välj minsta tid för att behålla säkerhetskopior. Om du upptäcker att "
+"säkerhetskopiorna tar upp för mycket utrymme kanske du vill minska denna "
+"varaktighet. På grund av implementeringsdetaljer kan filer hållas lite "
+"längre än den valda tiden. Men inga filer kommer att raderas för tidigt."
+
+#. (itstool) path: note/p
+#: C/prefs.page:43
+msgid ""
+"Backups are kept forever by default, but still may be deleted earlier if the "
+"storage location begins to run out of space."
+msgstr ""
+"Säkerhetskopior behålls för alltid som standard, men kan fortfarande tas "
+"bort tidigare om lagringsplatsen börjar få ont om utrymme."
+
+#. (itstool) path: item/title
+#: C/prefs.page:46
 msgid "<gui>Folders to Back Up</gui>"
 msgstr "<gui>Mappar att säkerhetskopiera</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:43
+#: C/prefs.page:47
 msgid ""
 "Choose a list of folders to save in your backup. Press the <gui "
 "style=\"button\">Add</gui> or <gui style=\"button\">Remove</gui> buttons to "
@@ -724,12 +743,12 @@ msgstr ""
 "tillräckligt."
 
 #. (itstool) path: item/title
-#: C/prefs.page:46
+#: C/prefs.page:50
 msgid "<gui>Folders to Ignore</gui>"
 msgstr "<gui>Mappar att ignorera</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:47
+#: C/prefs.page:51
 msgid ""
 "Choose a list of folders to not save in your backup. Press the <gui "
 "style=\"button\">Add</gui> or <gui style=\"button\">Remove</gui> buttons to "
@@ -740,7 +759,7 @@ msgstr ""
 "bort</gui> för att ändra listan."
 
 #. (itstool) path: item/p
-#: C/prefs.page:48
+#: C/prefs.page:52
 msgid ""
 "Some of your data may be large and not very important to you. In that case, "
 "you can save yourself some time and space by not backing them up."
@@ -749,17 +768,17 @@ msgstr ""
 "fall kan du spara lite tid och utrymme genom att inte säkerhetskopiera dem."
 
 #. (itstool) path: note/p
-#: C/prefs.page:50
+#: C/prefs.page:54
 msgid "Some locations are always ignored by default:"
 msgstr "Vissa platser ignoreras alltid som standard:"
 
 #. (itstool) path: p/span
-#: C/prefs.page:56
+#: C/prefs.page:60
 msgid "(which by default also ignores <_:file-1/>)"
 msgstr "(som även ignorerar <_:file-1/>)"
 
 #. (itstool) path: item/p
-#: C/prefs.page:65
+#: C/prefs.page:69
 msgid "Any folder with a <_:file-1/> or <_:file-2/> file in it."
 msgstr "Alla mappar med filerna <_:file-1/> eller <_:file-2/> i sig."
 
@@ -826,19 +845,19 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/restore-full.page:33
 msgid ""
-"A <gui>Restore</gui> dialog will appear asking where your backup files are "
-"stored (your <gui>Backup location</gui>)."
+"A restore dialog will appear asking where your backup files are stored (your "
+"<gui>Backup location</gui>)."
 msgstr ""
-"En <gui>Återställ</gui>-dialogruta som kommer att visas för att fråga var "
-"dina säkerhetskopior lagras (din <gui>Plats för säkerhetskopior</gui>)."
+"En återställningsdialog kommer att fråga var dina säkerhetskopior lagras "
+"(din <gui>Plats för säkerhetskopior</gui>)."
 
 #. (itstool) path: item/p
 #: C/restore-full.page:34
 msgid ""
-"Click <gui style=\"button\">Forward</gui> and wait for <app>Déjà Dup</app> "
-"to scan the backup location."
+"Click <gui style=\"button\">Search</gui> and wait for <app>Déjà Dup</app> to "
+"scan the backup location."
 msgstr ""
-"Klicka på <gui style=\"button\">Framåt</gui> och vänta på att <app>Déjà Dup</"
+"Klicka på <gui style=\"button\">Sök</gui> och vänta på att <app>Déjà Dup</"
 "app> söker av säkerhetskopieringsplatsen."
 
 #. (itstool) path: item/p
@@ -1127,9 +1146,6 @@ msgstr "Om <app>Säkerhetskopior</app>"
 
 #~ msgid "<gui>Folders to ignore</gui>"
 #~ msgstr "<gui>Mappar att ignorera</gui>"
-
-#~ msgid "<gui>Automatic backup</gui>"
-#~ msgstr "<gui>Automatisk säkerhetskopiering</gui>"
 
 #~ msgid "<gui>Folders to save</gui>"
 #~ msgstr "<gui>Mappar att spara</gui>"
