@@ -58,7 +58,7 @@ class BrowserTest(BaseTest):
             self.app.child(roleName="label", name=error)
             return
 
-        search = self.app.child(roleName="push button", name="Search")
+        search = self.app.child(roleName="toggle button", name="Search")
         self.wait_for(lambda: search.sensitive)
 
     def scan_dir1(self):
@@ -97,7 +97,7 @@ class BrowserTest(BaseTest):
         self.snapshots = ["06/07/20 09:33:07", "06/07/20 09:29:40", "06/04/20"]
 
     def assert_search_mode(self, searching=True):
-        search = self.app.child(roleName="push button", name="Search")
+        search = self.app.child(roleName="toggle button", name="Search")
         assert search.pressed == searching
 
         # The entry is always visible in the accessiblity tree
@@ -131,8 +131,6 @@ class BrowserTest(BaseTest):
         self.window.child(roleName="push button", name="Choose Folder").click()
         os.makedirs(where, exist_ok=True)
         dlg = self.get_file_chooser("Choose Folder")
-        # Focus dialog (not always done automatically with portal dialogs)
-        dlg.child(roleName="label", name="Choose Folder").click()
         typeText(where + "\n")
         self.wait_for(lambda: dlg.dead)
 
@@ -195,11 +193,6 @@ class BrowserTest(BaseTest):
             child.click()
             releaseKey("Control_L")
 
-            # In a table view, ctrl+click only FOCUSES the row, not
-            # selecting it. So we press space to actually toggle selection.
-            if child.parent.roleName == "table row":
-                pressKey("space")
-
     def test_enable_search_mode(self):
         self.scan_dir1()
 
@@ -210,13 +203,14 @@ class BrowserTest(BaseTest):
         keyCombo("Escape")
 
         self.assert_search_mode(False)
-        self.app.child(roleName="push button", name="Search").click()
+        self.app.child(roleName="toggle button", name="Search").click()
         self.assert_search_mode()
 
     def test_select_all(self):
         self.scan_dir1()
 
-        icons = self.app.findChildren(lambda x: x.roleName == "table cell")
+        restore_panel = self.app.child(roleName="panel", name="Restore")
+        icons = restore_panel.findChildren(lambda x: x.roleName == "table cell")
         assert len(icons) == 4 and len([i for i in icons if i.selected]) == 0
 
         self.app.childNamed("Main Menu").click()
@@ -238,12 +232,12 @@ class BrowserTest(BaseTest):
         self.check_files(("one.txt", "one"), ("two.txt", "two"))
 
         # select multiple from diff dirs (old location)
-        self.app.child(roleName="push button", name="Search").click()
+        self.app.child(roleName="toggle button", name="Search").click()
         typeText("txt")
         self.select("one.txt", "three.txt")
         self.walk_restore()
         self.check_files(("one.txt", "one"), ("dir1/three.txt", "three"))
-        self.app.child(roleName="push button", name="Search").click()
+        self.app.child(roleName="toggle button", name="Search").click()
 
     def test_encrypted_and_dates(self):
         self.scan_dir2()
@@ -264,7 +258,7 @@ class BrowserTest(BaseTest):
         # test time combo
         dates_combo = self.app.child(roleName="combo box", label="Date")
         dates_combo.click()
-        popover = dates_combo.child(name="GtkPopover")
+        popover = dates_combo.child(roleName="scroll pane")
         dates = [
             x.name
             for x in popover.findChildren(
@@ -277,7 +271,7 @@ class BrowserTest(BaseTest):
         pressKey("Down")
         pressKey("Down")
         pressKey("Return")
-        search = self.app.child(roleName="push button", name="Search")
+        search = self.app.child(roleName="toggle button", name="Search")
         self.wait_for(lambda: search.sensitive)
         assert len(view.children) == 4
 

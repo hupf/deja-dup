@@ -58,7 +58,7 @@ class RestoreTest(BaseTest):
 
         window = app.window("Restore From Where?")
         window.button("Search").click()  # from where
-        search = app.child(roleName="push button", name="Search")
+        search = app.child(roleName="toggle button", name="Search")
 
         # Switched to restore pane. Enter password if using restic, which
         # unlike duplicity, does not keep unencrypted metadata locally cached.

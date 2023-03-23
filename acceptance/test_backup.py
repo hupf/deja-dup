@@ -206,7 +206,7 @@ class BackupTest(BaseTest):
         app = self.cmd("--backup")
         self.walk_incremental_backup(app)
 
-        months_ago = GLib.DateTime.new_now_utc().add_months(-2).format_iso8601()
+        months_ago = GLib.DateTime.new_now_utc().add_days(-60).format_iso8601()
         self.set_string("nag-check", months_ago)
 
         app = self.cmd("--backup")

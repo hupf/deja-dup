@@ -216,12 +216,17 @@ class BaseTest(unittest.TestCase):
     def get_file_chooser(self, name):
         if os.environ["DD_MODE"] == "snap":
             # snap uses native dialog with an old gtk
-            return Gtk4Node(tree.root).child(roleName="dialog", name=name)
+            dlg = Gtk4Node(tree.root).child(roleName="dialog", name=name)
         else:
-            return Gtk4Node(tree.root).child(roleName="filler", name=name)
+            dlg = Gtk4Node(tree.root).child(roleName="filler", name=name)
+
+        # Focus dialog (not always done automatically with portal dialogs)
+        dlg.child(roleName="panel").click()
+
+        return dlg
 
     def click_restore_button(self, parent):
-        bar = parent.child(name="GtkActionBar")
+        bar = parent.child(name="Actions")
         bar.button("Restore").click()
 
     def get_config(self, section, option, fallback=None, required=True):

@@ -7,7 +7,7 @@
 import os
 
 from dogtail.predicate import GenericPredicate
-from dogtail.rawinput import keyCombo
+from dogtail.rawinput import keyCombo, typeText
 from gi.repository import GLib
 
 from . import BaseTest
@@ -158,9 +158,7 @@ class PreferencesTest(BaseTest):
         add = table.child(name="Add")
         add.click()
         dlg = self.get_file_chooser("Choose Folders")
-        dlg.child(name="Documents").click()
-        keyCombo("<Alt>Up")
-        dlg.child(name="Add").click()
+        typeText(home + "/Documents\n")
         self.wait_for_table_names(table, ["~/Pictures", "~/Documents"])
         self.assertEqual(self.get_strv(key), ["$PICTURES", home + "/Documents"])
 
