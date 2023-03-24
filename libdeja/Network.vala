@@ -35,7 +35,7 @@ public class Network : Object
   construct {
     var mon = NetworkMonitor.get_default();
 
-    mon.notify["network-available"].connect(update_connected);
+    mon.notify["connectivity"].connect(update_connected);
     update_connected();
 
     mon.notify["network-metered"].connect(update_metered);
@@ -44,7 +44,12 @@ public class Network : Object
 
   void update_connected()
   {
-    connected = NetworkMonitor.get_default().network_available;
+    var connectivity = NetworkMonitor.get_default().connectivity;
+    // Allow full or limited (but not portal) connectivity.
+    // It's possible we shouldn't allow limited either, but I don't know enough
+    // about the scenarios in which it applies. So we'll allow it for now.
+    connected = connectivity == NetworkConnectivity.FULL ||
+                connectivity == NetworkConnectivity.LIMITED;
   }
 
   void update_metered()
