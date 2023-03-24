@@ -346,6 +346,7 @@ public class DejaDupApp : Adw.Application
         <li>Refuse to back up to a destination that doesn't have enough space, and suggest how much more space is
             needed</li>
         <li>Correctly exclude the Trash folder by default when run as a flatpak</li>
+        <li>Don’t try to back up when the network is behind a wifi captive portal</li>
       </ul>
       <p>44.0</p>
       <ul>

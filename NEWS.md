@@ -7,6 +7,7 @@ SPDX-FileCopyrightText: Michael Terry
 - Refuse to back up to a destination that doesn't have enough space, and
   suggest how much more space is needed
 - Fix Trash location when run as a flatpak
+- Don't try to back up when the network is behind a wifi captive portal
 - New Interlingue translation
 - Updated Basque, Belarusian, Brazilian Portuguese, Croatian, Danish, Finnish,
   Friulian, Georgian, German, Hebrew, Hungarian, Indonesian, Korean, Occitan,
