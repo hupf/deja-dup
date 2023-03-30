@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2023-01-24 18:25+0000\n"
-"PO-Revision-Date: 2023-01-25 00:00+0100\n"
+"POT-Creation-Date: 2023-03-11 19:12+0000\n"
+"PO-Revision-Date: 2023-03-12 10:44+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -703,11 +703,48 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: C/prefs.page:33
+msgid "<gui>Back Up Automatically</gui>"
+msgstr "<gui>Automatisch sichern</gui>"
+
+#. (itstool) path: item/p
+#: C/prefs.page:34
+msgid ""
+"Turn this option on to have <app>Déjà Dup</app> automatically back up for "
+"you. This is recommended so that you don’t forget to do it yourself. Backups "
+"are more useful the more recent they are, so it is important to back up "
+"regularly."
+msgstr ""
+"Bitte diese Option aktivieren, damit <app>Déjà Dup</app> automatische "
+"Sicherungen für Sie erstellt. Das wird empfohlen, damit Sie das nicht "
+"vergessen können. Es ist wichtig, regelmäßig Sicherungen zu erstellen, da "
+"diese umso nützlicher sind, desto neuer sie sind."
+
+#. (itstool) path: item/title
+#: C/prefs.page:37
+msgid "<gui>Automatic Backup Frequency</gui>"
+msgstr "<gui>Häufigkeit der automatischen Datensicherung</gui>"
+
+#. (itstool) path: item/p
+#: C/prefs.page:38
+msgid ""
+"Choose how frequently you want your automatic backups to be scheduled. Exact "
+"timing of the day is not customizable, but backups will be occur in the "
+"middle of the night if possible. Additionally, automatic backups are paused "
+"and/or not scheduled when in Power Saver or Game Mode."
+msgstr ""
+"Wählen Sie, wie häufig Ihre automatischen Datensicherungen geplant werden "
+"sollen. Der genaue Tageszeitpunkt ist nicht anpassbar, aber Sicherungen "
+"werden nach Möglichkeit mitten in der Nacht stattfinden. Zudem werden "
+"automatische Sicherungen im Energiespar- oder Spielmodus pausiert oder nicht "
+"geplant."
+
+#. (itstool) path: item/title
+#: C/prefs.page:41
 msgid "<gui>Keep Backups</gui>"
 msgstr "<gui>Datensicherungen behalten</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:34
+#: C/prefs.page:42
 msgid ""
 "Choose the minimum amount of time to keep backup files. If you find that the "
 "backup files are taking up too much space, you may want to decrease this "
@@ -722,7 +759,7 @@ msgstr ""
 "Dateien vorher gelöscht."
 
 #. (itstool) path: note/p
-#: C/prefs.page:35
+#: C/prefs.page:43
 msgid ""
 "Backups are kept forever by default, but still may be deleted earlier if the "
 "storage location begins to run out of space."
@@ -731,30 +768,12 @@ msgstr ""
 "gelöscht werden, wenn der Speicherplatz zur Neige geht."
 
 #. (itstool) path: item/title
-#: C/prefs.page:38
-msgid "<gui>Back Up Automatically</gui>"
-msgstr "<gui>Automatisch sichern</gui>"
-
-#. (itstool) path: item/p
-#: C/prefs.page:39
-msgid ""
-"Turn this option on to have <app>Déjà Dup</app> automatically back up for "
-"you. This is recommended so that you don’t forget to do it yourself. Backups "
-"are more useful the more recent they are, so it is important to back up "
-"regularly."
-msgstr ""
-"Bitte diese Option aktivieren, damit <app>Déjà Dup</app> automatische "
-"Sicherungen für Sie erstellt. Das wird empfohlen, damit Sie das nicht "
-"vergessen können. Es ist wichtig, regelmäßig Sicherungen zu erstellen, da "
-"diese umso nützlicher sind, desto neuer sie sind."
-
-#. (itstool) path: item/title
-#: C/prefs.page:42
+#: C/prefs.page:46
 msgid "<gui>Folders to Back Up</gui>"
 msgstr "<gui>Zu sichernde Ordner</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:43
+#: C/prefs.page:47
 msgid ""
 "Choose a list of folders to save in your backup. Press the <gui style="
 "\"button\">Add</gui> or <gui style=\"button\">Remove</gui> buttons to modify "
@@ -768,12 +787,12 @@ msgstr ""
 "Voreinstellung des <gui>persönlichen Ordners</gui> ausreichen."
 
 #. (itstool) path: item/title
-#: C/prefs.page:46
+#: C/prefs.page:50
 msgid "<gui>Folders to Ignore</gui>"
 msgstr "<gui>Zu ignorierende Ordner</gui>"
 
 #. (itstool) path: item/p
-#: C/prefs.page:47
+#: C/prefs.page:51
 msgid ""
 "Choose a list of folders to not save in your backup. Press the <gui style="
 "\"button\">Add</gui> or <gui style=\"button\">Remove</gui> buttons to modify "
@@ -784,7 +803,7 @@ msgstr ""
 "und <gui style=\"button\">Entfernen</gui>, um die Liste zu verändern."
 
 #. (itstool) path: item/p
-#: C/prefs.page:48
+#: C/prefs.page:52
 msgid ""
 "Some of your data may be large and not very important to you. In that case, "
 "you can save yourself some time and space by not backing them up."
@@ -794,17 +813,17 @@ msgstr ""
 "sichern."
 
 #. (itstool) path: note/p
-#: C/prefs.page:50
+#: C/prefs.page:54
 msgid "Some locations are always ignored by default:"
 msgstr "Einige Orte werden immer per Voreinstellung ignoriert:"
 
 #. (itstool) path: p/span
-#: C/prefs.page:56
+#: C/prefs.page:60
 msgid "(which by default also ignores <_:file-1/>)"
 msgstr "(wodurch als Vorgabe auch Folgendes nicht beachtet wird: <_:file-1/>)"
 
 #. (itstool) path: item/p
-#: C/prefs.page:65
+#: C/prefs.page:69
 msgid "Any folder with a <_:file-1/> or <_:file-2/> file in it."
 msgstr "Jeder Ordner, der eine Datei <_:file-1/> oder <_:file-2/> enthält."
 
@@ -870,19 +889,19 @@ msgstr ""
 #. (itstool) path: item/p
 #: C/restore-full.page:33
 msgid ""
-"A <gui>Restore</gui> dialog will appear asking where your backup files are "
-"stored (your <gui>Backup location</gui>)."
+"A restore dialog will appear asking where your backup files are stored (your "
+"<gui>Backup location</gui>)."
 msgstr ""
-"Ein <gui>Wiederherstellen</gui>-Dialog wird erscheinen und Sie fragen, wo "
-"Ihre Datensicherung gespeichert ist (Ihr <gui>Ort der Datensicherung</gui>)."
+"Ein Wiederherstellen-Dialog wird erscheinen und Sie fragen, wo Ihre "
+"Datensicherung gespeichert ist (Ihr <gui>Ort der Datensicherung</gui>)."
 
 #. (itstool) path: item/p
 #: C/restore-full.page:34
 msgid ""
-"Click <gui style=\"button\">Forward</gui> and wait for <app>Déjà Dup</app> "
-"to scan the backup location."
+"Click <gui style=\"button\">Search</gui> and wait for <app>Déjà Dup</app> to "
+"scan the backup location."
 msgstr ""
-"Klicken Sie auf <gui style=\"button\">Weiter</gui> und warten Sie, während "
+"Klicken Sie auf <gui style=\"button\">Suchen</gui> und warten Sie, während "
 "<app>Déjà Dup</app> Ihren Sicherungsordner durchsucht."
 
 #. (itstool) path: item/p
@@ -1317,9 +1336,6 @@ msgstr "Info zu <app>Datensicherung</app>"
 
 #~ msgid "Adjust your backup settings"
 #~ msgstr "Passen Sie Ihre Datensicherungseinstellungen an"
-
-#~ msgid "<gui>Automatic backup</gui>"
-#~ msgstr "<gui>Automatische Datensicherung</gui>"
 
 #~ msgid "Open your <gui>Backups</gui> settings."
 #~ msgstr "Öffnen Sie Ihre <gui>Datensicherung</gui>seinstellungen."
