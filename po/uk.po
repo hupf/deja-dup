@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-03-11 19:12+0000\n"
-"PO-Revision-Date: 2023-03-12 19:28+0200\n"
+"POT-Creation-Date: 2023-04-02 17:34+0000\n"
+"PO-Revision-Date: 2023-04-02 20:45+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -226,7 +226,7 @@ msgstr "«Резервним копіям» слід встановити пак
 msgid "Restore"
 msgstr "Відновити зі збереженої копії"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
 msgid "_Restore"
 msgstr "_Відновити"
 
@@ -331,7 +331,7 @@ msgstr "Резервне копіювання в автоматичному ре
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
 msgid "No backup files found"
 msgstr "Резервних копій не знайдено"
 
@@ -635,7 +635,7 @@ msgstr "Будь ласка, вкажіть список файлів для в�
 msgid "An operation is already in progress"
 msgstr "Операція вже виконується"
 
-#: app/main.vala:360
+#: app/main.vala:362
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -660,7 +660,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:466 data/app.metainfo.xml.in:15
+#: app/main.vala:468 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -1462,7 +1462,7 @@ msgstr "Смітник"
 msgid "Backup encryption password"
 msgstr "Пароль шифрування резервної копії"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1535,17 +1535,24 @@ msgstr "Призупинено (мережа відсутня)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+#| msgid "Backup location"
+msgid "Backup location is too small."
+msgstr "Місця для резервних копій замало."
+
+#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
 #, c-format
-#| msgid "Backup location is too small. Try using one with at least %s."
-msgid ""
-"Backup location is too small. Try using a location with at least %s free."
-msgstr ""
-"Місце резервного копіювання занадто мале. Спробуйте скористатися місцем, де"
-" вільно принаймні %s."
+#| msgid ""
+#| "Backup location is too small. Try using a location with at least %s free."
+msgid "Try using a location with at least %s."
+msgstr "Спробуйте скористатися місцем, де вільно принаймні %s."
+
+#: libdeja/duplicity/DuplicityJob.vala:545
+msgid "(Space for two full backups is required.)"
+msgstr "(Потрібне місце для двох повних резервних копій.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:566
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
@@ -1553,20 +1560,17 @@ msgstr ""
 "Місце резервного копіювання не має достатньо вільного місця. Будь ласка, "
 "звільніть принаймні %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:568
 #, c-format
-#| msgid ""
-#| "Backup location does not have enough free space. Try using one with at "
-#| "least %s."
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
 "at least %s free."
 msgstr ""
-"Місце резервного копіювання не має достатньо вільного місця. Спробуйте"
-" скористатися місцем, де вільно принаймні %s."
+"Місце резервного копіювання не має достатньо вільного місця. Спробуйте "
+"скористатися місцем, де вільно принаймні %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:588
+#: libdeja/duplicity/DuplicityJob.vala:602
 msgid "Cleaning up…"
 msgstr "Очищення..."
 
@@ -1577,25 +1581,25 @@ msgstr "Очищення..."
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:686
+#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Невдача з невідомою помилкою"
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:889
 msgid "Bad encryption password."
 msgstr "Хибний пароль шифрування."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:938
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Неможливо відновити ‘%s’: Файл не знайдено в резервній копії"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:949
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1606,53 +1610,53 @@ msgstr ""
 "уникнення непередбачуваних наслідків рекомендується створити резервну копію "
 "на іншому носії."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:952
 msgid "Computer name changed"
 msgstr "Змінено ім’я комп’ютера"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:987
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "В доступі відмовлено при спробі створити ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
 #: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "В доступі відмовлено при спробі прочитати ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "В доступі відмовлено при спробі вилучити ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1006
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Сховище ‘%s’ не існує."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1012
+#: libdeja/duplicity/DuplicityJob.vala:1045
 msgid "No space left."
 msgstr "Не залишилося вільного місця."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1034
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Помилка читання файлу ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1036
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Помилка запису файлу ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1047
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Не лишилось вільного місця в ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1105
 msgid "Uploading…"
 msgstr "Вивантаження..."
 
