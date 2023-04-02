@@ -630,7 +630,7 @@ void process_duplicity_block(KeyFile keyfile, string group, BackupRunner br) thr
     add_to_mockscript("ARGS: --version\n\nduplicity " + version + "\n");
 
   if (keyfile.has_key(group, "Error"))
-    br.error_str = keyfile.get_string(group, "Error");
+    br.error_str = get_string_field(keyfile, group, "Error");
   if (keyfile.has_key(group, "IsFull"))
     br.is_full = keyfile.get_boolean(group, "IsFull");
 
