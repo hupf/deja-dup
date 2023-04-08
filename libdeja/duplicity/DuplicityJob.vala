@@ -1393,8 +1393,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       // add operation, local, and remote args
       switch (mode) {
       case DejaDup.ToolJob.Mode.BACKUP:
-        if (is_full_backup)
-          argv.prepend("full");
+        argv.prepend(is_full_backup ? "full" : "incremental");
         argv.append("--volsize=%d".printf(get_volsize()));
         argv.append(local_arg.get_path());
         argv.append(get_remote());

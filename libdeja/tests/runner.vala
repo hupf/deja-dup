@@ -152,8 +152,8 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
 
   string args = "";
 
-  if (br.is_full && (mode == Mode.BACKUP || mode == Mode.DRY))
-    args += "full ";
+  if (mode == Mode.BACKUP || mode == Mode.DRY)
+    args += br.is_full ? "full " : "incremental ";
 
   if (mode == Mode.STATUS || mode == Mode.RESTORE_STATUS)
     args += "collection-status ";
