@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-03-11 19:12+0000\n"
-"PO-Revision-Date: 2023-03-11 20:50+0100\n"
+"POT-Creation-Date: 2023-04-02 17:34+0000\n"
+"PO-Revision-Date: 2023-04-02 22:34+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -226,7 +226,7 @@ msgstr "Säkerhetskopior behöver installera paket för att fortsätta"
 msgid "Restore"
 msgstr "Återställ"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
 msgid "_Restore"
 msgstr "Å_terställ"
 
@@ -329,7 +329,7 @@ msgstr "Det går inte att säkerhetskopiera automatiskt"
 msgid "Authentication needed"
 msgstr "Autentisering krävs"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
 msgid "No backup files found"
 msgstr "Inga säkerhetskopior hittades"
 
@@ -627,7 +627,7 @@ msgstr "Lista filer att återställa"
 msgid "An operation is already in progress"
 msgstr "En operation pågår redan"
 
-#: app/main.vala:360
+#: app/main.vala:362
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -651,7 +651,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:466 data/app.metainfo.xml.in:15
+#: app/main.vala:468 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Säkerhetskopior"
 
@@ -1444,7 +1444,7 @@ msgstr "Papperskorg"
 msgid "Backup encryption password"
 msgstr "Lösenord för kryptering av säkerhetskopia"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1516,23 +1516,28 @@ msgstr "Pausad (inget nätverk)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "Plats för säkerhetskopior är för liten."
+
+#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid ""
-"Backup location is too small. Try using a location with at least %s free."
-msgstr ""
-"Säkerhetskopieringsplatsen är för liten. Prova att använda en plats med "
-"minst %s ledigt."
+msgid "Try using a location with at least %s."
+msgstr "Prova att använda en plats med minst %s."
+
+#: libdeja/duplicity/DuplicityJob.vala:545
+msgid "(Space for two full backups is required.)"
+msgstr "(Utrymme för två fullständiga säkerhetskopior krävs.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:566
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr ""
 "Säkerhetskopieringsplatsen har för lite ledigt utrymme. Frigör åtminstone %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:568
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
@@ -1541,8 +1546,8 @@ msgstr ""
 "Säkerhetskopieringsplatsen har för lite ledigt utrymme. Prova att använda en "
 "plats med minst %s ledigt."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:588
+#: libdeja/duplicity/DuplicityJob.vala:602
 msgid "Cleaning up…"
 msgstr "Rensar upp…"
 
@@ -1553,25 +1558,25 @@ msgstr "Rensar upp…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:686
+#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Misslyckades med ett okänt fel."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:889
 msgid "Bad encryption password."
 msgstr "Krypteringslösenord är felaktigt."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:938
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Kunde inte återställa ”%s”: Filen hittades inte i säkerhetskopian"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:949
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1582,53 +1587,53 @@ msgstr ""
 "den aktuella datorn är %s. Om detta inte var väntat så bör du "
 "säkerhetskopiera till en annan plats."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:952
 msgid "Computer name changed"
 msgstr "Datornamnet har ändrats"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:987
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Åtkomst nekades vid försök att skapa ”%s”."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
 #: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Åtkomst nekades vid försök att läsa ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Åtkomst nekades vid försök att ta bort ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1006
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Platsen ”%s” för säkerhetskopior finns inte."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1012
+#: libdeja/duplicity/DuplicityJob.vala:1045
 msgid "No space left."
 msgstr "Inget ledigt utrymme kvar."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1034
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fel vid läsning av filen ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1036
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fel vid skrivning av filen ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1047
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Inget ledigt utrymme på ”%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1105
 msgid "Uploading…"
 msgstr "Skickar…"
 
