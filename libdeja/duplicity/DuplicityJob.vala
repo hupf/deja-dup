@@ -213,6 +213,14 @@ internal class DuplicityJob : DejaDup.ToolJob
       includes_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
     }
 
+    // Specify exclude file (that may contain glob patterns) if available in ~/.config/deja-dup-excludes
+    // This should have no effect to the priority excludes but must be defined before the other includes
+    var exclude_file = "%s/.config/deja-dup-excludes".printf(Environment.get_variable("HOME"));
+    debug("Found exclude file %s:".printf(exclude_file));
+    debug("%s".printf(File.new_for_path(exclude_file).query_exists().to_string()));
+    if (File.new_for_path(exclude_file).query_exists())
+      includes_argv.append("--exclude-filelist=%s".printf(exclude_file));
+
     // TODO: Figure out a more reasonable way to order regexps and files.
     // For now, just stick regexps near the beginning, to make sure they get
     // applied, as they are currently used for cache dirs and thus unlikely

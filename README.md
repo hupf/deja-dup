@@ -21,6 +21,47 @@ backup apps.
 
 [![Download on Flathub](https://dl.flathub.org/assets/badges/flathub-badge-en.png)](https://flathub.org/apps/org.gnome.DejaDup)
 
+## ⚠️ Fork ⚠️
+
+This is a fork of the [official Déjà
+Dup](https://gitlab.gnome.org/World/deja-dup) app, that supports a
+Duplicity exclude file, which is considered when present at
+`~/.config/deja-dup-excludes`. This file may contain multiple file
+glob patterns such the following example:
+
+```
+/home/john/**/node_modules
+/home/john/**/log
+/home/john/**/tmp
+```
+
+For more context, checkout the following discussion:
+https://gitlab.gnome.org/World/deja-dup/-/issues/112
+
+To test and run locally, excecute:
+
+```
+# Only once initially:
+sudo apt install flatpak-builder
+make devenv-setup
+
+# Then:
+make devenv
+
+# And within the dev env:
+make
+deja-dup
+```
+
+Or you can now open the application from outside the dev env via
+launcher icon (menu) or via CLI:
+
+```
+flatpak run org.gnome.DejaDupDevel --version
+```
+
+The version number should be postfixed with "-excludes".
+
 ## Building
 
 If you are hacking on Déjà Dup, see [CONTRIBUTING.md](CONTRIBUTING.md).
