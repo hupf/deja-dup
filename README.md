@@ -19,6 +19,44 @@ Déjà Dup focuses on ease of use and personal, accidental data loss.
 If you need a full system backup or an archival program, you may prefer other
 backup apps.
 
+## ⚠️ Fork ⚠️
+
+This is a fork of the [official Déjà Dup](https://gitlab.gnome.org/World/deja-dup) app, that supports a Duplicity
+exclude file, which is considered when present at
+`~/.config/deja-dup-excludes`. This file may contain multiple file
+glob patterns such the following example:
+
+```
+/home/john/**/node_modules
+/home/john/**/log
+/home/john/**/tmp
+```
+
+For more context, checkout the following discussion:
+https://gitlab.gnome.org/World/deja-dup/-/issues/112
+
+To test and run locally, excecute:
+
+```
+# Only once initially:
+apt install flatpak-builder
+make devenv-setup
+
+# Then:
+make devenv
+
+# And within the dev env:
+make
+deja-dup
+```
+
+To install (will create launcher icon):
+
+```
+make flatpak
+```
+
+
 ## Building
 
 If you are hacking on Déjà Dup, see [CONTRIBUTING.md](CONTRIBUTING.md).
