@@ -14,18 +14,20 @@ internal abstract class ToolInstance : Object
   public bool verbose {get; private set; default = false;}
   public string forced_cache_dir {get; set; default = null;}
 
-  public static void prefix_wrapper_args(ref List<string> args) throws ShellError
+  public static int prefix_wrapper_args(ref List<string> args) throws ShellError
   {
     var settings = DejaDup.get_settings();
     var wrapper = settings.get_string(DejaDup.CUSTOM_TOOL_WRAPPER_KEY);
     if (wrapper == "")
-      return;
+      return 0;
 
     string[] parsed;
     Shell.parse_argv(wrapper, out parsed);
 
     for (var i = parsed.length - 1; i >= 0; i--)
       args.prepend(parsed[i]);
+
+    return parsed.length;
   }
 
   public async void start(List<string> argv_in, List<string>? envp_in)
