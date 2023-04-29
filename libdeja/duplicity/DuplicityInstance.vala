@@ -84,7 +84,7 @@ internal class DuplicityInstance : Object
     // Finally, actual duplicity command
     argv.prepend(DuplicityPlugin.duplicity_command());
 
-    ToolInstance.prefix_wrapper_args(ref argv);
+    var wrapper_arg_count = ToolInstance.prefix_wrapper_args(ref argv);
 
     // Grab version of command line to show user
     string user_cmd = null;
@@ -102,8 +102,9 @@ internal class DuplicityInstance : Object
       return false;
 
     // Add logging argument (after building user-visible command above, as we
-    // don't want users to try to use --log-fd on console and get errors)
-    argv.append("--log-fd=%d".printf(pipes[1]));
+    // don't want users to try to use --log-fd on console and get errors).
+    // This must be before the main subcommand.
+    argv.insert("--log-fd=%d".printf(pipes[1]), wrapper_arg_count + 1);
 
     string[] real_argv = new string[argv.length()];
     i = 0;

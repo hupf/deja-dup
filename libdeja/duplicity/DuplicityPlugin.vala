@@ -11,6 +11,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   bool has_been_setup = false;
   string version = null;
   bool supports_microsoft = false;
+  bool version1_cli = false;
 
   construct
   {
@@ -60,6 +61,8 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     supports_microsoft = DejaDup.equals_version(major, minor, micro, 0, 8, 18) ||
                          DejaDup.meets_version(major, minor, micro, 0, 8, 21);
 
+    version1_cli = !DejaDup.meets_version(major, minor, micro, 2, 0, 0);
+
     has_been_setup = true;
   }
 
@@ -72,7 +75,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   public override DejaDup.ToolJob create_job() throws Error
   {
     do_initial_setup();
-    return new DuplicityJob();
+    return new DuplicityJob(version1_cli);
   }
 
   public override bool supports_backend(DejaDup.Backend.Kind kind, out string explanation)

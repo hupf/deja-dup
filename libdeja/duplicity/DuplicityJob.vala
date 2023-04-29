@@ -8,6 +8,8 @@ using GLib;
 
 internal class DuplicityJob : DejaDup.ToolJob
 {
+  public bool version1_cli {get; construct; default = false;}
+
   DejaDup.ToolJob.Mode original_mode {get; private set;}
   bool error_issued {get; private set; default = false;}
   bool was_stopped {get; private set; default = false;}
@@ -24,6 +26,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   DuplicityInstance inst;
 
+  List<string> includes_argv;
   List<string> saved_argv;
   List<string> saved_envp;
   bool is_full_backup = false;
@@ -68,6 +71,10 @@ internal class DuplicityJob : DejaDup.ToolJob
       pause(_("Paused (no network)"));
   }
 
+  public DuplicityJob(bool version1_cli) {
+    Object(version1_cli: version1_cli);
+  }
+
   construct {
     if (slash == null) {
       slash = File.new_for_path("/");
@@ -94,6 +101,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     if (original_mode == DejaDup.ToolJob.Mode.INVALID)
       original_mode = mode;
     mode = original_mode;
+    includes_argv = new List<string>();
     saved_argv = new List<string>();
     saved_envp = new List<string>();
 
@@ -269,7 +277,7 @@ internal class DuplicityJob : DejaDup.ToolJob
     // that might be excluded by exclude_regexps, which would otherwise come
     // first.
     foreach (File i in includes_priority) {
-      saved_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
+      includes_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
     }
 
     // TODO: Figure out a more reasonable way to order regexps and files.
@@ -277,26 +285,26 @@ internal class DuplicityJob : DejaDup.ToolJob
     // applied, as they are currently used for cache dirs and thus unlikely
     // to be overridden.
     foreach (string r in exclude_regexps) {
-      saved_argv.append("--exclude=" + prefix_local(r));
+      includes_argv.append("--exclude=" + prefix_local(r));
     }
 
     var excludes2 = excludes.copy();
     foreach (File i in includes) {
       foreach (File e in excludes2.copy()) {
         if (e.has_prefix(i)) {
-          saved_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
+          includes_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
           excludes2.remove(e);
         }
       }
-      saved_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
+      includes_argv.append("--include=" + escape_duplicity_path(prefix_local(i.get_path())));
     }
     foreach (File e in excludes2) {
-      saved_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
+      includes_argv.append("--exclude=" + escape_duplicity_path(prefix_local(e.get_path())));
     }
 
-    saved_argv.append("--exclude=**");
-    saved_argv.append("--exclude-if-present=CACHEDIR.TAG");
-    saved_argv.append("--exclude-if-present=.deja-dup-ignore");
+    includes_argv.append("--exclude=**");
+    includes_argv.append("--exclude-if-present=CACHEDIR.TAG");
+    includes_argv.append("--exclude-if-present=.deja-dup-ignore");
 
     // Add priority includes into our main includes list so that the rest of
     // the code doesn't have to know about both lists.
@@ -450,7 +458,10 @@ internal class DuplicityJob : DejaDup.ToolJob
             target_file = File.new_for_path(translated_path);
           }
           var rel_file_path = slash.get_relative_path(target_file);
-          extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
+          if (version1_cli)
+            extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
+          else
+            extra_argv.append("--path-to-restore=%s".printf(rel_file_path));
         }
 
         progress(0f);
@@ -1394,6 +1405,7 @@ internal class DuplicityJob : DejaDup.ToolJob
       switch (mode) {
       case DejaDup.ToolJob.Mode.BACKUP:
         argv.prepend(is_full_backup ? "full" : "incremental");
+        foreach (string s in includes_argv) argv.append(s);
         argv.append("--volsize=%d".printf(get_volsize()));
         argv.append(local_arg.get_path());
         argv.append(get_remote());
@@ -1405,7 +1417,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         // We can't restore owner uid without root access, and if duplicity
         // tries and fails, it won't restore other attributes like modified
         // timestamp or chmod permissions. So ask it not to try.
-        argv.append("--do-not-restore-ownership");
+        argv.append(version1_cli ? "--do-not-restore-ownership" : "--no-restore-ownership");
         argv.append("--force");
         argv.append(get_remote());
         argv.append(local_arg.get_path());

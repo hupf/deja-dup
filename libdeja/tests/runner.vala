@@ -111,6 +111,8 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
   var backupdir = Path.build_filename(test_home, "backup");
   var restoredir = Path.build_filename(test_home, "restore");
 
+  var logfd = "'--log-fd=?'";
+
   string enc_str = "";
   if (!encrypted)
     enc_str = "--no-encryption ";
@@ -118,29 +120,29 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
   var tempdir = Path.build_filename(test_home, "tmp");
   var archive = tmp_archive ? "%s/duplicity-?".printf(tempdir) : "%s/deja-dup".printf(cachedir);
 
-  var end_str = "%s'--verbosity=9' '--timeout=120' '--archive-dir=%s' '--tempdir=%s' '--log-fd=?'"
+  var end_str = "%s'--verbosity=9' '--timeout=120' '--archive-dir=%s' '--tempdir=%s'"
     .printf(enc_str, archive, tempdir);
 
   if (mode == Mode.CLEANUP)
-    return "cleanup '--force' 'gio+file://%s' %s".printf(backupdir, end_str);
+    return "%s cleanup '--force' 'gio+file://%s' %s".printf(logfd, backupdir, end_str);
   else if (mode == Mode.RESTORE) {
     string file_arg = "", dest_arg = "";
     if (file_to_restore != null) {
-      file_arg = "'--file-to-restore=%s' ".printf(file_to_restore.substring(1)); // skip root /
+      file_arg = "'--path-to-restore=%s' ".printf(file_to_restore.substring(1)); // skip root /
       dest_arg = "/" + File.new_for_path(file_to_restore).get_basename();
     }
-    return "'restore' %s%s'--do-not-restore-ownership' '--force' 'gio+file://%s' '%s%s' %s"
-      .printf(file_arg, extra, backupdir, restoredir, dest_arg, end_str);
+    return "%s 'restore' %s%s'--no-restore-ownership' '--force' 'gio+file://%s' '%s%s' %s"
+      .printf(logfd, file_arg, extra, backupdir, restoredir, dest_arg, end_str);
   }
   else if (mode == Mode.VERIFY) {
-    var constant_args = "'--do-not-restore-ownership' '--force'";
-    return "'restore' '--file-to-restore=%s/deja-dup/metadata' %s 'gio+file://%s' '%s/deja-dup/metadata' %s"
-      .printf(cachedir.substring(1), constant_args, backupdir, cachedir, end_str);
+    var constant_args = "'--no-restore-ownership' '--force'";
+    return "%s 'restore' '--path-to-restore=%s/deja-dup/metadata' %s 'gio+file://%s' '%s/deja-dup/metadata' %s"
+      .printf(logfd, cachedir.substring(1), constant_args, backupdir, cachedir, end_str);
   }
   else if (mode == Mode.LIST)
-    return "'list-current-files' %s'gio+file://%s' %s".printf(extra, backupdir, end_str);
+    return "%s 'list-current-files' %s'gio+file://%s' %s".printf(logfd, extra, backupdir, end_str);
   else if (mode == Mode.REMOVE)
-    return "'remove-all-but-n-full' '%d' '--force' 'gio+file://%s' %s".printf(remove_n, backupdir, end_str);
+    return "%s 'remove-all-but-n-full' '%d' '--force' 'gio+file://%s' %s".printf(logfd, remove_n, backupdir, end_str);
 
   string source_str = "";
   if (mode == Mode.DRY || mode == Mode.BACKUP)
@@ -150,7 +152,7 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
   if (mode == Mode.DRY)
     dry_str = "--dry-run ";
 
-  string args = "";
+  string args = logfd + " ";
 
   if (mode == Mode.BACKUP || mode == Mode.DRY)
     args += br.is_full ? "full " : "incremental ";
@@ -158,10 +160,11 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
   if (mode == Mode.STATUS || mode == Mode.RESTORE_STATUS)
     args += "collection-status ";
 
-  if (mode == Mode.STATUS || mode == Mode.NONE || mode == Mode.DRY || mode == Mode.BACKUP) {
-    args += "'--include=%s/deja-dup/metadata' ".printf(cachedir);
-    args += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
-    args += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
+  string includes = "";
+  if (mode == Mode.DRY || mode == Mode.BACKUP) {
+    includes += "'--include=%s/deja-dup/metadata' ".printf(cachedir);
+    includes += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
+    includes += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
 
     string[] excludes1 = {"~/Downloads", "$DATADIR/Trash", "~/.xsession-errors",
                           "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache",
@@ -170,7 +173,7 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
       ex = ex.replace("~", Environment.get_home_dir());
       ex = ex.replace("$DATADIR", Environment.get_user_data_dir());
       if (FileUtils.test (ex, FileTest.IS_SYMLINK | FileTest.EXISTS))
-        args += "'--exclude=%s' ".printf(ex);
+        includes += "'--exclude=%s' ".printf(ex);
     }
 
     var sys_sym_excludes = "";
@@ -182,7 +185,7 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
           sym = FileUtils.read_link (sym);
           sym = Filename.to_utf8 (sym, -1, null, null);
           if (sym.has_prefix (Environment.get_home_dir()))
-            args += "'--exclude=%s' ".printf(sym);
+            includes += "'--exclude=%s' ".printf(sym);
           else // delay non-home paths until very end
             sys_sym_excludes += "'--exclude=%s' ".printf(sym);
         }
@@ -193,33 +196,33 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
     }
 
     if (FileUtils.test (Environment.get_home_dir(), FileTest.EXISTS)) {
-      args += "'--include=%s' ".printf(Environment.get_home_dir());
+      includes += "'--include=%s' ".printf(Environment.get_home_dir());
     }
-    args += include_args;
+    includes += include_args;
 
     string[] excludes2 = {"/sys", "/run", "/proc", "/dev", tempdir};
     foreach (string ex in excludes2) {
       if (FileUtils.test (ex, FileTest.EXISTS))
-        args += "'--exclude=%s' ".printf(ex);
+        includes += "'--exclude=%s' ".printf(ex);
     }
 
-    args += "'--exclude=%s/deja-dup' '--exclude=%s' ".printf(cachedir, cachedir);
-    args += "'--exclude=%s' ".printf(backupdir);
+    includes += "'--exclude=%s/deja-dup' '--exclude=%s' ".printf(cachedir, cachedir);
+    includes += "'--exclude=%s' ".printf(backupdir);
 
     // Really, these following two lists can be interweaved, depending on
     // what the paths are and the order in gsettings.  But tests are careful
     // to avoid having us duplicate the sorting logic in DuplicityJob by
     // putting /tmp paths at the end of exclude lists.  This lets us get away
     // with the simple logic of just appending the two lists.
-    args += exclude_args;
-    args += sys_sym_excludes;
+    includes += exclude_args;
+    includes += sys_sym_excludes;
 
-    args += "'--exclude=**' ";
-    args += "'--exclude-if-present=CACHEDIR.TAG' ";
-    args += "'--exclude-if-present=.deja-dup-ignore' ";
+    includes += "'--exclude=**' ";
+    includes += "'--exclude-if-present=CACHEDIR.TAG' ";
+    includes += "'--exclude-if-present=.deja-dup-ignore' ";
   }
 
-  args += "%s %s%s'gio+file://%s' %s".printf(extra, dry_str, source_str, backupdir, end_str);
+  args += "%s %s%s%s'gio+file://%s' %s".printf(extra, dry_str, includes, source_str, backupdir, end_str);
 
   return args;
 }
