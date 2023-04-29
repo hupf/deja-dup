@@ -341,6 +341,11 @@ public class DejaDupApp : Adw.Application
     dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
     dialog.release_notes = """
+      <p>44.2</p>
+      <ul>
+        <li>Support Duplicity 2.0</li>
+        <li>Add some further explanation to the "not enough space" error dialog</li>
+      </ul>
       <p>44.1</p>
       <ul>
         <li>Refuse to back up to a destination that doesn't have enough space, and suggest how much more space is
