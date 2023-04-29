@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-03-11 19:12+0000\n"
-"PO-Revision-Date: 2023-03-14 14:55+0200\n"
+"POT-Creation-Date: 2023-04-02 17:34+0000\n"
+"PO-Revision-Date: 2023-04-29 21:54+0300\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gmail.com>\n"
-"Language-Team: Hebrew <>\n"
+"Language-Team: Hebrew <yoseforb@gmail.com>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -222,7 +222,7 @@ msgstr "גיבויים צריך להתקין חבילות על מנת להמשי
 msgid "Restore"
 msgstr "שחזור"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
 msgid "_Restore"
 msgstr "_שחזר"
 
@@ -329,7 +329,7 @@ msgstr "לא ניתן לגבות באופן אוטומטי"
 msgid "Authentication needed"
 msgstr "נדרש אימות"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
 msgid "No backup files found"
 msgstr "לא נמצאו קובצי גיבוי"
 
@@ -631,7 +631,7 @@ msgstr "נא לפרט את רשימת הקבצים לשחזור"
 msgid "An operation is already in progress"
 msgstr "כבר מתבצעת פעילות"
 
-#: app/main.vala:360
+#: app/main.vala:362
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -650,7 +650,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:466 data/app.metainfo.xml.in:15
+#: app/main.vala:468 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "‏Déjà Dup גיבויים"
 
@@ -685,8 +685,8 @@ msgid ""
 "by the user’s username and can be anywhere in the path. Relative entries are "
 "relative to the user’s home directory."
 msgstr ""
-"זאת רשימת התיקיות שתגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ ‎$DOCUMENTS,‏ "
-"‎$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ ‎$TEMPLATES,‏ ‎$TRASH ו־‎$VIDEOS "
+"זאת רשימת התיקיות שתגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ ‎$DOCUMENTS,‏ ‎"
+"$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ ‎$TEMPLATES,‏ ‎$TRASH ו־‎$VIDEOS "
 "מוכרים בתור תיקיות המשתמש וניתן להשתמש בהם כהתחלה לנתיב ארוך יותר (‎$HOME/"
 "subdir). הערך השמור ‎$USER מוחלף בשם המשתמש וניתן להשתמש בו בכל מקום בנתיב. "
 "רשומות יחסיות הן ביחס לתיקיית הבית של המשתמש."
@@ -704,8 +704,8 @@ msgid ""
 "Reserved value $USER is replaced by the user’s username and can be anywhere "
 "in the path. Relative entries are relative to the user’s home directory."
 msgstr ""
-"זאת רשימת התיקיות שלא תגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ ‎$DOCUMENTS,‏ "
-"‎$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ ‎$TEMPLATES,‏ ‎$TRASH ו־‎$VIDEOS "
+"זאת רשימת התיקיות שלא תגובנה. הערכים השמורים ‎$HOME,‏ ‎$DESKTOP,‏ ‎$DOCUMENTS,‏ ‎"
+"$DOWNLOAD,‏ ‎$MUSIC,‏ ‎$PICTURES,‏ ‎$PUBLIC_SHARE,‏ ‎$TEMPLATES,‏ ‎$TRASH ו־‎$VIDEOS "
 "מוכרים בתור תיקיות המשתמש וניתן להשתמש בהם כהתחלה לנתיב ארוך יותר (‎$HOME/"
 "subdir). הערך השמור ‎$USER מוחלף בשם המשתמש וניתן להשתמש בו בכל מקום בנתיב. "
 "רשומות יחסיות הן ביחס לתיקיית הבית של המשתמש."
@@ -1424,7 +1424,7 @@ msgstr "אשפה"
 msgid "Backup encryption password"
 msgstr "ססמת ההצפנה של הגיבוי"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1490,20 +1490,27 @@ msgstr "בהשהיה (אין רשת)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "מיקום הגיבוי קטן מדי."
+
+#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid ""
-"Backup location is too small. Try using a location with at least %s free."
-msgstr "מיקום הגיבוי קטן מדי. כדאי לנסות להשתמש במקום עם לפחות %s פנוי."
+msgid "Try using a location with at least %s."
+msgstr "כדאי לנסות להשתמש במקום עם לפחות %s פנוי."
+
+#: libdeja/duplicity/DuplicityJob.vala:545
+msgid "(Space for two full backups is required.)"
+msgstr "(נדרש מקום פנוי לשני גיבויים מלאים)."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:566
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr "במיקום הגיבוי אין מספיק מקום פנוי. יש לפנות לפחות %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:568
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
@@ -1511,8 +1518,8 @@ msgid ""
 msgstr ""
 "במיקום הגיבוי אין מספיק מקום פנוי. כדאי לנסות להשתמש במקום עם %s לפחות."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:588
+#: libdeja/duplicity/DuplicityJob.vala:602
 msgid "Cleaning up…"
 msgstr "מתבצע ניקיון…"
 
@@ -1523,25 +1530,25 @@ msgstr "מתבצע ניקיון…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:686
+#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "הפעולה נכשלה עם שגיאה בלתי ידועה."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:889
 msgid "Bad encryption password."
 msgstr "ססמת ההצפנה שגויה."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:938
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "לא ניתן לשחזר את ‘%s’: הקובץ לא נמצא בגיבוי"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:949
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1551,53 +1558,53 @@ msgstr ""
 "הגיבוי הקיים הוא של מחשב בשם %s, אך שם המחשב הנוכחי הוא %s. אם זה לא המצב "
 "הרצוי, עדיף לגבות למיקום שונה."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:952
 msgid "Computer name changed"
 msgstr "שם המחשב השתנה"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:987
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "הגישה נדחתה בעת הניסיון ליצירת ‘%s’."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
 #: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "הגישה נדחתה בעת הניסיון לקרוא את ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "הגישה נדחתה בעת הניסיון למחוק את ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1006
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "מיקום הגיבוי ‘%s’ אינו קיים."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1012
+#: libdeja/duplicity/DuplicityJob.vala:1045
 msgid "No space left."
 msgstr "לא נותר עוד נפח פנוי."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1034
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "שגיאה בקריאת הקובץ ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1036
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "שגיאה בכתיבת הקובץ ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1047
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "לא נותר נפח פנוי תחת ‘%s’."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1105
 msgid "Uploading…"
 msgstr "מתבצעת העלאה…"
 
@@ -1920,8 +1927,8 @@ msgstr "הגיבוי יתחיל כאשר חיבור לרשת שאינה מוגב
 #~ msgstr "ההרשאה נדחתה"
 
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a "
-#~ "href=\"%s\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
+#~ "\">online</a>."
 #~ msgstr ""
 #~ "ניתן להירשם לחשבון בשירות הקבצים בענן של Rackspace ב<a href=\"%s\">אופן "
 #~ "מקוון</a>."
