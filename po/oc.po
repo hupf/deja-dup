@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-25 16:05+0000\n"
-"PO-Revision-Date: 2023-03-01 21:00+0100\n"
+"POT-Creation-Date: 2023-04-02 17:34+0000\n"
+"PO-Revision-Date: 2023-04-29 14:31+0200\n"
 "Last-Translator: Quentin PAGÈS\n"
 "Language-Team: Occitan (post 1500) <oc@li.org>\n"
 "Language: oc\n"
@@ -224,7 +224,7 @@ msgstr "Salvament requerís l'installacion de paquets per contunhar"
 msgid "Restore"
 msgstr "Restablir"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
 msgid "_Restore"
 msgstr "_Restablir"
 
@@ -327,7 +327,7 @@ msgstr "Salvagarda automatica impossibla"
 msgid "Authentication needed"
 msgstr "Autentificacion requesida"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
 msgid "No backup files found"
 msgstr "Cap de fichièr de salvament es pas estat trobat"
 
@@ -622,7 +622,7 @@ msgstr "Listatz los fichièrs de restaurar"
 msgid "An operation is already in progress"
 msgstr "Una operacion es ja en cors"
 
-#: app/main.vala:344
+#: app/main.vala:362
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -635,7 +635,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:468 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Salvagardas Déjà Dup"
 
@@ -988,22 +988,22 @@ msgstr ""
 "salvagarda del sistèma o d’un programa d’archivatge, benlèu que vos "
 "estimariatz mai d’autras aplicacions de salvagarda."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Salvagardatz vòstres fichièrs automaticament — configuratz-lo e oblidatz-lo"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "La restauracion es facila — navigatz demest vòstres fichièrs e seleccionatz "
 "quin restaurar"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Salvar cap al cloud, a un servidor ret o a un disc local"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1432,7 +1432,7 @@ msgstr "Escobilhièr"
 msgid "Backup encryption password"
 msgstr "Senhal del chiframent dels salvaments"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1503,15 +1503,21 @@ msgstr "En pausa (pas de connexion)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "Emplaçament de salvament es tròp pichon."
+
+#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
+msgid "Try using a location with at least %s."
+msgstr "Ensajatz d’utilizar un emplaçament amb almens %s."
+
+#: libdeja/duplicity/DuplicityJob.vala:545
+msgid "(Space for two full backups is required.)"
 msgstr ""
-"L’emplaçament de salvagarda es tròp pichon. Ensajatz de n’utilizar un amb "
-"almens %s."
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:566
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
@@ -1519,17 +1525,17 @@ msgstr ""
 "L’emplaçament de salvagarda a pas pro d’espaci liure. Volgatz liberar almens "
 "%s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:568
 #, c-format
 msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
 "L’emplaçament de salvagarda a pas pro d’espaci liure. Ensajatz de n’utilizar "
 "un amb almens %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:588
+#: libdeja/duplicity/DuplicityJob.vala:602
 msgid "Cleaning up…"
 msgstr "Netejatge…"
 
@@ -1540,25 +1546,25 @@ msgstr "Netejatge…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:686
+#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Fracàs degut a una error desconeguda."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:889
 msgid "Bad encryption password."
 msgstr "Marrit senhal pel chiframent."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:938
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Impossible de restablir '%s' : Fichièr introbable dins lo salvament"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:949
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1569,54 +1575,54 @@ msgstr ""
 "de l'ordenador actual es %s. S'esperavatz pas aquò, vos caldriá enregistrar "
 "los salvaments a un autre endrech."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:952
 msgid "Computer name changed"
 msgstr "Nom de l'ordenador modificat"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:987
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Permission refusada al moment de la temptativa de creacion de \"%s\"."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
 #: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:995
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Permission refusada al moment de la temptativa de lectura de \"%s\"."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr ""
 "Permission refusada al moment de la temptativa de supression de \"%s\"."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1006
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "L'endrech d'emmagazinatge del salvament \"%s\" existís pas."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1012
+#: libdeja/duplicity/DuplicityJob.vala:1045
 msgid "No space left."
 msgstr "Pas d'espaci liure restant."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1034
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Error al moment de la lectura del fichièr '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1036
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Error al moment de l'escritura del fichièr '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1047
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Pas d'espaci liure restant dins \"%s\"."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1105
 msgid "Uploading…"
 msgstr "Mandadís en cors…"
 
