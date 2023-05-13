@@ -47,6 +47,17 @@ class BackupTest(BaseTest):
         else:
             assert initial == self.backup_files
 
+    def assert_encrypted(self, encrypted: bool):
+        if self.restic:
+            return
+
+        has_gpg = any(x.endswith(".difftar.gpg") for x in self.backup_files)
+        has_gz = any(x.endswith(".difftar.gz") for x in self.backup_files)
+        if encrypted:
+            assert has_gpg and not has_gz, self.backup_files
+        else:
+            assert has_gz and not has_gpg, self.backup_files
+
     def test_from_main_window(self):
         app = self.cmd()
         app.childNamed("Create Your First Backup").click()
@@ -57,6 +68,8 @@ class BackupTest(BaseTest):
             app.button("Back Up Now").click()
             self.walk_incremental_backup(app)
 
+        self.assert_encrypted(False)
+
     def test_from_commandline(self):
         app = self.cmd("--backup")
         with self.new_files():
@@ -65,6 +78,8 @@ class BackupTest(BaseTest):
         with self.new_files():
             app = self.cmd("--backup")
             self.walk_incremental_backup(app)
+
+        self.assert_encrypted(False)
 
     def test_from_monitor(self):
         self.set_boolean("periodic", True)
@@ -81,6 +96,8 @@ class BackupTest(BaseTest):
 
         with self.new_files():
             self.walk_initial_backup(app)
+
+        self.assert_encrypted(False)
 
     def test_storage_error(self):
         self.addCleanup(os.chmod, self.rootdir, stat.S_IRWXU)
@@ -104,6 +121,8 @@ class BackupTest(BaseTest):
         self.walk_incremental_backup(app, password="nope", wait=False)
         with self.new_files():
             self.walk_incremental_backup(app, password="t")
+
+        self.assert_encrypted(True)
 
     def test_hostname_question(self):
         app = self.cmd("--backup")
