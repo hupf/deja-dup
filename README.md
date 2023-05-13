@@ -7,7 +7,7 @@ SPDX-FileCopyrightText: Michael Terry
 
 Déjà Dup is a simple backup tool. It hides the complexity of backing up the
 Right Way (encrypted, off-site, and regular) and uses
-[duplicity](http://duplicity.nongnu.org/) as the backend.
+[duplicity](https://duplicity.gitlab.io/) as the backend.
 
  * Support for local, remote, or cloud backup locations such as Google Drive
  * Securely encrypts and compresses your data
