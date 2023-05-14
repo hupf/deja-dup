@@ -201,8 +201,8 @@ public class AssistantRestore : AssistantOperation
 
     open_button.valign = Gtk.Align.CENTER;
     open_button.add_css_class("flat");
-    open_button.file_selected.connect(() => {
-      cust_entry_row.text = open_button.path;
+    open_button.file_selected.connect((b) => {
+      cust_entry_row.text = b.path;
     });
 
     var bad_icon = new Gtk.Image.from_icon_name("dialog-warning");
