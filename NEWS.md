@@ -6,12 +6,13 @@ SPDX-FileCopyrightText: Michael Terry
 # 44.2
 - Support duplicity 2.0's command line changes
 - Update OneDrive api key to work with Duplicity 1.2.3 by using a key that
-  allows both personal and business accounts (business untested so far)
+  allows both personal and business accounts (business untested so far).
+  This means folks will need to re-authorize deja-dup, unfortunately.
 - Add more details to the error message about not enough space
 - Fix not being able to open the preferences window after a restore
-- Updated Basque, Friulian, Georgian, German, Hungarian, Indonesian, Persian,
-  Polish, Portuguese, Russian, Serbian, Slovenian, Swedish, Turkish, and
-  Ukrainian translations
+- Updated Basque, Friulian, Georgian, German, Hebrew, Hungarian, Indonesian,
+  Occitan, Persian, Polish, Portuguese, Russian, Serbian, Slovenian, Swedish,
+  Turkish, and Ukrainian translations
 
 # 44.1
 - Refuse to back up to a destination that doesn't have enough space, and
