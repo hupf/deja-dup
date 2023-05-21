@@ -345,6 +345,7 @@ public class DejaDupApp : Adw.Application
       <ul>
         <li>Support Duplicity 2.0</li>
         <li>Add some further explanation to the "not enough space" error dialog</li>
+        <li>Fix not being able to open the preferences window after a restore</li>
       </ul>
       <p>44.1</p>
       <ul>

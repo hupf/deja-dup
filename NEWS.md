@@ -6,6 +6,7 @@ SPDX-FileCopyrightText: Michael Terry
 # 44.2
 - Support duplicity 2.0's command line changes
 - Add more details to the error message about not enough space
+- Fix not being able to open the preferences window after a restore
 - Updated Basque, Friulian, Georgian, German, Hungarian, Indonesian, Persian,
   Polish, Portuguese, Russian, Serbian, Slovenian, Swedish, Turkish, and
   Ukrainian translations
