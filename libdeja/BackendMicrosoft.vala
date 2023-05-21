@@ -34,8 +34,8 @@ public class BackendMicrosoft : BackendOAuth
     // OAuth class properties
     brand_name = "Microsoft";
     client_id = Config.MICROSOFT_CLIENT_ID;
-    auth_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize";
-    token_url = "https://login.microsoftonline.com/consumers/oauth2/v2.0/token";
+    auth_url = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize";
+    token_url = "https://login.microsoftonline.com/common/oauth2/v2.0/token";
     scope = "offline_access Files.ReadWrite";
   }
 

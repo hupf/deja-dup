@@ -344,6 +344,7 @@ public class DejaDupApp : Adw.Application
       <p>44.2</p>
       <ul>
         <li>Support Duplicity 2.0</li>
+        <li>Update OneDrive api key to work with Duplicity 1.2.3</li>
         <li>Add some further explanation to the "not enough space" error dialog</li>
         <li>Fix not being able to open the preferences window after a restore</li>
       </ul>

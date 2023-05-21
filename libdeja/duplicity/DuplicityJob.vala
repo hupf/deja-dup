@@ -194,6 +194,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   void fill_envp_from_microsoft(DejaDup.BackendMicrosoft microsoft_backend)
   {
+    saved_envp.append("DUPLICITY_ONEDRIVE_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
     saved_envp.append("OAUTH2_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
     saved_envp.append("OAUTH2_REFRESH_TOKEN=%s".printf(microsoft_backend.refresh_token));
   }

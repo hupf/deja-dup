@@ -5,6 +5,8 @@ SPDX-FileCopyrightText: Michael Terry
 
 # 44.2
 - Support duplicity 2.0's command line changes
+- Update OneDrive api key to work with Duplicity 1.2.3 by using a key that
+  allows both personal and business accounts (business untested so far)
 - Add more details to the error message about not enough space
 - Fix not being able to open the preferences window after a restore
 - Updated Basque, Friulian, Georgian, German, Hungarian, Indonesian, Persian,
