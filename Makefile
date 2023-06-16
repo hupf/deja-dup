@@ -73,7 +73,10 @@ devenv-bash:
 .PHONY: devenv-sdk
 devenv-sdk:
 	flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
-	flatpak install --or-update -y gnome-nightly org.gnome.Platform//master org.gnome.Sdk//master
+	flatpak install --or-update -y gnome-nightly \
+		org.freedesktop.Sdk.Extension.vala-nightly//22.08 \
+		org.gnome.Platform//master \
+		org.gnome.Sdk//master
 
 .PHONY: devenv-setup
 devenv-setup: devenv-sdk flatpak
