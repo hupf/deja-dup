@@ -83,18 +83,14 @@ public class BackendRemote : BackendFile
   {
     // SMB likes to give back a very generic error when the host is not
     // available ("Invalid argument").  Try to work around that here.
-    // TODO: file upstream bug.
+    // Upstream issue: https://gitlab.gnome.org/GNOME/gvfs/-/issues/315
     if (root.get_uri_scheme() == "smb")
     {
-      // Presumably when this issue first appeared, the following old_check
-      // approach caught it. These days, we get a more appropriate INVALID_ARGUMENT
-      // error back (appropriate, because that's the message string we get:
-      // "invalid argument"). I'll leave this old check in place, because it
-      // seems harmless. But at some point, I suppose we ought to remove it.
-      // New check works on at least gvfs 1.47.91 and presumably somewhat earlier.
-      var old_check = Posix.errno == Posix.EAGAIN &&
-                      e.matches(IOError.quark(), 0);
-      if (e.matches(IOError.quark(), IOError.INVALID_ARGUMENT) || old_check) {
+      // Sometimes we see INVALID_ARGUMENT and sometimes we get a vaguer
+      // "EGAIN" with no IOError code. Not sure why (server dependent?)
+      var egain_error = Posix.errno == Posix.EAGAIN && e.matches(IOError.quark(), 0);
+      var invalid_arg_error = e.matches(IOError.quark(), IOError.INVALID_ARGUMENT);
+      if (egain_error || invalid_arg_error) {
         return _("The network server is not available");
       }
     }
