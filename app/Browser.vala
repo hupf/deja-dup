@@ -217,15 +217,20 @@ class Browser : Gtk.Grid
   [GtkCallback]
   void grab_passphrase()
   {
+    grap_passphrase_async.begin();
+  }
+
+  async void grap_passphrase_async()
+  {
     var dialog = new PassphraseDialog();
     dialog.transient_for = app_window;
-    dialog.got_passphrase.connect((passphrase) => {
-      if (operation != null) {
-        operation.set_passphrase(passphrase);
-        switch_overlay_to_spinner(); // quits loop too
-      }
-    });
-    dialog.present();
+
+    var passphrase = yield dialog.prompt_user();
+
+    if (operation != null && passphrase != null) {
+      operation.set_passphrase(passphrase);
+      switch_overlay_to_spinner(); // quits loop too
+    }
   }
 
   void switch_overlay_to_spinner() {

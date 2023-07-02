@@ -21,23 +21,20 @@ class PassphraseDialog : Adw.MessageDialog
     debug("Finalizing PassphraseDialog\n");
   }
 
-  [GtkCallback]
-  void response_cb(string response_id)
+  public async string? prompt_user()
   {
-    if (response_id == "continue" && entry.text != "")
-      handle_ok.begin();
+    var response = yield choose(null);
+    if (response != "continue" || entry.text == "")
+      return null;
+
+    var passphrase = DejaDup.process_passphrase(entry.text);
+    yield DejaDup.store_passphrase(passphrase, remember.active);
+    return passphrase;
   }
 
   [GtkCallback]
   void entry_changed_cb()
   {
     set_response_enabled("continue", entry.text != "");
-  }
-
-  async void handle_ok()
-  {
-    var passphrase = DejaDup.process_passphrase(entry.text);
-    yield DejaDup.store_passphrase(passphrase, remember.active);
-    got_passphrase(passphrase);
   }
 }

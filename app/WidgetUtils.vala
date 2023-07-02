@@ -9,13 +9,12 @@ using GLib;
 
 namespace DejaDup {
 
-public void run_error_dialog(Gtk.Window? parent, string header, string message)
+public async void run_error_dialog(Gtk.Window? parent, string header, string message)
 {
   var dlg = new Adw.MessageDialog(parent, header, message);
   dlg.add_response("accept", _("_OK"));
   dlg.default_response = "accept";
-  dlg.response.connect(dlg.destroy);
-  dlg.present();
+  yield dlg.choose(null);
 }
 
 // Convenience call that sets each side margin to the same value.

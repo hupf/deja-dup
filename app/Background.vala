@@ -70,8 +70,8 @@ public class Background : Object
     unexport_handle(window);
 
     if (!allowed && mitigation != null)
-      DejaDup.run_error_dialog(window, _("Cannot back up automatically"),
-                               mitigation);
+      yield DejaDup.run_error_dialog(window, _("Cannot back up automatically"),
+                                     mitigation);
 
     return allowed;
   }
