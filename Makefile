@@ -74,7 +74,7 @@ devenv-bash:
 devenv-sdk:
 	flatpak remote-add --user --if-not-exists gnome-nightly https://nightly.gnome.org/gnome-nightly.flatpakrepo
 	flatpak install --or-update -y gnome-nightly \
-		org.freedesktop.Sdk.Extension.vala-nightly//22.08 \
+		org.freedesktop.Sdk.Extension.vala-nightly//23.08beta \
 		org.gnome.Platform//master \
 		org.gnome.Sdk//master
 
