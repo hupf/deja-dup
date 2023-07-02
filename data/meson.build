@@ -3,6 +3,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: Michael Terry
 
+fs = import('fs')
+
+
 # GOOGLE CUSTOM SCHEME (reverse dns)
 
 google_client_id_parts = get_option('google_client_id').split('.')
@@ -36,11 +39,11 @@ install_data(
   install_dir: join_paths(datadir, 'icons', 'hicolor', 'scalable', 'apps'),
 )
 
-configure_file(
-  copy: true,
-  input: join_paths('icons', 'org.gnome.DejaDup-symbolic.svg'),
+fs.copyfile(
+  join_paths('icons', 'org.gnome.DejaDup-symbolic.svg'),
+  f'@application_id@-symbolic.svg',
+  install: true,
   install_dir: join_paths(datadir, 'icons', 'hicolor', 'symbolic', 'apps'),
-  output: f'@application_id@-symbolic.svg',
 )
 
 

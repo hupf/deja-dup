@@ -3,6 +3,12 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 45.alpha
+
+##### Packaging
+- Require libadwaita1 1.4+
+- Require meson 0.64+
+
 # 44.2
 - Support duplicity 2.0's command line changes
 - Update OneDrive api key to work with Duplicity 1.2.3 by using a key that
