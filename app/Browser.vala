@@ -296,7 +296,8 @@ class Browser : Gtk.Grid
     if (auth_url == null) {
       retry_operation();
     } else {
-      Gtk.show_uri(app_window, auth_url, Gdk.CURRENT_TIME);
+      var launcher = new Gtk.UriLauncher(auth_url);
+      launcher.launch.begin(app_window, null);
     }
   }
 

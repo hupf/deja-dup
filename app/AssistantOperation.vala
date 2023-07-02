@@ -431,7 +431,8 @@ public abstract class AssistantOperation : Assistant
 
     var b = new Gtk.Button.with_mnemonic(_("_Grant Access"));
     b.clicked.connect((button) => {
-      Gtk.show_uri(button.root as Gtk.Window, consent_url, Gdk.CURRENT_TIME);
+      var launcher = new Gtk.UriLauncher(consent_url);
+      launcher.launch.begin(button.root as Gtk.Window, null);
     });
     page.attach(b, 1, rows, 1, 1);
     ++rows;

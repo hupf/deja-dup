@@ -24,28 +24,29 @@ class FolderChooserButton : Gtk.Button
 
   void on_clicked()
   {
-    var dlg = new Gtk.FileChooserNative(_("Choose Folder"),
-                                        this.root as Gtk.Window,
-                                        Gtk.FileChooserAction.SELECT_FOLDER,
-                                        null, null);
-    dlg.modal = true;
-    dlg.response.connect(on_dialog_response);
-
-    dlg.show();
-    dlg.ref();
+    on_clicked_async.begin();
   }
 
-  void on_dialog_response(Gtk.NativeDialog dlg, int response)
+  async void on_clicked_async()
   {
-    if (response == Gtk.ResponseType.ACCEPT) {
-      var dlg_file = ((Gtk.FileChooser)dlg).get_file();
-      var dlg_path = DejaDup.BackendLocal.get_path_from_file(dlg_file);
-      if (dlg_path != null) {
-        path = dlg_path;
-        file = dlg_file;
-        file_selected();
-      }
+    var dlg = new Gtk.FileDialog();
+    dlg.modal = true;
+
+    try {
+      var folder = yield dlg.select_folder(this.root as Gtk.Window, null);
+      on_dialog_response(folder);
+    } catch (Error e) {
+      // Ignore, as it is probably just a user-cancellation
     }
-    dlg.unref();
+  }
+
+  void on_dialog_response(File folder)
+  {
+    var dlg_path = DejaDup.BackendLocal.get_path_from_file(folder);
+    if (dlg_path != null) {
+      path = dlg_path;
+      file = folder;
+      file_selected();
+    }
   }
 }

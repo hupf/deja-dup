@@ -60,21 +60,20 @@ public class ConfigFolderGroup : Adw.PreferencesGroup
   [GtkCallback]
   void on_add_clicked()
   {
-    var dlg = new Gtk.FileChooserNative(_("Choose Folders"),
-                                        this.root as Gtk.Window,
-                                        Gtk.FileChooserAction.SELECT_FOLDER,
-                                        _("Add"), null);
+    select_folders.begin();
+  }
+
+  async void select_folders()
+  {
+    var dlg = new Gtk.FileDialog();
     dlg.modal = true;
-    dlg.select_multiple = true;
 
-    dlg.response.connect((response) => {
-      if (response == Gtk.ResponseType.ACCEPT) {
-        add_files(dlg.get_files());
-      }
-      dlg.destroy();
-    });
-
-    dlg.show();
+    try {
+      var folders = yield dlg.select_multiple_folders(this.root as Gtk.Window, null);
+      add_files(folders);
+    } catch (Error e) {
+      // Ignore, as it is probably just a user-cancellation
+    }
   }
 
   bool add_files(ListModel files)

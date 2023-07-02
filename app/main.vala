@@ -321,7 +321,18 @@ public class DejaDupApp : Adw.Application
 
   void help()
   {
-    Gtk.show_uri(get_app_window(), "help:" + Config.PACKAGE, Gdk.CURRENT_TIME);
+    // This does not use Gtk.UriLauncher because we don't want to escape any
+    // sandboxes, if they exist. If we did that, the host's yelp would likely
+    // not be able to find our help files inside our flatpak.
+    // (That problem is https://gitlab.gnome.org/GNOME/yelp/-/issues/192)
+    //
+    // You think we'd just use Gtk.show_uri, but that is deprecated and throws
+    // annoying compile-time warnings. So instead, just manually do what it
+    // does under the covers, which will launch a local copy of yelp from
+    // org.gnome.Platform or direct from the host if we aren't sandboxed.
+    var context = Gdk.Display.get_default().get_app_launch_context();
+    var uri = "help:" + Config.PACKAGE;
+    AppInfo.launch_default_for_uri_async.begin(uri, context, null);
   }
 
   void about()
