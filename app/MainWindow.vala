@@ -9,6 +9,8 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/MainWindow.ui")]
 public class MainWindow : Adw.ApplicationWindow
 {
+  public bool thin_mode {get; set; default = false;}
+
   public unowned MainHeaderBar get_header()
   {
     return header;
@@ -35,7 +37,10 @@ public class MainWindow : Adw.ApplicationWindow
   unowned Gtk.Stack overview_stack;
   [GtkChild]
   unowned Browser browser;
+  [GtkChild]
+  unowned Adw.ViewSwitcherBar bottom_bar;
 
+  Settings settings;
   construct {
     var deja_app = DejaDupApp.get_instance();
 
@@ -45,7 +50,7 @@ public class MainWindow : Adw.ApplicationWindow
     if (Config.PROFILE == "Devel")
       add_css_class("devel"); // changes look of headerbars usually
 
-    var settings = DejaDup.get_settings();
+    settings = DejaDup.get_settings();
     settings.bind_with_mapping(DejaDup.LAST_RUN_KEY, overview_stack, "visible-child-name",
                                SettingsBindFlags.GET, get_visible_child, set_visible_child,
                                null, null);
@@ -60,6 +65,10 @@ public class MainWindow : Adw.ApplicationWindow
     stack.notify["visible-child-name"].connect(on_stack_child_changed);
     deja_app.notify["custom-backend"].connect(on_custom_backend_changed);
 
+    settings.changed[DejaDup.LAST_RUN_KEY].connect(update_header_bar);
+    notify["thin-mode"].connect(update_header_bar);
+    update_header_bar();
+
     browser.bind_to_window(this);
   }
 
@@ -72,6 +81,7 @@ public class MainWindow : Adw.ApplicationWindow
   {
     if (stack.visible_child_name != "restore")
       DejaDupApp.get_instance().custom_backend = null;
+    update_header_bar();
   }
 
   void on_custom_backend_changed()
@@ -93,5 +103,15 @@ public class MainWindow : Adw.ApplicationWindow
   static Variant set_visible_child(Value val, VariantType expected_type, void *data)
   {
     return new Variant.string("");
+  }
+
+  void update_header_bar()
+  {
+    var is_restore = stack.visible_child_name == "restore";
+    var never_run = settings.get_string(DejaDup.LAST_RUN_KEY) == "";
+    var welcome_state = never_run && !is_restore;
+
+    header.title_visible = !thin_mode && !welcome_state;
+    bottom_bar.reveal = thin_mode && !welcome_state;
   }
 }

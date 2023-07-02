@@ -7,12 +7,12 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="MainHeaderBar" parent="AdwBin">
     <child>
-      <object class="AdwHeaderBar">
-        <child type="title">
-          <object class="AdwViewSwitcherTitle" id="switcher">
-            <property name="title" translatable="yes">Backups</property>
+      <object class="AdwHeaderBar" id="adw_bar">
+        <property name="title-widget">
+          <object class="AdwViewSwitcher" id="switcher">
+            <property name="policy">wide</property>
           </object>
-        </child>
+        </property>
         <child>
           <object class="GtkButton" id="previous_button">
             <property name="action-name">restore.go-up</property>

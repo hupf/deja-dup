@@ -7,15 +7,26 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="MainWindow" parent="AdwApplicationWindow">
     <property name="title" translatable="yes">Backups</property>
-    <property name="content">
-      <object class="GtkBox">
-        <property name="orientation">vertical</property>
-        <child>
+    <!--
+      Recommended minimum sizes for phone support, according to libadwaita docs.
+      Keep in sync with metainfo's required display_length.
+    -->
+    <property name="width-request">360</property>
+    <property name="height-request">294</property>
+    <child>
+      <object class="AdwBreakpoint">
+        <condition>max-width: 500sp</condition>
+        <setter object="MainWindow" property="thin-mode">true</setter>
+      </object>
+    </child>
+    <property name="content">property
+      <object class="AdwToolbarView">
+        <child type="top">
           <object class="MainHeaderBar" id="header">
             <property name="stack">stack</property>
           </object>
         </child>
-        <child>
+        <property name="content">
           <object class="AdwViewStack" id="stack">
             <property name="vexpand">true</property>
             <child>
@@ -56,13 +67,10 @@ SPDX-FileCopyrightText: Michael Terry
               </object>
             </child>
           </object>
-        </child>
-        <child>
-          <object class="AdwViewSwitcherBar" id="bar">
+        </property>
+        <child type="bottom">
+          <object class="AdwViewSwitcherBar" id="bottom_bar">
             <property name="stack">stack</property>
-            <binding name="reveal">
-              <lookup name="title-visible">header</lookup>
-            </binding>
           </object>
         </child>
       </object>

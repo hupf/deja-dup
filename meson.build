@@ -8,7 +8,7 @@ project(
   'vala',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.59',
-  version: '44.3',
+  version: '45.alpha',
 )
 
 gnome = import('gnome')
@@ -28,7 +28,7 @@ pkglibdir = join_paths(libdir, meson.project_name())
 pkglibexecdir = join_paths(libexecdir, meson.project_name())
 
 # Dependencies
-adwaita_dep = dependency('libadwaita-1', version: '>= 1.2')
+adwaita_dep = dependency('libadwaita-1', version: '>= 1.4')
 gio_dep = dependency('gio-2.0', version: '>= 2.70')
 gio_unix_dep = dependency('gio-unix-2.0')
 gpg_error_dep = dependency('gpg-error', version: '>= 1.33')
