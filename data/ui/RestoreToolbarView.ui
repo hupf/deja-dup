@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="RestoreToolbarView" parent="AdwBin">
+    <child>
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="RestoreHeaderBar" id="header"/>
+        </child>
+        <child type="top">
+          <object class="GtkSearchBar" id="search_bar">
+            <child>
+              <object class="GtkSearchEntry" id="search_entry">
+                <accessibility>
+                  <property name="label" translatable="yes">Search</property>
+                </accessibility>
+              </object>
+            </child>
+          </object>
+        </child>
+        <property name="content">
+          <object class="Browser" id="browser"/>
+        </property>
+        <child type="bottom">
+          <object class="GtkActionBar">
+            <accessibility>
+              <property name="label">Actions</property>
+            </accessibility>
+            <child>
+              <object class="GtkButton" id="restore_button">
+                <property name="label" translatable="yes">_Restore</property>
+                <property name="sensitive">false</property>
+                <property name="receives_default">true</property>
+                <property name="use_underline">true</property>
+                <signal name="clicked" handler="start_restore"/>
+                <style>
+                  <class name="suggested-action"/>
+                </style>
+              </object>
+            </child>
+            <child type="end">
+              <object class="TimeCombo" id="timecombo"/>
+            </child>
+          </object>
+        </child>
+        <child type="bottom">
+          <object class="AdwViewSwitcherBar" id="switcher_bar"/>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>

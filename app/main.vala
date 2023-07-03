@@ -501,10 +501,14 @@ int main(string[] args)
   typeof(ConfigPeriodRow).ensure();
   typeof(ConfigResticRow).ensure();
   typeof(FolderChooserButton).ensure();
+  typeof(HeaderBar).ensure();
   typeof(HelpButton).ensure();
-  typeof(MainHeaderBar).ensure();
   typeof(OverviewPage).ensure();
+  typeof(OverviewToolbarView).ensure();
+  typeof(PrimaryMenuButton).ensure();
   typeof(RecentBackupRow).ensure();
+  typeof(RestoreHeaderBar).ensure();
+  typeof(RestoreToolbarView).ensure();
   typeof(ServerAddressHelp).ensure();
   typeof(TimeCombo).ensure();
   typeof(TimeCombo.Item).ensure();

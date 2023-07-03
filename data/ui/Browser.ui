@@ -7,21 +7,6 @@ SPDX-FileCopyrightText: Michael Terry
 <interface>
   <template class="Browser" parent="GtkGrid">
     <child>
-      <object class="GtkSearchBar" id="search_bar">
-        <child>
-          <object class="GtkSearchEntry" id="search_entry">
-            <accessibility>
-              <property name="label" translatable="yes">Search</property>
-            </accessibility>
-          </object>
-        </child>
-        <layout>
-          <property name="column">0</property>
-          <property name="row">0</property>
-        </layout>
-      </object>
-    </child>
-    <child>
       <object class="GtkStack" id="view_stack">
         <property name="hexpand">1</property>
         <property name="vexpand">1</property>
@@ -343,32 +328,6 @@ SPDX-FileCopyrightText: Michael Terry
         <layout>
           <property name="column">0</property>
           <property name="row">1</property>
-        </layout>
-      </object>
-    </child>
-    <child>
-      <object class="GtkActionBar">
-        <accessibility>
-          <property name="label">Actions</property>
-        </accessibility>
-        <child>
-          <object class="GtkButton" id="restore_button">
-            <property name="label" translatable="yes">_Restore</property>
-            <property name="sensitive">0</property>
-            <property name="receives_default">1</property>
-            <property name="use_underline">1</property>
-            <signal name="clicked" handler="start_restore"/>
-            <style>
-              <class name="suggested-action"/>
-            </style>
-          </object>
-        </child>
-        <child type="end">
-          <object class="TimeCombo" id="timecombo"/>
-        </child>
-        <layout>
-          <property name="column">0</property>
-          <property name="row">2</property>
         </layout>
       </object>
     </child>

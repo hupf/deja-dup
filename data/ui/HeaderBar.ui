@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="HeaderBar" parent="AdwBin">
+    <child>
+      <object class="AdwHeaderBar" id="header">
+        <property name="title-widget">
+          <object class="AdwViewSwitcher" id="switcher">
+            <property name="policy">wide</property>
+          </object>
+        </property>
+        <child type="end">
+          <object class="PrimaryMenuButton"/>
+        </child>
+        <style>
+          <class name="titlebar"/>
+        </style>
+      </object>
+    </child>
+  </template>
+</interface>

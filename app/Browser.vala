@@ -9,20 +9,16 @@ using GLib;
 [GtkTemplate (ui = "/org/gnome/DejaDup/Browser.ui")]
 class Browser : Gtk.Grid
 {
+  public signal void folder_changed();
+
   public bool time_filled {get; private set;}
   public bool files_filled {get; private set;}
+  public bool has_selection {get; private set;}
   public DejaDup.Operation operation {get; private set;}
+  public bool can_go_up {get; protected set;}
+  public string search_filter {get; set; default = "";}
+  public bool is_visible_page {get; set; default = false;}
 
-  const ActionEntry[] ACTIONS = {
-    {"select-all", select_all},
-    {"go-up", go_up},
-    {"search", activate_search},
-  };
-
-  [GtkChild]
-  unowned Gtk.SearchBar search_bar;
-  [GtkChild]
-  unowned Gtk.SearchEntry search_entry;
   [GtkChild]
   unowned Gtk.Stack view_stack;
   [GtkChild]
@@ -38,10 +34,6 @@ class Browser : Gtk.Grid
   [GtkChild]
   unowned Gtk.ColumnView list_view;
   [GtkChild]
-  unowned Gtk.Button restore_button;
-  [GtkChild]
-  unowned TimeCombo timecombo;
-  [GtkChild]
   unowned Gtk.Spinner spinner;
 
   DejaDupApp application;
@@ -52,24 +44,11 @@ class Browser : Gtk.Grid
   MainLoop passphrase_loop;
   string saved_passphrase; // most recent successful password
   unowned MainWindow app_window;
-  unowned MainHeaderBar header;
-  SimpleActionGroup action_group;
+  unowned TimeCombo timecombo;
 
   construct
   {
     application = DejaDupApp.get_instance();
-
-    // Set up actions
-    action_group = new SimpleActionGroup();
-    action_group.add_action_entries(ACTIONS, this);
-    application.set_accels_for_action("restore.select-all", {"<Control>A"});
-    application.set_accels_for_action("restore.go-up", {"<Alt>Left", "<Alt>Up"});
-    application.set_accels_for_action("restore.search", {"<Control>F"});
-
-    timecombo.notify["when"].connect(() => {
-      if (time_filled)
-        start_files_operation();
-    });
 
     notify["operation"].connect(() => {
       if (operation != null) {
@@ -84,6 +63,7 @@ class Browser : Gtk.Grid
 
     // Set up store
     store = new FileStore();
+    store.bind_property("can-go-up", this, "can-go-up", BindingFlags.SYNC_CREATE);
     selection = new Gtk.MultiSelection(store);
     selection.selection_changed.connect(selection_changed);
     selection.items_changed.connect(items_changed);
@@ -96,15 +76,11 @@ class Browser : Gtk.Grid
       null, "/org/gnome/DejaDup/BrowserGridItem.ui"
     );
 
-    // Connect various buttons
-
-    var go_up_action = action_group.lookup_action("go-up");
-    store.bind_property("can-go-up", go_up_action, "enabled", BindingFlags.SYNC_CREATE);
-
-    var select_all_action = action_group.lookup_action("select-all");
-    bind_property("files-filled", select_all_action, "enabled", BindingFlags.SYNC_CREATE);
-
-    search_entry.search_changed.connect(update_search_filter);
+    // Connections
+    notify["is-visible-page"].connect(maybe_start_operation);
+    notify["search-filter"].connect(update_search_filter);
+    // selection-changed doesn't emit automatically on clear for some reason
+    notify["folder-changed"].connect(selection_changed);
 
     // Watch for backend changes that need to reset us
     var watcher = DejaDup.BackendWatcher.get_instance();
@@ -120,26 +96,16 @@ class Browser : Gtk.Grid
     });
   }
 
-  public void bind_to_window(MainWindow win)
+  public void bind_to_window(MainWindow win, TimeCombo combo)
   {
     app_window = win;
     app_window.notify["is-active"].connect(maybe_start_operation);
     app_window.notify["visible"].connect(maybe_start_operation);
 
-    header = win.get_header();
-    header.bind_search_bar(search_bar);
-    bind_property("files-filled", header, "actions-sensitive",
-                  BindingFlags.SYNC_CREATE);
-
-    // Notice when we are switched to and away from and notice when we need to
-    // reset operation.
-    header.stack.notify["visible-child"].connect(() => {
-      if (header.stack.visible_child == this) {
-        app_window.insert_action_group("restore", action_group);
-        maybe_start_operation();
-      } else {
-        app_window.insert_action_group("restore", null);
-      }
+    timecombo = combo;
+    timecombo.notify["when"].connect(() => {
+      if (time_filled)
+        start_files_operation();
     });
 
     // Initial setup call
@@ -148,25 +114,21 @@ class Browser : Gtk.Grid
 
   void selection_changed() {
     var bitset = selection.get_selection();
-    restore_button.sensitive = !bitset.is_empty();
+    has_selection = !bitset.is_empty();
   }
 
   void items_changed() {
-    if (files_filled)
+    if (files_filled) {
       update_content_view();
+      selection_changed(); // I wish the selection model did this automatically
+    }
   }
 
-  void select_all() {
+  public void select_all() {
     selection.select_all();
   }
 
-  void folder_changed() {
-    search_bar.search_mode_enabled = false;
-    // selection-changed doesn't emit automatically on clear for some reason
-    restore_button.sensitive = false;
-  }
-
-  void go_up() {
+  public void go_up() {
     if (store.go_up())
       folder_changed();
   }
@@ -177,15 +139,10 @@ class Browser : Gtk.Grid
       folder_changed();
   }
 
-  void activate_search() {
-    search_bar.search_mode_enabled = true;
-    search_entry.grab_focus();
-  }
-
   // Shows the right pane - search view, normal view, empty versions of either
   void update_content_view()
   {
-    if (search_entry.text != "") {
+    if (search_filter != "") {
       view_stack.visible_child_name = "list";
       icon_view.model = null;
       list_view.model = selection;
@@ -211,7 +168,7 @@ class Browser : Gtk.Grid
   void update_search_filter()
   {
     update_content_view();
-    store.search_filter = search_entry.text;
+    store.search_filter = search_filter;
   }
 
   [GtkCallback]
@@ -306,8 +263,7 @@ class Browser : Gtk.Grid
     }
   }
 
-  [GtkCallback]
-  void start_restore()
+  public void start_restore()
   {
     var bitset = selection.get_selection();
     var iter = Gtk.BitsetIter();
@@ -442,7 +398,7 @@ class Browser : Gtk.Grid
     if (operation != null)
       return;
 
-    if (!app_window_is_active() || header.stack.visible_child != this)
+    if (!app_window_is_active() || !is_visible_page)
       return;
 
     if (!time_filled)
