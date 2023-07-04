@@ -11,9 +11,9 @@ public class MainWindow : Adw.ApplicationWindow
 {
   public bool thin_mode {get; set; default = false;}
 
-  public unowned MainHeaderBar get_header()
+  public unowned Adw.ViewStack get_view_stack()
   {
-    return header;
+    return stack;
   }
 
   public List<Gtk.Window> get_modals()
@@ -28,33 +28,24 @@ public class MainWindow : Adw.ApplicationWindow
   }
 
   [GtkChild]
-  unowned MainHeaderBar header;
-  [GtkChild]
   unowned Adw.ViewStack stack;
   [GtkChild]
   unowned Adw.ViewStackPage backups_page;
   [GtkChild]
-  unowned Gtk.Stack overview_stack;
+  unowned OverviewToolbarView overview_view;
   [GtkChild]
-  unowned Browser browser;
-  [GtkChild]
-  unowned Adw.ViewSwitcherBar bottom_bar;
+  unowned RestoreToolbarView restore_view;
 
-  Settings settings;
   construct {
     var deja_app = DejaDupApp.get_instance();
 
     // Set a few icons that are hardcoded in ui files
     backups_page.icon_name = Config.ICON_NAME + "-symbolic";
 
-    if (Config.PROFILE == "Devel")
-      add_css_class("devel"); // changes look of headerbars usually
+    //if (Config.PROFILE == "Devel")
+    //  add_css_class("devel"); // changes look of headerbars usually
 
-    settings = DejaDup.get_settings();
-    settings.bind_with_mapping(DejaDup.LAST_RUN_KEY, overview_stack, "visible-child-name",
-                               SettingsBindFlags.GET, get_visible_child, set_visible_child,
-                               null, null);
-
+    var settings = DejaDup.get_settings();
     settings.bind(DejaDup.WINDOW_WIDTH_KEY, this, "default-width", SettingsBindFlags.DEFAULT);
     settings.bind(DejaDup.WINDOW_HEIGHT_KEY, this, "default-height", SettingsBindFlags.DEFAULT);
     settings.bind(DejaDup.WINDOW_MAXIMIZED_KEY, this, "maximized", SettingsBindFlags.DEFAULT);
@@ -65,11 +56,8 @@ public class MainWindow : Adw.ApplicationWindow
     stack.notify["visible-child-name"].connect(on_stack_child_changed);
     deja_app.notify["custom-backend"].connect(on_custom_backend_changed);
 
-    settings.changed[DejaDup.LAST_RUN_KEY].connect(update_header_bar);
-    notify["thin-mode"].connect(update_header_bar);
-    update_header_bar();
-
-    browser.bind_to_window(this);
+    overview_view.bind_to_window(this);
+    restore_view.bind_to_window(this);
   }
 
   ~MainWindow()
@@ -81,37 +69,11 @@ public class MainWindow : Adw.ApplicationWindow
   {
     if (stack.visible_child_name != "restore")
       DejaDupApp.get_instance().custom_backend = null;
-    update_header_bar();
   }
 
   void on_custom_backend_changed()
   {
     if (DejaDupApp.get_instance().custom_backend != null)
       stack.visible_child_name = "restore";
-  }
-
-  static bool get_visible_child(Value val, Variant variant, void *data)
-  {
-    if (variant.get_string() == "")
-      val.set_string("initial");
-    else
-      val.set_string("normal");
-    return true;
-  }
-
-  // Never called, just here to shut up valac
-  static Variant set_visible_child(Value val, VariantType expected_type, void *data)
-  {
-    return new Variant.string("");
-  }
-
-  void update_header_bar()
-  {
-    var is_restore = stack.visible_child_name == "restore";
-    var never_run = settings.get_string(DejaDup.LAST_RUN_KEY) == "";
-    var welcome_state = never_run && !is_restore;
-
-    header.title_visible = !thin_mode && !welcome_state;
-    bottom_bar.reveal = thin_mode && !welcome_state;
   }
 }

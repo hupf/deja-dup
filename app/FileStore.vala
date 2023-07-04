@@ -159,13 +159,14 @@ public class FileStore : Object, ListModel
   void set_current(DejaDup.FileTree.Node node)
   {
     var removed = clear_full();
+    items_changed(0, removed, 0);
     current = node;
     can_go_up = current != tree.root;
     current.children.for_each((name, child) => {
       insert_file(child);
     });
     sort();
-    items_changed(0, removed, items.length);
+    items_changed(0, 0, items.length);
   }
 
   void sort() {

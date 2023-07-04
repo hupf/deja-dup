@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+SPDX-License-Identifier: CC-BY-SA-4.0
+SPDX-FileCopyrightText: Michael Terry
+-->
+
+<interface>
+  <template class="OverviewToolbarView" parent="AdwBin">
+    <child>
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="HeaderBar" id="header"/>
+        </child>
+        <property name="content">
+          <object class="GtkStack" id="overview_stack">
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">initial</property>
+                <property name="child">
+                  <object class="WelcomePage"/>
+                </property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkStackPage">
+                <property name="name">normal</property>
+                <property name="child">
+                  <object class="OverviewPage"/>
+                </property>
+              </object>
+            </child>
+          </object>
+        </property>
+        <child type="bottom">
+          <object class="AdwViewSwitcherBar" id="bottom_bar"/>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
