@@ -17,7 +17,7 @@ class PreferencesTest(BaseTest):
     def setUp(self):
         super().setUp()
         self.app = self.cmd()
-        self.app.childNamed("Main Menu").click()
+        self.app.child(name="Main Menu").click()
         self.app.childNamed("Preferences").click()
 
     def get_auto_check(self, root):
@@ -25,11 +25,7 @@ class PreferencesTest(BaseTest):
         return box.child(roleName="check box")
 
     def get_preferences_window(self):
-        if os.environ["DD_MODE"] == "snap":
-            # Older gtk in snap seems to use frame not filler
-            return self.app.child(roleName="frame", name="Preferences")
-        else:
-            return self.app.child(roleName="filler", name="Preferences")
+        return self.app.child(roleName="frame", name="Preferences")
 
     def test_general(self):
         # Test that there's a special first time welcome screen
@@ -102,7 +98,7 @@ class PreferencesTest(BaseTest):
 
     def assert_inclusion_table(self, widget, key):
         prefs = self.get_preferences_window()
-        prefs.child(name="Folders").click()
+        prefs.child(roleName="page tab", name="Folders").click()
 
         table = prefs.child(roleName="list", name=widget)
 
@@ -157,7 +153,7 @@ class PreferencesTest(BaseTest):
         # Add one
         add = table.child(name="Add")
         add.click()
-        dlg = self.get_file_chooser("Choose Folders")
+        dlg = self.get_file_chooser("Select Folders")
         typeText(home + "/Documents\n")
         self.wait_for_table_names(table, ["~/Pictures", "~/Documents"])
         self.assertEqual(self.get_strv(key), ["$PICTURES", home + "/Documents"])

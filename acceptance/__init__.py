@@ -226,8 +226,10 @@ class BaseTest(unittest.TestCase):
         return dlg
 
     def click_restore_button(self, parent):
-        bar = parent.child(name="Actions")
-        bar.button("Restore").click()
+        # bar = parent.child(name="Actions")  # this stopped working with Gtk 4.12...
+        buttons = parent.findChildren(GenericPredicate(roleName="push button", name="Restore"))
+        self.assertEqual(len(buttons), 2)  # first is top tab, second is bottom button
+        buttons[1].click()
 
     def get_config(self, section, option, fallback=None, required=True):
         if not self.config:

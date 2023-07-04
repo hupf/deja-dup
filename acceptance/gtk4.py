@@ -86,7 +86,7 @@ class Gtk4Node:
                 maybe_top = top.findAncestor(GenericPredicate(roleName="filler"))
         assert top
 
-        from Xlib import X, display, Xutil
+        from Xlib import display
 
         d = display.Display()
         r = d.screen().root
@@ -103,26 +103,36 @@ class Gtk4Node:
         # Hardcoding this is super gross, I'd love a better way.
         self.coords = (root_coords.x + 50, root_coords.y + 50)
 
+    def _get_position(self) -> tuple[int, int]:
+        # Dogtail's default position uses DESKTOP_COORDS, which modern GTK
+        # provides as (0, 0) always.
+        return self.node.queryComponent().getPosition(pyatspi.WINDOW_COORDS)
+
     def click(self, button=1):
         """Click with adjusted screen-global coordinates"""
         # If we can avoid the vagaries of coordinates, let's do that. This is
         # useful in particular with popup menu items, whose coordinates need
         # some further adjustment than I've made here...
-        if "click" in self.node.actions:
-            self.node.doActionNamed("click")
-            return
+        for action in ["click", "toggle"]:
+            if action in self.node.actions:
+                self.node.doActionNamed(action)
+                return
+        if len(self.node.children) == 1:  # try to find click action
+            return Gtk4Node(self.node.children[0], self.coords).click(button)
 
         self._ensure_coords()
-        clickX = self.coords[0] + self.node.position[0] + self.node.size[0] / 2
-        clickY = self.coords[1] + self.node.position[1] + self.node.size[1] / 2
+        position = self._get_position()
+        clickX = self.coords[0] + position[0] + self.node.size[0] / 2
+        clickY = self.coords[1] + position[1] + self.node.size[1] / 2
 
         rawinput.click(clickX, clickY, button)
 
     def doubleClick(self, button=1):
         """Double click with adjusted screen-global coordinates"""
         self._ensure_coords()
-        clickX = self.coords[0] + self.node.position[0] + self.node.size[0] / 2
-        clickY = self.coords[1] + self.node.position[1] + self.node.size[1] / 2
+        position = self._get_position()
+        clickX = self.coords[0] + position[0] + self.node.size[0] / 2
+        clickY = self.coords[1] + position[1] + self.node.size[1] / 2
         rawinput.doubleClick(clickX, clickY, button)
 
     @property

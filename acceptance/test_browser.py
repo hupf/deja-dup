@@ -100,12 +100,14 @@ class BrowserTest(BaseTest):
         search = self.app.child(roleName="toggle button", name="Search")
         assert search.pressed == searching
 
-        # The entry is always visible in the accessiblity tree
-        search_entry = self.app.child(roleName="entry", name="Search")
+        search_entry = self.app.findChild(
+            GenericPredicate(roleName="entry", name="Search"),
+            retry=False, requireResult=False,
+        )
         if searching:
-            assert search_entry.focused
+            assert search_entry and search_entry.focused
         else:
-            assert search_entry.text == ""
+            assert search_entry is None
 
     def assert_selection(self, selecting=True):
         predicate = GenericPredicate(
@@ -130,7 +132,7 @@ class BrowserTest(BaseTest):
         ).click()
         self.window.child(roleName="push button", name="Choose Folder").click()
         os.makedirs(where, exist_ok=True)
-        dlg = self.get_file_chooser("Choose Folder")
+        dlg = self.get_file_chooser("Select a Folder")
         typeText(where + "\n")
         self.wait_for(lambda: dlg.dead)
 

@@ -29,7 +29,7 @@ class IntegrationTest(BaseTest):
         app.childNamed("Menu principal").click()
 
         self.addCleanup(self.kill_bus, "org.gnome.Yelp")
-        app.button("Aide").click()
+        app.child(roleName="menu item", name="Aide").click()
 
         yelp = tree.root.application("yelp")
         assert yelp.childNamed("Sauvegarder")
