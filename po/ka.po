@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-04-02 17:34+0000\n"
-"PO-Revision-Date: 2023-04-03 06:42+0200\n"
+"POT-Creation-Date: 2023-07-02 22:23+0000\n"
+"PO-Revision-Date: 2023-08-27 16:03+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -99,7 +99,7 @@ msgstr "მარქაფი…"
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "მარქაფის გასაგრძელებლად თქვენი ყურადღებაა საჭირო"
 
@@ -171,48 +171,48 @@ msgstr "ტესტირება _ყოველ ორ თვეში"
 msgid "_Grant Access"
 msgstr "წვდომის _მინიჭება"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "პაკეტების დაყენება"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "შეჯამება"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "აღდგენის ტესტი"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "უარი წვდომაზე"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "დაშიფვრის პაროლის დაყენება"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "მოვითხოვო პაროლი?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "საჭიროა დაშიფვრის პაროლი"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr ""
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_დაყენება"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr ""
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:62
 msgid "Restore"
 msgstr "აღდგენა"
 
@@ -313,11 +313,11 @@ msgstr "აღდგენა მიმდინარეობს"
 msgid "Cannot back up automatically"
 msgstr "ავტომატური მარქაფის შეცდომა"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:256
 msgid "Authentication needed"
 msgstr "ავთენტიკაცია საჭიროა"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
+#: app/Browser.vala:378 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "მარქაფის ფაილი ვერ ვიპოვა"
 
@@ -381,14 +381,6 @@ msgid "At least %d day"
 msgid_plural "At least %d days"
 msgstr[0] "%d დღეში"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "აირჩიეთ საქაღალდეები"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "დამატება"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -441,7 +433,7 @@ msgstr[0] "ყოველ %d დღეში"
 msgid "Use _Restic instead of Duplicity"
 msgstr ""
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "აირჩიეთ საქაღალდე"
 
@@ -601,7 +593,7 @@ msgstr "მიუთითეთ აღსადგენი ფაილებ�
 msgid "An operation is already in progress"
 msgstr "ოპერაცია უკვე მიმდინარეობს"
 
-#: app/main.vala:362
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr "მთარგმნელის შესახებ"
 
@@ -610,11 +602,11 @@ msgstr "მთარგმნელის შესახებ"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:468 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup მარქაფები"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "მარქაფები"
 
@@ -662,7 +654,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
-msgstr ""
+msgstr "დრო, როცა Déjà Dup-მა ბოლოჯერ გაეშვა"
 
 #: data/app.gschema.xml.in:36
 msgid ""
@@ -672,7 +664,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:40
 msgid "The last time Déjà Dup backed up"
-msgstr ""
+msgstr "დრო, როცა Déjà Dup-მა ბოლოჯერ აიღო მარქაფი"
 
 #: data/app.gschema.xml.in:41
 msgid ""
@@ -682,7 +674,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:45
 msgid "The last time Déjà Dup restored"
-msgstr ""
+msgstr "დრო, როცა Déjà Dup-მა ბოლოჯერ აღადგინა"
 
 #: data/app.gschema.xml.in:46
 msgid ""
@@ -692,19 +684,19 @@ msgstr ""
 
 #: data/app.gschema.xml.in:50
 msgid "Whether to periodically back up"
-msgstr ""
+msgstr "იქნება მარქაფი პერიოდული, თუ არა"
 
 #: data/app.gschema.xml.in:51
 msgid "Whether to automatically back up on a regular schedule."
-msgstr ""
+msgstr "ავტომატური მარქაფი რეგულარული გეგმით."
 
 #: data/app.gschema.xml.in:55
 msgid "How often to periodically back up"
-msgstr ""
+msgstr "რამდენად ხშირად დავამარქაფო პერიოდულად"
 
 #: data/app.gschema.xml.in:56
 msgid "The number of days between backups."
-msgstr ""
+msgstr "დღეების რაოდენობა მარქაფებს შორის."
 
 #: data/app.gschema.xml.in:60
 msgid ""
@@ -733,7 +725,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:70
 msgid "How long to keep backup files"
-msgstr ""
+msgstr "რამდენ ხანს შევინახო მარქაფის ფაილები"
 
 #: data/app.gschema.xml.in:71
 msgid ""
@@ -744,7 +736,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:75
 msgid "How long to wait between full backups"
-msgstr ""
+msgstr "რამდენ ხანს დაველოდო სრულ მარქაფებს შორის"
 
 #: data/app.gschema.xml.in:76
 msgid ""
@@ -754,7 +746,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:80
 msgid "Whether to use metered networks"
-msgstr ""
+msgstr "გაზომვადი მიერთებების გამოყენება"
 
 #: data/app.gschema.xml.in:81
 msgid ""
@@ -764,7 +756,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
-msgstr ""
+msgstr "ბრძანება მარქაფის პროგრამის გაშვებამდე გასაშვებად"
 
 #: data/app.gschema.xml.in:86
 msgid ""
@@ -774,7 +766,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:90
 msgid "Command to run after the backup tool"
-msgstr ""
+msgstr "ბრძანება მარქაფის პროგრამის გაშვების შემდეგ გასაშვებად"
 
 #: data/app.gschema.xml.in:91
 msgid ""
@@ -784,7 +776,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:95
 msgid "Command to run around the backup tool"
-msgstr ""
+msgstr "ბრძანება მარქაფის დროს გასაშვებად"
 
 #: data/app.gschema.xml.in:96
 msgid ""
@@ -795,7 +787,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:124
 msgid "Type of location to store backup"
-msgstr ""
+msgstr "მარქაფის საცავის მდებარეობის ტიპი"
 
 #: data/app.gschema.xml.in:125
 msgid ""
@@ -807,7 +799,7 @@ msgstr ""
 #: data/app.gschema.xml.in:173 data/app.gschema.xml.in:181
 #: data/app.gschema.xml.in:188
 msgid "The folder where backups are stored"
-msgstr ""
+msgstr "საქაღალდე, სადაც მარქაფებს შევინახავ"
 
 #: data/app.gschema.xml.in:138
 msgid ""
@@ -853,7 +845,7 @@ msgstr "სერვერის მისამართი"
 
 #: data/app.gschema.xml.in:169
 msgid "The URI of the remote server location."
-msgstr ""
+msgstr "დაშორებული სერვერის მდებარეობის URI."
 
 #: data/app.gschema.xml.in:174
 msgid ""
@@ -875,7 +867,7 @@ msgstr ""
 
 #: data/app.metainfo.xml.in:21
 msgid "Securely encrypts and compresses your data"
-msgstr ""
+msgstr "თქვენი მონაცემების უსაფრთხო დაშიფვრა და შეკუმშვა"
 
 #: data/app.metainfo.xml.in:22
 msgid "Incrementally backs up, letting you restore from any particular backup"
@@ -966,6 +958,10 @@ msgstr "_შეიყვანეთ პაროლი"
 msgid "Location"
 msgstr "მდებარეობა"
 
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "დამატება"
+
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
 msgstr "საქაღალდეები"
@@ -1035,7 +1031,7 @@ msgstr "_დახმარება"
 msgid "_About Backups"
 msgstr "მარქაფების შესახებ"
 
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:35
 msgid "Overview"
 msgstr "მიმოხილვა"
 
@@ -1149,7 +1145,7 @@ msgstr "_თარიღი"
 
 #: data/ui/WelcomePage.ui:12
 msgid "Welcome to Backups"
-msgstr ""
+msgstr "მოგესალმებით მარქაფებში"
 
 #: data/ui/WelcomePage.ui:36
 msgid "Create Your First _Backup"
@@ -1221,7 +1217,7 @@ msgstr "%1$s - %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr ""
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "მარქაფის მდებარეობა ხელმიუწვდომელია"
 
@@ -1273,25 +1269,25 @@ msgstr ""
 msgid "You first need to allow Backups to access your %s account."
 msgstr ""
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "ქსელური სერვერი ხელმისაწვდომი არაა"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "ქსელური მიერთების მოლოდინი…"
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "საცავის მდებარეობის მიმაგრების შეცდომა."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr ""
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1300,7 +1296,7 @@ msgstr ""
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 
@@ -1343,15 +1339,15 @@ msgid "Listing files…"
 msgstr "ფაილების სია…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "მომზადება…"
 
 #: libdeja/Operation.vala:96
 msgid "Custom tool setup failed."
-msgstr ""
+msgstr "მომხმარებლის პროგრამის მორგება ჩავარდა."
 
 #: libdeja/OperationBackup.vala:29
 msgid ""
@@ -1379,8 +1375,8 @@ msgid ""
 "again."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "შეჩერებულია (ქსელი გათიშულია)"
 
@@ -1388,35 +1384,35 @@ msgstr "შეჩერებულია (ქსელი გათიშულ
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
 msgid "Backup location is too small."
 msgstr "მარქაფის მდებარეობა ძალიან პატარაა."
 
-#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
 msgid "Try using a location with at least %s."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:545
+#: libdeja/duplicity/DuplicityJob.vala:557
 msgid "(Space for two full backups is required.)"
 msgstr ""
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:566
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:568
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
 "at least %s free."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:588
-#: libdeja/duplicity/DuplicityJob.vala:602
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "მოსუფთავება…"
 
@@ -1427,25 +1423,25 @@ msgstr "მოსუფთავება…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:686
-#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "ავარიული დასასრული უცნობი მიზეზით."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:889
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "არასწორი დაშიფვრის პაროლი."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:938
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:949
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1453,78 +1449,78 @@ msgid ""
 "location."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:952
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "კომპიუტერის სახელი შეიცვალა"
 
-#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr ""
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:991
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:999
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "მარქაფის მდებარეობა '%s' არ არსებობს."
 
-#: libdeja/duplicity/DuplicityJob.vala:1012
-#: libdeja/duplicity/DuplicityJob.vala:1045
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "ადგილი არ დარჩა."
 
-#: libdeja/duplicity/DuplicityJob.vala:1034
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "ფაილის \"%s\" წაკითხვის შეცდომა."
 
-#: libdeja/duplicity/DuplicityJob.vala:1036
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "შეცდომა '%s' ფაილის ჩაწერისას."
 
-#: libdeja/duplicity/DuplicityJob.vala:1047
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "'%s'-ში ადგილი აღარ დარჩა."
 
-#: libdeja/duplicity/DuplicityJob.vala:1105
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "ატვირთვა…"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr ""
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr ""
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1554,3 +1550,6 @@ msgstr ""
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
+
+#~ msgid "Choose Folders"
+#~ msgstr "აირჩიეთ საქაღალდეები"
