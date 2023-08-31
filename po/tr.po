@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-04-12 20:17+0000\n"
-"PO-Revision-Date: 2023-04-06 00:43+0300\n"
+"POT-Creation-Date: 2023-08-29 23:58+0000\n"
+"PO-Revision-Date: 2023-08-30 15:48+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -107,7 +107,7 @@ msgstr "Yedekleniyor…"
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "Yedekler, sürmek için girdinize gereksiniyor"
 
@@ -184,52 +184,52 @@ msgstr "Her iki _ayda bir sına"
 msgid "_Grant Access"
 msgstr "_Erişime İzin Ver"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "Paketleri Kur"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "Özet"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "Geri Yükleme Sınaması"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "Erişime İzin Ver"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "Şifreleme Parolası Belirle"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "Parola istesin mi?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "Şifreleme Parolası Gerekli"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr "Yedekler, sürmek için şifreleme parolanıza gereksiniyor"
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Kur"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr "Yedekler, sürmek için paket kurulumuna gereksiniyor"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Geri Yükle"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_Geri Yükle"
 
@@ -326,11 +326,11 @@ msgstr "Geri yükleme sürüyor"
 msgid "Cannot back up automatically"
 msgstr "Kendiliğinden yedeklenemez"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Kimlik doğrulama gerekli"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Yedekleme dosyası bulunamadı"
 
@@ -394,14 +394,6 @@ msgid "At least %d day"
 msgid_plural "At least %d days"
 msgstr[0] "En az %d gün"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "Klasör Seç"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "Ekle"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -454,7 +446,7 @@ msgstr[0] "Her %d günde bir"
 msgid "Use _Restic instead of Duplicity"
 msgstr "Duplicity yerine _Restic kullan"
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "Klasör Seç"
 
@@ -584,6 +576,15 @@ msgctxt "backups"
 msgid "None"
 msgstr "Yok"
 
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Geri"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Ara"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -617,7 +618,7 @@ msgstr "Lütfen geri yüklenecek dosyaları listeleyin"
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: app/main.vala:362
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 
@@ -626,11 +627,11 @@ msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:468 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Yedekleri"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Yedekler"
 
@@ -890,7 +891,7 @@ msgstr ""
 "Sürücünün takılı olduğu sürücüyü tanıması için kullanılan özgün dosya "
 "sistemi tanımlayıcısı."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Ad"
 
@@ -1003,47 +1004,46 @@ msgstr "Yedek Gözlemcisi"
 msgid "Schedules backups at regular intervals"
 msgstr "Düzenli aralıklarla planlanmış yedeklemeler"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Ara"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Yedek dosyaları taranıyor…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "Klasör Boş"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Sonuç Bulunamadı"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Başka arama dene"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "_Yeniden Dene"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Bağlan"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Şifreleme parolası gerekli"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "Parolayı _Gir"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Konum"
+
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "Ekle"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -1086,35 +1086,7 @@ msgstr "Sun_ucu Adresi"
 msgid "_Location"
 msgstr "_Konum"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Geri"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Ana Menü"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Tümünü _Seç"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Tercihler"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Klavye Kısayolları"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Yardım"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "Yedekler _Hakkında"
-
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Genel Görünüm"
 
@@ -1158,9 +1130,37 @@ msgstr "Laboratuvar"
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Ana Menü"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Tümünü _Seç"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Tercihler"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_Klavye Kısayolları"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Yardım"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "Yedekler _Hakkında"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "En Son Yedek"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "Eylemler"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1304,7 +1304,7 @@ msgstr "%2$s üzerinde %1$s"
 msgid "Backup will begin when %s is connected."
 msgstr "%s bağlandığında yedekleme başlayacaktır."
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "Depolama konumu kullanılabilir değil"
 
@@ -1356,25 +1356,25 @@ msgstr "Déjà Dup için %s kimlik bilgileri"
 msgid "You first need to allow Backups to access your %s account."
 msgstr "Öncelikle Yedekler’in %s hesabınıza erişimine izin vermelisiniz."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "Ağ sunucusu kullanılabilir değil"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Ağ bağlantısı bekleniyor…"
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "Depolama konumu bağlanamadı."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr "Sunucunun ağ konumu, depolama konumu tercihlerinde belirtilmelidir."
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1383,7 +1383,7 @@ msgstr "Sunucunun ağ konumu ‘%s’ bir ağ konumu gibi görünmüyor."
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba ağ konumları, hem ana bilgisayar adı hem de paylaşım adı içermelidir."
@@ -1429,9 +1429,9 @@ msgid "Listing files…"
 msgstr "Dosyalar listeleniyor…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "Hazırlanıyor…"
 
@@ -1470,8 +1470,8 @@ msgstr ""
 "Yedeklemeniz bozulmuş gibi görünüyor. Yedeği silip yeniden denemeniz "
 "gerekiyor."
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "Duraklatıldı (ağ yok)"
 
@@ -1479,27 +1479,27 @@ msgstr "Duraklatıldı (ağ yok)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
 msgid "Backup location is too small."
 msgstr "Yedekleme konumu çok küçük."
 
-#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
 msgid "Try using a location with at least %s."
 msgstr "En az %s alanlı bir konum kullanmayı deneyin."
 
-#: libdeja/duplicity/DuplicityJob.vala:545
+#: libdeja/duplicity/DuplicityJob.vala:557
 msgid "(Space for two full backups is required.)"
 msgstr "(İki tam yedekleme için alan gereklidir.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:566
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr "Yedekleme konumunda yeterli boş alan yok. En az %s boşaltmayı deneyin."
 
-#: libdeja/duplicity/DuplicityJob.vala:568
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
@@ -1508,8 +1508,8 @@ msgstr ""
 "Yedekleme konumunda yeterli boş alan yok. En az %s boş alanlı bir konum "
 "kullanmayı deneyin."
 
-#: libdeja/duplicity/DuplicityJob.vala:588
-#: libdeja/duplicity/DuplicityJob.vala:602
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "Temizleniyor…"
 
@@ -1520,25 +1520,25 @@ msgstr "Temizleniyor…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:686
-#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Bilinmeyen nedenden dolayı başarısız."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:889
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "Kötü şifreleme parolası."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:938
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "‘%s’ geri yüklenemedi: Dosya, yedek içerisinde bulunamadı"
 
-#: libdeja/duplicity/DuplicityJob.vala:949
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1548,66 +1548,66 @@ msgstr ""
 "Var olan yedek %s adında bilgisayarın, ama şu anki bilgisayarın adı %s. Eğer "
 "bu beklenmedikse başka konuma yedeklemelisiniz."
 
-#: libdeja/duplicity/DuplicityJob.vala:952
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "Bilgisayar adı değişmiş"
 
-#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "‘%s’ oluşturmaya çalışılırken izin verilmedi."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:991
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "‘%s’ okunmaya çalışılırken izin verilmedi."
 
-#: libdeja/duplicity/DuplicityJob.vala:999
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "‘%s’ silinmeye çalışılırken izin verilmedi."
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "‘%s’ yedekleme konumu yok."
 
-#: libdeja/duplicity/DuplicityJob.vala:1012
-#: libdeja/duplicity/DuplicityJob.vala:1045
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "Boş alan kalmadı."
 
-#: libdeja/duplicity/DuplicityJob.vala:1034
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "‘%s’ dosyası okunurken hata."
 
-#: libdeja/duplicity/DuplicityJob.vala:1036
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "‘%s’ dosyası yazılırken hata."
 
-#: libdeja/duplicity/DuplicityJob.vala:1047
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "‘%s’ içerisinde boş alan kalmadı."
 
-#: libdeja/duplicity/DuplicityJob.vala:1105
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "Yükleniyor…"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr "Duplicity sürümü anlaşılamadı."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Duplicity sürümü ‘%s’ anlaşılamadı."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1616,12 +1616,12 @@ msgstr ""
 "Yedekler; en az %d.%d.%.2d sürümünde duplicity gerektirir, ancak yalnızca %d."
 "%d.%.2d sürümü bulunmuştur"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr "Bu depolama konumu henüz desteklenmiyor."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1655,3 +1655,6 @@ msgstr "Güç tutumu kipi etkin olmadığında yedekleme başlayacaktır."
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
+
+#~ msgid "Choose Folders"
+#~ msgstr "Klasör Seç"
