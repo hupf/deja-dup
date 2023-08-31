@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-07-02 22:23+0000\n"
-"PO-Revision-Date: 2023-08-27 16:03+0200\n"
+"POT-Creation-Date: 2023-08-29 23:58+0000\n"
+"PO-Revision-Date: 2023-08-31 06:01+0200\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -201,7 +201,7 @@ msgstr "საჭიროა დაშიფვრის პაროლი"
 
 #: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
-msgstr ""
+msgstr "მარქაფის გასაგრძელებლად თქვენი დაშიფვრის პაროლია საჭირო"
 
 #: app/AssistantOperation.vala:886
 msgctxt "verb"
@@ -210,19 +210,19 @@ msgstr "_დაყენება"
 
 #: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
-msgstr ""
+msgstr "მარქაფის გასაგრძელებლად საჭიროა შემდეგი პაკეტების დაყენება"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:62
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "აღდგენა"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_აღდგენა"
 
 #: app/AssistantRestore.vala:162
 msgid "Restore files to _original locations"
-msgstr ""
+msgstr "ფაილების _საწყის მდებარეობაზე აღდგენა"
 
 #: app/AssistantRestore.vala:176
 msgid "Restore to _specific folder"
@@ -236,7 +236,7 @@ msgstr "_საქაღალდე"
 
 #: app/AssistantRestore.vala:211
 msgid "Backups does not have permission to restore the following files:"
-msgstr ""
+msgstr "მარქაფს არ აქვს უფლება, შემდეგი ფაილები აღადგინოს:"
 
 #: app/AssistantRestore.vala:274
 msgid "Backup location"
@@ -313,11 +313,11 @@ msgstr "აღდგენა მიმდინარეობს"
 msgid "Cannot back up automatically"
 msgstr "ავტომატური მარქაფის შეცდომა"
 
-#: app/Browser.vala:256
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "ავთენტიკაცია საჭიროა"
 
-#: app/Browser.vala:378 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "მარქაფის ფაილი ვერ ვიპოვა"
 
@@ -496,7 +496,7 @@ msgstr "აღდგენის შეცდომა"
 
 #: app/Notifications.vala:76
 msgid "Keep your files safe by backing up regularly"
-msgstr ""
+msgstr "იქონიეთ თქვენი ფაილები უსაფრთხოდ მათი ხშირი მარქაფით"
 
 #: app/Notifications.vala:77
 msgid ""
@@ -559,6 +559,15 @@ msgstr[0] "%d დღის წინ"
 msgctxt "backups"
 msgid "None"
 msgstr "არაფერი"
+
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "უკან"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "ძებნა"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -817,7 +826,7 @@ msgid ""
 "when it is plugged in."
 msgstr ""
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "სახელი"
 
@@ -916,45 +925,40 @@ msgstr "მარქაფის მონიტორი"
 msgid "Schedules backups at regular intervals"
 msgstr ""
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "ძებნა"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "მარქაფის ფაილების სკანირება…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "საქაღალდე ცარიელია"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "შედეგების გარეშე"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "სცადეთ სხვა ძებნა"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "_თავიდან ცდა"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_შეერთება"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "საჭიროა დაშიფვრის პაროლი"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "_შეიყვანეთ პაროლი"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "მდებარეობა"
 
@@ -1003,35 +1007,7 @@ msgstr "_სერვერის მისამართი"
 msgid "_Location"
 msgstr "მდებარეობა"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "უკან"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "მთავარი მენიუ"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "ყველაფრის _მონიშვნა"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_პარამეტრები"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_კლავიატურის მალსახმობები"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_დახმარება"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "მარქაფების შესახებ"
-
-#: data/ui/MainWindow.ui:35
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "მიმოხილვა"
 
@@ -1073,9 +1049,37 @@ msgstr "ლაბი"
 msgid "Restic"
 msgstr ""
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "მთავარი მენიუ"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "ყველაფრის _მონიშვნა"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_პარამეტრები"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_კლავიატურის მალსახმობები"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_დახმარება"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "მარქაფების შესახებ"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "უახლესი მარქაფი"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "ქმედებები"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
