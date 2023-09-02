@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-01-25 16:05+0000\n"
-"PO-Revision-Date: 2023-03-02 20:12+0200\n"
+"POT-Creation-Date: 2023-08-29 23:58+0000\n"
+"PO-Revision-Date: 2023-09-02 17:30+0300\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -104,7 +104,7 @@ msgstr "Varmuuskopioidaan…"
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "Varmuuskopiot vaatii syötettäsi jatkaakseen"
 
@@ -180,52 +180,52 @@ msgstr "Testaa _kahden kuukauden välein"
 msgid "_Grant Access"
 msgstr "_Salli pääsy"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "Asenna paketit"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "Yhteenveto"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "Palautustesti"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "Salli pääsy"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "Aseta salauksen salasana"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "Vaaditaanko salasana?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "Salauksen salasana vaaditaan"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr "Varmuuskopion salauksen salasana vaaditaan"
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Asenna"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr "Varmuuskopiot vaatii paketteja asennettavaksi jatkaakseen"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Palauta"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_Palauta"
 
@@ -325,11 +325,11 @@ msgstr "Palauttaminen on meneillään"
 msgid "Cannot back up automatically"
 msgstr "Automaattinen varmuuskopiointi ei onnistu"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Tunnistautuminen vaaditaan"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Varmuuskopiotiedostoja ei löytynyt"
 
@@ -396,14 +396,6 @@ msgid_plural "At least %d days"
 msgstr[0] "Vähintään %d päivä"
 msgstr[1] "Vähintään %d päivää"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "Valitse kansiot"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "Lisää"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -457,7 +449,7 @@ msgstr[1] "%d päivän välein"
 msgid "Use _Restic instead of Duplicity"
 msgstr "Käytä _Resticiä Duplicityn sijaan"
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "Valitse kansio"
 
@@ -592,6 +584,15 @@ msgctxt "backups"
 msgid "None"
 msgstr "Ei mitään"
 
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Takaisin"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Etsi"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -625,7 +626,7 @@ msgstr "Luettele palautettavat tiedostot"
 msgid "An operation is already in progress"
 msgstr "Toimenpide on jo meneillään"
 
-#: app/main.vala:344
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos\n"
@@ -651,11 +652,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:450 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup -varmuuskopiot"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Varmuuskopiot"
 
@@ -910,7 +911,7 @@ msgstr ""
 "Aseman ainutlaatuinen tiedostojärjestelmän tunniste, jota käytetään aseman "
 "tunnistamiseen, kun se on kytketty."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Nimi"
 
@@ -997,22 +998,22 @@ msgstr ""
 "järjestelmän varmuuskopion tai arkistointiohjelman, voit mieluummin käyttää "
 "muita varmuuskopiointisovelluksia."
 
-#: data/app.metainfo.xml.in:90
+#: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Varmuuskopioi tiedostot automaattisesti — määritä asetukset ja unohda asia"
 
-#: data/app.metainfo.xml.in:94
+#: data/app.metainfo.xml.in:102
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Palauttaminen tapahtuu hetkessä — selaa tiedostojasi ja valitse mitä "
 "palautetaan"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:106
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Varmuuskopioi pilveen, verkkopalvelimelle tai paikalliselle levylle"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:110
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1029,47 +1030,46 @@ msgstr "Varmuuskopiointivalvonta"
 msgid "Schedules backups at regular intervals"
 msgstr "Ajoittaa varmuuskopioinnin säännöllisin väliajoin"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Etsi"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Kartoitetaan varmuuskopiotiedostoja…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "Kansio on tyhjä"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Tuloksia ei löytynyt"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Yritä eri hakuehdoilla"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "_Yritä uudelleen"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Yhdistä"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Tarvitaan kryptauksen salasana"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "_Kirjoita salasana"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Sijainti"
+
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "Lisää"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -1114,35 +1114,7 @@ msgstr "Palvelimen _osoite"
 msgid "_Location"
 msgstr "_Sijainti"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Takaisin"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Päävalikko"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Valitse _kaikki"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Asetukset"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Pikanäppäimet"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Ohje"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "_Tietoja - Varmuuskopiot"
-
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Yhteenveto"
 
@@ -1187,9 +1159,37 @@ msgstr ""
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Päävalikko"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Valitse _kaikki"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Asetukset"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_Pikanäppäimet"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Ohje"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "_Tietoja - Varmuuskopiot"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Viimeisimmät varmuuskopiot"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "Toiminnot"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1333,7 +1333,7 @@ msgstr "%s palvelimella %s"
 msgid "Backup will begin when %s is connected."
 msgstr "Varmuuskopiointi aloitetaan, kun %s yhdistetään."
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "Tallennustilan sijainti ei ole käytettävissä"
 
@@ -1386,19 +1386,19 @@ msgid "You first need to allow Backups to access your %s account."
 msgstr ""
 "Sinun tulee sallia ensin varmuuskopiointisovelluksen käyttää %s-tiliäsi."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "Verkkopalvelin ei ole käytettävissä"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Odotetaan verkkoyhteyttä…"
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "Tallennuspaikkaa ei voitu mountata."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
@@ -1406,7 +1406,7 @@ msgstr ""
 "Palvelimen verkkosijainti tulee määrittää tallennustilan sijainnin "
 "asetuksissa."
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1415,7 +1415,7 @@ msgstr "Palvelimen verkkosijainti ‘%s’ ei vaikuta verkkosijainnilta."
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba-verkkosijaintien tulee sisältää sekä isäntänimen että jaon nimen."
@@ -1440,7 +1440,7 @@ msgstr "Roskakori"
 msgid "Backup encryption password"
 msgstr "Varmuuskopion salauksen salasana"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1461,9 +1461,9 @@ msgid "Listing files…"
 msgstr "Listataan tiedostoja…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "Valmistellaan…"
 
@@ -1503,8 +1503,8 @@ msgstr ""
 "Varmuuskopiosi vaikuttaa olevan rikki. Poista varmuuskopio ja luo se "
 "uudelleen."
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "Pysäytetty (ei verkkoyhteyttä)"
 
@@ -1512,15 +1512,21 @@ msgstr "Pysäytetty (ei verkkoyhteyttä)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "Varmuuskopion sijainti on liian pieni."
+
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid "Backup location is too small. Try using one with at least %s."
-msgstr ""
-"Varmuuskopion sijainti on liian pieni. Käytä sijaintia, jossa on tilaa "
-"vähintään %s."
+msgid "Try using a location with at least %s."
+msgstr "Käytä sijaintia, jossa on tilaa vähintään %s."
+
+#: libdeja/duplicity/DuplicityJob.vala:557
+msgid "(Space for two full backups is required.)"
+msgstr "(Tilaa kahdelle täydelle varmuuskopiolle vaaditaan.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
@@ -1528,17 +1534,17 @@ msgstr ""
 "Varmuuskopion sijainnissa ei ole riittävästi vapaata tilaa. Vapauta "
 "vähintään %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
-"Backup location does not have enough free space. Try using one with at least "
-"%s."
+"Backup location does not have enough free space. Try using a location with "
+"at least %s free."
 msgstr ""
-"Varmuskopion sijainnissa ei ole riittävästi vapaata tilaa. Käytä sijaintia, "
-"josa on tilaa vähintään %s."
+"Varmuuskopion sijainnissa ei ole riittävästi vapaata tilaa. Käytä sijaintia, "
+"jossa on tilaa vähintään %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "Siivotaan jälkiä…"
 
@@ -1549,25 +1555,25 @@ msgstr "Siivotaan jälkiä…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Epäonnistui tuntemattomasta syystä."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "Virheellinen salauksen salasana."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Tiedostoa '%s' ei voitu palauttaa: tiedostosta ei löydy varmuuskopiota"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1578,66 +1584,66 @@ msgstr ""
 "tietokoneen nimi on %s. Jos tämä on odottamaton tilanne, varmuuskopioi eri "
 "sijaintiin."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "Tietokoneen nimi on vaihtunut"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Pääsy evätty kohdetta ‘%s’ luotaessa."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
-#: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Oikeutesi eivät riitä kohteen ‘%s’ lukemiseksi."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Oikeutesi eivät riitä kohteen ‘%s’ poistamiseksi."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Varmuuskopiointisijaintia ‘%s’ ei ole olemassa."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "Tilaa ei ole jäljellä."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Virhe luettaessa tiedostoa '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Virhe kirjoitettaessa tiedostoa '%s'."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Kohteessa ‘%s’ ei ole vapaata tilaa."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "Lähetetään…"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr "Duplicityn versiota ei kyetty käsittämään."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Duplicityn versiota ‘%s’ ei kyetty käsittämään."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1646,12 +1652,12 @@ msgstr ""
 "Varmuuskopiointisovellus vaatii duplicitysta vähintään version %d.%d.%.2d, "
 "mutta vain versio %d.%d.%.2d löytyi"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr "Tämä tallennustilasijainti ei ole vielä tuettu."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1687,6 +1693,9 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr ""
 "Varmuuskopiointi aloitetaan, kun siirtorajaton verkkoyhteys on käytettävissä."
+
+#~ msgid "Choose Folders"
+#~ msgstr "Valitse kansiot"
 
 #~ msgid "Restore to _specific folder:"
 #~ msgstr "Palauta _tiettyyn kansioon:"
