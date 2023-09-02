@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 23:18+0330\n"
+"POT-Creation-Date: 2023-09-02 19:48+0000\n"
+"PO-Revision-Date: 2023-09-02 23:34+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
 "X-Generator: Poedit 3.3.2\n"
 
@@ -59,8 +59,7 @@ msgid "_Back Up"
 msgstr "_پشتیبان‌گیری"
 
 #: app/AssistantBackup.vala:67
-msgid ""
-"The following folders cannot be backed up because Backups does not have access to them:"
+msgid "The following folders cannot be backed up because Backups does not have access to them:"
 msgstr "از شاخه‌های زیر نمی‌توان پشتیبانی گرفت؛ چون پشتیبان‌ها به آن‌ها دسترسی ندارد:"
 
 #: app/AssistantBackup.vala:83
@@ -69,10 +68,8 @@ msgstr "ایجاد نخستین پشتیبان.  شاید طول بکشد."
 
 #: app/AssistantBackup.vala:84
 msgid ""
-"Creating a fresh backup to protect against backup corruption.  This will take longer than "
-"normal."
-msgstr ""
-"ایجاد یک پشتیبان جدید برای محافظت در برابر خرابی پشتیبان.  بیش‌تر از معمول طول خواهد کشید."
+"Creating a fresh backup to protect against backup corruption.  This will take longer than normal."
+msgstr "ایجاد یک پشتیبان جدید برای محافظت در برابر خرابی پشتیبان.  بیش‌تر از معمول طول خواهد کشید."
 
 #. Translators:  This is the phrase 'Backing up' in the larger phrase
 #. "Backing up '%s'".  %s is a filename.
@@ -135,15 +132,13 @@ msgstr "برای ادامه، بسته‌های زیر باید نصب شوند:
 #. always default to encrypted
 #: app/AssistantOperation.vala:346
 msgid "You will need your password to restore your files. You might want to write it down."
-msgstr ""
-"شما به گذرواژه‌تان برای بازیابی پرونده‌هایتان نیاز خواهید داشت. شاید بخواهید جایی بنویسیدش."
+msgstr "شما به گذرواژه‌تان برای بازیابی پرونده‌هایتان نیاز خواهید داشت. شاید بخواهید جایی بنویسیدش."
 
 #: app/AssistantOperation.vala:347
 msgid "_Password-protect your backup"
 msgstr "محافظت _گذرواژه‌ای از پشتیبان‌تان"
 
-#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:398
-#: data/ui/PassphraseDialog.ui:16
+#: app/AssistantOperation.vala:354 app/AssistantOperation.vala:398 data/ui/PassphraseDialog.ui:16
 msgid "E_ncryption password"
 msgstr "گذرواژهٔ _رمزگذاری"
 
@@ -158,8 +153,8 @@ msgstr "_به‌خاطرسپاری گذرواژه"
 
 #: app/AssistantOperation.vala:386
 msgid ""
-"In order to check that you will be able to retrieve your files in the case of an "
-"emergency, please enter your encryption password again to perform a brief restore test."
+"In order to check that you will be able to retrieve your files in the case of an emergency, "
+"please enter your encryption password again to perform a brief restore test."
 msgstr ""
 "برای بررسی این که در شرایط اورژانسی قادر به بازیابی پرونده‌هایتان خواهید بود، لطفاً گذرواژهٔ "
 "رمزگذاری‌تان را دوباره وارد کنید تا یک آزمون بازیابی مختصر انجام شود."
@@ -229,9 +224,9 @@ msgstr "بازیابی پرونده‌ها به مکان‌های _اصلی‌ش
 msgid "Restore to _specific folder"
 msgstr "بازیابی پرونده‌ها به شاخه‌ای _مشخص"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
-#: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
-#: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
+#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19 data/ui/ConfigLocationGroup.ui:42
+#: data/ui/ConfigLocationGroup.ui:81 data/ui/ConfigLocationGroup.ui:90
+#: data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_شاخه"
 
@@ -282,7 +277,8 @@ msgstr "مکان اصلی"
 #: app/AssistantRestore.vala:483
 msgid "File to restore"
 msgid_plural "Files to restore"
-msgstr[0] "پرونده‌ها برای بازیابی"
+msgstr[0] "پرونده برای بازگردانی"
+msgstr[1] "پرونده برای بازیابی"
 
 #: app/AssistantRestore.vala:508
 msgid "Restore Failed"
@@ -301,6 +297,7 @@ msgstr "پرونده‌هایتان با موفقیت بازیابی شدند."
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "پرونده‌هایتان با موفقیت بازیابی شدند."
+msgstr[1] "پرونده‌تان با موفقیت بازیابی شد."
 
 #: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
 msgid "Restoring…"
@@ -352,6 +349,7 @@ msgstr "پشتیبان‌گیری بعدی فردا خواهد بود."
 msgid "Next backup is %d day from now."
 msgid_plural "Next backup is %d days from now."
 msgstr[0] "پشتیبان‌گیری بعدی %Id روز دیگر است."
+msgstr[1] "پشتیبان‌گیری بعدی %Id روز دیگر است."
 
 #. Translators: this is used when automatic updates are disabled
 #: app/ConfigAutoBackupRow.vala:61
@@ -359,6 +357,7 @@ msgstr[0] "پشتیبان‌گیری بعدی %Id روز دیگر است."
 msgid "Next backup would be %d day from now."
 msgid_plural "Next backup would be %d days from now."
 msgstr[0] "پشتیبان‌گیری بعدی %Id روز دیگر خواهد بود."
+msgstr[1] "پشتیبان‌گیری بعدی %Id روز دیگر خواهد بود."
 
 #: app/ConfigDeleteRow.vala:12
 msgid "At least three months"
@@ -381,6 +380,7 @@ msgstr "برای همیشه"
 msgid "At least %d day"
 msgid_plural "At least %d days"
 msgstr[0] "دست کم %Id روز"
+msgstr[1] "دست کم %Id روز"
 
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
@@ -429,6 +429,7 @@ msgstr "هفتگی"
 msgid "Every %d day"
 msgid_plural "Every %d days"
 msgstr[0] "هر %Id روز"
+msgstr[1] "هر %Id روز"
 
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
@@ -501,11 +502,11 @@ msgstr "پرونده‌هایتان را با پشتیبان‌گیری‌ من�
 
 #: app/Notifications.vala:77
 msgid ""
-"Important documents, data, and settings can be protected by storing them in a backup. In "
-"the case of a disaster, you would be able to recover them from that backup."
+"Important documents, data, and settings can be protected by storing them in a backup. In the case "
+"of a disaster, you would be able to recover them from that backup."
 msgstr ""
-"سندها، داده‌ها و تنظیمات مهم می‌توانند به پشتیبان‌گیری در امان باشند. در صورت وقوع حادثه، "
-"می‌توانید آن‌ها را از آن پشتیبان، بازیابی کنید."
+"سندها، داده‌ها و تنظیمات مهم می‌توانند به پشتیبان‌گیری در امان باشند. در صورت وقوع حادثه، می‌توانید "
+"آن‌ها را از آن پشتیبان، بازیابی کنید."
 
 #: app/Notifications.vala:82
 msgid "Don’t Show Again"
@@ -516,8 +517,7 @@ msgid "Open Backups"
 msgstr "گشودن پشتیبان‌ها"
 
 #: app/PreferencesWindow.vala:28
-msgid ""
-"Restic is a another backup tool that can be used under the hood instead of Duplicity."
+msgid "Restic is a another backup tool that can be used under the hood instead of Duplicity."
 msgstr "رستیک ابزار پشتیبان گیری دگیری است که می‌تواند به‌جای داپلیسیتی استفاده شود."
 
 #: app/PreferencesWindow.vala:29
@@ -553,6 +553,7 @@ msgstr "دیروز"
 msgid "%d day ago"
 msgid_plural "%d days ago"
 msgstr[0] "%Id روز پیش"
+msgstr[1] "%Id روز پیش"
 
 #. Translators: this is used like "Most Recent Backup: None"
 #: app/RecentBackupRow.vala:65
@@ -564,8 +565,7 @@ msgstr "هیچ‌کدام"
 msgid "Back"
 msgstr "بازگشت"
 
-#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27 data/ui/RestoreToolbarView.ui:19
 msgid "Search"
 msgstr "جست‌وجو"
 
@@ -642,16 +642,16 @@ msgstr "شاخه‌ها برای ذخیره"
 #: data/app.gschema.xml.in:26
 msgid ""
 "This list of directories will be backed up. Reserved values $HOME, $DESKTOP, $DOCUMENTS, "
-"$DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, and $VIDEOS are "
-"recognized as the user’s special directories and can be at the start of a longer path "
-"($HOME/subdir). Reserved value $USER is replaced by the user’s username and can be "
-"anywhere in the path. Relative entries are relative to the user’s home directory."
+"$DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, and $VIDEOS are recognized as "
+"the user’s special directories and can be at the start of a longer path ($HOME/subdir). Reserved "
+"value $USER is replaced by the user’s username and can be anywhere in the path. Relative entries "
+"are relative to the user’s home directory."
 msgstr ""
-"این فهرست از شاخه‌ها پشتیبان‌گیری خواهند شد. مقدارهای رزرو شدهٔ ‎$HOME،‏ ‎$DESKTOP،‏ ‎$DOCUMENTS، "
-"‏ ‎$DOWNLOAD،‏ ‎$MUSIC،‏ ‎$PICTURES،‏ ‎$PUBLIC_SHARE،‏ ‎$TEMPLATES،‏ ‎$TRASH و ‎$VIDEOS به عنوان "
-"شاخه‌های ویژهٔ کاربر شناخته می‌شوند و می‌توانند در آغاز مسیری طولانی (‎$HOME/subdir) استفاده "
-"شوند. مقدار رزورز شدهٔ ‎$USER با نام کاربری کاربر جایگزین می‌شود و در هرجایی از مسیر قابل "
-"استفاده است. ورودی‌های مرتبط، با شاخهٔ خانهٔ کاربر مرتبطند."
+"این فهرست از شاخه‌ها پشتیبان‌گیری خواهند شد. مقدارهای رزرو شدهٔ ‎$HOME،‏ ‎$DESKTOP،‏ ‎$DOCUMENTS، ‏ "
+"‎$DOWNLOAD،‏ ‎$MUSIC،‏ ‎$PICTURES،‏ ‎$PUBLIC_SHARE،‏ ‎$TEMPLATES،‏ ‎$TRASH و ‎$VIDEOS به عنوان شاخه‌های ویژهٔ "
+"کاربر شناخته می‌شوند و می‌توانند در آغاز مسیری طولانی (‎$HOME/subdir) استفاده شوند. مقدار رزورز شدهٔ "
+"‎$USER با نام کاربری کاربر جایگزین می‌شود و در هرجایی از مسیر قابل استفاده است. ورودی‌های مرتبط، با "
+"شاخهٔ خانهٔ کاربر مرتبطند."
 
 #: data/app.gschema.xml.in:30
 msgid "Folders to ignore"
@@ -659,17 +659,17 @@ msgstr "شاخه‌هایی که نادیده گرفته شوند"
 
 #: data/app.gschema.xml.in:31
 msgid ""
-"This list of directories will not be backed up. Reserved values $HOME, $DESKTOP, "
-"$DOCUMENTS, $DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, and $VIDEOS "
-"are recognized as the user’s special directories and can be at the start of a longer path "
-"($HOME/subdir). Reserved value $USER is replaced by the user’s username and can be "
-"anywhere in the path. Relative entries are relative to the user’s home directory."
+"This list of directories will not be backed up. Reserved values $HOME, $DESKTOP, $DOCUMENTS, "
+"$DOWNLOAD, $MUSIC, $PICTURES, $PUBLIC_SHARE, $TEMPLATES, $TRASH, and $VIDEOS are recognized as "
+"the user’s special directories and can be at the start of a longer path ($HOME/subdir). Reserved "
+"value $USER is replaced by the user’s username and can be anywhere in the path. Relative entries "
+"are relative to the user’s home directory."
 msgstr ""
 "این فهرست شاخه‌ها پشتیبان‌گیری نخواهند شد. مقدارهای رزرو شدهٔ ‎$HOME،‏ ‎$DESKTOP،‏ ‎$DOCUMENTS، ‏ "
-"‎$DOWNLOAD،‏ ‎$MUSIC،‏ ‎$PICTURES،‏ ‎$PUBLIC_SHARE،‏ ‎$TEMPLATES،‏ ‎$TRASH و ‎$VIDEOS به عنوان "
-"شاخه‌های ویژهٔ کاربر شناخته می‌شوند و می‌توانند در آغاز مسیری طولانی (‎$HOME/subdir) استفاده "
-"شوند. مقدار رزورز شدهٔ ‎$USER با نام کاربری کاربر جایگزین می‌شود و در هرجایی از مسیر قابل "
-"استفاده است. ورودی‌های مرتبط، با شاخهٔ خانهٔ کاربر مرتبطند."
+"‎$DOWNLOAD،‏ ‎$MUSIC،‏ ‎$PICTURES،‏ ‎$PUBLIC_SHARE،‏ ‎$TEMPLATES،‏ ‎$TRASH و ‎$VIDEOS به عنوان شاخه‌های ویژهٔ "
+"کاربر شناخته می‌شوند و می‌توانند در آغاز مسیری طولانی (‎$HOME/subdir) استفاده شوند. مقدار رزورز شدهٔ "
+"‎$USER با نام کاربری کاربر جایگزین می‌شود و در هرجایی از مسیر قابل استفاده است. ورودی‌های مرتبط، با "
+"شاخهٔ خانهٔ کاربر مرتبطند."
 
 #: data/app.gschema.xml.in:35
 msgid "The last time Déjà Dup was run"
@@ -685,10 +685,8 @@ msgstr "آخرین باری که دژا داپ پشتیبان گرفت"
 
 #: data/app.gschema.xml.in:41
 msgid ""
-"The last time Déjà Dup successfully completed a backup. This time should be in ISO 8601 "
-"format."
-msgstr ""
-"آخرین باری که دژا داپ با موفقیت پشتیبان گرفت. این زمان باید در قالب ایزوی ۸۶۰۱ باشد."
+"The last time Déjà Dup successfully completed a backup. This time should be in ISO 8601 format."
+msgstr "آخرین باری که دژا داپ با موفقیت پشتیبان گرفت. این زمان باید در قالب ایزوی ۸۶۰۱ باشد."
 
 #: data/app.gschema.xml.in:45
 msgid "The last time Déjà Dup restored"
@@ -696,8 +694,7 @@ msgstr "آخرین باری که دژا داپ بازیابی کرد"
 
 #: data/app.gschema.xml.in:46
 msgid ""
-"The last time Déjà Dup successfully completed a restore. This time should be in ISO 8601 "
-"format."
+"The last time Déjà Dup successfully completed a restore. This time should be in ISO 8601 format."
 msgstr "آخرین باری که دژا داپ با موفقیت بازیابی کرد. این زمان باید در قالب ایزوی ۸۶۰۱ باشد."
 
 #: data/app.gschema.xml.in:50
@@ -722,9 +719,9 @@ msgstr "آخرین باری که دژا داپ این که باید دربار�
 
 #: data/app.gschema.xml.in:61
 msgid ""
-"When a user logs in, the Déjà Dup monitor checks whether it should prompt about backing "
-"up. This is used to increase discoverability for users that don’t know about backups. "
-"This time should be either ‘disabled’ to turn off this check or in ISO 8601 format."
+"When a user logs in, the Déjà Dup monitor checks whether it should prompt about backing up. This "
+"is used to increase discoverability for users that don’t know about backups. This time should be "
+"either ‘disabled’ to turn off this check or in ISO 8601 format."
 msgstr ""
 
 #: data/app.gschema.xml.in:65
@@ -733,9 +730,9 @@ msgstr "آخرین باری که دژا داپ این که باید دربار�
 
 #: data/app.gschema.xml.in:66
 msgid ""
-"In order to prevent you from forgetting your passwords, Déjà Dup will occasionally notify "
-"you to confirm the password. This time should be either ‘disabled’ to turn off this check "
-"or in ISO 8601 format."
+"In order to prevent you from forgetting your passwords, Déjà Dup will occasionally notify you to "
+"confirm the password. This time should be either ‘disabled’ to turn off this check or in ISO 8601 "
+"format."
 msgstr ""
 
 #: data/app.gschema.xml.in:70
@@ -744,8 +741,8 @@ msgstr "چه مدت پرونده‌های پشتیبان را نگه دارد"
 
 #: data/app.gschema.xml.in:71
 msgid ""
-"The number of days to keep backup files on the backup location. A value of 0 means "
-"forever. This is a minimum number of days; the files may be kept longer."
+"The number of days to keep backup files on the backup location. A value of 0 means forever. This "
+"is a minimum number of days; the files may be kept longer."
 msgstr ""
 
 #: data/app.gschema.xml.in:75
@@ -754,10 +751,9 @@ msgstr "مقدار شکیبانی بین پشتیبان‌های کامل"
 
 #: data/app.gschema.xml.in:76
 msgid ""
-"Déjà Dup needs to occasionally make fresh full backups. This is the number of days to "
-"wait between full backups."
-msgstr ""
-"دژا داپ باید گه‌گاه پشتیبان‌های کامل بگیرد. این تعداد روزهای انتظار بین پشتیبان‌های کامل است."
+"Déjà Dup needs to occasionally make fresh full backups. This is the number of days to wait "
+"between full backups."
+msgstr "دژا داپ باید گه‌گاه پشتیبان‌های کامل بگیرد. این تعداد روزهای انتظار بین پشتیبان‌های کامل است."
 
 #: data/app.gschema.xml.in:80
 msgid "Whether to use metered networks"
@@ -765,11 +761,11 @@ msgstr "استفاده کردن یا نکردن از شبکه‌های اندا�
 
 #: data/app.gschema.xml.in:81
 msgid ""
-"If false, Déjà Dup will refuse to run scheduled backups over metered network connections "
-"(like 4G)."
+"If false, Déjà Dup will refuse to run scheduled backups over metered network connections (like "
+"4G)."
 msgstr ""
-"اگر نادرست باشد، دژا داپ از اجرای پشتیبان زمان‌بسته روی اتصال‌های شبکهٔ اندازه‌گیری شده (چون "
-"نسل چهارم) خودداری می‌کند."
+"اگر نادرست باشد، دژا داپ از اجرای پشتیبان زمان‌بسته روی اتصال‌های شبکهٔ اندازه‌گیری شده (چون نسل "
+"چهارم) خودداری می‌کند."
 
 #: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
@@ -777,8 +773,8 @@ msgstr ""
 
 #: data/app.gschema.xml.in:86
 msgid ""
-"Useful if you need to manually mount a folder, for example. If this command fails, the "
-"backup won't start."
+"Useful if you need to manually mount a folder, for example. If this command fails, the backup "
+"won't start."
 msgstr ""
 
 #: data/app.gschema.xml.in:90
@@ -795,9 +791,9 @@ msgstr ""
 
 #: data/app.gschema.xml.in:96
 msgid ""
-"Useful if you need to limit resources or otherwise wrap the execution of the tool "
-"command. An example value might be 'trickle -u 500' which would result in deja-dup "
-"running 'trickle -u 500 duplicity …'."
+"Useful if you need to limit resources or otherwise wrap the execution of the tool command. An "
+"example value might be 'trickle -u 500' which would result in deja-dup running 'trickle -u 500 "
+"duplicity …'."
 msgstr ""
 
 #: data/app.gschema.xml.in:124
@@ -805,9 +801,7 @@ msgid "Type of location to store backup"
 msgstr "گونهٔ مکان نگه‌داری پشتیبان"
 
 #: data/app.gschema.xml.in:125
-msgid ""
-"The type of backup location. If ‘auto’, a default will be chosen based on what is "
-"available."
+msgid "The type of backup location. If ‘auto’, a default will be chosen based on what is available."
 msgstr ""
 
 #: data/app.gschema.xml.in:137 data/app.gschema.xml.in:160 data/app.gschema.xml.in:173
@@ -817,8 +811,8 @@ msgstr "شاخهٔ نگه‌داری پشتیبان‌ها"
 
 #: data/app.gschema.xml.in:138
 msgid ""
-"The folder hierarchy where backups are stored. Paths can be absolute or relative to your "
-"home directory."
+"The folder hierarchy where backups are stored. Paths can be absolute or relative to your home "
+"directory."
 msgstr ""
 
 #: data/app.gschema.xml.in:145
@@ -827,8 +821,7 @@ msgstr "شناسهٔ یکتا"
 
 #: data/app.gschema.xml.in:146
 msgid ""
-"The unique filesystem identifier for the drive, used to recognize the drive when it is "
-"plugged in."
+"The unique filesystem identifier for the drive, used to recognize the drive when it is plugged in."
 msgstr ""
 
 #: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
@@ -861,18 +854,16 @@ msgstr "نشانی مکان کارساز دوردست."
 
 #: data/app.gschema.xml.in:174
 msgid ""
-"The folder hierarchy where backups are stored. Paths can be absolute or relative to the "
-"host."
+"The folder hierarchy where backups are stored. Paths can be absolute or relative to the host."
 msgstr ""
 
 #: data/app.metainfo.xml.in:18
 msgid ""
-"Déjà Dup is a simple backup tool. It hides the complexity of backing up the Right Way "
-"(encrypted, off-site, and regular) and uses duplicity as the backend."
+"Déjà Dup is a simple backup tool. It hides the complexity of backing up the Right Way (encrypted, "
+"off-site, and regular) and uses duplicity as the backend."
 msgstr ""
-"دژا داپ ابزاری ساده برای پشتیبان گیری است. این برنامه پیچیدگی پشتیبان گیری را به صورت "
-"درست (رمزگذاری شده، خارج از پایگاه و دوره‌ای) پنهان کرده و از داپلیسیتی به عنوان پسانه "
-"استفاده می‌کند."
+"دژا داپ ابزاری ساده برای پشتیبان گیری است. این برنامه پیچیدگی پشتیبان گیری را به صورت درست "
+"(رمزگذاری شده، خارج از پایگاه و دوره‌ای) پنهان کرده و از داپلیسیتی به عنوان پسانه استفاده می‌کند."
 
 #: data/app.metainfo.xml.in:20
 msgid "Support for local, remote, or cloud backup locations such as Google Drive"
@@ -896,12 +887,12 @@ msgstr "به خوبی با میزکار گنومتان یکپارچه می‌ش�
 
 #: data/app.metainfo.xml.in:26
 msgid ""
-"Déjà Dup focuses on ease of use and recovering from personal, accidental data loss. If "
-"you need a full system backup or an archival program, you may prefer other backup apps."
+"Déjà Dup focuses on ease of use and recovering from personal, accidental data loss. If you need a "
+"full system backup or an archival program, you may prefer other backup apps."
 msgstr ""
-"دژا داپ بر سادگی استفاده و بازیابی داده‌های شخصی‌ای که اشتباهی از دست رفته‌اند تمرکز دارد. "
-"اگر نیاز به یک برنامهٔ بایگانی یا پشتیبان گیری سامانه‌ای کامل دارید، شاید دیگر کاره‌های "
-"پشتیبان گیری را ترجیح دهید."
+"دژا داپ بر سادگی استفاده و بازیابی داده‌های شخصی‌ای که اشتباهی از دست رفته‌اند تمرکز دارد. اگر نیاز "
+"به یک برنامهٔ بایگانی یا پشتیبان گیری سامانه‌ای کامل دارید، شاید دیگر کاره‌های پشتیبان گیری را ترجیح "
+"دهید."
 
 #: data/app.metainfo.xml.in:98
 msgid "Back up your files automatically — set it and forget it"
@@ -989,7 +980,7 @@ msgstr "شاخه‌ها برای چشم‌پوشی"
 
 #: data/ui/ConfigFolderRow.ui:15
 msgid "This folder cannot be backed up because Backups does not have access to it."
-msgstr ""
+msgstr "نمی‌توان از این شاخه پشتیبان گرفت؛ چرا که پشتیبان‌ها به آن دسترسی ندارد."
 
 #: data/ui/ConfigFolderRow.ui:30
 msgid "Remove"
@@ -1041,8 +1032,8 @@ msgstr "_نگه‌داری پشتیبان‌ها"
 
 #: data/ui/PreferencesWindow.ui:40
 msgid ""
-"The oldest backups will still be deleted earlier if the location is low on space or kept "
-"up to three months longer to avoid deleting related backups."
+"The oldest backups will still be deleted earlier if the location is low on space or kept up to "
+"three months longer to avoid deleting related backups."
 msgstr ""
 
 #: data/ui/PreferencesWindow.ui:61
@@ -1092,8 +1083,8 @@ msgstr "نشانی‌های کارساز"
 #. Translators: This is followed by a list of valid adresses (smb://gnome.org/deja-dup, ssh://192.168.0.1, ftp://[2001:db8::1])
 #: data/ui/ServerAddressHelp.ui:27
 msgid ""
-"Server addresses are made up of a protocol prefix, an address, and sometimes a path "
-"depending on the protocol. Examples:"
+"Server addresses are made up of a protocol prefix, an address, and sometimes a path depending on "
+"the protocol. Examples:"
 msgstr ""
 
 #: data/ui/ServerAddressHelp.ui:53
@@ -1234,8 +1225,7 @@ msgstr "مکان ذخیره‌گاه در دسترس نیست"
 msgid "Waiting for ‘%s’ to become connected…"
 msgstr "منتظر وصل شدن «%s»…"
 
-#: libdeja/BackendGoogle.vala:62 libdeja/BackendMicrosoft.vala:58
-#: monitor/ReadyWatcher.vala:160
+#: libdeja/BackendGoogle.vala:62 libdeja/BackendMicrosoft.vala:58 monitor/ReadyWatcher.vala:160
 msgid "Backup will begin when a network connection becomes available."
 msgstr "پشتیبان‌گیری هنگامی که اّتصال شبکه‌ای موجود شود، آغاز خواهد شد."
 
@@ -1275,7 +1265,7 @@ msgstr "اعتبارهای %s برای دژا داپ"
 #: libdeja/BackendOAuth.vala:228
 #, c-format
 msgid "You first need to allow Backups to access your %s account."
-msgstr "نخست باید بگذارید پشتیبان‌ها با جساب %sتان دسترسی یابد."
+msgstr "نخست باید بگذارید پشتیبان‌ها به حساب %sتان دسترسی یابد."
 
 #: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
@@ -1290,8 +1280,7 @@ msgid "Could not mount storage location."
 msgstr "نتوانست مکان ذخیره را سوار کند."
 
 #: libdeja/BackendRemote.vala:170
-msgid ""
-"The server’s network location needs to be specified in the storage location preferences."
+msgid "The server’s network location needs to be specified in the storage location preferences."
 msgstr ""
 
 #: libdeja/BackendRemote.vala:175
@@ -1328,8 +1317,8 @@ msgstr "گذرواژهٔ رمزگذاری پشتیبان"
 
 #: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → Applications → "
-"Backups and try again."
+"Make sure Backups has permission to run in the background in Settings → Applications → Backups "
+"and try again."
 msgstr ""
 
 #: libdeja/Operation.vala:47
@@ -1344,9 +1333,8 @@ msgstr "بررسی برای پشتیبان‌ها…"
 msgid "Listing files…"
 msgstr "سیاهه کردن پرونده‌ها…"
 
-#: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:377 libdeja/duplicity/DuplicityJob.vala:388
-#: libdeja/duplicity/DuplicityJob.vala:424
+#: libdeja/Operation.vala:55 libdeja/Operation.vala:85 libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388 libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "آماده‌سازی…"
 
@@ -1367,8 +1355,7 @@ msgid "Restoring files…"
 msgstr "بازیابی پرونده‌ها…"
 
 #: libdeja/OperationRestore.vala:54
-msgid ""
-"Could not restore the following files.  Please make sure you are able to write to them."
+msgid "Could not restore the following files.  Please make sure you are able to write to them."
 msgstr ""
 
 #: libdeja/OperationVerify.vala:81
@@ -1404,9 +1391,7 @@ msgstr ""
 
 #: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
-msgid ""
-"Backup location does not have enough free space. Try using a location with at least %s "
-"free."
+msgid "Backup location does not have enough free space. Try using a location with at least %s free."
 msgstr ""
 
 #: libdeja/duplicity/DuplicityJob.vala:600 libdeja/duplicity/DuplicityJob.vala:614
@@ -1441,8 +1426,8 @@ msgstr "نتوانست «%s» را بازگرداند: پرونده در پشت�
 #: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
-"The existing backup is of a computer named %s, but the current computer’s name is %s.  If "
-"this is unexpected, you should back up to a different location."
+"The existing backup is of a computer named %s, but the current computer’s name is %s.  If this is "
+"unexpected, you should back up to a different location."
 msgstr ""
 
 #: libdeja/duplicity/DuplicityJob.vala:964
@@ -1504,12 +1489,8 @@ msgstr "نتوانست نگارش «%s» داپلیسیتی را بفهمد."
 
 #: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
-msgid ""
-"Backups requires at least version %d.%d.%.2d of duplicity, but only found version %d.%d."
-"%.2d"
-msgstr ""
-"پشتیبان‌ها نیاز به کمینهٔ نگارش %Id.%Id.%I.2d داپلیسیتی دارد، ولی نگارش %Id.%Id.%I.2d پیدا "
-"شد"
+msgid "Backups requires at least version %d.%d.%.2d of duplicity, but only found version %d.%d.%.2d"
+msgstr "پشتیبان‌ها نیاز به کمینهٔ نگارش %Id.%Id.%I.2d داپلیسیتی دارد، ولی نگارش %Id.%Id.%I.2d پیدا شد"
 
 #: libdeja/duplicity/DuplicityPlugin.vala:99 libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
@@ -1517,11 +1498,11 @@ msgstr "مکان ذخیره هنوز پشتیبانی نمی‌شود."
 
 #: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
-"This storage location is no longer supported. You can still use duplicity directly to "
-"back up or restore your files."
+"This storage location is no longer supported. You can still use duplicity directly to back up or "
+"restore your files."
 msgstr ""
-"مکان ذخیره دیگر پشتیبانی نمی‌شود. هنوز می‌توانید برای پشتیبان گیری یا بازگردانی "
-"پرونده‌هایتان مستقیماً از داپلیسیتی استفاده کنید."
+"مکان ذخیره دیگر پشتیبانی نمی‌شود. هنوز می‌توانید برای پشتیبان گیری یا بازگردانی پرونده‌هایتان "
+"مستقیماً از داپلیسیتی استفاده کنید."
 
 #: libdeja/restic/ResticPlugin.vala:42
 msgid "Could not understand restic version."
@@ -1534,8 +1515,7 @@ msgstr "نتوانست نگارش «%s» رستیک را بفهمد."
 
 #: libdeja/restic/ResticPlugin.vala:52
 #, c-format
-msgid ""
-"Backups requires at least version %d.%d.%d of restic, but only found version %d.%d.%d"
+msgid "Backups requires at least version %d.%d.%d of restic, but only found version %d.%d.%d"
 msgstr "پشتیبان‌ها نیاز به کمینهٔ نگارش %Id.%Id.%Id رستیک دارد، ولی نگارش %Id.%Id.%Id پیدا شد"
 
 #: monitor/ReadyWatcher.vala:151
@@ -1592,10 +1572,8 @@ msgstr "پشتیبان گیری هنگامی که اتّصال شبکه‌ای 
 #~ msgstr "شناسه کلید دسترسی s3 آمازون"
 
 #~ msgid ""
-#~ "An optional folder name to store files in. This folder will be created in the chosen "
-#~ "bucket."
-#~ msgstr ""
-#~ "یک نام پوشه‌ی انتخابی برای ذخیره‌ی پرونده‌ها. این پوشه در سطل انتخابی قرار خواهد گرفت"
+#~ "An optional folder name to store files in. This folder will be created in the chosen bucket."
+#~ msgstr "یک نام پوشه‌ی انتخابی برای ذخیره‌ی پرونده‌ها. این پوشه در سطل انتخابی قرار خواهد گرفت"
 
 #~ msgid "Restore deleted files from backup"
 #~ msgstr "بازگردانی پرونده‌های حذف شده از پشتیبان"
