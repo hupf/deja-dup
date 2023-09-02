@@ -12,8 +12,8 @@
 msgid ""
 msgstr "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-03-11 19:12+0000\n"
-"PO-Revision-Date: 2023-03-26 06:00+0100\n"
+"POT-Creation-Date: 2023-08-29 23:58+0000\n"
+"PO-Revision-Date: 2023-09-02 06:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -103,7 +103,7 @@ msgstr "Babeskopia egiten..."
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "Babeskopiak aplikazioak zure ekintza bat behar du jarraitzeko"
 
@@ -175,52 +175,52 @@ msgstr "Probatu _bi hilabetetik behin"
 msgid "_Grant Access"
 msgstr "Baimendu _sarbidea"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "Instalatu paketeak"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "Laburpena"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "Leheneratu proba"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "Baimendu sarbidea"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "Ezarri zifratze-pasahitza"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "Pasahitza beharrezko egin?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "Zifratze-pasahitza behar da"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr "Babeskopiak aplikazioak zure zifratze-pasahitza behar du jarraitzeko"
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalatu"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr "Babeskopiak aplikazioak zenbait pakete instalatu behar ditu jarraitzeko"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Leheneratu"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_Leheneratu"
 
@@ -319,11 +319,11 @@ msgstr "Leheneratzea lanean"
 msgid "Cannot back up automatically"
 msgstr "Babeskopia ezin da automatikoki egin"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Autentifikazioa behar da"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Ez da aurkitu babeskopiaren fitxategirik"
 
@@ -390,14 +390,6 @@ msgid_plural "At least %d days"
 msgstr[0] "Gutxienez egun %d"
 msgstr[1] "Gutxienez %d egun"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "Hautatu karpetak"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "Gehitu"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -451,7 +443,7 @@ msgstr[1] "%d egunetik behin"
 msgid "Use _Restic instead of Duplicity"
 msgstr "Erabili _Restic Duplicity erabili ordez"
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "Hautatu karpeta"
 
@@ -579,6 +571,15 @@ msgctxt "backups"
 msgid "None"
 msgstr "Bat ere ez"
 
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Atzera"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Bilatu"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -612,7 +613,7 @@ msgstr "Zerrendatu leheneratuko diren fitxategiak"
 msgid "An operation is already in progress"
 msgstr "eragiketa bat martxan dabil une honetan"
 
-#: app/main.vala:360
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr "translator-credits"
 
@@ -621,11 +622,11 @@ msgstr "translator-credits"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:466 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup babeskopiak"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Babeskopiak"
 
@@ -836,7 +837,7 @@ msgid ""
 "when it is plugged in."
 msgstr "Unitatearen fitxategi-sistemaren identifikatzaile bakarra, unitatea konektatuta dagoenean hura ezagutzeko erabiltzen dena."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Izena"
 
@@ -935,47 +936,46 @@ msgstr "Babeskopien monitorea"
 msgid "Schedules backups at regular intervals"
 msgstr "Babeskopiak tarte finkoetan programatzen du"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Bilatu"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Babeskopia-fitxategiak eskaneatzen…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "Karpeta hutsik dago"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Ez da emaitzarik aurkitu"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Saiatu bestelako bilaketa bat"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "_Saiatu berriro"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Konektatu"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Zifratze-pasahitza behar da"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "Sartu _pasahitza"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Kokalekua"
+
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "Gehitu"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -1018,35 +1018,7 @@ msgstr "_Zerbitzari-helbidea"
 msgid "_Location"
 msgstr "K_okalekua"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Atzera"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Menu nagusia"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Hautatu _denak"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Hobespenak"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "Laster-_teklak"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Laguntza"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "_Babeskopiei buruz"
-
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Ikuspegi orokorra"
 
@@ -1088,9 +1060,37 @@ msgstr "Labs"
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Menu nagusia"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Hautatu _denak"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Hobespenak"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "Laster-_teklak"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Laguntza"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "_Babeskopiei buruz"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Babeskopia berriena"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "Ekintzak"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1232,7 +1232,7 @@ msgstr "%1$s %2$s-(e)n"
 msgid "Backup will begin when %s is connected."
 msgstr "Babeskopia hasiko da %s hori konektaturik dagoenean."
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "Ez dago eskuragarri biltegiratze helbiderik"
 
@@ -1284,25 +1284,25 @@ msgstr "%s kredentzialak Déjà Dup aplikaziorako"
 msgid "You first need to allow Backups to access your %s account."
 msgstr "Lehenengo, Babeskopiak aplikazioari baimena eman diozu zure %s kontua atzitzeko."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "Sareko zerbitzaria ez dago eskuragarri"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Sareko konexio baten zain..."
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "Ezin izan da muntatu biltegiratze-kokalekua."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr "Zerbitzariaren sareko kokalekua adierazi behar da biltegiratze-kokalekuaren hobespenetan."
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1311,7 +1311,7 @@ msgstr "Zerbitzariaren sareko ‘%s’ kokalekuak ez dirudi sareko kokaleku bat 
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr "Samba sarearen kokalekuek ostatu-izena eta partekatzeko izena, biak eduki behar dute."
 
@@ -1335,7 +1335,7 @@ msgstr "Zakarrontzia"
 msgid "Backup encryption password"
 msgstr "Babeskopiaren zifratze-pasahitza"
 
-#: libdeja/InstallEnvFlatpak.vala:104
+#: libdeja/InstallEnvFlatpak.vala:110
 msgid ""
 "Make sure Backups has permission to run in the background in Settings → "
 "Applications → Backups and try again."
@@ -1354,9 +1354,9 @@ msgid "Listing files…"
 msgstr "Fitxategiak zerrendatzen..."
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "Prestatzen..."
 
@@ -1390,8 +1390,8 @@ msgid ""
 "again."
 msgstr "Zure babeskopia hondatuta dagoela dirudi. Babeskopia ezabatu eta berriro saiatu beharko zenuke."
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "Pausatua (sarerik ez)"
 
@@ -1399,28 +1399,35 @@ msgstr "Pausatua (sarerik ez)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "Babeskopiarako kokalekua txikiegia da."
+
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid ""
-"Backup location is too small. Try using a location with at least %s free."
-msgstr "Babeskopiaren kokalekua txikiegia da. Saiatu beste kokaleku bat erabilita, gutxienez %s libre duena."
+msgid "Try using a location with at least %s."
+msgstr "Saiatu gutxienez %s libre duen kokaleku bat erabiltzen."
+
+#: libdeja/duplicity/DuplicityJob.vala:557
+msgid "(Space for two full backups is required.)"
+msgstr "(Bi babeskopia osorako lekua behar da.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr "Babeskopiaren kokalekuak ez du nahiko toki librerik. Saiatu gutxienez %s liberatzen."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
 "at least %s free."
 msgstr "Babeskopiaren kokalekuak ez du aski tokirik. Saiatu beste kokaleku bat erabilita, gutxienez %s libre duena."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "Garbitzen..."
 
@@ -1431,25 +1438,25 @@ msgstr "Garbitzen..."
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Huts egin du errore ezezagunarengatik."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "Zifratze-pasahitz okerra."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Ezin izan da ‘%s’ leheneratu: Fitxategia ez da aurkitu babeskopian"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1457,78 +1464,78 @@ msgid ""
 "location."
 msgstr "Existitzen den babeskopia %s deitutako ordenagailu batena da, bain uneko ordenagailuaren izena %s da. Hau espero ez bazenuen, beste kokapen batean egin beharko zenuke babeskopia."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "Ordenagailuaren izena aldatu da"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ sortzen saiatzean."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
-#: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ irakurtzen saiatzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Baimena ukatu da ‘%s’ ezabatzen saiatzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Babeskopiaren ‘%s’ kokapena ez da existitzen."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "Ez dago espaziorik."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia irakurtzean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Errorea ‘%s’ fitxategia idaztean."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Ez dago lekurik ‘%s’-(e)n."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "Kargatzen..."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr "Ezin da duplicity bertsioa ulertu."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Ezin izan da ulertu duplicity ‘%s’ bertsioa."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
 "version %d.%d.%.2d"
 msgstr "Babeskopiak aplikazioak duplicity aplikazioaren %d.%d.%.2d bertsioa behar du gutxienez, baina %d.%d.%.2d aurkitu da"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr "Biltegiratze-kokaleku hau ez da oraindik onartzen."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1558,6 +1565,9 @@ msgstr "Babeskopia hasiko da energia aurrezteko modua aktibo ez dagoenean."
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Babeskopiaren prozesua hasiko da hain mugatua ez den Internet konexio bat eskuragarri dagoenean."
+
+#~ msgid "Choose Folders"
+#~ msgstr "Hautatu karpetak"
 
 #~ msgid "Restore to _specific folder:"
 #~ msgstr "Leheneratu karpeta ze_hatz batera:"
