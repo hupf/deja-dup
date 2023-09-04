@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-07-02 22:23+0000\n"
-"PO-Revision-Date: 2023-08-27 18:31+0200\n"
+"POT-Creation-Date: 2023-09-02 20:04+0000\n"
+"PO-Revision-Date: 2023-09-04 21:16+0200\n"
 "Last-Translator: Nathan Follens <nfollens@gnome.org>\n"
 "Language-Team: GNOME-NL https://matrix.to/#/#nl:gnome.org\n"
 "Language: nl\n"
@@ -224,11 +224,11 @@ msgstr "_Installeren"
 msgid "Backups needs to install packages to continue"
 msgstr "Back-ups moet pakketten installeren om verder te gaan"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:62
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Herstellen"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "He_rstellen"
 
@@ -329,11 +329,11 @@ msgstr "Back-up wordt teruggezet"
 msgid "Cannot back up automatically"
 msgstr "Kan geen automatische back-ups maken"
 
-#: app/Browser.vala:256
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Aanmelding vereist"
 
-#: app/Browser.vala:378 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Geen back-upbestanden gevonden"
 
@@ -590,6 +590,15 @@ msgstr[1] "%d dagen geleden"
 msgctxt "backups"
 msgid "None"
 msgstr "Geen"
+
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Terug"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Zoeken"
 
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
@@ -924,7 +933,7 @@ msgstr ""
 "Dit is het unieke bestandssysteemkenmerk voor de schijf, dat gebruikt zal "
 "worden voor het herkennen van de schijf wanneer die aangesloten wordt."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Naam"
 
@@ -1044,45 +1053,40 @@ msgstr "Back-upobservatie"
 msgid "Schedules backups at regular intervals"
 msgstr "Plant back-ups op regelmatige tijdstippen"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Zoeken"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Back-ups scannen…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "Map is leeg"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Geen resultaten gevonden"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Probeer een andere zoekopdracht"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "Opnieuw p_roberen"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Verbinden"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Versleutelingswachtwoord vereist"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "Vo_er wachtwoord in"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Locatie"
 
@@ -1133,35 +1137,7 @@ msgstr "Ser_veradres"
 msgid "_Location"
 msgstr "_Locatie"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Terug"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Hoofdmenu"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Alles _selecteren"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Voorkeuren"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Sneltoetsen"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Help"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "_Info Déjà Dup"
-
-#: data/ui/MainWindow.ui:35
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Overzicht"
 
@@ -1206,9 +1182,37 @@ msgstr "Labs"
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Hoofdmenu"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Alles _selecteren"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Voorkeuren"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_Sneltoetsen"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Help"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "_Info Déjà Dup"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Meest recente back-up"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "Acties"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
