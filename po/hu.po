@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-04-02 17:34+0000\n"
-"PO-Revision-Date: 2023-04-13 23:33+0200\n"
+"POT-Creation-Date: 2023-09-02 20:04+0000\n"
+"PO-Revision-Date: 2023-09-05 18:58+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Lokalize 22.08.2\n"
+"X-Generator: Lokalize 23.04.3\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -105,7 +105,7 @@ msgstr "Biztonsági mentés…"
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "A Biztonsági mentéseknek a válaszára van szüksége a folytatáshoz"
 
@@ -181,54 +181,54 @@ msgstr "Ellenőrzés két _havonta"
 msgid "_Grant Access"
 msgstr "_Hozzáférés megadása"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "Csomagok telepítése"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "Összegzés"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "Visszaállítási teszt"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "Hozzáférés megadása"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "Titkosítási jelszó beállítása"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "Szükséges legyen a jelszó megadása?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "Titkosítási jelszó szükséges"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr ""
 "A Biztonsági mentéseknek a titkosítási jelszavára van szüksége a folytatáshoz"
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Telepítés"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr ""
 "A Biztonsági mentéseknek csomagok telepítésére van szüksége a folytatáshoz"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Visszaállítás"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:356
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_Visszaállítás"
 
@@ -329,11 +329,11 @@ msgstr "Visszaállítás folyamatban"
 msgid "Cannot back up automatically"
 msgstr "A biztonsági mentés nem készíthető el automatikusan"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Hitelesítés szükséges"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1055
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Nem találhatóak biztonsági mentési fájlok"
 
@@ -400,14 +400,6 @@ msgid_plural "At least %d days"
 msgstr[0] "Legalább %d napig"
 msgstr[1] "Legalább %d napig"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "Mappák kiválasztása"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "Hozzáadás"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -461,7 +453,7 @@ msgstr[1] "Minden %d nap"
 msgid "Use _Restic instead of Duplicity"
 msgstr "A _Restic használata a Duplicity helyett"
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "Válasszon mappát"
 
@@ -595,6 +587,15 @@ msgctxt "backups"
 msgid "None"
 msgstr "Nincs"
 
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Vissza"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Keresés"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -628,7 +629,7 @@ msgstr "Sorolja fel a visszaállítandó fájlokat"
 msgid "An operation is already in progress"
 msgstr "Már folyamatban van egy művelet"
 
-#: app/main.vala:362
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
@@ -657,11 +658,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:468 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Biztonsági mentések"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Biztonsági mentések"
 
@@ -924,7 +925,7 @@ msgstr ""
 "A meghajtó egyedi fájlrendszer azonosítója. A meghajtó csatlakoztatásakor ez "
 "alapján lehet beazonosítani."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Név"
 
@@ -1043,47 +1044,46 @@ msgstr "Biztonságimentés-figyelő"
 msgid "Schedules backups at regular intervals"
 msgstr "Ütemezett biztonsági mentés rendszeres időközönként"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Keresés"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Biztonsági mentés fájljainak keresése…"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "A mappa üres"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Nincs találat"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Próbáljon mást keresni"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "Új_rapróbálkozás"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Kapcsolódás"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Titkosítási jelszó szükséges"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "Jelszó _megadása"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Hely"
+
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "Hozzáadás"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -1127,35 +1127,7 @@ msgstr "Kiszolgáló _címe"
 msgid "_Location"
 msgstr "_Hely"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Vissza"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Főmenü"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Ö_sszes kijelölése"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Beállítások"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Gyorsbillentyűk"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Súgó"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "A Biztonsági mentések _névjegye"
-
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Áttekintés"
 
@@ -1200,9 +1172,38 @@ msgstr "Labor"
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Főmenü"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Ö_sszes kijelölése"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Beállítások"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_Gyorsbillentyűk"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Súgó"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "A Biztonsági mentések _névjegye"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Legfrissebb biztonsági mentés"
+
+#: data/ui/RestoreToolbarView.ui:31
+#| msgid "Location"
+msgid "Actions"
+msgstr "Műveletek"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1346,7 +1347,7 @@ msgstr "%1$s ezen: %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "A biztonsági mentés elindul, amint %s csatlakozik."
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "A tárolási hely elérhetetlen"
 
@@ -1402,26 +1403,26 @@ msgstr ""
 "Először engedélyeznie kell, hogy a Biztonsági mentések hozzáférjen a(z) %s "
 "fiókjához."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "A hálózati kiszolgáló elérhetetlen"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Várakozás hálózati kapcsolatra…"
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "A tárolóhely csatolása sikertelen."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr ""
 "A kiszolgáló hálózati helyét meg kell adni a tároló helyének beállításaiban."
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1430,7 +1431,7 @@ msgstr "A kiszolgáló „%s” hálózati helye nem tűnik hálózati helynek."
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "A Samba hálózati helyeknek gépnevet és megosztásnevet is tartalmaznia kell."
@@ -1477,9 +1478,9 @@ msgid "Listing files…"
 msgstr "Fájlok listázása…"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "Előkészítés…"
 
@@ -1519,8 +1520,8 @@ msgstr ""
 "A biztonsági mentés sérültnek tűnik. Törölnie kell a biztonsági mentést, és "
 "próbálja meg újra."
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "Szüneteltetve (nincs hálózat)"
 
@@ -1528,24 +1529,21 @@ msgstr "Szüneteltetve (nincs hálózat)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:543 libdeja/restic/ResticJob.vala:319
-#| msgid "Backup location"
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
 msgid "Backup location is too small."
 msgstr "A biztonsági mentés helye túl kicsi."
 
-#: libdeja/duplicity/DuplicityJob.vala:544 libdeja/restic/ResticJob.vala:320
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
-#| msgid ""
-#| "Backup location is too small. Try using a location with at least %s free."
 msgid "Try using a location with at least %s."
 msgstr "Próbálkozzon egy legalább %s szabad területtel rendelkező hellyel."
 
-#: libdeja/duplicity/DuplicityJob.vala:545
+#: libdeja/duplicity/DuplicityJob.vala:557
 msgid "(Space for two full backups is required.)"
 msgstr "(Két teljes biztonsági mentésnek elegendő hely szükséges.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:566
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
@@ -1553,7 +1551,7 @@ msgstr ""
 "A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás. "
 "Legalább %s felszabadítása szükséges."
 
-#: libdeja/duplicity/DuplicityJob.vala:568
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
@@ -1562,8 +1560,8 @@ msgstr ""
 "A biztonsági mentésre kiválasztott helyen nincs elég szabad kapacitás. "
 "Próbálkozzon egy legalább %s szabad területtel rendelkező hellyel."
 
-#: libdeja/duplicity/DuplicityJob.vala:588
-#: libdeja/duplicity/DuplicityJob.vala:602
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "Tisztítás…"
 
@@ -1574,26 +1572,26 @@ msgstr "Tisztítás…"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:686
-#: libdeja/duplicity/DuplicityJob.vala:1074 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Ismeretlen hiba lépett fel."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:889
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "Rossz titkosítási jelszó."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:938
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr ""
 "Nem állítható vissza: „%s”. A fájl nem található meg a biztonsági mentésben"
 
-#: libdeja/duplicity/DuplicityJob.vala:949
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1603,66 +1601,66 @@ msgstr ""
 "A meglévő biztonsági mentés neve %s, de a jelenlegi gépnév %s. Ha ez nem "
 "várt fejlemény, inkább készítsen biztonsági mentést egy másik helyre."
 
-#: libdeja/duplicity/DuplicityJob.vala:952
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "A számítógép neve megváltozott"
 
-#: libdeja/duplicity/DuplicityJob.vala:987
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Hozzáférés megtagadva a következő készítése közben: „%s”."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:991
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Hozzáférés megtagadva a következő olvasása közben: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:999
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Hozzáférés megtagadva a következő törlése közben: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1006
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "A biztonsági mentés helye nem létezik: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1012
-#: libdeja/duplicity/DuplicityJob.vala:1045
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "Nincs több hely."
 
-#: libdeja/duplicity/DuplicityJob.vala:1034
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Hiba a(z) „%s” fájl olvasásakor."
 
-#: libdeja/duplicity/DuplicityJob.vala:1036
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Hiba a(z) „%s” fájl írásakor."
 
-#: libdeja/duplicity/DuplicityJob.vala:1047
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Nem maradt több hely itt: „%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1105
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "Feltöltés…"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr "Ismeretlen duplicity verzió."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Ismeretlen duplicity verzió: „%s”."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1671,12 +1669,12 @@ msgstr ""
 "A biztonsági mentéshez legalább %d.%d.%.2d verziójú duplicityre van szükség, "
 "de csak %d.%d.%.2d található."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr "Ez a tárolóhely még nem támogatott."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
