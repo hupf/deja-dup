@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-03-13 17:51+0000\n"
-"PO-Revision-Date: 2023-03-13 18:58+0100\n"
+"POT-Creation-Date: 2023-09-02 20:04+0000\n"
+"PO-Revision-Date: 2023-09-11 08:06+0200\n"
 "Last-Translator: Alan Mortensen <alanmortensen.am@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "Language: da\n"
@@ -103,7 +103,7 @@ msgstr "Sikkerhedskopierer …"
 #. In the unlikely event the user turned on automatic backups but never
 #. made a backup, we should tell them if we start up and need to be
 #. configured for first time.
-#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:843
+#: app/AssistantBackup.vala:128 app/AssistantOperation.vala:844
 msgid "Backups needs your input to continue"
 msgstr "Sikkerhedskopieringer har brug for dit input for at fortsætte"
 
@@ -180,55 +180,55 @@ msgstr "Test hver anden _måned"
 msgid "_Grant Access"
 msgstr "_Giv adgang"
 
-#: app/AssistantOperation.vala:494
+#: app/AssistantOperation.vala:495
 msgid "Install Packages"
 msgstr "Installer pakker"
 
-#: app/AssistantOperation.vala:509
+#: app/AssistantOperation.vala:510
 msgid "Summary"
 msgstr "Oversigt"
 
-#: app/AssistantOperation.vala:531
+#: app/AssistantOperation.vala:532
 msgid "Restore Test"
 msgstr "Genoprettelsestest"
 
-#: app/AssistantOperation.vala:539
+#: app/AssistantOperation.vala:540
 msgid "Grant Access"
 msgstr "Giv adgang"
 
-#: app/AssistantOperation.vala:760
+#: app/AssistantOperation.vala:761
 msgid "Set Encryption Password"
 msgstr "Angiv krypteringsadgangskode"
 
-#: app/AssistantOperation.vala:762
+#: app/AssistantOperation.vala:763
 msgid "Require Password?"
 msgstr "Kræv adgangskode?"
 
-#: app/AssistantOperation.vala:764
+#: app/AssistantOperation.vala:765
 msgid "Encryption Password Needed"
 msgstr "Der kræves adgangskode til kryptering"
 
-#: app/AssistantOperation.vala:811
+#: app/AssistantOperation.vala:812
 msgid "Backups needs your encryption password to continue"
 msgstr ""
 "Sikkerhedskopieringer har brug for din krypteringsadgangskode for at "
 "fortsætte"
 
-#: app/AssistantOperation.vala:885
+#: app/AssistantOperation.vala:886
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installer"
 
-#: app/AssistantOperation.vala:890
+#: app/AssistantOperation.vala:891
 msgid "Backups needs to install packages to continue"
 msgstr ""
 "Sikkerhedskopieringer har brug for at installere pakker for at fortsætte"
 
-#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:51
+#: app/AssistantRestore.vala:59 data/ui/MainWindow.ui:38
 msgid "Restore"
 msgstr "Genopret"
 
-#: app/AssistantRestore.vala:63 data/ui/Browser.ui:353
+#: app/AssistantRestore.vala:63 data/ui/RestoreToolbarView.ui:35
 msgid "_Restore"
 msgstr "_Genopret"
 
@@ -328,11 +328,11 @@ msgstr "Igangværende genoprettelse"
 msgid "Cannot back up automatically"
 msgstr "Kan ikke sikkerhedskopiere automatisk"
 
-#: app/Browser.vala:251
+#: app/Browser.vala:213
 msgid "Authentication needed"
 msgstr "Der kræves autentifikation"
 
-#: app/Browser.vala:372 libdeja/duplicity/DuplicityJob.vala:1051
+#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Ingen sikkerhedskopier fundet"
 
@@ -399,14 +399,6 @@ msgid_plural "At least %d days"
 msgstr[0] "Mindst %d dag"
 msgstr[1] "Mindst %d dage"
 
-#: app/ConfigFolderGroup.vala:63
-msgid "Choose Folders"
-msgstr "Vælg mapper"
-
-#: app/ConfigFolderGroup.vala:66 data/ui/ConfigFolderGroup.ui:16
-msgid "Add"
-msgstr "Tilføj"
-
 #. *** Basic entries ***
 #: app/ConfigLocationRow.vala:52 libdeja/BackendGoogle.vala:74
 msgid "Google Drive"
@@ -460,7 +452,7 @@ msgstr[1] "Hver %d. dag"
 msgid "Use _Restic instead of Duplicity"
 msgstr "Brug _Restic i stedet for Duplicity"
 
-#: app/FolderChooserButton.vala:21 app/FolderChooserButton.vala:27
+#: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
 msgstr "Vælg mappe"
 
@@ -596,6 +588,15 @@ msgctxt "backups"
 msgid "None"
 msgstr "Ingen"
 
+#: app/RestoreHeaderBar.vala:19 app/RestoreHeaderBar.vala:20
+msgid "Back"
+msgstr "Tilbage"
+
+#: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
+#: data/ui/RestoreToolbarView.ui:19
+msgid "Search"
+msgstr "Søg"
+
 #. Translators: %x is the current date, %X is the current time.
 #. This will be in a list with other strings that just have %x (the
 #. current date).  So make sure if you change this, it still makes
@@ -629,7 +630,7 @@ msgstr "Vis venligst filer som skal genoprettes"
 msgid "An operation is already in progress"
 msgstr "En handling er allerede i gang"
 
-#: app/main.vala:360
+#: app/main.vala:380
 msgid "translator-credits"
 msgstr ""
 "Launchpad-bidrag:\n"
@@ -657,11 +658,11 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:466 data/app.metainfo.xml.in:15
+#: app/main.vala:486 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup-sikkerhedskopieringer"
 
-#: data/app.desktop.in:6 data/ui/MainHeaderBar.ui:13 data/ui/MainWindow.ui:9
+#: data/app.desktop.in:6 data/ui/MainWindow.ui:9
 msgid "Backups"
 msgstr "Sikkerhedskopieringer"
 
@@ -923,7 +924,7 @@ msgstr ""
 "Det unikke filsystem-identifikator til drevet, der bruges til at genkende "
 "drevet når det er tilsluttet."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:244
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
 msgid "Name"
 msgstr "Navn"
 
@@ -1043,47 +1044,46 @@ msgstr "Overvågning af sikkerhedskopiering"
 msgid "Schedules backups at regular intervals"
 msgstr "Planlægger sikkerhedskopieringer med regelmæssige mellemrum"
 
-#: data/ui/Browser.ui:14 data/ui/MainHeaderBar.ui:43
-#: data/ui/MainHeaderBar.ui:45
-msgid "Search"
-msgstr "Søg"
-
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:82
+#: data/ui/Browser.ui:67
 msgid "Scanning backup files…"
 msgstr "Skanner sikkerhedskopier …"
 
-#: data/ui/Browser.ui:99
+#: data/ui/Browser.ui:84
 msgid "Folder is Empty"
 msgstr "Mappen er tom"
 
-#: data/ui/Browser.ui:110
+#: data/ui/Browser.ui:95
 msgid "No Results Found"
 msgstr "Ingen resultater fundet"
 
-#: data/ui/Browser.ui:111
+#: data/ui/Browser.ui:96
 msgid "Try a different search"
 msgstr "Prøv en anden søgning"
 
-#: data/ui/Browser.ui:136
+#: data/ui/Browser.ui:121
 msgid "_Retry"
 msgstr "_Prøv igen"
 
-#: data/ui/Browser.ui:171
+#: data/ui/Browser.ui:156
 msgid "_Connect"
 msgstr "_Opret forbindelse"
 
-#: data/ui/Browser.ui:196
+#: data/ui/Browser.ui:181
 msgid "Encryption password needed"
 msgstr "Der kræves adgangskode til kryptering"
 
-#: data/ui/Browser.ui:207
+#: data/ui/Browser.ui:192
 msgid "_Enter Password"
 msgstr "_Indtast adgangskode"
 
-#: data/ui/Browser.ui:307
+#: data/ui/Browser.ui:292
 msgid "Location"
 msgstr "Placering"
+
+#: data/ui/ConfigFolderGroup.ui:16
+msgid "Add"
+msgstr "Tilføj"
 
 #: data/ui/ConfigFolderPage.ui:10
 msgid "Folders"
@@ -1128,35 +1128,7 @@ msgstr "Ser_veradresse"
 msgid "_Location"
 msgstr "_Placering"
 
-#: data/ui/MainHeaderBar.ui:21 data/ui/MainHeaderBar.ui:23
-msgid "Back"
-msgstr "Tilbage"
-
-#: data/ui/MainHeaderBar.ui:33 data/ui/MainHeaderBar.ui:35
-msgid "Main Menu"
-msgstr "Hovedmenu"
-
-#: data/ui/MainHeaderBar.ui:58
-msgid "_Select All"
-msgstr "Vælg _alt"
-
-#: data/ui/MainHeaderBar.ui:65
-msgid "_Preferences"
-msgstr "_Præferencer"
-
-#: data/ui/MainHeaderBar.ui:69
-msgid "_Keyboard Shortcuts"
-msgstr "_Tastaturgenveje"
-
-#: data/ui/MainHeaderBar.ui:73
-msgid "_Help"
-msgstr "_Hjælp"
-
-#: data/ui/MainHeaderBar.ui:77
-msgid "_About Backups"
-msgstr "_Om Sikkerhedskopieringer"
-
-#: data/ui/MainWindow.ui:24
+#: data/ui/MainWindow.ui:27
 msgid "Overview"
 msgstr "Oversigt"
 
@@ -1201,9 +1173,37 @@ msgstr "Labs"
 msgid "Restic"
 msgstr "Restic"
 
+#: data/ui/PrimaryMenuButton.ui:15
+msgid "Main Menu"
+msgstr "Hovedmenu"
+
+#: data/ui/PrimaryMenuButton.ui:22
+msgid "_Select All"
+msgstr "Vælg _alt"
+
+#: data/ui/PrimaryMenuButton.ui:29
+msgid "_Preferences"
+msgstr "_Præferencer"
+
+#: data/ui/PrimaryMenuButton.ui:33
+msgid "_Keyboard Shortcuts"
+msgstr "_Tastaturgenveje"
+
+#: data/ui/PrimaryMenuButton.ui:37
+msgid "_Help"
+msgstr "_Hjælp"
+
+#: data/ui/PrimaryMenuButton.ui:41
+msgid "_About Backups"
+msgstr "_Om Sikkerhedskopieringer"
+
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Nyeste sikkerhedskopi"
+
+#: data/ui/RestoreToolbarView.ui:31
+msgid "Actions"
+msgstr "Handlinger"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1347,7 +1347,7 @@ msgstr "%1$s på %2$s"
 msgid "Backup will begin when %s is connected."
 msgstr "Sikkerhedskopiering vil begynde når %s er forbundet."
 
-#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:157
+#: libdeja/BackendDrive.vala:250 libdeja/BackendRemote.vala:153
 msgid "Storage location not available"
 msgstr "Lagringsplacering ikke tilgængelig"
 
@@ -1403,26 +1403,26 @@ msgstr ""
 "Du skal første give tilladelse til at Sikkerhedskopieringer må tilgå din %s-"
 "konto."
 
-#: libdeja/BackendRemote.vala:98
+#: libdeja/BackendRemote.vala:94
 msgid "The network server is not available"
 msgstr "Netværksserveren er ikke tilgængelig"
 
-#: libdeja/BackendRemote.vala:158
+#: libdeja/BackendRemote.vala:154
 msgid "Waiting for a network connection…"
 msgstr "Venter på netværksforbindelse …"
 
-#: libdeja/BackendRemote.vala:170
+#: libdeja/BackendRemote.vala:166
 msgid "Could not mount storage location."
 msgstr "Kunne ikke montere lagerplacering."
 
-#: libdeja/BackendRemote.vala:174
+#: libdeja/BackendRemote.vala:170
 msgid ""
 "The server’s network location needs to be specified in the storage location "
 "preferences."
 msgstr ""
 "Serverens netværksplacering skal angives i præferencerne for lagerplacering."
 
-#: libdeja/BackendRemote.vala:179
+#: libdeja/BackendRemote.vala:175
 #, c-format
 msgid ""
 "The server’s network location ‘%s’ does not look like a network location."
@@ -1433,7 +1433,7 @@ msgstr ""
 #. Special sanity check for some edge cases like smb:// where if the user
 #. just puts in smb://server/ as the root, GIO thinks it's a valid root,
 #. but the share never ends up mounted.
-#: libdeja/BackendRemote.vala:187
+#: libdeja/BackendRemote.vala:183
 msgid "Samba network locations must include both a hostname and a share name."
 msgstr ""
 "Samba-netværksplaceringer skal både indeholde et værtsnavn og et share-navn."
@@ -1480,9 +1480,9 @@ msgid "Listing files…"
 msgstr "Opretter liste over filer …"
 
 #: libdeja/Operation.vala:55 libdeja/Operation.vala:85
-#: libdeja/duplicity/DuplicityJob.vala:368
-#: libdeja/duplicity/DuplicityJob.vala:379
-#: libdeja/duplicity/DuplicityJob.vala:415
+#: libdeja/duplicity/DuplicityJob.vala:377
+#: libdeja/duplicity/DuplicityJob.vala:388
+#: libdeja/duplicity/DuplicityJob.vala:424
 msgid "Preparing…"
 msgstr "Forbereder …"
 
@@ -1522,8 +1522,8 @@ msgstr ""
 "Din sikkerhedskopi synes at være beskadiget. Du bør slette den og forsøge "
 "igen."
 
-#: libdeja/duplicity/DuplicityJob.vala:68
-#: libdeja/duplicity/DuplicityJob.vala:138
+#: libdeja/duplicity/DuplicityJob.vala:71
+#: libdeja/duplicity/DuplicityJob.vala:146
 msgid "Paused (no network)"
 msgstr "På pause (intet netværk)"
 
@@ -1531,23 +1531,28 @@ msgstr "På pause (intet netværk)"
 #. Don't bother checking whether this is first or later backup.
 #. If the user adds folders to their backup and the target is just too small, let them know.
 #. Tiny backup location.  Suggest they get a larger one.
-#: libdeja/duplicity/DuplicityJob.vala:542 libdeja/restic/ResticJob.vala:318
+#: libdeja/duplicity/DuplicityJob.vala:555 libdeja/restic/ResticJob.vala:319
+msgid "Backup location is too small."
+msgstr "Placering af sikkerhedskopi er for lille."
+
+#: libdeja/duplicity/DuplicityJob.vala:556 libdeja/restic/ResticJob.vala:320
 #, c-format
-msgid ""
-"Backup location is too small. Try using a location with at least %s free."
-msgstr ""
-"Placering af sikkerhedskopi er for lille. Prøv at bruge en med mindst %s "
-"ledig."
+msgid "Try using a location with at least %s."
+msgstr "Prøv at bruge en med mindst %s ledig."
+
+#: libdeja/duplicity/DuplicityJob.vala:557
+msgid "(Space for two full backups is required.)"
+msgstr "(Der kræves plads nok til to fulde sikkerhedskopier.)"
 
 #. Can't delete any more backup chains ourselves. Tell the user, so they can clear out space.
-#: libdeja/duplicity/DuplicityJob.vala:562
+#: libdeja/duplicity/DuplicityJob.vala:578
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Please free up at least %s."
 msgstr ""
 "Placering af sikkerhedskopi har ikke nok ledig plads. Frigør mindst %s."
 
-#: libdeja/duplicity/DuplicityJob.vala:564
+#: libdeja/duplicity/DuplicityJob.vala:580
 #, c-format
 msgid ""
 "Backup location does not have enough free space. Try using a location with "
@@ -1556,8 +1561,8 @@ msgstr ""
 "Placering af sikkerhedskopi har ikke nok ledig plads. Prøv at bruge en med "
 "mindst %s ledig."
 
-#: libdeja/duplicity/DuplicityJob.vala:584
-#: libdeja/duplicity/DuplicityJob.vala:598
+#: libdeja/duplicity/DuplicityJob.vala:600
+#: libdeja/duplicity/DuplicityJob.vala:614
 msgid "Cleaning up…"
 msgstr "Rydder op …"
 
@@ -1568,25 +1573,25 @@ msgstr "Rydder op …"
 #. frequently fix odd metadata errors with duplicity.  If we hit an error
 #. a second time, we'll show the unknown error message.
 #. Should emit some sort of error...
-#: libdeja/duplicity/DuplicityJob.vala:682
-#: libdeja/duplicity/DuplicityJob.vala:1070 libdeja/libtool/ToolJoblet.vala:115
+#: libdeja/duplicity/DuplicityJob.vala:698
+#: libdeja/duplicity/DuplicityJob.vala:1086 libdeja/libtool/ToolJoblet.vala:115
 msgid "Failed with an unknown error."
 msgstr "Mislykkedes med en ukendt fejl."
 
 #. notify upper layers, if they want to do anything
-#: libdeja/duplicity/DuplicityJob.vala:885
+#: libdeja/duplicity/DuplicityJob.vala:901
 msgid "Bad encryption password."
 msgstr "Forkert krypteringsadgangskode."
 
 #. make text a little nicer than duplicity gives
 #. duplicity gives something like "home/blah/blah not found in archive,
 #. no files restored".
-#: libdeja/duplicity/DuplicityJob.vala:934
+#: libdeja/duplicity/DuplicityJob.vala:950
 #, c-format
 msgid "Could not restore ‘%s’: File not found in backup"
 msgstr "Kunne ikke genoprette “%s”: Fil ikke fundet i sikkerhedskopi"
 
-#: libdeja/duplicity/DuplicityJob.vala:945
+#: libdeja/duplicity/DuplicityJob.vala:961
 #, c-format
 msgid ""
 "The existing backup is of a computer named %s, but the current computer’s "
@@ -1597,66 +1602,66 @@ msgstr ""
 "nuværende computers navn er %s. Hvis dette er uventet bør du "
 "sikkerhedskopiere til en anden placering."
 
-#: libdeja/duplicity/DuplicityJob.vala:948
+#: libdeja/duplicity/DuplicityJob.vala:964
 msgid "Computer name changed"
 msgstr "Computernavn ændret"
 
-#: libdeja/duplicity/DuplicityJob.vala:983
+#: libdeja/duplicity/DuplicityJob.vala:999
 #, c-format
 msgid "Permission denied when trying to create ‘%s’."
 msgstr "Adgang nægtet under forsøget på at skabe “%s”."
 
 #. assume error is on backend side
-#: libdeja/duplicity/DuplicityJob.vala:987
-#: libdeja/duplicity/DuplicityJob.vala:991
+#: libdeja/duplicity/DuplicityJob.vala:1003
+#: libdeja/duplicity/DuplicityJob.vala:1007
 #, c-format
 msgid "Permission denied when trying to read ‘%s’."
 msgstr "Adgang nægtet under forsøget på at læse “%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:995
+#: libdeja/duplicity/DuplicityJob.vala:1011
 #, c-format
 msgid "Permission denied when trying to delete ‘%s’."
 msgstr "Adgang nægtet under forsøget på at slette “%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1002
+#: libdeja/duplicity/DuplicityJob.vala:1018
 #, c-format
 msgid "Backup location ‘%s’ does not exist."
 msgstr "Placering af sikkerhedskopi “%s” findes ikke."
 
-#: libdeja/duplicity/DuplicityJob.vala:1008
-#: libdeja/duplicity/DuplicityJob.vala:1041
+#: libdeja/duplicity/DuplicityJob.vala:1024
+#: libdeja/duplicity/DuplicityJob.vala:1057
 msgid "No space left."
 msgstr "Ingen plads tilbage."
 
-#: libdeja/duplicity/DuplicityJob.vala:1030
+#: libdeja/duplicity/DuplicityJob.vala:1046
 #, c-format
 msgid "Error reading file ‘%s’."
 msgstr "Fejl under læsning af fil “%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1032
+#: libdeja/duplicity/DuplicityJob.vala:1048
 #, c-format
 msgid "Error writing file ‘%s’."
 msgstr "Fejl under skrivning til fil “%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1043
+#: libdeja/duplicity/DuplicityJob.vala:1059
 #, c-format
 msgid "No space left in ‘%s’."
 msgstr "Ingen ledig plads i “%s”."
 
-#: libdeja/duplicity/DuplicityJob.vala:1101
+#: libdeja/duplicity/DuplicityJob.vala:1117
 msgid "Uploading…"
 msgstr "Uploader …"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:40
+#: libdeja/duplicity/DuplicityPlugin.vala:41
 msgid "Could not understand duplicity version."
 msgstr "Kunne ikke fortolke duplicity-version."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:51
+#: libdeja/duplicity/DuplicityPlugin.vala:52
 #, c-format
 msgid "Could not understand duplicity version ‘%s’."
 msgstr "Kunne ikke fortolke duplicity-versionen “%s”."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:54
+#: libdeja/duplicity/DuplicityPlugin.vala:55
 #, c-format
 msgid ""
 "Backups requires at least version %d.%d.%.2d of duplicity, but only found "
@@ -1665,12 +1670,12 @@ msgstr ""
 "Sikkerhedskopieringer kræver mindst version %d.%d.%.2d af duplicity, men "
 "fandt kun version %d.%d.%.2d"
 
-#: libdeja/duplicity/DuplicityPlugin.vala:96
+#: libdeja/duplicity/DuplicityPlugin.vala:99
 #: libdeja/restic/ResticPlugin.vala:91
 msgid "This storage location is not yet supported."
 msgstr "Denne lagringsplacering understøttes endnu ikke."
 
-#: libdeja/duplicity/DuplicityPlugin.vala:101
+#: libdeja/duplicity/DuplicityPlugin.vala:104
 msgid ""
 "This storage location is no longer supported. You can still use duplicity "
 "directly to back up or restore your files."
@@ -1708,6 +1713,9 @@ msgid ""
 msgstr ""
 "Sikkerhedskopiering vil begynde når en forbindelse hvor der ikke betales "
 "efter forbrug bliver tilgængelig."
+
+#~ msgid "Choose Folders"
+#~ msgstr "Vælg mapper"
 
 #~ msgid "Restore to _specific folder:"
 #~ msgstr "Genopret til _specifik mappe:"
