@@ -51,13 +51,13 @@ public class Background : Object
     return "";
   }
 
-  static void unexport_handle(Gtk.Window window)
+  static void unexport_handle(Gtk.Window window, string handle)
   {
     var surface = window.get_surface();
 #if HAS_WAYLAND
     var wayland_surface = surface as Gdk.Wayland.Toplevel;
     if (wayland_surface != null)
-      wayland_surface.unexport_handle();
+      wayland_surface.drop_exported_handle(handle);
 #endif
   }
 
@@ -67,7 +67,7 @@ public class Background : Object
     var install_env = DejaDup.InstallEnv.instance();
     var handle = yield export_handle(window);
     var allowed = yield install_env.request_autostart(handle, out mitigation);
-    unexport_handle(window);
+    unexport_handle(window, handle);
 
     if (!allowed && mitigation != null)
       yield DejaDup.run_error_dialog(window, _("Cannot back up automatically"),

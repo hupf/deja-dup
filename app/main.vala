@@ -352,28 +352,9 @@ public class DejaDupApp : Adw.Application
     dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
     dialog.release_notes = """
-      <p>44.2</p>
+      <p>45.0</p>
       <ul>
-        <li>Support Duplicity 2.0</li>
-        <li>Update OneDrive api key to work with Duplicity 1.2.3</li>
-        <li>Add some further explanation to the "not enough space" error dialog</li>
-        <li>Fix not being able to open the preferences window after a restore</li>
-      </ul>
-      <p>44.1</p>
-      <ul>
-        <li>Refuse to back up to a destination that doesn't have enough space, and suggest how much more space is
-            needed</li>
-        <li>Correctly exclude the Trash folder by default when run as a flatpak</li>
-        <li>Don’t try to back up when the network is behind a wifi captive portal</li>
-      </ul>
-      <p>44.0</p>
-      <ul>
-        <li>Refresh the visuals in a few places by using modern text entries and the new About dialog (this one!)</li>
-        <li>Newly created restic backups will now use compression</li>
-        <li>Fix a bug that prevented updating the folder option in the Preferences window after changing to an
-            external disk</li>
-        <li>Fixed a bug that prevented switching to the restore view if the app starts up in mobile mode (thin
-            width)</li>
+        <li>Update UI to use the new flat header style</li>
       </ul>
     """;
     dialog.transient_for = get_app_window();

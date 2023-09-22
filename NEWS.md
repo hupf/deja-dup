@@ -3,9 +3,16 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-# 45.alpha
+# 45.0
+- Use the modern flat header style
+- Use latest Gtk file dialog
+- Fix a vague SMB error into a more specific one (thanks Fina Wilke)
+- Updated Basque, Catalan, Chinese (China), Czech, Danish, Dutch, Finnish,
+  Galician, Georgian, German, Hebrew, Hungarian, Indonesian, Persian, Polish,
+  Russian, Slovak, Slovenian, Swedish, Turkish, and Ukrainian translations
 
 ##### Packaging
+- Require gtk4 4.12+
 - Require libadwaita1 1.4+
 - Require meson 0.64+
 
