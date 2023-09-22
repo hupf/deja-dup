@@ -3,6 +3,10 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 45.1
+- Fix compilation with valac 0.56 - 45.0 accidentally require the unreleased
+  0.57 branch (sorry!)
+
 # 45.0
 - Use the modern flat header style
 - Use latest Gtk file dialog

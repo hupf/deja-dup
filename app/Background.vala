@@ -24,6 +24,12 @@ using GLib;
  * - Since we can't query permission status, we just ask the portal each time and don't notice revocations.
  */
 
+#if HAS_WAYLAND
+// Can drop this ccode once valac 0.57+ can be relied on
+[CCode (cname = "gdk_wayland_toplevel_drop_exported_handle")]
+extern void wayland_drop_exported_handle(Gdk.Wayland.Toplevel toplevel, string handle);
+#endif
+
 public class Background : Object
 {
   static async string export_handle(Gtk.Window window)
@@ -57,7 +63,7 @@ public class Background : Object
 #if HAS_WAYLAND
     var wayland_surface = surface as Gdk.Wayland.Toplevel;
     if (wayland_surface != null)
-      wayland_surface.drop_exported_handle(handle);
+      wayland_drop_exported_handle(wayland_surface, handle);
 #endif
   }
 

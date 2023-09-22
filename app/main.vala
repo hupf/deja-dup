@@ -352,9 +352,13 @@ public class DejaDupApp : Adw.Application
     dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
     dialog.release_notes = """
+      <p>45.1</p>
+      <ul>
+        <li>Fixed a build error</li>
+      </ul>
       <p>45.0</p>
       <ul>
-        <li>Update UI to use the new flat header style</li>
+        <li>Updated UI to use the new flat header style</li>
       </ul>
     """;
     dialog.transient_for = get_app_window();
