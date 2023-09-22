@@ -214,11 +214,7 @@ class BaseTest(unittest.TestCase):
         app.button("Continue").click()
 
     def get_file_chooser(self, name):
-        if os.environ["DD_MODE"] == "snap":
-            # snap uses native dialog with an old gtk
-            dlg = Gtk4Node(tree.root).child(roleName="dialog", name=name)
-        else:
-            dlg = Gtk4Node(tree.root).child(roleName="filler", name=name)
+        dlg = Gtk4Node(tree.root).child(roleName="dialog", name=name)
 
         # Focus dialog (not always done automatically with portal dialogs)
         dlg.child(roleName="panel").click()
