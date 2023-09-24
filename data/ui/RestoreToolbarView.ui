@@ -13,6 +13,9 @@ SPDX-FileCopyrightText: Michael Terry
         </child>
         <child type="top">
           <object class="GtkSearchBar" id="search_bar">
+            <accessibility>
+              <relation name="labelled-by">search_entry</relation>
+            </accessibility>
             <child>
               <object class="GtkSearchEntry" id="search_entry">
                 <accessibility>
@@ -27,9 +30,6 @@ SPDX-FileCopyrightText: Michael Terry
         </property>
         <child type="bottom">
           <object class="GtkActionBar">
-            <accessibility>
-              <property name="label" translatable="yes">Actions</property>
-            </accessibility>
             <child>
               <object class="GtkButton" id="restore_button">
                 <property name="label" translatable="yes">_Restore</property>

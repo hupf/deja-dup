@@ -71,12 +71,13 @@ public class FileStore : Object, ListModel
     public string path {get; construct;}
     public Icon icon {get; construct;}
     public Icon emblem {get; construct;}
+    public string description {get; construct;}
 
     internal Item(DejaDup.FileTree.Node node, string collate_key,
-                  string? path, Icon icon, Icon? emblem)
+                  string? path, Icon icon, Icon? emblem, string? description)
     {
       Object(node: node, collate_key: collate_key, path: path, icon: icon,
-             emblem: emblem);
+             emblem: emblem, description: description);
     }
   }
 
@@ -192,6 +193,13 @@ public class FileStore : Object, ListModel
       emblem = new ThemedIcon("emblem-symbolic-link");
     }
 
+    string description = _("File");
+    if (node.kind == FileType.SYMBOLIC_LINK) {
+      description = _("Link");
+    } else if (node.kind == FileType.DIRECTORY) {
+      description = _("Folder");
+    }
+
     // Get relative path from root node
     unowned var iter = node;
     string path = "";
@@ -203,7 +211,7 @@ public class FileStore : Object, ListModel
       iter = iter.parent;
     }
 
-    items.add(new Item(node, collate_key, path, icon, emblem));
+    items.add(new Item(node, collate_key, path, icon, emblem, description));
   }
 
   void handle_listed_files(DejaDup.OperationFiles op, DejaDup.FileTree tree) {

@@ -12,15 +12,15 @@ SPDX-FileCopyrightText: Michael Terry
 
         <signal name="activate" handler="on_add_clicked"/>
 
-        <accessibility>
-          <property name="label" translatable="yes">Add</property>
-        </accessibility>
-
         <child>
           <object class="GtkButton">
             <property name="can-focus">false</property>
             <property name="has-frame">false</property>
             <property name="icon-name">list-add-symbolic</property>
+
+            <accessibility>
+              <property name="label" translatable="yes">Add</property>
+            </accessibility>
 
             <signal name="clicked" handler="on_add_clicked"/>
           </object>
