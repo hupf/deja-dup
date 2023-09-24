@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-02 20:04+0000\n"
-"PO-Revision-Date: 2023-09-05 18:58+0200\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-25 00:32+0200\n"
 "Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
 "Language-Team: Hungarian <openscope at fsf dot hu>\n"
 "Language: hu\n"
@@ -325,7 +325,7 @@ msgstr "Visszaállítás…"
 msgid "Restore in progress"
 msgstr "Visszaállítás folyamatban"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "A biztonsági mentés nem készíthető el automatikusan"
 
@@ -452,6 +452,19 @@ msgstr[1] "Minden %d nap"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "A _Restic használata a Duplicity helyett"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Fájl"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Hivatkozás"
+
+#: app/FileStore.vala:200
+#| msgid "_Folder"
+msgid "Folder"
+msgstr "Mappa"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -592,7 +605,7 @@ msgid "Back"
 msgstr "Vissza"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Keresés"
 
@@ -629,7 +642,7 @@ msgstr "Sorolja fel a visszaállítandó fájlokat"
 msgid "An operation is already in progress"
 msgstr "Már folyamatban van egy művelet"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Meskó Balázs <mesko dot balazs at fsf dot hu>\n"
@@ -658,7 +671,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Biztonsági mentések"
 
@@ -925,7 +938,7 @@ msgstr ""
 "A meghajtó egyedi fájlrendszer azonosítója. A meghajtó csatlakoztatásakor ez "
 "alapján lehet beazonosítani."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Név"
 
@@ -1044,44 +1057,48 @@ msgstr "Biztonságimentés-figyelő"
 msgid "Schedules backups at regular intervals"
 msgstr "Ütemezett biztonsági mentés rendszeres időközönként"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Fájlok"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Biztonsági mentés fájljainak keresése…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "A mappa üres"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Nincs találat"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Próbáljon mást keresni"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "Új_rapróbálkozás"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Kapcsolódás"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Titkosítási jelszó szükséges"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "Jelszó _megadása"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Hely"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Hozzáadás"
 
@@ -1123,9 +1140,14 @@ msgstr "Fiókhozzáférés _visszaállítása"
 msgid "Ser_ver Address"
 msgstr "Kiszolgáló _címe"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Hely"
+
+#: data/ui/HelpButton.ui:28
+#| msgid "_Help"
+msgid "Help"
+msgstr "Súgó"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1199,11 +1221,6 @@ msgstr "A Biztonsági mentések _névjegye"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Legfrissebb biztonsági mentés"
-
-#: data/ui/RestoreToolbarView.ui:31
-#| msgid "Location"
-msgid "Actions"
-msgstr "Műveletek"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
