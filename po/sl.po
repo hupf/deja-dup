@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-30 17:40+0200\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-24 22:45+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "Language: sl\n"
@@ -328,7 +328,7 @@ msgstr "Poteka obnavljanje …"
 msgid "Restore in progress"
 msgstr "Trenutno poteka obnavljanje varnostne kopije"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Samodejno ustvarjanje varnostne kopije ni mogoče"
 
@@ -463,6 +463,18 @@ msgstr[3] "Vsake %d dni"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Uporabi _Restic namesto Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Datoteka"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Povezava"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Mapa"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -606,7 +618,7 @@ msgid "Back"
 msgstr "Nazaj"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Iskanje"
 
@@ -643,7 +655,7 @@ msgstr "Navesti je treba datoteke za obnovitev"
 msgid "An operation is already in progress"
 msgstr "Opravilo je že v teku."
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Matej Urbančič <mateju@src.gnome.org>\n"
@@ -668,7 +680,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Varnostne kopije Déjà Dup"
 
@@ -927,7 +939,7 @@ msgstr ""
 "Enolično določilo datotečnega sistema za pogon, ki se uporablja za "
 "prepoznavanje pogona, ko je ta priklopljen."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Ime"
 
@@ -1045,44 +1057,48 @@ msgstr "Nadzornik varnostnih kopij"
 msgid "Schedules backups at regular intervals"
 msgstr "Določanje urnika ustvarjanja varnostnih kopij"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Datoteke"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Poteka preiskovanje datotek varnostne kopije …"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Mapa je prazna."
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Ni najdenih zadetkov."
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Poskusite drugačno iskanje"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "Poskusi _znova"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Vzpostavi povezavo"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Zahtevano je šifrirno geslo"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Vpis gesla"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Mesto"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Dodaj"
 
@@ -1124,9 +1140,13 @@ msgstr "_Ponastavi dostop do računa"
 msgid "Ser_ver Address"
 msgstr "Naslo_v strežnika"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Mesto"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Pomoč"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1200,10 +1220,6 @@ msgstr "_O programu"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Zadnja varnostna kopija"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Dejanja"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
