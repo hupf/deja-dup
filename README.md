@@ -19,6 +19,8 @@ Déjà Dup focuses on ease of use and personal, accidental data loss.
 If you need a full system backup or an archival program, you may prefer other
 backup apps.
 
+[![Download on Flathub](https://dl.flathub.org/assets/badges/flathub-badge-en.png)](https://flathub.org/apps/org.gnome.DejaDup)
+
 ## Building
 
 If you are hacking on Déjà Dup, see [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -29,7 +31,6 @@ Or if you are packaging Déjà Dup for a distribution, see
 ## Links
 
  * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
- * [Download](https://wiki.gnome.org/Apps/DejaDup/Download)
  * [Get involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
  * [Chat room](https://matrix.to/#/#deja-dup:gnome.org)
  * [Forums](https://discourse.gnome.org/tags/c/applications/7/deja-dup)
