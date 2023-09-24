@@ -8,7 +8,7 @@ project(
   'vala',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.64',
-  version: '45.1',
+  version: '45.2',
 )
 
 gnome = import('gnome')

@@ -107,7 +107,6 @@ public class RestoreToolbarView : Adw.Bin
   }
 
   void selection_changed() {
-    print("MIKE: receiving selection as %d\n", (int)browser.has_selection);
     restore_button.sensitive = browser.has_selection;
   }
 
