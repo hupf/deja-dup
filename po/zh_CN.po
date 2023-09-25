@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 11:15+0800\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-25 09:23+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:15+0000\n"
-"X-Generator: Gtranslator 42.0\n"
+"X-Generator: Gtranslator 45.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -314,7 +314,7 @@ msgstr "正在恢复…"
 msgid "Restore in progress"
 msgstr "恢复正在进行"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "无法自动备份"
 
@@ -437,6 +437,18 @@ msgstr[0] "每 %d 天"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "使用 _Restic 替代 Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "文件"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "链接"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "文件夹"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -572,7 +584,7 @@ msgid "Back"
 msgstr "后退"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "搜索"
 
@@ -609,7 +621,7 @@ msgstr "请列出要恢复的文件"
 msgid "An operation is already in progress"
 msgstr "已经有一个操作在进行"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -640,7 +652,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup 备份"
 
@@ -874,7 +886,7 @@ msgid ""
 "when it is plugged in."
 msgstr "该驱动器的唯一文件系统标识符，用于在插入该驱动器时进行识别。"
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "名称"
 
@@ -977,44 +989,48 @@ msgstr "备份监视器"
 msgid "Schedules backups at regular intervals"
 msgstr "计划定期备份"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "文件"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "正在扫描备份文件…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "文件夹为空"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "未找到项目"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "尝试不同的搜索"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "重试(_R)"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "连接(_C)"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "需要加密密码"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "输入密码(_E)"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "位置"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "添加"
 
@@ -1055,9 +1071,13 @@ msgstr "重置帐户访问(_R)"
 msgid "Ser_ver Address"
 msgstr "服务器地址(_V)"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "位置(_L)"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "帮助"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1130,10 +1150,6 @@ msgstr "关于备份(_A)"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "最近的备份"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "动作"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1612,6 +1628,9 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "备份将在不按流量计费的网络连接可用时开始。"
 
+#~ msgid "Actions"
+#~ msgstr "动作"
+
 #~ msgid "Restore to _specific folder:"
 #~ msgstr "恢复到指定文件夹(_S)："
 
@@ -1736,9 +1755,6 @@ msgstr "备份将在不按流量计费的网络连接可用时开始。"
 #~ msgid ""
 #~ "Not all files were successfully backed up.  See dialog for more details."
 #~ msgstr "未能成功备份全部文件。更多细节参见对话框。"
-
-#~ msgid "File"
-#~ msgstr "文件"
 
 #~ msgid "Categories"
 #~ msgstr "分类"
@@ -1981,8 +1997,8 @@ msgstr "备份将在不按流量计费的网络连接可用时开始。"
 #~ msgstr "权限不够"
 
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
-#~ "\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a "
+#~ "href=\"%s\">online</a>."
 #~ msgstr "您可以在线<a href=\"%s\">注册</a>一个 Rackspace 云文件帐号。"
 
 #~ msgid "Connect to Rackspace Cloud Files"
