@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-31 22:20+0300\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-25 09:50+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -323,7 +323,7 @@ msgstr "Відновлення…"
 msgid "Restore in progress"
 msgstr "Виконуємо відновлення"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
@@ -454,6 +454,19 @@ msgstr[2] "Кожен %d днів"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Скористатися _Restic замість Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Файл"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Посилання"
+
+#: app/FileStore.vala:200
+#| msgid "_Folder"
+msgid "Folder"
+msgstr "Тека"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -599,7 +612,7 @@ msgid "Back"
 msgstr "Назад"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Пошук"
 
@@ -636,7 +649,7 @@ msgstr "Будь ласка, вкажіть список файлів для в�
 msgid "An operation is already in progress"
 msgstr "Операція вже виконується"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -661,7 +674,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "«Резервні копії» Déjà Dup"
 
@@ -927,7 +940,7 @@ msgstr ""
 "використовується для розпізнавання диска під час його з'єднання із "
 "комп'ютером."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Назва"
 
@@ -1048,44 +1061,48 @@ msgstr "Спостерігач резервного копіювання"
 msgid "Schedules backups at regular intervals"
 msgstr "Резервування з регулярним інтервалом"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Файли"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Шукаємо файли резервних копій…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Тека порожня"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Нічого не знайдено"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Спробуйте інші критерії пошуку"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Повторити"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "З'_єднатись"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Потрібен пароль для доступу"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Місце"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Додати"
 
@@ -1128,9 +1145,14 @@ msgstr "С_кинути доступ до облікового запису"
 msgid "Ser_ver Address"
 msgstr "Адреса с_ервера"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Місце"
+
+#: data/ui/HelpButton.ui:28
+#| msgid "_Help"
+msgid "Help"
+msgstr "Довідка"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1204,11 +1226,6 @@ msgstr "_Про Резервні копії"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Найсвіжіша резервна копія"
-
-#: data/ui/RestoreToolbarView.ui:31
-#| msgid "Location"
-msgid "Actions"
-msgstr "Дії"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1719,6 +1736,10 @@ msgid ""
 msgstr ""
 "Резервне копіювання почнеться, коли стане доступним нелімітоване мережеве "
 "з'єднання."
+
+#~| msgid "Location"
+#~ msgid "Actions"
+#~ msgstr "Дії"
 
 #~ msgid "Choose Folders"
 #~ msgstr "Виберіть теки"
