@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-30 11:26+0700\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-25 14:23+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "Language: id\n"
@@ -320,7 +320,7 @@ msgstr "Memulihkan…"
 msgid "Restore in progress"
 msgstr "Pemulihan sedang berlangsung"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Tidak dapat mencadangkan secara otomatis"
 
@@ -443,6 +443,18 @@ msgstr[0] "Setiap %d hari"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Gunakan _Restic bukan Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Berkas"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Tautan"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Folder"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -583,7 +595,7 @@ msgid "Back"
 msgstr "Kembali"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Cari"
 
@@ -620,7 +632,7 @@ msgstr "Harap buat daftar berkas yang akan dipulihkan"
 msgid "An operation is already in progress"
 msgstr "Suatu operasi tengah berlangsung"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -638,7 +650,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Cadangan Déjà Dup"
 
@@ -903,7 +915,7 @@ msgstr ""
 "Pengidentifikasi sistem berkas unik untuk kandar, digunakan untuk mengenali "
 "kandar ketika dicolokkan."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Nama"
 
@@ -1020,44 +1032,48 @@ msgstr "Pemantau Cadangan"
 msgid "Schedules backups at regular intervals"
 msgstr "Skedulkan pencadangan dengan jadwal rutin"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Berkas"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Sedang memindai berkas cadangan…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Folder Kosong"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Tidak Ditemukan Hasil"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Coba pencarian lain"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Ulangi"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Sambung"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Dibutuhkan password enkripsi"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Masukkan Kata Sandi"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Lokasi"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Tambah"
 
@@ -1100,9 +1116,13 @@ msgstr "_Reset Akses Akun"
 msgid "Ser_ver Address"
 msgstr "Alamat Ser_ver"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Lokasi"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Bantuan"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1176,10 +1196,6 @@ msgstr "Tent_ang Cadangan"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Cadangan Terkini"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Aksi"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1682,6 +1698,9 @@ msgid ""
 msgstr ""
 "Pembuatan salinan cadangan akan mulai ketika koneksi jaringan tanpa kuota "
 "tersedia."
+
+#~ msgid "Actions"
+#~ msgstr "Aksi"
 
 #~ msgid "Choose Folders"
 #~ msgstr "Pilih Folder"
