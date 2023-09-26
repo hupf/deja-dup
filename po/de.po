@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-30 21:01+0200\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-25 07:33+0200\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -329,7 +329,7 @@ msgstr "Datenwiederherstellung …"
 msgid "Restore in progress"
 msgstr "Wiederherstellung läuft"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Automatische Datensicherungen können nicht erstellt werden"
 
@@ -456,6 +456,18 @@ msgstr[1] "Alle %d Tage"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "»_Restic« statt »Duplicity« nutzen"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Datei"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Verweis"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Ordner"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -600,7 +612,7 @@ msgid "Back"
 msgstr "Zurück"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Suche"
 
@@ -637,7 +649,7 @@ msgstr "Bitte wiederherzustellende Dateien auflisten"
 msgid "An operation is already in progress"
 msgstr "Ein Vorgang läuft bereits"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -699,7 +711,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Datensicherungen"
 
@@ -966,7 +978,7 @@ msgstr ""
 "Das eindeutige Dateisystemkennzeichen für das Laufwerk, damit es beim "
 "Anschließen erkannt wird."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Name"
 
@@ -1086,44 +1098,48 @@ msgstr "Datensicherungsüberwachung"
 msgid "Schedules backups at regular intervals"
 msgstr "Plant Sicherungen in regelmäßigen Abständen"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Dateien"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Einlesen der gesicherten Dateien …"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Ordner ist leer"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Keine Ergebnisse gefunden"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Versuchen Sie eine andere Suche"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "E_rneut versuchen"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Verbinden"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Verschlüsselungspasswort erforderlich"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "Passwort _eingeben"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Ort"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Hinzufügen"
 
@@ -1166,9 +1182,13 @@ msgstr "Kontozugriff zu_rücksetzen"
 msgid "Ser_ver Address"
 msgstr "Ser_veradresse"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Ort"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Hilfe"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1242,10 +1262,6 @@ msgstr "_Info zu Datensicherungen"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Aktuellste Datensicherung"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Aktionen"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1760,6 +1776,9 @@ msgstr ""
 "Die Datensicherung wird durchgeführt, sobald eine ungetaktete Verbindung "
 "verfügbar ist."
 
+#~ msgid "Actions"
+#~ msgstr "Aktionen"
+
 #~ msgid "Choose Folders"
 #~ msgstr "Ordner wählen"
 
@@ -1892,9 +1911,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Nicht alle Dateien wurden gesichert. Bitte lesen Sie den Hinweis für "
 #~ "genauere Informationen."
-
-#~ msgid "File"
-#~ msgstr "Datei"
 
 #~ msgid "Categories"
 #~ msgstr "Kategorien"
@@ -2059,10 +2075,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Berechtigungen sind erforderlich, um Dateien in Systemordnern "
 #~ "wiederherzustellen"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Help"
-#~ msgstr "Hilfe"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
