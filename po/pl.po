@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 15:52+0200\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-10-01 14:48+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -322,7 +322,7 @@ msgstr "Przywracanie…"
 msgid "Restore in progress"
 msgstr "Trwa przywracanie z kopii zapasowej"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Nie można wykonać automatycznej kopii zapasowej"
 
@@ -453,6 +453,18 @@ msgstr[2] "Co %d dni"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "_Restic zamiast Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Plik"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Dowiązanie symboliczne"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Katalog"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -599,7 +611,7 @@ msgid "Back"
 msgstr "Wstecz"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Wyszukiwanie"
 
@@ -636,7 +648,7 @@ msgstr "Proszę podać listę plików do przywrócenia"
 msgid "An operation is already in progress"
 msgstr "Działanie już trwa"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Piotr Drąg <piotrdrag@gmail.com>, 2010-2023\n"
@@ -657,7 +669,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Kopie zapasowe Déjà Dup"
 
@@ -924,7 +936,7 @@ msgstr ""
 "Unikalny identyfikator systemu plików dla dysku, używany do rozpoznawania go "
 "po podłączeniu."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Nazwa"
 
@@ -1041,44 +1053,48 @@ msgstr "Monitor kopii zapasowych"
 msgid "Schedules backups at regular intervals"
 msgstr "Planowanie kopii zapasowych w regularnych odstępach czasu"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Pliki"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Wyszukiwanie plików w kopii zapasowej…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Katalog jest pusty"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Brak wyników"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Proszę spróbować innych słów"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "Po_nów"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "P_ołącz"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Wymagane jest hasło szyfrowania"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Wprowadź hasło"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Położenie"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Dodaj"
 
@@ -1121,9 +1137,13 @@ msgstr "_Przywróć dostęp do konta"
 msgid "Ser_ver Address"
 msgstr "Adres _serwera"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Położenie"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Pomoc"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1197,10 +1217,6 @@ msgstr "_O programie"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Najnowsza kopia zapasowa"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Działania"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
