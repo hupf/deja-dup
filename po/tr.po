@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-30 15:48+0300\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-10-02 09:59+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -322,7 +322,7 @@ msgstr "Geri Yükleniyor…"
 msgid "Restore in progress"
 msgstr "Geri yükleme sürüyor"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Kendiliğinden yedeklenemez"
 
@@ -445,6 +445,18 @@ msgstr[0] "Her %d günde bir"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Duplicity yerine _Restic kullan"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Dosya"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Bağlantı"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Klasör"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -581,7 +593,7 @@ msgid "Back"
 msgstr "Geri"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Ara"
 
@@ -618,7 +630,7 @@ msgstr "Lütfen geri yüklenecek dosyaları listeleyin"
 msgid "An operation is already in progress"
 msgstr "Bir işlem zaten sürüyor"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 
@@ -627,7 +639,7 @@ msgstr "Emin Tufan Çetin <etcetin@gmail.com>"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Yedekleri"
 
@@ -891,7 +903,7 @@ msgstr ""
 "Sürücünün takılı olduğu sürücüyü tanıması için kullanılan özgün dosya "
 "sistemi tanımlayıcısı."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Ad"
 
@@ -1004,44 +1016,48 @@ msgstr "Yedek Gözlemcisi"
 msgid "Schedules backups at regular intervals"
 msgstr "Düzenli aralıklarla planlanmış yedeklemeler"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Dosyalar"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Yedek dosyaları taranıyor…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Klasör Boş"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Sonuç Bulunamadı"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Başka arama dene"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Yeniden Dene"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Bağlan"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Şifreleme parolası gerekli"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "Parolayı _Gir"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Konum"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Ekle"
 
@@ -1082,9 +1098,13 @@ msgstr "Hesap Erişimini _Sıfırla"
 msgid "Ser_ver Address"
 msgstr "Sun_ucu Adresi"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Konum"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Yardım"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1157,10 +1177,6 @@ msgstr "Yedekler _Hakkında"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "En Son Yedek"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Eylemler"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1655,6 +1671,9 @@ msgstr "Güç tutumu kipi etkin olmadığında yedekleme başlayacaktır."
 msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Ölçülmemiş ağ bağlantısı olduğunda yedekleme başlayacaktır."
+
+#~ msgid "Actions"
+#~ msgstr "Eylemler"
 
 #~ msgid "Choose Folders"
 #~ msgstr "Klasör Seç"
