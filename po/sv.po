@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-08-30 06:03+0200\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-24 22:53+0200\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
@@ -321,7 +321,7 @@ msgstr "Återställer…"
 msgid "Restore in progress"
 msgstr "Återställning pågår"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Det går inte att säkerhetskopiera automatiskt"
 
@@ -448,6 +448,18 @@ msgstr[1] "%d dagars intervall"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Använd _Restic i stället för Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Fil"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Länk"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Mapp"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -591,7 +603,7 @@ msgid "Back"
 msgstr "Bakåt"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Sök"
 
@@ -628,7 +640,7 @@ msgstr "Lista filer att återställa"
 msgid "An operation is already in progress"
 msgstr "En operation pågår redan"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -652,7 +664,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup Säkerhetskopior"
 
@@ -916,7 +928,7 @@ msgstr ""
 "Den unika filsystemsidentifieraren för enheten, används för att känna igen "
 "enheten när den är ansluten."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Namn"
 
@@ -1034,44 +1046,48 @@ msgstr "Övervakning för säkerhetskopiering"
 msgid "Schedules backups at regular intervals"
 msgstr "Schemalägger säkerhetskopiering vid regelbundna intervaller"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Filer"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Söker av säkerhetskopior…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Mappen är tom"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Inga resultat hittades"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Försök med en annan sökning"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "Försök _igen"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "A_nslut"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Lösenord för kryptering krävs"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Ange lösenord"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Plats"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Lägg till"
 
@@ -1114,9 +1130,13 @@ msgstr "Å_terställ kontoåtkomst"
 msgid "Ser_ver Address"
 msgstr "Ser_veradress"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Plats"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Hjälp"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1190,10 +1210,6 @@ msgstr "_Om Säkerhetskopior"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Senaste säkerhetskopian"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Åtgärder"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1696,6 +1712,9 @@ msgid ""
 msgstr ""
 "Säkerhetskopiering startar när en nätverksanslutning utan datakostnader blir "
 "tillgänglig."
+
+#~ msgid "Actions"
+#~ msgstr "Åtgärder"
 
 #~ msgid "Choose Folders"
 #~ msgstr "Välj mappar"
