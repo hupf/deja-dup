@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 21:22+1000\n"
+"POT-Creation-Date: 2023-09-24 19:27+0000\n"
+"PO-Revision-Date: 2023-09-27 19:07+1000\n"
 "Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
@@ -325,7 +325,7 @@ msgstr "Восстановление…"
 msgid "Restore in progress"
 msgstr "Восстановление в процессе выполнения"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Невозможно автоматическое резервное копирование"
 
@@ -456,6 +456,18 @@ msgstr[2] "Каждые %d дней"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Использовать _Restic вместо Duplicity"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Файл"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Ссылка"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Папка"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -599,7 +611,7 @@ msgid "Back"
 msgstr "Назад"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Поиск"
 
@@ -636,7 +648,7 @@ msgstr "Пожалуйста, перечислите файлы для восс�
 msgid "An operation is already in progress"
 msgstr "Операция уже выполняется"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -671,7 +683,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Резервные копии Déjà Dup"
 
@@ -937,7 +949,7 @@ msgstr ""
 "Уникальный идентификатор накопителя, который используется для опознавания "
 "накопителя при его подключении."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
 msgid "Name"
 msgstr "Имя"
 
@@ -1055,44 +1067,48 @@ msgstr "Менеджер резервного копирования"
 msgid "Schedules backups at regular intervals"
 msgstr "Производит резервное копирование через регулярные интервалы"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+msgid "Files"
+msgstr "Файлы"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Сканирование резервных копий файлов…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Папка пуста"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Не найдено результатов"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Попробуйте поискать по-другому"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "П_овторить"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Подключиться"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Требуется пароль для шифрования"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Введите пароль"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:314
 msgid "Location"
 msgstr "Расположение"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Добавить"
 
@@ -1135,9 +1151,13 @@ msgstr "Восстановить доступ к учетной записи"
 msgid "Ser_ver Address"
 msgstr "Ад_рес сервера"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Расположение"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Справка"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1186,11 +1206,11 @@ msgstr "Restic"
 
 #: data/ui/PrimaryMenuButton.ui:15
 msgid "Main Menu"
-msgstr "Главное Меню"
+msgstr "Главное меню"
 
 #: data/ui/PrimaryMenuButton.ui:22
 msgid "_Select All"
-msgstr "Выделить вс_е"
+msgstr "Выделить _всё"
 
 #: data/ui/PrimaryMenuButton.ui:29
 msgid "_Preferences"
@@ -1211,10 +1231,6 @@ msgstr "_О приложении"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Недавние резервные копии"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Действия"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1720,6 +1736,9 @@ msgid ""
 msgstr ""
 "Резервное копирование начнется, когда будет доступно безлимитное сетевое "
 "соединение."
+
+#~ msgid "Actions"
+#~ msgstr "Действия"
 
 #~ msgid "Choose Folders"
 #~ msgstr "Выберите папки"
