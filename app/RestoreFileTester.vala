@@ -75,12 +75,12 @@ public class RestoreFileTester : Object
         // a file in it. But testing write access is probably good enough for now.
         exists = false;
         string iter = path;
-        int access = -1;
-        while (access != 0 && Posix.errno == Posix.ENOENT) {
+        int can_access = -1;
+        while (can_access != 0 && Posix.errno == Posix.ENOENT) {
           iter = Path.get_dirname(iter);
-          access = Posix.euidaccess(iter, Posix.W_OK | Posix.X_OK);
+          can_access = Posix.access(iter, Posix.W_OK | Posix.X_OK);
         }
-        if (access != 0)
+        if (can_access != 0)
           return false;
       }
     } else {
