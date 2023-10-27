@@ -140,16 +140,6 @@ public class AssistantRestore : AssistantOperation
     }
   }
 
-  string? get_abs_path(string user_path)
-  {
-    if (user_path == "")
-      return null;
-    else if (!Path.is_absolute(user_path))
-      return Path.build_filename(Environment.get_home_dir(), user_path);
-    else
-      return user_path;
-  }
-
   Gtk.Widget make_restore_dest_page()
   {
     var orig_row = new Adw.ActionRow();
@@ -182,7 +172,7 @@ public class AssistantRestore : AssistantOperation
     cust_radio.can_focus = false;
     cust_radio.toggled.connect((r) => {
       if (r.active) {
-        restore_location = get_abs_path(cust_entry_row.text);
+        restore_location = DejaDup.resolve_user_dir(cust_entry_row.text);
         restore_location_updated();
       }
       cust_entry_row.sensitive = r.active;
@@ -195,7 +185,7 @@ public class AssistantRestore : AssistantOperation
     cust_entry_row.activates_default = true;
     cust_entry_row.add_suffix(open_button);
     cust_entry_row.changed.connect(() => {
-      restore_location = get_abs_path(cust_entry_row.text);
+      restore_location = DejaDup.resolve_user_dir(cust_entry_row.text);
       restore_location_updated();
     });
 

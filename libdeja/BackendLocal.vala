@@ -24,18 +24,11 @@ public class BackendLocal : BackendFile
   // path may be relative to home or absolute
   public static File? get_file_for_path(string path)
   {
-    var root = File.new_for_path(Environment.get_home_dir());
+    var resolved = DejaDup.resolve_user_dir(path);
+    if (resolved == null)
+      return null;
 
-    if (path == "~") {
-      return root;
-    }
-
-    var child = path;
-    if (child.has_prefix("~/")) {
-      child = child.substring(2);
-    }
-
-    return root.resolve_relative_path(child);
+    return File.new_for_path(resolved);
   }
 
   // returns either an absolute path or a relative one from home

@@ -173,4 +173,23 @@ void expand_links_in_list(ref List<File> all, bool keep_internal)
     expand_links_in_file(file, ref all, keep_internal);
 }
 
+// Resolves a user-input directory to a full path.
+// May be relative (to home dir) or start with a tilde (~).
+// Does NOT do keyword parsing like $DOCUMENTS above.
+public string? resolve_user_dir(string user_path)
+{
+  var homedir = Environment.get_home_dir();
+
+  if (user_path == "")
+    return null;
+  else if (user_path == "~")
+    return homedir;
+  else if (user_path.has_prefix("~/"))
+    return Path.build_filename(homedir, user_path.substring(2));
+  else if (!Path.is_absolute(user_path))
+    return Path.build_filename(homedir, user_path);
+  else
+    return user_path;
+}
+
 } // end namespace
