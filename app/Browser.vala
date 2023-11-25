@@ -30,6 +30,8 @@ class Browser : Gtk.Grid
   [GtkChild]
   unowned Gtk.Label pause_label;
   [GtkChild]
+  unowned Gtk.Label packagekit_label;
+  [GtkChild]
   unowned Gtk.GridView icon_view;
   [GtkChild]
   unowned Gtk.ColumnView list_view;
@@ -45,6 +47,8 @@ class Browser : Gtk.Grid
   string saved_passphrase; // most recent successful password
   unowned MainWindow app_window;
   unowned TimeCombo timecombo;
+  string[] packagekit_ids;
+  bool operation_blocked = false;
 
   construct
   {
@@ -233,6 +237,45 @@ class Browser : Gtk.Grid
     passphrase_loop.run();
   }
 
+  [GtkCallback]
+  async void packagekit_install()
+  {
+#if HAS_PACKAGEKIT
+    switch_overlay_to("packagekit-progress");
+    operation_blocked = true;
+
+    try {
+      var client = new Pk.Client();
+      yield client.install_packages_async(0, packagekit_ids, null, (p, t) => {});
+      operation_blocked = false;
+      maybe_start_operation();
+    }
+    catch (Error e) {
+      operation_blocked = false;
+      switch_overlay_to_error(e.message);
+    }
+#endif
+  }
+
+#if HAS_PACKAGEKIT
+  void switch_overlay_to_packagekit(DejaDup.Operation op, string[] names, string[] ids)
+  {
+    stop_operation();
+
+    var pkgs = "";
+    foreach (var s in names) {
+      if (pkgs != "")
+        pkgs += ", ";
+      pkgs += "<b>%s</b>".printf(s);
+    }
+    packagekit_label.label = _("In order to continue, the following packages need to be installed:") + " " + pkgs;
+    packagekit_ids = ids;
+    Notifications.attention_needed(app_window, _("Backups needs to install packages to continue"));
+
+    switch_overlay_to("packagekit");
+  }
+#endif
+
   void switch_overlay_to_empty_folder() {
     switch_overlay_to("empty-folder");
   }
@@ -308,6 +351,10 @@ class Browser : Gtk.Grid
 
     operation.set_passphrase(saved_passphrase); // start with remembered password
     operation.passphrase_required.connect(switch_overlay_to_passphrase);
+
+#if HAS_PACKAGEKIT
+    operation.install.connect(switch_overlay_to_packagekit);
+#endif
 
     operation.backend.needed_mount_op.connect(switch_overlay_to_mount_needed);
     operation.backend.mount_op = mount_op;
@@ -398,7 +445,7 @@ class Browser : Gtk.Grid
     if (operation != null)
       return;
 
-    if (!app_window_is_active() || !is_visible_page)
+    if (operation_blocked || !app_window_is_active() || !is_visible_page)
       return;
 
     if (!time_filled)

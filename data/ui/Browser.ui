@@ -207,6 +207,76 @@ SPDX-FileCopyrightText: Michael Terry
                         </property>
                       </object>
                     </child>
+                    <child>
+                      <object class="GtkStackPage">
+                        <property name="name">packagekit</property>
+                        <property name="child">
+                          <object class="GtkGrid">
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="row_spacing">12</property>
+                            <child>
+                              <object class="GtkLabel" id="packagekit_label">
+                                <property name="max-width-chars">50</property>
+                                <property name="use-markup">true</property>
+                                <property name="wrap">true</property>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkButton">
+                                <property name="halign">center</property>
+                                <property name="label" translatable="yes" context="verb">_Install</property>
+                                <property name="receives-default">true</property>
+                                <property name="use-underline">true</property>
+                                <signal name="clicked" handler="packagekit_install"/>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">1</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
+                    <child>
+                      <object class="GtkStackPage">
+                        <property name="name">packagekit-progress</property>
+                        <property name="child">
+                          <object class="GtkGrid">
+                            <property name="halign">center</property>
+                            <property name="valign">center</property>
+                            <property name="row-spacing">8</property>
+                            <child>
+                              <object class="GtkSpinner">
+                                <property name="width-request">64</property>
+                                <property name="height-request">64</property>
+                                <property name="halign">center</property>
+                                <property name="valign">center</property>
+                                <property name="spinning">true</property>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">0</property>
+                                </layout>
+                              </object>
+                            </child>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="label" translatable="yes">Installing packages…</property>
+                                <layout>
+                                  <property name="column">0</property>
+                                  <property name="row">1</property>
+                                </layout>
+                              </object>
+                            </child>
+                          </object>
+                        </property>
+                      </object>
+                    </child>
                   </object>
                 </child>
               </object>
