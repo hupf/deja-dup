@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-24 19:27+0000\n"
-"PO-Revision-Date: 2023-09-25 07:33+0200\n"
+"POT-Creation-Date: 2023-11-25 18:20+0000\n"
+"PO-Revision-Date: 2023-11-25 19:59+0100\n"
 "Last-Translator: Jürgen Benvenuti <gastornis@posteo.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -137,7 +137,7 @@ msgstr "Einlesen läuft …"
 msgid "_Details"
 msgstr "_Details"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:271
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Zum Fortfahren müssen die folgenden Pakete installiert werden:"
 
@@ -219,12 +219,12 @@ msgid "Backups needs your encryption password to continue"
 msgstr ""
 "Datensicherungen benötigt Ihr Verschlüsselungspasswort, um fortzufahren"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Installieren"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:273
 msgid "Backups needs to install packages to continue"
 msgstr "Datensicherungen muss Pakete installieren, um fortzufahren"
 
@@ -236,96 +236,96 @@ msgstr "Wiederherstellen"
 msgid "_Restore"
 msgstr "_Wiederherstellen"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Dateien an den ursprünglichen _Orten wiederherstellen"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "In einem anderen Ordner wiederher_stellen"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Ordner"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr ""
 "Datensicherungen fehlt die Berechtigung, um die folgenden Dateien "
 "wiederherstellen zu können:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Ort der Datensicherung"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Wiederherstellungsdatum"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Ordner der Wiederherstellung"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Auf Sicherungen wird geprüft …"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Von wann wiederherstellen?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Wohin soll die Datensicherung wiederhergestellt werden?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Wiederherstellung läuft:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Keine Datensicherungen zur Wiederherstellung gefunden"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Ursprünglicher Ort"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datei, die wiederhergestellt werden soll"
 msgstr[1] "Dateien, die wiederhergestellt werden sollen"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Wiederherstellung fehlgeschlagen"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Wiederherstellung abgeschlossen"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Ihre Datei wurde erfolgreich wiederhergestellt."
 msgstr[1] "Ihre Dateien wurden erfolgreich wiederhergestellt."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Datenwiederherstellung …"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Wiederherstellung läuft"
 
@@ -333,11 +333,11 @@ msgstr "Wiederherstellung läuft"
 msgid "Cannot back up automatically"
 msgstr "Automatische Datensicherungen können nicht erstellt werden"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:217
 msgid "Authentication needed"
 msgstr "Authentifizierung nötig"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Keine Datensicherungsdateien gefunden"
 
@@ -725,11 +725,11 @@ msgstr "Schützen Sie sich vor Datenverlust"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;backup;Datensicherung;Sicherung;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Sichern"
 
@@ -978,7 +978,7 @@ msgstr ""
 "Das eindeutige Dateisystemkennzeichen für das Laufwerk, damit es beim "
 "Anschließen erkannt wird."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Name"
 
@@ -1063,24 +1063,24 @@ msgstr ""
 "Archivprogramm benötigen, könnten andere Datensicherungsprogramme besser "
 "geeignet sein."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:103
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Sichern Sie Ihre Daten automatisch. Einmal einstellen und nie wieder darum "
 "kümmern"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:107
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Dateien wiederherstellen ist ein Kinderspiel. Durchsuchen Sie Ihre Dateien "
 "und wählen Sie Dateien zur Wiederherstellung aus"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:111
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Sichern Sie in die Cloud, auf einen Netzwerkrechner oder ein lokales Laufwerk"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:115
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1098,7 +1098,7 @@ msgstr "Datensicherungsüberwachung"
 msgid "Schedules backups at regular intervals"
 msgstr "Plant Sicherungen in regelmäßigen Abständen"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Dateien"
 
@@ -1135,7 +1135,11 @@ msgstr "Verschlüsselungspasswort erforderlich"
 msgid "_Enter Password"
 msgstr "Passwort _eingeben"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Pakete werden installiert …"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Ort"
 
