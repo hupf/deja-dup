@@ -18,7 +18,6 @@ finish-args:
   - --share=network
   - --socket=fallback-x11
   - --socket=wayland
-  - --talk-name=com.feralinteractive.GameMode # can drop with xdg-desktop-portal 1.16
   - --talk-name=org.gtk.vfs.*
 
 modules:
@@ -27,8 +26,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/librsync/librsync.git
-        tag: v2.3.2
-        commit: 42b636d2a65ab6914ea7cac50886da28192aaf9b
+        tag: v2.3.4
+        commit: e364852674780e43d578e4239128ff7014190ed3
 
   - ./duplicity.yaml
   - ./pydrive2.yaml # for google drive
