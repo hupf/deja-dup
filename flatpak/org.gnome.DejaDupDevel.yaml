@@ -21,13 +21,6 @@ finish-args:
   - --talk-name=com.feralinteractive.GameMode # can drop with xdg-desktop-portal 1.16
   - --talk-name=org.gtk.vfs.*
 
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.vala-nightly
-
-build-options:
-  prepend-path: /usr/lib/sdk/vala-nightly/bin # from vala extension above
-  prepend-ld-library-path: /usr/lib/sdk/vala-nightly/lib # from vala extension above
-
 modules:
   - name: librsync
     buildsystem: cmake-ninja
