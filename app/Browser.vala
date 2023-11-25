@@ -30,13 +30,17 @@ class Browser : Gtk.Grid
   [GtkChild]
   unowned Gtk.Label pause_label;
   [GtkChild]
-  unowned Gtk.Label packagekit_label;
-  [GtkChild]
   unowned Gtk.GridView icon_view;
   [GtkChild]
   unowned Gtk.ColumnView list_view;
   [GtkChild]
   unowned Gtk.Spinner spinner;
+
+#if HAS_PACKAGEKIT
+  [GtkChild]
+  unowned Gtk.Label packagekit_label;
+  string[] packagekit_ids;
+#endif
 
   DejaDupApp application;
   FileStore store;
@@ -47,7 +51,6 @@ class Browser : Gtk.Grid
   string saved_passphrase; // most recent successful password
   unowned MainWindow app_window;
   unowned TimeCombo timecombo;
-  string[] packagekit_ids;
   bool operation_blocked = false;
 
   construct
