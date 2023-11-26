@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-24 19:27+0000\n"
-"PO-Revision-Date: 2023-09-25 14:23+0700\n"
+"POT-Creation-Date: 2023-11-25 18:20+0000\n"
+"PO-Revision-Date: 2023-11-26 22:55+0700\n"
 "Last-Translator: Kukuh Syafaat <kukuhsyafaat@gnome.org>\n"
 "Language-Team: Indonesian <id@li.org>\n"
 "Language: id\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.3.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -133,7 +133,7 @@ msgstr "Memindai…"
 msgid "_Details"
 msgstr "_Detil"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:271
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Untuk melanjutkan, paket berikut perlu diinstal:"
 
@@ -214,12 +214,12 @@ msgstr "Dibutuhkan Kata Sandi Enkripsi"
 msgid "Backups needs your encryption password to continue"
 msgstr "Pencadangan perlu kata sandi enkripsi Anda untuk melanjutkan"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Pasang"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:273
 msgid "Backups needs to install packages to continue"
 msgstr "Pencadangan perlu memasang paket untuk melanjutkan"
 
@@ -231,92 +231,92 @@ msgstr "Pulihkan"
 msgid "_Restore"
 msgstr "_Pulihkan"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Pulihkan berkas ke lokasi _asal"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Pulihkan _ke folder tertentu"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Map"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Pencadangan tidak memiliki izin untuk memulihkan berkas berikut ini:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Lokasi cadangan"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Tanggal pemulihan"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Map pemulihan"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Memeriksa keberadaan Cadangan…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Memulihkan Sejak Kapan?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Pulihkan Kemana?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Melaksanakan Pemulihan:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Tidak ada cadangan untuk dipulihkan"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Lokasi asal"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Berkas yang akan dipulihkan"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Pemulihan Gagal"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Pemulihan Selesai"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Berkas Anda berhasil dipulihkan."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Berkas Anda berhasil dipulihkan."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Memulihkan…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Pemulihan sedang berlangsung"
 
@@ -324,11 +324,11 @@ msgstr "Pemulihan sedang berlangsung"
 msgid "Cannot back up automatically"
 msgstr "Tidak dapat mencadangkan secara otomatis"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:217
 msgid "Authentication needed"
 msgstr "Otentikasi diperlukan"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Tidak ditemukan adanya berkas cadangan"
 
@@ -664,11 +664,11 @@ msgstr "Lindungi dirimu dari kehilangan data"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Buat Cadangan"
 
@@ -915,7 +915,7 @@ msgstr ""
 "Pengidentifikasi sistem berkas unik untuk kandar, digunakan untuk mengenali "
 "kandar ketika dicolokkan."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Nama"
 
@@ -1000,21 +1000,21 @@ msgstr ""
 "lengkap atau program arsip, Anda mungkin lebih suka aplikasi cadangan "
 "lainnya."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:103
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Cadangkan berkas-berkas Anda secara otomatis — atur itu dan lupakan"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:107
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Memulihkan itu ringan — ramban berkas Anda dan pilih mana yang akan "
 "dipulihkan"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:111
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Cadangkan ke cloud, suatu peladen jaringan, atau drive lokal"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:115
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1032,7 +1032,7 @@ msgstr "Pemantau Cadangan"
 msgid "Schedules backups at regular intervals"
 msgstr "Skedulkan pencadangan dengan jadwal rutin"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Berkas"
 
@@ -1069,7 +1069,11 @@ msgstr "Dibutuhkan password enkripsi"
 msgid "_Enter Password"
 msgstr "_Masukkan Kata Sandi"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Memasang paket…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Lokasi"
 
