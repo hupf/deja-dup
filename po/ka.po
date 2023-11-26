@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-25 03:43+0000\n"
-"PO-Revision-Date: 2023-10-03 05:42+0200\n"
+"POT-Creation-Date: 2023-11-25 18:20+0000\n"
+"PO-Revision-Date: 2023-11-26 09:23+0100\n"
 "Last-Translator: Ekaterine Papava <papava.e@gtu.ge>\n"
 "Language-Team: Georgian <ka@li.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -131,7 +131,7 @@ msgstr "სკანირება…"
 msgid "_Details"
 msgstr "_დეტალები"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:271
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "გასაგრძელებლად, აუცილებელია, შემდეგი პაკეტების დაყენება:"
 
@@ -210,12 +210,12 @@ msgstr "საჭიროა დაშიფვრის პაროლი"
 msgid "Backups needs your encryption password to continue"
 msgstr "მარქაფის გასაგრძელებლად თქვენი დაშიფვრის პაროლია საჭირო"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_დაყენება"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:273
 msgid "Backups needs to install packages to continue"
 msgstr "მარქაფის გასაგრძელებლად საჭიროა შემდეგი პაკეტების დაყენება"
 
@@ -227,92 +227,92 @@ msgstr "აღდგენა"
 msgid "_Restore"
 msgstr "_აღდგენა"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "ფაილების _საწყის მდებარეობაზე აღდგენა"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "_მითითებულ საქაღალდეში აღდგენა"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_საქაღალდე"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "მარქაფს არ აქვს უფლება, შემდეგი ფაილები აღადგინოს:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "მარქაფის მდებარეობა"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "აღდგენის თარიღი"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "საქაღალდის აღდგენა"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "მარქაფების შემოწმება…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "საიდან აღვადგინო და როდის?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "სად  აღვადგინო?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "აღდგენა:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "აღსადგენი მარქაფების გარეშე"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "საწყისი მდებარეობა"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "აღსადგენი ფაილი"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "აღდგენის შეცდომა"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "აღდგენა დასრულდა"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "თქვენი ფაილების აღდგენა წარმატებულია."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "ფაილის აღდგენა წარმატებულია."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "აღდგენა…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "აღდგენა მიმდინარეობს"
 
@@ -320,11 +320,11 @@ msgstr "აღდგენა მიმდინარეობს"
 msgid "Cannot back up automatically"
 msgstr "ავტომატური მარქაფის შეცდომა"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:217
 msgid "Authentication needed"
 msgstr "ავთენტიკაცია საჭიროა"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "მარქაფის ფაილი ვერ ვიპოვა"
 
@@ -649,11 +649,11 @@ msgstr "დაიცავით თავი მონაცემების 
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "მარქაფი"
 
@@ -770,6 +770,7 @@ msgstr ""
 msgid ""
 "The last time Déjà Dup checked whether it should prompt about your password"
 msgstr ""
+"დრო, როცა Déjà Dup-მა ბოლოჯერ გადაამოწმა, საჭირო იყო პაროლის კითხვა, თუ არა"
 
 #: data/app.gschema.xml.in:66
 msgid ""
@@ -872,7 +873,7 @@ msgid ""
 "when it is plugged in."
 msgstr ""
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "სახელი"
 
@@ -943,19 +944,19 @@ msgid ""
 "prefer other backup apps."
 msgstr ""
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:103
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:107
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:111
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:115
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -971,7 +972,7 @@ msgstr "მარქაფის მონიტორი"
 msgid "Schedules backups at regular intervals"
 msgstr "დაგეგმილი მარქაფები რეგულარული შუალედით"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "ფაილები"
 
@@ -1008,7 +1009,11 @@ msgstr "საჭიროა დაშიფვრის პაროლი"
 msgid "_Enter Password"
 msgstr "_შეიყვანეთ პაროლი"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "პაკეტების დაყენება…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "მდებარეობა"
 
