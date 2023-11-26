@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-24 19:27+0000\n"
-"PO-Revision-Date: 2023-09-25 09:50+0300\n"
+"POT-Creation-Date: 2023-11-25 18:20+0000\n"
+"PO-Revision-Date: 2023-11-26 21:48+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -133,7 +133,7 @@ msgstr "Сканування..."
 msgid "_Details"
 msgstr "_Детальніше"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:271
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Щоб продовжити, потрібно встановити наступні пакунки:"
 
@@ -213,12 +213,12 @@ msgstr "Потрібен пароль шифрування"
 msgid "Backups needs your encryption password to continue"
 msgstr "«Резервним копіям» потрібен ваш пароль шифрування, щоб продовжувати"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Встановити"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:273
 msgid "Backups needs to install packages to continue"
 msgstr "«Резервним копіям» слід встановити пакунки, щоб продовжувати"
 
@@ -230,96 +230,96 @@ msgstr "Відновити зі збереженої копії"
 msgid "_Restore"
 msgstr "_Відновити"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Відновити файли до _початкових місць"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Відновити в _спеціальну теку"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Каталог"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "«Резервні копії» не мають прав доступу для відновлення таких файлів:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Розміщення резервних копій"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Дата відновлення"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Тека відновлення"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Перевірка резервних копій..."
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "З якого часу відновити?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Куди відновлювати?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Відновлення:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Немає копій для відновлення"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Оригінальне розташування"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Файл для відновлення"
 msgstr[1] "Файли для відновлення"
 msgstr[2] "Файлів для відновлення"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Відновлення провалено"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Відновлення завершено"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Ваші файли були успішно відновлені."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Файл успішно відновлено."
 msgstr[1] "Файли успішно відновлено."
 msgstr[2] "Файли успішно відновлено."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Відновлення…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Виконуємо відновлення"
 
@@ -327,11 +327,11 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:217
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Резервних копій не знайдено"
 
@@ -464,7 +464,6 @@ msgid "Link"
 msgstr "Посилання"
 
 #: app/FileStore.vala:200
-#| msgid "_Folder"
 msgid "Folder"
 msgstr "Тека"
 
@@ -688,11 +687,11 @@ msgstr "Захистіть себе від втрати даних"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Резервна копія"
 
@@ -940,7 +939,7 @@ msgstr ""
 "використовується для розпізнавання диска під час його з'єднання із "
 "комп'ютером."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Назва"
 
@@ -1026,25 +1025,25 @@ msgstr ""
 "всієї системи або програма для архівації, ви можете віддати перевагу іншим "
 "програмам резервного копіювання."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:103
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Створюйте резервні копії ваших файлів автоматично. Налаштуйте програму і "
 "позбудьтеся клопоту."
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:107
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Відновлення даних є надзвичайно простим. Достатньо вибрати файли і каталог "
 "для відновлення."
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:111
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого "
 "комп'ютера."
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:115
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1061,7 +1060,7 @@ msgstr "Спостерігач резервного копіювання"
 msgid "Schedules backups at regular intervals"
 msgstr "Резервування з регулярним інтервалом"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Файли"
 
@@ -1098,7 +1097,12 @@ msgstr "Потрібен пароль для доступу"
 msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+#| msgid "Install Packages"
+msgid "Installing packages…"
+msgstr "Встановлення пакунків…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Місце"
 
@@ -1150,7 +1154,6 @@ msgid "_Location"
 msgstr "_Місце"
 
 #: data/ui/HelpButton.ui:28
-#| msgid "_Help"
 msgid "Help"
 msgstr "Довідка"
 
