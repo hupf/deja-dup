@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-24 19:27+0000\n"
-"PO-Revision-Date: 2023-09-25 09:23+0800\n"
+"POT-Creation-Date: 2023-11-25 18:20+0000\n"
+"PO-Revision-Date: 2023-11-27 08:57+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:15+0000\n"
-"X-Generator: Gtranslator 45.1\n"
+"X-Generator: Gtranslator 45.3\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -130,7 +130,7 @@ msgstr "正在扫描…"
 msgid "_Details"
 msgstr "详细信息(_D)"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:271
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "要继续，需要安装下列软件包："
 
@@ -208,12 +208,12 @@ msgstr "需要加密密码"
 msgid "Backups needs your encryption password to continue"
 msgstr "备份需要您的加密密码才能继续"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "安装(_I)"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:273
 msgid "Backups needs to install packages to continue"
 msgstr "备份需要安装软件包才能继续"
 
@@ -225,92 +225,92 @@ msgstr "恢复"
 msgid "_Restore"
 msgstr "恢复(_R)"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "将文件恢复到原始位置(_O)"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "恢复到指定文件夹(_S)"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "文件夹(_F)"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "备份没有权限恢复下列文件："
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "备份位置"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "恢复日期"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "恢复文件夹"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "正在检查备份…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "从何时恢复？"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "恢复到何处？"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "恢复："
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "没有要恢复的备份"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "原始位置"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "要恢复的文件"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "恢复失败"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "恢复完成"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "您的文件已成功恢复。"
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "您的文件已成功恢复。"
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "正在恢复…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "恢复正在进行"
 
@@ -318,11 +318,11 @@ msgstr "恢复正在进行"
 msgid "Cannot back up automatically"
 msgstr "无法自动备份"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:217
 msgid "Authentication needed"
 msgstr "需要认证"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "未找到备份文件"
 
@@ -666,11 +666,11 @@ msgstr "保护您免受数据丢失困扰"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;备份;复制;既视感;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "备份"
 
@@ -886,7 +886,7 @@ msgid ""
 "when it is plugged in."
 msgstr "该驱动器的唯一文件系统标识符，用于在插入该驱动器时进行识别。"
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "名称"
 
@@ -961,19 +961,19 @@ msgstr ""
 "Déjà Dup 注重于简化个人从意外数据丢失中的恢复和工具使用。如果您需要整个系统的"
 "备份或归档程序，则可能需要其他备份应用。"
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:103
 msgid "Back up your files automatically — set it and forget it"
 msgstr "自动备份您的文件——设置好，然后抛之脑后"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:107
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr "轻松恢复——浏览您的文件，选择要恢复的部分"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:111
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "备份到云端、网络服务器或是本地驱动器"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:115
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr "控制您的备份，选择要包含的文件夹"
@@ -989,7 +989,7 @@ msgstr "备份监视器"
 msgid "Schedules backups at regular intervals"
 msgstr "计划定期备份"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "文件"
 
@@ -1026,7 +1026,11 @@ msgstr "需要加密密码"
 msgid "_Enter Password"
 msgstr "输入密码(_E)"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "正在安装软件包…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "位置"
 
