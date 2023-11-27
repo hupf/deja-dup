@@ -104,12 +104,13 @@ class DejaDup.FlatpakAutostartRequest : Object
   SourceFunc resume_callback;
   DBusConnection connection;
   uint signal_id;
+  string user_message = null;
 
   public async bool request_autostart(string handle, out string? mitigation)
   {
-    mitigation = _("Make sure Backups has permission to run in " +
-                   "the background in Settings → Applications → " +
-                   "Backups and try again.");
+    user_message = _("Make sure Backups has permission to run in " +
+                     "the background in your desktop session’s settings " +
+                     "and try again.");
 
     send_request.begin(handle);
 
@@ -121,6 +122,7 @@ class DejaDup.FlatpakAutostartRequest : Object
       signal_id = 0;
     }
 
+    mitigation = user_message;
     return autostart_allowed;
   }
 
@@ -171,6 +173,7 @@ class DejaDup.FlatpakAutostartRequest : Object
       yield iface.request_background(handle, options);
     }
     catch (Error e) { // no portal support :(
+      user_message = _("Your desktop session does not support automatically starting Flatpak apps.");
       Idle.add((owned) resume_callback);
     }
   }
