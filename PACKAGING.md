@@ -23,9 +23,9 @@ patch, try reading [`CONTRIBUTING.md`](CONTRIBUTING.md) instead.
 You can also see these listed in [`meson.build`](meson.build), but for your
 convenience:
 
-- Adwaita 1.2
+- Adwaita 1.4
 - GLib 2.70
-- GTK 4.6
+- GTK 4.12
 - JSON-GLib 1.2
 - libgpg-error 1.33
 - libsecret 0.18.6
