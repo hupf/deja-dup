@@ -176,15 +176,12 @@ class BrowserTest(BaseTest):
             assert test_file.read(None).strip() == content
 
     def select(self, *args):
-        children = self.app.findChildren(lambda x: x.roleName == "table cell")
+        children = self.app.findChildren(lambda x: x.roleName == "table row")
+        if not children:
+            # Table rows are best grouping for search mode, and table cells for normal mode
+            children = self.app.findChildren(lambda x: x.roleName == "table cell")
         for child in children:
-            # Skip if this is just a Location column cell
-            if not child.findChild(
-                lambda x: x.roleName == "image", retry=False, requireResult=False
-            ):
-                continue
-
-            # SKip if this is already in the selection state we want
+            # Skip if this is already in the selection state we want
             label = child.child(roleName="label")
             on = label.name in args
             if on == child.selected:
