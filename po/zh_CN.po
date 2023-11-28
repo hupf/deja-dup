@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup main\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-11-25 18:20+0000\n"
-"PO-Revision-Date: 2023-11-27 08:57+0800\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-11-28 10:22+0800\n"
 "Last-Translator: lumingzh <lumingzh@qq.com>\n"
 "Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
@@ -130,7 +130,7 @@ msgstr "正在扫描…"
 msgid "_Details"
 msgstr "详细信息(_D)"
 
-#: app/AssistantOperation.vala:312 app/Browser.vala:271
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "要继续，需要安装下列软件包："
 
@@ -213,7 +213,7 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "安装(_I)"
 
-#: app/AssistantOperation.vala:891 app/Browser.vala:273
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "备份需要安装软件包才能继续"
 
@@ -318,11 +318,11 @@ msgstr "恢复正在进行"
 msgid "Cannot back up automatically"
 msgstr "无法自动备份"
 
-#: app/Browser.vala:217
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "需要认证"
 
-#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "未找到备份文件"
 
@@ -961,19 +961,19 @@ msgstr ""
 "Déjà Dup 注重于简化个人从意外数据丢失中的恢复和工具使用。如果您需要整个系统的"
 "备份或归档程序，则可能需要其他备份应用。"
 
-#: data/app.metainfo.xml.in:103
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "自动备份您的文件——设置好，然后抛之脑后"
 
-#: data/app.metainfo.xml.in:107
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr "轻松恢复——浏览您的文件，选择要恢复的部分"
 
-#: data/app.metainfo.xml.in:111
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "备份到云端、网络服务器或是本地驱动器"
 
-#: data/app.metainfo.xml.in:115
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr "控制您的备份，选择要包含的文件夹"
@@ -1398,11 +1398,17 @@ msgstr "回收站"
 msgid "Backup encryption password"
 msgstr "备份加密密码"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
-msgstr "在设置→应用程序→备份中，确保备份具有在后台运行的权限，然后重试。"
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
+msgstr "请确保“备份”拥有在您桌面会话设置中后台运行的权限并重试。"
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr "您的桌面会话不支持自动启动 Flatpak 应用。"
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
