@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-11-25 18:20+0000\n"
-"PO-Revision-Date: 2023-11-26 21:48+0200\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-11-29 19:20+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -133,7 +133,7 @@ msgstr "Сканування..."
 msgid "_Details"
 msgstr "_Детальніше"
 
-#: app/AssistantOperation.vala:312 app/Browser.vala:271
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Щоб продовжити, потрібно встановити наступні пакунки:"
 
@@ -218,7 +218,7 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_Встановити"
 
-#: app/AssistantOperation.vala:891 app/Browser.vala:273
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "«Резервним копіям» слід встановити пакунки, щоб продовжувати"
 
@@ -327,11 +327,11 @@ msgstr "Виконуємо відновлення"
 msgid "Cannot back up automatically"
 msgstr "Резервне копіювання в автоматичному режимі неможливе"
 
-#: app/Browser.vala:217
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Слід пройти розпізнавання"
 
-#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Резервних копій не знайдено"
 
@@ -1025,25 +1025,25 @@ msgstr ""
 "всієї системи або програма для архівації, ви можете віддати перевагу іншим "
 "програмам резервного копіювання."
 
-#: data/app.metainfo.xml.in:103
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Створюйте резервні копії ваших файлів автоматично. Налаштуйте програму і "
 "позбудьтеся клопоту."
 
-#: data/app.metainfo.xml.in:107
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Відновлення даних є надзвичайно простим. Достатньо вибрати файли і каталог "
 "для відновлення."
 
-#: data/app.metainfo.xml.in:111
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Створюйте резервні копії у «хмарі», на сервері у мережі або на диску вашого "
 "комп'ютера."
 
-#: data/app.metainfo.xml.in:115
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1098,7 +1098,6 @@ msgid "_Enter Password"
 msgstr "_Ввести пароль"
 
 #: data/ui/Browser.ui:269
-#| msgid "Install Packages"
 msgid "Installing packages…"
 msgstr "Встановлення пакунків…"
 
@@ -1483,14 +1482,24 @@ msgstr "Смітник"
 msgid "Backup encryption password"
 msgstr "Пароль шифрування резервної копії"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
+#| msgid ""
+#| "Make sure Backups has permission to run in the background in Settings → "
+#| "Applications → Backups and try again."
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
 "Переконайтеся, що «Резервні копії» мають права доступу для запуску у "
-"фоновому режимі за допомогою пункту «Параметри → Програми → Резервні копії» "
-"і повторіть спробу."
+"фоновому режимі у параметрах вашого стільничного сеансу і повторіть спробу."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr ""
+"У вашому стільничному сеансі не передбачено підтримки автоматичного запуску"
+" програм Flatpak."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
