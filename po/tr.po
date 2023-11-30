@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-10-04 19:19+0000\n"
-"PO-Revision-Date: 2023-10-13 15:02+0300\n"
+"POT-Creation-Date: 2023-11-28 05:04+0000\n"
+"PO-Revision-Date: 2023-11-28 18:50+0300\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Türkçe <takim@gnome.org.tr>\n"
 "Language: tr\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -135,7 +135,7 @@ msgstr "Taranıyor…"
 msgid "_Details"
 msgstr "_Ayrıntılar"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Sürdürmek için şu paketler kurulmalıdır:"
 
@@ -216,12 +216,12 @@ msgstr "Şifreleme Parolası Gerekli"
 msgid "Backups needs your encryption password to continue"
 msgstr "Yedekler, sürmek için şifreleme parolanıza gereksiniyor"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Kur"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Yedekler, sürmek için paket kurulumuna gereksiniyor"
 
@@ -233,92 +233,92 @@ msgstr "Geri Yükle"
 msgid "_Restore"
 msgstr "_Geri Yükle"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Dosyaları _özgün konumlarına geri yükle"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "_Belirli bir klasöre geri yükle"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Klasör"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Yedekler’in şu dosyaları geri yükleme izni yok:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Yedekleme konumu"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Geri yükleme tarihi"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Klasörü geri yükle"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Yedekler Denetleniyor…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Hangi Zamandan Geri Yükleme Yapılacak?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Nereye Geri Yüklensin?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Geri yükleniyor:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Geri yüklenebilecek yedek yok"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Özgün konum"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Geri yüklenecek dosya(lar)"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Geri Yükleme Başarısız"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Geri Yükleme Bitti"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Dosyalarınız başarıyla geri yüklendi."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Dosya(ları)nız başarıyla geri yüklendi."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Geri Yükleniyor…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Geri yükleme sürüyor"
 
@@ -326,11 +326,11 @@ msgstr "Geri yükleme sürüyor"
 msgid "Cannot back up automatically"
 msgstr "Kendiliğinden yedeklenemez"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Kimlik doğrulama gerekli"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Yedekleme dosyası bulunamadı"
 
@@ -653,11 +653,11 @@ msgstr "Kendinizi veri yitiminden koruyun"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Yedekle"
 
@@ -903,7 +903,7 @@ msgstr ""
 "Sürücünün takılı olduğu sürücüyü tanıması için kullanılan özgün dosya "
 "sistemi tanımlayıcısı."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Ad"
 
@@ -984,21 +984,21 @@ msgstr ""
 "odaklanmıştır. Eğer tam sistem yedekleme veya arşivleme programına "
 "gereksiniyorsanız başka yeek uygulamalarını yeğleyebilirsiniz."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Dosyalarınızı kendiliğinden yedekleyin — ayarlayın ve unutun"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Geri yüklemek çocuk oyuncağı — dosyalarınıza göz atın ve hangisinin geri "
 "yükleneceğini seçin"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Buluta, ağ sunucusuna veya yerel sürücüye yedekleyin"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1016,7 +1016,7 @@ msgstr "Yedek Gözlemcisi"
 msgid "Schedules backups at regular intervals"
 msgstr "Düzenli aralıklarla planlanmış yedeklemeler"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Dosyalar"
 
@@ -1053,7 +1053,11 @@ msgstr "Şifreleme parolası gerekli"
 msgid "_Enter Password"
 msgstr "Parolayı _Gir"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Paketler kuruluyor…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Konum"
 
@@ -1424,13 +1428,21 @@ msgstr "Çöp"
 msgid "Backup encryption password"
 msgstr "Yedek şifreleme parolası"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
-"Yedekler’in arka planda çalışma izni olduğuna Ayarlar → Uygulamalar → "
-"Yedekler’e bakarak emin olun ve yeniden deneyin."
+"Yedeklerʼin arka planda çalışma izni olduğuna masaüstü oturumunuzun ayarlarına "
+"bakarak emin olun ve yeniden deneyin."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr ""
+"Masaüstü oturumunuz Flatpak uygulamalarının kendiliğinden başlatılmasını "
+"desteklemiyor."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
