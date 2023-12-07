@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-10-04 19:19+0000\n"
-"PO-Revision-Date: 2023-10-06 17:02+0330\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-12-07 23:01+0330\n"
 "Last-Translator: Danial Behzadi <dani.behzi@ubuntu.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "Language: fa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -128,7 +128,7 @@ msgstr "پوییدن…"
 msgid "_Details"
 msgstr "_جزییات"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "برای ادامه، بسته‌های زیر باید نصب شوند:"
 
@@ -204,12 +204,12 @@ msgstr "گذرواژهٔ رمزگذاری نیاز است"
 msgid "Backups needs your encryption password to continue"
 msgstr "پشتیبان‌ها برای دامه به گذرواژهٔ رمزگذاری‌تان نیاز دارد"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_نصب"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "پشتیبان‌ها برای ادامه نیاز به نصب چند بسته دارد"
 
@@ -221,94 +221,94 @@ msgstr "بازیابی"
 msgid "_Restore"
 msgstr "_بازیابی"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "بازیابی پرونده‌ها به مکان‌های _اصلی‌شان"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "بازیابی پرونده‌ها به شاخه‌ای _مشخص"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_شاخه"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "پشتیبان‌ها اجازهٔ بازیابی پرونده‌های زیر را ندارد:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "مکان پشتیبان"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "تاریخ بازیابی"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "شاخهٔ بازیابی"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "بررسی کردن پشتیبان‌ها…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "بازیابی از کی؟"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "بازیابی به کجا؟"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "بازیابی:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "پشتیبانی برای بازیابی نیست"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "مکان اصلی"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "پرونده برای بازگردانی"
 msgstr[1] "پرونده برای بازیابی"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "بازیابی شکست خورد"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "بازیابی پایان یافت"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "پرونده‌هایتان با موفقیت بازیابی شدند."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "پرونده‌هایتان با موفقیت بازیابی شدند."
 msgstr[1] "پرونده‌تان با موفقیت بازیابی شد."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "بازیابی…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "بازیابی در جریان"
 
@@ -316,11 +316,11 @@ msgstr "بازیابی در جریان"
 msgid "Cannot back up automatically"
 msgstr "نمی‌توان خودکار پشتیبان‌گیری کرد"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "نیاز به تأیید هویت"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "هیچ پروندهٔ پشتیبانی پیدا نشد"
 
@@ -646,11 +646,11 @@ msgstr "خود را از خطر از دست دادن پرونده‌هایتان
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "backup;déjà;deja;dup;دژا;داپ;پشتیبان;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "پشتیبان‌گیری"
 
@@ -792,7 +792,7 @@ msgstr ""
 
 #: data/app.gschema.xml.in:85
 msgid "Command to run before the backup tool"
-msgstr ""
+msgstr "دستور اجرایی پیش از ابزار پشتیبان"
 
 #: data/app.gschema.xml.in:86
 msgid ""
@@ -850,7 +850,7 @@ msgid ""
 "plugged in."
 msgstr ""
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "نام"
 
@@ -922,19 +922,19 @@ msgstr ""
 "اگر نیاز به یک برنامهٔ بایگانی یا پشتیبان گیری سامانه‌ای کامل دارید، شاید دیگر کاره‌های "
 "پشتیبان گیری را ترجیح دهید."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "پشتیبان گیری خودکار از پرونده‌هایتان — تنظیمش کرده و فراموشش کنید"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
 
@@ -949,7 +949,7 @@ msgstr "پایشگر پشتیبان‌گیری"
 msgid "Schedules backups at regular intervals"
 msgstr "پشتیبان‌گیری را در فواصلی منظم زمان‌بندی می‌کند"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "پرونده‌ها"
 
@@ -986,7 +986,11 @@ msgstr "گذرواژهٔ رمزگذاری لازم است"
 msgid "_Enter Password"
 msgstr "_ورود گذرواژه"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "نصب کردن بسته‌ها…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "مکان"
 
@@ -1349,10 +1353,15 @@ msgstr "زباله‌دان"
 msgid "Backup encryption password"
 msgstr "گذرواژهٔ رمزگذاری پشتیبان"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → Applications → "
-"Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop session’s "
+"settings and try again."
+msgstr ""
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid "Your desktop session does not support automatically starting Flatpak apps."
 msgstr ""
 
 #: libdeja/Operation.vala:47
