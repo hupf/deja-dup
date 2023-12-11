@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-11-25 18:20+0000\n"
-"PO-Revision-Date: 2023-09-27 19:07+1000\n"
-"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-11-29 13:50+0300\n"
+"Last-Translator: Artur So <arturios2005@mail.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -134,7 +134,7 @@ msgstr "Сканирование…"
 msgid "_Details"
 msgstr "_Подробности"
 
-#: app/AssistantOperation.vala:312 app/Browser.vala:271
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Чтобы продолжить, необходимо установить следующие пакеты:"
 
@@ -220,7 +220,7 @@ msgctxt "verb"
 msgid "_Install"
 msgstr "_Установить"
 
-#: app/AssistantOperation.vala:891 app/Browser.vala:273
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Для продолжения резервного копирования необходимо установить пакеты"
 
@@ -329,11 +329,11 @@ msgstr "Восстановление в процессе выполнения"
 msgid "Cannot back up automatically"
 msgstr "Невозможно автоматическое резервное копирование"
 
-#: app/Browser.vala:217
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Необходима аутентификация"
 
-#: app/Browser.vala:381 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Резервных копий не обнаружено"
 
@@ -1036,21 +1036,21 @@ msgstr ""
 "копирование системы или программа архивации, рассмотрите другие варианты "
 "программ резервного копирования."
 
-#: data/app.metainfo.xml.in:103
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Сохраняйте резервные копии автоматически - настройте и забудьте"
 
-#: data/app.metainfo.xml.in:107
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Восстановление в один момент — просмотрите свои файлы и выберите, что "
 "восстановить"
 
-#: data/app.metainfo.xml.in:111
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Сохраняйте в облако, сетевой сервер или локальный диск"
 
-#: data/app.metainfo.xml.in:115
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1484,13 +1484,21 @@ msgstr "Корзина"
 msgid "Backup encryption password"
 msgstr "Сделать резервную копию пароля шифрования"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
 "Убедитесь, что у Backups есть разрешение на запуск в фоновом режиме в "
-"Настройки → Приложения → Backups, и повторите попытку."
+"настройках вашего сеанса рабочего стола, и повторите попытку."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr ""
+"Ваш сеанс рабочего стола не поддерживает автоматический запуск приложений "
+"Flatpak."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
