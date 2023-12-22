@@ -352,6 +352,10 @@ public class DejaDupApp : Adw.Application
     dialog.issue_url = "https://gitlab.gnome.org/World/deja-dup/-/issues/new";
     dialog.license_type = Gtk.License.GPL_3_0;
     dialog.release_notes = """
+      <p>45.2</p>
+      <ul>
+        <li>Fixed not being prompted for packagekit installs during a restore</li>
+      </ul>
       <p>45.1</p>
       <ul>
         <li>Fixed a build error</li>

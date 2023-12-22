@@ -3,6 +3,13 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 45.2
+- Fix not being prompted for packagekit installs during a restore
+- Allow using the '~/' alias for the home dir in more text entries
+- Add clearer error message when auto-backups can't be set in flatpak mode
+- Fix compilation on non-glibc systems
+- Updated translations
+
 # 45.1
 - Fix compilation with valac 0.56 - 45.0 accidentally require the unreleased
   0.57 branch (sorry!)
