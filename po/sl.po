@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-09-24 19:27+0000\n"
-"PO-Revision-Date: 2023-09-24 22:45+0200\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-12-26 18:17+0100\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "Language: sl\n"
@@ -136,7 +136,7 @@ msgstr "Poteka preiskovanje …"
 msgid "_Details"
 msgstr "_Podrobnosti"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Za nadaljevanje je treba namestiti navedene pakete:"
 
@@ -216,12 +216,12 @@ msgstr "Zahtevano je šifrirno geslo"
 msgid "Backups needs your encryption password to continue"
 msgstr "Varnostna kopija zahteva šifrirno geslo pred nadaljevanjem"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Namesti"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Pred nadaljevanjem je treba namestiti dodatne pakete"
 
@@ -233,65 +233,65 @@ msgstr "Obnovi"
 msgid "_Restore"
 msgstr "_Obnovi"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Obnovi datoteke na _izvorna mesta"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Obnovi v _določeno mapo"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Mapa"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Ni dovoljenj za obnovitev navedenih datotek:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Mesto varnostnih kopij"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Datum obnovitve"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Mapa za obnovljene datoteke"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Poteka preverjanje za varnostne kopije …"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Katero varnostno kopijo želite obnoviti?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Kam želite shraniti obnovljene datoteke?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Obnavljanje:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Ni varnostnih kopij za obnovitev"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Izvirno mesto"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Datoteke za obnovitev"
@@ -299,20 +299,20 @@ msgstr[1] "Datoteka za obnovitev"
 msgstr[2] "Datoteki za obnovitev"
 msgstr[3] "Datoteke za obnovitev"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Obnovitev je spodletela"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Obnovitev je končana"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Datoteke so bile uspešno obnovljene."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Datoteke so bile uspešno obnovljene."
@@ -320,11 +320,11 @@ msgstr[1] "Datoteka je bila uspešno obnovljena."
 msgstr[2] "Datoteki sta bili uspešno obnovljeni."
 msgstr[3] "Datoteke so bile uspešno obnovljene."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Poteka obnavljanje …"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Trenutno poteka obnavljanje varnostne kopije"
 
@@ -332,11 +332,11 @@ msgstr "Trenutno poteka obnavljanje varnostne kopije"
 msgid "Cannot back up automatically"
 msgstr "Samodejno ustvarjanje varnostne kopije ni mogoče"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Zahtevana je overitev"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Datotek varnostnih kopij ni mogoče najti"
 
@@ -694,11 +694,11 @@ msgstr "Zaščitite se pred izgubo podatkov"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;varnostna;kopija;arhiv;backup;pika;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Ustvari varnostno kopijo"
 
@@ -939,7 +939,7 @@ msgstr ""
 "Enolično določilo datotečnega sistema za pogon, ki se uporablja za "
 "prepoznavanje pogona, ko je ta priklopljen."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Ime"
 
@@ -1025,21 +1025,21 @@ msgstr ""
 "varnostnih kopij sistema ali program za arhiviranje, je dobro poiskati druge "
 "rešitve."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Samodejne varnostne kopije – nastavite in pozabite"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr "Obnavljanje je enostavno – med brskanjem lahko izberete in obnovite"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Varnostno kopiranje v oblak, na omrežni strežnik, na krajevni disk – "
 "kakorkoli želite"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1057,7 +1057,7 @@ msgstr "Nadzornik varnostnih kopij"
 msgid "Schedules backups at regular intervals"
 msgstr "Določanje urnika ustvarjanja varnostnih kopij"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Datoteke"
 
@@ -1094,7 +1094,11 @@ msgstr "Zahtevano je šifrirno geslo"
 msgid "_Enter Password"
 msgstr "_Vpis gesla"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Nameščanje paketov ..."
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Mesto"
 
@@ -1469,13 +1473,19 @@ msgstr "Smeti"
 msgid "Backup encryption password"
 msgstr "Geslo za šifriranje varnostne kopije"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
 "Prepričajte se, da ima program omogočena dovoljenja za delovanje v ozadju "
-"med Nastavitvami → Programi → Varnostne kopije in nato poskusite znova."
+"med nastavitvami seje namizja, in nato poskusite znova."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr "Vaša seja namizja ne podpira samodejnega zagona programov Flatpak."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
