@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-10-04 19:19+0000\n"
-"PO-Revision-Date: 2023-10-11 14:09+0300\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2023-12-27 16:05+0200\n"
 "Last-Translator: Florentina Mușat <florentina [dot] musat [dot] 28 [at] "
 "gmail [dot] com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0: (((n % 100 > 19) || ((n % 100 "
 "== 0) && (n != 0))) ? 2: 1));\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.4\n"
+"X-Generator: Poedit 3.4.2\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -137,7 +137,7 @@ msgstr "Se scanează…"
 msgid "_Details"
 msgstr "_Detalii"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Pentru a continua, următoarele pachete au nevoie să fie instalate:"
 
@@ -217,12 +217,12 @@ msgstr "Este nevoie de parola de criptare"
 msgid "Backups needs your encryption password to continue"
 msgstr "Copii de rezervă are nevoie de parola de criptare pentru a continua"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalează"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Copii de rezervă are nevoie să instaleze pachete pentru a continua"
 
@@ -234,96 +234,96 @@ msgstr "Restaurează"
 msgid "_Restore"
 msgstr "_Restaurează"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Restaurează fișierele în locurile originale"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Re_staurează într-un loc  anume"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Dosar"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Copii de rezervă nu are permisiunea de a restaura următoarele fișiere:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Locul copiilor de siguranță"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Dată restaurare"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Restaurare dosar"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Se verifică după copii de rezervă…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Locul de unde se restaurează?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Locul în care se restaurează?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Se restaurează:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Nu există fișiere de restaurat"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Locul original"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Fișier de restaurat"
 msgstr[1] "Fișiere de restaurat"
 msgstr[2] "Fișiere de restaurat"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Restaurarea a eșuat"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Restaurarea s-a încheiat"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Fișierele dumneavoastră au fost restaurate cu succes."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Fișierul a fost restaurat cu succes."
 msgstr[1] "Fișierele au fost restaurate cu succes."
 msgstr[2] "Fișierele au fost restaurate cu succes."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Se restaurează…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Restaurare în progres"
 
@@ -331,11 +331,11 @@ msgstr "Restaurare în progres"
 msgid "Cannot back up automatically"
 msgstr "Nu se poate crea o copie de rezervă automat"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Autentificarea necesară"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Nu au fost găsite fișiere care să conțină copii de siguranță"
 
@@ -685,11 +685,11 @@ msgstr "Protejați-vă de pierderile de date"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Copie de siguranță"
 
@@ -943,7 +943,7 @@ msgstr ""
 "Identificatorul de sistem de fișiere unic pentru unitate, utilizat pentru a "
 "recunoaște unitatea când este conectată."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:235
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Nume"
 
@@ -1029,22 +1029,22 @@ msgstr ""
 "sistemului completă sau un program de arhivare, este posibil să preferați "
 "alte aplicații de copiere de rezervă."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Copiați de rezervă fișierele automat — stabiliți-o și uitați de ea"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Restaurarea este ușoară — navigați fișierele și selectați pe care să le "
 "restaurați"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr ""
 "Copiați de rezervă în cloud, pe un server de rețea sau pe o unitate locală"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1062,7 +1062,7 @@ msgstr "Monitorizare copie de siguranță"
 msgid "Schedules backups at regular intervals"
 msgstr "Programați realizarea copiilor de siguranță la intervale regulate"
 
-#: data/ui/Browser.ui:27 data/ui/Browser.ui:228
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
 msgid "Files"
 msgstr "Fișiere"
 
@@ -1099,7 +1099,11 @@ msgstr "Parola de criptare necesară"
 msgid "_Enter Password"
 msgstr "_Introduce parola"
 
-#: data/ui/Browser.ui:314
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Se instalează pachetele…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Locație"
 
@@ -1479,13 +1483,20 @@ msgstr "Coș de gunoi"
 msgid "Backup encryption password"
 msgstr "Parola pentru criptarea copiei de siguranță"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
-"Asigurați-vă că Copii de rezervă are permisiunea de a rula în fundal în "
-"Configurări → Aplicații → Copii de rezervă și încercați din nou."
+"Asigurați-vă că Copii de rezervă are permisiunea de a rula pe fundal în "
+"configurările sesiunii de desktop și încercați din nou."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr ""
+"Sesiunea de desktop nu suportă pornirea automată a aplicațiilor Flatpak."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
@@ -1780,7 +1791,6 @@ msgstr ""
 #~ msgid "Last backup was yesterday."
 #~ msgstr "Ultima copie de siguranță a fost realizată ieri."
 
-#, c-format
 #~ msgid "Last backup was %d day ago."
 #~ msgid_plural "Last backup was %d days ago."
 #~ msgstr[0] "Ultima copie de siguranță a fost realizată acum %d zi."
@@ -2097,8 +2107,8 @@ msgstr ""
 #~ msgstr "Permisiune refuzată"
 
 #~ msgid ""
-#~ "You can sign up for a Rackspace Cloud Files account <a "
-#~ "href=\"%s\">online</a>."
+#~ "You can sign up for a Rackspace Cloud Files account <a href=\"%s"
+#~ "\">online</a>."
 #~ msgstr ""
 #~ "Puteți crea <a href=\"%s\">online</a> un cont pentru Rackspace Cloud "
 #~ "Files ."
