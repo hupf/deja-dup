@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 17:30+0300\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2024-01-02 21:04+0200\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos+l10n@iki.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "Language: fi\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Launchpad-Export-Date: 2020-06-23 06:14+0000\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: app/Assistant.vala:285
 msgid "Co_ntinue"
@@ -132,7 +132,7 @@ msgstr "Kartoitetaan…"
 msgid "_Details"
 msgstr "_Yksityiskohdat"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Seuraavat paketit tulee asentaa, jotta toimintaa voidaan jatkaa:"
 
@@ -212,12 +212,12 @@ msgstr "Salauksen salasana vaaditaan"
 msgid "Backups needs your encryption password to continue"
 msgstr "Varmuuskopion salauksen salasana vaaditaan"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Asenna"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Varmuuskopiot vaatii paketteja asennettavaksi jatkaakseen"
 
@@ -229,107 +229,107 @@ msgstr "Palauta"
 msgid "_Restore"
 msgstr "_Palauta"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Palauta tiedostot  _niiden alkuperäisiin sijainteihin"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Palauta _tiettyyn kansioon"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Kansio"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr ""
 "Varmuuskopiosovelluksella ei ole oikeutta palauttaa seuraavia tiedostoja:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Varmuuskopion sijainti"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Palauta päivämäärä"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Palautuskansio"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Tarkistetaan varmuuskopioita…"
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Palautetaan ajankohdasta?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Minne palautetaan?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Palautetaan tiedostoa:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Ei palautettavia varmuuskopioita"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Alkuperäinen sijainti"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Palautettava tiedosto"
 msgstr[1] "Palautettavat tiedostot"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Palauttaminen epäonnistui"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Palauttaminen suoritettu"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Tiedostojesi palauttaminen onnistui."
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Tiedosto palautettiin onnistuneesti."
 msgstr[1] "Tiedostot palautettiin onnistuneesti."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Palautetaan…"
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Palauttaminen on meneillään"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Automaattinen varmuuskopiointi ei onnistu"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Tunnistautuminen vaaditaan"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Varmuuskopiotiedostoja ei löytynyt"
 
@@ -448,6 +448,18 @@ msgstr[1] "%d päivän välein"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Käytä _Resticiä Duplicityn sijaan"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Tiedosto"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr ""
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Kansio"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -589,7 +601,7 @@ msgid "Back"
 msgstr "Takaisin"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Etsi"
 
@@ -626,7 +638,7 @@ msgstr "Luettele palautettavat tiedostot"
 msgid "An operation is already in progress"
 msgstr "Toimenpide on jo meneillään"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr ""
 "Jiri Grönroos\n"
@@ -652,7 +664,7 @@ msgstr ""
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup -varmuuskopiot"
 
@@ -666,11 +678,11 @@ msgstr "Suojaa itsesi tietojen menetykseltä"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Varmuuskopiointi"
 
@@ -911,7 +923,7 @@ msgstr ""
 "Aseman ainutlaatuinen tiedostojärjestelmän tunniste, jota käytetään aseman "
 "tunnistamiseen, kun se on kytketty."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Nimi"
 
@@ -998,22 +1010,22 @@ msgstr ""
 "järjestelmän varmuuskopion tai arkistointiohjelman, voit mieluummin käyttää "
 "muita varmuuskopiointisovelluksia."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr ""
 "Varmuuskopioi tiedostot automaattisesti — määritä asetukset ja unohda asia"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr ""
 "Palauttaminen tapahtuu hetkessä — selaa tiedostojasi ja valitse mitä "
 "palautetaan"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Varmuuskopioi pilveen, verkkopalvelimelle tai paikalliselle levylle"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr ""
@@ -1030,44 +1042,53 @@ msgstr "Varmuuskopiointivalvonta"
 msgid "Schedules backups at regular intervals"
 msgstr "Ajoittaa varmuuskopioinnin säännöllisin väliajoin"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
+msgid "Files"
+msgstr "Tiedostot"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Kartoitetaan varmuuskopiotiedostoja…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Kansio on tyhjä"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Tuloksia ei löytynyt"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Yritä eri hakuehdoilla"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Yritä uudelleen"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Yhdistä"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Tarvitaan kryptauksen salasana"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "_Kirjoita salasana"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:269
+#| msgid "Install Packages"
+msgid "Installing packages…"
+msgstr "Asennetaan paketteja…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Sijainti"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Lisää"
 
@@ -1110,9 +1131,13 @@ msgstr "_Nollaa tilin pääsy"
 msgid "Ser_ver Address"
 msgstr "Palvelimen _osoite"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "_Sijainti"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Ohje"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1186,10 +1211,6 @@ msgstr "_Tietoja - Varmuuskopiot"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Viimeisimmät varmuuskopiot"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Toiminnot"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1440,13 +1461,20 @@ msgstr "Roskakori"
 msgid "Backup encryption password"
 msgstr "Varmuuskopion salauksen salasana"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
 msgstr ""
-"Varmista, että varmuuskopiointisovelluksella on oikeus tulla suoritetuksi "
-"taustalla; katso Asetukset → Sovellukset → Varmuuskopiot ja yritä uuudelleen."
+"Varmista työpöytäistuntosi asetuksista, että varmuuskopiointisovelluksella "
+"on oikeus tulla suoritetuksi taustalla ja yritä uudelleen."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr ""
+"Työpöytäistuntosi ei tue Flatpak-sovellusten automaattista käynnistämistä."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
@@ -1694,6 +1722,9 @@ msgid ""
 msgstr ""
 "Varmuuskopiointi aloitetaan, kun siirtorajaton verkkoyhteys on käytettävissä."
 
+#~ msgid "Actions"
+#~ msgstr "Toiminnot"
+
 #~ msgid "Choose Folders"
 #~ msgstr "Valitse kansiot"
 
@@ -1823,9 +1854,6 @@ msgstr ""
 #~ "Not all files were successfully backed up.  See dialog for more details."
 #~ msgstr ""
 #~ "Kaikkia tiedostoja ei varmuuskopioitu onnistuneesti. Katso lisätiedot."
-
-#~ msgid "File"
-#~ msgstr "Tiedosto"
 
 #~ msgid "Categories"
 #~ msgstr "Luokat"
@@ -1961,10 +1989,6 @@ msgstr ""
 #~ msgid "Privileges are required to restore files to system locations"
 #~ msgstr ""
 #~ "Tiedostojen palauttaminen järjestelmäsijainteihin vaatii käyttöoikeuksia"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Help"
-#~ msgstr "Ohje"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
