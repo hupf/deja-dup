@@ -7,13 +7,13 @@
 # Julen Ruiz Aizpuru https://launchpad.net/~julen
 # Michael Terry https://launchpad.net/~mterry
 # gorkaazk https://launchpad.net/~gorkaazkarate
-# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2020, 2021, 2022.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2020, 2021, 2022, 2023, 2024.
 #
 msgid ""
 msgstr "Project-Id-Version: deja-dup\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/World/deja-dup/issues\n"
-"POT-Creation-Date: 2023-08-29 23:58+0000\n"
-"PO-Revision-Date: 2023-09-02 06:00+0100\n"
+"POT-Creation-Date: 2023-11-27 22:52+0000\n"
+"PO-Revision-Date: 2024-01-02 06:00+0100\n"
 "Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -131,7 +131,7 @@ msgstr "Eskaneatzen..."
 msgid "_Details"
 msgstr "_Xehetasunak"
 
-#: app/AssistantOperation.vala:312
+#: app/AssistantOperation.vala:312 app/Browser.vala:274
 msgid "In order to continue, the following packages need to be installed:"
 msgstr "Aurrera egiteko, honako pakete hauek instalatu beharko dituzu:"
 
@@ -207,12 +207,12 @@ msgstr "Zifratze-pasahitza behar da"
 msgid "Backups needs your encryption password to continue"
 msgstr "Babeskopiak aplikazioak zure zifratze-pasahitza behar du jarraitzeko"
 
-#: app/AssistantOperation.vala:886
+#: app/AssistantOperation.vala:886 data/ui/Browser.ui:232
 msgctxt "verb"
 msgid "_Install"
 msgstr "_Instalatu"
 
-#: app/AssistantOperation.vala:891
+#: app/AssistantOperation.vala:891 app/Browser.vala:276
 msgid "Backups needs to install packages to continue"
 msgstr "Babeskopiak aplikazioak zenbait pakete instalatu behar ditu jarraitzeko"
 
@@ -224,106 +224,106 @@ msgstr "Leheneratu"
 msgid "_Restore"
 msgstr "_Leheneratu"
 
-#: app/AssistantRestore.vala:162
+#: app/AssistantRestore.vala:152
 msgid "Restore files to _original locations"
 msgstr "Leheneratu fitxategiak _jatorrizko kokapenetara"
 
-#: app/AssistantRestore.vala:176
+#: app/AssistantRestore.vala:166
 msgid "Restore to _specific folder"
 msgstr "Leheneratu karpeta ze_hatz batera"
 
-#: app/AssistantRestore.vala:191 data/ui/ConfigLocationGroup.ui:19
+#: app/AssistantRestore.vala:181 data/ui/ConfigLocationGroup.ui:19
 #: data/ui/ConfigLocationGroup.ui:42 data/ui/ConfigLocationGroup.ui:81
 #: data/ui/ConfigLocationGroup.ui:90 data/ui/ConfigLocationGroup.ui:99
 msgid "_Folder"
 msgstr "_Karpeta"
 
-#: app/AssistantRestore.vala:211
+#: app/AssistantRestore.vala:201
 msgid "Backups does not have permission to restore the following files:"
 msgstr "Babeskopiak aplikazioak ez du baimenik honeko fitxategiak leheneratzeko:"
 
-#: app/AssistantRestore.vala:274
+#: app/AssistantRestore.vala:264
 msgid "Backup location"
 msgstr "Babeskopiaren kokapena"
 
 #. Translators: label for the date from which we are restoring
-#: app/AssistantRestore.vala:289
+#: app/AssistantRestore.vala:279
 msgid "Restore date"
 msgstr "Leheneratze-data"
 
 #. Translators: label for the folder into which we putting restored files
-#: app/AssistantRestore.vala:298
+#: app/AssistantRestore.vala:288
 msgid "Restore folder"
 msgstr "Leheneratze-karpeta"
 
-#: app/AssistantRestore.vala:322
+#: app/AssistantRestore.vala:312
 msgid "Checking for Backups…"
 msgstr "Babeskopiak bilatzen..."
 
-#: app/AssistantRestore.vala:330
+#: app/AssistantRestore.vala:320
 msgid "Restore From When?"
 msgstr "Noiztik leheneratu?"
 
-#: app/AssistantRestore.vala:341
+#: app/AssistantRestore.vala:331
 msgid "Restore to Where?"
 msgstr "Nora leheneratu?"
 
 #. Translators:  This is the word 'Restoring' in the phrase
 #. "Restoring '%s'".  %s is a filename.
-#: app/AssistantRestore.vala:374
+#: app/AssistantRestore.vala:364
 msgid "Restoring:"
 msgstr "Leheneratzen:"
 
-#: app/AssistantRestore.vala:386
+#: app/AssistantRestore.vala:376
 msgid "No backups to restore"
 msgstr "Ez dago leheneratzeko babeskopiarik"
 
-#: app/AssistantRestore.vala:469
+#: app/AssistantRestore.vala:459
 msgid "Original location"
 msgstr "Jatorrizko kokapena"
 
-#: app/AssistantRestore.vala:483
+#: app/AssistantRestore.vala:473
 msgid "File to restore"
 msgid_plural "Files to restore"
 msgstr[0] "Leheneratuko den fitxategia"
 msgstr[1] "Leheneratuko diren fitxategiak"
 
-#: app/AssistantRestore.vala:508
+#: app/AssistantRestore.vala:498
 msgid "Restore Failed"
 msgstr "Leheneratzeak huts egin du"
 
-#: app/AssistantRestore.vala:510
+#: app/AssistantRestore.vala:500
 msgid "Restore Finished"
 msgstr "Leheneratzea amaitu da"
 
 #. if it *is* visible, a header will be set already
-#: app/AssistantRestore.vala:513
+#: app/AssistantRestore.vala:503
 msgid "Your files were successfully restored."
 msgstr "Zure fitxategiak ongi leheneratu dira"
 
-#: app/AssistantRestore.vala:516
+#: app/AssistantRestore.vala:506
 msgid "Your file was successfully restored."
 msgid_plural "Your files were successfully restored."
 msgstr[0] "Zure fitxategia ongi leheneratu da."
 msgstr[1] "Zure fitxategiak ongi leheneratu dira."
 
-#: app/AssistantRestore.vala:523 libdeja/Operation.vala:49
+#: app/AssistantRestore.vala:513 libdeja/Operation.vala:49
 msgid "Restoring…"
 msgstr "Leheneratzen..."
 
-#: app/AssistantRestore.vala:593
+#: app/AssistantRestore.vala:583
 msgid "Restore in progress"
 msgstr "Leheneratzea lanean"
 
-#: app/Background.vala:73
+#: app/Background.vala:79
 msgid "Cannot back up automatically"
 msgstr "Babeskopia ezin da automatikoki egin"
 
-#: app/Browser.vala:213
+#: app/Browser.vala:220
 msgid "Authentication needed"
 msgstr "Autentifikazioa behar da"
 
-#: app/Browser.vala:334 libdeja/duplicity/DuplicityJob.vala:1067
+#: app/Browser.vala:384 libdeja/duplicity/DuplicityJob.vala:1067
 msgid "No backup files found"
 msgstr "Ez da aurkitu babeskopiaren fitxategirik"
 
@@ -442,6 +442,18 @@ msgstr[1] "%d egunetik behin"
 #: app/ConfigResticRow.vala:12
 msgid "Use _Restic instead of Duplicity"
 msgstr "Erabili _Restic Duplicity erabili ordez"
+
+#: app/FileStore.vala:196
+msgid "File"
+msgstr "Fitxategia"
+
+#: app/FileStore.vala:198
+msgid "Link"
+msgstr "Esteka"
+
+#: app/FileStore.vala:200
+msgid "Folder"
+msgstr "Karpeta"
 
 #: app/FolderChooserButton.vala:21
 msgid "Choose Folder"
@@ -576,7 +588,7 @@ msgid "Back"
 msgstr "Atzera"
 
 #: app/RestoreHeaderBar.vala:26 app/RestoreHeaderBar.vala:27
-#: data/ui/RestoreToolbarView.ui:19
+#: data/ui/RestoreToolbarView.ui:22
 msgid "Search"
 msgstr "Bilatu"
 
@@ -613,7 +625,7 @@ msgstr "Zerrendatu leheneratuko diren fitxategiak"
 msgid "An operation is already in progress"
 msgstr "eragiketa bat martxan dabil une honetan"
 
-#: app/main.vala:380
+#: app/main.vala:365
 msgid "translator-credits"
 msgstr "translator-credits"
 
@@ -622,7 +634,7 @@ msgstr "translator-credits"
 #. context is itself a reference to both the underlying command line tool
 #. "duplicity" and the act of duplicating data for backup.  As a whole, the
 #. phrase "Déjà Dup" may not be very translatable.
-#: app/main.vala:486 data/app.metainfo.xml.in:15
+#: app/main.vala:471 data/app.metainfo.xml.in:15
 msgid "Déjà Dup Backups"
 msgstr "Déjà Dup babeskopiak"
 
@@ -636,11 +648,11 @@ msgstr "Babestu zure datuak, ez daitezela galdu"
 
 #. Translators: Add whatever keywords you want in your language, separated by semicolons
 #. These keywords are used when searching for applications in dashes, etc.
-#: data/app.desktop.in:27
+#: data/app.desktop.in:29
 msgid "déjà;deja;dup;"
 msgstr "déjà;deja;dup;"
 
-#: data/app.desktop.in:35
+#: data/app.desktop.in:37
 msgid "Back Up"
 msgstr "Babeskopia"
 
@@ -837,7 +849,7 @@ msgid ""
 "when it is plugged in."
 msgstr "Unitatearen fitxategi-sistemaren identifikatzaile bakarra, unitatea konektatuta dagoenean hura ezagutzeko erabiltzen dena."
 
-#: data/app.gschema.xml.in:150 data/ui/Browser.ui:229
+#: data/app.gschema.xml.in:150 data/ui/Browser.ui:305
 msgid "Name"
 msgstr "Izena"
 
@@ -908,19 +920,19 @@ msgid ""
 "prefer other backup apps."
 msgstr "Déjà Dup erabiltzeko erraza da eta datu pertsonalen galera nahigabekotik datuak berreskuratzen laguntzen du. Sistemaren babeskopia osoa edo artxiborako programa bat behar baduzu, agian beste aplikazioaren bat erabili beharko zenuke."
 
-#: data/app.metainfo.xml.in:98
+#: data/app.metainfo.xml.in:107
 msgid "Back up your files automatically — set it and forget it"
 msgstr "Egin zure fitxategien babeskopia automatikoki - konfiguratu eta ahaztu"
 
-#: data/app.metainfo.xml.in:102
+#: data/app.metainfo.xml.in:111
 msgid "Restoring is a breeze — browse your files and select which to restore"
 msgstr "Leheneratzea erraz-erraza da - arakatu zure fitxategiak eta hautatu zein leheneratuko den"
 
-#: data/app.metainfo.xml.in:106
+#: data/app.metainfo.xml.in:115
 msgid "Back up to the cloud, a network server, or a local drive"
 msgstr "Egin babeskopia hodeian, sareko zerbitzari batean edo unitate lokal batean"
 
-#: data/app.metainfo.xml.in:110
+#: data/app.metainfo.xml.in:119
 msgid ""
 "Take control of your backup by choosing exactly which folders to include"
 msgstr "Hartu zure babeskopien kontrola, aukeratu zein karpeta zehatz sartuko den kopian"
@@ -936,44 +948,52 @@ msgstr "Babeskopien monitorea"
 msgid "Schedules backups at regular intervals"
 msgstr "Babeskopiak tarte finkoetan programatzen du"
 
+#: data/ui/Browser.ui:27 data/ui/Browser.ui:298
+msgid "Files"
+msgstr "Fitxategiak"
+
 #. Translators: this means scanning the storage location data files, not the source folders
-#: data/ui/Browser.ui:67
+#: data/ui/Browser.ui:70
 msgid "Scanning backup files…"
 msgstr "Babeskopia-fitxategiak eskaneatzen…"
 
-#: data/ui/Browser.ui:84
+#: data/ui/Browser.ui:87
 msgid "Folder is Empty"
 msgstr "Karpeta hutsik dago"
 
-#: data/ui/Browser.ui:95
+#: data/ui/Browser.ui:98
 msgid "No Results Found"
 msgstr "Ez da emaitzarik aurkitu"
 
-#: data/ui/Browser.ui:96
+#: data/ui/Browser.ui:99
 msgid "Try a different search"
 msgstr "Saiatu bestelako bilaketa bat"
 
-#: data/ui/Browser.ui:121
+#: data/ui/Browser.ui:124
 msgid "_Retry"
 msgstr "_Saiatu berriro"
 
-#: data/ui/Browser.ui:156
+#: data/ui/Browser.ui:159
 msgid "_Connect"
 msgstr "_Konektatu"
 
-#: data/ui/Browser.ui:181
+#: data/ui/Browser.ui:184
 msgid "Encryption password needed"
 msgstr "Zifratze-pasahitza behar da"
 
-#: data/ui/Browser.ui:192
+#: data/ui/Browser.ui:196
 msgid "_Enter Password"
 msgstr "Sartu _pasahitza"
 
-#: data/ui/Browser.ui:292
+#: data/ui/Browser.ui:269
+msgid "Installing packages…"
+msgstr "Paketeak instalatzen…"
+
+#: data/ui/Browser.ui:384
 msgid "Location"
 msgstr "Kokalekua"
 
-#: data/ui/ConfigFolderGroup.ui:16
+#: data/ui/ConfigFolderGroup.ui:22
 msgid "Add"
 msgstr "Gehitu"
 
@@ -1014,9 +1034,13 @@ msgstr "Berrezarri _kontuaren atzitzea"
 msgid "Ser_ver Address"
 msgstr "_Zerbitzari-helbidea"
 
-#: data/ui/ConfigLocationRow.ui:47
+#: data/ui/ConfigLocationRow.ui:48
 msgid "_Location"
 msgstr "K_okalekua"
+
+#: data/ui/HelpButton.ui:28
+msgid "Help"
+msgstr "Laguntza"
 
 #: data/ui/MainWindow.ui:27
 msgid "Overview"
@@ -1087,10 +1111,6 @@ msgstr "_Babeskopiei buruz"
 #: data/ui/RecentBackupRow.ui:9
 msgid "Most Recent Backup"
 msgstr "Babeskopia berriena"
-
-#: data/ui/RestoreToolbarView.ui:31
-msgid "Actions"
-msgstr "Ekintzak"
 
 #: data/ui/ServerAddressHelp.ui:15
 msgid "Server Addresses"
@@ -1335,11 +1355,17 @@ msgstr "Zakarrontzia"
 msgid "Backup encryption password"
 msgstr "Babeskopiaren zifratze-pasahitza"
 
-#: libdeja/InstallEnvFlatpak.vala:110
+#: libdeja/InstallEnvFlatpak.vala:111
 msgid ""
-"Make sure Backups has permission to run in the background in Settings → "
-"Applications → Backups and try again."
-msgstr "Ziurtatu Babeskopiak aplikazioak atzeko planoan exekutatzeko baimena duela. Begiratu 'Ezarpenak→ Aplikazioak → Babeskopiak' eta saiatu berriro."
+"Make sure Backups has permission to run in the background in your desktop "
+"session’s settings and try again."
+msgstr "Ziurtatu Babeskopiak aplikazioak atzeko planoan exekutatzeko baimena duela. Begiratu zure mahaigainaren saioaren ezarpenetan eta saiatu berriro."
+
+#. no portal support :(
+#: libdeja/InstallEnvFlatpak.vala:176
+msgid ""
+"Your desktop session does not support automatically starting Flatpak apps."
+msgstr "Zure mahaigainaren saioak ez du onartzen Flatpak aplikazioak automatikoki abiaraztea."
 
 #: libdeja/Operation.vala:47
 msgid "Backing up…"
@@ -1566,6 +1592,9 @@ msgid ""
 "Backup will begin when an unmetered network connection becomes available."
 msgstr "Babeskopiaren prozesua hasiko da hain mugatua ez den Internet konexio bat eskuragarri dagoenean."
 
+#~ msgid "Actions"
+#~ msgstr "Ekintzak"
+
 #~ msgid "Choose Folders"
 #~ msgstr "Hautatu karpetak"
 
@@ -1696,9 +1725,6 @@ msgstr "Babeskopiaren prozesua hasiko da hain mugatua ez den Internet konexio ba
 #~ msgstr ""
 #~ "Fitxategi guztiak ez dira ongi kopiatu. Ikusi koadroa xehetasun gehiago "
 #~ "ezagutzeko."
-
-#~ msgid "File"
-#~ msgstr "Fitxategia"
 
 #~ msgid "Categories"
 #~ msgstr "Kategoriak"
@@ -2071,10 +2097,6 @@ msgstr "Babeskopiaren prozesua hasiko da hain mugatua ez den Internet konexio ba
 #~ msgstr ""
 #~ "Sistemaren kokalekuetan fitxategiak berriro atzera ezartzeko pribiligioak "
 #~ "beharrezkoak dira"
-
-#~ msgctxt "shortcut window"
-#~ msgid "Help"
-#~ msgstr "Laguntza"
 
 #~ msgctxt "shortcut window"
 #~ msgid "Shortcuts"
