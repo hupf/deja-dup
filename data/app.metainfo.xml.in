@@ -5,11 +5,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
-<component
-  type="desktop-application"
-  xmlns:its="http://www.w3.org/2005/11/its"
-  its:version="2.0"
->
+<component type="desktop-application">
   <id>@appid@</id>
 
   <name>Déjà Dup Backups</name>
@@ -52,16 +48,8 @@ SPDX-FileCopyrightText: Michael Terry
     <id>org.gnome.DejaDup.desktop</id>
   </provides>
 
-  <!-- keep in sync with desktop file -->
-  <categories>
-    <category>Utility</category>
-    <category>Archiving</category>
-    <category>GNOME</category>
-    <category>GTK</category>
-    <category>X-GNOME-Utilities</category>
-  </categories>
-
   <project_license>GPL-3.0-or-later</project_license>
+  <metadata_license>CC-BY-SA-4.0</metadata_license>
   <launchable type="desktop-id">@appid@.desktop</launchable>
   <translation type="gettext">@gettext@</translation>
   <content_rating type="oars-1.1" />
@@ -76,12 +64,11 @@ SPDX-FileCopyrightText: Michael Terry
   <url type="vcs-browser">https://gitlab.gnome.org/World/deja-dup</url>
   <url type="contribute">https://wiki.gnome.org/Apps/DejaDup/GettingInvolved</url>
 
-  <metadata_license>CC-BY-SA-4.0</metadata_license>
-
+  <!-- developer_name tag deprecated with Appstream 1.0 -->
+  <developer_name translatable="no">Michael Terry</developer_name>
   <developer id="mterry.name">
-    <name its:translate="no">Michael Terry</name>
+    <name translatable="no">Michael Terry</name>
   </developer>
-  <developer_name its:translate="no">Michael Terry</developer_name>
 
   <branding>
     <!-- Some blueish colors, which seem like a good background for our gray icon.
@@ -122,174 +109,174 @@ SPDX-FileCopyrightText: Michael Terry
 
   <releases>
     <release version="45.2" date="2023-12-22">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixed not being prompted for packagekit installs during a restore</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/45.2</url>
     </release>
     <release version="45.1" date="2023-09-22">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Update UI to use the new flat header style (re-released with a build fix)</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/45.1</url>
     </release>
     <release version="45.0" date="2023-09-21">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Update UI to use the new flat header style</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/45.0</url>
     </release>
     <release version="44.2" date="2023-05-21">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Add support for newer Duplicity versions and some minor UI tweaks</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/44.2</url>
     </release>
     <release version="44.1" date="2023-03-24">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Stop a backup up front if the storage location does not have enough space for a new backup.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/44.1</url>
     </release>
     <release version="44.0" date="2022-11-25">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Modernizes the UI in a few places and enables compression for new Restic backups.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/44.0</url>
     </release>
     <release version="43.4" date="2022-06-21">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes some quality of life issues, like notifying about power saver mode delaying your backup and fitting on small screens better.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.4</url>
     </release>
     <release version="43.3" date="2022-05-17">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Update the Google/Microsoft authentication flow to a more secure version.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.3</url>
     </release>
     <release version="43.2" date="2022-02-05">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fix a crash when picking a mount as a Local Folder destination.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.2</url>
     </release>
     <release version="43.1" date="2022-01-05">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Increases default window size, to avoid being too small.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.1</url>
     </release>
     <release version="43.0" date="2022-01-01">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Adds support for Microsoft OneDrive, experimental opt-in support for Restic, and a visual refresh.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.0</url>
     </release>
     <release version="43~beta" date="2021-11-26" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Adds a couple extra automatic schedule options and some bug fixes.</p>
       </description>
       <url>https://gitlab.gnome.org/World/deja-dup/-/releases/43.beta</url>
     </release>
     <release version="43~alpha" date="2021-09-22" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Adds support for Microsoft OneDrive, experimental opt-in support for Restic, and some UI cleanup.</p>
       </description>
     </release>
     <release version="42.8" date="2021-08-11">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fix scheduled backups being skipped if a previous password prompt was ignored.</p>
       </description>
     </release>
     <release version="42.7" date="2021-01-13">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fix descending into a folder while searching in the browse and restore view.</p>
       </description>
     </release>
     <release version="42.6" date="2020-11-21">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fix a possible crash when searching over unicode filenames.</p>
       </description>
     </release>
     <release version="42.5" date="2020-10-21">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fix a few issues with restoring files that have unusual characters in their filenames, plus some other small UI improvements and bug fixes.</p>
       </description>
     </release>
     <release version="42.4" date="2020-09-11">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Hotfix for a bug that prevented restoring from removable drives.</p>
       </description>
     </release>
     <release version="42.3" date="2020-09-09">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Improves detection of encrypted drives, shows the browse and restore interface during fresh-install restores, and uses desktop notifications when user attention is needed.</p>
       </description>
     </release>
     <release version="42.2" date="2020-08-10">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a few edge cases of not mounting the storage location drive before backing up.</p>
       </description>
     </release>
     <release version="42.1" date="2020-07-15">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes automatic backups for removable drives not firing off like they should, plus a few UI tweaks.</p>
       </description>
     </release>
     <release version="42.0" date="2020-06-24">
-      <description its:translate="no">
+      <description translatable="no">
         <p>A whole new backup browse and restore interface has been added. Preferences got a glow-up too.</p>
       </description>
     </release>
     <release version="41.3" date="2020-06-22" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Warns you if you're trying to restore files that you can't write to.</p>
       </description>
     </release>
     <release version="41.2" date="2020-06-08" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug preventing some restores from new browser.</p>
       </description>
     </release>
     <release version="41.1" date="2020-05-27" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Adds an in-app restore browser.</p>
       </description>
     </release>
     <release version="41.0" date="2020-05-19" type="development">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Redesigned UI and dropped support for deprecated cloud storage locations.</p>
       </description>
     </release>
     <release version="40.7" date="2020-06-14">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug that prevented restoring from Google Drive accounts if you haven't backed up yet.</p>
       </description>
     </release>
     <release version="40.6" date="2019-12-08">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug that prevented backing up to Google Drive accounts with unlimited quotas.</p>
       </description>
     </release>
     <release version="40.5" date="2019-11-23">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug that prevented backing up to Google Drive in some rare situations.</p>
       </description>
     </release>
     <release version="40.4" date="2019-11-14">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug that prevented the first login to Google Drive.</p>
       </description>
     </release>
     <release version="40.3" date="2019-11-13">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes a bug that prevented resuming a full backup.</p>
       </description>
     </release>
     <release version="40.2" date="2019-10-23">
-      <description its:translate="no">
+      <description translatable="no">
         <p>Fixes 2038 date problems by using 64-bit dates internally.</p>
       </description>
     </release>
