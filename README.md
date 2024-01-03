@@ -30,8 +30,8 @@ Or if you are packaging Déjà Dup for a distribution, see
 
 ## Links
 
- * [Homepage](https://wiki.gnome.org/Apps/DejaDup)
- * [Get involved](https://wiki.gnome.org/Apps/DejaDup/GettingInvolved)
+ * [Homepage](https://apps.gnome.org/DejaDup/)
+ * [Get involved](https://welcome.gnome.org/app/DejaDup/)
  * [Chat room](https://matrix.to/#/#deja-dup:gnome.org)
  * [Forums](https://discourse.gnome.org/tags/c/applications/7/deja-dup)
 

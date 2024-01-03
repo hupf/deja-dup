@@ -368,7 +368,7 @@ public class DejaDupApp : Adw.Application
     dialog.transient_for = get_app_window();
     dialog.translator_credits = _("translator-credits");
     dialog.version = Config.VERSION;
-    dialog.website = "https://wiki.gnome.org/Apps/DejaDup";
+    dialog.website = "https://apps.gnome.org/DejaDup/";
     dialog.present();
   }
 

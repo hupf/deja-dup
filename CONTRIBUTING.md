@@ -72,7 +72,7 @@ If you are making a [substantial patch](https://www.gnu.org/prep/maintain/html_n
 If the maintainers get hit by a bus, these are the various pieces of the administrative puzzle:
 
 * [Main project page](https://gitlab.gnome.org/World/deja-dup)
-* [Homepage / wiki](https://wiki.gnome.org/Apps/DejaDup)
+* [GNOME wiki](https://wiki.gnome.org/Apps/DejaDup)
 * [Discourse tag](https://discourse.gnome.org/tag/deja-dup)
 * [Snap packaging](https://github.com/deja-dup/snap) (plus the store account)
 * [Flathub packaging](https://github.com/flathub/org.gnome.DejaDup)
