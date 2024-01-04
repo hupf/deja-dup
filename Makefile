@@ -93,8 +93,7 @@ flatpak:
 .PHONY: flatpak-update
 flatpak-update:
 	cd flatpak; \
-	export BORG_OPENSSL_PREFIX=/usr; \
-	for p in duplicity "cryptography<3.4 pydrive2" requests-oauthlib; do \
+	for p in duplicity; do \
 		name=$$(echo $$p | grep -oE '[^[:space:]]+$$'); \
 		echo $$name; \
 		../../flatpak-builder-tools/pip/flatpak-pip-generator --yaml --runtime org.gnome.Sdk//master --output $$name $$p; \

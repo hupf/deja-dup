@@ -33,7 +33,7 @@ convenience:
 
 ### Duplicity
 
-Duplicity 0.7.14 or greater is a required runtime dependency.
+Duplicity 2.0.0 or greater is a required runtime dependency.
 Duplicity itself has a wide variety of possible Python dependencies based on
 its many supported backends, but we only use and require a few of them.
 
@@ -44,8 +44,7 @@ You'll want to depend on the following runtime dependencies for your distro:
   `sftp`, and `smb` backends at least are installed)
 - The Python module `gi` along with the typelibs for `Gio` and `GLib`
   (all of which are usually provided by the `pygobject` project)
-- The Python module `pydrive2`
-- The Python module `requests_oauthlib`
+- Rclone
 
 ## Optional Dependencies
 
@@ -67,7 +66,6 @@ Here's how you enable it as an opt-in feature for users:
 
 - Set `-Denable_restic=true` when building
 - Depend on `restic` 0.14.0
-- Depend on `rclone`
 
 ### PackageKit
 
@@ -97,10 +95,7 @@ But if you need this, it's easy to enable:
     - `duplicity_pkgs`: defaults to `duplicity`
     - `gvfs_pkgs`: specify packages for GVFS as well as the `gi` Python module,
       **no default**
-    - `pydrive_pkgs`: the `pydrive2` Python module, **no default**
     - `rclone_pkgs`: defaults to `rclone`
-    - `requests_oauthlib_pkgs`: the `requests_oauthlib` Python module,
-      **no default**
     - `restic_pkgs`: defaults to `restic`
 
 An example for a Debian-style distro:
@@ -108,8 +103,6 @@ An example for a Debian-style distro:
 ```
 -Dpackagekit=enabled
 -Dgvfs_pkgs=gvfs-backends,python3-gi
--Dpydrive_pkgs=python3-pydrive2
--Drequests_oauthlib_pkgs=python3-requests-oauthlib
 ```
 
 ## Dependencies Outside of PATH

@@ -60,12 +60,9 @@ internal class ResticJoblet : DejaDup.ToolJoblet
       envp.append("RESTIC_PASSWORD=" + encrypt_password);
 
     // Fill envp with rclone config if needed
-    if (backend.kind == DejaDup.Backend.Kind.GOOGLE ||
-        backend.kind == DejaDup.Backend.Kind.MICROSOFT)
-    {
-      rclone_remote = Rclone.fill_envp_from_backend(backend, ref envp);
+    rclone_remote = Rclone.fill_envp_from_backend(backend, ref envp);
+    if (rclone_remote != null)
       argv.append("--option=rclone.program=" + Rclone.rclone_command());
-    }
 
     argv.append(get_remote());
 

@@ -16,7 +16,7 @@ void parse_dir()
 {
   parse_one_dir("", Environment.get_home_dir());
   parse_one_dir("$HOME", Environment.get_home_dir());
-  parse_one_dir("$TRASH", Path.build_filename(Environment.get_user_data_dir(), "Trash"));
+  parse_one_dir("$TRASH", DejaDup.InstallEnv.instance().get_trash_dir());
   parse_one_dir("$DESKTOP", Environment.get_user_special_dir(UserDirectory.DESKTOP));
   parse_one_dir("$DOCUMENTS", Environment.get_user_special_dir(UserDirectory.DOCUMENTS));
   parse_one_dir("$DOWNLOAD", Environment.get_user_special_dir(UserDirectory.DOWNLOAD));

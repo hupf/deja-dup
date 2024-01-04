@@ -22,7 +22,7 @@ public class ResticPlugin : DejaDup.ToolPlugin
 
   public override string[] get_dependencies()
   {
-    return string.join(",", Config.RESTIC_PACKAGES, Config.RCLONE_PACKAGES).split(",");
+    return Config.RESTIC_PACKAGES.split(",");
   }
 
   const int REQUIRED_MAJOR = 0;

@@ -166,12 +166,12 @@ string duplicity_args(BackupRunner br, Mode mode = Mode.NONE, bool encrypted = f
     includes += "'--exclude=%s/snap/*/*/.cache' ".printf(Environment.get_home_dir());
     includes += "'--exclude=%s/.var/app/*/cache' ".printf(Environment.get_home_dir());
 
-    string[] excludes1 = {"~/Downloads", "$DATADIR/Trash", "~/.xsession-errors",
+    string[] excludes1 = {"~/Downloads", "$TRASH", "~/.xsession-errors",
                           "~/.steam/root", "~/.Private", "~/.gvfs", "~/.ccache",
                            "~/.cache"};
     foreach (string ex in excludes1) {
       ex = ex.replace("~", Environment.get_home_dir());
-      ex = ex.replace("$DATADIR", Environment.get_user_data_dir());
+      ex = ex.replace("$TRASH", DejaDup.InstallEnv.instance().get_trash_dir());
       if (FileUtils.test (ex, FileTest.IS_SYMLINK | FileTest.EXISTS))
         includes += "'--exclude=%s' ".printf(ex);
     }
@@ -772,7 +772,7 @@ string restic_args(BackupRunner br, string mode, string[] extra_excludes,
       };
       string[] default_excludes = {
         restic_exc("$HOME/Downloads"),
-        restic_exc("$DATADIR/Trash")
+        restic_exc(DejaDup.InstallEnv.instance().get_trash_dir())
       };
       string[] builtin_excludes = {
         restic_exc("/sys"),

@@ -8,8 +8,6 @@ using GLib;
 
 internal class DuplicityJob : DejaDup.ToolJob
 {
-  public bool version1_cli {get; construct; default = false;}
-
   DejaDup.ToolJob.Mode original_mode {get; private set;}
   bool error_issued {get; private set; default = false;}
   bool was_stopped {get; private set; default = false;}
@@ -61,7 +59,7 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   File last_touched_file = null;
   string forced_cache_dir = null;
-  string credentials_dir = null;
+  string rclone_remote = null;
 
   void network_changed()
   {
@@ -69,10 +67,6 @@ internal class DuplicityJob : DejaDup.ToolJob
       resume();
     else
       pause(_("Paused (no network)"));
-  }
-
-  public DuplicityJob(bool version1_cli) {
-    Object(version1_cli: version1_cli);
   }
 
   construct {
@@ -83,16 +77,6 @@ internal class DuplicityJob : DejaDup.ToolJob
 
   ~DuplicityJob() {
     DejaDup.Network.get().notify["connected"].disconnect(network_changed);
-    clean_credentials_dir(); // possibly defined for google backend
-  }
-
-  void clean_credentials_dir() {
-    if (credentials_dir != null) {
-      FileUtils.remove("%s/settings.yaml".printf(credentials_dir));
-      FileUtils.remove("%s/credentials.json".printf(credentials_dir));
-      FileUtils.remove(credentials_dir);
-      credentials_dir = null;
-    }
   }
 
   public override async void start()
@@ -161,53 +145,9 @@ internal class DuplicityJob : DejaDup.ToolJob
       return 0;
   }
 
-  void fill_envp_from_google(DejaDup.BackendGoogle google_backend) throws Error
-  {
-    // Pydrive only accepts credentials from a file. So we create a temporary
-    // directory and put our settings file and credentials both in there.
-    // Make sure it's all readable only by the user, and we should delete them
-    // when we're done.
-
-    clean_credentials_dir();
-
-    credentials_dir = DirUtils.make_tmp("deja-dup-XXXXXX");
-
-    // Add settings.yaml
-    var yaml_path = "/org/gnome/DejaDup/pydrive-settings.yaml";
-    var yaml_bytes = resources_lookup_data(yaml_path, ResourceLookupFlags.NONE);
-    var yaml = (string)yaml_bytes.get_data();
-    yaml = yaml.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);
-    yaml = yaml.replace("$PATH", credentials_dir);
-    FileUtils.set_contents("%s/settings.yaml".printf(credentials_dir), yaml);
-
-    // Add credentials.json
-    var json_path = "/org/gnome/DejaDup/pydrive-credentials.json";
-    var json_bytes = resources_lookup_data(json_path, ResourceLookupFlags.NONE);
-    var json = (string)json_bytes.get_data();
-    json = json.replace("$CLIENT_ID", Config.GOOGLE_CLIENT_ID);
-    json = json.replace("$ACCESS_TOKEN", google_backend.access_token);
-    json = json.replace("$REFRESH_TOKEN", google_backend.refresh_token);
-    FileUtils.set_contents("%s/credentials.json".printf(credentials_dir), json);
-
-    saved_envp.append("GOOGLE_DRIVE_SETTINGS=%s/settings.yaml".printf(credentials_dir));
-  }
-
-  void fill_envp_from_microsoft(DejaDup.BackendMicrosoft microsoft_backend)
-  {
-    saved_envp.append("DUPLICITY_ONEDRIVE_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
-    saved_envp.append("OAUTH2_CLIENT_ID=%s".printf(Config.MICROSOFT_CLIENT_ID));
-    saved_envp.append("OAUTH2_REFRESH_TOKEN=%s".printf(microsoft_backend.refresh_token));
-  }
-
   void fill_envp_from_backend() throws Error
   {
-    var google_backend = backend as DejaDup.BackendGoogle;
-    if (google_backend != null)
-      fill_envp_from_google(google_backend);
-
-    var microsoft_backend = backend as DejaDup.BackendMicrosoft;
-    if (microsoft_backend != null)
-      fill_envp_from_microsoft(microsoft_backend);
+    rclone_remote = Rclone.fill_envp_from_backend(backend, ref saved_envp);
   }
 
   string get_remote()
@@ -220,16 +160,8 @@ internal class DuplicityJob : DejaDup.ToolJob
       }
     }
 
-    var google_backend = backend as DejaDup.BackendGoogle;
-    if (google_backend != null) {
-      // The hostname is unused
-      return "pydrive://google/%s".printf(google_backend.get_folder());
-    }
-
-    var microsoft_backend = backend as DejaDup.BackendMicrosoft;
-    if (microsoft_backend != null) {
-      return "onedrive://%s".printf(microsoft_backend.get_folder());
-    }
+    if (rclone_remote != null)
+      return "rclone://" + rclone_remote;
 
     return "invalid://"; // shouldn't happen! We should probably complain louder...
   }
@@ -459,10 +391,7 @@ internal class DuplicityJob : DejaDup.ToolJob
             target_file = File.new_for_path(translated_path);
           }
           var rel_file_path = slash.get_relative_path(target_file);
-          if (version1_cli)
-            extra_argv.append("--file-to-restore=%s".printf(rel_file_path));
-          else
-            extra_argv.append("--path-to-restore=%s".printf(rel_file_path));
+          extra_argv.append("--path-to-restore=%s".printf(rel_file_path));
         }
 
         progress(0f);
@@ -1418,7 +1347,7 @@ internal class DuplicityJob : DejaDup.ToolJob
         // We can't restore owner uid without root access, and if duplicity
         // tries and fails, it won't restore other attributes like modified
         // timestamp or chmod permissions. So ask it not to try.
-        argv.append(version1_cli ? "--do-not-restore-ownership" : "--no-restore-ownership");
+        argv.append("--no-restore-ownership");
         argv.append("--force");
         argv.append(get_remote());
         argv.append(local_arg.get_path());
