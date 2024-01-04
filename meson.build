@@ -8,7 +8,7 @@ project(
   'vala',
   license: 'GPL-3.0-or-later',
   meson_version: '>= 0.64',
-  version: '45.2',
+  version: '46.0',
 )
 
 gnome = import('gnome')
@@ -81,10 +81,8 @@ add_project_arguments(
   '-DPACKAGE="@0@"'.format(meson.project_name()),
   '-DPKG_LIBEXEC_DIR="@0@"'.format(pkglibexecdir),
   '-DPROFILE="@0@"'.format(profile),
-  '-DPYDRIVE_PACKAGES="@0@"'.format(get_option('pydrive_pkgs')),
   '-DRCLONE_COMMAND="@0@"'.format(get_option('rclone_command')),
   '-DRCLONE_PACKAGES="@0@"'.format(get_option('rclone_pkgs')),
-  '-DREQUESTS_OAUTHLIB_PACKAGES="@0@"'.format(get_option('requests_oauthlib_pkgs')),
   '-DRESTIC_COMMAND="@0@"'.format(get_option('restic_command')),
   '-DRESTIC_PACKAGES="@0@"'.format(get_option('restic_pkgs')),
   '-DVERSION="@0@"'.format(meson.project_version()),

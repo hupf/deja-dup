@@ -46,7 +46,7 @@ public class BackendMicrosoft : BackendOAuth
   }
 
   public override string[] get_dependencies() {
-    return Config.REQUESTS_OAUTHLIB_PACKAGES.split(",");
+    return Config.RCLONE_PACKAGES.split(",");
   }
 
   public override Icon? get_icon() {

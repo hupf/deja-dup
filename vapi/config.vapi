@@ -25,8 +25,6 @@ namespace Config {
 	public const string DUPLICITY_PACKAGES;
 	public const string RESTIC_PACKAGES;
 	public const string GVFS_PACKAGES;
-	public const string PYDRIVE_PACKAGES;
-	public const string REQUESTS_OAUTHLIB_PACKAGES;
 
 	public const string RCLONE_COMMAND;
 	public const string RCLONE_PACKAGES;

@@ -10,8 +10,6 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
 {
   bool has_been_setup = false;
   string version = null;
-  bool supports_microsoft = false;
-  bool version1_cli = false;
 
   construct
   {
@@ -23,9 +21,9 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
     return Config.DUPLICITY_PACKAGES.split(",");
   }
 
-  const int REQUIRED_MAJOR = 0;
-  const int REQUIRED_MINOR = 7;
-  const int REQUIRED_MICRO = 14;
+  const int REQUIRED_MAJOR = 2;
+  const int REQUIRED_MINOR = 0;
+  const int REQUIRED_MICRO = 0;
   void do_initial_setup () throws Error
   {
     if (has_been_setup)
@@ -57,12 +55,6 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
       throw new SpawnError.FAILED(msg.printf(REQUIRED_MAJOR, REQUIRED_MINOR, REQUIRED_MICRO, major, minor, micro));
     }
 
-    // 0.8.18 first landed support for OAUTH2_REFRESH_TOKEN, but then it got accidentally reverted.
-    supports_microsoft = DejaDup.equals_version(major, minor, micro, 0, 8, 18) ||
-                         DejaDup.meets_version(major, minor, micro, 0, 8, 21);
-
-    version1_cli = !DejaDup.meets_version(major, minor, micro, 2, 0, 0);
-
     has_been_setup = true;
   }
 
@@ -75,7 +67,7 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
   public override DejaDup.ToolJob create_job() throws Error
   {
     do_initial_setup();
-    return new DuplicityJob(version1_cli);
+    return new DuplicityJob();
   }
 
   public override bool supports_backend(DejaDup.Backend.Kind kind, out string explanation)
@@ -93,11 +85,8 @@ public class DuplicityPlugin : DejaDup.ToolPlugin
       case DejaDup.Backend.Kind.LOCAL:
       case DejaDup.Backend.Kind.GVFS:
       case DejaDup.Backend.Kind.GOOGLE:
-        return true;
-
       case DejaDup.Backend.Kind.MICROSOFT:
-        explanation = _("This storage location is not yet supported.");
-        return supports_microsoft;
+        return true;
 
       default:
         explanation = _(

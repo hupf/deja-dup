@@ -3,6 +3,17 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 SPDX-FileCopyrightText: Michael Terry
 -->
 
+# 46.0
+
+##### Packaging
+- Require duplicity 2.0.0
+- Duplicity cloud support will now be provided by Rclone (like we do when
+  using Restic)
+  - Meson options `pydrive_pkgs` and `requests_oauthlib_pkgs` are both
+    deprecated and ignored
+  - You can remove any runtime dependencies for pydrive or oauthlib
+  - You should add a runtime dependency on `rclone`
+
 # 45.2
 - Fix not being prompted for packagekit installs during a restore
 - Allow using the '~/' alias for the home dir in more text entries

@@ -50,7 +50,7 @@ public class BackendGoogle : BackendOAuth
   }
 
   public override string[] get_dependencies() {
-    return Config.PYDRIVE_PACKAGES.split(",");
+    return Config.RCLONE_PACKAGES.split(",");
   }
 
   public override Icon? get_icon() {

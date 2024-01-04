@@ -24,15 +24,17 @@ option('restic_command', type: 'string', value: 'restic', description: 'Path to 
 # If you cannot directly depend on the following dependencies (which would be the preferred user
 # experience), you can instead enable the packagekit feature and then also specify your distro's
 # package names for these commands.
-# An example: -Dpackagekit=enabled -Dpydrive_pkgs=python3-pydrive2
+# An example: -Dpackagekit=enabled -Dgvfs_pkgs=gvfs-backends,python3-gi
 option('packagekit', type: 'feature', value: 'disabled', description: 'Install missing dependencies at runtime')
 option('borg_pkgs', type: 'string', value: 'borgbackup', description: 'Distro package names to install the borg command, separated by commas')
 option('duplicity_pkgs', type: 'string', value: 'duplicity', description: 'Distro package names to install the duplicity command, separated by commas')
 option('gvfs_pkgs', type: 'string', value: '', description: 'Distro package names to install giobackend duplicity support, separated by commas')
-option('pydrive_pkgs', type: 'string', value: '', description: 'Distro package names to install pydrivebackend duplicity support, separated by commas')
 option('rclone_pkgs', type: 'string', value: 'rclone', description: 'Distro package names to install the rclone command, separated by commas')
-option('requests_oauthlib_pkgs', type: 'string', value: '', description: 'Distro package names to install requests_oauthlib support, separated by commas')
 option('restic_pkgs', type: 'string', value: 'restic', description: 'Distro package names to install the restic command, separated by commas')
+
+# Deprecated packagekit options
+option('pydrive_pkgs', type: 'string', deprecated: true)
+option('requests_oauthlib_pkgs', type: 'string', deprecated: true)
 
 # You likely don't want to set this, it's only used to distinguish debug/nightly builds from release builds
 option('profile', type: 'string', value: '', description: 'Profile name, for parallel installations')
